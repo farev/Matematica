@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# macOS
+.DS_Store
+
+# LaTeX build artifacts (scoped to paper/ dirs so result logs elsewhere survive)
+paper/**/*.aux
+paper/**/*.bbl
+paper/**/*.blg
+paper/**/*.fdb_latexmk
+paper/**/*.fls
+paper/**/*.log
+paper/**/*.out
+paper/**/*.synctex.gz
+paper/**/*.toc
+
+# Large regenerable outputs
+# Certificates and small CSVs ARE committed on purpose — they are results.
+# Anything above ~10 MB should live on Zenodo instead and be referenced
+# from the conjecture's data manifest.
+*.npy
+*.npz
+*.pkl

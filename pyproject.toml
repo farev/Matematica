@@ -1,0 +1,25 @@
+[project]
+name = "matematica"
+version = "0.1.0"
+description = "Daily attempts at open problems in mathematics"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy>=2.0",
+    "scipy>=1.14",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.6",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+# E402 (import not at top) is used deliberately in several conjecture
+# scripts that adjust sys.path before importing sibling modules.
+ignore = ["E402"]
