@@ -46,6 +46,20 @@ Each conjecture directory must stand alone — it should survive
 New conjecture: copy `conjectures/TEMPLATE.md` into
 `conjectures/<name>/README.md` and fill it in.
 
+## Where writing goes
+
+The top-level `README.md` is an **index, not a summary**. It carries the status
+vocabulary, the layout, and one table row per conjecture — statement, status,
+session count, and a single-line strongest result linking to the conjecture
+directory. Nothing conjecture-specific beyond that line, ever. It has to stay
+one screen when there are thirty conjectures in it.
+
+All detail — the statement, the labelled results table, script tables, data
+files, reproduction commands, defects, prior work — lives in
+`conjectures/<name>/README.md`. When a session produces a result, update the
+conjecture README fully and touch the top-level table only if the strongest
+result changed.
+
 ## Per-conjecture documents
 
 - `README.md` — one screen. Statement, current status, table of scripts and
