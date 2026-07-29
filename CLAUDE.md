@@ -60,6 +60,13 @@ files, reproduction commands, defects, prior work — lives in
 conjecture README fully and touch the top-level table only if the strongest
 result changed.
 
+Each conjecture also gets a public write-up page on the site, indexed at
+<https://fabianarevalo.com/math> and served at `fabianarevalo.com/<name>` —
+note the flat path, not `/math/<name>`. Link it from the index row in the
+top-level README and from the conjecture README header. The `research-page`
+skill builds these. The repository is the code and certificates; the page is
+the readable version, plain-language explanation first.
+
 ## Per-conjecture documents
 
 - `README.md` — one screen. Statement, current status, table of scripts and

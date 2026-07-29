@@ -28,12 +28,16 @@ counterexample lives below that bound.
 
 ## Conjectures
 
-One directory per conjecture. Each has its own README with the full statement,
-labelled results, scripts and reproduction commands — follow the link.
+Every conjecture has a write-up page at **[fabianarevalo.com/math](https://fabianarevalo.com/math)**
+— the readable version, with the plain-language explanation first. This
+repository is the code, data and certificates behind those pages.
+
+One directory per conjecture, each with its own README carrying the full
+statement, labelled results, scripts and reproduction commands.
 
 | Conjecture | Status | Sessions | Strongest result so far |
 |---|---|---|---|
-| [**Gilbreath's conjecture**](conjectures/gilbreath/) | active | 1 | **PROVED** — a factor-2 sharpening of the Chase–Hunter–Tao lower bound, plus **CERTIFIED** exact values of the first three uncomputed constants of their continuous model |
+| [**Gilbreath's conjecture**](conjectures/gilbreath/) · [page ↗](https://fabianarevalo.com/gilbreath) | active | 1 | **PROVED** — a factor-2 sharpening of the Chase–Hunter–Tao lower bound, plus **CERTIFIED** exact values of the first three uncomputed constants of their continuous model |
 
 Daily entries, including the sessions that produced nothing, are in
 [`log/`](log/).

@@ -18,6 +18,7 @@ plus a lucky seed — and pieces of it are provable by elementary means today.
 
 **Status:** active
 **Sessions:** [2026-07-28](../../log/2026-07-28-gilbreath.md)
+**Write-up page:** [fabianarevalo.com/gilbreath](https://fabianarevalo.com/gilbreath)
 
 ## Results
 
