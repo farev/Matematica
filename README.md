@@ -37,7 +37,7 @@ statement, labelled results, scripts and reproduction commands.
 
 | Conjecture | Status | Sessions | Strongest result so far |
 |---|---|---|---|
-| [**Gilbreath's conjecture**](conjectures/gilbreath/) · [page ↗](https://fabianarevalo.com/gilbreath) | active | 1 | **PROVED** — a factor-2 sharpening of the Chase–Hunter–Tao lower bound, plus **CERTIFIED** exact values of the first three uncomputed constants of their continuous model |
+| [**Gilbreath's conjecture**](conjectures/gilbreath/) · [page ↗](https://fabianarevalo.com/gilbreath) | active | 2 | **PROVED** — no fixed-order statistical axiom system can imply eventual Gilbreath (insufficiency theorem R2), plus thirteen unconditional covering lenses discharging parts of the Chase–Hunter–Tao criterion, a factor-2 sharpening of their lower bound, and **CERTIFIED** exact c₄–c₆ |
 
 Daily entries, including the sessions that produced nothing, are in
 [`log/`](log/).

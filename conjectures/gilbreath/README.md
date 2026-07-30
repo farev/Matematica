@@ -17,7 +17,7 @@ but everything below suggests it is really a theorem about prime-gap statistics
 plus a lucky seed — and pieces of it are provable by elementary means today.
 
 **Status:** active
-**Sessions:** [2026-07-28](../../log/2026-07-28-gilbreath.md)
+**Sessions:** [2026-07-28](../../log/2026-07-28-gilbreath.md), [2026-07-29](../../log/2026-07-29-gilbreath.md)
 **Write-up page:** [fabianarevalo.com/gilbreath](https://fabianarevalo.com/gilbreath)
 
 ## Results
@@ -30,6 +30,13 @@ plus a lucky seed — and pieces of it are provable by elementary means today.
 | Gilbreath holds for the first 455,052,510 rows (primes < 10¹⁰), `k* = 329`, via Odlyzko's propagation criterion | **CERTIFIED** | `verify_big.py` |
 | Chase–Hunter–Tao Thm 1.6 hypotheses audited against real primes: both dangerous block structures sit 11 and 25 orders of magnitude below threshold up to 10⁹ | **CERTIFIED** | `block_audit.py` |
 | Submask law `c_i ≈ C·i^{−α}·Σ_{m ⊆ i} q^m`, `α ≈ 0.798`, `q ≈ 0.685`, `C ≈ 1.14`. `R² = 0.980` on `i ∈ [64, 1023]`; predicts `i ∈ [1024, 4095]` out-of-sample at `R² = 0.90`, median relative error 13%. Pure power law fails (R² < 0) | **NUMERICAL** | `final_validation.py`, [NOTE.md](NOTE.md) §6 |
+| Depth-1 zero-blocks of the CHT array are CPAPs (Lemma M1); prime APs in `(k, x]` have length `≤ 1.25 log x + O(1)` (primorial rigidity, known mechanism), so **CHT hypothesis (ii) at depth 1 holds unconditionally** with margin `log⁹x` | **PROVED** | [MICROSCOPE.md](MICROSCOPE.md) §2–3 |
+| Two-valued rigidity (Lemma M6): odd `q \| B−A`, `q ∤ A` caps `{A,B}`-gap runs at `q−2`, so **CHT hypothesis (iii) at depth 0 holds unconditionally for every d with odd part > 1**; bounds attained exactly at `d = 5, 7, 10, 14` on primes < 10⁹. Surviving case `d = 2^s` reduced to a twin-clustering bound with `log x/loglog x` slack (Cor. M9); bounded-gap runs killed absolutely via Montgomery–Vaughan (`{2,6}` ≤ ~27,000 forever); periodic-sign depth-2 structures annihilated (Lemma M11) | **PROVED** | [MICROSCOPE.md](MICROSCOPE.md) §7, `lens_check.py` |
+| Dichotomy for depth-2 blocks (Lemma M13): every odd prime factor of the second-difference parameter `w` either caps the block at `q−1` primes or imprisons it in a residue class mod `q`; long escapees have `w = 2^s` with forced gap alternation mod `2^{s+1}`. Verified on 388,068 blocks < 10⁹, zero violations, threshold saturated exactly 922 times. Kernel principle: all surviving enemies are 2-adic or same-class-run-shielded — provably beyond covering and density methods | **PROVED** | [MICROSCOPE.md](MICROSCOPE.md) §8 |
+| Theorem R1: Cramér + residual pattern axiom P (strictly narrower than CHT's hypotheses, by the lenses) ⇒ Gilbreath for all but finitely many rows | **PROVED** (reduction) | [REDUCTION.md](REDUCTION.md) §2 |
+| Theorem R2: a sequence with all fixed-order Cramér gap statistics (perturbed by `O_k(loglog x)`) whose Gilbreath leads fail infinitely often — so **no fixed-order statistical axiom system implies eventual Gilbreath**; plants verified to derail at exactly row `m−1` | **PROVED** | [REDUCTION.md](REDUCTION.md) §3, `reduction_check.py` |
+| Open Problem R3: fixed-order statistics + `o(n)` entries ⇒ eventual Gilbreath? Plants provably fail there; extended highways leave fixed-order fingerprints — the program's sharpest question | open | [REDUCTION.md](REDUCTION.md) §3 |
+| Microscope calibration: all dangerous micro-patterns in real primes to 10¹⁰ grow like `≤ 1.4·log x` (CPAP 6, alternating-parity runs 32, two-valued runs 10), 12+ orders below the `log¹⁰x` thresholds; alternation outpaces repetition (Lemke Oliver–Soundararajan bias) | **NUMERICAL** | `microscope_bench.py`, [MICROSCOPE.md](MICROSCOPE.md) §5 |
 
 Implication of the last row: the tentative `c_i ≍ 1/i` of Chase–Hunter–Tao
 Remark 1.5 is untenable in the computationally accessible range — partial sums
