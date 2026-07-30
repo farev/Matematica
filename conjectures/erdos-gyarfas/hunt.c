@@ -248,6 +248,11 @@ int main(int argc, char **argv) {
     if (n < 6 || n > 62 || (n & 1)) { fprintf(stderr, "bad n\n"); return 2; }
     rng_state = seed * 0x9E3779B97F4A7C15ULL + 12345;
 
+    /* polish mode: max_moves == 0 -> deterministic steepest descent over
+     * ALL 2-edge swaps, repeated until no swap improves the energy; proves
+     * the final graph is a depth-1 local minimum of the energy. */
+    int polish = (max_moves == 0);
+
     random_cubic();
     int warmed = 0;
     if (warm) {
@@ -314,6 +319,57 @@ int main(int argc, char **argv) {
     memcpy(cur_bad, scratch_bad, sizeof cur_bad);
     n_cur_bad = n_scratch_bad;
     long long bestE = E;
+
+    if (polish) {
+        int improved = 1, rounds = 0;
+        while (improved && E > 0) {
+            improved = 0; rounds++;
+            int edges[3 * MAXN / 2][2], ne = 0;
+            for (int i = 0; i < n; i++)
+                for (int k = 0; k < deg[i]; k++)
+                    if (nbr[i][k] > i) { edges[ne][0] = i; edges[ne][1] = nbr[i][k]; ne++; }
+            long long bestDelta = 0; int ba=0,bb=0,bc=0,bd=0,bx=0,by=0,bw=0,bz=0,found=0;
+            for (int e1 = 0; e1 < ne && !found; e1++)
+                for (int e2 = e1 + 1; e2 < ne && !found; e2++) {
+                    int a = edges[e1][0], b = edges[e1][1];
+                    int c = edges[e2][0], d = edges[e2][1];
+                    if (a==c||a==d||b==c||b==d) continue;
+                    for (int o = 0; o < 2 && !found; o++) {
+                        int x=a, y = o? d:c, w=b, z = o? c:d;
+                        if (has_edge(x,y)||has_edge(w,z)) continue;
+                        del_edge(a,b); del_edge(c,d); add_edge(x,y); add_edge(w,z);
+                        rebuild_lists();
+                        if (connected()) {
+                            long long E2 = energy();
+                            if (E2 < E + bestDelta) {
+                                bestDelta = E2 - E;
+                                ba=a;bb=b;bc=c;bd=d;bx=x;by=y;bw=w;bz=z;
+                                /* first-improvement for speed */
+                                if (E2 < E) found = 1;
+                            }
+                        }
+                        del_edge(x,y); del_edge(w,z); add_edge(a,b); add_edge(c,d);
+                        rebuild_lists();
+                    }
+                }
+            if (bestDelta < 0) {
+                del_edge(ba,bb); del_edge(bc,bd); add_edge(bx,by); add_edge(bw,bz);
+                rebuild_lists();
+                E = energy();
+                memcpy(cur_bad, scratch_bad, sizeof cur_bad);
+                n_cur_bad = n_scratch_bad;
+                improved = 1;
+                fprintf(stderr, "[polish n=%d] round %d: E=%lld (C4=%lld C8=%lld C16=%lld)\n",
+                        n, rounds, E, ccount[4], ccount[8], Lmax>=16?ccount[16]:0);
+            }
+        }
+        long long fe = energy();
+        printf("POLISH n=%d seed=%llu localmin E=%lld C4=%lld C8=%lld C16=%lld\n",
+               n, (unsigned long long)seed, fe, ccount[4], ccount[8], Lmax>=16?ccount[16]:0);
+        if (fe == 0) printf("HIT\n");
+        print_g6(stdout);
+        return 0;
+    }
     uint64_t best_adj[MAXN];
     memcpy(best_adj, adj, sizeof adj);
 

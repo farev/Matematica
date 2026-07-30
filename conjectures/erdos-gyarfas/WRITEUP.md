@@ -129,4 +129,38 @@ appeared at all):
 Class validated against OEIS A007112 before running (geng -c -d3 counts
 2589 / 84 242 / 5 203 110 at n=8/9/10 — exact match).
 
+## The hunt (n = 54..62)
+
+Simulated annealing over connected cubic graphs, energy = weighted exact
+counts of C4/C8/C16 (counts cross-checked against networkx enumeration —
+the 78 sixteen-cycles of one key graph reproduce exactly). Three
+generations of the search:
+
+1. **v1 uniform moves**: chains stall around E=8–14.
+2. **v2 focused moves** (70% of swaps pick an edge lying on a currently-bad
+   cycle, WalkSAT-style): chains reach E=6 — graphs with C4=0, C16=0 and
+   only **three 8-cycles** — at n=56 and n=58 within 2.5M moves.
+3. **Polish mode** (deterministic steepest descent over all ~13k 2-swaps,
+   proving depth-1 local minimality): applied to the E=6 graph at n=56 with
+   manifold-pinning weights (100/50/1), it killed all three 8-cycles at the
+   price of 16-cycles, landing on a certified local minimum that is
+   **{4,8}-free on 56 vertices with exactly 78 sixteen-cycles**
+   (spectrum {16,32}; verified independently).
+
+Structural picture that emerged (consistent across n): the optimizer
+converges to triangle-rich graphs — girth 3, 14–16 triangles — exactly the
+shape of Markström's extremal order-24 graphs (girth 3, one planar). The
+stubborn 8-cycles in the E=6 states are pairwise vertex-disjoint and their
+vertices lie almost entirely on triangles. The endgame battle is between
+8-cycles and 16-cycles: annihilating the last C8s spawns C16s.
+
+Positive control: at n=24 the same machinery (heavy weights) found a
+{4,8}-free cubic graph — necessarily one of Markström's four — with C16
+count 228; it passes the survivor filter end-to-end and triple-verifies
+(networkx enumeration, SAT UNSAT for C4 and C8, 10 random relabelings).
+
+Basin hopping (anneal → polish → keep-if-better) now runs on the
+{4,8}-free manifold minimizing the C16 count; the minimum C16 achieved per
+n is this session's quantitative "distance to counterexample".
+
 (continued as the session progresses)
