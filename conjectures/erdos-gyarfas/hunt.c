@@ -93,10 +93,39 @@ static void bfs_from(int v) {
 }
 
 static uint64_t used;
+static int girth_min_fwd;        /* set below (girth mode flag) */
+
+/* focused-move machinery: edges lying on bad (penalized) cycles of the
+ * CURRENT graph; refreshed on every accepted move */
+static int is_bad_len[MAXN + 1];
+static int scratch_bad[3 * MAXN][2], n_scratch_bad;
+static int cur_bad[3 * MAXN][2], n_cur_bad;
+static uint64_t scratch_mark[MAXN];   /* dedupe edges within one count pass */
+static int pathv[MAXN];
+
+static void mark_bad_cycle(int d) {
+    /* cycle = v_min, pathv[1..d], back to v_min */
+    for (int i = 0; i <= d; i++) {
+        int a = (i == 0) ? v_min : pathv[i];
+        int b = (i == d) ? v_min : pathv[i + 1];
+        int lo = a < b ? a : b, hi = a < b ? b : a;
+        if (scratch_mark[lo] & (1ULL << hi)) continue;
+        scratch_mark[lo] |= 1ULL << hi;
+        if (n_scratch_bad < 3 * MAXN) {
+            scratch_bad[n_scratch_bad][0] = lo;
+            scratch_bad[n_scratch_bad][1] = hi;
+            n_scratch_bad++;
+        }
+    }
+}
+
 static void dfs_count(int u, int d) {
     /* d edges walked, currently at u; cycles counted once via path1 < u */
-    if (d >= 2 && has_edge(u, v_min) && path1 < u)
+    pathv[d] = u;
+    if (d >= 2 && has_edge(u, v_min) && path1 < u) {
         ccount[d + 1]++;
+        if (is_bad_len[d + 1]) mark_bad_cycle(d);
+    }
     if (d + 1 >= Lmax) return;
     for (int k = 0; k < deg[u]; k++) {
         int w = nbr[u][k];
@@ -110,6 +139,8 @@ static void dfs_count(int u, int d) {
 
 static void count_cycles(void) {
     memset(ccount, 0, sizeof ccount);
+    memset(scratch_mark, 0, sizeof scratch_mark);
+    n_scratch_bad = 0;
     for (v_min = 0; v_min < n - 2; v_min++) {
         bfs_from(v_min);
         for (int k = 0; k < deg[v_min]; k++) {
@@ -124,7 +155,17 @@ static void count_cycles(void) {
 
 static long long W4 = 4, W8 = 2, W16 = 1;
 static int girth_min = 0;        /* if > 0: energy = # cycles shorter than this */
+static void set_bad_lens(void) {
+    memset(is_bad_len, 0, sizeof is_bad_len);
+    if (girth_min > 0) {
+        for (int L = 3; L < girth_min && L <= MAXN; L++) is_bad_len[L] = 1;
+    } else {
+        for (int L = 4; L <= Lmax; L *= 2) is_bad_len[L] = 1;
+    }
+}
+
 static long long energy(void) {
+    set_bad_lens();
     count_cycles();
     long long e = 0;
     if (girth_min > 0) {
@@ -159,6 +200,29 @@ static void random_cubic(void) {
     }
 }
 
+static int read_g6_file(const char *path) {
+    FILE *f = fopen(path, "r");
+    if (!f) return -1;
+    char line[4096];
+    if (!fgets(line, sizeof line, f)) { fclose(f); return -1; }
+    fclose(f);
+    size_t len = strlen(line);
+    while (len && (line[len-1] == '\n' || line[len-1] == '\r')) line[--len] = 0;
+    int nn = line[0] - 63, idx = 1;
+    if (nn != n) return -2;
+    memset(adj, 0, sizeof adj);
+    int bit = 5, val = 0, have = 0;
+    for (int j = 1; j < n; j++)
+        for (int i = 0; i < j; i++) {
+            if (!have) { val = line[idx++] - 63; have = 6; bit = 5; }
+            if ((val >> bit) & 1) add_edge(i, j);
+            bit--; have--;
+        }
+    rebuild_lists();
+    for (int i = 0; i < n; i++) if (deg[i] != 3) return -3;
+    return connected() ? 0 : -4;
+}
+
 static void print_g6(FILE *f) {
     /* graph6 for n < 63 */
     fputc(n + 63, f);
@@ -173,17 +237,24 @@ static void print_g6(FILE *f) {
 }
 
 int main(int argc, char **argv) {
-    if (argc < 4) { fprintf(stderr, "usage: hunt n seed max_moves [Lmax [w4 w8 w16 [girthmin]]]\n"); return 2; }
+    if (argc < 4) { fprintf(stderr, "usage: hunt n seed max_moves [Lmax [w4 w8 w16 [girthmin [warmstart.g6]]]]\n"); return 2; }
     n = atoi(argv[1]);
     uint64_t seed = strtoull(argv[2], NULL, 10);
     long long max_moves = atoll(argv[3]);
     Lmax = (argc > 4) ? atoi(argv[4]) : 16;
     if (argc > 7) { W4 = atoll(argv[5]); W8 = atoll(argv[6]); W16 = atoll(argv[7]); }
-    if (argc > 8) { girth_min = atoi(argv[8]); Lmax = girth_min - 1; }
+    if (argc > 8 && atoi(argv[8]) > 0) { girth_min = atoi(argv[8]); Lmax = girth_min - 1; }
+    const char *warm = (argc > 9) ? argv[9] : NULL;
     if (n < 6 || n > 62 || (n & 1)) { fprintf(stderr, "bad n\n"); return 2; }
     rng_state = seed * 0x9E3779B97F4A7C15ULL + 12345;
 
     random_cubic();
+    int warmed = 0;
+    if (warm) {
+        int rc = read_g6_file(warm);
+        if (rc != 0) { fprintf(stderr, "warm start failed (%d), using random\n", rc); random_cubic(); }
+        else { warmed = 1; fprintf(stderr, "[n=%d seed=%llu] warm start from %s\n", n, (unsigned long long)seed, warm); }
+    }
 
     /* Phase 1: with a cheap energy (cycles up to length 8 only), drive the
      * graph to C4 = C8 = 0 — the {4,8}-free manifold — then switch to the
@@ -191,11 +262,20 @@ int main(int argc, char **argv) {
      * runs in this directory), so phase 1 just does its best. */
     int full_Lmax = Lmax;
     Lmax = girth_min > 0 ? (girth_min > 9 ? 8 : girth_min - 1) : 8;
-    {
+    if (!warmed) {
         long long E1 = energy();
+        memcpy(cur_bad, scratch_bad, sizeof cur_bad);
+        n_cur_bad = n_scratch_bad;
         double T1 = 6.0;
         for (long long mv = 0; mv < max_moves / 4 && E1 > 0; mv++) {
-            int a = rng_below(n), b = nbr[a][rng_below(3)];
+            int a, b;
+            if (n_cur_bad > 0 && rng_below(10) < 7) {
+                int k = rng_below(n_cur_bad);
+                a = cur_bad[k][0]; b = cur_bad[k][1];
+                if (!has_edge(a, b)) { a = rng_below(n); b = nbr[a][rng_below(3)]; }
+            } else {
+                a = rng_below(n); b = nbr[a][rng_below(3)];
+            }
             int c = rng_below(n), d = nbr[c][rng_below(3)];
             if (a == c || a == d || b == c || b == d) continue;
             int x, y, w, z;
@@ -212,7 +292,11 @@ int main(int argc, char **argv) {
                 continue;
             }
             long long E2 = energy();
-            if (E2 <= E1 || rng_unit() < exp(-(double)(E2 - E1) / T1)) E1 = E2;
+            if (E2 <= E1 || rng_unit() < exp(-(double)(E2 - E1) / T1)) {
+                E1 = E2;
+                memcpy(cur_bad, scratch_bad, sizeof cur_bad);
+                n_cur_bad = n_scratch_bad;
+            }
             else {
                 del_edge(x, y); del_edge(w, z);
                 add_edge(a, b); add_edge(c, d);
@@ -227,6 +311,8 @@ int main(int argc, char **argv) {
     Lmax = full_Lmax;
 
     long long E = energy();
+    memcpy(cur_bad, scratch_bad, sizeof cur_bad);
+    n_cur_bad = n_scratch_bad;
     long long bestE = E;
     uint64_t best_adj[MAXN];
     memcpy(best_adj, adj, sizeof adj);
@@ -236,8 +322,16 @@ int main(int argc, char **argv) {
     long long since_improve = 0;
 
     for (long long mv = 0; mv < max_moves && bestE > 0; mv++) {
-        /* pick two random edges via random vertices+slots */
-        int a = rng_below(n), b = nbr[a][rng_below(3)];
+        /* pick two edges: 70% of the time the first edge is drawn from the
+         * bad-cycle edge list (focused move), else uniformly random */
+        int a, b;
+        if (n_cur_bad > 0 && rng_below(10) < 7) {
+            int k = rng_below(n_cur_bad);
+            a = cur_bad[k][0]; b = cur_bad[k][1];
+            if (!has_edge(a, b)) { a = rng_below(n); b = nbr[a][rng_below(3)]; }
+        } else {
+            a = rng_below(n); b = nbr[a][rng_below(3)];
+        }
         int c = rng_below(n), d = nbr[c][rng_below(3)];
         if (a == c || a == d || b == c || b == d) continue;
         int x, y, w, z;
@@ -257,6 +351,8 @@ int main(int argc, char **argv) {
         int accept = (E2 <= E) || (rng_unit() < exp(-(double)(E2 - E) / T));
         if (accept) {
             E = E2;
+            memcpy(cur_bad, scratch_bad, sizeof cur_bad);
+            n_cur_bad = n_scratch_bad;
             if (E < bestE) {
                 bestE = E;
                 memcpy(best_adj, adj, sizeof adj);
@@ -285,7 +381,7 @@ int main(int argc, char **argv) {
     memcpy(adj, best_adj, sizeof adj);
     rebuild_lists();
     long long finalE = energy();
-    printf("RESULT n=%d seed=%llu bestE=%lld C4=%lld C8=%lld C16=%lld\n",
+    printf("RESULT v2-focused n=%d seed=%llu bestE=%lld C4=%lld C8=%lld C16=%lld\n",
            n, (unsigned long long)seed, finalE, ccount[4], ccount[8],
            Lmax >= 16 ? ccount[16] : 0);
     if (finalE == 0) printf("HIT\n");
