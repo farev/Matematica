@@ -7,17 +7,21 @@ the computational frontier from scratch with validated tooling, extend it
 where 4 cores allow, and hunt the window where a minimal cubic
 counterexample must live.
 
-**Result.** CERTIFIED: no counterexample has ≤ 18 vertices — every
-connected C4-free graph with min degree ≥ 3 on n ≤ 18 vertices contains an
-8-cycle (36.5M graphs at n=17, ~7×10⁸ at n=18 scanned by geng + exact DFS
-checker; class and checker validated against OEIS A007112/A002851/A014372,
-networkx cross-check 71/71, split-consistency checks). Supersedes the
-reported Royle–Markström bound of 17. Also CERTIFIED: cubic {4,8}-free
-census re-derived through n = 24 (matches Markström 2004: none below 24,
-exactly 4 at 24); 24 named cubic graphs incl. Foster (girth 10) all
-conform. NUMERICAL: annealing hunts at n = 54..62 (energies to be recorded)
-— no {4,8,16}-free cubic graph found (or: hit found — see conjecture
-README).
+**Result.** CERTIFIED: no counterexample has ≤ 17 vertices — every
+connected C4-free graph with min degree ≥ 3 on n ≤ 17 vertices contains an
+8-cycle (34.8M graphs at n=17 scanned by geng + exact DFS checker; class
+and checker validated against OEIS A007112/A002851/A014372, networkx
+cross-check 71/71, split-consistency checks, and a positive-control
+{4,8}-free graph that the filter correctly retains). Supersedes the
+reported Royle–Markström bound ("at least 17", i.e. none ≤ 16); the n=18
+sweep to push it further is running at session-write time — this entry is
+updated when it lands. Also CERTIFIED: cubic {4,8}-free censuses:
+none with n ≤ 22; a {4,8}-free graph at n=24 recovered by annealing and
+triple-verified (networkx + SAT + relabelings: spectrum {16} only); full
+n=24 census sweep running. 24 named cubic graphs incl. Foster (girth 10)
+all conform. NUMERICAL: annealing hunts at n = 54..62: best energy so far
+E=6 at n=56 — a graph with no C4/C16 and only three 8-cycles (spectrum
+{8,32}).
 
 **What failed.** The original plan — hunt at n = 26..30 — was obsolete
 before it started: recon showed Markström's unpublished search already

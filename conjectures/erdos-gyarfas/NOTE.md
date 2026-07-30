@@ -50,28 +50,29 @@ Labels per repository convention: CERTIFIED = exact integer computation,
 reproducible, no floating point in the critical path; NUMERICAL = heuristic
 search evidence.
 
-### Theorem C1 (CERTIFIED). No counterexample has ≤ 18 vertices.
+### Theorem C1 (CERTIFIED). No counterexample has ≤ 17 vertices.
 
-Every connected graph with minimum degree ≥ 3 on n ≤ 18 vertices contains a
-cycle of length 4, 8, or 16. Consequently (components of a min-degree-3
-graph are min-degree-3 graphs) every graph with minimum degree ≥ 3 on at
-most 18 vertices contains a power-of-2 cycle.
+Every connected graph with minimum degree ≥ 3 on n ≤ 17 vertices contains a
+cycle of length 4 or 8. Consequently (components of a min-degree-3 graph
+are min-degree-3 graphs) every graph with minimum degree ≥ 3 on at most 17
+vertices contains a power-of-2 cycle. (An n = 18 sweep is running; on
+completion the bound improves to ≤ 18 and this section will be updated.)
 
 *Method.* A counterexample is C4-free by definition, so it suffices to scan
 C4-free connected graphs of minimum degree ≥ 3 (`geng -c -d3 -f`), testing
 each for 8- and 16-cycles by exact DFS (`cyclecheck`). Orders and counts of
 C4-free min-degree-3 connected graphs scanned:
 n=12: 57 · n=13: 503 · n=14: 6 059 · n=15: 91 433 · n=16: 1 655 659 ·
-n=17: 34 758 006 · n=18: (run in progress — this row updates when done).
+n=17: 34 758 006.
 None is {4,8}-free (so the 16-cycle test was never even needed).
 Machine: 4-core container, times in `data/counts_mindeg3_c4free.tsv`.
 
 *Relation to prior work.* The reported prior bound is "any counterexample
-has at least 17 vertices" (computer searches credited to G. Royle and
-K. Markström; known to us only through secondary sources — Wikipedia-level
-snippets; the primary computation appears unpublished). Theorem C1 is
-independent of that work and supersedes it: the bound becomes **≥ 19
-vertices**.
+has at least 17 vertices", i.e. none on ≤ 16 (computer searches credited to
+G. Royle and K. Markström; known to us only through secondary sources —
+Wikipedia-level snippets; the primary computation appears unpublished).
+Theorem C1 is independent of that work and supersedes it: the bound becomes
+**≥ 18 vertices** (and ≥ 19 once the n = 18 sweep lands).
 
 ### Proposition C2 (CERTIFIED). Cubic censuses re-derived, n ≤ 24.
 
