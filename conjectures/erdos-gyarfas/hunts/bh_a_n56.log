@@ -48,3 +48,5 @@
 [n=56 seed=9] move 12028 E=142 (C4=0 C8=0 C16=142) T=2.552
 [n=56 seed=9] move 13192 E=138 (C4=0 C8=0 C16=138) T=2.512
 [n=56 seed=7] warm start from hunts/bh_a_n56.g6
+[n=56 seed=7] warm start from hunts/.bh_a_56_a.g6
+[n=56 seed=7] warm start from hunts/bh_a_n56.g6
