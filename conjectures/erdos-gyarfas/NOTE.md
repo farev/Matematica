@@ -100,6 +100,24 @@ over connected cubic graphs (2-edge-swap moves, exact cycle counts as
 energy) at n = 54..62. Results in `hunts/` (this section updates as chains
 complete).
 
+### Discussion (heuristic, not a theorem): why triangles
+
+Every extremal graph in sight — Markström's four order-24 graphs, his
+order-26 census, and independently our annealing optima at n = 54–62 — has
+girth 3 and many triangles, even though nothing in the objective rewards
+triangles. A plausible mechanism: expanding a vertex into a triangle (Y→Δ)
+sends a cycle of length L through that vertex to length L+1 or L+2
+depending on how it enters and leaves the new triangle. Triangle-rich
+graphs therefore have "elastic" cycle lengths — the same global circuit
+can realize several nearby lengths, and local structure can be tuned to
+straddle the powers of 2 rather than land on them. High girth does the
+opposite: it rigidifies short cycle lengths (and the smallest girth-9
+cubic graphs already have 58 vertices, right in the critical window, with
+their cycle spectra out of our control). This is consistent with the
+replication repo's observation that "girth is a trap" and suggests the
+right search space really is girth-3 gadget structures, vindicating the
+annealer's own preference.
+
 ## 3. Methods and validation
 
 - `geng` (nauty 2.8.8, Debian) counts validated against OEIS: A002851
