@@ -1,0 +1,8 @@
+date	class	n	generated	checked	survivors48	time	cmd
+2026-07-30	cubic-c4free	14	36	36	0	0s	geng -c -d3 -D3 -f 14 21:21 [mod=1]
+2026-07-30	cubic-c4free	16	269	269	0	0s	geng -c -d3 -D3 -f 16 24:24 [mod=1]
+2026-07-30	cubic-c4free	18	2761	2761	0	4s	geng -c -d3 -D3 -f 18 27:27 [mod=1]
+2026-07-30	cubic-c4free	20	36101	36101	0	24s	geng -c -d3 -D3 -f 20 30:30 [mod=4]
+2026-07-30	cubic-c4free	20	36101	36101	0	68s	geng -c -d3 -D3 -f 20 30:30 [mod=1]
+2026-07-30	cubic-c4free	22	553227	553227	0	444s	geng -c -d3 -D3 -f 22 33:33 [mod=8]
+2026-07-31	cubic	24	9467449	9467449	4	11917s	geng -c -d3 -D3 -f 24 36:36 [mod=32]

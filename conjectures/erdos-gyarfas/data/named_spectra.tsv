@@ -1,0 +1,24 @@
+name	n	girth	pow2-present	verdict
+K4	4	3	4	has 4
+K3,3	6	4	4	has 4
+Petersen	10	5	8	has 8
+Heawood	14	6	8	has 8
+Moebius-Kantor	16	6	8,16	has 8,16
+Pappus	18	6	8,16	has 8,16
+Desargues	20	6	8,16	has 8,16
+Dodecahedron	20	5	8,16	has 8,16
+McGee[LCF 12,7,-7]^8	24	7	8,16	has 8,16
+Nauru[LCF 5,-9,7,-7,9,-5]^4	24	6	8,16	has 8,16
+TutteCoxeter[LCF -13,-9,7,-7,9,13]^5	30	8	8,16	has 8,16
+Dyck[LCF 5,-5,13,-13]^8	32	6	8,16,32	has 8,16,32
+Foster[LCF 17,-9,37,-37,9,-17]^15	90	10	16,32,64	has 16,32,64
+Harries[LCF -29,-19,-13,13,21,-27,27,33,-13,13,19,-21,-33,29]^5	70	10	16,32,64	has 16,32,64
+GP(7,2)	14	5	8	has 8
+GP(9,2)	18	5	8,16	has 8,16
+GP(11,2)	22	5	8,16	has 8,16
+GP(13,4)	26	6	8,16	has 8,16
+GP(12,5)	24	6	8,16	has 8,16
+GP(24,5)	48	8	8,16,32	has 8,16,32
+GP(26,5)	52	8	8,16,32	has 8,16,32
+GP(30,7)	60	8	8,16,32	has 8,16,32
+GP(48,7)	96	8	8,16,32,64	has 8,16,32,64
