@@ -5,13 +5,16 @@ length is a power of 2 (i.e. 2^k, k ≥ 2)? Erdős and Gyárfás themselves
 believed the answer is **no** — one explicit graph would settle it. This
 session hunts that graph: exhaustive sweeps at small orders (which produced a
 new lower bound on any counterexample), plus simulated-annealing hunts in the
-window 54 ≤ n ≤ 62 where a minimal cubic counterexample must live.
+window 54 ≤ n ≤ 62, the first possible orders for a minimal cubic
+counterexample (none through 52 by Markström's unpublished search, cubic
+order is even, and the obstruction set there is still exactly {4,8,16,32};
+nothing proves the minimum lies below 62).
 erdosproblems.com problem #64, status "falsifiable"; prize listed there as
 $1000 (other sources: $100/$50 — unresolved).
 
 **Status:** active
 **Sessions:** 2026-07-30
-**Write-up page:** [fabianarevalo.com/erdos-gyarfas](https://fabianarevalo.com/erdos-gyarfas) (source: `note_artifact.html`)
+**Write-up page:** [fabianarevalo.com/erdos-gyarfas](https://fabianarevalo.com/erdos-gyarfas) (live since 2026-07-31; source in the site repo. `note_artifact.html` here is the session's draft, superseded)
 
 ## Results
 
@@ -22,7 +25,7 @@ $1000 (other sources: $100/$50 — unresolved).
 | No bipartite cubic {4,8}-free graph has n ≤ 26 (girth ≥ 6 class, 1 201 graphs at n = 26) | CERTIFIED | `data/counts_bipcubic_c4free.tsv` |
 | A {4,8}-free cubic graph on 24 vertices (necessarily one of Markström's four), spectrum {16} with 228 sixteen-cycles, triple-verified | CERTIFIED | `data/markstrom_candidate_n24.g6`, `verify_hit.py` |
 | {4,8}-free cubic graphs on **56 vertices with 56 sixteen-cycles** and on **58 vertices with 37 sixteen-cycles** (spectra {16,32}), depth-1 local minima; manifold-minimum curve 207 (n=24, exact) → ≤56 → ≤37 | CERTIFIED (the graphs) / NUMERICAL (minimality) | `data/record_c48free_n5*.g6`, `hunts/basinhop.tsv` |
-| 24 named cubic graphs (≤ 96 vertices, girth up to 10) all contain power-of-2 cycles | CERTIFIED | `data/named_spectra.tsv` |
+| 23 named cubic graphs (≤ 96 vertices, girth up to 10) all contain power-of-2 cycles | CERTIFIED | `data/named_spectra.tsv` |
 | Annealing chains at n = 54..60 all reach C4 = C16 = 0 with only 3–4 disjoint 8-cycles | NUMERICAL | `hunts/results_n*.tsv` |
 
 ## Scripts
@@ -35,6 +38,8 @@ $1000 (other sources: $100/$50 — unresolved).
 | `hunt.c` | simulated annealing over connected cubic graphs; energy = weighted exact counts of C4/C8/C16 (or girth mode) | ~1–2k moves/s at n≈54 | `RESULT`/`HIT` lines + best graph |
 | `run_hunt.sh <n> <chains> <moves> <jobs> [seed0]` | hunt batch; post-screens best graphs incl. C32 | ~30 min per 2.5M-move chain | `hunts/results_n<n>.tsv` |
 | `named_spectra.py` | builds named cubic graphs (self-certified girth), runs cyclecheck | ~1 min | `data/named_spectra.tsv` |
+| `bottom_orders.py` | closes the bottom orders with an independent toolchain (Homebrew geng 2.9, own DFS): mindeg3 n = 4..15, cubic n = 4..20, reproducing session counts at the overlap | ~10 min | n ≤ 11 / n ≤ 12 rows of `data/counts_*.tsv`; `logs/bottom_orders_2026-07-31.log` |
+| `verify_page_data.py` | independent networkx re-verification of every committed g6 file (census invariants, records, the write-up page's drawn-graph arrays) | ~2 min | `logs/verify_page_data_2026-07-31.log` ("ALL CHECKS PASSED") |
 
 Run from inside this directory, e.g.:
 
@@ -46,15 +51,15 @@ gcc -O3 -march=native -o hunt hunt.c -lm
 ./run_hunt.sh 54 8 2500000 4            # hunt chains at n=54
 ```
 
-Requires `nauty` (Debian package; provides `nauty-geng`) and networkx for the
-validation scripts.
+Requires `nauty` (Debian package provides `nauty-geng`; Homebrew provides
+`geng`, used by `bottom_orders.py`) and networkx for the validation scripts.
 
 ## Data and certificates
 
 | file | produced by | what it is |
 |---|---|---|
-| `data/counts_mindeg3_c4free.tsv` | run_exhaustive.sh | per-order counts: C4-free min-deg-3 graphs scanned, {4,8}-free survivors (all zero) — the Thm C1 certificate rows |
-| `data/counts_cubic_c4free.tsv` | run_exhaustive.sh | same for connected cubic |
+| `data/counts_mindeg3_c4free.tsv` | run_exhaustive.sh + bottom_orders.py | per-order counts, complete for n = 4..18: C4-free min-deg-3 graphs scanned, {4,8}-free survivors (all zero) — the Thm C1 certificate rows |
+| `data/counts_cubic_c4free.tsv` | run_exhaustive.sh + bottom_orders.py | same for connected cubic, complete for n = 4..24 |
 | `data/c48free_cubic_n24.g6` | run_exhaustive.sh | the {4,8}-free cubic graphs at n=24 (graph6) |
 | `data/named_spectra.tsv` | named_spectra.py | name, order, girth, power-of-2 cycle spectrum |
 | `hunts/results_n*.tsv` | run_hunt.sh | per-chain best energy + exact spectrum of best graph |
@@ -67,8 +72,9 @@ graph" beyond rerunning.
 
 ## Known defects and open threads
 
-- n=19 (min-degree-3) needs ~5×10⁸ C4-free graphs — feasible with patience;
-  n=20 wants generation-time C8 pruning (Markström-style modified minibaum).
+- n=19 (min-degree-3) needs ~2×10¹⁰ C4-free graphs, a multi-day run;
+  n=20 (~5×10¹¹) wants generation-time C8 pruning (Markström-style modified
+  minibaum).
 - The {4,8,16}-free window 54–62 is only touched heuristically here; nobody
   (including us) has exhausted it.
 - The 18 (3,9)-cages at n=58 remain unscreened for C16/C32 (data

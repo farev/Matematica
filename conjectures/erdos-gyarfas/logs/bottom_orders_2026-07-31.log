@@ -1,0 +1,28 @@
+# bottom_orders.py run 2026-07-31 12:31 PDT
+# host: Darwin 25.3.0, 12 cores, 36 GB RAM
+# nauty: nauty 2.9.3, /usr/local/bin/geng
+# Python 3.12.6
+class mindeg3 (geng -c -d3 -f): the bottom orders + overlap check
+  n= 4  C4free-mindeg3 =        0   {4,8}-free = 0   [0.0s]
+  n= 5  C4free-mindeg3 =        0   {4,8}-free = 0   [0.0s]
+  n= 6  C4free-mindeg3 =        0   {4,8}-free = 0   [0.0s]
+  n= 7  C4free-mindeg3 =        0   {4,8}-free = 0   [0.0s]
+  n= 8  C4free-mindeg3 =        0   {4,8}-free = 0   [0.0s]
+  n= 9  C4free-mindeg3 =        0   {4,8}-free = 0   [0.0s]
+  n=10  C4free-mindeg3 =        5   {4,8}-free = 0   [0.0s]
+  n=11  C4free-mindeg3 =        9   {4,8}-free = 0   [0.0s]
+  n=12  C4free-mindeg3 =       57   {4,8}-free = 0   [0.0s]
+  n=13  C4free-mindeg3 =      503   {4,8}-free = 0   [0.2s]
+  n=14  C4free-mindeg3 =     6059   {4,8}-free = 0   [1.0s]
+  n=15  C4free-mindeg3 =    91433   {4,8}-free = 0   [9.0s]
+class cubic (geng -c -d3 -D3 -f): bottom orders + overlap check
+  n= 4  C4free-cubic   =        0   {4,8}-free = 0   [0.0s]
+  n= 6  C4free-cubic   =        0   {4,8}-free = 0   [0.0s]
+  n= 8  C4free-cubic   =        0   {4,8}-free = 0   [0.0s]
+  n=10  C4free-cubic   =        3   {4,8}-free = 0   [0.0s]
+  n=12  C4free-cubic   =        8   {4,8}-free = 0   [0.0s]
+  n=14  C4free-cubic   =       36   {4,8}-free = 0   [0.0s]
+  n=16  C4free-cubic   =      269   {4,8}-free = 0   [0.2s]
+  n=18  C4free-cubic   =     2761   {4,8}-free = 0   [2.6s]
+  n=20  C4free-cubic   =    36101   {4,8}-free = 0   [47.9s]
+# exit: 0
