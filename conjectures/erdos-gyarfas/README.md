@@ -11,6 +11,7 @@ $1000 (other sources: $100/$50 — unresolved).
 
 **Status:** active
 **Sessions:** 2026-07-30
+**Write-up page:** [fabianarevalo.com/erdos-gyarfas](https://fabianarevalo.com/erdos-gyarfas) (source: `note_artifact.html`)
 
 ## Results
 

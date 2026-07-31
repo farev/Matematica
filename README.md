@@ -37,7 +37,7 @@ statement, labelled results, scripts and reproduction commands.
 
 | Conjecture | Status | Sessions | Strongest result so far |
 |---|---|---|---|
-| [**Erdős–Gyárfás conjecture**](conjectures/erdos-gyarfas/) | active | 1 | **CERTIFIED** — no counterexample has ≤ 18 vertices (prior reported bound: 17; 8.3×10⁸ graphs scanned at n = 18), plus a {4,8}-free cubic graph on 56 vertices with only 56 sixteen-cycles from annealing in the minimal cubic window [54, 62] |
+| [**Erdős–Gyárfás conjecture**](conjectures/erdos-gyarfas/) · [page ↗](https://fabianarevalo.com/erdos-gyarfas) | active | 1 | **CERTIFIED** — no counterexample has ≤ 18 vertices (prior reported bound: 17; 8.3×10⁸ graphs scanned at n = 18), plus a {4,8}-free cubic graph on 56 vertices with only 56 sixteen-cycles from annealing in the minimal cubic window [54, 62] |
 | [**Gilbreath's conjecture**](conjectures/gilbreath/) · [page ↗](https://fabianarevalo.com/gilbreath) | active | 2 | **PROVED** — no fixed-order statistical axiom system can imply eventual Gilbreath (insufficiency theorem R2), plus thirteen unconditional covering lenses discharging parts of the Chase–Hunter–Tao criterion, a factor-2 sharpening of their lower bound, and **CERTIFIED** exact c₄–c₆ |
 
 Daily entries, including the sessions that produced nothing, are in

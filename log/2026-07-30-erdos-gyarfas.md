@@ -50,4 +50,5 @@ generation-time C8 pruning for n ≥ 20. (3) Longer/hotter annealing in the
 54–62 window; the chains get within a handful of 8-cycles of zero energy.
 (4) Fetch primary sources (Markström 2004, Exoo 2014, Erdős's problem
 papers) from an unblocked network and upgrade the secondary-sourced
-citations. (5) Research page for fabianarevalo.com/erdos-gyarfas.
+citations. (5) ~~Research page for fabianarevalo.com/erdos-gyarfas~~ —
+done next morning: `note_artifact.html` published; domain route pending.
