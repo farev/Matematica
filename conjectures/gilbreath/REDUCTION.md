@@ -117,5 +117,5 @@ well-posed question this program has produced.
 | depth-1 zero-blocks, odd-part-d depth-0 blocks | **PROVED** unconditionally (this program) |
 | P3 ⇐ twin-clustering bound | **PROVED** reduction (M8/M9) |
 | fixed-order statistics ⇒ eventual Gilbreath | **FALSE** (R2) |
-| fixed-order + o(n) entries ⇒ eventual Gilbreath | OPEN (R3) — the sharp question |
+| fixed-order + o(n) entries ⇒ eventual Gilbreath | OPEN (R3) — attacked 2026-07-29, see [R3.md](R3.md): every finite order fails even with bounded entries (Thm R3.5); the all-orders question reframed with an affirmative proof skeleton |
 | P from any standard conjecture | OPEN; R2 shows it needs unbounded-length input |

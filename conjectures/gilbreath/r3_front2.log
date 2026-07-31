@@ -1,0 +1,227 @@
+r3_front2.py — front pinning at large entry scale mu
+numpy 2.3.5; ocean parity period 32; erosion run length 17
+
+== mu = 64  (theta = 0.984615)  W = 256  N = 4096  seeds = [500, 501, 502, 503, 504, 505] ==
+  control (iid everywhere) last bad-lead depth per seed: [304, 53, 57, 103, 120, 203]  ->  T0 = 304 (median 111)
+  FRONT (ell = leftmost column with value >= 2):
+    last depth with ell < W-8  (range [1, 3840)): [113, 317, 513, 159, 345, 211]
+    last depth with ell < W/2  (range [1, 3840)): [113, 317, 456, 157, 345, 211]
+    range [3*T0, N-W) = [912, 3840):
+      (a) min ell-W per seed: [0, -1, -5, 0, -1, 0]   (overall -5);  median ell-W per seed: [1, -1, -5, 1, -1, 0]
+      (b) # depths ell < W-8: [0, 0, 0, 0, 0, 0] (total 0);  # depths ell < W/2: [0, 0, 0, 0, 0, 0] (total 0)
+    range [N/2,  N-W) = [2048, 3840):
+      (a) min ell-W per seed: [0, -1, -5, 0, -1, 0]   (overall -5);  median ell-W per seed: [1, -1, -5, 0, -1, 0]
+      (b) # depths ell < W-8: [0, 0, 0, 0, 0, 0] (total 0);  # depths ell < W/2: [0, 0, 0, 0, 0, 0] (total 0)
+  LEADS:
+    (c) first bad lead at depth >= 3*T0 = 912 per seed (-1 = none): [-1, -1, -1, -1, -1, -1]
+        first bad lead at depth >= N/2 = 2048 per seed (-1 = none): [-1, -1, -1, -1, -1, -1]
+        last bad lead overall per seed: [70, 79, 354, 124, 29, 36]
+    (d) bad-lead density on [2048, 3840): 0.00000 +- 0.00000  (counts per seed [0, 0, 0, 0, 0, 0])
+  INTERFACE / OCEAN SIDE:
+    depth 1024: interface max value in cols [224, 288]: median 2, max 2;  r(s)-W: [-, -, -, 715, -, -]
+    depth 2048: interface max value in cols [224, 288]: median 2, max 2;  r(s)-W: none
+    depth 3072: interface max value in cols [224, 288]: median 2, max 2;  r(s)-W: none
+    ocean-side front h-W on [2048, 3840): median per seed [1, -1, -1, 0, -1, 0], max per seed [10, 11, 8, 9, 8, 22]
+    cool 17-runs ('lakes') beyond W-2 on [2048, 3840): # depths per seed [68, 24, 24, 26, 39, 38]; nearest lake min r-W per seed: [26, 27, 336, 1, 70, -2]
+  [elapsed 1.2 s]
+
+== mu = 512  (theta = 0.998051)  W = 256  N = 4096  seeds = [500, 501, 502, 503, 504, 505] ==
+  control (iid everywhere) last bad-lead depth per seed: [479, 269, 360, 689, 217, 223]  ->  T0 = 689 (median 314)
+  WARNING: 6*T0 = 4134 exceeds N = 4096: the prescribed steady range is not comfortably inside the array.
+  FRONT (ell = leftmost column with value >= 2):
+    last depth with ell < W-8  (range [1, 3840)): [429, 330, 964, 563, 1606, 421]
+    last depth with ell < W/2  (range [1, 3840)): [429, 330, 869, 512, 1606, 421]
+    range [3*T0, N-W) = [2067, 3840):
+      (a) min ell-W per seed: [0, -1, -5, 0, -1, 0]   (overall -5);  median ell-W per seed: [0, 0, -4, 1, 0, 0]
+      (b) # depths ell < W-8: [0, 0, 0, 0, 0, 0] (total 0);  # depths ell < W/2: [0, 0, 0, 0, 0, 0] (total 0)
+    range [N/2,  N-W) = [2048, 3840):
+      (a) min ell-W per seed: [0, -1, -5, 0, -1, 0]   (overall -5);  median ell-W per seed: [0, 0, -4, 1, 0, 0]
+      (b) # depths ell < W-8: [0, 0, 0, 0, 0, 0] (total 0);  # depths ell < W/2: [0, 0, 0, 0, 0, 0] (total 0)
+  LEADS:
+    (c) first bad lead at depth >= 3*T0 = 2067 per seed (-1 = none): [-1, -1, -1, -1, -1, -1]
+        first bad lead at depth >= N/2 = 2048 per seed (-1 = none): [-1, -1, -1, -1, -1, -1]
+        last bad lead overall per seed: [199, 329, 699, 337, 735, 419]
+    (d) bad-lead density on [2048, 3840): 0.00000 +- 0.00000  (counts per seed [0, 0, 0, 0, 0, 0])
+  INTERFACE / OCEAN SIDE:
+    depth 1024: interface max value in cols [224, 288]: median 2, max 2;  r(s)-W: none
+    depth 2048: interface max value in cols [224, 288]: median 2, max 2;  r(s)-W: none
+    depth 3072: interface max value in cols [224, 288]: median 2, max 2;  r(s)-W: none
+    ocean-side front h-W on [2048, 3840): median per seed [0, 0, -2, 1, 0, 0], max per seed [10, 9, 8, 10, 10, 10]
+    cool 17-runs ('lakes') beyond W-2 on [2048, 3840): # depths per seed [16, 13, 6, 3, 3, 10]; nearest lake min r-W per seed: [156, 202, 194, 555, 673, 522]
+  [elapsed 0.9 s]
+
+== mu = 4096  (theta = 0.999756)  W = 256  N = 4096  seeds = [500, 501, 502, 503, 504, 505] ==
+  control (iid everywhere) last bad-lead depth per seed: [4083, 1638, 1698, 4071, 635, 628]  ->  T0 = 4083 (median 1668)
+  WARNING: 6*T0 = 24498 exceeds N = 4096: the prescribed steady range is not comfortably inside the array.
+  NOTE: prescribed range [3*T0, N-W) = [12249, 3840) is EMPTY (control T0 is dominated by deep iid plants at columns > W that are ocean in the main run); falling back to the deep-half range [2048, 3840).
+  FRONT (ell = leftmost column with value >= 2):
+    last depth with ell < W-8  (range [1, 3840)): [2352, 1409, 1834, 3685, 3839, 3839]
+    last depth with ell < W/2  (range [1, 3840)): [2352, 1409, 1826, 2392, 3839, 3839]
+    range [N/2,  N-W) = [2048, 3840):
+      (a) min ell-W per seed: [-256, -1, -5, -256, -219, -256]   (overall -256);  median ell-W per seed: [0, -1, -4, 0, -1, -250]
+      (b) # depths ell < W-8: [305, 0, 0, 447, 211, 1792] (total 2755);  # depths ell < W/2: [305, 0, 0, 345, 91, 1789] (total 2530)
+  LEADS:
+        first bad lead at depth >= N/2 = 2048 per seed (-1 = none): [2052, -1, -1, 2072, 3876, 2114]
+        last bad lead overall per seed: [2335, 1287, 1690, 2363, 4095, 3939]
+    (d) bad-lead density on [2048, 3840): 0.04260 +- 0.05749  (counts per seed [163, 0, 0, 28, 0, 267])
+    seed 500: first bad lead beyond N/2 at s = 2052 (lead 201); ell-W before it: s-512: -256, s-256: -256, s-128: -256, s-64: -256, s-32: -256, s-8: -256, s-1: -255
+    seed 503: first bad lead beyond N/2 at s = 2072 (lead 160); ell-W before it: s-512: -253, s-256: -256, s-128: -256, s-64: -192, s-32: -224, s-8: -248, s-1: -255
+    seed 504: first bad lead beyond N/2 at s = 3876 (lead 6400); ell-W before it: s-512: -1, s-256: +0, s-128: -128, s-64: -192, s-32: -224, s-8: -248, s-1: -255
+    seed 505: first bad lead beyond N/2 at s = 2114 (lead 317); ell-W before it: s-512: -252, s-256: -254, s-128: -256, s-64: -192, s-32: -224, s-8: -248, s-1: -255
+  INTERFACE / OCEAN SIDE:
+    depth 1024: interface max value in cols [224, 288]: median 299, max 824;  r(s)-W: none
+    depth 2048: interface max value in cols [224, 288]: median 2, max 594;  r(s)-W: none
+    depth 3072: interface max value in cols [224, 288]: median 2, max 606;  r(s)-W: none
+    ocean-side front h-W on [2048, 3840): median per seed [1, -1, -1, 0, -1, -2], max per seed [10, 8, 6, 7, 11, 5]
+    cool 17-runs ('lakes') beyond W-2 on [2048, 3840): # depths per seed [7, 4, 4, 1, 0, 11]; nearest lake min r-W per seed: [38, 35, 133, 167, None, 337]
+  [elapsed 0.8 s]
+
+== mu = 64  (theta = 0.984615)  W = 1024  N = 16384  seeds = [500, 501, 502, 503] ==
+  control (iid everywhere) last bad-lead depth per seed: [367, 182, 331, 240]  ->  T0 = 367 (median 285)
+  FRONT (ell = leftmost column with value >= 2):
+    last depth with ell < W-8  (range [1, 15360)): [243, 687, 285, 279]
+    last depth with ell < W/2  (range [1, 15360)): [243, 209, 199, 222]
+    range [3*T0, N-W) = [1101, 15360):
+      (a) min ell-W per seed: [0, -1, 0, 0]   (overall -1);  median ell-W per seed: [1, 0, 1, 1]
+      (b) # depths ell < W-8: [0, 0, 0, 0] (total 0);  # depths ell < W/2: [0, 0, 0, 0] (total 0)
+    range [N/2,  N-W) = [8192, 15360):
+      (a) min ell-W per seed: [0, -1, 0, 0]   (overall -1);  median ell-W per seed: [0, -1, 1, 1]
+      (b) # depths ell < W-8: [0, 0, 0, 0] (total 0);  # depths ell < W/2: [0, 0, 0, 0] (total 0)
+  LEADS:
+    (c) first bad lead at depth >= 3*T0 = 1101 per seed (-1 = none): [-1, -1, -1, -1]
+        first bad lead at depth >= N/2 = 8192 per seed (-1 = none): [-1, -1, -1, -1]
+        last bad lead overall per seed: [87, 205, 138, 51]
+    (d) bad-lead density on [8192, 15360): 0.00000 +- 0.00000  (counts per seed [0, 0, 0, 0])
+  INTERFACE / OCEAN SIDE:
+    depth 4096: interface max value in cols [992, 1056]: median 2, max 2;  r(s)-W: none
+    depth 8192: interface max value in cols [992, 1056]: median 2, max 2;  r(s)-W: [-, -, -, 2597]
+    depth 12288: interface max value in cols [992, 1056]: median 2, max 2;  r(s)-W: none
+    ocean-side front h-W on [8192, 15360): median per seed [0, -1, 1, 1], max per seed [26, 12, 10, 11]
+    cool 17-runs ('lakes') beyond W-2 on [8192, 15360): # depths per seed [196, 172, 180, 222]; nearest lake min r-W per seed: [-2, 10, 22, 19]
+  [elapsed 7.3 s]
+
+== mu = 512  (theta = 0.998051)  W = 1024  N = 16384  seeds = [500, 501, 502, 503] ==
+  control (iid everywhere) last bad-lead depth per seed: [98, 487, 610, 1030]  ->  T0 = 1030 (median 548)
+  FRONT (ell = leftmost column with value >= 2):
+    last depth with ell < W-8  (range [1, 15360)): [1276, 514, 452, 1278]
+    last depth with ell < W/2  (range [1, 15360)): [529, 420, 452, 1278]
+    range [3*T0, N-W) = [3090, 15360):
+      (a) min ell-W per seed: [0, -1, 0, 0]   (overall -1);  median ell-W per seed: [0, 0, 1, 0]
+      (b) # depths ell < W-8: [0, 0, 0, 0] (total 0);  # depths ell < W/2: [0, 0, 0, 0] (total 0)
+    range [N/2,  N-W) = [8192, 15360):
+      (a) min ell-W per seed: [0, -1, 0, 0]   (overall -1);  median ell-W per seed: [0, 0, 1, 0]
+      (b) # depths ell < W-8: [0, 0, 0, 0] (total 0);  # depths ell < W/2: [0, 0, 0, 0] (total 0)
+  LEADS:
+    (c) first bad lead at depth >= 3*T0 = 3090 per seed (-1 = none): [-1, -1, -1, -1]
+        first bad lead at depth >= N/2 = 8192 per seed (-1 = none): [-1, -1, -1, -1]
+        last bad lead overall per seed: [255, 333, 241, 1243]
+    (d) bad-lead density on [8192, 15360): 0.00000 +- 0.00000  (counts per seed [0, 0, 0, 0])
+  INTERFACE / OCEAN SIDE:
+    depth 4096: interface max value in cols [992, 1056]: median 2, max 2;  r(s)-W: none
+    depth 8192: interface max value in cols [992, 1056]: median 2, max 2;  r(s)-W: none
+    depth 12288: interface max value in cols [992, 1056]: median 2, max 2;  r(s)-W: none
+    ocean-side front h-W on [8192, 15360): median per seed [0, 0, 1, 0], max per seed [10, 13, 12, 11]
+    cool 17-runs ('lakes') beyond W-2 on [8192, 15360): # depths per seed [108, 98, 77, 88]; nearest lake min r-W per seed: [142, 21, 81, 245]
+  [elapsed 6.8 s]
+
+== mu = 4096  (theta = 0.999756)  W = 1024  N = 16384  seeds = [500, 501, 502, 503] ==
+  control (iid everywhere) last bad-lead depth per seed: [14071, 4895, 6743, 5934]  ->  T0 = 14071 (median 6338)
+  WARNING: 6*T0 = 84426 exceeds N = 16384: the prescribed steady range is not comfortably inside the array.
+  NOTE: prescribed range [3*T0, N-W) = [42213, 15360) is EMPTY (control T0 is dominated by deep iid plants at columns > W that are ocean in the main run); falling back to the deep-half range [8192, 15360).
+  FRONT (ell = leftmost column with value >= 2):
+    last depth with ell < W-8  (range [1, 15360)): [7896, 11831, 1938, 2115]
+    last depth with ell < W/2  (range [1, 15360)): [7896, 10926, 1938, 1329]
+    range [N/2,  N-W) = [8192, 15360):
+      (a) min ell-W per seed: [0, -1024, 0, 0]   (overall -1024);  median ell-W per seed: [0, -122, 0, 1]
+      (b) # depths ell < W-8: [0, 3640, 0, 0] (total 3640);  # depths ell < W/2: [0, 2495, 0, 0] (total 2495)
+  LEADS:
+        first bad lead at depth >= N/2 = 8192 per seed (-1 = none): [-1, 8232, -1, -1]
+        last bad lead overall per seed: [7743, 9611, 1910, 542]
+    (d) bad-lead density on [8192, 15360): 0.00841 +- 0.01456  (counts per seed [0, 241, 0, 0])
+    seed 501: first bad lead beyond N/2 at s = 8232 (lead 10); ell-W before it: s-2048: -1024, s-1024: -1024, s-512: -1024, s-256: -1024, s-32: -992, s-8: -1016, s-1: -1023
+  INTERFACE / OCEAN SIDE:
+    depth 4096: interface max value in cols [992, 1056]: median 2, max 3029;  r(s)-W: none
+    depth 8192: interface max value in cols [992, 1056]: median 2, max 2;  r(s)-W: none
+    depth 12288: interface max value in cols [992, 1056]: median 2, max 2;  r(s)-W: none
+    ocean-side front h-W on [8192, 15360): median per seed [0, -1, 0, 1], max per seed [10, 10, 16, 14]
+    cool 17-runs ('lakes') beyond W-2 on [8192, 15360): # depths per seed [78, 87, 103, 108]; nearest lake min r-W per seed: [104, 50, -2, 33]
+  [elapsed 5.6 s]
+
+APPENDIX: anatomy of the deep hot episodes at mu = 4096
+  (are they {0,2}-front invasion or ballistic plant transit?)
+  -- transit trace: mu = 4096, W = 256, seed = 504, depths [3560, 3880] step 16 --
+     depth   ell-W   value@ell   lead
+      3560      -1           2      1
+      3576       2           2      0
+      3592      -1           2      0
+      3608      -1           2      1
+      3624      -4        6530      0
+      3640     -20        6524      1
+      3656     -36        6516      0
+      3672     -52        6508      1
+      3688     -68        6502      0
+      3704     -84        6492      0
+      3720    -100        6485      1
+      3736    -116        6475      0
+      3752    -132        6463      1
+      3768    -148        6454      1
+      3784    -164        6445      0
+      3800    -180        6438      0
+      3816    -196        6432      1
+      3832    -212        6421      0
+      3848    -228        6415      0
+      3864    -244        6404      1
+      3880    -252        6397      0
+
+  -- transit trace: mu = 4096, W = 256, seed = 505, depths [1600, 2160] step 32 --
+     depth   ell-W   value@ell   lead
+      1600    -250          10      1
+      1632    -238         141      1
+      1664    -254          11      1
+      1696    -256           2      2
+      1728    -238          15      1
+      1760    -246           2      1
+      1792    -254          14      1
+      1824    -246          36      0
+      1856    -254           2      1
+      1888    -254         270      1
+      1920    -254          39      1
+      1952    -254          57      0
+      1984    -254          28      1
+      2016    -254          13      1
+      2048    -226           2      1
+      2080    -222         336      0
+      2112    -254         318      1
+      2144    -254         128      1
+
+  -- transit trace: mu = 4096, W = 1024, seed = 501, depths [8000, 9664] step 64 --
+     depth   ell-W   value@ell   lead
+      8000   -1016         124      1
+      8064   -1016          35      1
+      8128   -1016           5      1
+      8192    -984          30      1
+      8256    -920           3      1
+      8320    -856         353      0
+      8384    -920         327      0
+      8448    -984         300      1
+      8512   -1016         131      1
+      8576   -1016          91      0
+      8640   -1020           3      1
+      8704   -1016          20      0
+      8768   -1016          79      0
+      8832   -1016          40      1
+      8896   -1000           2      1
+      8960    -984         204      1
+      9024   -1020           2      1
+      9088   -1016          45      1
+      9152   -1024           3      3
+      9216    -856         271      1
+      9280    -920         231      1
+      9344    -984         197      0
+      9408   -1016         125      0
+      9472   -1016          68      1
+      9536   -1016          39      1
+      9600   -1016          11      0
+      9664    -792          57      1
+
+total elapsed: 22.8 s
