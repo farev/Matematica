@@ -3,6 +3,7 @@
 # on the {4,8}-free manifold, tracking the minimum C16 count reached.
 #
 # Usage: ./basin_hop.sh <n> <rounds> <moves-per-anneal> <tag>
+#   tag must be NUMERIC (it is folded into the RNG seed).
 #
 # Round r: anneal (weights 100/50/1, warm-started from the current best) with
 # seed derived from tag+round, then polish to a depth-1 local minimum; keep
@@ -21,12 +22,12 @@ log="hunts/bh_${tag}_n${n}.log"
 bestE=999999999
 if [ ! -f "$state" ]; then
     # cold start: one anneal from random produces the initial state
-    ./hunt "$n" "9$tag" "$moves" 16 100 50 1 > "hunts/bh_${tag}_n${n}.init" 2>> "$log"
+    ./hunt "$n" "$((900000 + tag))" "$moves" 16 100 50 1 > "hunts/bh_${tag}_n${n}.init" 2>> "$log"
     tail -1 "hunts/bh_${tag}_n${n}.init" > "$state"
 fi
 
 for r in $(seq 1 "$rounds"); do
-    seed="7${tag}${r}"
+    seed=$((700000 + 1000 * tag + r))
     ./hunt "$n" "$seed" "$moves" 16 100 50 1 0 "$state" > "hunts/.bh_${tag}_${n}_a.out" 2>> "$log"
     tail -1 "hunts/.bh_${tag}_${n}_a.out" > "hunts/.bh_${tag}_${n}_a.g6"
     ./hunt "$n" "$seed" 0 16 100 50 1 0 "hunts/.bh_${tag}_${n}_a.g6" > "hunts/.bh_${tag}_${n}_p.out" 2>> "$log"

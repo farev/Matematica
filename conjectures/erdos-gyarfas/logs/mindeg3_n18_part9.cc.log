@@ -36,6 +36,4 @@
 [progress] 37748736 graphs
 [progress] 38797312 graphs
 [progress] 39845888 graphs
-[progress] 40894464 graphs
-[progress] 41943040 graphs
-read 41974353 printed 0 lackC4 41974353 lackC8 0 lackC16 0 lackC32 0 lackC64 0 lackC128 0
+read 40651426 printed 0 lackC4 40651426 lackC8 0 lackC16 4 lackC32 0 lackC64 0 lackC128 0
