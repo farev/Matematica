@@ -15,9 +15,12 @@ networkx cross-check 71/71, split-consistency checks, and a
 positive-control {4,8}-free graph that the filter correctly retains).
 Supersedes the reported Royle–Markström bound ("at least 17", i.e. none
 ≤ 16) by two. Also CERTIFIED: cubic {4,8}-free censuses: none with n ≤ 22;
-a {4,8}-free graph at n=24 recovered by annealing and triple-verified
-(networkx + SAT + relabelings: spectrum {16}, 228 sixteen-cycles); full
-n=24 census sweep running at entry-write time. Bipartite cubic girth ≥ 6:
+at n=24 exactly FOUR {4,8}-free cubic graphs (9.47M C4-free scanned) —
+clean-room reproduction of Markström 2004; all girth 3, C16 counts
+330/315/207/228 (exact manifold minimum at 24: 207), exactly one planar,
+and that planar one is isomorphic to the graph the annealer had already
+found independently — the Markström graph itself, triple-verified
+(networkx + SAT + relabelings). Bipartite cubic girth ≥ 6:
 none {4,8}-free at n ≤ 26. 24 named cubic graphs incl. Foster (girth 10)
 all conform. NUMERICAL: hunts in the minimal cubic window n ∈ [54,62]
 (focused-move annealing + steepest-descent polish + basin hopping): chains

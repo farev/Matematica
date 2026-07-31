@@ -82,9 +82,16 @@ Theorem C1 is independent of that work and supersedes it by two orders.
 
 Among connected cubic graphs: no {4,8}-free graph exists with n ≤ 22
 (C4-free counts scanned: 36 / 269 / 2 761 / 36 101 / 553 227 at
-n = 14/16/18/20/22); at n = 24 the {4,8}-free graphs are exactly (run in
-progress — expected count 4, per Markström 2004, whose census we reproduce
-independently).
+n = 14/16/18/20/22), and at n = 24 there are **exactly four** (9 467 449
+C4-free cubic graphs scanned) — an independent, clean-room reproduction of
+Markström (2004). Their invariants, all computed here: every one has girth
+3 and 16-cycles; C16 counts 330, 315, 207, 228; exactly one is planar (the
+graph known as the Markström graph — which our annealer had independently
+recovered as its n = 24 optimum before the census completed; the census
+graph and the annealing graph are isomorphic). Graphs committed in
+`data/c48free_cubic_n24.g6`. In particular the minimum number of
+16-cycles over all {4,8}-free cubic graphs on 24 vertices is exactly
+**207**.
 
 ### Data D3 (CERTIFIED per graph). Named cubic graphs all conform.
 
@@ -119,12 +126,11 @@ State of the hunt after this session:
   Markström's order-24 extremal graphs.
 
 No {4,8,16}-free cubic graph was found (consistent with their known
-scarcity: none exist below 54). The minimum-found C16 count on the
-manifold decreases with order — 228 for the one order-24 census graph we
-recovered (exact minimum over all four follows from the n = 24 census)
-versus 56 at n = 56 (still falling when compute is added) — but a heuristic
-minimum is an upper bound on nothing and a lower bound on nothing; it
-measures search difficulty only. All hunt artifacts are NUMERICAL.
+scarcity: none exist below 54). The minimum C16 count on the {4,8}-free
+manifold falls sharply with order: exactly **207** at n = 24 (full census,
+CERTIFIED) versus at most **56** at n = 56 (heuristic record — n = 56 is
+not exhausted, so this is NUMERICAL). A heuristic minimum measures search
+difficulty, not a bound; but the certified n = 24 value anchors the curve.
 
 ### Discussion (heuristic, not a theorem): why triangles
 

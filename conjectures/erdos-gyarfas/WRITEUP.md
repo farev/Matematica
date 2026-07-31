@@ -168,4 +168,23 @@ Basin hopping (anneal → polish → keep-if-better) now runs on the
 {4,8}-free manifold minimizing the C16 count; the minimum C16 achieved per
 n is this session's quantitative "distance to counterexample".
 
+## The census lands (early morning, day 2)
+
+The n = 24 cubic census sweep finished: 9 467 449 C4-free connected cubic
+graphs, exactly **four** {4,8}-free — Markström's census, reproduced
+clean-room (his files were never read by this pipeline; only the count "4"
+was known from recon). Characterization computed here: all girth 3, C16
+counts 330 / 315 / 207 / 228, exactly one planar. Two pleasant closures:
+
+- The graph the annealer had found hours earlier as its n = 24 optimum is
+  isomorphic to the planar census graph — the annealer had independently
+  rediscovered the **Markström graph** itself.
+- The exact minimum C16 count over {4,8}-free cubic graphs on 24 vertices
+  is **207** — a certified anchor for the "distance to counterexample"
+  curve, against the heuristic ≤ 56 at n = 56.
+
+Basin hopping at n = 56 plateaued at 56 sixteen-cycles after 60 fresh
+rounds (the record graph survives every 1M-move perturbation tried); a
+parallel descent at n = 58 was still running at wrap-up.
+
 (continued as the session progresses)
