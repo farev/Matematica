@@ -31,33 +31,4 @@
 [progress] 32505856 graphs
 [progress] 33554432 graphs
 [progress] 34603008 graphs
-[progress] 35651584 graphs
-[progress] 36700160 graphs
-[progress] 37748736 graphs
-[progress] 38797312 graphs
-[progress] 39845888 graphs
-[progress] 40894464 graphs
-[progress] 41943040 graphs
-[progress] 42991616 graphs
-[progress] 44040192 graphs
-[progress] 45088768 graphs
-[progress] 46137344 graphs
-[progress] 47185920 graphs
-[progress] 48234496 graphs
-[progress] 49283072 graphs
-[progress] 50331648 graphs
-[progress] 51380224 graphs
-[progress] 52428800 graphs
-[progress] 53477376 graphs
-[progress] 54525952 graphs
-[progress] 55574528 graphs
-[progress] 56623104 graphs
-[progress] 57671680 graphs
-[progress] 58720256 graphs
-[progress] 59768832 graphs
-[progress] 60817408 graphs
-[progress] 61865984 graphs
-[progress] 62914560 graphs
-[progress] 63963136 graphs
-[progress] 65011712 graphs
-read 65120929 printed 0 lackC4 65120929 lackC8 0 lackC16 0 lackC32 0 lackC64 0 lackC128 0
+read 35391899 printed 0 lackC4 35391899 lackC8 0 lackC16 12 lackC32 0 lackC64 0 lackC128 0
