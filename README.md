@@ -37,7 +37,8 @@ statement, labelled results, scripts and reproduction commands.
 
 | Conjecture | Status | Sessions | Strongest result so far |
 |---|---|---|---|
-| [**Gilbreath's conjecture**](conjectures/gilbreath/) · [page ↗](https://fabianarevalo.com/gilbreath) | active | 2 | **PROVED** — no fixed-order statistical axiom system can imply eventual Gilbreath (insufficiency theorem R2), plus thirteen unconditional covering lenses discharging parts of the Chase–Hunter–Tao criterion, a factor-2 sharpening of their lower bound, and **CERTIFIED** exact c₄–c₆ |
+| [**Gilbreath's conjecture**](conjectures/gilbreath/) · [page ↗](https://fabianarevalo.com/gilbreath) | active | 3 | **PROVED** — no fixed-order statistical axiom system can imply eventual Gilbreath, now with bounded entries at every finite order (R2, R3.5) and a proof that Chase–Hunter–Tao's 2-separated axiom is necessary; plus thirteen unconditional covering lenses, a factor-2 sharpening of their lower bound, and **CERTIFIED** exact c₄–c₆ |
+| [**Chowla's conjecture**](conjectures/chowla/) · [page ↗](https://fabianarevalo.com/chowla) | active | 1 | **PROVED** exact 2-adic descent reducing two-point Chowla to its odd core, plus **CERTIFIED** correlation/pattern census to 10^12 (all published anchors reproduced; all sign patterns of length ≤ 27 occur, N_k new to OEIS) and the parity-barrier gap measured at ~5·10^6 |
 
 Daily entries, including the sessions that produced nothing, are in
 [`log/`](log/).
