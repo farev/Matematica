@@ -119,12 +119,17 @@ C4-free connected graphs with min degree ≥ 3 (`geng -c -d3 -f`), each
 checked for 8-cycles (16-cycle check never reached — no {4,8}-free graph
 appeared at all):
 
-| n | scanned | {4,8}-free | time (4 cores) |
+| n | scanned | {4,8}-free | time |
 |---|---|---|---|
 | ≤15 | 98 052 | 0 | seconds |
-| 16 | 1 655 659 | 0 | 37 s |
-| 17 | 34 758 006 | 0 | 599 s |
-| 18 | (running) | | |
+| 16 | 1 655 659 | 0 | 37 s (4 cores) |
+| 17 | 34 758 006 | 0 | 599 s (4 cores) |
+| 18 | 834 711 846 | 0 | 12 480 s (3 cores) |
+
+**Theorem C1 final: any Erdős–Gyárfás counterexample has at least 19
+vertices.** The n=18 growth factor (×24 over n=17) puts n=19 at roughly
+2×10¹⁰ C4-free graphs — a multi-day run at this core count, noted as an
+open thread.
 
 Class validated against OEIS A007112 before running (geng -c -d3 counts
 2589 / 84 242 / 5 203 110 at n=8/9/10 — exact match).

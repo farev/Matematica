@@ -16,10 +16,13 @@ $1000 (other sources: $100/$50 — unresolved).
 
 | Claim | Label | Where |
 |---|---|---|
-| No counterexample has ≤ 18 vertices (prior reported bound: 17). Every connected min-degree-3 C4-free graph with n ≤ 18 has an 8-cycle. | CERTIFIED | NOTE §2, Thm C1; `data/counts_mindeg3_c4free.tsv` |
-| No cubic {4,8}-free graph has n ≤ 22; at n = 24 the census is re-derived (Markström 2004 reproduction) | CERTIFIED | NOTE §2, Prop C2; `data/counts_cubic_c4free.tsv`, `data/c48free_cubic_n24.g6` |
+| **No counterexample has ≤ 18 vertices** (prior reported bound: 17). Every connected min-degree-3 C4-free graph with n ≤ 18 contains an 8-cycle — 834 711 846 graphs scanned at n = 18 alone. | CERTIFIED | NOTE §2, Thm C1; `data/counts_mindeg3_c4free.tsv` |
+| No cubic {4,8}-free graph has n ≤ 22 (36 / 269 / 2 761 / 36 101 / 553 227 C4-free cubic graphs scanned at n = 14..22); n = 24 census sweep running (expected: Markström's 4) | CERTIFIED | NOTE §2, Prop C2; `data/counts_cubic_c4free.tsv` |
+| No bipartite cubic {4,8}-free graph has n ≤ 26 (girth ≥ 6 class, 1 201 graphs at n = 26) | CERTIFIED | `data/counts_bipcubic_c4free.tsv` |
+| A {4,8}-free cubic graph on 24 vertices (necessarily one of Markström's four), spectrum {16} with 228 sixteen-cycles, triple-verified | CERTIFIED | `data/markstrom_candidate_n24.g6`, `verify_hit.py` |
+| A {4,8}-free cubic graph on **56 vertices with only 56 sixteen-cycles** (spectrum {16,32}), depth-1 local minimum | CERTIFIED (the graph) / NUMERICAL (its minimality) | `hunts/bh_1_n56.g6`, `hunts/basinhop.tsv` |
 | 24 named cubic graphs (≤ 96 vertices, girth up to 10) all contain power-of-2 cycles | CERTIFIED | `data/named_spectra.tsv` |
-| Annealing hunts at n = 54..62: best energies / near-misses on record | NUMERICAL | `hunts/results_n*.tsv` |
+| Annealing chains at n = 54..60 all reach C4 = C16 = 0 with only 3–4 disjoint 8-cycles | NUMERICAL | `hunts/results_n*.tsv` |
 
 ## Scripts
 

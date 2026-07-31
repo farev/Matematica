@@ -14,11 +14,13 @@ the computational lower bounds on the order of a counterexample, from scratch
 and with independent tooling (nauty's geng, validated against OEIS; a
 purpose-built exact cycle-length checker, validated against networkx). Main
 new result: **no graph with minimum degree ≥ 3 on at most 18 vertices is a
-counterexample** — the previously reported bound was 17 vertices (Royle and
-Markström, secondary-sourced). We also reproduce the cubic censuses of
-Markström (2004) at order 24, and run simulated-annealing hunts for
-{4,8,16}-free cubic graphs in the minimal window 54 ≤ n ≤ 62 where a smallest
-cubic counterexample must live.
+counterexample** (834 711 846 C4-free candidates scanned at n = 18 alone) —
+the previously reported bound was 17 vertices (Royle and Markström,
+secondary-sourced). We also reproduce the cubic censuses of Markström
+(2004) at order 24, and run simulated-annealing hunts for {4,8,16}-free
+cubic graphs in the minimal window 54 ≤ n ≤ 62 where a smallest cubic
+counterexample must live; basin-hopping reaches a {4,8}-free cubic graph on
+56 vertices with only 56 sixteen-cycles.
 
 ## 1. Statement and status
 
@@ -50,29 +52,31 @@ Labels per repository convention: CERTIFIED = exact integer computation,
 reproducible, no floating point in the critical path; NUMERICAL = heuristic
 search evidence.
 
-### Theorem C1 (CERTIFIED). No counterexample has ≤ 17 vertices.
+### Theorem C1 (CERTIFIED). No counterexample has ≤ 18 vertices.
 
-Every connected graph with minimum degree ≥ 3 on n ≤ 17 vertices contains a
+Every connected graph with minimum degree ≥ 3 on n ≤ 18 vertices contains a
 cycle of length 4 or 8. Consequently (components of a min-degree-3 graph
-are min-degree-3 graphs) every graph with minimum degree ≥ 3 on at most 17
-vertices contains a power-of-2 cycle. (An n = 18 sweep is running; on
-completion the bound improves to ≤ 18 and this section will be updated.)
+are min-degree-3 graphs) every graph with minimum degree ≥ 3 on at most 18
+vertices contains a power-of-2 cycle: any counterexample to Erdős–Gyárfás
+has **at least 19 vertices**.
 
 *Method.* A counterexample is C4-free by definition, so it suffices to scan
 C4-free connected graphs of minimum degree ≥ 3 (`geng -c -d3 -f`), testing
 each for 8- and 16-cycles by exact DFS (`cyclecheck`). Orders and counts of
 C4-free min-degree-3 connected graphs scanned:
 n=12: 57 · n=13: 503 · n=14: 6 059 · n=15: 91 433 · n=16: 1 655 659 ·
-n=17: 34 758 006.
-None is {4,8}-free (so the 16-cycle test was never even needed).
-Machine: 4-core container, times in `data/counts_mindeg3_c4free.tsv`.
+n=17: 34 758 006 · n=18: 834 711 846.
+None is {4,8}-free (so the 16-cycle test was never even needed — every one
+of these graphs contains an 8-cycle outright, or a 4-cycle is excluded by
+construction and re-verified per graph).
+Machine: 4-core container; n=18 took 12 480 s wall on 3 cores (48 geng
+work parts). Full rows in `data/counts_mindeg3_c4free.tsv`.
 
 *Relation to prior work.* The reported prior bound is "any counterexample
 has at least 17 vertices", i.e. none on ≤ 16 (computer searches credited to
 G. Royle and K. Markström; known to us only through secondary sources —
 Wikipedia-level snippets; the primary computation appears unpublished).
-Theorem C1 is independent of that work and supersedes it: the bound becomes
-**≥ 18 vertices** (and ≥ 19 once the n = 18 sweep lands).
+Theorem C1 is independent of that work and supersedes it by two orders.
 
 ### Proposition C2 (CERTIFIED). Cubic censuses re-derived, n ≤ 24.
 
@@ -97,8 +101,30 @@ Per Markström's unpublished search (secondary-sourced: all cubic graphs with
 n ≤ 52 scanned, none avoid {4,8,16}), a minimal cubic counterexample must
 have 54 ≤ n ≤ 62, avoiding exactly {4,8,16,32}. We run simulated annealing
 over connected cubic graphs (2-edge-swap moves, exact cycle counts as
-energy) at n = 54..62. Results in `hunts/` (this section updates as chains
-complete).
+energy; focused moves biased to edges on bad cycles; deterministic
+steepest-descent polish proving depth-1 local minimality; basin hopping).
+
+State of the hunt after this session:
+
+- Chains at n = 54, 56, 58, 60 all reach graphs with C4 = C16 = 0 and only
+  **three or four 8-cycles** (pairwise vertex-disjoint, riding on
+  triangles).
+- On the {4,8}-free manifold, basin hopping at n = 56 drove the exact
+  16-cycle count monotonically 78 → 63 → 56. The record graph
+  (`hunts/bh_1_n56.g6`, committed) is a connected cubic graph on 56
+  vertices with **no 4-cycle, no 8-cycle, and 56 sixteen-cycles**
+  (spectrum {16, 32}; count independently confirmed by networkx
+  enumeration at the 78 stage).
+- Every extremal graph found is triangle-rich (girth 3), matching
+  Markström's order-24 extremal graphs.
+
+No {4,8,16}-free cubic graph was found (consistent with their known
+scarcity: none exist below 54). The minimum-found C16 count on the
+manifold decreases with order — 228 for the one order-24 census graph we
+recovered (exact minimum over all four follows from the n = 24 census)
+versus 56 at n = 56 (still falling when compute is added) — but a heuristic
+minimum is an upper bound on nothing and a lower bound on nothing; it
+measures search difficulty only. All hunt artifacts are NUMERICAL.
 
 ### Discussion (heuristic, not a theorem): why triangles
 

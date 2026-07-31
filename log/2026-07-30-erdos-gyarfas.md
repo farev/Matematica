@@ -7,21 +7,24 @@ the computational frontier from scratch with validated tooling, extend it
 where 4 cores allow, and hunt the window where a minimal cubic
 counterexample must live.
 
-**Result.** CERTIFIED: no counterexample has ≤ 17 vertices — every
-connected C4-free graph with min degree ≥ 3 on n ≤ 17 vertices contains an
-8-cycle (34.8M graphs at n=17 scanned by geng + exact DFS checker; class
-and checker validated against OEIS A007112/A002851/A014372, networkx
-cross-check 71/71, split-consistency checks, and a positive-control
-{4,8}-free graph that the filter correctly retains). Supersedes the
-reported Royle–Markström bound ("at least 17", i.e. none ≤ 16); the n=18
-sweep to push it further is running at session-write time — this entry is
-updated when it lands. Also CERTIFIED: cubic {4,8}-free censuses:
-none with n ≤ 22; a {4,8}-free graph at n=24 recovered by annealing and
-triple-verified (networkx + SAT + relabelings: spectrum {16} only); full
-n=24 census sweep running. 24 named cubic graphs incl. Foster (girth 10)
-all conform. NUMERICAL: annealing hunts at n = 54..62: best energy so far
-E=6 at n=56 — a graph with no C4/C16 and only three 8-cycles (spectrum
-{8,32}).
+**Result.** CERTIFIED: **no counterexample has ≤ 18 vertices** — every
+connected C4-free graph with min degree ≥ 3 on n ≤ 18 contains an 8-cycle
+(834,711,846 graphs at n=18, 34.8M at n=17, scanned by geng + exact DFS
+checker; class and checker validated against OEIS A007112/A002851/A014372,
+networkx cross-check 71/71, split-consistency checks, and a
+positive-control {4,8}-free graph that the filter correctly retains).
+Supersedes the reported Royle–Markström bound ("at least 17", i.e. none
+≤ 16) by two. Also CERTIFIED: cubic {4,8}-free censuses: none with n ≤ 22;
+a {4,8}-free graph at n=24 recovered by annealing and triple-verified
+(networkx + SAT + relabelings: spectrum {16}, 228 sixteen-cycles); full
+n=24 census sweep running at entry-write time. Bipartite cubic girth ≥ 6:
+none {4,8}-free at n ≤ 26. 24 named cubic graphs incl. Foster (girth 10)
+all conform. NUMERICAL: hunts in the minimal cubic window n ∈ [54,62]
+(focused-move annealing + steepest-descent polish + basin hopping): chains
+at n = 54/56/58/60 all reach C4=C16=0 with only 3–4 disjoint 8-cycles; on
+the {4,8}-free manifold at n=56 the exact C16 count was driven
+78 → 63 → 56 (record graph committed, spectrum {16,32}). All extremal
+graphs are triangle-rich, girth 3 — the same shape as Markström's.
 
 **What failed.** The original plan — hunt at n = 26..30 — was obsolete
 before it started: recon showed Markström's unpublished search already
