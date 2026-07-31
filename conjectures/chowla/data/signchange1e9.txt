@@ -1,0 +1,2 @@
+x <= 1000000000: L zeros = 252, L sign changes = 133 (BFM: 252 zeros, 133 changes below 1e9)
+S_1 sign changes = 23770, final L = -25216, final S_1 = -46682

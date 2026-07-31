@@ -1,0 +1,33 @@
+x_cap = 1,000,000,000,000 = 1.000e+12  (50000 grid rows of 20,000,000)
+
+S_h at decades (h = 1..8), with S_h/sqrt(x):
+x                    S1          S2          S3          S4          S5          S6          S7          S8
+1.00e+09        -46,682      43,790      38,866      34,016      16,032      24,660       4,132      -8,508
+  /sqrt(x):       -1.476       1.385       1.229       1.076       0.507       0.780       0.131      -0.269
+1.00e+10        -71,450    -118,586      18,508     153,922      83,042       1,176     132,516     137,364
+  /sqrt(x):       -0.715      -1.186       0.185       1.539       0.830       0.012       1.325       1.374
+1.00e+11       -219,878     153,142     494,210      65,362     -62,982     479,064     142,722    -203,530
+  /sqrt(x):       -0.695       0.484       1.563       0.207      -0.199       1.515       0.451      -0.644
+1.00e+12       -163,274      57,386    -604,438     600,878    -407,794   1,672,602    -996,980    -299,864
+  /sqrt(x):       -0.163       0.057      -0.604       0.601      -0.408       1.673      -0.997      -0.300
+
+at x_cap: max_h |S_h|/sqrt(x) = 2.149 (h=13), RMS_h = 0.898
+|S_1(x_cap)|/x_cap = 1.633e-07
+L(x_cap) = -522,626,  L/sqrt(x) = -0.5226
+hL(x_cap) = +8.2329e-07  (BFM: positive until 7.22e13)
+
+exponent fit RMS_h S_h ~ c x^alpha on [1e8, 1.0e+12]: alpha = 0.4672, c = 2.101
+census at cap: max|z| = 2.98 at cell 43
+
+cross-scale increment correlation (predicted 1/sqrt2 = 0.7071):
+  h=1->2: corr = +0.6980  (n = 1247 disjoint blocks)
+  h=2->4: corr = +0.7130  (n = 1247 disjoint blocks)
+  h=3->6: corr = +0.7188  (n = 1247 disjoint blocks)
+  h=4->8: corr = +0.7107  (n = 1247 disjoint blocks)
+  h=6->12: corr = +0.6916  (n = 1247 disjoint blocks)
+  h=8->16: corr = +0.7189  (n = 1247 disjoint blocks)
+  pooled mean = +0.7085 +- 0.0046 (se over 6 h-pairs)
+
+harmonic drift ell_h(x_cap) - ell_h(1e9): max|.| = 9.63e-05 (model sigma 3.2e-5), ell_1(x_cap) = -0.842488
+
+parity-barrier gap: |S_1|/x = 1.63e-07 at x = 1.0e+12; (log x)^(-c/2) would need c = 9.4; for c <= 0.06 the proven bound is >= 0.905
