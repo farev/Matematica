@@ -20,7 +20,7 @@ $1000 (other sources: $100/$50 — unresolved).
 | No cubic {4,8}-free graph has n ≤ 22; at n = 24 there are **exactly four** (9.47M C4-free cubic scanned — clean-room reproduction of Markström 2004; girth 3 all, one planar, C16 counts 330/315/207/228) | CERTIFIED | NOTE §2, Prop C2; `data/c48free_cubic_n24.g6` |
 | No bipartite cubic {4,8}-free graph has n ≤ 26 (girth ≥ 6 class, 1 201 graphs at n = 26) | CERTIFIED | `data/counts_bipcubic_c4free.tsv` |
 | A {4,8}-free cubic graph on 24 vertices (necessarily one of Markström's four), spectrum {16} with 228 sixteen-cycles, triple-verified | CERTIFIED | `data/markstrom_candidate_n24.g6`, `verify_hit.py` |
-| A {4,8}-free cubic graph on **56 vertices with only 56 sixteen-cycles** (spectrum {16,32}), depth-1 local minimum | CERTIFIED (the graph) / NUMERICAL (its minimality) | `hunts/bh_1_n56.g6`, `hunts/basinhop.tsv` |
+| {4,8}-free cubic graphs on **56 vertices with 56 sixteen-cycles** and on **58 vertices with 37 sixteen-cycles** (spectra {16,32}), depth-1 local minima; manifold-minimum curve 207 (n=24, exact) → ≤56 → ≤37 | CERTIFIED (the graphs) / NUMERICAL (minimality) | `data/record_c48free_n5*.g6`, `hunts/basinhop.tsv` |
 | 24 named cubic graphs (≤ 96 vertices, girth up to 10) all contain power-of-2 cycles | CERTIFIED | `data/named_spectra.tsv` |
 | Annealing chains at n = 54..60 all reach C4 = C16 = 0 with only 3–4 disjoint 8-cycles | NUMERICAL | `hunts/results_n*.tsv` |
 

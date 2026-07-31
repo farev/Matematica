@@ -184,7 +184,16 @@ counts 330 / 315 / 207 / 228, exactly one planar. Two pleasant closures:
   curve, against the heuristic ≤ 56 at n = 56.
 
 Basin hopping at n = 56 plateaued at 56 sixteen-cycles after 60 fresh
-rounds (the record graph survives every 1M-move perturbation tried); a
-parallel descent at n = 58 was still running at wrap-up.
+rounds (the record graph survives every 1M-move perturbation tried). The
+parallel descent at n = 58 escaped its 2-C8 local minimum and reached the
+manifold at **37 sixteen-cycles** — the session's best object. Both
+records committed under `data/`, verified independently (networkx
+enumeration + SAT UNSAT for C4/C8 + relabeling stability).
 
-(continued as the session progresses)
+## Where the session ends
+
+Manifold-minimum C16 curve: 207 (n = 24, exact, census) → ≤ 56 (n = 56)
+→ ≤ 37 (n = 58). Every graph on that curve is triangle-rich, girth 3.
+The next session picks this up with more compute (the curve wants n = 60
+and 62, longer hops, and a C32-existence term in the endgame energy), or
+attacks the untouched (3,9)-cage screen once the data is reachable.

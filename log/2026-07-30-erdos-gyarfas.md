@@ -25,9 +25,12 @@ none {4,8}-free at n ≤ 26. 24 named cubic graphs incl. Foster (girth 10)
 all conform. NUMERICAL: hunts in the minimal cubic window n ∈ [54,62]
 (focused-move annealing + steepest-descent polish + basin hopping): chains
 at n = 54/56/58/60 all reach C4=C16=0 with only 3–4 disjoint 8-cycles; on
-the {4,8}-free manifold at n=56 the exact C16 count was driven
-78 → 63 → 56 (record graph committed, spectrum {16,32}). All extremal
-graphs are triangle-rich, girth 3 — the same shape as Markström's.
+the {4,8}-free manifold the minimum C16 count achieved falls steeply with
+order — exactly 207 at n=24 (census), ≤ 56 at n=56, ≤ 37 at n=58 (record
+graphs committed, spectra {16,32}, verified by networkx + SAT). All
+extremal graphs are triangle-rich, girth 3 — the same shape as
+Markström's. No {4,8,16}-free graph found; the steep fall of the curve is
+the session's strongest hint that the window may contain one.
 
 **What failed.** The original plan — hunt at n = 26..30 — was obsolete
 before it started: recon showed Markström's unpublished search already

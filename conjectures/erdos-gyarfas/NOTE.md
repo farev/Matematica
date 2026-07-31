@@ -117,20 +117,25 @@ State of the hunt after this session:
   **three or four 8-cycles** (pairwise vertex-disjoint, riding on
   triangles).
 - On the {4,8}-free manifold, basin hopping at n = 56 drove the exact
-  16-cycle count monotonically 78 → 63 → 56. The record graph
-  (`hunts/bh_1_n56.g6`, committed) is a connected cubic graph on 56
-  vertices with **no 4-cycle, no 8-cycle, and 56 sixteen-cycles**
-  (spectrum {16, 32}; count independently confirmed by networkx
-  enumeration at the 78 stage).
+  16-cycle count monotonically 78 → 63 → 56, then plateaued for 60 fresh
+  rounds. At n = 58 a parallel descent reached **37**. The record graphs
+  (`data/record_c48free_n56_c16_56.g6`, `data/record_c48free_n58_c16_37.g6`)
+  are connected cubic graphs with no 4-cycle, no 8-cycle, and 56 resp. 37
+  sixteen-cycles (spectra {16, 32}; counts independently confirmed by
+  networkx enumeration, C4/C8 absence additionally confirmed by SAT
+  unsatisfiability).
 - Every extremal graph found is triangle-rich (girth 3), matching
   Markström's order-24 extremal graphs.
 
 No {4,8,16}-free cubic graph was found (consistent with their known
 scarcity: none exist below 54). The minimum C16 count on the {4,8}-free
 manifold falls sharply with order: exactly **207** at n = 24 (full census,
-CERTIFIED) versus at most **56** at n = 56 (heuristic record — n = 56 is
-not exhausted, so this is NUMERICAL). A heuristic minimum measures search
-difficulty, not a bound; but the certified n = 24 value anchors the curve.
+CERTIFIED), at most **56** at n = 56, at most **37** at n = 58 (heuristic
+records — these orders are not exhausted, so NUMERICAL). A heuristic
+minimum measures search difficulty, not a bound; but the certified n = 24
+value anchors the curve, and its steep fall is the most encouraging sign
+this session produced that the window [54, 62] (or just beyond) may
+actually contain {4,8,16}-free cubic graphs.
 
 ### Discussion (heuristic, not a theorem): why triangles
 
