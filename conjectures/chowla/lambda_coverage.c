@@ -296,6 +296,8 @@ int main(int argc, char **argv) {
     char path[512];
     snprintf(path, sizeof path, "%s_endgame.txt", outpfx);
     FILE *endlog = fopen(path, "w");
+    if (endlog) setvbuf(endlog, NULL, _IOLBF, 0);   /* line-buffered: a killed
+        run must not lose the endgame certificate lines still in the buffer */
     snprintf(path, sizeof path, "%s_coverage.csv", outpfx);
     FILE *csv = fopen(path, "w");
     fprintf(csv, "k,N_k,last_pattern_code\n");
