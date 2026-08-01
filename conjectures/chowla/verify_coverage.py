@@ -102,6 +102,25 @@ def main():
     if sys.argv[1] == "window":
         k, n, code = int(sys.argv[2]), int(sys.argv[3]), int(sys.argv[4])
         return 0 if mode_window(k, n, code) else 1
+    if sys.argv[1] == "endgame":
+        # lines: "k remaining start code" from lambda_coverage --endgame
+        want = int(sys.argv[3]) if len(sys.argv) > 3 else 8
+        rows = {}
+        for line in open(sys.argv[2]):
+            f = line.split()
+            if len(f) != 4:
+                continue
+            rows.setdefault(int(f[0]), []).append(
+                (int(f[1]), int(f[2]), int(f[3])))
+        allok = True
+        for k in sorted(rows):
+            sel = sorted(rows[k])[:want]        # the last `want` to complete
+            print(f"-- k={k}: verifying the {len(sel)} last-completing "
+                  f"patterns by trial division")
+            for rem, n, code in sel:
+                allok &= mode_window(k, n, code)
+        print("ALL OK" if allok else "FAILURES PRESENT")
+        return 0 if allok else 1
     if sys.argv[1] == "check":
         allok = True
         with open(sys.argv[2]) as f:

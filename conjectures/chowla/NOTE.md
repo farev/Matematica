@@ -402,3 +402,115 @@ thirty doublings. Round-2 ledger: 10 registered clauses, 10 hits.
 - M. Tanaka, Tokyo J. Math. 3 (1980), 187–189 [via BFM].
 - N. A. Carella, arXiv:2211.09736v2 (math.GM). [read in full; §8]
 - OEIS A090410, A008836.
+
+---
+
+## 11. Session 2026-08-01: independent audit, and the first-occurrence spectrum
+
+*Addendum. Same labelling discipline; everything below is either CERTIFIED
+(exact integer computation, reproducible) or NUMERICAL (statistics on
+certified data). Nothing here is a theorem.*
+
+### 11.1 Clean-room reproduction of the coverage census (CERTIFIED)
+
+The sign-pattern coverage numbers of §4 and §10 were recomputed from scratch by
+an implementation sharing no code with the original: `lambda_coverage.c`, an
+exact segmented Liouville sieve in C, with `verify_coverage.py` (pure Python
+standard library, trial division) as a third check at small k.
+
+Method. Ω(n) = #{(p, e) : p^e | n}, so flipping a parity bit on the multiples
+of every prime power p^e ≤ x gives Ω(n) mod 2 without divisions or
+factorisation. The segment carries a residue rem[i], initialised to n with its
+powers of 2 removed and divided by p at each hit; the division is exact and is
+performed by multiplication with p^{−1} mod 2^64. Any n left with rem[i] > 1
+carries exactly one prime factor > √x (a second would push n past the segment
+top) and receives one final flip. The critical path is integer-only.
+
+Result. All thirty previously certified values reproduce **exactly**, N_k and
+the last-completing pattern code alike:
+
+| source | k | status |
+|---|---|---|
+| `data/fineA_coverage.csv` | 1–24 | 24/24 N_k and 24/24 codes exact |
+| `data/coverage_ext.csv` | 25–27 | 3/3 exact |
+| `data/coverage_2830.csv` | 28–30 | 3/3 exact |
+
+together with L(10^j) for j = 1..8 (0, −2, −14, −94, −288, −530, −842, −3884),
+and N_k for k = 1..14 independently from pure-Python trial division. The
+reproduction is recorded in `data/repro_k25_30.csv`.
+
+### 11.2 The first-occurrence spectrum and Conway's leading number (NUMERICAL)
+
+The coverage census reports one order statistic, N_k = max_w s(w), where s(w)
+is the start index of the first occurrence of pattern w. The full spectrum
+{s(w) : w ∈ {±1}^k} carries 2^k data points, and for an i.i.d. fair coin it has
+an exact, parameter-free, *per-pattern* prediction. Conway's leading number
+(Solov'ev's formula) gives the expected waiting time to the first occurrence of
+a word w of length k as
+
+    A(w) = Σ_{j=1}^{k} δ_j(w) · 2^j,     δ_j(w) = 1 iff prefix_j(w) = suffix_j(w),
+
+measured at the position of the last letter. With s(w) the *start* index, the
+model prediction is E[s(w) + k − 1] = A(w). Define
+
+    R(w) = (s(w) + k − 1) / A(w),        model: E[R(w)] = 1 for every w.
+
+A(w) spans a factor of two, from 2^k for a word with no self-overlap to
+2^{k+1} − 2 for a constant word. That self-overlap clumping dominates the raw
+first-occurrence times and is a property of words, not of λ; normalising by
+A(w) removes it exactly, which is what makes the residual measurable.
+
+Calibration is by control, not by formula: the 2^k values s(w) come from a
+single stream and are not independent, so σ/√(2^k) is the wrong error bar.
+`lambda_coverage --prng` runs an i.i.d. fair-coin stream through the identical
+window, bitmap and first-occurrence code path, and all error bars below are the
+dispersion of 32 such streams.
+
+**Measurement at k = 24** (all 16 777 216 patterns; λ scanned to
+N_24 = 293 427 643; `data/firstocc_k24_*`):
+
+| quantity | λ | 32 controls | λ in control-σ |
+|---|---|---|---|
+| mean R | 1.000123 | 0.999953 ± 0.000319 | +0.53 (rank 23/33) |
+| sd of R | 1.000251 | ≈ 1.0004 | — (Exp(1) shape) |
+| slope of mean R vs popcount | −2.64·10^−4 | −1.10·10^−4 ± 3.53·10^−4 | −0.44 |
+
+The control ensemble's mean sits −0.8 SE from the exact model value 1, so the
+statistic is unbiased. The overlap-class breakdown is flat at 1.000 for λ and
+for the controls, confirming the normalisation.
+
+The popcount slope is not free structure. Across the 32 controls it correlates
+at r = +0.80 with the stream's own realised one-point bias L(10^7)/10^7; a
+density excess must tilt a popcount-resolved waiting time, and to first order
+the tilt is −4δ with δ = −L(x)/2x. Regressing λ's slope through that
+control-calibrated relation leaves a residual of **−0.56 residual-σ**. (The
+fitted coefficient is 0.92 ± 0.12 rather than the first-order 2, as expected:
+the relevant density is a weighted average over the whole range of
+first-occurrence times, not its value at the single reference scale 10^7. The
+regression is used as a calibration, not as a prediction.)
+
+**Reading.** Over the ensemble of all 2^24 sign patterns of length 24, the
+first-occurrence spectrum of λ is indistinguishable from an i.i.d. fair coin at
+a resolution of about 3·10^−4, once λ's known one-point bias is accounted for.
+This is a statement about 24-point behaviour in a range where the two-point
+conjecture is open — and it is evidence only. The parity barrier predicts
+precisely this: unlimited numerical pseudorandomness, no purchase on a proof.
+
+**Negative result, disclosed.** The first control ensemble was defective and
+the control itself is what exposed it. Streams seeded as sm64(n ⊕ seed) share
+their bit multiset for small seeds — every seed returned L(10^8) = +16362 to
+within 2 — which collapsed the ensemble dispersion and made the λ popcount
+slope read as a 4.4σ anomaly. With decorrelated seeding the same slope is
+−0.44σ. Recorded because an ensemble of controls that is secretly one control
+is the specific way this instrument fails.
+
+### 11.3 Reproducibility defect found in this repository
+
+The sandbox for this session had Python 3.11, gcc, 4 cores, and no network.
+It had no NumPy, no SciPy and no networkx, and no way to install them. Every
+Python script in this directory imports NumPy, so none of the previously
+certified results could be rerun on that machine at all. The C path added here
+(`lambda_coverage.c`, `firstocc_stats.c`) and the stdlib-only
+`verify_coverage.py` are together a dependency-free route to the coverage
+results. The rest of the pipeline — census, quads, covariance web — remains
+NumPy-only and is not reproducible on a clean machine without it.
