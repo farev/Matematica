@@ -67,9 +67,9 @@ def main():
         return 1
     lab_l, sc_l, pc_l, ov_l = load(sys.argv[1])
     ctrls = [load(p) for p in sys.argv[2:]]
-    k = int(sc_l["N_k"] and next(iter([0])) or 0)  # placeholder, set below
+    # popcount classes run 0..k and every one of them is populated once all
+    # patterns have occurred, so k is recoverable from the table's length
     k = len(pc_l) - 1
-    # popcount classes run 0..k, so k = len(pc_l)-1 when every class is present
 
     print(f"# first-occurrence spectrum, k = {k}")
     print(f"# lambda stream: {sys.argv[1]}")
