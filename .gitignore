@@ -27,3 +27,7 @@ paper/**/*.toc
 *.npy
 *.npz
 *.pkl
+
+# compiled searchers (rebuilt by gcc -O2 from the .c sources)
+conjectures/additive-squares/afsf
+conjectures/additive-squares/afsfv
