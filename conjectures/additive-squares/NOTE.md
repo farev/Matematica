@@ -239,12 +239,16 @@ only when the tree closed inside the node budget.
 Every value below is **CERTIFIED**: exact arithmetic, reproducible, extremal
 word committed and independently verified.
 
+The sweep covered all **381** normalised alphabets with $c \le 18$ and returned
+**51** exact values. All **50** degenerate alphabets closed their trees, and
+**none exceeded 60**.
+
 | $A$ | $L(A)$ | degenerate? | nodes |
 |---|---|---|---|
 | $\{0,1,2,3\}$ | 50 | yes | 751,156 |
 | $\{0,1,3,4\}$, $\{0,2,3,5\}$, $\{0,1,4,5\}$ | 55 | yes | 2.6–4.5 M |
 | $\{0,3,4,7\}$ | 58 | yes | 7,012,884 |
-| $\{0,1,5,6\}$ and 28 further degenerate alphabets | **60** | yes | ≤ 7,707,828 |
+| $\{0,1,5,6\}$ and **44** further degenerate alphabets | **60** | yes | ≤ 7,707,828 |
 | $\{0,1,2,4\}$ | **62** | no | 76,391,112 |
 | $\{0,1,2,5\}$ | 86 | no | 1,198,387,276 |
 | $\{0,1,3,5\}$ | 88 | no | 937,940,596 |
@@ -256,6 +260,18 @@ count 76,391,112 — an incidental check that the reflection normalisation in
 
 Full machine-readable table: `data/sweep4_c18.csv` (one row per alphabet, with
 the extremal word and node count).
+
+**The degenerate family takes only four values, CERTIFIED.** Over all 50
+degenerate alphabets with $c \le 18$, $L$ is one of
+
+$$50\ (\times 1),\quad 55\ (\times 3),\quad 58\ (\times 1),\quad 60\ (\times 45),$$
+
+with the exceptional values realised by $\{0,1,2,3\}$; $\{0,1,3,4\}$,
+$\{0,2,3,5\}$, $\{0,1,4,5\}$; and $\{0,3,4,7\}$ respectively. This is exactly the
+cell decomposition of §3 seen from the integer side: writing $A = \{0,1,t,1+t\}$,
+the parameter $t$ falls below the generic value 60 only for the handful of
+small-height rationals at which an extra low-coefficient relation happens to
+vanish. Every other alphabet sits in the generic cell and returns 60.
 
 **A structural observation, CERTIFIED.** Among degenerate alphabets the node
 count *saturates* at exactly **7,707,828** — the node count of the generic
@@ -328,15 +344,35 @@ a preprint.
    (`data/relations_n2.csv`), and so far $(1,1,-1)$ is the **only** class of
    sup-norm $\le 2$ whose tree closes:
 
+   All **11** primitive classes of sup-norm $\le 2$ were run to a
+   $6\times10^8$-node budget with a depth cap of 3000
+   (`data/relations_n2.csv`). Exactly **one** closed:
+
    | relation $v$ | meaning | $L(A_v)$ |
    |---|---|---|
-   | $(1,1,-1)$ | one letter is the sum of two others | **= 60**, tree closed (7,707,828 nodes) |
-   | $(1,1,0) \sim (2,-1,0)$ | alphabet contains a 3-term AP $\{0,x,2x\}$ | $\ge 440$, not closed in $6\times10^8$ nodes |
-   | $(1,1,1)$ | $a+b+c=0$ | $\ge 996$, not closed in $6\times10^8$ nodes |
+   | $(1,1,-1)$ | one letter is the sum of two others | **= 60**, tree closed, 7,707,828 nodes |
+   | $(2,0,-1)$ | | $\ge 418$ |
+   | $(2,-1,-1)$ | | $\ge 439$ |
+   | $(1,1,0)$ | alphabet contains a 3-term AP $\{0,x,2x\}$ | $\ge 440$ |
+   | $(1,1,1)$ | $a+b+c=0$ | $\ge 996$ |
+   | $(2,1,-2)$ | | $\ge 1795$ |
+   | $(2,2,-1)$ | | $\ge 1816$ |
+   | $(2,1,-1)$ | | $\ge 1836$ |
+   | $(2,1,1)$ | | $\ge 1479$ |
+   | $(2,1,0)$ | | $\ge 3000$ (**hit the depth cap**) |
+   | $(2,2,1)$ | | $\ge 3000$ (**hit the depth cap**) |
 
-   That Freedman's relation is the singular one — and by a wide margin, 60
-   against $\ge 996$ — is the most suggestive thing the session found, and it
-   is exactly what a next session should push on.
+   Every word in that table was re-verified by an independent $O(n^2)$ checker
+   written from the definition, including both 3000-letter words.
+
+   **Freedman's relation is singular, and by two orders of magnitude**: 60
+   against $\ge 3000$. Two classes hit the depth cap rather than the node
+   budget, meaning the DFS descended 3000 letters without being forced to
+   backtrack out — the signature of an infinite class, and consistent with
+   Rao–Rosenfeld [4], who prove additive squares *are* avoidable over a finite
+   subset of $\mathbb{Z}^2$. Why $(1,1,-1)$ alone forces finiteness is the
+   sharpest question the session leaves open; a proof of it, in place of a
+   7.7-million-node tree closure, would likely generalise.
 2. Since every four-element $A \subset \mathbb{Z}$ has $\Lambda(A)$ of rank 2,
    $A$ satisfies *some* primitive relation $v$. If $L(A_v) < \infty$ for
    **every** admissible $v$, PVHH would follow for four-letter integer

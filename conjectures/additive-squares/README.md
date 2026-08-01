@@ -28,8 +28,9 @@ computations over an alphabet of integer *vectors*.
 | `L(A) = 7` for **every** 3-element alphabet in characteristic 0 | PROVED | [`NOTE.md`](NOTE.md) §4 |
 | `L(A) ≤ 60` for every 4-element alphabet with `a+d = b+c` — reproduces **Freedman's published bound** in three lines | PROVED reduction, CERTIFIED constant | [`NOTE.md`](NOTE.md) §5 |
 | That bound is **attained**: `L({0,1,5,6}) = 60` | CERTIFIED | [`NOTE.md`](NOTE.md) §5 |
-| Exact `L(A)` for 34 four-letter integer alphabets, incl. `L({0,1,2,3}) = 50`, `L({0,1,2,4}) = 62`, `L({0,1,2,5}) = 86`, `L({0,1,3,5}) = 88` | CERTIFIED | [`NOTE.md`](NOTE.md) §6, `data/sweep4_c18.csv` |
-| Freedman's relation `(1,1,-1)` is the only relation class of sup-norm ≤ 2 whose search tree closes (60, vs ≥ 440 and ≥ 996 for the other two) | CERTIFIED | [`NOTE.md`](NOTE.md) §8, `data/relations_n2.csv` |
+| Exact `L(A)` for 51 four-letter integer alphabets, incl. `L({0,1,2,3}) = 50`, `L({0,1,2,4}) = 62`, `L({0,1,2,5}) = 86`, `L({0,1,3,5}) = 88` | CERTIFIED | [`NOTE.md`](NOTE.md) §6, `data/sweep4_c18.csv` |
+| Over all 50 degenerate alphabets with `c ≤ 18`, `L` takes only the four values 50, 55, 58, 60 — and 60 in 45 of them | CERTIFIED | [`NOTE.md`](NOTE.md) §6 |
+| Freedman's relation `(1,1,-1)` is the **only** one of the 11 relation classes of sup-norm ≤ 2 whose search tree closes: 60, against ≥ 418…≥ 3000 for the other ten | CERTIFIED | [`NOTE.md`](NOTE.md) §8, `data/relations_n2.csv` |
 
 Nothing here resolves PVHH, and nothing here claims to.
 

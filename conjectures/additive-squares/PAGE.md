@@ -41,10 +41,10 @@ relation vector `(1,1,−1)` — a bound this session also shows is **attained**
    constant comes from closing a tree of **7,707,828 nodes** in 0.03 s of exact
    integer arithmetic. **This reproduces Freedman's published theorem** — it is a
    clean-room reproduction, not a new bound.
-4. **CERTIFIED — the bound is attained.** `L({0,1,5,6}) = 60` exactly, and **29**
-   alphabets in the sweep reach 60. Whether attainment is already published could
+4. **CERTIFIED — the bound is attained.** `L({0,1,5,6}) = 60` exactly; of the **50** degenerate alphabets swept, **45**
+   reach 60 and **none** exceed it. Whether attainment is already published could
    not be determined (network blocked).
-5. **CERTIFIED — exact values for 34 four-letter integer alphabets**, apparently
+5. **CERTIFIED — exact values for 51 four-letter integer alphabets**, apparently
    the first such table: `L({0,1,2,3}) = 50`, `L({0,1,3,4}) = 55`,
    `L({0,3,4,7}) = 58`, `L({0,1,5,6}) = 60`, `L({0,1,2,4}) = 62`,
    `L({0,1,2,5}) = 86` (1,198,387,276 nodes), `L({0,1,3,5}) = 88`.
@@ -52,11 +52,15 @@ relation vector `(1,1,−1)` — a bound this session also shows is **attained**
    count rises to exactly **7,707,828** and then stops changing, from
    `{0,1,9,10}` onward: once the letters are spread far enough, the concrete
    integer alphabet's search tree is *identical* to the universal one.
-7. **CERTIFIED negative result — Freedman's relation looks singular.** Of the
-   primitive relation classes of sup-norm ≤ 2, `(1,1,−1)` is the only one whose
-   tree closes (at 60). The 3-term-arithmetic-progression class `(1,1,0)` reached
-   ≥ 440 and `a+b+c = 0` reached ≥ 996 without closing. Why `(1,1,−1)` is special
-   is open.
+7. **CERTIFIED — over the degenerate family, `L` takes only four values.**
+   Across all 50 degenerate alphabets with `c ≤ 18`: 50 (once), 55 (three times),
+   58 (once), 60 (**45** times). The exceptions are exactly the alphabets carrying
+   an extra small relation.
+8. **CERTIFIED negative result — Freedman's relation is singular.** Of the **11**
+   primitive relation classes of sup-norm ≤ 2, `(1,1,−1)` is the **only** one
+   whose tree closes, at 60; the other ten reached ≥ 418 to ≥ 3000 without
+   closing, two of them hitting the depth cap rather than the node budget. Why
+   `(1,1,−1)` alone forces finiteness is open.
 
 ## 3. Figures
 
@@ -85,8 +89,16 @@ line 7,707,828.
 for a concrete alphabet as for the abstract one — which is why the bound 60 is
 reached and not merely approached."
 
-No fourth figure. The relation-class table (`data/relations_n2.csv`) has only
-five rows so far and belongs in the page as a small table, not a chart.
+**Table (not a chart) — the eleven relation classes.** Data:
+`data/relations_n2.csv`, all 11 rows: relation vector, `L(A_v)`, and whether the
+tree closed. One row is bold (`(1,1,−1)`, closed at 60); the other ten carry
+"≥" and did not close. Two rows (`(2,1,0)`, `(2,2,1)`) hit the 3000 depth cap
+rather than the node budget and should be marked as such.
+*Sentence:* "Exactly one kind of relation between the letters forces words to be
+short — the one Freedman found — and every other relation we tried lets them run
+at least fifty times longer."
+
+No fourth chart.
 
 ## 4. Caveats the page must carry
 

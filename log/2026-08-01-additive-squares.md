@@ -20,15 +20,19 @@ search); PROVED-reduction + CERTIFIED-constant `L(A) ≤ 60` for every four-elem
 alphabet with a+d=b+c — which is **Freedman's published bound, reproduced
 clean-room in three lines** from the single relation (1,1,−1), the constant
 falling out of a 7,707,828-node tree closure. CERTIFIED: that bound is
-**attained** — `L({0,1,5,6}) = 60`, with 29 alphabets in the sweep reaching it.
-CERTIFIED: exact L for 34 four-letter integer alphabets — `L({0,1,2,3}) = 50`,
+**attained** — `L({0,1,5,6}) = 60`; of the 50 degenerate alphabets swept, 45
+reach 60 and none exceed it.
+CERTIFIED: exact L for 51 four-letter integer alphabets — `L({0,1,2,3}) = 50`,
 `L({0,1,2,4}) = 62`, `L({0,1,2,5}) = 86`, `L({0,1,3,5}) = 88` — apparently the
 first such table. CERTIFIED structural observation: node counts saturate at
 exactly 7,707,828 from `{0,1,9,10}` onward, i.e. a spread-out integer alphabet's
 search tree becomes *literally identical* to the universal quotient alphabet's.
-Negative and interesting: among primitive relation classes of sup-norm ≤ 2,
-(1,1,−1) is so far the **only** one whose tree closes — the 3-term-AP class
-(1,1,0) reached ≥ 440 and a+b+c=0 reached ≥ 996 without closing. **Nothing here
+CERTIFIED: across the degenerate family L takes only the four values 50, 55, 58,
+60 — the cell decomposition seen from the integer side. Negative and the most
+suggestive thing found: of all **11** primitive relation classes of sup-norm ≤ 2,
+(1,1,−1) is the **only** one whose tree closes (60); the other ten reached ≥ 418
+to ≥ 3000 without closing, two hitting the depth cap rather than the node budget
+— the signature of an infinite class, and consistent with Rao–Rosenfeld. **Nothing here
 resolves PVHH, and nothing claims to.**
 
 **Connectivity check.** arxiv.org, oeis.org, erdosproblems.com and
@@ -86,19 +90,21 @@ Lietard–Rosenfeld's cube classification — where it would be cited.
   t = −P/Q with |P|,|Q| ≤ 60 and exhaust each. Most of the scaffolding was
   written before I noticed the Quotient Lemma's linear map does it in one line
   with no case analysis.
-- *No second Freedman-type class was found.* The natural next relations —
-  (1,1,0) and (1,1,1) — give long words, not short ones, and did not close.
-  So the session produced exactly one finite relation class: the known one.
+- *No second Freedman-type class was found.* All 11 primitive relation classes
+  of sup-norm ≤ 2 were run; ten of them give long words, not short ones, and did
+  not close (≥ 418 to ≥ 3000). So the session produced exactly one finite
+  relation class, and it is the already-known one. This is the session's main
+  negative result and, read the other way, its most suggestive positive hint.
 - *Budget-limited lower bounds are not measurements.* The sweep's
   L ≥ 111/134/290/350 figures are artifacts of a fixed node budget, recorded as
   certified lower bounds and explicitly disclaimed as growth data.
 - *Theorem 4 is very likely folklore* and is presented as such; it is included
   because it calibrates the method, not as a contribution.
 
-**Next.** Settle whether the 3-term-AP class v = (1,1,0) has L(A_v) = ∞ — a deep
-run on the neighbouring class v = (2,1,0) already reached the 3,000 depth cap
-without a square, so an infinite class probably exists, and Rao–Rosenfeld's ℤ²
-result says it should. Knowing *which* relations are infinite is what decides
+**Next.** Settle whether some relation class has L(A_v) = ∞ — two classes,
+v = (2,1,0) and v = (2,2,1), reached the 3,000 depth cap without a square, so an
+infinite class very probably exists, and Rao–Rosenfeld's ℤ² result says it
+should. Knowing *which* relations are infinite is what decides
 whether the Quotient Lemma can reach PVHH for four letters at all. Then: find a
 proof, rather than a 7.7-million-node tree closure, that (1,1,−1) forces
 finiteness — it would likely generalise. And from an unblocked network, verify
