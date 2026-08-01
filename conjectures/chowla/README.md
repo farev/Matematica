@@ -13,12 +13,12 @@ scratch in C (`lambda_coverage.c`) with a stdlib-only Python verifier. All
 thirty previously certified coverage values (N_k and last-completing pattern
 code, k = 1..30) **reproduce exactly** from the independent implementation, as
 do L(10^j), j = 1..8 (CERTIFIED). Coverage then extended: every ±1 sign
-pattern of length ≤ 32 occurs in λ, N_31 = 43,901,697,682 and
-N_32 = 99,494,377,311 (CERTIFIED by exhibition; each completing window
-re-verified by pure-Python trial division, along with 10 and 12 further
-endgame windows). New instrument: the *first-occurrence spectrum* scores all
-2^k patterns against Conway's exact waiting time A(w) rather than reporting
-only the maximum; at k = 24 λ's mean R = 1.000123 against 32 i.i.d. fair-coin
+pattern of length ≤ 33 occurs in λ: N_31 = 43,901,697,682,
+N_32 = 99,494,377,311, N_33 = 196,202,853,829 (CERTIFIED by exhibition; each
+completing window re-verified by pure-Python trial division, along with 10, 12
+and 12 further endgame windows). New instrument: the *first-occurrence
+spectrum* scores all 2^k patterns against Conway's exact waiting time A(w)
+rather than reporting only the maximum; at k = 24 λ's mean R = 1.000123 against 32 i.i.d. fair-coin
 controls at 0.999953 ± 0.000319, i.e. **+0.53 control-σ**, with the
 popcount slope accounted for by λ's own one-point bias (residual −0.56σ)
 (NUMERICAL). See NOTE §11, WRITEUP session 2.
@@ -91,18 +91,22 @@ python3 verify_coverage.py small 200000              # N_k, k<=14, trial divisio
                                                      # 8 min, reproduces k=25..30
 ./lambda_coverage 2.4e11 31,32,33 /tmp/m --threads 4 --endgame 256
                                                      # the long run; see below
-python3 verify_coverage.py window 32 99494377311 2930773200
+python3 verify_coverage.py window 33 196202853829 3712643644
+python3 verify_coverage.py endgame data/endgame_3133.txt 12
 python3 coverage_model.py
 ```
 
 Long-run cost, this session's machine (4 cores, 15 GB, no other load): the
-k = 31,32,33 run reached N_31 at 1718 s, N_32 at 3774 s; steady state is about
-390 s per 10^10 values of n, split roughly 1:3 between the sieve and the
-bitmap probes. Peak RSS ≈ 2.5 GB (bitmaps 256 MB + 512 MB + 1 GB).
+k = 31,32,33 run reached N_31 at 1718 s, N_32 at 3774 s and N_33 at 7387 s
+(total 7387 s wall: sieve 1701 s, bitmap probes 5677 s); steady state is about
+390 s per 10^10 values of n. Peak RSS ≈ 2.5 GB (bitmaps 256 MB + 512 MB + 1 GB).
 
 Data: `data/*_grid.csv` (certified integer columns + float64 harmonic
 columns; committed as .gz, all < 7 MB), `data/*_coverage*.csv`,
-`data/*_meta.json` (runtimes/machine). `data/fineA_firstocc.npz` (exact
+`data/*_meta.json` (runtimes/machine). Session 2: `data/coverage_3133.csv`
+(N_31..N_33), `data/endgame_3133.txt` (the last 256 completions per k, each an
+independently checkable exhibition), `data/coverage_3133.log`,
+`data/repro_k25_30.csv`, `data/firstocc_k24_*`. `data/fineA_firstocc.npz` (exact
 first-occurrence index of every sign pattern, k ≤ 24; 135 MB) exceeds the
 repo's ~10 MB limit → destined for Zenodo, kept locally meanwhile. Documents: NOTE.md (paper-shaped), WRITEUP.md (lab
 notebook), PREDICTIONS.md / VERDICTS.md (out-of-sample protocol).

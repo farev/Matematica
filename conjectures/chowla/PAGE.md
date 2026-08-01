@@ -5,21 +5,23 @@ update, not a rebuild.** See §5 for exactly what changed.
 
 ## 1. Headline claim
 
-**CERTIFIED** — every one of the 4,294,967,296 possible ±1 sign patterns of
-length 32 occurs in the Liouville function below 10^11, the last one appearing
-at n = 99,494,377,311; and the length-24 window statistics of λ are
+**CERTIFIED** — every one of the 8,589,934,592 possible ±1 sign patterns of
+length 33 occurs in the Liouville function below 2·10^11, the last one
+appearing at n = 196,202,853,829; and the length-24 window statistics of λ are
 indistinguishable from a fair coin at a resolution of 3·10⁻⁴, measured against
 32 control streams.
 
 ## 2. Contributions
 
 1. **CERTIFIED.** Coverage extended past the previous record of k = 30:
-   N_31 = 43,901,697,682 (last pattern code 1,784,492,180) and
-   N_32 = 99,494,377,311 (code 2,930,773,200). N_k is the smallest window
+   N_31 = 43,901,697,682 (last pattern code 1,784,492,180),
+   N_32 = 99,494,377,311 (code 2,930,773,200) and
+   N_33 = 196,202,853,829 (code 3,712,643,644). N_k is the smallest window
    *start* index by which every one of the 2^k patterns of length k has
-   occurred. Certified by exhibition: both completing windows were re-verified
-   by pure-Python trial division, independent of the sieve, along with 10 and
-   12 further endgame windows.
+   occurred. Certified by exhibition: all three completing windows were
+   re-verified by pure-Python trial division, independent of the sieve, along
+   with 10, 12 and 12 further endgame windows. One run: 4 cores, 7387 s,
+   peak RSS 2.5 GB.
 2. **CERTIFIED.** A clean-room reproduction of every previously published
    coverage value. A C implementation sharing no code with the original NumPy
    pipeline reproduces all thirty values of N_k *and* all thirty
@@ -43,23 +45,26 @@ indistinguishable from a fair coin at a resolution of 3·10⁻⁴, measured agai
    L(10⁷)/10⁷, so λ's value is exactly what its known negative bias predicts;
    the residual is −0.56σ. Nothing anomalous survives.
 5. **NUMERICAL.** Read as a Gumbel variate rather than a ratio, every coverage
-   record from k = 16 to 32 sits within 2.9 standard deviations of the
-   coupon-collector law, mean z = +0.4. The self-overlap correction that a
-   careful reader would worry about (constant words wait twice as long) is
-   bounded below 1% for k ≥ 28 — see `coverage_model.py`.
+   record from k = 16 to 33 sits within 2.9 standard deviations of the
+   coupon-collector law, mean z = +0.4. Along the way the unseen-pattern count
+   tracked the model 2^k·e^{−x/2^k} to three significant figures: at x = 10^11
+   the k = 33 tracker had 75,925 patterns left against a predicted 75,600.
+   The self-overlap correction that a careful reader would worry about
+   (constant words wait twice as long) is
+   bounded below 0.3% at k = 32 and 33 — see `coverage_model.py`.
 
 ## 3. Figures
 
 **Fig 1 — coverage against the coupon-collector law.**
 Data: `data/fineA_coverage.csv`, `data/coverage_ext.csv`,
-`data/coverage_2830.csv`, `data/coverage_3133.csv` (columns k, N_k), curve from
-`coverage_model.py` (m·H_m with m = 2^k). Log y-axis, k on x.
+`data/coverage_2830.csv`, `data/coverage_3133.csv` (columns k, N_k; k runs to
+33), curve from `coverage_model.py` (m·H_m with m = 2^k). Log y-axis, k on x.
 *Sentence:* "The number of Liouville values you must read before every ±1
 pattern of length k has appeared follows the pure coupon-collector law, with no
-drift, through thirty-two doublings."
+drift, through thirty-three doublings."
 
 **Fig 2 — each record's deviation from the law.**
-Data: the `gumbel_z` column of `python3 coverage_model.py`, k = 16..32.
+Data: the `gumbel_z` column of `python3 coverage_model.py`, k = 16..33.
 Bar chart around zero with a ±1 band. (Restrict to k ≥ 16; below that the
 asymptotic model is not meaningful and would mislead.)
 *Sentence:* "No coverage record is an outlier — the newest ones least of all."
@@ -115,11 +120,12 @@ be glad to have.
   it must keep whatever hedge it already carries, and should not be
   strengthened.
 - Runtime, for the reproducibility line: 4 cores, 15 GB, ~390 s per 10^10
-  values of n; N_31 at 1718 s, N_32 at 3774 s; peak RSS ≈ 2.5 GB.
+  values of n; N_31 at 1718 s, N_32 at 3774 s, N_33 at 7387 s; peak RSS
+  ≈ 2.5 GB.
 
 ## 5. What changed since the existing page
 
-- Coverage headline moves from **k ≤ 30** to **k ≤ 32**; two new rows in
+- Coverage headline moves from **k ≤ 30** to **k ≤ 33**; three new rows in
   whatever table carries N_k, and the "every pattern of length ≤ 30" sentence
   needs its number bumped in both prose and figure captions.
 - Everything in §2 items 2–5 is new and has no counterpart on the current page.

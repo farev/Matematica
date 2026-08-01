@@ -27,3 +27,8 @@ paper/**/*.toc
 *.npy
 *.npz
 *.pkl
+
+# chowla session-2 C tools: build from source, do not commit -march=native binaries
+conjectures/chowla/lambda_coverage
+conjectures/chowla/lambda_coverage_v*
+conjectures/chowla/firstocc_stats

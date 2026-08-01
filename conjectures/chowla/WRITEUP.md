@@ -259,6 +259,21 @@ parser silently dropped list entries past the sixteenth, so k = 24 vanished from
 a validation run without any error. Caught because a number that should have
 been printed was not.
 
+## The long run
+
+One run, k = 31, 32 and 33 tracked simultaneously against a single λ stream,
+4 cores, 7387 s wall: N_31 = 43 901 697 682 at 1718 s, N_32 = 99 494 377 311 at
+3774 s, N_33 = 196 202 853 829 at 7387 s. Three quarters of the time is the
+bitmap probes, not the sieve — a 2^33-bit table is 1 GB and every value of n
+costs one essentially random write into it.
+
+The unseen counts tracked the coupon-collector prediction 2^k·exp(−x/2^k) to
+three significant figures the whole way down: at x = 10^11 the k = 33 tracker
+had 75 925 patterns left against a predicted 75 600, and at x = 1.2·10^11,
+7400 against 7390. That agreement is the reason the run could be sized in
+advance, and it is also, in miniature, the entire content of the coverage
+results — λ does what a fair coin does, and knowing that buys nothing.
+
 ## The first-occurrence spectrum, and a control that earned its keep
 
 The coverage census records only N_k, the last pattern to show up. The

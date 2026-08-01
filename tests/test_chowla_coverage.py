@@ -121,3 +121,4 @@ def test_coverage_model_runs_and_reads_the_new_terms():
     assert out.returncode == 0, out.stderr
     assert "43901697682" in out.stdout      # N_31
     assert "99494377311" in out.stdout      # N_32
+    assert "196202853829" in out.stdout     # N_33

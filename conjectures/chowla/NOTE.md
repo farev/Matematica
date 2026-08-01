@@ -439,6 +439,47 @@ together with L(10^j) for j = 1..8 (0, −2, −14, −94, −288, −530, −84
 and N_k for k = 1..14 independently from pure-Python trial division. The
 reproduction is recorded in `data/repro_k25_30.csv`.
 
+### 11.1b Coverage extended to k = 33 (CERTIFIED by exhibition)
+
+Every one of the 2^33 = 8 589 934 592 sign patterns of length 33 occurs in λ
+below 2·10^11:
+
+| k | N_k | last-completing code | N_k / m·H_m | Gumbel z |
+|---|---|---|---|---|
+| 31 | 43 901 697 682 | 1 784 492 180 | 0.9265 | −1.26 |
+| 32 | 99 494 377 311 | 2 930 773 200 | 1.0179 | +0.32 |
+| 33 | 196 202 853 829 | 3 712 643 644 | 0.9740 | −0.48 |
+
+Certification is by exhibition, with the same caveat as §10: the completing
+window is exhibited, and minimality — that the pattern occurs nowhere earlier —
+has no compact witness and rests on the exhaustive scan. Each of the three
+completing windows was recomputed by pure-Python trial division
+(`verify_coverage.py window`), as were the last 12, 12 and 10 windows to
+complete at each k; `data/endgame_3133.txt` ships the last 256 completions per
+k, every one of which is an independently checkable exhibition.
+
+The `Gumbel z` column is (N_k/2^k − ln 2^k − γ)/(π/√6), the coupon-collector
+reading of N_k; the model gives it mean 0 and sd 1. Over k = 16..33 the mean z
+is +0.4 with no trend, though the values are not independent (the length-k and
+length-(k+1) windows share the same stream). Reading N_k as a ratio to m·H_m
+instead, as §10 did, understates the fluctuation at large k, since the same
+absolute Gumbel spread is divided by a model that grows like k.
+
+One correction a referee should ask about, and its size. Overlapping windows do
+not behave like uniform coupon draws: the fair-coin waiting time for a word w
+is Conway's A(w) (§11.2), which reaches 2^{k+1}−2 for a constant word, so the
+periodic words might be expected to dominate N_k. They do not.
+A(w) ≥ (1+ε)2^k forces an overlap at j ≥ k + log₂ε, hence a period
+p ≤ −log₂ε, and there are fewer than 2^{p+1} such words; each is an exponential
+of mean at most 2^{k+1}, so the chance that any is unseen at the collector
+scale is at most 2^{p+1}·exp(−(k ln 2 + γ)/2). For ε = 0.01 that is 2.9·10^−3
+at k = 32 and 2.1·10^−3 at k = 33, so the plain coupon collector is the right
+model here to well under a percent (`coverage_model.py`).
+
+Cost: one run, 4 cores, 15 GB, 7387 s wall (sieve 1701 s, window/bitmap probes
+5677 s), peak RSS ≈ 2.5 GB; N_31 at 1718 s, N_32 at 3774 s. Log:
+`data/coverage_3133.log`.
+
 ### 11.2 The first-occurrence spectrum and Conway's leading number (NUMERICAL)
 
 The coverage census reports one order statistic, N_k = max_w s(w), where s(w)
