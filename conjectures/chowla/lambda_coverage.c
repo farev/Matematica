@@ -96,9 +96,15 @@ static inline u64 sm64(u64 x) {
     return x ^ (x >> 31);
 }
 
+/* NOTE.  An earlier version used sm64((L+i) ^ seed).  That is wrong as a
+ * control: for small seeds, n ^ seed only permutes n inside a short block, so
+ * different seeds produce streams with *identical* bit multisets -- every seed
+ * gave L(10^8) = +16362 to within 2.  The seed is now pushed through the mixer
+ * first and added, which decorrelates the streams properly. */
 static void prng_block(u64 L, u64 len, u8 *par, u64 seed) {
+    u64 base = sm64(seed * 0x9E3779B97F4A7C15ULL + 0xD1B54A32D192ED03ULL);
     for (u64 i = 0; i < len; i++)
-        par[i] = (u8)(sm64((L + i) ^ seed) >> 63);
+        par[i] = (u8)(sm64(base + L + i) >> 63);
 }
 
 /* ------------------------------------------------------------ small primes */
