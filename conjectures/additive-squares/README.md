@@ -89,8 +89,12 @@ integer arithmetic; there is no floating point in any critical path.
 - Rows in `data/sweep4_c18.csv` with `exact=0` are **budget-limited lower
   bounds**. The depth reached is an artifact of the node budget and is not a
   measurement of `L(A)`; it must not be read as growth data.
-- Sharpest open thread: find a primitive relation `v` with `L(A_v) = ∞`, or show
-  the 3-term-AP class `(1,1,0)` is finite. See `NOTE.md` §8.
+- Sharpest open thread: close the tree for the 3-term-AP class `v = (1,1,0)`.
+  Two independent searches (budget-limited exhaustive: 440; randomised, seed 11,
+  depth cap 200,000: 437) agree to within three letters, so `L` there is very
+  likely finite and would be a **second** Freedman-type theorem. Meanwhile
+  `v = (2,1,0)` and `v = (2,2,1)` ran to the depth cap and look infinite. See
+  `NOTE.md` §8.
 
 ## Prior work
 

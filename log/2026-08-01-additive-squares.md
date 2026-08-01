@@ -101,10 +101,14 @@ Lietard–Rosenfeld's cube classification — where it would be cited.
 - *Theorem 4 is very likely folklore* and is presented as such; it is included
   because it calibrates the method, not as a contribution.
 
-**Next.** Settle whether some relation class has L(A_v) = ∞ — two classes,
-v = (2,1,0) and v = (2,2,1), reached the 3,000 depth cap without a square, so an
-infinite class very probably exists, and Rao–Rosenfeld's ℤ² result says it
-should. Knowing *which* relations are infinite is what decides
+**Next.** Close the tree for the 3-term-AP class v = (1,1,0). An independent
+randomised probe (seed 11, depth cap 200,000) plateaued at 437 against the
+sweep's 440 — two searches with different seeds and a 66× larger cap agreeing to
+within three letters, which is what a finite L looks like from below. That makes
+(1,1,0) the best candidate for a **second** Freedman-type theorem, and it is a
+concrete computation, not a hope. By contrast v = (2,1,0) and v = (2,2,1) ran
+straight to the depth cap, which is what an infinite L looks like from below;
+Rao–Rosenfeld's ℤ² result says at least one infinite class should exist. Knowing *which* relations are infinite is what decides
 whether the Quotient Lemma can reach PVHH for four letters at all. Then: find a
 proof, rather than a 7.7-million-node tree closure, that (1,1,−1) forces
 finiteness — it would likely generalise. And from an unblocked network, verify

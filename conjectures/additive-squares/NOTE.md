@@ -373,6 +373,24 @@ a preprint.
    subset of $\mathbb{Z}^2$. Why $(1,1,-1)$ alone forces finiteness is the
    sharpest question the session leaves open; a proof of it, in place of a
    7.7-million-node tree closure, would likely generalise.
+
+   **The ten open classes are not alike, and the split is the useful part.**
+   A second, independent randomised-restart probe (seed 11, depth cap 200,000,
+   $4\times10^9$ nodes) separates them:
+
+   - $v = (1,1,0)$, the 3-term-AP class, **plateaus**: 440 from the exhaustive
+     budget-limited run, 437 from the independent randomised run. Two different
+     searches with different seeds and a 66× larger depth cap agree to within
+     three letters. That is what a *finite* $L$ looks like from below, and
+     $(1,1,0)$ is therefore the best candidate for a **second** Freedman-type
+     theorem. Closing its tree is the concrete next computation.
+   - $v = (2,1,0)$ and $v = (2,2,1)$ ran to the depth cap instead. That is what
+     an *infinite* $L$ looks like from below.
+
+   The distinction matters because it is the difference between "the Quotient
+   Lemma can reach PVHH for four letters" and "it cannot": if even one
+   admissible relation class has $L(A_v) = \infty$, alphabets whose only small
+   relations are of that type escape the method entirely.
 2. Since every four-element $A \subset \mathbb{Z}$ has $\Lambda(A)$ of rank 2,
    $A$ satisfies *some* primitive relation $v$. If $L(A_v) < \infty$ for
    **every** admissible $v$, PVHH would follow for four-letter integer
