@@ -93,8 +93,10 @@ sentence.
 - **`U(4,15)`, `U(4,31)`, `U(4,63)` are not certified** — no window-state cycle
   within `1.5·10⁹` steps.
 - Two independent implementations (Python/hash-table, C/Brent) agree on `E`, `P`
-  and `|R|` in all 32 rows; worth saying, since the whole result rests on the
-  verifier.
+  and `|R|` — but on **23 of the 32 rows only**. The other nine (including
+  `U(4,7)`) rest on the C verifier alone, because the Python one's memory use
+  grows with the period. Worth saying either way, since the whole result rests on
+  the verifier; do not claim all 32 are doubly checked.
 
 ## 5. Existing page
 

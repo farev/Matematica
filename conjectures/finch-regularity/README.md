@@ -55,7 +55,7 @@ for the session narrative including what failed.
 | `survey.c` | exact even-element landscape over a rectangle of `(a,b)` | 0.7 s for 4403 pairs at `N=10⁴` | `E(a,b)` patterns |
 | `evens.c` | exact even elements of one `U(a,b)` up to `N` | ~1 s at `N = 10⁶` | the exceptional family |
 | `certify.py` | certificate of Theorem 1; hash-table cycle detection | s–min | `data/certificates.csv` |
-| `verify_cert.c` | **independent** verifier: Brent cycle detection, O(1) memory, written from the theorem rather than ported | s–20 min | agrees with `certify.py` on `E`, `P`, `nR` in all 32 rows |
+| `verify_cert.c` | **independent** verifier: Brent cycle detection, O(1) memory, written from the theorem rather than ported | s–20 min | all 32 rows; agrees with `certify.py` on `E`, `P`, `nR` on the 23 both could reach |
 | `certsweep.py` | drives `certify.py` over a list of `b` | — | `cs*.jsonl` |
 
 Run from inside this directory:
@@ -101,6 +101,11 @@ accepting, the other shows it refusing a sequence whose even set was truncated.
 - The `(C)` residue check in `verify_cert.c` enumerates pairs from `R` and stops
   once every even class is covered; worst-case it is `O(|R|²)`. It has not been
   stress-tested on a case where the sumset genuinely fails to cover.
+- **Only 23 of the 32 certificates are doubly implemented.** `U(4,7)`,
+  `U(4,43)`, `U(8,11)`, `U(10,11)`, `U(10,17)`, `U(12,17)`, `U(14,15)`,
+  `U(16,17)` and `U(18,19)` rest on `verify_cert.c` alone — `certify.py`'s memory
+  use grows with the period and it could not reach them. Those nine rows carry
+  strictly less evidence than the other 23.
 
 ## Prior work
 

@@ -156,13 +156,21 @@ result CERTIFIED, and we do not describe the computation itself as a proof.
 
 ## 4. Certified sequences
 
-Every row below was produced twice, by two independently written programs: a
-Python implementation (`certify.py`, hash-table cycle detection) and a C
-implementation (`verify_cert.c`, Brent cycle detection, O(1) memory, written
-from the statement of Theorem 1 rather than ported). **The two agree on `E`,
-`P` and `|R|` in every row.** `X₁` may differ between them — the C version finds
-the least valid `X₁` — which is harmless, since any valid `X₁` proves the
-theorem.
+Two independently written programs implement Theorem 1: a Python one
+(`certify.py`, hash-table cycle detection) and a C one (`verify_cert.c`, Brent
+cycle detection, O(1) memory, written from the statement of the theorem rather
+than ported).
+
+All **32** rows were produced by the C verifier. **23 of the 32 were also
+produced independently by the Python certifier, and on those 23 the two agree on
+`E`, `P` and `|R|` exactly.** (`X₁` may legitimately differ when the two start
+their search at different points; any valid `X₁` proves the theorem, and on the
+long-transient rows such as `U(10,13)` and `U(12,13)` the two agree on `X₁` too.)
+The remaining **9 rows — `U(4,7)`, `U(4,43)`, `U(8,11)`, `U(10,11)`, `U(10,17)`,
+`U(12,17)`, `U(14,15)`, `U(16,17)`, `U(18,19)` — rest on the C verifier alone**,
+because the Python implementation's memory use is proportional to the period and
+it could not reach them. That is a real asymmetry in the evidence and is flagged
+as a defect in the README.
 
 Full table: [`data/certificates.csv`](data/certificates.csv). Summary:
 
