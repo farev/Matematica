@@ -46,7 +46,7 @@ indistinguishable from a fair coin at a resolution of 3·10⁻⁴, measured agai
    the residual is −0.56σ. Nothing anomalous survives.
 5. **NUMERICAL.** Read as a Gumbel variate rather than a ratio, every coverage
    record from k = 16 to 33 sits within 2.9 standard deviations of the
-   coupon-collector law, mean z = +0.4. Along the way the unseen-pattern count
+   coupon-collector law, mean z = +0.24. Along the way the unseen-pattern count
    tracked the model 2^k·e^{−x/2^k} to three significant figures: at x = 10^11
    the k = 33 tracker had 75,925 patterns left against a predicted 75,600.
    The self-overlap correction that a careful reader would worry about

@@ -460,7 +460,8 @@ k, every one of which is an independently checkable exhibition.
 
 The `Gumbel z` column is (N_k/2^k − ln 2^k − γ)/(π/√6), the coupon-collector
 reading of N_k; the model gives it mean 0 and sd 1. Over k = 16..33 the mean z
-is +0.4 with no trend, though the values are not independent (the length-k and
+is +0.24 with no significant trend (least-squares slope −0.02 per unit k),
+though the values are not independent (the length-k and
 length-(k+1) windows share the same stream). Reading N_k as a ratio to m·H_m
 instead, as §10 did, understates the fluctuation at large k, since the same
 absolute Gumbel spread is divided by a model that grows like k.
