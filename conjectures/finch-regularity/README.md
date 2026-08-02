@@ -90,8 +90,10 @@ accepting, the other shows it refusing a sequence whose even set was truncated.
   the next session. `oeis.org/FinchSadd.html` is Finch's own table of cases and
   periods and is the single most important page to read: Conjecture A and the
   period law may already be there.
-- `U(4,15)`, `U(4,31)`, `U(4,63)` are **not** certified — no window-state cycle
-  was found within the step budget. Their windows are `~4b²` wide.
+- `U(4,15)`, `U(4,31)`, `U(4,63)` are **not** certified. For `U(4,15)` and
+  `U(4,31)`, Brent's algorithm closed no cycle within `1.5·10⁹` automaton steps,
+  so `max(preperiod, period) > 1.5·10⁹` for both — against periods in the
+  thousands for neighbouring `b`. Their windows are `~4b²` bits wide.
 - Conjecture A (fourth even element iff `b = 2^k−1`) and Conjecture B (the
   period law) are unproved. They are patterns over a tested range, not theorems.
 - The certificate is per-pair. It gives no uniform statement in `b`, which is

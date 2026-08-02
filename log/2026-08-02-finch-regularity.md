@@ -120,9 +120,11 @@ residue class Cassaigne–Finch left out.
 - *Hash-table cycle detection.* Storing every window state costs memory
   proportional to the period and could not reach `U(4,7)` (`P = 11,301,098`).
   Replaced by Brent's algorithm, O(1) memory, which certified it.
-- *`U(4,15)`, `U(4,31)`, `U(4,63)` not certified.* No window-state cycle found
-  within the step budget; windows are `~4b²` bits wide. Unknown whether the
-  periods are enormous or the transients merely long — `U(4,35)` has
+- *`U(4,15)`, `U(4,31)`, `U(4,63)` not certified.* For `U(4,15)` and `U(4,31)`
+  Brent's algorithm closed no cycle within `1.5·10⁹` automaton steps, so
+  `max(preperiod, period) > 1.5·10⁹` for both — against periods in the thousands
+  for neighbouring `b`. Windows are `~4b²` bits wide. Still unknown whether the
+  periods are enormous or the transients merely long: `U(4,35)` has
   `X₁ = 1,666,723` with period only 5326, so long transients do occur.
 - *`U(20,21)` and several `b ≡ 3 (mod 4)` cases* hit the memory cap on `B` or
   the Brent step cap. Resource limits, not obstructions.
@@ -141,5 +143,5 @@ actual prize. Second, and cheap the moment there is a network: read
 `oeis.org/FinchSadd.html` — Finch's own table of cases, periods and fundamental
 differences — since Conjecture A and the period law may already be sitting
 there, and verify the four secondary citations. Third: certify `U(4,15)` and
-`U(4,31)` by finding their cycles with a larger step budget, which would say
-whether the exceptional family's periods grow like `b²` or far faster.
+`U(4,31)`, whose cycles survived `1.5·10⁹` steps unclosed — settling whether the
+exceptional family's periods grow like `b²` or far faster.

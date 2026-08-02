@@ -314,8 +314,11 @@ in Finch's tables (`oeis.org/FinchSadd.html`, unreachable). Treat both as
    which is some **5000×** the fundamental difference of any neighbouring
    `U(4,b)` with `b ≤ 49`. So the exceptional family is quantitatively as well
    as structurally different, and the certificate confirms its even set exactly.
-   `U(4,15)`, `U(4,31)` and `U(4,63)` remain uncertified — no window-state cycle
-   was found within the step budget of this session.
+   `U(4,15)` and `U(4,31)` remain uncertified, and sharply so: Brent's algorithm
+   closed **no** cycle within `1.5·10⁹` automaton steps, so for each of them
+   `max(preperiod, period) > 1.5·10⁹` — against periods in the *thousands* for
+   neighbouring `b`. `U(4,63)` likewise found no cycle. Whether the exceptional
+   periods grow like `b²`, like `2^b`, or not at all is open.
 4. Is the converse of Finch's criterion true — does regular imply finitely many
    even elements? Every source found states only the forward direction.
 5. Extend to `a = 12, 14, 16, …` and to the conjectured class `a` odd `≥ 7`,
