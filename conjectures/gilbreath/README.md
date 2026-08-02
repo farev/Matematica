@@ -17,7 +17,7 @@ but everything below suggests it is really a theorem about prime-gap statistics
 plus a lucky seed — and pieces of it are provable by elementary means today.
 
 **Status:** active
-**Sessions:** [2026-07-28](../../log/2026-07-28-gilbreath.md), [2026-07-29](../../log/2026-07-29-gilbreath.md)
+**Sessions:** [2026-07-28](../../log/2026-07-28-gilbreath.md), [2026-07-29](../../log/2026-07-29-gilbreath.md), [2026-07-29 (R3)](../../log/2026-07-29-gilbreath-r3.md)
 **Write-up page:** [fabianarevalo.com/gilbreath](https://fabianarevalo.com/gilbreath)
 
 ## Results
@@ -35,7 +35,14 @@ plus a lucky seed — and pieces of it are provable by elementary means today.
 | Dichotomy for depth-2 blocks (Lemma M13): every odd prime factor of the second-difference parameter `w` either caps the block at `q−1` primes or imprisons it in a residue class mod `q`; long escapees have `w = 2^s` with forced gap alternation mod `2^{s+1}`. Verified on 388,068 blocks < 10⁹, zero violations, threshold saturated exactly 922 times. Kernel principle: all surviving enemies are 2-adic or same-class-run-shielded — provably beyond covering and density methods | **PROVED** | [MICROSCOPE.md](MICROSCOPE.md) §8 |
 | Theorem R1: Cramér + residual pattern axiom P (strictly narrower than CHT's hypotheses, by the lenses) ⇒ Gilbreath for all but finitely many rows | **PROVED** (reduction) | [REDUCTION.md](REDUCTION.md) §2 |
 | Theorem R2: a sequence with all fixed-order Cramér gap statistics (perturbed by `O_k(loglog x)`) whose Gilbreath leads fail infinitely often — so **no fixed-order statistical axiom system implies eventual Gilbreath**; plants verified to derail at exactly row `m−1` | **PROVED** | [REDUCTION.md](REDUCTION.md) §3, `reduction_check.py` |
-| Open Problem R3: fixed-order statistics + `o(n)` entries ⇒ eventual Gilbreath? Plants provably fail there; extended highways leave fixed-order fingerprints — the program's sharpest question | open | [REDUCTION.md](REDUCTION.md) §3 |
+| Open Problem R3: fixed-order statistics + `o(n)` entries ⇒ eventual Gilbreath? Attacked 2026-07-29: reframed strong/weak, negative route exhausted, affirmative skeleton (S1)–(S3) identified | open | [R3.md](R3.md) |
+| Parity-transform package: erosion-path parity = `S·rev(y)`, lead parity = `S·y`, `S² = I`, `SσS = I+σ`, dyadic doubling; corridor systems always solvable with solution space = anchored `2^B`-periodic strings; deep parity rows vanish below depth `2^B` (nilpotency) | **PROVED** | [R3.md](R3.md) §1, `r3_identities.py` |
+| The brief's parity-steered corridor self-destructs: forced non-cooling to `{0,2}`, erosion 0.71/row (worse than the 0.56 i.i.d. control), the `V = 3·T_cool`-scale plant dies; but the periodic prefix alone derails leads at density 0.33–0.50 with `O(log x)` entries | **NUMERICAL** (mechanism PROVED) | [R3.md](R3.md) §2, `r3_corridor.py` |
+| Bounded-entry failure of Gilbreath: `a_n = 2·geometric` has a.s. infinitely many bad leads (via CHT Thm 1.2 + pairwise-independent lead parities at depths `2^j`), making CHT's "could very well be false" remark precise | **PROVED** | [R3.md](R3.md) §5, Prop. R3.4 |
+| Theorem R3.5: for every K, an independent sequence with bounded entries and model-quality window statistics to order K whose leads exceed 1 at positive density, so every finite-order axiom set fails with bounded entries, and CHT Thm 1.3's 2-separated axiom (ii) is necessary, invisibly to all fixed orders | construction + statistics **PROVED**; persistence **NUMERICAL** | [R3.md](R3.md) §5 |
+| Lemma R3.6 + Corollary R3.7 (lead-parity rigidity): lead parities vanishing beyond `s₀` force exact `2^⌈log₂ s₀⌉`-periodic top parities; hence all-orders weak statistics force odd leads infinitely often, eliminating the "leads eventually even" failure mode unconditionally | **PROVED** | [R3.md](R3.md) §7, `r3_identities.py` |
+| Theorems R3.9 + R3.10 (toward phase confinement): bulk-rooted heat in a generic strip dies below depth `O(ε⁻¹ D₀ log W)` (corollary of CHT Prop. 4.1 applied to interior cones), and `≤2`-valued transport crossing at speed above `v* ≈ 0.773` (root of `H(v) = v`) is exponentially suppressed; the single remaining gap is the slow-crossing renewal lemma (Open Lemma R3.11), whose finite-budget count already predicts the measured `Θ(1)` penetration | **PROVED** (reductions); R3.11 open | [R3.md](R3.md) §7 |
+| Cooling race: period-P parity structures survive as `{0,2}` phase iff `P ≲ P*(μ) ≍ μ^{0.84±0.04}`, and `P*` matches the directly measured cooling time within 20% (the race mechanism confirmed); front pinning: a `{0,2}` ocean cannot invade a cooled `{0,1}` strip at any tested entry scale (penetration ≤ 5 columns up to `μ = 4096`, interface value scale 2 independent of `μ`); the residual ballistic channel has range `≈ 2V` with erosion toll 1/2 per row, now PROVED conditionally (Lemma R3.8, pairwise-independent path parities); together these seal every corridor-type route to a negative R3 | **NUMERICAL** (R3.8 conditional PROVED) | [R3.md](R3.md) §3–4, `r3_boundary.py`, `r3_front.py` |
 | Microscope calibration: all dangerous micro-patterns in real primes to 10¹⁰ grow like `≤ 1.4·log x` (CPAP 6, alternating-parity runs 32, two-valued runs 10), 12+ orders below the `log¹⁰x` thresholds; alternation outpaces repetition (Lemke Oliver–Soundararajan bias) | **NUMERICAL** | `microscope_bench.py`, [MICROSCOPE.md](MICROSCOPE.md) §5 |
 
 Implication of the last row: the tentative `c_i ≍ 1/i` of Chase–Hunter–Tao
@@ -62,6 +69,20 @@ Run from inside this directory — they resolve data files by bare relative name
 | `experiments.py` | k\*(x) growth, defect decay, shuffled/i.i.d. gap models | defects decay ×0.936/row; shuffled gaps fail instantly |
 | `prefix_experiment.py` | how much authentic prime prefix is needed | seed threshold ≈ 16–32 gaps |
 | `meanfield.py` | branching statistics, parity-rigidity check | mean-field branching is exactly critical; Sierpiński period-4 modulation |
+
+### Part III — the R3 session (parity transforms, corridors, fronts)
+
+| file | what it does | headline result |
+|---|---|---|
+| `r3_common.py` | shared machinery: Sierpinski matrix, conditioned sampling, de Bruijn blocks, traces | — |
+| `r3_identities.py` | exact F₂ verification of the transform lemmas | all PASS |
+| `r3_corridor.py` | the attack brief's experiment 1, plus the alternating case | corridor self-destructs; periodic prefix alone derails leads |
+| `r3_hierarchical.py` | layered growing periods, replication law, stats vs i.i.d. control | replication exact; sealed at first generic band |
+| `r3_nested.py` | nested-block two-scale construction | dead beyond depth 66: the cooling race |
+| `r3_front.py` | `{0,2}` ocean vs cooled strip front measurement | front pinned, penetration ≤ 2 columns |
+| `r3_front2.py` | pinning stress test at `μ` up to 4096 | phase pinned at all `μ`; ballistic channel isolated (range `≈ 2.3μ`, toll 0.52/row) |
+| `r3_boundary.py` | (period, entry-scale) viability grid | phase boundary, coarse |
+| `r3_boundary_fit.py` | crossings, cooling times, deep persistence | `P* ≍ μ^{0.84±0.04} ≈ T_hot`; density stationary to 49k |
 
 ### Part II — the Chase–Hunter–Tao program (arXiv 2607.08712, July 2026)
 
@@ -109,9 +130,11 @@ Python 3 + NumPy, plus SciPy for `ck_exact.py`.
 
 - **`ck_analysis.py` reads `c6_exact.txt`, which does not exist.** The certified
   value lives in `c6_certified.txt`. Fix before relying on that script.
-- **The arXiv reference 2607.08712 has not been independently verified** to
-  resolve as cited. Everything in Part II rests on it. Check before this note
-  goes any further than the repository.
+- ~~The arXiv reference 2607.08712 has not been independently verified.~~
+  Resolved 2026-07-29 (R3 session): the paper exists as cited (Chase, Hunter,
+  Tao, "Gilbreath's conjecture: a Cramér random model and a deterministic
+  analysis", 28 pp., math.CO), and Thm 1.3, Lemma 3.10, and Remark 4.5 were
+  read verbatim from the PDF and match this repository's records.
 - Universality: does the submask law survive uniform initial data instead of
   exponential? If yes, it is a property of the iteration, not the distribution.
 - `q ≈ 0.685` and `α ≈ 0.798` are measured, not derived. Nothing yet explains

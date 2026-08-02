@@ -1,5 +1,13 @@
 # R3 attack brief
 
+**STATUS: executed 2026-07-29 (session part 5). Outcome in [R3.md](R3.md).**
+All four experiments were run in order. Experiment 1's corridor is always
+solvable (the linear algebra is a triangular involution) but self-destructs
+dynamically; the negative route died to the cooling race and front pinning,
+not to rank or statistics; Theorem R3.5 (every finite order insufficient
+with bounded entries) is what survived. This brief is kept as prepared, for
+the record.
+
 *Prepared 2026-07-29 at the close of the microscope/reduction session, to
 make the next session self-sufficient. Read REDUCTION.md §3 first for the
 statement of R2 and R3; MICROSCOPE.md for the lenses; CHT arXiv 2607.08712

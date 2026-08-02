@@ -1,0 +1,150 @@
+r3_boundary_fit.py — NUMERICAL — 2026-07-29 22:12:40
+
+========================================================================
+TASK 1 — boundary refinement (bad-lead density, depths [4P, 16P])
+span=16 here; the earlier coarse table (r3_boundary.py, r3_boundary2.log) used span=32, so absolute densities are not directly comparable to that table.
+base seeds [700, 701, 702, 703], extra seeds [704, 705, 706, 707] on the two straddling P values
+
+density table, mean +- std over seeds (* = 8 seeds on that cell, else 4):
+         P=8          P=16         P=32         P=64         P=128        P=256        P=512        P=1024       
+mu=8     0.508+-0.015  0.378+-0.038  0.230+-0.067  0.079+-0.061* 0.000+-0.000* 0.000+-0.000  0.000+-0.000  0.000+-0.000 
+mu=16    0.487+-0.026  0.481+-0.016  0.340+-0.066  0.266+-0.064  0.079+-0.077* 0.000+-0.000* 0.000+-0.000  0.000+-0.000 
+mu=32    0.485+-0.036  0.486+-0.033  0.501+-0.056  0.472+-0.085  0.357+-0.102  0.087+-0.105* 0.000+-0.000* 0.000+-0.000 
+mu=64    0.539+-0.050  0.491+-0.035  0.525+-0.026  0.433+-0.068  0.396+-0.044  0.209+-0.154* 0.031+-0.030* 0.000+-0.000 
+mu=128   0.526+-0.070  0.538+-0.045  0.508+-0.029  0.487+-0.041  0.412+-0.067  0.500+-0.198  0.156+-0.141* 0.010+-0.018*
+mu=256   0.634+-0.083  0.579+-0.102  0.527+-0.052  0.482+-0.016  0.487+-0.005  0.478+-0.037  0.327+-0.050  0.146+-0.082 
+mu=512   0.595+-0.131  0.588+-0.109  0.591+-0.056  0.547+-0.036  0.473+-0.011  0.440+-0.030  0.298+-0.080  0.280+-0.070 
+
+P*(mu): density crossing of 0.05, linear interpolation in log2(P)
+  mu=8     P* =     82.3   (interp between P=64 (0.079) and P=128 (0.000))
+  mu=16    P* =    164.9   (interp between P=128 (0.079) and P=256 (0.000))
+  mu=32    P* =    343.3   (interp between P=256 (0.087) and P=512 (0.000))
+  mu=64    P* =    475.9   (interp between P=256 (0.209) and P=512 (0.031))
+  mu=128   P* =    848.2   (interp between P=512 (0.156) and P=1024 (0.010))
+  mu=256   P* > 1024 (censored)
+  mu=512   P* > 1024 (censored)
+
+uncensored points used in the fit: [8, 16, 32, 64, 128]
+least squares  log P* = a + b log mu :
+  b = 0.8259 +- 0.0596 (standard error), a = 2.7902 (prefactor e^a = 16.28), RSS = 0.05116, n = 5
+
+competing laws (intercept fitted by least squares, slope fixed):
+  P* ~ mu^(2/3)    prefactor = 28.28, RSS = 0.17301
+      mu=8    residual (log units) = -0.3178
+      mu=16   residual (log units) = -0.0851
+      mu=32   residual (log units) = +0.1859
+      mu=64   residual (log units) = +0.0506
+      mu=128  residual (log units) = +0.1663
+  P* ~ mu/ln(mu)   prefactor = 29.57, RSS = 0.16725
+      mu=8    residual (log units) = -0.3235
+      mu=16   residual (log units) = -0.0341
+      mu=32   residual (log units) = +0.2290
+      mu=64   residual (log units) = +0.0449
+      mu=128  residual (log units) = +0.0837
+
+task 1 runtime: 11.6 s
+
+========================================================================
+TASK 2 — direct cooling time, pre-period band only
+P = 2^13 = 8192 (> N), N = 6000, hot fraction = frac(cells >= 2) in the
+current row; T_hot = first depth with hot fraction < 0.001 (censored at depth 5000); seeds [800, 801, 802]
+
+  mu=8    seed=800  T_hot = 92
+           hot-fraction profile: s=1:0.8388  s=2:0.7709  s=4:0.6708  s=8:0.4630  s=16:0.1860  s=32:0.0518  s=64:0.0066
+  mu=8    seed=801  T_hot = 100
+           hot-fraction profile: s=1:0.8361  s=2:0.7808  s=4:0.6536  s=8:0.4604  s=16:0.2069  s=32:0.0550  s=64:0.0084
+  mu=8    seed=802  T_hot = 108
+           hot-fraction profile: s=1:0.8343  s=2:0.7753  s=4:0.6835  s=8:0.4766  s=16:0.1972  s=32:0.0488  s=64:0.0089
+  mu=8     mean T_hot = 100.0  (per-seed [92, 100, 108])
+
+  mu=64   seed=800  T_hot = 424
+           hot-fraction profile: s=1:0.9787  s=2:0.9682  s=4:0.9451  s=8:0.8763  s=16:0.6477  s=32:0.3552  s=64:0.1813  s=128:0.0668  s=256:0.0158
+  mu=64   seed=801  T_hot = 344
+           hot-fraction profile: s=1:0.9763  s=2:0.9635  s=4:0.9445  s=8:0.8832  s=16:0.6705  s=32:0.3921  s=64:0.1764  s=128:0.0719  s=256:0.0075
+  mu=64   seed=802  T_hot = 538
+           hot-fraction profile: s=1:0.9783  s=2:0.9630  s=4:0.9546  s=8:0.8787  s=16:0.6651  s=32:0.3643  s=64:0.1776  s=128:0.0708  s=256:0.0223  s=512:0.0058
+  mu=64    mean T_hot = 435.3  (per-seed [424, 344, 538])
+
+  mu=512  seed=800  T_hot = 1328
+           hot-fraction profile: s=1:0.9982  s=2:0.9967  s=4:0.9932  s=8:0.9841  s=16:0.9328  s=32:0.7508  s=64:0.5017  s=128:0.3108  s=256:0.1562  s=512:0.0596  s=1024:0.0145
+  mu=512  seed=801  T_hot = 1220
+           hot-fraction profile: s=1:0.9975  s=2:0.9955  s=4:0.9932  s=8:0.9811  s=16:0.9347  s=32:0.7678  s=64:0.5199  s=128:0.2955  s=256:0.1349  s=512:0.0525  s=1024:0.0068
+  mu=512  seed=802  T_hot = 3668
+           hot-fraction profile: s=1:0.9977  s=2:0.9950  s=4:0.9928  s=8:0.9858  s=16:0.9428  s=32:0.7465  s=64:0.5120  s=128:0.2679  s=256:0.1177  s=512:0.0583  s=1024:0.0229  s=2048:0.0243
+  mu=512   mean T_hot = 2072.0  (per-seed [1328, 1220, 3668])
+
+T_hot vs P* comparison (race hypothesis: they track each other):
+  mu     T_hot      P*        P*/T_hot
+  8      100.0      82.3      0.823
+  64     435.3      475.9     1.093
+  512    2072.0     censored  n/a
+
+task 2 runtime: 0.1 s
+
+========================================================================
+TASK 3 — persistence: bad-lead density per window of 4096 depths
+top length N = 49152, lead trace to depth 49150, seeds [900, 901]
+
+  (P=8, mu=8) seed=900, overall density 0.5003
+    depths     1- 4096  (4096 leads)  density 0.5068
+    depths  4097- 8192  (4096 leads)  density 0.4941
+    depths  8193-12288  (4096 leads)  density 0.4924
+    depths 12289-16384  (4096 leads)  density 0.4866
+    depths 16385-20480  (4096 leads)  density 0.4978
+    depths 20481-24576  (4096 leads)  density 0.5103
+    depths 24577-28672  (4096 leads)  density 0.5012
+    depths 28673-32768  (4096 leads)  density 0.5024
+    depths 32769-36864  (4096 leads)  density 0.4946
+    depths 36865-40960  (4096 leads)  density 0.5112
+    depths 40961-45056  (4096 leads)  density 0.4978
+    depths 45057-49150  (4094 leads)  density 0.5078
+    first-half mean 0.4980, second-half mean 0.5025, trend slope +0.00077 per window
+
+  (P=8, mu=8) seed=901, overall density 0.5001
+    depths     1- 4096  (4096 leads)  density 0.4995
+    depths  4097- 8192  (4096 leads)  density 0.4775
+    depths  8193-12288  (4096 leads)  density 0.5100
+    depths 12289-16384  (4096 leads)  density 0.4917
+    depths 16385-20480  (4096 leads)  density 0.5117
+    depths 20481-24576  (4096 leads)  density 0.5054
+    depths 24577-28672  (4096 leads)  density 0.4980
+    depths 28673-32768  (4096 leads)  density 0.4995
+    depths 32769-36864  (4096 leads)  density 0.4932
+    depths 36865-40960  (4096 leads)  density 0.5205
+    depths 40961-45056  (4096 leads)  density 0.4983
+    depths 45057-49150  (4094 leads)  density 0.4963
+    first-half mean 0.4993, second-half mean 0.5010, trend slope +0.00066 per window
+
+  (P=32, mu=8) seed=900, overall density 0.4649
+    depths     1- 4096  (4096 leads)  density 0.3562
+    depths  4097- 8192  (4096 leads)  density 0.4021
+    depths  8193-12288  (4096 leads)  density 0.5076
+    depths 12289-16384  (4096 leads)  density 0.5020
+    depths 16385-20480  (4096 leads)  density 0.4485
+    depths 20481-24576  (4096 leads)  density 0.4578
+    depths 24577-28672  (4096 leads)  density 0.5039
+    depths 28673-32768  (4096 leads)  density 0.4963
+    depths 32769-36864  (4096 leads)  density 0.4434
+    depths 36865-40960  (4096 leads)  density 0.4612
+    depths 40961-45056  (4096 leads)  density 0.4963
+    depths 45057-49150  (4094 leads)  density 0.5039
+    first-half mean 0.4457, second-half mean 0.4842, trend slope +0.00715 per window
+
+  (P=32, mu=8) seed=901, overall density 0.4952
+    depths     1- 4096  (4096 leads)  density 0.5142
+    depths  4097- 8192  (4096 leads)  density 0.4902
+    depths  8193-12288  (4096 leads)  density 0.5078
+    depths 12289-16384  (4096 leads)  density 0.4702
+    depths 16385-20480  (4096 leads)  density 0.4968
+    depths 20481-24576  (4096 leads)  density 0.4939
+    depths 24577-28672  (4096 leads)  density 0.5000
+    depths 28673-32768  (4096 leads)  density 0.5042
+    depths 32769-36864  (4096 leads)  density 0.4929
+    depths 36865-40960  (4096 leads)  density 0.4963
+    depths 40961-45056  (4096 leads)  density 0.4968
+    depths 45057-49150  (4094 leads)  density 0.4790
+    first-half mean 0.4955, second-half mean 0.4949, trend slope -0.00093 per window
+
+task 3 runtime: 6.1 s
+
+total runtime: 17.8 s

@@ -1,0 +1,3 @@
+nodes=76391112 secs=1.035 RESULT exact L=62   <- 0,2,3,4
+nodes=1198387276 secs=18.189 RESULT exact L=86   <- 0,1,2,5
+nodes=937940596 secs=13.910 RESULT exact L=88   <- 0,1,3,5

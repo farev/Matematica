@@ -1,0 +1,12 @@
+{
+ "xmax": 1000000,
+ "seg": 10000,
+ "workers": 1,
+ "kmax": 12,
+ "numpy": "2.3.5",
+ "python": "3.12.6",
+ "started": "2026-07-29 10:56:02",
+ "machine": "Apple M3 Pro 12c 36GB",
+ "finished": "2026-07-29 10:56:02",
+ "seconds": 0.1
+}

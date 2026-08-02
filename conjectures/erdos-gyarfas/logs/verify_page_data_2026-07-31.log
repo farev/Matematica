@@ -1,0 +1,30 @@
+# verify_page_data.py run 2026-07-31 12:31 PDT
+# host: Darwin 25.3.0; networkx 3.5
+== drawn graph (from note_artifact.html arrays) ==
+n = 24 m = 36
+degrees: {3} connected: True
+cycle counts C4/C8/C16: {4: 0, 8: 0, 16: 228}
+triangles: 7 edges on triangles: 21
+C16 highlight is a single 16-cycle; order: [16, 11, 9, 0, 2, 7, 1, 19, 8, 6, 12, 5, 21, 4, 18, 20]
+planar: True
+
+== n=24 census file ==
+graph 0: girth=3 triangles=3 C16=330 planar=False
+graph 1: girth=3 triangles=4 C16=315 planar=False
+graph 2: girth=3 triangles=6 C16=207 planar=False
+graph 3: girth=3 triangles=7 C16=228 planar=True
+C16 multiset: [207, 228, 315, 330]  min: 207
+
+drawn graph iso to planar census graph: True
+annealer candidate iso to planar census graph: True
+
+== data/record_c48free_n56_c16_56.g6 ==
+n = 56 cycle counts C4/C8/C16: {4: 0, 8: 0, 16: 56}
+girth: 3 triangles: 16
+
+== data/record_c48free_n58_c16_37.g6 ==
+n = 58 cycle counts C4/C8/C16: {4: 0, 8: 0, 16: 37}
+girth: 3 triangles: 17
+
+ALL CHECKS PASSED
+# exit: 0

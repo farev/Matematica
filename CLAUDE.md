@@ -67,6 +67,39 @@ top-level README and from the conjecture README header. The `research-page`
 skill builds these. The repository is the code and certificates; the page is
 the readable version, plain-language explanation first.
 
+## Cloud sessions and the page pipeline
+
+Research sessions may run in a cloud sandbox. The sandbox has this repository
+and CPU, and nothing else: no site source, no deploy credentials, no browser.
+The division of labour is strict.
+
+**Cloud sessions do the mathematics and never build the page.** Do not write,
+style, or publish site HTML from a cloud session; an improvised page in the
+wrong style is wasted work (it happened once: `note_artifact.html`). The page
+is built afterwards, locally, by the `research-page` skill on the machine that
+has the site source, the Vercel login, and a browser to verify in.
+
+**The handoff is `conjectures/<name>/PAGE.md`.** Write it only when the
+session's strongest result would change the conjecture's row in the top-level
+README (new page or an update to an existing one). It contains, in order:
+
+1. The headline claim in one sentence, with its label
+   (PROVED / CERTIFIED / NUMERICAL).
+2. The contributions as a numbered list with the actual numbers in them,
+   each labelled.
+3. Figure specs: for each proposed figure, the data (file paths inside the
+   conjecture directory) and the one sentence a reader should be able to say
+   after looking at it. No sentence, no figure.
+4. Caveats the page must carry: every secondary-sourced citation, every
+   fitted range, every claim a referee would poke.
+5. If a page already exists for this conjecture: what changed since it was
+   written, so the local session updates instead of rebuilding.
+
+No page-worthy result means no PAGE.md: log the session per the daily-log
+format and stop. "Nothing" days must not produce pages. The local publish
+pass deletes PAGE.md once the page is live, so a lingering PAGE.md always
+means work is pending.
+
 ## Per-conjecture documents
 
 - `README.md` — one screen. Statement, current status, table of scripts and

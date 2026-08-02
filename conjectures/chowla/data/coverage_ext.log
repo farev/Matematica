@@ -1,0 +1,18 @@
+  at x=2.00e+07 missing: k25:18491353 k26:49815761 k27:115637963
+  at x=2.20e+08 missing: k25:47408 k26:2525316 k27:26054050
+  at x=4.20e+08 missing: k25:127 k26:128204 k27:5869716
+  at x=6.20e+08 missing: k25:2 k26:6481 k27:1321736
+k=25: N_k = 722808938  last pattern code = 26348627  (270s)
+  at x=8.20e+08 missing: k26:327 k27:297043
+  at x=1.02e+09 missing: k26:15 k27:66923
+  at x=1.22e+09 missing: k26:2 k27:15194
+k=26: N_k = 1312765349  last pattern code = 4920495  (513s)
+  at x=1.42e+09 missing: k27:3504
+  at x=1.62e+09 missing: k27:804
+  at x=1.82e+09 missing: k27:183
+  at x=2.02e+09 missing: k27:37
+  at x=2.22e+09 missing: k27:8
+  at x=2.42e+09 missing: k27:4
+  at x=2.62e+09 missing: k27:2
+k=27: N_k = 2794709788  last pattern code = 14381799  (978s)
+done 977.6 s

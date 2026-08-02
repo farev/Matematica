@@ -1,0 +1,311 @@
+<title>Hunting the Erdős–Gyárfás counterexample</title>
+<style>
+  :root {
+    --paper: #fafbfc;
+    --ink: #1c232b;
+    --ink-soft: #4a555f;
+    --ink-faint: #8b959e;
+    --accent: #2d5f8a;
+    --accent-soft: #dce8f2;
+    --good: #2e7d4f;
+    --good-soft: #e3f0e8;
+    --warn: #a3612a;
+    --warn-soft: #f4e8da;
+    --rule: #d8dee4;
+    --card: #ffffff;
+    --mono-bg: #f0f3f6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #14181d;
+      --ink: #e6ebef;
+      --ink-soft: #a8b2bc;
+      --ink-faint: #6b757f;
+      --accent: #6ba3d6;
+      --accent-soft: #1d2f3f;
+      --good: #6dbb8f;
+      --good-soft: #1b2f24;
+      --warn: #d09a5e;
+      --warn-soft: #33261a;
+      --rule: #2a323b;
+      --card: #1a2027;
+      --mono-bg: #1e252d;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #14181d; --ink: #e6ebef; --ink-soft: #a8b2bc;
+    --ink-faint: #6b757f; --accent: #6ba3d6; --accent-soft: #1d2f3f;
+    --good: #6dbb8f; --good-soft: #1b2f24; --warn: #d09a5e;
+    --warn-soft: #33261a; --rule: #2a323b; --card: #1a2027; --mono-bg: #1e252d;
+  }
+  :root[data-theme="light"] {
+    --paper: #fafbfc; --ink: #1c232b; --ink-soft: #4a555f;
+    --ink-faint: #8b959e; --accent: #2d5f8a; --accent-soft: #dce8f2;
+    --good: #2e7d4f; --good-soft: #e3f0e8; --warn: #a3612a;
+    --warn-soft: #f4e8da; --rule: #d8dee4; --card: #ffffff; --mono-bg: #f0f3f6;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    line-height: 1.62;
+    margin: 0;
+    font-size: 17px;
+  }
+  .sheet { max-width: 46rem; margin: 0 auto; padding: 2.5rem 1.4rem 5rem; }
+  header h1 {
+    font-size: 1.85rem;
+    line-height: 1.25;
+    margin: 0.4rem 0 0.3rem;
+    text-wrap: balance;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .eyebrow {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .byline { color: var(--ink-soft); font-size: 0.92rem; margin: 0.2rem 0 1.4rem; }
+  #hero { display: block; width: 100%; height: 230px; margin: 0.6rem 0 0.3rem; }
+  .herocap {
+    font-size: 0.82rem;
+    color: var(--ink-faint);
+    margin: 0 0 1.8rem;
+  }
+  .herocap .sw { display: inline-block; width: 1.5em; height: 0.35em; border-radius: 2px; vertical-align: 0.14em; margin-right: 0.3em; }
+  h2 {
+    font-size: 1.16rem;
+    font-weight: 650;
+    margin: 2.6rem 0 0.7rem;
+    letter-spacing: 0.005em;
+  }
+  h2 .no {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    color: var(--ink-faint);
+    font-weight: 400;
+    font-size: 0.95rem;
+    margin-right: 0.55rem;
+  }
+  p { margin: 0.75rem 0; }
+  .abstract {
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 1.05rem 0;
+    font-size: 0.97rem;
+    color: var(--ink-soft);
+  }
+  .abstract b:first-child { color: var(--ink); }
+  var, .mi { font-style: italic; }
+  code, .mono {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 0.86em;
+    background: var(--mono-bg);
+    border-radius: 4px;
+    padding: 0.08em 0.35em;
+  }
+  .law {
+    text-align: center;
+    font-size: 1.12rem;
+    margin: 1.5rem 0;
+    padding: 1.1rem 0.8rem;
+    background: var(--accent-soft);
+    border-radius: 6px;
+  }
+  .law .tag { float: right; color: var(--ink-faint); font-size: 0.9rem; }
+  .prop {
+    margin: 1.3rem 0;
+    padding-left: 1.05rem;
+    border-left: 2px solid var(--accent);
+  }
+  .prop .label {
+    font-variant: small-caps;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  table {
+    border-collapse: collapse;
+    margin: 1.1rem 0;
+    font-size: 0.9rem;
+    font-variant-numeric: tabular-nums;
+    width: 100%;
+  }
+  .tw { overflow-x: auto; }
+  th {
+    text-align: left;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-faint);
+    font-weight: 500;
+    padding: 0.35rem 0.9rem 0.35rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  td { padding: 0.42rem 0.9rem 0.42rem 0; border-bottom: 1px solid var(--rule); }
+  tr:last-child td { border-bottom: none; }
+  .chip {
+    display: inline-block;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    padding: 0.1em 0.55em;
+    border-radius: 99px;
+    vertical-align: 0.1em;
+  }
+  .chip.good { background: var(--good-soft); color: var(--good); }
+  .chip.new  { background: var(--accent-soft); color: var(--accent); }
+  .chip.num  { background: var(--warn-soft); color: var(--warn); }
+  ol, ul { padding-left: 1.3rem; }
+  li { margin: 0.45rem 0; }
+  .refs { font-size: 0.9rem; color: var(--ink-soft); }
+  .refs a { color: var(--accent); text-decoration: none; }
+  .refs a:hover, .refs a:focus { text-decoration: underline; }
+  a { color: var(--accent); }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  footer {
+    margin-top: 3.2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule);
+    color: var(--ink-faint);
+    font-size: 0.84rem;
+  }
+</style>
+
+<div class="sheet">
+<header>
+  <div class="eyebrow">Computational research note · The Erdős–Gyárfás problem</div>
+  <h1>Hunting the Erdős–Gyárfás counterexample: a new lower bound, a census re-derived, and near-misses in the critical window</h1>
+  <p class="byline">July 30–31, 2026 · produced in a Claude Code research session · code &amp; data in the companion repository</p>
+  <canvas id="hero" role="img" aria-label="The Markström graph: a cubic graph on 24 vertices with no 4-cycle and no 8-cycle, drawn with its seven triangles in blue and one of its 228 sixteen-cycles traced in amber"></canvas>
+  <p class="herocap"><span class="sw" style="background:var(--accent)"></span>the seven triangles &ensp;<span class="sw" style="background:var(--warn)"></span>one of the 228 sixteen-cycles — the cycle that keeps this graph from disproving the conjecture. This is the Markström graph (cubic, 24 vertices, no 4- or 8-cycles), drawn from the session's own census data; the annealing search below rediscovered it from a random start.</p>
+</header>
+
+<p class="abstract">
+<b>Abstract.</b>&ensp;The Erdős–Gyárfás problem asks whether every graph with minimum degree ≥ 3 contains a cycle of length a power of 2. Erdős and Gyárfás believed the answer is <em>no</em> — one explicit graph would settle it. Working from scratch with independently validated tooling (nauty's <code>geng</code> checked against OEIS; an exact cycle-length checker checked against networkx on 71 graphs; a positive control the survivor filter must retain), we prove by exhaustion that <b>no counterexample has ≤ 18 vertices</b> — 8.7×10⁸ candidate graphs scanned, improving the reported bound of 17 — and re-derive Markström's order-24 census clean-room: exactly four {4,8}-free cubic graphs, now with their 16-cycle counts (330, 315, 207, 228). In the window 54 ≤ <var>n</var> ≤ 62, where a smallest cubic counterexample must live, simulated annealing with exact cycle counts produces the closest publicly documented near-misses we know of: cubic graphs with no 4- or 8-cycles and only 56 (at <var>n</var> = 56) and 37 (at <var>n</var> = 58) sixteen-cycles. The minimum-16-cycle curve 207 → ≤ 56 → ≤ 37 falls steeply with order, and every extremal graph found is triangle-rich — girth 3, never high girth.
+</p>
+
+<h2><span class="no">1</span>The problem, in plain words</h2>
+<p>Take any network in which every node has at least three connections. Must it contain a closed loop through exactly 4, or 8, or 16, or 32, … nodes — some power of two? That is the Erdős–Gyárfás problem (<a href="https://www.erdosproblems.com/64">erdosproblems.com #64</a>, appearing in Erdős's problem papers from 1993 on). Powers of two are sparse among the integers, and cycle lengths in a sparse graph are hard to steer — but "hard to steer" cuts both ways, and Erdős and Gyárfás themselves <em>expected a counterexample to exist</em>. Their stronger belief — that even enormous minimum degree cannot force a power-of-2 cycle — was refuted by Liu and Montgomery (2020): large minimum degree does force one. The original min-degree-3 question is untouched by that result and stands open, listed as "falsifiable: could be disproved by a finite computation" with a $1000 prize attached (other sources report $100 for a proof, $50 for a counterexample; we could not resolve the discrepancy from primary sources this session).</p>
+<p>So this is that rare open problem where a single explicit object — one graph, checkable by a computer in seconds — would end the story. This session went looking for it.</p>
+
+<h2><span class="no">2</span>What a counterexample must look like</h2>
+<p>A counterexample on <var>n</var> vertices must avoid <em>every</em> cycle length 2<sup><var>k</var></sup> ≤ <var>n</var>. For <var>n</var> ≤ 31 that means exactly {4, 8, 16}; from 33 to 63, {4, 8, 16, 32}. The prior computational record (all secondary-sourced — see §6): no counterexample of any kind below 17 vertices (Royle–Markström); no <em>cubic</em> counterexample below order 30, via Markström's 2004 exhaustion of cubic graphs through order 28, whose census of cubic graphs with no C₄ and no C₈ finds the smallest at order 24 — exactly four of them, all containing 16-cycles; and, per an unpublished continuation, no cubic graph on ≤ 52 vertices avoids {4, 8, 16} at all. Carr (2026) shows every <em>regular</em> minimal counterexample is cubic. Put together: a smallest cubic counterexample, if one exists, lives in the window <b>54 ≤ <var>n</var> ≤ 62</b>, avoiding precisely {4, 8, 16, 32}. Exoo (2014) constructed the smallest <em>known</em> cubic graphs avoiding {4,8,16} and {4,8,16,32} — at orders we could not verify this session, with the {4,8,16,32}-avoider at order ≤ 450.</p>
+
+<h2><span class="no">3</span>A new lower bound: 19 vertices</h2>
+<div class="prop"><span class="label">Theorem (certified by exhaustion).</span>
+Every graph with minimum degree ≥ 3 on at most 18 vertices contains a cycle of length 4 or 8. Hence any counterexample to Erdős–Gyárfás has at least 19 vertices.</div>
+<p>Any counterexample is C4-free by definition, so it suffices to scan connected C4-free graphs of minimum degree ≥ 3 (components of a min-degree-3 graph are again min-degree-3). <code>geng</code> generates the class; every generated graph had its 4- and 8-cycles tested by exact depth-first search. None survived — every single graph contains an 8-cycle:</p>
+<div class="tw"><table>
+  <tr><th>n</th><th>C4-free, min degree ≥ 3, connected</th><th>{4,8}-free</th><th></th></tr>
+  <tr><td>≤ 15</td><td>98 052</td><td>0</td><td></td></tr>
+  <tr><td>16</td><td>1 655 659</td><td>0</td><td></td></tr>
+  <tr><td>17</td><td>34 758 006</td><td>0</td><td><span class="chip new">new</span></td></tr>
+  <tr><td>18</td><td>834 711 846</td><td>0</td><td><span class="chip new">new</span> <span class="chip good">certified</span></td></tr>
+</table></div>
+<p>The n = 18 sweep took 3.5 hours on 3 cores (48 independent <code>geng</code> work parts). The previously reported bound — "at least 17 vertices", i.e. nothing below 17 — appears to be unpublished; this computation is independent of it and supersedes it. The next order, n = 19, needs roughly 2×10¹⁰ graphs: feasible, but a multi-day run at this core count.</p>
+
+<h2><span class="no">4</span>The order-24 census, re-derived — and a rediscovery</h2>
+<p>As a full-scale control, the session re-derived Markström's census with its own machinery, never reading his files: among 9 467 449 C4-free connected cubic graphs on 24 vertices there are <b>exactly four</b> with no 8-cycle, matching his count. New characterization data computed here: all four have girth 3 (triangles are legal — 3 is not a power of two), their 16-cycle counts are 330, 315, 207 and 228, and exactly one is planar — the graph now known as the <em>Markström graph</em>, drawn above.</p>
+<p>The pleasant surprise: hours before the census finished, the annealing search of §5, started from a random cubic graph and knowing nothing about the literature, converged at order 24 to a {4,8}-free graph — and when the census landed, that graph turned out to be isomorphic to the planar one. The search rediscovered the Markström graph on its own. (This graph also serves as the pipeline's positive control: a genuine survivor that the filter must keep, guarding the many zero-survivor results against silent false negatives.)</p>
+
+<h2><span class="no">5</span>The hunt in the window</h2>
+<p>In the critical window the session ran simulated annealing over connected cubic graphs: 2-edge-swap moves preserving 3-regularity and connectivity, with the energy an exact weighted count of 4-, 8- and 16-cycles (counted by pruned DFS; a graph of zero energy on ≤ 62 vertices is then screened for 32-cycles). Three escalations mattered: <em>focused moves</em> (70% of proposed swaps touch an edge lying on a currently-bad cycle), a deterministic <em>polish</em> phase (steepest descent over all ~13 000 possible 2-swaps, proving the end state is a depth-1 local minimum), and <em>basin hopping</em> (anneal → polish → keep if better).</p>
+<div class="tw"><table>
+  <tr><th>order</th><th>best graph found</th><th>16-cycles</th><th>status</th></tr>
+  <tr><td>24</td><td>the Markström graph, found by the hunt; the census minimum (a different, nonplanar census graph) is 207</td><td>228</td><td><span class="chip good">exact minimum known</span></td></tr>
+  <tr><td>56</td><td>no C4, no C8 — spectrum {16, 32}</td><td>56</td><td><span class="chip new">record</span> <span class="chip num">not exhaustive</span></td></tr>
+  <tr><td>58</td><td>no C4, no C8 — spectrum {16, 32}</td><td>37</td><td><span class="chip new">record</span> <span class="chip num">not exhaustive</span></td></tr>
+</table></div>
+<div class="law"><span class="tag">min #C₁₆ on the {4,8}-free manifold</span>
+207 (n = 24, exact) &nbsp;→&nbsp; ≤ 56 (n = 56) &nbsp;→&nbsp; ≤ 37 (n = 58)
+<div style="font-size:0.85rem; color:var(--ink-soft); margin-top:0.4rem">Both record graphs are committed to the repository and verified three independent ways (networkx cycle enumeration; SAT unsatisfiability for C4 and C8; stability under 10 random relabelings).</div>
+</div>
+<p>No {4,8,16}-free graph was found — consistent with their scarcity (none exist below order 54). But the steep fall of the curve is the session's most suggestive observation: the constraint visibly loosens with order. A heuristic minimum bounds nothing; it measures search difficulty. It is, however, exactly the quantity a future session should keep pushing down — reaching zero anywhere in 54 ≤ <var>n</var> ≤ 62 would leave a single 32-cycle screen between that graph and the conjecture.</p>
+<p>One structural observation held everywhere: every extremal graph the search produced — like all four census graphs — is <em>triangle-rich</em>, girth 3, with the stubborn 8-cycles riding on triangle clusters. A plausible mechanism (heuristic, not a theorem): expanding a vertex into a triangle shifts cycles passing through it by +1 or +2 depending on the crossing, so triangle-rich graphs have "elastic" cycle lengths that can straddle the powers of 2. High girth does the opposite — it rigidifies the short spectrum. Girth, the natural-looking tool, is a trap; the right search space is girth-3 gadget structures, which the annealer found on its own.</p>
+
+<h2><span class="no">6</span>What is certified, what is not</h2>
+<ul>
+  <li><b>Certified (exact, reproducible):</b> the ≥ 19 bound; the cubic censuses through order 24 (and bipartite cubic through 26: no {4,8}-free graphs); the stated properties of every individual graph mentioned, including the record near-misses; power-of-2 cycle spectra of 24 named cubic graphs through the Foster graph (girth 10) and GP(48,7) — all contain power-of-2 cycles. Pipeline validation: <code>geng</code> counts match OEIS A002851, A007112, A014372 exactly; work-splitting cross-checked; the cycle checker agrees with networkx on 71/71 test graphs; integer arithmetic throughout.</li>
+  <li><b>Numerical (evidence only):</b> everything about the search landscape — the C₁₆-minimum curve, the difficulty of the last 8-cycles, the triangle mechanism.</li>
+  <li><b>Secondary-sourced (flagged, not verified):</b> this sandbox could not reach arXiv, Wikipedia, journals, or the authors' pages, so every literature claim above — Markström's 2004 paper and unpublished ≤ 52 search, the Royle–Markström 17-vertex bound, Exoo's construction orders, the prize amount — rests on search snippets, mirrors, and one independently re-verified replication, and is marked accordingly in the repository. Primary-source verification is the first item of follow-up work.</li>
+</ul>
+
+<h2><span class="no">7</span>Open threads</h2>
+<ol>
+  <li>Push the general bound to 19 ≤ n ≤ 20 (needs ~2×10¹⁰ graphs, or 8-cycle pruning inside the generator).</li>
+  <li>Drive the C₁₆ curve at n = 60, 62 below 37 — and to zero, if it will go.</li>
+  <li>Screen the eighteen (3,9)-cages (58 vertices, girth 9 — no C4 or C8 by construction): only 16- and 32-cycles stand between any of them and a counterexample. No such screen appears to be published; the data was unreachable this session.</li>
+  <li>Verify the literature against primary sources; resolve the prize discrepancy.</li>
+  <li>A 32-cycle term for the endgame energy, so a zero-energy hit is a counterexample outright.</li>
+</ol>
+
+<footer>
+  <p class="refs">
+    <a href="https://www.erdosproblems.com/64">Erdős problem #64</a> (statement, status, prize) ·
+    Markström, <em>Extremal graphs for some problems on cycles in graphs</em>, Congr. Numer. 171 (2004) — census reproduced here; paper secondary-sourced ·
+    Exoo, <a href="https://arxiv.org/abs/1403.5636">Cubic graphs without cycles of certain lengths</a>, arXiv:1403.5636 — secondary-sourced ·
+    Heckman &amp; Krakovski, Electron. J. Combin. 20(2) #P7 (2013): the 3-connected cubic planar case ·
+    Liu &amp; Montgomery, <a href="https://arxiv.org/abs/2010.15802">arXiv:2010.15802</a>: large minimum degree suffices ·
+    Carr, arXiv:2508.19302 &amp; 2605.22844: minimal-counterexample structure — secondary-sourced ·
+    companion repository: <a href="https://github.com/farev/Matematica">github.com/farev/Matematica</a> (<code>conjectures/erdos-gyarfas</code>)
+  </p>
+  <p>Every number on this page is emitted by a committed script; graphs shown and claimed are committed in graph6 form. Exhaustive claims are exact integer computation; heuristic-search results are labelled as such and certify only the exhibited graphs, never their optimality. Produced with substantial AI assistance (Claude Code) in a single research session, disclosed per the repository's policy.</p>
+</footer>
+</div>
+
+<script>
+(function () {
+  const cv = document.getElementById("hero");
+  const V = [[0.25,0.646],[0.081,0.329],[0.177,0.773],[0.591,0.882],[0.773,0.094],[0.679,0.0],[0.621,0.387],[0.026,0.56],[0.485,0.22],[0.192,0.528],[0.0,0.449],[0.432,0.541],[0.627,0.175],[0.882,0.809],[0.41,0.931],[0.645,1.0],[0.747,0.471],[1.0,0.753],[0.886,0.319],[0.303,0.151],[0.957,0.522],[0.536,0.025],[0.883,0.933],[0.699,0.677]];
+  const E = [[0,2],[0,9],[0,11],[1,7],[1,10],[1,19],[2,7],[2,14],[3,14],[3,15],[3,23],[4,5],[4,18],[4,21],[5,12],[5,21],[6,8],[6,12],[6,23],[7,10],[8,12],[8,19],[9,10],[9,11],[11,16],[13,17],[13,22],[13,23],[14,15],[15,22],[16,18],[16,20],[17,20],[17,22],[18,20],[19,21]];
+  const TRI = new Set([[0,9],[0,11],[1,7],[1,10],[3,14],[3,15],[4,5],[4,21],[5,21],[6,8],[6,12],[7,10],[8,12],[9,11],[13,17],[13,22],[14,15],[16,18],[16,20],[17,22],[18,20]].map(e => e.join("-")));
+  const C16 = new Set([[0,2],[0,9],[1,7],[1,19],[2,7],[4,18],[4,21],[5,12],[5,21],[6,8],[6,12],[8,19],[9,11],[11,16],[16,20],[18,20]].map(e => e.join("-")));
+  function cssVar(name, fallback) {
+    return getComputedStyle(document.documentElement).getPropertyValue(name).trim() || fallback;
+  }
+  function draw() {
+    const dpr = window.devicePixelRatio || 1;
+    const w = cv.clientWidth, h = 230;
+    cv.width = w * dpr; cv.height = h * dpr;
+    const ctx = cv.getContext("2d");
+    ctx.scale(dpr, dpr);
+    ctx.clearRect(0, 0, w, h);
+    const accent = cssVar("--accent", "#2d5f8a");
+    const warn = cssVar("--warn", "#a3612a");
+    const faint = cssVar("--ink-faint", "#8b959e");
+    const ink = cssVar("--ink", "#1c232b");
+    const padX = Math.max(18, w * 0.06), padY = 16;
+    const X = v => padX + V[v][0] * (w - 2 * padX);
+    const Y = v => padY + V[v][1] * (h - 2 * padY);
+    function stroke(edges, color, width, alpha) {
+      ctx.strokeStyle = color; ctx.lineWidth = width; ctx.globalAlpha = alpha;
+      ctx.lineCap = "round";
+      for (const [a, b] of edges) {
+        ctx.beginPath(); ctx.moveTo(X(a), Y(a)); ctx.lineTo(X(b), Y(b)); ctx.stroke();
+      }
+    }
+    const plain = E.filter(e => !TRI.has(e.join("-")) && !C16.has(e.join("-")));
+    const triOnly = E.filter(e => TRI.has(e.join("-")) && !C16.has(e.join("-")));
+    const cyc = E.filter(e => C16.has(e.join("-")));
+    stroke(plain, faint, 1.3, 0.55);
+    stroke(triOnly, accent, 2.4, 0.9);
+    stroke(cyc, warn, 2.8, 0.95);
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = ink;
+    for (let v = 0; v < V.length; v++) {
+      ctx.beginPath(); ctx.arc(X(v), Y(v), 2.6, 0, 2 * Math.PI); ctx.fill();
+    }
+  }
+  draw();
+  window.addEventListener("resize", draw);
+  new MutationObserver(draw).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+  if (window.matchMedia) {
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", draw);
+  }
+})();
+</script>
