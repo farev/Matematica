@@ -18,7 +18,7 @@ computations over an alphabet of integer *vectors*.
 
 **Status:** active
 **Sessions:** 2026-08-01
-**Page:** not yet built (see `PAGE.md`)
+**Page:** <https://fabianarevalo.com/additive-squares>
 
 ## Results
 
