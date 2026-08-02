@@ -43,6 +43,15 @@ checkable certificate rather than an open-ended search.
 neighbouring `U(4,b)` with `b ≤ 49`. The exceptional family is quantitatively
 as well as structurally different.
 
+Two independently written implementations of Theorem 1 exist: `certify.py`
+(hash-table cycle detection) and `verify_cert.c` (Brent, O(1) memory, written
+from the theorem rather than ported). The C one produced all 32 rows; the Python
+one independently reproduced **23** of them and agrees with the C one on `E`,
+`P` and `|R|` on every one of those 23. The other nine rows rest on the C
+verifier alone — the Python implementation's memory grows with the period and
+could not reach them — which is a real asymmetry in the evidence and is recorded
+as a defect in the conjecture README.
+
 **Connectivity check.** Run first, per the mandate, and it failed. `arxiv.org`,
 `oeis.org`, `erdosproblems.com`, `mathoverflow.net`, plus `en.wikipedia.org`,
 `semanticscholar.org`, `doi.org`, `zbmath.org`, `link.springer.com` — **all
