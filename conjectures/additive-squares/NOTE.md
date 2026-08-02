@@ -214,10 +214,12 @@ Three routes through three different unimodular completions agree on both the
 value and the node count, which is a sharper check than agreeing on the value
 alone: the trees are isomorphic, as Lemma 2 predicts they must be.
 
-*Attainment.* $L(\{0,1,5,6\}) = 60$ by exhaustive search (7,707,828 nodes,
-tree closed), and $0 + 6 = 1 + 5$, so the alphabet is degenerate. The extremal
-word is in `data/extremal_words.txt` and is checked by the independent verifier
-`verify_word.py`; no letter of the alphabet extends it.
+*Attainment.* $L(\{0,1,5,6\}) = 60$ by exhaustive search directly on this
+alphabet (6,595,124 nodes, tree closed — smaller than the universal
+alphabet's 7,707,828 because $\{0,1,5,6\}$ has not yet reached the saturation
+regime of §6), and $0 + 6 = 1 + 5$, so the alphabet is degenerate. The
+extremal word is in `data/extremal_words.txt` and is checked by the
+independent verifier `verify_word.py`; no letter of the alphabet extends it.
 
 **Relationship to the literature — read this before citing.** The bound
 $L \le 60$ for $a+d=b+c$ is **Freedman's theorem** (secondary; quoted in
