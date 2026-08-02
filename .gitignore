@@ -32,3 +32,7 @@ paper/**/*.toc
 conjectures/chowla/lambda_coverage
 conjectures/chowla/lambda_coverage_v*
 conjectures/chowla/firstocc_stats
+
+# compiled searchers (rebuilt by gcc -O2 from the .c sources)
+conjectures/additive-squares/afsf
+conjectures/additive-squares/afsfv
