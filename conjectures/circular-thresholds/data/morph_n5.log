@@ -29,3 +29,9 @@ n=5 q=68 N0=12 P0=544: h0 candidates=1900440 sync=1900440 hits=0
 n=5 q=69 N0=12 P0=552: h0 candidates=2204880 sync=2204880 hits=0
 n=5 q=70 N0=12 P0=560: h0 candidates=2557656 sync=2557376 hits=0
 n=5 q=71 N0=12 P0=568: h0 candidates=2965560 sync=2965560 hits=0
+n=5 q=72 N0=12 P0=576: h0 candidates=3439968 sync=3439536 hits=0
+n=5 q=73 N0=12 P0=584: h0 candidates=3989400 sync=3989400 hits=0
+n=5 q=74 N0=12 P0=592: h0 candidates=4627224 sync=4627224 hits=0
+n=5 q=75 N0=12 P0=600: h0 candidates=5366904 sync=5366904 hits=0
+n=5 q=76 N0=12 P0=608: h0 candidates=6219288 sync=6219288 hits=0
+n=5 q=77 N0=12 P0=616: h0 candidates=7203696 sync=7203696 hits=0

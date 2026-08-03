@@ -169,6 +169,12 @@ def main():
 
     hi = a.hi
     rows = []
+    # Write incrementally: a long sweep that is interrupted must still leave
+    # its completed rows (and witnesses) on disk.
+    fh = None
+    if a.out:
+        fh = open(a.out, 'w')
+        fh.write('n,alpha,m,exists,witness\n')
     for m in range(a.lo, hi + 1):
         ok, w = solve(a.n, m, alpha, a.solver)
         if ok and not a.noverify:
@@ -177,14 +183,15 @@ def main():
                 print(f'FATAL: witness at n={a.n} m={m} fails verify: {bad}',
                       file=sys.stderr)
                 sys.exit(2)
-        rows.append((m, ok, ''.join(str(c) for c in w) if ok else ''))
+        ws = ''.join(str(c) for c in w) if ok else ''
+        rows.append((m, ok, ws))
+        if fh:
+            fh.write(f'{a.n},{alpha},{m},{1 if ok else 0},{ws}\n')
+            fh.flush()
         print(f'n={a.n} alpha={alpha} m={m} {"SAT" if ok else "UNSAT"}',
               flush=True)
-    if a.out:
-        with open(a.out, 'w') as f:
-            f.write('n,alpha,m,exists,witness\n')
-            for m, ok, w in rows:
-                f.write(f'{a.n},{alpha},{m},{1 if ok else 0},{w}\n')
+    if fh:
+        fh.close()
     good = [m for m, ok, _ in rows if ok]
     bad = [m for m, ok, _ in rows if not ok]
     print(f'# n={a.n} alpha={alpha} range [{a.lo},{hi}]')

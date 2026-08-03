@@ -39,7 +39,9 @@ many lengths" into two finite searches.
 | End-to-end instance: `CRT_W(3) = RT(3) = 7/4`, via a `q = 28` morphism and a length-20 seed, with the pumped words verified directly at lengths 20, 560, 15 680, 439 040 | **PROVED**, and a **known result** — reported only as a positive control | [`NOTE.md`](NOTE.md) §7 |
 | Circular threshold spectra `C(n)` for `n = 3,4,5,6`: exact sets of realizable and exceptional lengths | **CERTIFIED** | [`NOTE.md`](NOTE.md) §2, `data/spec_n*.csv` |
 | `n = 4` has **late** exceptional lengths `m = 147` and `m = 154`, after an unbroken run `114 … 146` — a finite sweep stopping early would have looked cofinite and been wrong | **CERTIFIED** | [`NOTE.md`](NOTE.md) §2, Result C3 |
-| No shift-equivariant `q`-uniform morphism satisfies (H1)–(H4) at `α = RT(n)` for `n = 4 (q ≤ 60)`, `5 (q ≤ 68)`, `6 (q ≤ 51)`, `7 (q ≤ 44)`, `8 (q ≤ 37)`; the same search returns morphisms at `n = 3` | **CERTIFIED** | [`NOTE.md`](NOTE.md) §8, `data/morph_n*.log` |
+| **Theorem N′.** For `4 ≤ n ≤ 9`, **no** shift-equivariant `q`-uniform morphism over `Z_n` has an `RT(n)⁺`-free fixed point, **for any `q`** — not "none was found", none exists. The normal form that works at `n = 3` is provably unavailable above it | **PROVED** (computer-assisted: two exhaustive finite searches) | [`NOTE.md`](NOTE.md) §8 |
+| Result L: the longest `RT(n)⁺`-free word over `Σ_n` with only two distinct consecutive differences has length `11, 8, 14, 10, 18, 12` for `n = 4…9` | **CERTIFIED** (exhaustive) | [`NOTE.md`](NOTE.md) §8, `dcut.py` |
+| The `n = 4` late gap at `m = 147` confirmed UNSAT by three independent SAT backends (Cadical 209 s, Glucose 343 s, MiniSat 207 s) | **CERTIFIED** | [`NOTE.md`](NOTE.md) §2 |
 
 **Nothing here settles any open case of the conjecture, and nothing here
 claims to.** What it does is reduce the open cases to a mechanical search in
@@ -56,6 +58,7 @@ for the session narrative including what failed.
 | `pump.py` | independent re-check of (H1)–(H4) in Python; SAT search for `S_2` seeds; iterates a morphism and verifies each pumped word directly | seconds | the `n = 3` chain to length 439 040 |
 | `dejean_morph.c` | exhaustive search over shift-equivariant `q`-uniform morphisms satisfying (H1)–(H4) | seconds to minutes per `q` | `data/morph_n*.log` |
 | `dejean_fixpoint.c` | the same under the weaker fixed-point criterion (Theorem M′) | seconds per `q` | `data/fix_n*.log` |
+| `dcut.py` | longest `RT(n)⁺`-free word whose consecutive differences lie in a 2-element set — step (iv) of Theorem N′ | ~1 min for `n ≤ 9` | `L(n) = 11, 8, 14, 10, 18, 12` |
 
 Run from inside this directory:
 
@@ -84,19 +87,21 @@ python3 pump.py chain 3 0120212010201210120102120210 01202101210212012102
 
 ## Known defects and open threads
 
-- **UNSAT verdicts rest on a single SAT solver.** No DRAT proof was emitted or
-  checked, and no independent exhaustive enumeration was run at larger `m`.
-  Satisfiable verdicts are fully independent (witness + from-the-definition
-  checker); unsatisfiable ones are not. This is the weakest link in the
-  CERTIFIED claims.
+- **UNSAT verdicts rest on SAT solvers, not on checked proofs.** No DRAT proof
+  was emitted or checked. The load-bearing ones — the `n = 4` late gaps and
+  their neighbours at `m = 113, 146, 147, 148, 153, 154, 155` — were re-decided
+  by three independent backends (Cadical, Glucose, MiniSat) with identical
+  verdicts, but the bulk of the sweep was decided once. Satisfiable verdicts
+  are fully independent (witness + from-the-definition checker); unsatisfiable
+  ones are not. This is the weakest link in the CERTIFIED claims.
 - No primary source was readable this session; every attribution is
   `(secondary)` and needs checking. In particular the claim that
   `4 ≤ n ≤ 44` is open was seen only in a search summary.
 - Sharpest thread: **run the Theorem C search in Pansiot's encoding of `n`-ary
   threshold words**, where the morphisms need not be shift-equivariant. One
   hit plus a seed settles an open case.
-- Second thread: close the `|D| = 2` case of Proposition N by proof, so that
-  the negative becomes a theorem for all `q` rather than a bounded search.
+- Second thread: prove `L(n) < ∞` for every `n ≥ 4` (Result L is exhaustive
+  only for `n ≤ 9`), which would make Theorem N′ unconditional in `n`.
 - Third: push `n = 4` further. The late gaps at 147 and 154 are the most
   interesting numbers here; whether more follow is unknown.
 

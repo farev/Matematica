@@ -135,13 +135,30 @@ and is wrong. `n = 4` is also precisely where `RT(4) = 7/5` breaks the
 `n/(n−1)` pattern, so it is the alphabet one should have expected to
 misbehave.
 
+## 4b. The failure that turned into the best theorem
+
+The negative was originally going to be reported as "no morphism found in the
+range searched" — a bounded CERTIFIED statement, and a weak one. Pushing on
+*why* the seam always breaks gave Proposition N (`|D| ≤ 2`), and then the
+obvious follow-up question — how long can an `RT(n)⁺`-free word be if it has
+only two distinct consecutive differences? — turned out to have a very small
+answer: `11, 8, 14, 10, 18, 12` for `n = 4…9`. That closes every large `q` at
+a stroke, and the existing exhaustive searches already covered every small `q`.
+So the bounded negative became **Theorem N′**: for `4 ≤ n ≤ 9` no
+shift-equivariant morphism has a threshold fixed point *at any length*. Not
+"none was found" — none exists. That is a better outcome than the search I
+actually set out to run would have given if it had merely kept coming up
+empty, and it is the one place today where being stuck paid.
+
 ## 5. Honest accounting
 
 Nothing here settles an open case. What the session produced is a reduction
 (Lemma A, Theorem C) that makes the open cases mechanical *given the right
-normal form*, a proof that the obvious normal form cannot work
-(Proposition N), certified spectra including one genuinely surprising
-irregularity, and a worked instance reproducing a known theorem. The single
+normal form*, a theorem that the obvious normal form provably cannot work at
+any morphism length for `4 ≤ n ≤ 9` (Proposition N + Theorem N′), certified
+spectra including one genuinely surprising irregularity — triple-checked
+across three SAT backends — and a worked instance reproducing a known
+theorem. The single
 most valuable next step is small and specific: redo the Theorem C search in
 Pansiot's encoding.
 

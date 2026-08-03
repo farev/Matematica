@@ -50,3 +50,8 @@ n=6 q=50 N0=14 P0=500: h0 candidates=4235640 sync=4235566 hits=0
 n=6 q=51 N0=14 P0=510: h0 candidates=5194200 sync=5194200 hits=0
 n=6 q=52 N0=14 P0=520: h0 candidates=6376200 sync=6376158 hits=0
 n=6 q=53 N0=14 P0=530: h0 candidates=7808640 sync=7808640 hits=0
+n=6 q=54 N0=14 P0=540: h0 candidates=9586920 sync=9586596 hits=0
+n=6 q=55 N0=14 P0=550: h0 candidates=11748720 sync=11748720 hits=0
+n=6 q=56 N0=14 P0=560: h0 candidates=14406000 sync=14405872 hits=0
+n=6 q=57 N0=14 P0=570: h0 candidates=17646120 sync=17646120 hits=0
+n=6 q=58 N0=14 P0=580: h0 candidates=21608280 sync=21608032 hits=0

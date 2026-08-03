@@ -361,34 +361,84 @@ exactly `n−2` elements, none of them in `D`. Hence `|D| ≤ n − (n−2) = 2`
 
 Proposition N is vacuous at `n = 3` (it gives `|D| ≤ 2`, and `D ⊆ {1,2}`
 always) — which is exactly why `n = 3` admits such morphisms and `n ≥ 4` is
-squeezed. If `|D| = 1` then `h_0` is an arithmetic progression, hence periodic
-with period `ord(d) ≤ n`, and `α⁺`-freeness forces `q ≤ ⌊α·ord(d)⌋ ≤ n+1`. The
-case `|D| = 2` was not closed by proof; it was closed computationally:
+squeezed.
+
+The `|D| ≤ 2` conclusion turns out to be fatal, because a word whose
+consecutive differences take only two values is very short if it is to be
+`α⁺`-free at all:
+
+> **Result L (CERTIFIED, exhaustive).** The longest `RT(n)⁺`-free word over
+> `Σ_n` whose consecutive differences lie in a set of size `≤ 2` has length
+>
+> | `n` | 4 | 5 | 6 | 7 | 8 | 9 |
+> |---|---|---|---|---|---|---|
+> | `L(n)` | 11 | 8 | 14 | 10 | 18 | 12 |
+>
+> (exhaustive DFS over all `≤ C(n−1,2)+(n−1)` difference sets and all step
+> sequences; `dcut.py`).
+
+Combining:
+
+> **Theorem N′ (computer-assisted proof).** Let `4 ≤ n ≤ 9` and `α = RT(n)`.
+> **No** shift-equivariant `q`-uniform morphism `h(a) = h_0 + a` over `Z_n`
+> has an `α⁺`-free fixed point, for **any** `q ≥ 2`.
+
+*Proof.* (i) The letters occurring in `u = h^ω(0)` are the closure of `{0}`
+under `a ↦ h_0[i]+a`, i.e. the subgroup `H = ⟨h_0[0],…,h_0[q−1]⟩ ≤ Z_n`. If
+`u` is `α⁺`-free then any `n−1` consecutive letters of `u` are pairwise
+distinct, so `|H| ≥ n−1`; a proper subgroup of `Z_n` has order `≤ n/2 < n−1`
+for `n ≥ 3`, so `H = Z_n` and **every letter occurs** — the hypothesis of
+Proposition N is automatic.
+(ii) Hence for each `d ∈ D` the pair `(0,d)` occurs in `u`, so
+`h_0·(h_0+d)` is a factor of `u` and must be `α⁺`-free.
+(iii) For `q ≥ n−2`, Proposition N then gives `|D| ≤ 2`, and Result L gives
+`q ≤ L(n)`.
+(iv) For every `q` from `2` up to and beyond `L(n)` — namely `q ≤ 60, 12, 45,
+38, 20, 14` for `n = 4,…,9` — an exhaustive search over **all** `α⁺`-free
+`h_0 ∈ Σ_n^q` with `h_0[0] = 0` finds no candidate satisfying (ii)
+(`data/fix_n*.log`; zero survivors at every `q`).
+No `q` survives (i)–(iv). ∎
+
+Two steps of this proof are exhaustive searches over explicitly finite sets,
+carried out in exact integer arithmetic by `dcut.py` and `dejean_fixpoint.c`;
+they are finite case checks, not verifications of an infinite family over a
+range, and both are reproducible from the shipped scripts. The reduction
+(i)–(iii) is unconditional.
+
+**This is the session's clearest negative result and it is a real one:** the
+normal form that works at `n = 3` is *provably* unavailable at every alphabet
+size from 4 to 9, for every morphism length. It is not that the search was too
+short.
+
+Independently, the same conclusion had already been reached by brute force
+under the stronger criterion of Theorem M:
 
 > **Result N1 (CERTIFIED).** Exhaustive search over **all** `α⁺`-free
 > `h_0 ∈ Σ_n^q` with `h_0[0] = 0` finds **no** shift-equivariant `q`-uniform
 > morphism satisfying (H1)–(H4) at `α = RT(n)`, for
 > `n = 4` (`q ≤ 60`), `n = 5` (`q ≤ 68`), `n = 6` (`q ≤ 51`),
 > `n = 7` (`q ≤ 44`), `n = 8` (`q ≤ 37`).
-> Under the weaker fixed-point criterion of Theorem M′ the search fails even
-> earlier: the necessary condition "`h_0·(h_0+d)` is `α⁺`-free for every
-> `d ∈ D`" — call it F2 — is satisfied by **no** candidate at all for
-> `n = 4` (`q ≤ 60`), `n = 6` (`q ≤ 43`), `n = 7` (`q ≤ 37`), and for `n = 5`
-> (`q ≤ 50`). The same search at `n = 3` returns morphisms, so the pipeline is
-> not vacuously failing.
-> Counts of candidates scanned are in `data/morph_n*.log`, `data/fix_n*.log`.
+> The same searches at `n = 3` return morphisms from `q = 25` on, so the
+> pipeline is not failing vacuously. Counts of candidates scanned are in
+> `data/morph_n*.log` and `data/fix_n*.log`.
 
-Diagnostically, every F2 violation observed sits at the seam between `h_0` and
+Diagnostically, every violation observed sits at the seam between `h_0` and
 `h_0+d` and has small period (`≤ n−2`) — precisely the mechanism Proposition N
 formalises.
 
-**Interpretation.** The shift-equivariant ansatz is the wrong normal form for
-`n ≥ 4`. The literature's own remark that for small alphabets "techniques
-different from those presented will likely be needed" **(secondary)** is
-consistent with this. The natural next ansatz is Pansiot's encoding of
-`n`-ary threshold words (`n ≥ 5`) by words over a smaller alphabet
-**(secondary)**, in which the relevant morphisms need not be shift-equivariant
-over `Z_n`; Theorem C applies verbatim to any morphism found there.
+**Interpretation.** By Theorem N′ the shift-equivariant ansatz is not merely
+unlucky at `n ≥ 4`; it is impossible. The literature's own remark that for
+small alphabets "techniques different from those presented will likely be
+needed" **(secondary)** is consistent with this, and Theorem N′ makes one
+precise sense of it. The natural next ansatz is Pansiot's encoding of `n`-ary
+threshold words (`n ≥ 5`) by words over a smaller alphabet **(secondary)**, in
+which the relevant morphisms need not be shift-equivariant over `Z_n`;
+Theorem C applies verbatim to any morphism found there.
+
+**Conjecture (from Result L).** `L(n)` is finite for every `n ≥ 4`, and
+Theorem N′ holds for every `n ≥ 4`. A proof of the first statement would make
+the second unconditional in `n`; the computed values `11, 8, 14, 10, 18, 12`
+are not obviously monotone and no formula is proposed.
 
 ---
 

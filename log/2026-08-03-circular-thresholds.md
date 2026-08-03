@@ -13,10 +13,14 @@ reported published constants without reading a paper.
 widens the circular factor window by exactly two letters; hence one morphism
 plus one seed gives circular threshold words at every length `q^j m_0`, and
 `CRT_W(n) = RT(n)` becomes **decidable by two finite searches** (Theorem C).
-**PROVED** — Proposition N: a shift-equivariant uniform morphism over `Z_n`,
-`n ≥ 4`, with an `α⁺`-free fixed point has difference set of size `≤ 2`;
-vacuous at `n = 3`, which is exactly why the ansatz that works there cannot
-work above it. **PROVED but expected to be a rediscovery** — Theorems M/M′,
+**PROVED** — Theorem N′ (computer-assisted): for `4 ≤ n ≤ 9` **no**
+shift-equivariant `q`-uniform morphism over `Z_n` has an `RT(n)⁺`-free fixed
+point, for **any** `q`. The reduction is Proposition N (such a morphism forces
+a difference set of size `≤ 2`, vacuous at `n = 3` and fatal above it) plus
+Result L (an `RT(n)⁺`-free word with only two distinct consecutive differences
+has length at most `11, 8, 14, 10, 18, 12` for `n = 4…9`, exhaustively), which
+kills every large `q`, while the exhaustive morphism searches kill every small
+one. **PROVED but expected to be a rediscovery** — Theorems M/M′,
 finite criteria for a uniform morphism to preserve `α⁺`-freeness. **CERTIFIED**
 — circular threshold spectra for `n = 3,4,5,6`, including the unexpected late
 exceptional lengths `m = 147, 154` at `n = 4` after an unbroken run `114…146`;
@@ -193,11 +197,14 @@ no code (C and Python) with identical verdicts.
    recovered the `n = 3` morphisms, and for `n ≥ 4` failed *earlier*: the
    cheapest necessary condition was met by **zero** candidates at
    `n = 4, 5, 6, 7`, at every `q` searched.
-3. **That failure was diagnosed into a proof.** Every violation sat at the
+3. **That failure was diagnosed into a theorem.** Every violation sat at the
    seam with period `≤ n−2`, which is exactly the regime where `RT(n)`-freeness
    forces distinct letters — giving Proposition N (`|D| ≤ 2`), vacuous at
-   `n = 3` and severe at `n ≥ 4`. The negative is now explained, not merely
-   observed.
+   `n = 3` and severe at `n ≥ 4`. Asking how long such a two-difference word
+   can be (Result L: at most 11, 8, 14, 10, 18, 12 for `n = 4…9`) then closed
+   every large `q`, upgrading a bounded "none found" to Theorem N′: **none
+   exists, at any `q`, for `4 ≤ n ≤ 9`**. This is the one place today where
+   being stuck paid.
 4. **Two morphism-free pumping ideas, both dead.** A closure property of the
    spectrum (killed immediately by the data: `5, 10 ∈ C(5)` but `20 ∉ C(5)`),
    and exploiting the `β > RT(n)` slack (needs a *uniform family* over
@@ -218,6 +225,9 @@ second theorem — rather than to a third search.
 up to ~9×10⁶ candidates scanned per `q`-range. No randomness affects any
 claim; the one seeded diagnostic uses `random.seed(3)` / `random.seed(11)`.
 
-**Known defect carried forward:** UNSAT verdicts rest on a single SAT solver
-with no DRAT proof emitted or checked and no independent exhaustive
-enumeration at larger `m`. Satisfiable verdicts are fully independent.
+**Known defect carried forward:** UNSAT verdicts rest on SAT solvers with no
+DRAT proof emitted or checked. The load-bearing ones — the `n = 4` late gaps
+and their neighbours, `m = 113, 146, 147, 148, 153, 154, 155` — were re-decided
+by three independent backends (Cadical, Glucose, MiniSat) with identical
+verdicts (`m = 147` took 209 s / 343 s / 207 s); the bulk of the sweep was
+decided once. Satisfiable verdicts are fully independent.
