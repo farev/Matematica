@@ -410,8 +410,10 @@ normal form that works at `n = 3` is *provably* unavailable at every alphabet
 size from 4 to 9, for every morphism length. It is not that the search was too
 short.
 
-Independently, the same conclusion had already been reached by brute force
-under the stronger criterion of Theorem M:
+Corroborating this from the other side, the earlier brute-force sweep under
+the *stronger* criterion of Theorem M — a different condition, so an
+independent check of the same phenomenon rather than a restatement — also came
+back empty:
 
 > **Result N1 (CERTIFIED).** Exhaustive search over **all** `α⁺`-free
 > `h_0 ∈ Σ_n^q` with `h_0[0] = 0` finds **no** shift-equivariant `q`-uniform
