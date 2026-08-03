@@ -125,7 +125,7 @@ be realizable. Checked for `(n,α) ∈ {(4,3/2), (5,4/3), (6,4/3), (7,5/4)}` ove
 > | 3 | 7/4 | `1 … 300` | 8 | 22 — `{5,7,9,10,14,16,17,22}` |
 > | 4 | 7/5 | `1 … 164` | 87 | **154** — 85 values `≤ 113`, then `147` and `154` |
 > | 5 | 5/4 | `1 … 300` | 41 | 63 |
-> | 6 | 6/5 | `1 … 275` | 33 | 59 |
+> | 6 | 6/5 | `1 … 300` | 33 | 59 |
 >
 > Full lists and every witness word are in `data/spec_n*.csv`. The `n = 4`
 > range is shorter because its instances are much harder: the sweep was still

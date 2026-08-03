@@ -51,7 +51,7 @@ uniform morphism.
 5. **Certified spectra (CERTIFIED).** The exact set of lengths admitting a
    circular `n`-ary threshold word: `n = 3` (`m ≤ 300`, 8 exceptions, the last
    at 22), `n = 4` (`m ≤ 164`, 87 exceptions), `n = 5` (`m ≤ 300`, 41
-   exceptions, the last at 63), `n = 6` (`m ≤ 275`, 33 exceptions, the last at
+   exceptions, the last at 63), `n = 6` (`m ≤ 300`, 33 exceptions, the last at
    59).
 6. **The surprise (CERTIFIED).** At `n = 4` the exceptional lengths do **not**
    stop: after the last small one at `m = 113` there is an unbroken run
@@ -112,7 +112,7 @@ kills the whole family."
 - **`CRT_W(3) = RT(3)` is known.** Contribution 3 is a control, not a result.
   A reader must not come away thinking a case was settled.
 - **The spectra are CERTIFIED only on the ranges computed** — `m ≤ 300`
-  (`n=3,5`), `≤ 275` (`n=6`), `≤ 164` (`n=4`). Nothing is claimed beyond.
+  (`n=3,5,6`), `≤ 164` (`n=4`). Nothing is claimed beyond.
   Contribution 6 is the reason to be strict about this.
 - **UNSAT verdicts rest on SAT solvers, not on checked proofs.** No DRAT proof
   was emitted or checked. The load-bearing ones were re-decided by three
