@@ -293,3 +293,11 @@ n=5 alpha=5/4 m=292 SAT
 n=5 alpha=5/4 m=293 SAT
 n=5 alpha=5/4 m=294 SAT
 n=5 alpha=5/4 m=295 SAT
+n=5 alpha=5/4 m=296 SAT
+n=5 alpha=5/4 m=297 SAT
+n=5 alpha=5/4 m=298 SAT
+n=5 alpha=5/4 m=299 SAT
+n=5 alpha=5/4 m=300 SAT
+# n=5 alpha=5/4 range [1,300]
+# realizable  : 259
+# exceptional : [6, 7, 8, 9, 11, 13, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24, 25, 26, 27, 29, 31, 33, 34, 35, 36, 37, 38, 39, 41, 42, 43, 47, 49, 51, 53, 54, 55, 57, 58, 59, 63]

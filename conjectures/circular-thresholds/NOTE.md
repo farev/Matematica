@@ -117,17 +117,38 @@ be realizable. Checked for `(n,α) ∈ {(4,3/2), (5,4/3), (6,4/3), (7,5/4)}` ove
 
 ### 2.2 The open cases
 
-> **Result C2 (CERTIFIED).** The exceptional sets of `C(n)` on the ranges
-> computed are given in `data/spec_n*.csv`; see `README.md` for the table as
-> run. For `n = 4, 5, 6` the spectrum is sparse and irregular at small `m` and
-> then becomes an unbroken run of realizable lengths well before the end of
-> the computed range.
+> **Result C2 (CERTIFIED).** On the ranges computed, the exceptional sets —
+> the `m` admitting **no** circular `n`-ary threshold word — are:
+>
+> | `n` | `α = RT(n)` | range completed | #exceptional | last exceptional `m` |
+> |---|---|---|---|---|
+> | 3 | 7/4 | `1 … 300` | 8 | 22 — `{5,7,9,10,14,16,17,22}` |
+> | 4 | 7/5 | `1 … 164` | 87 | **154** — 85 values `≤ 113`, then `147` and `154` |
+> | 5 | 5/4 | `1 … 300` | 41 | 63 |
+> | 6 | 6/5 | `1 … 275` | 33 | 59 |
+>
+> Full lists and every witness word are in `data/spec_n*.csv`. The `n = 4`
+> range is shorter because its instances are much harder: the sweep was still
+> deciding `m = 165` when the session ended.
 
-**This is evidence for, not a proof of, `CRT_I(n) = RT(n)`.** A finite
-unbroken run says nothing about what happens later; and, as noted after
-Observation 3, `CRT_I(n) = RT(n)` could hold even if `C(n)` had infinitely
-many gaps. The honest statement is the certified one: the listed lengths are
-realizable, the listed exceptions are not, on the computed range only.
+> **Result C3 (CERTIFIED), the one genuinely surprising datum.** For `n = 4`
+> the spectrum is **not** monotone in the naive sense: after the last small
+> exception at `m = 113` there is an unbroken run `114 … 146`, and then two
+> further isolated exceptional lengths, **`m = 147` and `m = 154`**. At
+> `n = 5` and `n = 6` no such late gap occurs in the computed range.
+
+C3 matters methodologically: at `n = 4` a sweep stopping anywhere in
+`114 … 146` would have reported a clean cofinite-looking spectrum and been
+wrong. It is a direct caution against reading `CRT_I(n) = RT(n)` off a finite
+run — and `n = 4` is exactly the alphabet where `RT(4) = 7/5` is Pansiot's
+exception to `n/(n−1)`, so it is the case one should expect to misbehave.
+
+**All of §2 is evidence for, not a proof of, `CRT_I(n) = RT(n)`.** A finite
+unbroken run says nothing about what happens later — C3 makes that concrete —
+and, as noted after Observation 3, `CRT_I(n) = RT(n)` could hold even if
+`C(n)` had infinitely many gaps. The honest statement is the certified one:
+the listed lengths are realizable, the listed exceptions are not, on the
+computed range only.
 
 ---
 

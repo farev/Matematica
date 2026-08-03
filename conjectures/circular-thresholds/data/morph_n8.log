@@ -35,3 +35,5 @@ n=8 q=35 N0=18 P0=490: h0 candidates=5871600 sync=5871580 hits=0
 n=8 q=36 N0=18 P0=504: h0 candidates=7227360 sync=7227312 hits=0
 n=8 q=37 N0=18 P0=518: h0 candidates=8966160 sync=8966160 hits=0
 n=8 q=38 N0=18 P0=532: h0 candidates=11072880 sync=11072728 hits=0
+n=8 q=39 N0=18 P0=546: h0 candidates=13683600 sync=13683600 hits=0
+n=8 q=40 N0=18 P0=560: h0 candidates=16949520 sync=16949440 hits=0

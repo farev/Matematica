@@ -27,3 +27,5 @@ n=5 q=66 N0=12 P0=528: h0 candidates=1411944 sync=1411944 hits=0
 n=5 q=67 N0=12 P0=536: h0 candidates=1637880 sync=1637880 hits=0
 n=5 q=68 N0=12 P0=544: h0 candidates=1900440 sync=1900440 hits=0
 n=5 q=69 N0=12 P0=552: h0 candidates=2204880 sync=2204880 hits=0
+n=5 q=70 N0=12 P0=560: h0 candidates=2557656 sync=2557376 hits=0
+n=5 q=71 N0=12 P0=568: h0 candidates=2965560 sync=2965560 hits=0
