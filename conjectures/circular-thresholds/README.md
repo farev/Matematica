@@ -21,6 +21,7 @@ many lengths" into two finite searches.
 
 **Status:** active
 **Sessions:** [2026-08-03](../../log/2026-08-03-circular-thresholds.md)
+**Write-up page:** [fabianarevalo.com/circular-thresholds](https://fabianarevalo.com/circular-thresholds)
 
 > **Sourcing.** This session ran with egress blocked (HTTP 403 to every host,
 > `arxiv.org` and `oeis.org` included). **No primary source was read.** Every

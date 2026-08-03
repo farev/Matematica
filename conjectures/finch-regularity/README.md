@@ -22,6 +22,7 @@ certificate.
 
 **Status:** active
 **Sessions:** [2026-08-02](../../log/2026-08-02-finch-regularity.md)
+**Write-up page:** [fabianarevalo.com/finch-regularity](https://fabianarevalo.com/finch-regularity)
 
 ## Results
 
