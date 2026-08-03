@@ -41,7 +41,7 @@ many lengths" into two finite searches.
 | `n = 4` has **late** exceptional lengths `m = 147` and `m = 154`, after an unbroken run `114 … 146` — a finite sweep stopping early would have looked cofinite and been wrong | **CERTIFIED** | [`NOTE.md`](NOTE.md) §2, Result C3 |
 | **Theorem N′.** For `4 ≤ n ≤ 9`, **no** shift-equivariant `q`-uniform morphism over `Z_n` has an `RT(n)⁺`-free fixed point, **for any `q`** — not "none was found", none exists. The normal form that works at `n = 3` is provably unavailable above it | **PROVED** (computer-assisted: two exhaustive finite searches) | [`NOTE.md`](NOTE.md) §8 |
 | Result L: the longest `RT(n)⁺`-free word over `Σ_n` with only two distinct consecutive differences has length `11, 8, 14, 10, 18, 12` for `n = 4…9` | **CERTIFIED** (exhaustive) | [`NOTE.md`](NOTE.md) §8, `dcut.py` |
-| The `n = 4` late gap at `m = 147` confirmed UNSAT by three independent SAT backends (Cadical 209 s, Glucose 343 s, MiniSat 207 s) | **CERTIFIED** | [`NOTE.md`](NOTE.md) §2 |
+| Both `n = 4` late gaps re-decided by three independent SAT backends: `m = 147` UNSAT (Cadical 209 s / Glucose 343 s / MiniSat 207 s) and `m = 154` UNSAT (249 s / 632 s / 298 s), with neighbours `m = 146, 148, 153, 155` satisfiable in seconds. No backend disagreement | **CERTIFIED** | [`NOTE.md`](NOTE.md) §2, `data/crosssolver_n4.log` |
 
 **Nothing here settles any open case of the conjecture, and nothing here
 claims to.** What it does is reduce the open cases to a mechanical search in
@@ -59,6 +59,7 @@ for the session narrative including what failed.
 | `dejean_morph.c` | exhaustive search over shift-equivariant `q`-uniform morphisms satisfying (H1)–(H4) | seconds to minutes per `q` | `data/morph_n*.log` |
 | `dejean_fixpoint.c` | the same under the weaker fixed-point criterion (Theorem M′) | seconds per `q` | `data/fix_n*.log` |
 | `dcut.py` | longest `RT(n)⁺`-free word whose consecutive differences lie in a 2-element set — step (iv) of Theorem N′ | ~1 min for `n ≤ 9` | `L(n) = 11, 8, 14, 10, 18, 12` |
+| `crosscheck.py` | re-decides given `(n,m)` instances with Cadical, Glucose and MiniSat, re-verifying every model against the definition; exits nonzero on disagreement | ~25 min for the seven `n = 4` instances | `data/crosssolver_n4.log` |
 
 Run from inside this directory:
 
@@ -84,6 +85,7 @@ python3 pump.py chain 3 0120212010201210120102120210 01202101210212012102
 | `data/cal_n*_*.csv` | `circspec.py --alpha` | `CRT_S` calibration: all lengths `1…60` realizable at the four published constants |
 | `data/morph_n*.log` | `dejean_morph` | candidate counts scanned and hits, per `q` |
 | `data/fix_n*.log` | `dejean_fixpoint` | the same under Theorem M′, with the F2 filter counts |
+| `data/crosssolver_n4.log` | `crosscheck.py` | three-backend transcript for the `n = 4` late gaps and their neighbours |
 
 ## Known defects and open threads
 
@@ -91,7 +93,8 @@ python3 pump.py chain 3 0120212010201210120102120210 01202101210212012102
   was emitted or checked. The load-bearing ones — the `n = 4` late gaps and
   their neighbours at `m = 113, 146, 147, 148, 153, 154, 155` — were re-decided
   by three independent backends (Cadical, Glucose, MiniSat) with identical
-  verdicts, but the bulk of the sweep was decided once. Satisfiable verdicts
+  verdicts (`crosscheck.py`; transcript in `data/crosssolver_n4.log`), but the
+  bulk of the sweep was decided once. Satisfiable verdicts
   are fully independent (witness + from-the-definition checker); unsatisfiable
   ones are not. This is the weakest link in the CERTIFIED claims.
 - No primary source was readable this session; every attribution is

@@ -229,5 +229,8 @@ claim; the one seeded diagnostic uses `random.seed(3)` / `random.seed(11)`.
 DRAT proof emitted or checked. The load-bearing ones — the `n = 4` late gaps
 and their neighbours, `m = 113, 146, 147, 148, 153, 154, 155` — were re-decided
 by three independent backends (Cadical, Glucose, MiniSat) with identical
-verdicts (`m = 147` took 209 s / 343 s / 207 s); the bulk of the sweep was
-decided once. Satisfiable verdicts are fully independent.
+verdicts and no disagreement: `m = 147` UNSAT at 209 s / 343 s / 207 s and
+`m = 154` UNSAT at 249 s / 632 s / 298 s, against neighbours decided in
+seconds. Script `crosscheck.py`, transcript `data/crosssolver_n4.log`. The
+bulk of the sweep was decided once. Satisfiable verdicts are fully
+independent.

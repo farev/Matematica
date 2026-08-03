@@ -58,11 +58,13 @@ uniform morphism.
    `114 … 146`, and then `m = 147` and `m = 154` admit no circular threshold
    word at all. A sweep halting anywhere in `114…146` would have reported a
    clean cofinite spectrum and been wrong.
-7. **Independent confirmation of the surprise (CERTIFIED).** The `n = 4` gap
-   at `m = 147` was re-decided by three separate SAT engines — Cadical (209 s),
-   Glucose (343 s), MiniSat (207 s) — all UNSAT, with its neighbours
-   `m = 146, 148, 153` all satisfiable in about a second. It is a genuinely
-   hard instance, not a solver artefact.
+7. **Independent confirmation of the surprise (CERTIFIED).** Both `n = 4`
+   gaps were re-decided by three separate SAT engines, all agreeing: `m = 147`
+   UNSAT (Cadical 209 s, Glucose 343 s, MiniSat 207 s) and `m = 154` UNSAT
+   (249 s, 632 s, 298 s), while the neighbours `m = 146, 148, 153, 155` are all
+   satisfiable in seconds. The gaps take two to three orders of magnitude
+   longer to decide than their neighbours — genuinely hard instances, not
+   solver artefacts.
 
 **Not achieved:** no open case of the conjecture was settled. The page must say
 so plainly and early, not bury it.

@@ -136,6 +136,26 @@ be realizable. Checked for `(n,α) ∈ {(4,3/2), (5,4/3), (6,4/3), (7,5/4)}` ove
 > exception at `m = 113` there is an unbroken run `114 … 146`, and then two
 > further isolated exceptional lengths, **`m = 147` and `m = 154`**. At
 > `n = 5` and `n = 6` no such late gap occurs in the computed range.
+>
+> Because these two verdicts are UNSAT — the one class of claim here with no
+> witness to check — both were re-decided by three independent SAT backends,
+> together with their satisfiable neighbours as a control
+> (`crosscheck.py`, transcript in `data/crosssolver_n4.log`):
+>
+> | `m` | Cadical | Glucose | MiniSat |
+> |---|---|---|---|
+> | 113 | UNSAT 37.0 s | UNSAT 49.7 s | UNSAT 35.7 s |
+> | 146 | SAT 1.9 s | SAT 0.4 s | SAT 2.5 s |
+> | **147** | **UNSAT 208.8 s** | **UNSAT 343.3 s** | **UNSAT 207.0 s** |
+> | 148 | SAT 1.5 s | SAT 0.8 s | SAT 1.1 s |
+> | 153 | SAT 1.4 s | SAT 0.7 s | SAT 1.2 s |
+> | **154** | **UNSAT 248.8 s** | **UNSAT 632.1 s** | **UNSAT 298.0 s** |
+> | 155 | SAT 2.5 s | SAT 0.7 s | SAT 7.5 s |
+>
+> No disagreement, and every model returned was re-verified against
+> Definition 1. The two gaps are also two to three orders of magnitude more
+> expensive to decide than their neighbours — they are genuinely hard
+> instances, not solver artefacts.
 
 C3 matters methodologically: at `n = 4` a sweep stopping anywhere in
 `114 … 146` would have reported a clean cofinite-looking spectrum and been

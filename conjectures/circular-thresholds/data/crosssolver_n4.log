@@ -1,0 +1,11 @@
+# conjectures/circular-thresholds/crosscheck.py 4 113 146 147 148 153 154 155
+# 4 cores / 15 GB, Linux 6.18.5, python-sat backends via pysat
+n=4, alpha=7/5 -- three independent SAT backends, same exact encoding
+  m= 113  cadical153=UNSAT(37.0s)  glucose42=UNSAT(49.7s)  minisat22=UNSAT(35.7s)
+  m= 146  cadical153=SAT(1.9s)  glucose42=SAT(0.4s)  minisat22=SAT(2.5s)
+  m= 147  cadical153=UNSAT(208.8s)  glucose42=UNSAT(343.3s)  minisat22=UNSAT(207.0s)
+  m= 148  cadical153=SAT(1.5s)  glucose42=SAT(0.8s)  minisat22=SAT(1.1s)
+  m= 153  cadical153=SAT(1.4s)  glucose42=SAT(0.7s)  minisat22=SAT(1.2s)
+  m= 154  cadical153=UNSAT(248.8s)  glucose42=UNSAT(632.1s)  minisat22=UNSAT(298.0s)
+  m= 155  cadical153=SAT(2.5s)  glucose42=SAT(0.7s)  minisat22=SAT(7.5s)
+# instances: 7   disagreements: 0

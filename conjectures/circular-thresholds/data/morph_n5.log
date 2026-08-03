@@ -35,3 +35,5 @@ n=5 q=74 N0=12 P0=592: h0 candidates=4627224 sync=4627224 hits=0
 n=5 q=75 N0=12 P0=600: h0 candidates=5366904 sync=5366904 hits=0
 n=5 q=76 N0=12 P0=608: h0 candidates=6219288 sync=6219288 hits=0
 n=5 q=77 N0=12 P0=616: h0 candidates=7203696 sync=7203696 hits=0
+n=5 q=78 N0=12 P0=624: h0 candidates=8348712 sync=8348556 hits=0
+n=5 q=79 N0=12 P0=632: h0 candidates=9676176 sync=9676176 hits=0
