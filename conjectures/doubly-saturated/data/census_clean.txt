@@ -1,0 +1,264 @@
+HIT (s,t)=(3,3) n= 5 S={1} mask=1 deg=2
+HIT (s,t)=(3,3) n= 5 S={2} mask=2 deg=2
+# (s,t)=(3,3) n= 5  masks=4  good=2  doubly-saturated=2
+# (s,t)=(3,4) n= 5  masks=4  good=2  doubly-saturated=0
+# (s,t)=(3,4) n= 6  masks=8  good=3  doubly-saturated=0
+# (s,t)=(3,4) n= 7  masks=8  good=3  doubly-saturated=0
+# (s,t)=(3,4) n= 8  masks=16  good=2  doubly-saturated=0
+# (s,t)=(3,5) n= 5  masks=4  good=2  doubly-saturated=0
+# (s,t)=(3,5) n= 6  masks=8  good=3  doubly-saturated=0
+# (s,t)=(3,5) n= 7  masks=8  good=3  doubly-saturated=0
+# (s,t)=(3,5) n= 8  masks=16  good=7  doubly-saturated=0
+# (s,t)=(3,5) n= 9  masks=16  good=3  doubly-saturated=0
+# (s,t)=(3,5) n=10  masks=32  good=6  doubly-saturated=0
+# (s,t)=(3,5) n=11  masks=32  good=5  doubly-saturated=0
+# (s,t)=(3,5) n=12  masks=64  good=1  doubly-saturated=0
+HIT (s,t)=(3,5) n=13 S={23} mask=6 deg=4
+HIT (s,t)=(3,5) n=13 S={15} mask=17 deg=4
+HIT (s,t)=(3,5) n=13 S={46} mask=40 deg=4
+# (s,t)=(3,5) n=13  masks=64  good=3  doubly-saturated=3
+# (s,t)=(3,6) n= 5  masks=4  good=3  doubly-saturated=0
+# (s,t)=(3,6) n= 6  masks=8  good=3  doubly-saturated=0
+# (s,t)=(3,6) n= 7  masks=8  good=3  doubly-saturated=0
+# (s,t)=(3,6) n= 8  masks=16  good=7  doubly-saturated=0
+# (s,t)=(3,6) n= 9  masks=16  good=3  doubly-saturated=0
+# (s,t)=(3,6) n=10  masks=32  good=13  doubly-saturated=0
+# (s,t)=(3,6) n=11  masks=32  good=10  doubly-saturated=0
+# (s,t)=(3,6) n=12  masks=64  good=3  doubly-saturated=0
+# (s,t)=(3,6) n=13  masks=64  good=9  doubly-saturated=0
+# (s,t)=(3,6) n=14  masks=128  good=6  doubly-saturated=0
+# (s,t)=(3,6) n=15  masks=128  good=0  doubly-saturated=0
+# (s,t)=(3,6) n=16  masks=256  good=4  doubly-saturated=0
+# (s,t)=(3,6) n=17  masks=256  good=0  doubly-saturated=0
+# (s,t)=(3,7) n= 5  masks=4  good=3  doubly-saturated=0
+# (s,t)=(3,7) n= 6  masks=8  good=4  doubly-saturated=0
+# (s,t)=(3,7) n= 7  masks=8  good=3  doubly-saturated=0
+# (s,t)=(3,7) n= 8  masks=16  good=7  doubly-saturated=0
+# (s,t)=(3,7) n= 9  masks=16  good=3  doubly-saturated=0
+# (s,t)=(3,7) n=10  masks=32  good=13  doubly-saturated=0
+# (s,t)=(3,7) n=11  masks=32  good=10  doubly-saturated=0
+# (s,t)=(3,7) n=12  masks=64  good=13  doubly-saturated=0
+# (s,t)=(3,7) n=13  masks=64  good=15  doubly-saturated=0
+# (s,t)=(3,7) n=14  masks=128  good=15  doubly-saturated=0
+# (s,t)=(3,7) n=15  masks=128  good=14  doubly-saturated=0
+# (s,t)=(3,7) n=16  masks=256  good=20  doubly-saturated=0
+# (s,t)=(3,7) n=17  masks=256  good=20  doubly-saturated=0
+# (s,t)=(3,7) n=18  masks=512  good=9  doubly-saturated=0
+# (s,t)=(3,7) n=19  masks=512  good=9  doubly-saturated=0
+# (s,t)=(3,7) n=20  masks=1024  good=9  doubly-saturated=0
+# (s,t)=(3,7) n=21  masks=1024  good=9  doubly-saturated=0
+# (s,t)=(3,7) n=22  masks=2048  good=0  doubly-saturated=0
+# (s,t)=(3,8) n= 5  masks=4  good=3  doubly-saturated=0
+# (s,t)=(3,8) n= 6  masks=8  good=4  doubly-saturated=0
+# (s,t)=(3,8) n= 7  masks=8  good=4  doubly-saturated=0
+# (s,t)=(3,8) n= 8  masks=16  good=7  doubly-saturated=0
+# (s,t)=(3,8) n= 9  masks=16  good=3  doubly-saturated=0
+# (s,t)=(3,8) n=10  masks=32  good=13  doubly-saturated=0
+# (s,t)=(3,8) n=11  masks=32  good=10  doubly-saturated=0
+# (s,t)=(3,8) n=12  masks=64  good=13  doubly-saturated=0
+# (s,t)=(3,8) n=13  masks=64  good=15  doubly-saturated=0
+# (s,t)=(3,8) n=14  masks=128  good=30  doubly-saturated=0
+# (s,t)=(3,8) n=15  masks=128  good=18  doubly-saturated=0
+# (s,t)=(3,8) n=16  masks=256  good=24  doubly-saturated=0
+# (s,t)=(3,8) n=17  masks=256  good=28  doubly-saturated=0
+# (s,t)=(3,8) n=18  masks=512  good=15  doubly-saturated=0
+# (s,t)=(3,8) n=19  masks=512  good=36  doubly-saturated=0
+# (s,t)=(3,8) n=20  masks=1024  good=25  doubly-saturated=0
+# (s,t)=(3,8) n=21  masks=1024  good=9  doubly-saturated=0
+# (s,t)=(3,8) n=22  masks=2048  good=15  doubly-saturated=0
+# (s,t)=(3,8) n=23  masks=2048  good=11  doubly-saturated=0
+# (s,t)=(3,8) n=24  masks=4096  good=10  doubly-saturated=0
+# (s,t)=(3,8) n=25  masks=4096  good=0  doubly-saturated=0
+# (s,t)=(3,8) n=26  masks=8192  good=6  doubly-saturated=0
+# (s,t)=(3,8) n=27  masks=8192  good=0  doubly-saturated=0
+# (s,t)=(3,9) n= 5  masks=4  good=3  doubly-saturated=0
+# (s,t)=(3,9) n= 6  masks=8  good=4  doubly-saturated=0
+# (s,t)=(3,9) n= 7  masks=8  good=4  doubly-saturated=0
+# (s,t)=(3,9) n= 8  masks=16  good=8  doubly-saturated=0
+# (s,t)=(3,9) n= 9  masks=16  good=3  doubly-saturated=0
+# (s,t)=(3,9) n=10  masks=32  good=13  doubly-saturated=0
+# (s,t)=(3,9) n=11  masks=32  good=10  doubly-saturated=0
+# (s,t)=(3,9) n=12  masks=64  good=13  doubly-saturated=0
+# (s,t)=(3,9) n=13  masks=64  good=15  doubly-saturated=0
+# (s,t)=(3,9) n=14  masks=128  good=30  doubly-saturated=0
+# (s,t)=(3,9) n=15  masks=128  good=18  doubly-saturated=0
+# (s,t)=(3,9) n=16  masks=256  good=44  doubly-saturated=0
+# (s,t)=(3,9) n=17  masks=256  good=36  doubly-saturated=0
+# (s,t)=(3,9) n=18  masks=512  good=24  doubly-saturated=0
+# (s,t)=(3,9) n=19  masks=512  good=45  doubly-saturated=0
+# (s,t)=(3,9) n=20  masks=1024  good=63  doubly-saturated=0
+# (s,t)=(3,9) n=21  masks=1024  good=27  doubly-saturated=0
+# (s,t)=(3,9) n=22  masks=2048  good=75  doubly-saturated=0
+# (s,t)=(3,9) n=23  masks=2048  good=66  doubly-saturated=0
+# (s,t)=(3,9) n=24  masks=4096  good=27  doubly-saturated=0
+# (s,t)=(3,9) n=25  masks=4096  good=40  doubly-saturated=0
+# (s,t)=(3,9) n=26  masks=8192  good=57  doubly-saturated=0
+# (s,t)=(3,9) n=27  masks=8192  good=18  doubly-saturated=0
+# (s,t)=(3,9) n=28  masks=16384  good=60  doubly-saturated=0
+# (s,t)=(3,9) n=29  masks=16384  good=35  doubly-saturated=0
+# (s,t)=(3,9) n=30  masks=32768  good=22  doubly-saturated=0
+# (s,t)=(3,9) n=31  masks=32768  good=15  doubly-saturated=0
+# (s,t)=(3,9) n=32  masks=65536  good=8  doubly-saturated=0
+# (s,t)=(3,9) n=33  masks=65536  good=5  doubly-saturated=0
+# (s,t)=(3,9) n=34  masks=131072  good=0  doubly-saturated=0
+HIT (s,t)=(3,9) n=35 S={4679} mask=360 deg=8
+HIT (s,t)=(3,9) n=35 S={231314} mask=12294 deg=8
+HIT (s,t)=(3,9) n=35 S={171116} mask=33857 deg=8
+HIT (s,t)=(3,9) n=35 S={8121417} mask=75904 deg=8
+# (s,t)=(3,9) n=35  masks=131072  good=4  doubly-saturated=4
+# (s,t)=(4,4) n= 5  masks=4  good=2  doubly-saturated=0
+# (s,t)=(4,4) n= 6  masks=8  good=6  doubly-saturated=0
+# (s,t)=(4,4) n= 7  masks=8  good=6  doubly-saturated=0
+# (s,t)=(4,4) n= 8  masks=16  good=4  doubly-saturated=0
+# (s,t)=(4,4) n= 9  masks=16  good=8  doubly-saturated=0
+# (s,t)=(4,4) n=10  masks=32  good=4  doubly-saturated=0
+# (s,t)=(4,4) n=11  masks=32  good=10  doubly-saturated=0
+# (s,t)=(4,4) n=12  masks=64  good=4  doubly-saturated=0
+HIT (s,t)=(4,4) n=13 S={134} mask=13 deg=6
+HIT (s,t)=(4,4) n=13 S={256} mask=50 deg=6
+# (s,t)=(4,4) n=13  masks=64  good=8  doubly-saturated=2
+# (s,t)=(4,4) n=14  masks=128  good=0  doubly-saturated=0
+# (s,t)=(4,4) n=15  masks=128  good=0  doubly-saturated=0
+# (s,t)=(4,4) n=16  masks=256  good=0  doubly-saturated=0
+HIT (s,t)=(4,4) n=17 S={1248} mask=139 deg=8
+HIT (s,t)=(4,4) n=17 S={3567} mask=116 deg=8
+# (s,t)=(4,4) n=17  masks=256  good=2  doubly-saturated=2
+# (s,t)=(4,5) n= 5  masks=4  good=2  doubly-saturated=0
+# (s,t)=(4,5) n= 6  masks=8  good=6  doubly-saturated=0
+# (s,t)=(4,5) n= 7  masks=8  good=6  doubly-saturated=0
+# (s,t)=(4,5) n= 8  masks=16  good=9  doubly-saturated=0
+# (s,t)=(4,5) n= 9  masks=16  good=11  doubly-saturated=0
+# (s,t)=(4,5) n=10  masks=32  good=10  doubly-saturated=0
+# (s,t)=(4,5) n=11  masks=32  good=15  doubly-saturated=0
+# (s,t)=(4,5) n=12  masks=64  good=21  doubly-saturated=0
+# (s,t)=(4,5) n=13  masks=64  good=23  doubly-saturated=0
+# (s,t)=(4,5) n=14  masks=128  good=33  doubly-saturated=0
+# (s,t)=(4,5) n=15  masks=128  good=14  doubly-saturated=0
+# (s,t)=(4,5) n=16  masks=256  good=32  doubly-saturated=0
+# (s,t)=(4,5) n=17  masks=256  good=34  doubly-saturated=0
+# (s,t)=(4,5) n=18  masks=512  good=21  doubly-saturated=0
+HIT (s,t)=(4,5) n=19 S={2347} mask=78 deg=8
+HIT (s,t)=(4,5) n=19 S={1356} mask=53 deg=8
+HIT (s,t)=(4,5) n=19 S={1457} mask=89 deg=8
+HIT (s,t)=(4,5) n=19 S={1268} mask=163 deg=8
+HIT (s,t)=(4,5) n=19 S={2679} mask=354 deg=8
+HIT (s,t)=(4,5) n=19 S={1349} mask=269 deg=8
+HIT (s,t)=(4,5) n=19 S={4568} mask=184 deg=8
+HIT (s,t)=(4,5) n=19 S={2589} mask=402 deg=8
+HIT (s,t)=(4,5) n=19 S={3789} mask=452 deg=8
+# (s,t)=(4,5) n=19  masks=512  good=21  doubly-saturated=9
+# (s,t)=(4,5) n=20  masks=1024  good=6  doubly-saturated=0
+# (s,t)=(4,5) n=21  masks=1024  good=3  doubly-saturated=0
+# (s,t)=(4,5) n=22  masks=2048  good=10  doubly-saturated=0
+# (s,t)=(4,5) n=23  masks=2048  good=0  doubly-saturated=0
+# (s,t)=(4,5) n=24  masks=4096  good=4  doubly-saturated=0
+# (s,t)=(4,6) n= 5  masks=4  good=3  doubly-saturated=0
+# (s,t)=(4,6) n= 6  masks=8  good=6  doubly-saturated=0
+# (s,t)=(4,6) n= 7  masks=8  good=6  doubly-saturated=0
+# (s,t)=(4,6) n= 8  masks=16  good=9  doubly-saturated=0
+# (s,t)=(4,6) n= 9  masks=16  good=11  doubly-saturated=0
+# (s,t)=(4,6) n=10  masks=32  good=17  doubly-saturated=0
+# (s,t)=(4,6) n=11  masks=32  good=20  doubly-saturated=0
+# (s,t)=(4,6) n=12  masks=64  good=23  doubly-saturated=0
+# (s,t)=(4,6) n=13  masks=64  good=29  doubly-saturated=0
+# (s,t)=(4,6) n=14  masks=128  good=39  doubly-saturated=0
+# (s,t)=(4,6) n=15  masks=128  good=45  doubly-saturated=0
+# (s,t)=(4,6) n=16  masks=256  good=52  doubly-saturated=0
+# (s,t)=(4,6) n=17  masks=256  good=74  doubly-saturated=0
+# (s,t)=(4,6) n=18  masks=512  good=45  doubly-saturated=0
+# (s,t)=(4,6) n=19  masks=512  good=102  doubly-saturated=0
+# (s,t)=(4,6) n=20  masks=1024  good=64  doubly-saturated=0
+# (s,t)=(4,6) n=21  masks=1024  good=48  doubly-saturated=0
+# (s,t)=(4,6) n=22  masks=2048  good=65  doubly-saturated=0
+# (s,t)=(4,6) n=23  masks=2048  good=99  doubly-saturated=0
+# (s,t)=(4,6) n=24  masks=4096  good=38  doubly-saturated=0
+HIT (s,t)=(4,6) n=25 S={13578} mask=213 deg=10
+HIT (s,t)=(4,6) n=25 S={25678} mask=242 deg=10
+HIT (s,t)=(4,6) n=25 S={146710} mask=617 deg=10
+HIT (s,t)=(4,6) n=25 S={134910} mask=781 deg=10
+HIT (s,t)=(4,6) n=25 S={1681011} mask=1697 deg=10
+HIT (s,t)=(4,6) n=25 S={2691011} mask=1826 deg=10
+HIT (s,t)=(4,6) n=25 S={345712} mask=2140 deg=10
+HIT (s,t)=(4,6) n=25 S={235912} mask=2326 deg=10
+HIT (s,t)=(4,6) n=25 S={2581112} mask=3218 deg=10
+HIT (s,t)=(4,6) n=25 S={49101112} mask=3848 deg=10
+# (s,t)=(4,6) n=25  masks=4096  good=30  doubly-saturated=10
+# (s,t)=(4,6) n=26  masks=8192  good=12  doubly-saturated=0
+# (s,t)=(4,6) n=27  masks=8192  good=27  doubly-saturated=0
+# (s,t)=(4,6) n=28  masks=16384  good=21  doubly-saturated=0
+# (s,t)=(4,6) n=29  masks=16384  good=21  doubly-saturated=0
+# (s,t)=(4,6) n=30  masks=32768  good=12  doubly-saturated=0
+# (s,t)=(4,6) n=31  masks=32768  good=15  doubly-saturated=0
+# (s,t)=(4,6) n=32  masks=65536  good=0  doubly-saturated=0
+# (s,t)=(4,6) n=33  masks=65536  good=10  doubly-saturated=0
+# (s,t)=(4,6) n=34  masks=131072  good=0  doubly-saturated=0
+# (s,t)=(4,6) n=35  masks=131072  good=0  doubly-saturated=0
+# (s,t)=(4,6) n=36  masks=262144  good=0  doubly-saturated=0
+# (s,t)=(4,6) n=37  masks=262144  good=0  doubly-saturated=0
+# (s,t)=(4,6) n=38  masks=524288  good=0  doubly-saturated=0
+# (s,t)=(4,6) n=39  masks=524288  good=0  doubly-saturated=0
+# (s,t)=(5,5) n= 5  masks=4  good=2  doubly-saturated=0
+# (s,t)=(5,5) n= 6  masks=8  good=6  doubly-saturated=0
+# (s,t)=(5,5) n= 7  masks=8  good=6  doubly-saturated=0
+# (s,t)=(5,5) n= 8  masks=16  good=14  doubly-saturated=0
+# (s,t)=(5,5) n= 9  masks=16  good=14  doubly-saturated=0
+# (s,t)=(5,5) n=10  masks=32  good=16  doubly-saturated=0
+# (s,t)=(5,5) n=11  masks=32  good=20  doubly-saturated=0
+# (s,t)=(5,5) n=12  masks=64  good=38  doubly-saturated=0
+# (s,t)=(5,5) n=13  masks=64  good=38  doubly-saturated=0
+# (s,t)=(5,5) n=14  masks=128  good=66  doubly-saturated=0
+# (s,t)=(5,5) n=15  masks=128  good=28  doubly-saturated=0
+# (s,t)=(5,5) n=16  masks=256  good=134  doubly-saturated=0
+# (s,t)=(5,5) n=17  masks=256  good=102  doubly-saturated=0
+# (s,t)=(5,5) n=18  masks=512  good=168  doubly-saturated=0
+# (s,t)=(5,5) n=19  masks=512  good=168  doubly-saturated=0
+# (s,t)=(5,5) n=20  masks=1024  good=204  doubly-saturated=0
+# (s,t)=(5,5) n=21  masks=1024  good=174  doubly-saturated=0
+# (s,t)=(5,5) n=22  masks=2048  good=450  doubly-saturated=0
+# (s,t)=(5,5) n=23  masks=2048  good=286  doubly-saturated=0
+# (s,t)=(5,5) n=24  masks=4096  good=354  doubly-saturated=0
+# (s,t)=(5,5) n=25  masks=4096  good=344  doubly-saturated=0
+# (s,t)=(5,5) n=26  masks=8192  good=658  doubly-saturated=0
+# (s,t)=(5,5) n=27  masks=8192  good=360  doubly-saturated=0
+# (s,t)=(5,5) n=28  masks=16384  good=330  doubly-saturated=0
+HIT (s,t)=(5,5) n=29 S={14567913} mask=4473 deg=14
+HIT (s,t)=(5,5) n=29 S={23810111214} mask=11910 deg=14
+# (s,t)=(5,5) n=29  masks=16384  good=394  doubly-saturated=2
+# (s,t)=(5,5) n=30  masks=32768  good=200  doubly-saturated=0
+# (s,t)=(5,5) n=31  masks=32768  good=370  doubly-saturated=0
+# (s,t)=(5,5) n=32  masks=65536  good=384  doubly-saturated=0
+# (s,t)=(5,5) n=33  masks=65536  good=140  doubly-saturated=0
+# (s,t)=(5,5) n=34  masks=131072  good=220  doubly-saturated=0
+# (s,t)=(5,5) n=35  masks=131072  good=60  doubly-saturated=0
+# (s,t)=(5,5) n=36  masks=262144  good=102  doubly-saturated=0
+HIT (s,t)=(5,5) n=37 S={1347910111216} mask=36685 deg=18
+HIT (s,t)=(5,5) n=37 S={25681314151718} mask=225458 deg=18
+# (s,t)=(5,5) n=37  masks=262144  good=110  doubly-saturated=2
+# (s,t)=(5,5) n=38  masks=524288  good=18  doubly-saturated=0
+# (s,t)=(5,5) n=39  masks=524288  good=0  doubly-saturated=0
+# (s,t)=(5,5) n=40  masks=1048576  good=24  doubly-saturated=0
+HIT (s,t)=(5,5) n=41 S={23467910111516} mask=51054 deg=20
+HIT (s,t)=(5,5) n=41 S={23467910151617} mask=115566 deg=20
+HIT (s,t)=(5,5) n=41 S={23567910151617} mask=115574 deg=20
+HIT (s,t)=(5,5) n=41 S={123571013151617} mask=119383 deg=20
+HIT (s,t)=(5,5) n=41 S={235791013151617} mask=119638 deg=20
+HIT (s,t)=(5,5) n=41 S={123581213161719} mask=366743 deg=20
+HIT (s,t)=(5,5) n=41 S={123581315161719} mask=381079 deg=20
+HIT (s,t)=(5,5) n=41 S={1235101315161719} mask=381463 deg=20
+HIT (s,t)=(5,5) n=41 S={1358121316171819} mask=497813 deg=20
+HIT (s,t)=(5,5) n=41 S={15812131416171819} mask=506001 deg=20
+HIT (s,t)=(5,5) n=41 S={23467910111520} mask=542574 deg=20
+HIT (s,t)=(5,5) n=41 S={246791011141520} mask=550762 deg=20
+HIT (s,t)=(5,5) n=41 S={467891112141820} mask=667112 deg=20
+HIT (s,t)=(5,5) n=41 S={4679101112141820} mask=667496 deg=20
+HIT (s,t)=(5,5) n=41 S={4679101114151820} mask=681832 deg=20
+HIT (s,t)=(5,5) n=41 S={1468111214181920} mask=928937 deg=20
+HIT (s,t)=(5,5) n=41 S={4689111214181920} mask=929192 deg=20
+HIT (s,t)=(5,5) n=41 S={14811121314181920} mask=933001 deg=20
+HIT (s,t)=(5,5) n=41 S={15811121314181920} mask=933009 deg=20
+HIT (s,t)=(5,5) n=41 S={15812131417181920} mask=997521 deg=20
+# (s,t)=(5,5) n=41  masks=1048576  good=20  doubly-saturated=20
+# (s,t)=(5,5) n=42  masks=2097152  good=0  doubly-saturated=0
+# (s,t)=(5,5) n=43  masks=2097152  good=0  doubly-saturated=0
+# (s,t)=(5,5) n=44  masks=4194304  good=0  doubly-saturated=0
+# (s,t)=(5,5) n=45  masks=4194304  good=0  doubly-saturated=0

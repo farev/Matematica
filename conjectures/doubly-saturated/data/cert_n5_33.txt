@@ -1,0 +1,18 @@
+# CERTIFICATE: doubly saturated (3,3)-Ramsey graph on 5 vertices
+# G = Cay(Z_5, +-{1}), 2-regular, 5 edges
+n 5
+s 3
+t 3
+edges 0,1 0,4 1,2 2,3 3,4
+# ADD u v ... : the 3 listed vertices form a K3 of G+uv (uv a non-edge of G)
+ADD 0 2 1
+ADD 0 3 4
+ADD 1 3 2
+ADD 1 4 0
+ADD 2 4 3
+# DEL u v ... : the 3 listed vertices are independent in G-uv (uv an edge of G)
+DEL 0 1 3
+DEL 0 4 2
+DEL 1 2 4
+DEL 2 3 0
+DEL 3 4 1
