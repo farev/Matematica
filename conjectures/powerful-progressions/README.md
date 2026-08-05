@@ -52,9 +52,6 @@ python3 analyze.py data/census_1e19.txt
 
 ## Known defects and open threads
 
-- The 10^19 sweep ran **once** (10^18 was replicated with two segmentations
-  and matches the monolithic program at 10^14/10^16). Rerun 10^19 with a
-  different segment size before citing the 10^18–10^19 band externally.
 - Counts of powerful numbers were externally confirmed only at 10^10–10^12
   (OEIS A118896 via search summaries) and against van Doorn's 18 at 10^14 —
   all (secondary): **no primary source was readable from this sandbox**.

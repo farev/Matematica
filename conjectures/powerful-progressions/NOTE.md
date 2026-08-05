@@ -202,10 +202,10 @@ Evidence for completeness of the sweep:
    certification).
 3. **Calibration at the published frontier**: exactly van Doorn's 18 triples
    below 10^14, smallest (1728, 1764, 1800), d = 36 **(secondary)**.
-4. **Replication**: the 10^18 sweep was run twice with different segment
-   sizes (2×10^16 and 3700000000000037) — identical triple lists — and the
-   monolithic and segmented programs agree at 10^14 and 10^16. The 10^19
-   sweep was run once (see Defects).
+4. **Replication**: the 10^18 sweep was run with segment sizes 2×10^16 and
+   3700000000000037, and the 10^19 sweep with 2×10^16 and
+   33000000000000037 — identical triple lists and totals in both pairs —
+   and the monolithic and segmented programs agree at 10^14 and 10^16.
 5. **Independent per-triple verification**: `verify_triples.py` re-checks
    every listed triple with a different powerfulness algorithm (trial
    division + square-cofactor test) and re-derives consecutiveness by
@@ -250,12 +250,6 @@ usefully).
 
 ## 7. Known defects
 
-- The 10^19 sweep was executed **once** (the 10^18 prefix is replicated).
-  Its completeness above 10^18 rests on one run plus the uniqueness
-  self-test, the asymptotic count check, and 346/346 independent per-triple
-  verification (which certifies every *listed* triple absolutely but cannot
-  certify that none is missing). A second 10^19 pass with different
-  segmentation is the first thing a follow-up session should run.
 - `analyze.py` factors census elements by trial division; fine to 10^19,
   will not scale past ~10^21 unchanged.
 - No primary source was readable today (see §8); in particular the

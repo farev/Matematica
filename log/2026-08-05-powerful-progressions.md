@@ -12,10 +12,10 @@ three-candidate external slate per the mandate; selection argument in §4.
 **Result.**
 - **CERTIFIED** — complete census to **10^19**: exactly **346** triples
   (152 below 10^18; 18 below 10^14, matching van Doorn exactly), all 346
-  re-verified by an independent implementation, the 10^18 prefix replicated
-  with independent segmentation, counts anchored to OEIS A118896 at
-  10^10–10^12 **(secondary)**. No 4-term AP of consecutive powerful numbers
-  below 10^19.
+  re-verified by an independent implementation, both the 10^18 and 10^19
+  sweeps replicated with independent segmentations (identical lists), counts
+  anchored to OEIS A118896 at 10^10–10^12 **(secondary)**. No 4-term AP of
+  consecutive powerful numbers below 10^19.
 - **PROVED** — Lemma 1′: exact criterion for which integer multiples of a
   gcd-1 triple are componentwise powerful (mandatory primes + valuation
   bound); Lemma 2: two squares in a consecutive triple force `d > √x`.
@@ -52,15 +52,16 @@ validated DRUP-certification toolkit built before selection (see §5).
   the deciding table (Ahmed–Schaal's 26 values) is in a blocked PDF.
   Computing values without knowing which are new fails hard rule 3.
 
-**Next.** (1) Replicate the 10^19 sweep with a different segmentation (the
-one recorded defect); (2) read van Doorn's actual PDF from a connected
-machine: compare the 16 primitives to family A₁, check whether odd-d and
-squareless triples are noted, then decide whether this is a letter to van
-Doorn and/or an OEIS submission (first elements 1728, 6912, 729000, … appear
-OEIS-absent, **(secondary, absence-of-evidence)**); (3) the sharpest
-mathematical thread: a density argument for consecutiveness along one chain's
-admissible multipliers — Result C5 says the naive construction fails
-infinitely often, so the conjecture needs exactly this.
+**Next.** (1) Read van Doorn's actual PDF from a connected machine: compare
+the 16 primitives to family A₁, check whether odd-d and squareless triples
+are noted, then decide whether this is a letter to van Doorn and/or an OEIS
+submission (first elements 1728, 6912, 729000, … appear OEIS-absent,
+**(secondary, absence-of-evidence)**). (2) The sharpest mathematical thread:
+a density argument for consecutiveness along one chain's admissible
+multipliers — Result C5 says the naive construction fails infinitely often,
+so the conjecture needs exactly this. (3) Push to 10^20 needs 128-bit
+arithmetic in the generator (10^20 > 2^64); a rewrite, not a parameter
+change.
 
 ---
 
@@ -169,10 +170,11 @@ extended to 10^19.
 
 Positive controls: powerful-number counts at 10^10–10^12 vs OEIS A118896;
 gap-1 pairs vs A060355; the 18-at-10^14 gate. Cross-checks: monolithic vs
-segmented programs at 10^14/10^16; two independent segmentations at 10^18;
-independent per-triple verifier (different algorithm, different code path)
-on all 346 triples; every observed multiplier re-checked against Lemma 1′
-(zero exceptions). Negative controls on the (unused) SAT toolkit: corrupted
+segmented programs at 10^14/10^16; independent segmentations at 10^18
+(2×10^16 vs 3700000000000037) and 10^19 (2×10^16 vs 33000000000000037),
+identical lists; independent per-triple verifier (different algorithm,
+different code path) on all 346 triples; every observed multiplier
+re-checked against Lemma 1′ (zero exceptions). Negative controls on the (unused) SAT toolkit: corrupted
 and truncated DRUP proofs rejected; monochromatic coloring rejected.
 Runtimes/cores in NOTE §4; no randomness anywhere.
 

@@ -70,8 +70,6 @@ infinitely many exist.
   only. In particular his family "A₁" is undefined here, so the page must
   NOT claim our 16 primitives extend or refute his family structure — only
   that his published *count* (18 below 10^14) is reproduced exactly.
-- The 10^19 sweep ran once; the 10^18 prefix is replicated. Say "verified
-  once, replicated to 10^18" if the page mentions replication.
 - "Verified for X ≤ 10^19" is a CERTIFIED statement about that range only —
   not evidence-of-truth language for the conjecture (per repo status
   vocabulary).
