@@ -76,41 +76,58 @@ def min_valuations(triple):
     return {p: min(f.get(p, 0) for f in facs) for p in primes}
 
 
-def is_admissible(k, mv):
-    """Lemma 1 test: v_p(k) + min_w v_p(w) >= 2 for every prime p | k."""
-    kk = k
+def root_constraints(root):
+    """For a gcd-1 integer triple T0 (not necessarily powerful), the set of
+    m >= 1 with m*T0 componentwise powerful is, by Lemma 1':
+      (i)  every prime p with v_p(w) = 1 for some component w divides m, and
+      (ii) for every prime p | m,  v_p(m) >= 2 - min_w v_p(w).
+    Returns (mandatory, mu): the mandatory prime set and {p: min_w v_p(w)}
+    over all primes appearing in any component with valuation 1, plus those
+    needed for lookups (absent p means mu = 0 for new primes of m)."""
+    facs = [factor(w) for w in root]
+    primes = set().union(*facs)
+    mu = {p: min(f.get(p, 0) for f in facs) for p in primes}
+    mandatory = {p for p in primes if any(f.get(p, 0) == 1 for f in facs)}
+    return mandatory, mu
+
+
+def is_admissible_root(m, mandatory, mu):
+    """Lemma 1' test for a gcd-1 root triple."""
+    mm = m
+    seen = set()
     p = 2
-    while p * p <= kk:
-        if kk % p == 0:
+    while p * p <= mm:
+        if mm % p == 0:
             e = 0
-            while kk % p == 0:
+            while mm % p == 0:
                 e += 1
-                kk //= p
-            if e + mv.get(p, 0) < 2:
+                mm //= p
+            seen.add(p)
+            if e < 2 - mu.get(p, 0):
                 return False
         p += 1 if p == 2 else 2
-    if kk > 1 and 1 + mv.get(kk, 0) < 2:
-        return False
-    return True
+    if mm > 1:
+        seen.add(mm)
+        if 1 < 2 - mu.get(mm, 0):
+            return False
+    return mandatory <= seen
 
 
-def saturation_scan(triple, K, observed, cap=200000):
-    """Ascending scan of admissible multipliers k <= min(K, cap):
-    returns (n_admissible_scanned, first_missing or None, scanned_to).
-    'missing' = admissible by Lemma 1 (so k*T is an AP of powerful numbers)
-    but absent from the census, i.e. an intruder broke consecutiveness."""
-    mv = min_valuations(triple)
+def saturation_scan(root, K, observed, cap=200000):
+    """Ascending scan of admissible multipliers m <= min(K, cap) for the
+    gcd-1 root: returns (first_missing or None, scanned_to). 'missing' =
+    admissible by Lemma 1' (so m*T0 is an AP of powerful numbers) but absent
+    from the census, i.e. an intruder broke consecutiveness."""
+    mandatory, mu = root_constraints(root)
     obs = set(observed)
-    nadm = 0
-    first_missing = None
     upto = min(K, cap)
-    for k in range(1, upto + 1):
-        if is_admissible(k, mv):
+    nadm = 0
+    for m in range(1, upto + 1):
+        if is_admissible_root(m, mandatory, mu):
             nadm += 1
-            if k not in obs and first_missing is None:
-                first_missing = k
-                break
-    return nadm, first_missing, upto
+            if m not in obs:
+                return m, upto, nadm
+    return None, upto, nadm
 
 
 def main(path):
@@ -162,26 +179,43 @@ def main(path):
         print(f"  = ({pretty(x)}, {pretty(y)}, {pretty(z)})")
         print(f"  tightness d/meangap = {tight:.4f}; d/sqrt(x) = {d/math.sqrt(x):.4f}; "
               f"perfect squares among elements: {nsq}")
-        obs = sorted(Fraction(triples[j][0], x) for j in idxs)
-        assert all(f.denominator == 1 for f in obs), \
-            "chain primitive is not integrally minimal"
-        obs_int = [int(f) for f in obs]
+        # gcd-1 root of the chain: any member divided by the gcd of its
+        # components; every member is an integer multiple of it.
+        g0 = math.gcd(x, math.gcd(y, z))
+        root = (x // g0, y // g0, z // g0)
+        obs_m = sorted(math.gcd(triples[j][0], math.gcd(triples[j][1], triples[j][2]))
+                       for j in idxs)
+        for j in idxs:
+            gj = math.gcd(triples[j][0], math.gcd(triples[j][1], triples[j][2]))
+            assert tuple(v // gj for v in triples[j]) == root, "chain root mismatch"
+        root_powerful = all(
+            all(e >= 2 for e in factor(w).values()) for w in root)
+        if g0 > 1:
+            print(f"  root T0 = {root} (primitive = {g0}*T0; root powerful: "
+                  f"{'yes' if root_powerful else 'NO'})")
         if X:
-            K = X // z  # need k*z <= X for the scaled triple to lie in range
-            mv = min_valuations((x, y, z))
-            extra = [k for k in obs_int if not is_admissible(k, mv)]
-            nadm, first_missing, upto = saturation_scan((x, y, z), K, obs_int)
-            if first_missing is None:
-                print(f"  SATURATED: all {nadm} admissible k <= min(X/z, cap) = {upto} "
+            K = X // root[2]  # need m*z0 <= X to lie in range
+            mandatory, mu = root_constraints(root)
+            extra = [m for m in obs_m if not is_admissible_root(m, mandatory, mu)]
+            first_missing, upto, nadm = saturation_scan(root, K, obs_m)
+            if first_missing is None and nadm == 0:
+                print(f"  (no admissible m <= scan cap {upto}; smallest "
+                      f"observed multiplier is {obs_m[0]})")
+            elif first_missing is None:
+                print(f"  SATURATED: all {nadm} admissible m <= min(X/z0, cap) = {upto} "
                       f"occur as consecutive triples")
             else:
-                print(f"  first missing admissible k = {first_missing} "
-                      f"(k*T is a powerful AP but not consecutive); "
-                      f"observed {len(obs_int)} of admissible k <= X/z = {K}")
+                print(f"  first missing admissible m = {first_missing} "
+                      f"(m*T0 is a powerful AP but not consecutive); "
+                      f"observed {len(obs_m)} multipliers, m-range <= X/z0 = {K}")
             if extra:
-                print(f"  WARNING: observed multiplier not admissible by Lemma 1: {extra}")
+                print(f"  WARNING: observed multiplier fails Lemma 1': {extra}")
         if len(idxs) > 1:
-            print(f"  scalings: {', '.join('x' + str(int(f)) for f in obs[1:])}")
+            base = obs_m[0]
+            rel = [Fraction(m, base) for m in obs_m[1:]]
+            print(f"  multipliers of T0: {obs_m}")
+            print(f"  scalings of primitive: "
+                  f"{', '.join('x' + str(f) for f in rel)}")
         print()
     print(f"squares-per-primitive histogram: {nsquares_hist}")
 

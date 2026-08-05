@@ -1,0 +1,157 @@
+346 triples loaded, X = 10000000000000000000
+16 scaling chains (primitives up to rational scaling)
+
+chain of 2: primitive #1
+  (1728, 1764, 1800)  d = 36
+  = (8^2*3^3, 42^2, 15^2*2^3)
+  tightness d/meangap = 0.9410; d/sqrt(x) = 0.8660; perfect squares among elements: 1
+  root T0 = (48, 49, 50) (primitive = 36*T0; root powerful: NO)
+  first missing admissible m = 72 (m*T0 is a powerful AP but not consecutive); observed 2 multipliers, m-range <= X/z0 = 200000000000000000
+  multipliers of T0: [36, 144]
+  scalings of primitive: x4
+
+chain of 4: primitive #3
+  (729000, 729316, 729632)  d = 316
+  = (27^2*10^3, 854^2, 302^2*2^3)
+  tightness d/meangap = 0.4022; d/sqrt(x) = 0.3701; perfect squares among elements: 1
+  root T0 = (182250, 182329, 182408) (primitive = 4*T0; root powerful: NO)
+  first missing admissible m = 32 (m*T0 is a powerful AP but not consecutive); observed 4 multipliers, m-range <= X/z0 = 54822156922941
+  multipliers of T0: [4, 8, 16, 64]
+  scalings of primitive: x2, x4, x16
+
+chain of 1: primitive #7
+  (149022674775, 149022848000, 149023021225)  d = 173225 [odd d]
+  = (1585^2*39^3, 34528^2*5^3, 386035^2)
+  tightness d/meangap = 0.4876; d/sqrt(x) = 0.4487; perfect squares among elements: 1
+  root T0 = (35271639, 35271680, 35271721) (primitive = 4225*T0; root powerful: NO)
+  first missing admissible m = 16900 (m*T0 is a powerful AP but not consecutive); observed 1 multipliers, m-range <= X/z0 = 283513242804
+
+chain of 2: primitive #8
+  (260102040004, 260102223752, 260102407500)  d = 183748
+  = (510002^2, 180313^2*2^3, 98150^2*3^3)
+  tightness d/meangap = 0.3915; d/sqrt(x) = 0.3603; perfect squares among elements: 1
+  root T0 = (65025510001, 65025555938, 65025601875) (primitive = 4*T0; root powerful: NO)
+  first missing admissible m = 8 (m*T0 is a powerful AP but not consecutive); observed 2 multipliers, m-range <= X/z0 = 153785581
+  multipliers of T0: [4, 16]
+  scalings of primitive: x4
+
+chain of 3: primitive #9
+  (348796224200, 348796548100, 348796872000)  d = 323900
+  = (208805^2*2^3, 590590^2, 52824^2*5^3)
+  tightness d/meangap = 0.5959; d/sqrt(x) = 0.5484; perfect squares among elements: 1
+  root T0 = (3487962242, 3487965481, 3487968720) (primitive = 100*T0; root powerful: NO)
+  first missing admissible m = 500 (m*T0 is a powerful AP but not consecutive); observed 3 multipliers, m-range <= X/z0 = 2866998187
+  multipliers of T0: [100, 200, 400]
+  scalings of primitive: x2, x4
+
+chain of 6: primitive #12
+  (1206916971500, 1206917268552, 1206917565604)  d = 297052
+  = (94^2*515^3, 388413^2*2^3, 1098598^2)
+  tightness d/meangap = 0.2938; d/sqrt(x) = 0.2704; perfect squares among elements: 1
+  root T0 = (28440875, 28440882, 28440889) (primitive = 42436*T0; root powerful: NO)
+  SATURATED: all 3 admissible m <= min(X/z0, cap) = 200000 occur as consecutive triples
+  multipliers of T0: [42436, 84872, 169744, 381924, 763848, 2121800]
+  scalings of primitive: x2, x4, x9, x18, x50
+
+chain of 1: primitive #19
+  (265887367432064, 265887397050916, 265887426669768)  d = 29618852
+  = (311284^2*14^3, 16306054^2, 5765061^2*2^3)
+  tightness d/meangap = 1.9738; d/sqrt(x) = 1.8164; perfect squares among elements: 1
+  root T0 = (66471841858016, 66471849262729, 66471856667442) (primitive = 4*T0; root powerful: NO)
+  first missing admissible m = 8 (m*T0 is a powerful AP but not consecutive); observed 1 multipliers, m-range <= X/z0 = 150439
+
+chain of 272: primitive #20
+  (284156493508800, 284156493591364, 284156493673928)  d = 82564
+  = (3244120^2*3^3, 16856942^2, 5959829^2*2^3)
+  tightness d/meangap = 0.0053; d/sqrt(x) = 0.0049; perfect squares among elements: 1
+  root T0 = (71039123377200, 71039123397841, 71039123418482) (primitive = 4*T0; root powerful: NO)
+  first missing admissible m = 288 (m*T0 is a powerful AP but not consecutive); observed 272 multipliers, m-range <= X/z0 = 140767
+  multipliers of T0: [4, 8, 16, 32, 36, 64, 72, 100, 108, 128, 144, 196, 200, 216, 256, 324, 392, 400, 432, 484, 512, 576, 648, 676, 784, 800, 864, 900, 968, 972, 1000, 1024, 1156, 1296, 1352, 1372, 1444, 1568, 1600, 1728, 1764, 1800, 1936, 1944, 2048, 2116, 2312, 2500, 2700, 2704, 2744, 2888, 2916, 3136, 3200, 3364, 3456, 3528, 3600, 3872, 3888, 4096, 4232, 4356, 4624, 5000, 5184, 5292, 5400, 5408, 5476, 5488, 5776, 5832, 6084, 6272, 6400, 6724, 6728, 6912, 7056, 7396, 7744, 8192, 8464, 8712, 8788, 9000, 9248, 9604, 10000, 10404, 10648, 10800, 10816, 10952, 10976, 11236, 11552, 11664, 12100, 12348, 12544, 12800, 12996, 13068, 13448, 13456, 13824, 13924, 14400, 14792, 14884, 15488, 15552, 15876, 16384, 16900, 16928, 17424, 17576, 17956, 18252, 18496, 19044, 19208, 20000, 20164, 20808, 21168, 21316, 21600, 21632, 21904, 22472, 22500, 23104, 23716, 24200, 24300, 24336, 24696, 24964, 25000, 25088, 25600, 25992, 26136, 26912, 27000, 27556, 27648, 27848, 28224, 28900, 29584, 29768, 30276, 30976, 31212, 31684, 31752, 33124, 33800, 35912, 36992, 37636, 38416, 39204, 40000, 40328, 40804, 41616, 42632, 43200, 43264, 43904, 44944, 45000, 45796, 46208, 46656, 47432, 47524, 47628, 48400, 48600, 49000, 49284, 49392, 49928, 50176, 51200, 52272, 52900, 53792, 53824, 54756, 55112, 55696, 56644, 57132, 57800, 58564, 59536, 60516, 60552, 61952, 63368, 63504, 64516, 65536, 66248, 66564, 67500, 67600, 67712, 68644, 69696, 70756, 71824, 73008, 73984, 75272, 76832, 77284, 78408, 80000, 80656, 81608, 84872, 85264, 86400, 86436, 86528, 87616, 88804, 89888, 90000, 91592, 92416, 93636, 94864, 95048, 96800, 98568, 99856, 100352, 102152, 102400, 104544, 105800, 108900, 110224, 110592, 111392, 111556, 113288, 115600, 117128, 118336, 119072, 121032, 121104, 123904, 125316, 126736, 131044, 133128, 133956, 135200, 136900]
+  scalings of primitive: x2, x4, x8, x9, x16, x18, x25, x27, x32, x36, x49, x50, x54, x64, x81, x98, x100, x108, x121, x128, x144, x162, x169, x196, x200, x216, x225, x242, x243, x250, x256, x289, x324, x338, x343, x361, x392, x400, x432, x441, x450, x484, x486, x512, x529, x578, x625, x675, x676, x686, x722, x729, x784, x800, x841, x864, x882, x900, x968, x972, x1024, x1058, x1089, x1156, x1250, x1296, x1323, x1350, x1352, x1369, x1372, x1444, x1458, x1521, x1568, x1600, x1681, x1682, x1728, x1764, x1849, x1936, x2048, x2116, x2178, x2197, x2250, x2312, x2401, x2500, x2601, x2662, x2700, x2704, x2738, x2744, x2809, x2888, x2916, x3025, x3087, x3136, x3200, x3249, x3267, x3362, x3364, x3456, x3481, x3600, x3698, x3721, x3872, x3888, x3969, x4096, x4225, x4232, x4356, x4394, x4489, x4563, x4624, x4761, x4802, x5000, x5041, x5202, x5292, x5329, x5400, x5408, x5476, x5618, x5625, x5776, x5929, x6050, x6075, x6084, x6174, x6241, x6250, x6272, x6400, x6498, x6534, x6728, x6750, x6889, x6912, x6962, x7056, x7225, x7396, x7442, x7569, x7744, x7803, x7921, x7938, x8281, x8450, x8978, x9248, x9409, x9604, x9801, x10000, x10082, x10201, x10404, x10658, x10800, x10816, x10976, x11236, x11250, x11449, x11552, x11664, x11858, x11881, x11907, x12100, x12150, x12250, x12321, x12348, x12482, x12544, x12800, x13068, x13225, x13448, x13456, x13689, x13778, x13924, x14161, x14283, x14450, x14641, x14884, x15129, x15138, x15488, x15842, x15876, x16129, x16384, x16562, x16641, x16875, x16900, x16928, x17161, x17424, x17689, x17956, x18252, x18496, x18818, x19208, x19321, x19602, x20000, x20164, x20402, x21218, x21316, x21600, x21609, x21632, x21904, x22201, x22472, x22500, x22898, x23104, x23409, x23716, x23762, x24200, x24642, x24964, x25088, x25538, x25600, x26136, x26450, x27225, x27556, x27648, x27848, x27889, x28322, x28900, x29282, x29584, x29768, x30258, x30276, x30976, x31329, x31684, x32761, x33282, x33489, x33800, x34225
+
+chain of 2: primitive #27
+  (5192127333376000, 5192127374990724, 5192127416605448)  d = 41614724
+  = (2278624^2*10^3, 72056418^2, 25475791^2*2^3)
+  tightness d/meangap = 0.6276; d/sqrt(x) = 0.5775; perfect squares among elements: 1
+  root T0 = (1298031833344000, 1298031843747681, 1298031854151362) (primitive = 4*T0; root powerful: NO)
+  first missing admissible m = 8 (m*T0 is a powerful AP but not consecutive); observed 2 multipliers, m-range <= X/z0 = 7703
+  multipliers of T0: [4, 16]
+  scalings of primitive: x4
+
+chain of 3: primitive #31
+  (9706593919559525, 9706593942114304, 9706593964669083)  d = 22554779 [odd d]
+  = (630865^2*29^3, 98522048^2, 18960577^2*3^3)
+  tightness d/meangap = 0.2488; d/sqrt(x) = 0.2289; perfect squares among elements: 1
+  root T0 = (11541728798525, 11541728825344, 11541728852163) (primitive = 841*T0; root powerful: NO)
+  first missing admissible m = 3364 (m*T0 is a powerful AP but not consecutive); observed 3 multipliers, m-range <= X/z0 = 866421
+  multipliers of T0: [841, 7569, 21025]
+  scalings of primitive: x9, x25
+
+chain of 22: primitive #37
+  (20405997355401216, 20405997363591844, 20405997371782472)  d = 8190628
+  = (1077504^2*26^3, 142849562^2, 50504947^2*2^3)
+  tightness d/meangap = 0.0623; d/sqrt(x) = 0.0573; perfect squares among elements: 1
+  root T0 = (5101499338850304, 5101499340897961, 5101499342945618) (primitive = 4*T0; root powerful: NO)
+  first missing admissible m = 64 (m*T0 is a powerful AP but not consecutive); observed 22 multipliers, m-range <= X/z0 = 1960
+  multipliers of T0: [4, 8, 16, 32, 36, 72, 100, 108, 128, 144, 200, 216, 288, 324, 392, 400, 432, 648, 800, 900, 968, 1156]
+  scalings of primitive: x2, x4, x8, x9, x18, x25, x27, x32, x36, x50, x54, x72, x81, x98, x100, x108, x162, x200, x225, x242, x289
+
+chain of 1: primitive #71
+  (141997918422814947, 141997918685036544, 141997918947258141)  d = 262221597 [odd d]
+  = (72520219^2*3^3, 376826112^2, 657457^2*69^3)
+  tightness d/meangap = 0.7561; d/sqrt(x) = 0.6959; perfect squares among elements: 1
+  root T0 = (9941743220809, 9941743239168, 9941743257527) (primitive = 14283*T0; root powerful: NO)
+  first missing admissible m = 4761 (m*T0 is a powerful AP but not consecutive); observed 1 multipliers, m-range <= X/z0 = 1005859
+
+chain of 19: primitive #72
+  (142435066921358436, 142435066952211912, 142435066983065388)  d = 30853476
+  = (377405706^2, 133433067^2*2^3, 72631762^2*3^3)
+  tightness d/meangap = 0.0888; d/sqrt(x) = 0.0818; perfect squares among elements: 1
+  root T0 = (3956529636704401, 3956529637561442, 3956529638418483) (primitive = 36*T0; root powerful: NO)
+  first missing admissible m = 1764 (m*T0 is a powerful AP but not consecutive); observed 19 multipliers, m-range <= X/z0 = 2527
+  multipliers of T0: [36, 72, 108, 144, 216, 288, 324, 432, 576, 648, 864, 900, 972, 1152, 1296, 1728, 1800, 1944, 2304]
+  scalings of primitive: x2, x3, x4, x6, x8, x9, x12, x16, x18, x24, x25, x27, x32, x36, x48, x50, x54, x64
+
+chain of 1: primitive #106
+  (396476230691699464, 396476231534379396, 396476232377059328)  d = 842679932
+  = (3176071^2*34^3, 629663586^2, 222619696^2*2^3)
+  tightness d/meangap = 1.4542; d/sqrt(x) = 1.3383; perfect squares among elements: 1
+  root T0 = (99119057672924866, 99119057883594849, 99119058094264832) (primitive = 4*T0; root powerful: NO)
+  first missing admissible m = 8 (m*T0 is a powerful AP but not consecutive); observed 1 multipliers, m-range <= X/z0 = 100
+
+chain of 6: primitive #109
+  (414781000521010200, 414781000642962000, 414781000764913800)  d = 121951800
+  = (6241305^2*22^3, 57604236^2*5^3, 2455^2*4098^3)
+  tightness d/meangap = 0.2058; d/sqrt(x) = 0.1894; perfect squares among elements: 0
+  root T0 = (230433889178339, 230433889246090, 230433889313841) (primitive = 1800*T0; root powerful: NO)
+  first missing admissible m = 900 (m*T0 is a powerful AP but not consecutive); observed 6 multipliers, m-range <= X/z0 = 43396
+  multipliers of T0: [1800, 4500, 5400, 9000, 16200, 40500]
+  scalings of primitive: x5/2, x3, x5, x9, x45/2
+
+chain of 1: primitive #297
+  (5794300244500831368, 5794300246592137284, 5794300248683443200)  d = 2091305916
+  = (851050839^2*2^3, 2407135278^2, 103840^2*813^3)
+  tightness d/meangap = 0.9441; d/sqrt(x) = 0.8688; perfect squares among elements: 1
+  root T0 = (2191593041618, 2191593042409, 2191593043200) (primitive = 2643876*T0; root powerful: NO)
+  (no admissible m <= scan cap 200000; smallest observed multiplier is 2643876)
+
+squares-per-primitive histogram: {1: 15, 0: 1}
+
+decade | triples | primitives
+10^3  |       0 | 0
+10^4  |       2 | 1
+10^5  |       2 | 1
+10^6  |       3 | 2
+10^7  |       5 | 2
+10^8  |       6 | 2
+10^9  |       6 | 2
+10^10 |       6 | 2
+10^11 |       6 | 2
+10^12 |      10 | 5
+10^13 |      15 | 6
+10^14 |      18 | 6
+10^15 |      21 | 8
+10^16 |      31 | 10
+10^17 |      62 | 11
+10^18 |     152 | 15
+10^19 |     346 | 16

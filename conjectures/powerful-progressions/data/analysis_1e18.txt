@@ -5,101 +5,126 @@ chain of 2: primitive #1
   (1728, 1764, 1800)  d = 36
   = (8^2*3^3, 42^2, 15^2*2^3)
   tightness d/meangap = 0.9410; d/sqrt(x) = 0.8660; perfect squares among elements: 1
-  first missing admissible k = 2 (k*T is a powerful AP but not consecutive); observed 2 of admissible k <= X/z = 555555555555555
-  scalings: x4
+  root T0 = (48, 49, 50) (primitive = 36*T0; root powerful: NO)
+  first missing admissible m = 72 (m*T0 is a powerful AP but not consecutive); observed 2 multipliers, m-range <= X/z0 = 20000000000000000
+  multipliers of T0: [36, 144]
+  scalings of primitive: x4
 
 chain of 4: primitive #3
   (729000, 729316, 729632)  d = 316
   = (27^2*10^3, 854^2, 302^2*2^3)
   tightness d/meangap = 0.4022; d/sqrt(x) = 0.3701; perfect squares among elements: 1
-  first missing admissible k = 8 (k*T is a powerful AP but not consecutive); observed 4 of admissible k <= X/z = 1370553923073
-  scalings: x2, x4, x16
+  root T0 = (182250, 182329, 182408) (primitive = 4*T0; root powerful: NO)
+  first missing admissible m = 32 (m*T0 is a powerful AP but not consecutive); observed 4 multipliers, m-range <= X/z0 = 5482215692294
+  multipliers of T0: [4, 8, 16, 64]
+  scalings of primitive: x2, x4, x16
 
 chain of 1: primitive #7
   (149022674775, 149022848000, 149023021225)  d = 173225 [odd d]
   = (1585^2*39^3, 34528^2*5^3, 386035^2)
   tightness d/meangap = 0.4876; d/sqrt(x) = 0.4487; perfect squares among elements: 1
-  first missing admissible k = 4 (k*T is a powerful AP but not consecutive); observed 1 of admissible k <= X/z = 6710372
+  root T0 = (35271639, 35271680, 35271721) (primitive = 4225*T0; root powerful: NO)
+  first missing admissible m = 16900 (m*T0 is a powerful AP but not consecutive); observed 1 multipliers, m-range <= X/z0 = 28351324280
 
 chain of 2: primitive #8
   (260102040004, 260102223752, 260102407500)  d = 183748
   = (510002^2, 180313^2*2^3, 98150^2*3^3)
   tightness d/meangap = 0.3915; d/sqrt(x) = 0.3603; perfect squares among elements: 1
-  first missing admissible k = 2 (k*T is a powerful AP but not consecutive); observed 2 of admissible k <= X/z = 3844639
-  scalings: x4
+  root T0 = (65025510001, 65025555938, 65025601875) (primitive = 4*T0; root powerful: NO)
+  first missing admissible m = 8 (m*T0 is a powerful AP but not consecutive); observed 2 multipliers, m-range <= X/z0 = 15378558
+  multipliers of T0: [4, 16]
+  scalings of primitive: x4
 
 chain of 3: primitive #9
   (348796224200, 348796548100, 348796872000)  d = 323900
   = (208805^2*2^3, 590590^2, 52824^2*5^3)
   tightness d/meangap = 0.5959; d/sqrt(x) = 0.5484; perfect squares among elements: 1
-  first missing admissible k = 5 (k*T is a powerful AP but not consecutive); observed 3 of admissible k <= X/z = 2866998
-  scalings: x2, x4
+  root T0 = (3487962242, 3487965481, 3487968720) (primitive = 100*T0; root powerful: NO)
+  first missing admissible m = 500 (m*T0 is a powerful AP but not consecutive); observed 3 multipliers, m-range <= X/z0 = 286699818
+  multipliers of T0: [100, 200, 400]
+  scalings of primitive: x2, x4
 
 chain of 6: primitive #12
   (1206916971500, 1206917268552, 1206917565604)  d = 297052
   = (94^2*515^3, 388413^2*2^3, 1098598^2)
   tightness d/meangap = 0.2938; d/sqrt(x) = 0.2704; perfect squares among elements: 1
-  first missing admissible k = 8 (k*T is a powerful AP but not consecutive); observed 6 of admissible k <= X/z = 828557
-  scalings: x2, x4, x9, x18, x50
+  root T0 = (28440875, 28440882, 28440889) (primitive = 42436*T0; root powerful: NO)
+  SATURATED: all 3 admissible m <= min(X/z0, cap) = 200000 occur as consecutive triples
+  multipliers of T0: [42436, 84872, 169744, 381924, 763848, 2121800]
+  scalings of primitive: x2, x4, x9, x18, x50
 
 chain of 1: primitive #19
   (265887367432064, 265887397050916, 265887426669768)  d = 29618852
   = (311284^2*14^3, 16306054^2, 5765061^2*2^3)
   tightness d/meangap = 1.9738; d/sqrt(x) = 1.8164; perfect squares among elements: 1
-  first missing admissible k = 2 (k*T is a powerful AP but not consecutive); observed 1 of admissible k <= X/z = 3760
+  root T0 = (66471841858016, 66471849262729, 66471856667442) (primitive = 4*T0; root powerful: NO)
+  first missing admissible m = 8 (m*T0 is a powerful AP but not consecutive); observed 1 multipliers, m-range <= X/z0 = 15043
 
 chain of 110: primitive #20
   (284156493508800, 284156493591364, 284156493673928)  d = 82564
   = (3244120^2*3^3, 16856942^2, 5959829^2*2^3)
   tightness d/meangap = 0.0053; d/sqrt(x) = 0.0049; perfect squares among elements: 1
-  first missing admissible k = 72 (k*T is a powerful AP but not consecutive); observed 110 of admissible k <= X/z = 3519
-  scalings: x2, x4, x8, x9, x16, x18, x25, x27, x32, x36, x49, x50, x54, x64, x81, x98, x100, x108, x121, x128, x144, x162, x169, x196, x200, x216, x225, x242, x243, x250, x256, x289, x324, x338, x343, x361, x392, x400, x432, x441, x450, x484, x486, x512, x529, x578, x625, x675, x676, x686, x722, x729, x784, x800, x841, x864, x882, x900, x968, x972, x1024, x1058, x1089, x1156, x1250, x1296, x1323, x1350, x1352, x1369, x1372, x1444, x1458, x1521, x1568, x1600, x1681, x1682, x1728, x1764, x1849, x1936, x2048, x2116, x2178, x2197, x2250, x2312, x2401, x2500, x2601, x2662, x2700, x2704, x2738, x2744, x2809, x2888, x2916, x3025, x3087, x3136, x3200, x3249, x3267, x3362, x3364, x3456, x3481
+  root T0 = (71039123377200, 71039123397841, 71039123418482) (primitive = 4*T0; root powerful: NO)
+  first missing admissible m = 288 (m*T0 is a powerful AP but not consecutive); observed 110 multipliers, m-range <= X/z0 = 14076
+  multipliers of T0: [4, 8, 16, 32, 36, 64, 72, 100, 108, 128, 144, 196, 200, 216, 256, 324, 392, 400, 432, 484, 512, 576, 648, 676, 784, 800, 864, 900, 968, 972, 1000, 1024, 1156, 1296, 1352, 1372, 1444, 1568, 1600, 1728, 1764, 1800, 1936, 1944, 2048, 2116, 2312, 2500, 2700, 2704, 2744, 2888, 2916, 3136, 3200, 3364, 3456, 3528, 3600, 3872, 3888, 4096, 4232, 4356, 4624, 5000, 5184, 5292, 5400, 5408, 5476, 5488, 5776, 5832, 6084, 6272, 6400, 6724, 6728, 6912, 7056, 7396, 7744, 8192, 8464, 8712, 8788, 9000, 9248, 9604, 10000, 10404, 10648, 10800, 10816, 10952, 10976, 11236, 11552, 11664, 12100, 12348, 12544, 12800, 12996, 13068, 13448, 13456, 13824, 13924]
+  scalings of primitive: x2, x4, x8, x9, x16, x18, x25, x27, x32, x36, x49, x50, x54, x64, x81, x98, x100, x108, x121, x128, x144, x162, x169, x196, x200, x216, x225, x242, x243, x250, x256, x289, x324, x338, x343, x361, x392, x400, x432, x441, x450, x484, x486, x512, x529, x578, x625, x675, x676, x686, x722, x729, x784, x800, x841, x864, x882, x900, x968, x972, x1024, x1058, x1089, x1156, x1250, x1296, x1323, x1350, x1352, x1369, x1372, x1444, x1458, x1521, x1568, x1600, x1681, x1682, x1728, x1764, x1849, x1936, x2048, x2116, x2178, x2197, x2250, x2312, x2401, x2500, x2601, x2662, x2700, x2704, x2738, x2744, x2809, x2888, x2916, x3025, x3087, x3136, x3200, x3249, x3267, x3362, x3364, x3456, x3481
 
 chain of 2: primitive #27
   (5192127333376000, 5192127374990724, 5192127416605448)  d = 41614724
   = (2278624^2*10^3, 72056418^2, 25475791^2*2^3)
   tightness d/meangap = 0.6276; d/sqrt(x) = 0.5775; perfect squares among elements: 1
-  first missing admissible k = 2 (k*T is a powerful AP but not consecutive); observed 2 of admissible k <= X/z = 192
-  scalings: x4
+  root T0 = (1298031833344000, 1298031843747681, 1298031854151362) (primitive = 4*T0; root powerful: NO)
+  first missing admissible m = 8 (m*T0 is a powerful AP but not consecutive); observed 2 multipliers, m-range <= X/z0 = 770
+  multipliers of T0: [4, 16]
+  scalings of primitive: x4
 
 chain of 3: primitive #31
   (9706593919559525, 9706593942114304, 9706593964669083)  d = 22554779 [odd d]
   = (630865^2*29^3, 98522048^2, 18960577^2*3^3)
   tightness d/meangap = 0.2488; d/sqrt(x) = 0.2289; perfect squares among elements: 1
-  first missing admissible k = 4 (k*T is a powerful AP but not consecutive); observed 3 of admissible k <= X/z = 103
-  scalings: x9, x25
+  root T0 = (11541728798525, 11541728825344, 11541728852163) (primitive = 841*T0; root powerful: NO)
+  first missing admissible m = 3364 (m*T0 is a powerful AP but not consecutive); observed 3 multipliers, m-range <= X/z0 = 86642
+  multipliers of T0: [841, 7569, 21025]
+  scalings of primitive: x9, x25
 
 chain of 10: primitive #37
   (20405997355401216, 20405997363591844, 20405997371782472)  d = 8190628
   = (1077504^2*26^3, 142849562^2, 50504947^2*2^3)
   tightness d/meangap = 0.0623; d/sqrt(x) = 0.0573; perfect squares among elements: 1
-  first missing admissible k = 16 (k*T is a powerful AP but not consecutive); observed 10 of admissible k <= X/z = 49
-  scalings: x2, x4, x8, x9, x18, x25, x27, x32, x36
+  root T0 = (5101499338850304, 5101499340897961, 5101499342945618) (primitive = 4*T0; root powerful: NO)
+  first missing admissible m = 64 (m*T0 is a powerful AP but not consecutive); observed 10 multipliers, m-range <= X/z0 = 196
+  multipliers of T0: [4, 8, 16, 32, 36, 72, 100, 108, 128, 144]
+  scalings of primitive: x2, x4, x8, x9, x18, x25, x27, x32, x36
 
 chain of 1: primitive #71
   (141997918422814947, 141997918685036544, 141997918947258141)  d = 262221597 [odd d]
   = (72520219^2*3^3, 376826112^2, 657457^2*69^3)
   tightness d/meangap = 0.7561; d/sqrt(x) = 0.6959; perfect squares among elements: 1
-  first missing admissible k = 3 (k*T is a powerful AP but not consecutive); observed 1 of admissible k <= X/z = 7
+  root T0 = (9941743220809, 9941743239168, 9941743257527) (primitive = 14283*T0; root powerful: NO)
+  first missing admissible m = 4761 (m*T0 is a powerful AP but not consecutive); observed 1 multipliers, m-range <= X/z0 = 100585
 
 chain of 5: primitive #72
   (142435066921358436, 142435066952211912, 142435066983065388)  d = 30853476
   = (377405706^2, 133433067^2*2^3, 72631762^2*3^3)
   tightness d/meangap = 0.0888; d/sqrt(x) = 0.0818; perfect squares among elements: 1
-  SATURATED: all 5 admissible k <= min(X/z, cap) = 7 occur as consecutive triples
-  scalings: x2, x3, x4, x6
+  root T0 = (3956529636704401, 3956529637561442, 3956529638418483) (primitive = 36*T0; root powerful: NO)
+  SATURATED: all 5 admissible m <= min(X/z0, cap) = 252 occur as consecutive triples
+  multipliers of T0: [36, 72, 108, 144, 216]
+  scalings of primitive: x2, x3, x4, x6
 
 chain of 1: primitive #106
   (396476230691699464, 396476231534379396, 396476232377059328)  d = 842679932
   = (3176071^2*34^3, 629663586^2, 222619696^2*2^3)
   tightness d/meangap = 1.4542; d/sqrt(x) = 1.3383; perfect squares among elements: 1
-  first missing admissible k = 2 (k*T is a powerful AP but not consecutive); observed 1 of admissible k <= X/z = 2
+  root T0 = (99119057672924866, 99119057883594849, 99119058094264832) (primitive = 4*T0; root powerful: NO)
+  first missing admissible m = 8 (m*T0 is a powerful AP but not consecutive); observed 1 multipliers, m-range <= X/z0 = 10
 
 chain of 1: primitive #109
   (414781000521010200, 414781000642962000, 414781000764913800)  d = 121951800
   = (6241305^2*22^3, 57604236^2*5^3, 2455^2*4098^3)
   tightness d/meangap = 0.2058; d/sqrt(x) = 0.1894; perfect squares among elements: 0
-  first missing admissible k = 2 (k*T is a powerful AP but not consecutive); observed 1 of admissible k <= X/z = 2
+  root T0 = (230433889178339, 230433889246090, 230433889313841) (primitive = 1800*T0; root powerful: NO)
+  first missing admissible m = 900 (m*T0 is a powerful AP but not consecutive); observed 1 multipliers, m-range <= X/z0 = 4339
 
 squares-per-primitive histogram: {1: 14, 0: 1}
 
