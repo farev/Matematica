@@ -1,0 +1,5 @@
+152 triples verified independently: 152 PASS, 0 FAIL
+
+real	0m24.097s
+user	0m23.171s
+sys	0m0.020s

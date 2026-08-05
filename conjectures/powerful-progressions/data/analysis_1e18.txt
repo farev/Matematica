@@ -1,0 +1,122 @@
+152 triples loaded, X = 1000000000000000000
+15 scaling chains (primitives up to rational scaling)
+
+chain of 2: primitive #1
+  (1728, 1764, 1800)  d = 36
+  = (8^2*3^3, 42^2, 15^2*2^3)
+  tightness d/meangap = 0.9410; d/sqrt(x) = 0.8660; perfect squares among elements: 1
+  first missing admissible k = 2 (k*T is a powerful AP but not consecutive); observed 2 of admissible k <= X/z = 555555555555555
+  scalings: x4
+
+chain of 4: primitive #3
+  (729000, 729316, 729632)  d = 316
+  = (27^2*10^3, 854^2, 302^2*2^3)
+  tightness d/meangap = 0.4022; d/sqrt(x) = 0.3701; perfect squares among elements: 1
+  first missing admissible k = 8 (k*T is a powerful AP but not consecutive); observed 4 of admissible k <= X/z = 1370553923073
+  scalings: x2, x4, x16
+
+chain of 1: primitive #7
+  (149022674775, 149022848000, 149023021225)  d = 173225 [odd d]
+  = (1585^2*39^3, 34528^2*5^3, 386035^2)
+  tightness d/meangap = 0.4876; d/sqrt(x) = 0.4487; perfect squares among elements: 1
+  first missing admissible k = 4 (k*T is a powerful AP but not consecutive); observed 1 of admissible k <= X/z = 6710372
+
+chain of 2: primitive #8
+  (260102040004, 260102223752, 260102407500)  d = 183748
+  = (510002^2, 180313^2*2^3, 98150^2*3^3)
+  tightness d/meangap = 0.3915; d/sqrt(x) = 0.3603; perfect squares among elements: 1
+  first missing admissible k = 2 (k*T is a powerful AP but not consecutive); observed 2 of admissible k <= X/z = 3844639
+  scalings: x4
+
+chain of 3: primitive #9
+  (348796224200, 348796548100, 348796872000)  d = 323900
+  = (208805^2*2^3, 590590^2, 52824^2*5^3)
+  tightness d/meangap = 0.5959; d/sqrt(x) = 0.5484; perfect squares among elements: 1
+  first missing admissible k = 5 (k*T is a powerful AP but not consecutive); observed 3 of admissible k <= X/z = 2866998
+  scalings: x2, x4
+
+chain of 6: primitive #12
+  (1206916971500, 1206917268552, 1206917565604)  d = 297052
+  = (94^2*515^3, 388413^2*2^3, 1098598^2)
+  tightness d/meangap = 0.2938; d/sqrt(x) = 0.2704; perfect squares among elements: 1
+  first missing admissible k = 8 (k*T is a powerful AP but not consecutive); observed 6 of admissible k <= X/z = 828557
+  scalings: x2, x4, x9, x18, x50
+
+chain of 1: primitive #19
+  (265887367432064, 265887397050916, 265887426669768)  d = 29618852
+  = (311284^2*14^3, 16306054^2, 5765061^2*2^3)
+  tightness d/meangap = 1.9738; d/sqrt(x) = 1.8164; perfect squares among elements: 1
+  first missing admissible k = 2 (k*T is a powerful AP but not consecutive); observed 1 of admissible k <= X/z = 3760
+
+chain of 110: primitive #20
+  (284156493508800, 284156493591364, 284156493673928)  d = 82564
+  = (3244120^2*3^3, 16856942^2, 5959829^2*2^3)
+  tightness d/meangap = 0.0053; d/sqrt(x) = 0.0049; perfect squares among elements: 1
+  first missing admissible k = 72 (k*T is a powerful AP but not consecutive); observed 110 of admissible k <= X/z = 3519
+  scalings: x2, x4, x8, x9, x16, x18, x25, x27, x32, x36, x49, x50, x54, x64, x81, x98, x100, x108, x121, x128, x144, x162, x169, x196, x200, x216, x225, x242, x243, x250, x256, x289, x324, x338, x343, x361, x392, x400, x432, x441, x450, x484, x486, x512, x529, x578, x625, x675, x676, x686, x722, x729, x784, x800, x841, x864, x882, x900, x968, x972, x1024, x1058, x1089, x1156, x1250, x1296, x1323, x1350, x1352, x1369, x1372, x1444, x1458, x1521, x1568, x1600, x1681, x1682, x1728, x1764, x1849, x1936, x2048, x2116, x2178, x2197, x2250, x2312, x2401, x2500, x2601, x2662, x2700, x2704, x2738, x2744, x2809, x2888, x2916, x3025, x3087, x3136, x3200, x3249, x3267, x3362, x3364, x3456, x3481
+
+chain of 2: primitive #27
+  (5192127333376000, 5192127374990724, 5192127416605448)  d = 41614724
+  = (2278624^2*10^3, 72056418^2, 25475791^2*2^3)
+  tightness d/meangap = 0.6276; d/sqrt(x) = 0.5775; perfect squares among elements: 1
+  first missing admissible k = 2 (k*T is a powerful AP but not consecutive); observed 2 of admissible k <= X/z = 192
+  scalings: x4
+
+chain of 3: primitive #31
+  (9706593919559525, 9706593942114304, 9706593964669083)  d = 22554779 [odd d]
+  = (630865^2*29^3, 98522048^2, 18960577^2*3^3)
+  tightness d/meangap = 0.2488; d/sqrt(x) = 0.2289; perfect squares among elements: 1
+  first missing admissible k = 4 (k*T is a powerful AP but not consecutive); observed 3 of admissible k <= X/z = 103
+  scalings: x9, x25
+
+chain of 10: primitive #37
+  (20405997355401216, 20405997363591844, 20405997371782472)  d = 8190628
+  = (1077504^2*26^3, 142849562^2, 50504947^2*2^3)
+  tightness d/meangap = 0.0623; d/sqrt(x) = 0.0573; perfect squares among elements: 1
+  first missing admissible k = 16 (k*T is a powerful AP but not consecutive); observed 10 of admissible k <= X/z = 49
+  scalings: x2, x4, x8, x9, x18, x25, x27, x32, x36
+
+chain of 1: primitive #71
+  (141997918422814947, 141997918685036544, 141997918947258141)  d = 262221597 [odd d]
+  = (72520219^2*3^3, 376826112^2, 657457^2*69^3)
+  tightness d/meangap = 0.7561; d/sqrt(x) = 0.6959; perfect squares among elements: 1
+  first missing admissible k = 3 (k*T is a powerful AP but not consecutive); observed 1 of admissible k <= X/z = 7
+
+chain of 5: primitive #72
+  (142435066921358436, 142435066952211912, 142435066983065388)  d = 30853476
+  = (377405706^2, 133433067^2*2^3, 72631762^2*3^3)
+  tightness d/meangap = 0.0888; d/sqrt(x) = 0.0818; perfect squares among elements: 1
+  SATURATED: all 5 admissible k <= min(X/z, cap) = 7 occur as consecutive triples
+  scalings: x2, x3, x4, x6
+
+chain of 1: primitive #106
+  (396476230691699464, 396476231534379396, 396476232377059328)  d = 842679932
+  = (3176071^2*34^3, 629663586^2, 222619696^2*2^3)
+  tightness d/meangap = 1.4542; d/sqrt(x) = 1.3383; perfect squares among elements: 1
+  first missing admissible k = 2 (k*T is a powerful AP but not consecutive); observed 1 of admissible k <= X/z = 2
+
+chain of 1: primitive #109
+  (414781000521010200, 414781000642962000, 414781000764913800)  d = 121951800
+  = (6241305^2*22^3, 57604236^2*5^3, 2455^2*4098^3)
+  tightness d/meangap = 0.2058; d/sqrt(x) = 0.1894; perfect squares among elements: 0
+  first missing admissible k = 2 (k*T is a powerful AP but not consecutive); observed 1 of admissible k <= X/z = 2
+
+squares-per-primitive histogram: {1: 14, 0: 1}
+
+decade | triples | primitives
+10^3  |       0 | 0
+10^4  |       2 | 1
+10^5  |       2 | 1
+10^6  |       3 | 2
+10^7  |       5 | 2
+10^8  |       6 | 2
+10^9  |       6 | 2
+10^10 |       6 | 2
+10^11 |       6 | 2
+10^12 |      10 | 5
+10^13 |      15 | 6
+10^14 |      18 | 6
+10^15 |      21 | 8
+10^16 |      31 | 10
+10^17 |      62 | 11
+10^18 |     152 | 15
