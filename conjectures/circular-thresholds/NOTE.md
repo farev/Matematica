@@ -814,7 +814,7 @@ a second engine searched two-level substitution/coding structures
 | 3 | `k ≤ 24` (C2 ∪ SIGN pool) | 4 136 | certified pairs from `k = 19`; Theorem P3′ |
 | 4 | `k ≤ 46` (full pool; pools up to 74 183 pairs per `k`) | **0** | §17 |
 | 5 | `k ≤ 40` (full pool) | 533 | certified pairs at `k = 21, 31, 40`; Theorem P5 |
-| 6 | `k ≤ 33` complete, sweep continuing | 380 | certified pairs at `k = 21, 32`; Theorem P6 |
+| 6 | `k ≤ 40` (full pool) | 7 327 | certified pairs at `k = 21, 32`; Theorem P6 |
 
 ## 17. The `n = 4` exhaustive negative (CERTIFIED)
 
@@ -881,8 +881,8 @@ Result N2 (CERTIFIED negative ranges for `n = 4`).
 **Not settled.** `CRT_W(4)` — still open, and now sharpened: the natural
 code-side ansatz is certifiably empty over the stated ranges.
 `CRT_W(n)` for `7 ≤ n ≤ 44` even/odd beyond today's cases (the same
-pipeline plausibly extends; an `n = 8` sweep was still running at session
-end). `CRT_I(n)` for every `n ≥ 4`: nothing here touches the intermediate
+pipeline plausibly extends; the completed `n = 8` sweep found 44 viable
+pairs at `k = 28`, all failing (Ha)/(Hb) — see §19 next steps). `CRT_I(n)` for every `n ≥ 4`: nothing here touches the intermediate
 threshold — the pumped lengths `k^j m_0` are exponentially sparse.
 
 **Sharpest next steps.** (1) Read Tunev and Moulin Ollagnier; fix the
