@@ -1,0 +1,28 @@
+# Certified instances (Theorem C-code hypotheses all machine-checked),
+# session 2026-08-06.  Format: n k phi0 phi1 pi P0 N0 ; seed m0 c0
+# Certification: pansiot_certify.py; seeds: pansiot_seed.py check/encode;
+# pumping verified directly: pansiot_seed.py pump.
+
+# ---- n = 6 (Theorem P6: CRT_W(6) = RT(6) = 6/5; open case settled) ----
+n=6 k=21 phi0=010101101101011010110 phi1=101011010110110101101 pi=(1,2,3,0,4,5) P0=230 N0=15
+seed m0=39 c0=101011011010110101101101011010110110101   # from spec_n6.csv witness m=39
+# pump verified j=0,1,2: lengths 39, 819, 17199 all circular 6/5+-free
+# (j<=1 re-verified by Part I circspec.verify)
+# further certified pairs:
+n=6 k=21 phi0=011010110101101101010 phi1=101101011011010110101 pi=(0,4,1,2,3,5) P0=230 N0=15
+n=6 k=32 phi0=01010110101011011010101011010110 phi1=10101101011010101101101010101101 pi=(3,2,4,5,1,0) P0=340 N0=14
+n=6 k=32 phi0=01101011010101011011010101101010 phi1=10110101010110110101011010110101 pi=(3,5,0,2,1,4) P0=340 N0=14
+# additional seeds: m0=40 c0=1101010101101101011011010101011011010110
+#                   m0=42 c0=011010101011011010101011010101011011010101
+
+# ---- n = 5 (Theorem P5: CRT_W(5) = RT(5) = 5/4; possible Tunev overlap) ----
+n=5 k=21 phi0=010101101101010110110 phi1=101010101101101101101 pi=(0,1,2,4,3) P0=180 N0=12
+seed m0=28 c0=0110110101010101101101010101   # from spec_n5.csv witness m=28
+# pump verified j=0,1,2: lengths 28, 588, 12348 all circular 5/4+-free
+n=5 k=31 phi0=0101010110110110110101010110110 phi1=1010101011011011011010101101101 pi=(2,3,1,0,4) P0=260 N0=12
+n=5 k=40 phi0=0101011011010101011011010101010110110110 phi1=1010101101101010101011011011010101101101 pi=(1,0,2,3,4) P0=332 N0=12
+
+# ---- n = 3 (Result P3': control; CRT_W(3) = 7/4 is known) ----
+n=3 k=19 phi0=0101101011101110110 phi1=1011010111011101011 pi=(2,0,1) P0=52 N0=6
+seed m0=20 c0=11011010111011101101   # Part I seed w0 (section 7), Pansiot-encoded
+# pump verified j=0,1,2,3: lengths 20, 380, 7220, 137180 all circular 7/4+-free
