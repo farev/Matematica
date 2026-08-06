@@ -167,3 +167,72 @@ and to letting Theorem M stand unqualified as new. Both were caught — the
 first by the `n = 4` data, the second by asking what the power-free-morphism
 literature almost certainly already contains. The second correction cost
 nothing and the note is better for it.
+
+---
+
+# Session 2 — 2026-08-06
+
+**Plan at start.** Run the Theorem C search in Pansiot's encoding — session
+1's named next step — targeting `n = 4` first, after the day's survey turned
+up Tunev's December 2025 paper (odd `n ≥ 5` cyclic threshold words,
+(secondary)) and pushed the priority to even alphabets.
+
+**What actually happened, including the failures.**
+
+1. *Feasibility probe, wrong filter.* First search: letterwise binary code
+   morphisms with a group-compatibility condition (simultaneous conjugacy
+   C2), filtered by *preservation* — images of all valid 14-blocks stay
+   code-free. Thousands of C2 pairs at `n = 4, 5, 6`, zero survivors
+   anywhere. Diagnosis: the filter was needlessly strong *and* the pool
+   needlessly narrow.
+2. *Two theory corrections mid-day.* (a) Freeness of a decode is intrinsic
+   to the bits (the slot lemma) — so the relativised route only needs the
+   *fixed point* free, not preservation on all words. (b) The monodromy
+   condition classifies completely (C2 / sign-collapse / level-`t`
+   collapse), enlarging the pool. Rebuilt filters accordingly.
+3. *`n = 4` still empty, `n = 3` abundant.* The full-pool sweep with the
+   corrected filter: `n = 3` produces candidates from `k = 7`; `n = 4`
+   produces zero through `k = 46` with tens of thousands of pooled pairs per
+   length. Autopsy: 89 % of `n = 4` fixed points die at block seams within
+   two generations, offender periods 3–10 — the code-level shadow of session
+   1's Proposition N mechanism.
+4. *Mid-session checkpoint (pre-registered) taken.* The `n = 4` hit-hunt was
+   declared failed on the reachable ranges; the day's deliverable was
+   re-scoped to the machinery + the `n = 3` control + certified negatives.
+   Then the two-level engine and the deep sweeps were left running.
+5. *The turn.* The recovered overnight-style logs showed `n = 5` (533) and
+   `n = 6` (380) candidates — the sweeps had quietly crossed the viability
+   threshold around `k = 21` and `k = 32`. The certification theorem
+   (Theorem MC), written for the `n = 3` control, applied verbatim: four
+   `n = 6` pairs and three `n = 5` pairs pass every hypothesis.
+6. *Seeds from session 1's own data.* The certified spectrum witnesses of
+   session 1 (`spec_n5.csv`, `spec_n6.csv`), Pansiot-encoded, contain
+   monodromy-trivial cyclic codewords with the required `+2` margin — the
+   seed for `n = 6` is the session-1 witness at `m = 39` and for `n = 5` at
+   `m = 28`. Session 1's SAT data thus became load-bearing input to session
+   2's theorems.
+7. *End-to-end.* `CRT_W(6) = RT(6)` and `CRT_W(5) = RT(5)` proved; pumped
+   words directly verified (to length 17 199 resp. 12 348), with session 1's
+   independent `O(m³)` checker confirming the `n = 6` words it could reach.
+   The `n = 3` control re-derives `CRT_W(3) = 7/4` with `k = 19` generators
+   and the session-1 seed re-encoded.
+8. *What failed at the end.* `n = 8`: 44 viable pairs at `k = 28`, all
+   rejected by (Ha)/(Hb) — the criterion, not the candidates, is the
+   bottleneck there. A first-bit-injectivity-free variant of Theorem MC is
+   the clear next tool. The `(σ, ρ)` two-level engine found nothing anywhere
+   it was run — every positive result today came from the letterwise class
+   it generalises.
+
+**Corrections made along the way.** One real bug (the (Hc) filter skipped
+pairs based on image validity instead of source validity — fixed before any
+certification); one formula strengthened after proof-writing exposed a
+margin (`N_0` gains `+(n−1)`; all previously certified instances re-certify
+unchanged); one scanner blind spot (bare monodromy-id blocks) caught by the
+transfer-lemma validation and folded into the lemma's final form.
+
+**Honest bottom line.** The theorems P5/P6 rest on three short lemmas proved
+today and machine-checked hypotheses; the strongest independent evidence is
+the `n = 3` end-to-end control and the direct verification of the first
+pumped words. Novelty for `n = 6` rests on two (secondary) sources; for
+`n = 5` it is genuinely uncertain (Tunev). Everything is committed for a
+referee to attack.

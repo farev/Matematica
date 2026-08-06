@@ -11,11 +11,49 @@ with the symmetric-group structure, certify a hit by a finite criterion, and
 close with a monodromy-trivial circular seed via Lemma A/Theorem C (2026-08-03,
 already PROVED).
 
-**Result.** *(to be filled at end of session)*
+**Result.** **PROVED — `CRT_W(6) = RT(6) = 6/5`**, an open case of the
+Currie–Mol–Rampersad conjecture (openness (secondary): Mol–Rampersad 2020
+list `4 ≤ n ≤ 44` open; Tunev's Dec-2025 constructions are reported only for
+*odd* `n ≥ 5`, and `6` is even). **PROVED — `CRT_W(5) = RT(5) = 5/4`**
+(flagged as a plausible rediscovery of Tunev-type results pending a read of
+arXiv:2512.24581). Both via new machinery, all **PROVED** today: a slot
+lemma (decoded patterns are bit-intrinsic), an exact repetition-transfer
+lemma between a word and the monodromy structure of its Pansiot codeword, a
+finite certificate (Theorem MC) that a uniform binary code morphism
+preserves code-freeness, and a circular pumping lemma in the code (Lemma
+PC). Instances: certified `k = 21` morphisms for `n = 5, 6` with seeds
+extracted from **session 1's own certified spectrum witnesses**; pumped
+words directly verified to lengths 17 199 (`n = 6`) and 12 348 (`n = 5`),
+with session 1's independent checker confirming where it can reach. The
+machinery re-derives `CRT_W(3) = 7/4` end to end as a control (`k = 19`
+generators). **CERTIFIED** — the same ansatz is *empty* at `n = 4`: no
+viable pair over all pooled monodromy classes for `k ≤ 46` (every pooled
+pair refuted by an explicit offender), nothing in the two-level engine
+ranges. Pansiot's exceptional alphabet resists inside its own encoding.
 
-**What failed.** *(to be filled at end of session)*
+**What failed.** (1) The first filter (preservation on all valid 14-blocks)
+was too strong and its pool too narrow — half the day went to discovering
+that the right requirements are fixed-point freeness plus a complete
+monodromy classification. (2) `n = 4`, the day's declared target: empty at
+every rung (letterwise `k ≤ 46`, two-level engine, preservation filter) —
+the pre-registered mid-session pivot was taken, and then the `n = 5, 6`
+sweeps unexpectedly crossed their viability thresholds (`k = 21`).
+(3) `n = 8`: 44 viable pairs at `k = 28`, all failing Theorem MC's
+first/last-bit injectivity hypotheses — the criterion, not the search, is
+the bottleneck there. (4) The `(σ, ρ)` two-level engine found nothing
+anywhere. (5) One filter bug ((Hc) checked the wrong side) was caught before
+any certification; one margin (`N_0`) was strengthened during proof-writing
+with all certificates surviving unchanged.
 
-**Next.** *(to be filled at end of session)*
+**Next.** (1) Read Tunev (arXiv:2512.24581) and Moulin Ollagnier from an
+unblocked network; fix the novelty map for `n = 5` and the "open for
+`4 ≤ n ≤ 44`" statements. (2) A synchronization-based variant of Theorem MC
+without (Ha)/(Hb) — it would likely unlock `n = 8` immediately (candidates
+are already in `data/`), then `n = 10, 12, …`: each even case is a
+potential new settled case. (3) `n = 4`: either push the certified emptiness
+into an impossibility proof for the code ansatz, or find the first candidate
+beyond `k = 46`. (4) This is the second consecutive session on this
+conjecture — the next session works something else regardless.
 
 ---
 
@@ -242,3 +280,49 @@ with stated ranges, document the Tunev correction, and log the miss.
 ---
 
 *(Sections below written as the session progressed.)*
+
+## 5. Attack narrative (what was tried, in order)
+
+1. **Probe: letterwise binary code morphisms, preservation filter.** C2
+   conjugacy pools at `n = 4, 5, 6`, `k ≤ 26`: thousands of pooled pairs,
+   zero passing preservation-on-14-blocks. Diagnosed as the wrong filter.
+2. **Theory pass 1.** Slot lemma (patterns are bit-intrinsic) ⟹ the
+   relativised route needs only fixed-point freeness; monodromy
+   compatibility classified (C2 / sign / collapse-1 / collapse-2) ⟹ pool
+   enlarged. `n = 3` control: candidates from `k = 7` — pipeline validated
+   (and the `n = 4` emptiness thereby shown to be real signal, not a bug).
+3. **Deep sweeps.** `n = 4`: zero through `k = 46` (full pool). Two-level
+   `(σ, ρ)` engine: zero everywhere it ran (`r ≤ 10, s ≤ 5`; `r ≤ 7,
+   s ≤ 6`; one capped cell at `r = 7, s = 7` disclosed). Autopsy: seam
+   deaths, periods 3–10, 89 % within two generations.
+4. **Mid-session checkpoint (pre-registered) taken:** re-scoped to
+   machinery + `n = 3` control + certified negatives.
+5. **Theory pass 2 (certification core).** Exact transfer lemma T with the
+   `(n−1)` left-extension; empirically validated to exactness (2 238
+   (word, p) tests, zero mismatches after the bare-block correction);
+   Theorem MC (finite preservation certificate) proved — the descent closes
+   in one shot because the return direction of T regains the `n−1` letters.
+6. **The turn.** Recovered sweep logs: `n = 5` (533 candidates, `k ≤ 40`)
+   and `n = 6` (380, `k ≤ 33`). Certification chain passes 4 pairs at
+   `n = 6`, 3 at `n = 5` (smallest: `k = 21` both). Seeds found by
+   Pansiot-encoding session 1's certified spectrum witnesses (`m = 39` at
+   `n = 6`, `m = 28` at `n = 5`). Lemma PC assembles the theorems; direct
+   verification tables computed; session 1's independent checker concurs
+   where feasible.
+7. **Opportunistic `n = 8`:** 44 candidates at `k = 28`, none passing
+   (Ha)/(Hb) — logged as the sharpest tool gap.
+
+## 6. Cost
+
+4 cores, 15 GB RAM. Letterwise sweeps: seconds to ~2 min per `k` (the
+`n = 6` levels near `k = 33` are the slow end, ~5 min). Engine grids:
+seconds to ~90 s per cell. Certification: seconds per pair (pure Python)
+after a numpy pre-pass. Pump verification to length 17 199: seconds; the
+137 180-length `n = 3` word: ~2 min. No randomness affects any claim; the
+transfer-lemma validation uses seeded randomized DFS (`seed=7`, `seed=13`)
+and the validation suite `seed=11`.
+
+**Deliverable labels, summarised.** PROVED: Lemmas S/F/T/PC, Theorem MC,
+Theorem C-code, Theorems P5/P6, Result P3′ (control, known). CERTIFIED:
+Result N2 (`n = 4` emptiness on stated ranges), sweep tables, certified
+instances file. Openness of the settled cases: (secondary) throughout.
