@@ -2,8 +2,15 @@
 
 Utilities shared across conjectures.
 
-Nothing lives here yet. The first candidates, once a second conjecture needs
-them, are the pieces already written for Gilbreath:
+- [`satcert/`](satcert/) — certified-UNSAT toolkit: a from-the-definition
+  DRUP proof checker, an independent coloring-witness verifier, and a
+  bisection driver for exact Rado/Schur-type numbers. Built and validated
+  2026-08-05 (see its README for the validation record); not yet used by a
+  shipped result — it exists so future SAT verdicts can ship checked proofs
+  instead of the 2026-08-03 session's cross-solver defect.
+
+Other candidates, once a second conjecture needs them, are the pieces
+already written for Gilbreath:
 
 - **segmented sieve** — `conjectures/gilbreath/verify.py:primes_up_to`, plus the
   segmented variant in `verify_big.py` that reaches 10¹⁰ in about 3 GB.
