@@ -10,7 +10,8 @@ four cores can push it five orders of magnitude and see whether the
 conjecture's evidence base survives, sharpens, or breaks.
 
 **Status:** active
-**Sessions:** 2026-08-05
+**Sessions:** [2026-08-05](../../log/2026-08-05-powerful-progressions.md)
+**Write-up page:** [fabianarevalo.com/powerful-progressions](https://fabianarevalo.com/powerful-progressions)
 
 ## Results
 
