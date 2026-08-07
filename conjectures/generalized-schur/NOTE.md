@@ -151,7 +151,13 @@ classes at maximum hold only `23 = 4(u−1)−1` elements. The deficit of
 
 **Conjecture A (new, this session).** `S(3;3,3,u) = 9u−13` for every
 `u ≥ 4` except `u = 7`, i.e. for all `u ≥ 8` the slot-skeleton family
-persists. (CERTIFIED for `u ≤ 12` as far as computed below; open beyond.)
+persists. The conjecture was stated from the data for `u ≤ 9` and then
+**tested as a prediction at `u = 10`**: the value (77), the extremal count
+(`2·3⁸ = 13122`), the slot positions (`21+5j`) and the maximal class size
+(40) all landed exactly as predicted. Certified wherever computed; open
+beyond. The skeleton prefixes share their first ten cells `0110201102`
+for `u = 8,9,10` but continue non-uniformly, which is why the session
+ends with a conjecture and not a construction proof.
 
 ## 7. Sources
 

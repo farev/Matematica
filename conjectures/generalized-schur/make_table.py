@@ -69,6 +69,15 @@ def main():
         extra = f"  [{r['conj21']}]" if r["conj21"] else ""
         print(f"  S(3;{r['s']},{r['t']},{r['u']}) = {r['S']}{extra}")
     print(f"-> {out}")
+    print("\nMarkdown (NEW values):\n")
+    print("| (s,t,u) | S(3;s,t,u) | sandwich LB | Conjecture 2.1 |")
+    print("|---|---|---|---|")
+    for r in new:
+        s, t, u = r["s"], r["t"], r["u"]
+        lb = 2*t*u - u - 1 if s == 3 else r["conjectured"]
+        c = "—" if s == 3 else ("**confirmed** (= stu−tu−u−1)" if r["S"] == r["conjectured"]
+                               else f"**refuted** (predicted {r['conjectured']})")
+        print(f"| ({s},{t},{u}) | **{r['S']}** | {lb} | {c} |")
 
 
 if __name__ == "__main__":

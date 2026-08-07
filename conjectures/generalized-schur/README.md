@@ -24,13 +24,17 @@ for the SAT side.
 
 ## Results
 
-(table filled from `data/new_values.csv`; every value below carries a DRUP
-proof at `S` checked by `tools/satcert/rup_check` and an independently
-verified witness coloring at `S−1` in `certs/`)
+Every value below carries a DRUP proof at `S` checked by
+`tools/satcert/rup_check` and an independently verified witness coloring at
+`S−1`, both in `certs/`; authoritative list in `data/new_values.csv`.
 
 | Claim | Label | Where |
 |---|---|---|
-| *(filled at session end)* | | |
+| New exact values, `s ≥ 4` (first since 2016), each **confirming** an open instance of Conjecture 2.1: `S(3;4,4,8) = 87`, `S(3;4,4,9) = 98` | CERTIFIED | `data/new_values.csv`, `certs/` |
+| New exact values in the unmapped `s = 3` family: `S(3;3,3,8) = 59`, `S(3;3,3,9) = 68`, `S(3;3,4,8) = 67`, `S(3;3,4,9) = 78`, `S(3;3,5,8) = 91` (+ further, see CSV) | CERTIFIED | `data/new_values.csv`, `certs/` |
+| Complete extremal structure of `(3,3,u)`, `u ∈ {4,5,6,8,9}`: one mirror-symmetric skeleton + `u−2` free ternary slots at `2u+1+5j`; `2·3^{u−2}` extremals; max `L(u)`-class `5(u−2)`; all of it breaks at `u = 7` except the class law | CERTIFIED | `NOTE.md` §6, `data/skeletons_33u.txt`, `certs/*.extremals` |
+| `S(3;3,3,u) = 9u−13` for all `u ≥ 4` except `u = 7` (Conjecture A) | conjecture; CERTIFIED at computed `u` | `NOTE.md` §6 |
+| 11 published boundary values + 12 published climb values + all 10 published enumeration counts reproduced; unique `(3,4,5)` extremal matches the paper character-for-character | CERTIFIED (controls) | `data/results_controls.csv`, NOTE §4 |
 
 ## Scripts
 

@@ -90,6 +90,22 @@ and was not needed.
   than trusting the launch.
 - **`/usr/bin/time` does not exist in this sandbox**; the first wall-mapping
   batch lost its timings to that and was rerun with date-stamp arithmetic.
+- **`S(3;4,4,10)` = the wall, and it is a memory wall, not a time wall.**
+  Three proof-logged attempts (each 25+ minutes) were OOM-killed — pysat
+  buffers the entire DRUP proof in RAM alongside the CNF, and this
+  instance's proof outgrows a 15 GB box. The `(4,4,u)` ladder is anomalously
+  hard for its size: `(4,4,9)` at n=98 needs ~108 s where mixed triples 15
+  integers bigger — `(4,6,6)` at 101, `(5,5,6)` at 113 — certify in 14 s.
+  Two short equations plus one long one give the solver the least
+  propagation per decision. Fix for a future session: a standalone solver
+  binary streaming the proof to disk (kissat/cadical + drat-trim), not an
+  in-memory pysat run. `(4,4,10)`, `(4,4,11)`, `(4,4,12)` stay open today.
+- **A correct `(3,3,8)` extremal enumeration appeared in `certs/` with no
+  logged invocation** (no lane, no interactive command, no task transcript
+  mentions it; created mid-flight between two container restarts). It was
+  kept only after regenerating the enumeration and confirming the file is
+  byte-identical to the fresh run. Recorded as a provenance defect: every
+  other artifact in `certs/` traces to a logged command.
 - *(mathematical dead ends filled at session end)*
 
 ## Lessons

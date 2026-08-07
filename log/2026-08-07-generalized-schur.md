@@ -15,11 +15,61 @@ solely because the publication boundary sat in a blocked PDF; today the
 boundary was pinned from the primary source, and the 08-05 session's
 validated DRUP-certification toolkit (`tools/satcert/`) was waiting.
 
-**Result.** (Filled at session end — see below.)
+**Result.**
+- **CERTIFIED** — new exact generalized Schur numbers, the first in this
+  family since 2016 (final list in `conjectures/generalized-schur/data/new_values.csv`):
+  `S(3;4,4,8) = 87` and `S(3;4,4,9) = 98`, each deciding a previously open
+  instance of Ahmed–Schaal Conjecture 2.1 (both confirm it), and — in the
+  `s = 3` family, where no formula is even conjectured — `S(3;3,3,8) = 59`,
+  `S(3;3,3,9) = 68`, `S(3;3,4,8) = 67`, `S(3;3,4,9) = 78`, `S(3;3,5,8) = 91`,
+  plus the further values recorded in the CSV. Every value ships a DRUP
+  proof of the UNSAT side checked by the independent `rup_check`, and a
+  witness coloring of the SAT side checked by an independent bitset
+  verifier. Controls: 11 published boundary values reproduced with
+  identical certificate chains; all 12 published `(3,t,u)` values
+  reproduced by climb; all 10 published enumeration counts matched
+  exactly; the unique `(3,4,5)` extremal coloring matches the paper's
+  printed string character for character.
+- **CERTIFIED** — the complete extremal structure of the `(3,3,u)` family
+  at every computed size: for `u ∈ {4,5,6,8,9}` the valid colorings of
+  `[1, 9u−14]` are exactly one mirror-symmetric skeleton with `u−2` free
+  ternary slots at positions `2u+1+5j` (`2·3^{u−2}` colorings; maximal
+  `L(u)`-class exactly `5(u−2)`), while at `u = 7` the value drops one
+  below the `9u−13` line, the 846 extremals form no single skeleton, and
+  the deficit belongs to the Schur pair, not the `L(7)` class.
+- **Conjecture A** (new): `S(3;3,3,u) = 9u−13` for all `u ≥ 4` except
+  `u = 7` — certified at every computed size, open beyond.
 
-**What failed.** (Filled at session end — see below.)
+**What failed.**
+- The `(4,4,u)` ladder beyond `u = 9`: three proof-logged attempts at
+  `(4,4,10)` were OOM-killed — pysat buffers the whole DRUP proof in RAM,
+  and this instance's proof outgrows 15 GB. The ladder is anomalously hard
+  for its size (two short equations, one long: minimal propagation);
+  `(4,4,10)`–`(4,4,12)` remain open pending a disk-streaming proof
+  pipeline. `(6,6,6) = 173` reproduction was abandoned for the same
+  footprint reason (it is published and Boza-covered).
+- Two container-wide crashes from my own memory oversubscription (four
+  concurrent solver lanes, then three) cost ~40 minutes and forced the
+  final discipline: at most two solver processes, heavies sequential.
+- The slope-8 tail guess for `(3,4,u)` (from 59, 67 at `u = 7,8`) died
+  against `(3,4,9) = 78`; the `t = 4` row fits no simple law tried.
+- The all-`u` lower-bound construction for `(3,3,u)`: the slot skeletons
+  share their arithmetic (slots at `2u+1+5j`, spacing 5) but the prefix
+  block morphs with `u`, and no uniform parametrization survived contact
+  with all five skeletons within the session. Left as the sharpest thread.
+- A correct `(3,3,8)` extremal enumeration appeared in `certs/` with no
+  logged invocation (kept only after byte-identical regeneration);
+  recorded as a provenance defect.
 
-**Next.** (Filled at session end — see below.)
+**Next.** (1) A disk-streaming certified pipeline (kissat/CaDiCaL binary +
+drat-trim) to open the `(4,4,u)` ladder, `(6,6,7)`-scale triples, and the
+4-color family. (2) Prove Conjecture A for `u ≥ 8` by completing the
+slot-skeleton construction — the slot arithmetic is understood, the prefix
+family is the missing piece. (3) OEIS: no sequence for this family was
+findable today (secondary, absence-of-evidence); the `(3,3,u)` row and the
+extended table are candidate submissions once checked against OEIS proper.
+(4) The `u = 7` anomaly deserves a human-readable obstruction, not just a
+35 KB DRUP proof.
 
 ---
 
