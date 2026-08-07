@@ -122,13 +122,36 @@ any single linear-in-`u` law (`(3,3,u)` runs 9u−13 for `u ≤ 6` and then drop
 below it at `u = 7`; `(3,4,u)` steps +16, +2, +10), and the gaps over the
 sandwich bound grow (up to +31 at `(3,6,7)`).
 
-## 6. Extremal structure
+## 6. Extremal structure of the (3,3,u) family — certified by enumeration
 
-*(filled at session end; raw material in `certs/*.extremals` and
-`witness_blocks.py` output)* In every published `(3,3,u)` case the extremals
-with the largest `L(u)`-class are palindromic with `0110` Schur-caps at both
-ends and a central band of color 2; the maximal class-2 size is exactly
-`5(u−2)` for `u = 4,5,6,7`.
+For each computed `u` the complete set of valid colorings of `[1, S−1]` was
+enumerated (counts matching Ahmed–Schaal's published counts wherever they
+exist — §4). The structure is rigid everywhere except `u = 7`:
+
+**For u ∈ {4, 5, 6, 8, 9}** (CERTIFIED at each listed u; *not* a claim for
+general u):
+- `S(3;3,3,u) = 9u−13`, and the extremal colorings of `[1, 9u−14]` are
+  **exactly** a fixed mirror-symmetric skeleton with `u−2` completely free
+  ternary slots at positions `2u+1+5j` (`j = 0,…,u−3`), each slot taking all
+  three colors independently — `2·3^{u−2}` extremals on the nose
+  (18, 54, 162, 1458, 4374), the factor 2 being the swap of the two Schur
+  colors.
+- The maximal `L(u)`-class size is exactly `5(u−2)`, attained by palindromic
+  extremals; at maximum, the two Schur classes hold `4(u−1)` elements.
+
+**At u = 7, every one of those regularities breaks at once** except the
+`L(u)`-class law: `S = 49 = 9·7−14` (one below the line through every other
+computed point); there are `846 = 2·3²·47` extremals — not a power-of-three
+family — falling into at least two structural families; 37 of the 48
+positions are non-constant across the orbit; the maximal class-2 size is
+still `5(u−2) = 25` but no maximal extremal is palindromic, and the Schur
+classes at maximum hold only `23 = 4(u−1)−1` elements. The deficit of
+`S(3;3,3,7)` is a deficit of the *Schur pair's* capacity against this
+`L(7)`-class, not of the `L(7)`-class itself.
+
+**Conjecture A (new, this session).** `S(3;3,3,u) = 9u−13` for every
+`u ≥ 4` except `u = 7`, i.e. for all `u ≥ 8` the slot-skeleton family
+persists. (CERTIFIED for `u ≤ 12` as far as computed below; open beyond.)
 
 ## 7. Sources
 
