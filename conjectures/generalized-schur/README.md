@@ -21,6 +21,7 @@ for the SAT side.
 
 **Status:** active
 **Sessions:** [2026-08-07](../../log/2026-08-07-generalized-schur.md)
+**Write-up page:** [fabianarevalo.com/generalized-schur](https://fabianarevalo.com/generalized-schur)
 
 ## Results
 
