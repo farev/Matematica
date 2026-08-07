@@ -52,19 +52,48 @@ def clauses_for_color(t, n):
     return out
 
 
-def encode(ts, n):
-    """CNF for: exists coloring of {1..n} with no mono solution in any color."""
+def encode(ts, n, exactly_one=False):
+    """CNF for: exists coloring of {1..n} with no mono solution in any color.
+
+    exactly_one=True adds pairwise at-most-one-color clauses so that
+    satisfying assignments biject with valid colorings (enumeration mode).
+    """
     k = len(ts)
     v = lambda x, j: (x - 1) * k + j + 1
     cnf = CNF()
     for x in range(1, n + 1):
         cnf.append([v(x, j) for j in range(k)])
+        if exactly_one:
+            for j1 in range(k):
+                for j2 in range(j1 + 1, k):
+                    cnf.append([-v(x, j1), -v(x, j2)])
     ncl = 0
     for j, t in enumerate(ts):
         for support in sorted(clauses_for_color(t, n)):
             cnf.append([-v(x, j) for x in support])
             ncl += 1
     return cnf, ncl
+
+
+def enum_colorings(ts, n, cap=1000000):
+    """All valid colorings of [1,n] (exactly-one encoding). Returns list or
+    None if the cap was hit (then the count is only a lower bound)."""
+    k = len(ts)
+    cnf, _ = encode(ts, n, exactly_one=True)
+    out = []
+    with Glucose42(bootstrap_with=cnf) as S:
+        for model in S.enum_models():
+            pos = set(l for l in model if l > 0)
+            coloring = []
+            for x in range(1, n + 1):
+                for j in range(k):
+                    if (x - 1) * k + j + 1 in pos:
+                        coloring.append(j)
+                        break
+            out.append(coloring)
+            if len(out) >= cap:
+                return out, False
+    return out, True
 
 
 def decide(ts, n, workdir, tag, proof=True, solver="glucose"):
@@ -130,9 +159,22 @@ def main():
     ap.add_argument("--workdir", default="work")
     ap.add_argument("--no-proof", action="store_true")
     ap.add_argument("--solver", default="glucose", choices=["glucose", "cadical"])
+    ap.add_argument("--enum", action="store_true",
+                    help="enumerate ALL valid colorings of [1,n] instead of deciding")
     a = ap.parse_args()
     ts = tuple(int(x) for x in a.ts.split(","))
     tag = "s" + "_".join(map(str, ts))
+    if a.enum:
+        cols, complete = enum_colorings(ts, a.n)
+        os.makedirs(a.workdir, exist_ok=True)
+        ef = os.path.join(a.workdir, f"{tag}_n{a.n}.extremals")
+        with open(ef, "w") as f:
+            f.write(f"{a.n} {len(ts)} {' '.join(map(str, ts))}\n")
+            for c in sorted(cols):
+                f.write("".join(map(str, c)) + "\n")
+        print(f"ENUM n={a.n} ts={ts}: {len(cols)} valid colorings"
+              f"{' (cap hit, lower bound)' if not complete else ''} -> {ef}")
+        sys.exit(0)
     res, aux = decide(ts, a.n, a.workdir, tag,
                       proof=not a.no_proof, solver=a.solver)
     if res == "SAT":
