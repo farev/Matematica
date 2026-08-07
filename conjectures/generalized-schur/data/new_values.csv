@@ -1,7 +1,11 @@
 s,t,u,S,conjectured,status,conj21,source
 3,3,8,59,39,NEW,,lane_b.log
 3,3,9,68,44,NEW,,lane_b.log
+3,3,10,77,49,NEW,,lane_b.log
+3,3,11,86,54,NEW,,lane_b.log
 3,4,8,67,55,NEW,,lane_b.log
+3,4,9,78,62,NEW,,lane_b.log
+3,5,8,91,71,NEW,,lane_b.log
 3,6,7,107,76,CONTROL,,lane_b.log
 4,4,4,43,43,CONTROL,confirms Conj 2.1,lane_controls.log
 4,4,5,54,54,CONTROL,confirms Conj 2.1,lane_controls.log
@@ -12,6 +16,8 @@ s,t,u,S,conjectured,status,conj21,source
 4,5,5,69,69,CONTROL,confirms Conj 2.1,lane_controls.log
 4,5,6,83,83,CONTROL,confirms Conj 2.1,lane_controls.log
 4,5,7,97,97,CONTROL,confirms Conj 2.1,lane_controls.log
+4,5,8,111,111,NEW,confirms Conj 2.1,lane_a1.log
 4,6,6,101,101,CONTROL,confirms Conj 2.1,lane_controls.log
+4,6,7,118,118,NEW,confirms Conj 2.1,lane_a1.log
 5,5,5,94,94,CONTROL,confirms Conj 2.1,lane_controls.log
 5,5,6,113,113,CONTROL,confirms Conj 2.1,lane_controls.log

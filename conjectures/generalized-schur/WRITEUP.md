@@ -65,7 +65,24 @@ and was not needed.
    palindromes: `0110` Schur-caps, satellite structure, central `L(u)`-free
    band; max `|C₂| = 5(u−2)` exactly, for `u = 4,5,6,7`.
 
-6. *(production results filled at session end)*
+6. **Production.** Two lanes (one heavy sequential, one light) walked both
+   families outward, interleaved with three container restarts. Final haul:
+   eleven new certified values — `(4,4,8) = 87`, `(4,4,9) = 98`,
+   `(4,5,8) = 111`, `(4,6,7) = 118` (four open instances of Conjecture 2.1,
+   all confirming), and `(3,3,8) = 59`, `(3,3,9) = 68`, `(3,3,10) = 77`,
+   `(3,3,11) = 86`, `(3,4,8) = 67`, `(3,4,9) = 78`, `(3,5,8) = 91` in the
+   formula-less `s = 3` family.
+
+7. **The conjecture that predicted.** After `u ≤ 9` the `(3,3,u)` data
+   forced Conjecture A (`S = 9u−13` for `u ≠ 7`), plus structural
+   predictions: extremal count `2·3^{u−2}`, free slots at `2u+1+5j`, class
+   maximum `5(u−2)`. `u = 10` then landed on all four exactly
+   (77; 13122; 21+5j; 40), and `u = 11` landed on the predicted 86. The
+   `u = 7` anomaly meanwhile sharpened into something strange and specific:
+   the `L(7)`-class law still holds there (max 25 = 5·5), no skeleton
+   exists (846 = 2·3²·47 extremals in ≥ 2 families, 37/48 positions vary,
+   no palindromic maximum), and the missing element comes out of the Schur
+   pair's budget (23 = 4·6 − 1).
 
 ## What failed
 
@@ -106,7 +123,16 @@ and was not needed.
   kept only after regenerating the enumeration and confirming the file is
   byte-identical to the fresh run. Recorded as a provenance defect: every
   other artifact in `certs/` traces to a logged command.
-- *(mathematical dead ends filled at session end)*
+- **Mathematical dead ends.** The tail-slope-8 guess for `(3,4,u)` (from
+  59, 67) died against `(3,4,9) = 78`; every simple closed form tried for
+  the `t = 4` and `t = 5` rows failed (§5 of NOTE). The all-`u`
+  construction behind Conjecture A did not close: the five skeletons share
+  their slot arithmetic and their first ten cells (`u ≥ 8`), but the
+  prefix blocks morph with `u` and no uniform parametrization covered all
+  of `u ∈ {4,5,6,8,9,10}`. A third container restart (which cost ~2.5
+  hours of wall time on its own) ended the harvest with `(3,3,12)` at
+  `S > 66` uncertified and the queued big climbs `(3,7,7)`, `(3,6,8)`,
+  `(3,7,8)`, `(4,5,9)`, `(5,5,7)`, `(4,6,8)`, `(5,6,6)`, `(4,7,7)` unrun.
 
 ## Lessons
 

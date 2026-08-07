@@ -1,0 +1,4 @@
+(4, 4, 8) S=87 CONFIRMED unsat=19.7s sat=15.6s proof=34275B rup=VERIFIED wit=OK
+(4, 4, 9) S=98 CONFIRMED unsat=107.6s sat=70.6s proof=35394B rup=VERIFIED wit=OK
+(4, 5, 8) S=111 CONFIRMED unsat=113.4s sat=84.6s proof=56361B rup=VERIFIED wit=OK
+(4, 6, 7) S=118 CONFIRMED unsat=70.5s sat=59.5s proof=50372B rup=VERIFIED wit=OK

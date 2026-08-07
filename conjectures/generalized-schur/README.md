@@ -30,10 +30,10 @@ Every value below carries a DRUP proof at `S` checked by
 
 | Claim | Label | Where |
 |---|---|---|
-| New exact values, `s ≥ 4` (first since 2016), each **confirming** an open instance of Conjecture 2.1: `S(3;4,4,8) = 87`, `S(3;4,4,9) = 98` | CERTIFIED | `data/new_values.csv`, `certs/` |
-| New exact values in the unmapped `s = 3` family: `S(3;3,3,8) = 59`, `S(3;3,3,9) = 68`, `S(3;3,4,8) = 67`, `S(3;3,4,9) = 78`, `S(3;3,5,8) = 91` (+ further, see CSV) | CERTIFIED | `data/new_values.csv`, `certs/` |
+| New exact values, `s ≥ 4` (first since 2016), each **confirming** an open instance of Conjecture 2.1: `S(3;4,4,8) = 87`, `S(3;4,4,9) = 98`, `S(3;4,5,8) = 111`, `S(3;4,6,7) = 118` | CERTIFIED | `data/new_values.csv`, `certs/` |
+| New exact values in the unmapped `s = 3` family: `S(3;3,3,8) = 59`, `S(3;3,3,9) = 68`, `S(3;3,3,10) = 77`, `S(3;3,3,11) = 86`, `S(3;3,4,8) = 67`, `S(3;3,4,9) = 78`, `S(3;3,5,8) = 91` | CERTIFIED | `data/new_values.csv`, `certs/` |
 | Complete extremal structure of `(3,3,u)`, `u ∈ {4,5,6,8,9}`: one mirror-symmetric skeleton + `u−2` free ternary slots at `2u+1+5j`; `2·3^{u−2}` extremals; max `L(u)`-class `5(u−2)`; all of it breaks at `u = 7` except the class law | CERTIFIED | `NOTE.md` §6, `data/skeletons_33u.txt`, `certs/*.extremals` |
-| `S(3;3,3,u) = 9u−13` for all `u ≥ 4` except `u = 7` (Conjecture A) | conjecture; CERTIFIED at computed `u` | `NOTE.md` §6 |
+| `S(3;3,3,u) = 9u−13` for all `u ≥ 4` except `u = 7` (Conjecture A) — predicted the `u = 10` value, extremal count, slot layout and class maximum, and the `u = 11` value, before computation | conjecture; CERTIFIED at `u ≤ 11` | `NOTE.md` §6 |
 | 11 published boundary values + 12 published climb values + all 10 published enumeration counts reproduced; unique `(3,4,5)` extremal matches the paper character-for-character | CERTIFIED (controls) | `data/results_controls.csv`, NOTE §4 |
 
 ## Scripts
@@ -84,7 +84,20 @@ CNF files are not stored: the encoder is deterministic, so
   an arXiv-RSS mirror, k-range of the diagonal formula inferred from the
   digest. Minor venues (INTEGERS full texts, theses, MathSciNet) were
   unreachable; an isolated value there could predate one of ours.
-- *(open threads filled at session end)*
+- `(4,4,10)`–`(4,4,12)` are open **for memory, not time**: pysat holds the
+  DRUP proof in RAM and three attempts at `(4,4,10)` were OOM-killed on a
+  15 GB box. Fix: standalone solver streaming the proof to disk + drat-trim.
+- One `certs/` artifact (`s3_3_8_n58.extremals`) has no logged generating
+  command; it was kept only after byte-identical regeneration (WRITEUP).
+- `data/lane_*.log` (raw transcripts) are gitignored during the session;
+  results live in the CSVs. The `(3,3,12)` climb was cut by the third
+  container restart at `S > 66` (established, uncertified, unrecorded in the
+  CSV — treat `(3,3,12)` as fully open).
+- Sharpest open threads: prove Conjecture A for `u ≥ 8` (slot arithmetic
+  understood, prefix family missing); the `u = 7` anomaly's human
+  explanation; the `(4,4,u)` ladder via disk-streaming proofs; OEIS
+  submission of the `(3,3,u)` row (no matching sequence found by search
+  today — secondary, absence-of-evidence).
 
 ## Prior work
 

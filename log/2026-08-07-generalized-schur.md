@@ -16,29 +16,32 @@ boundary was pinned from the primary source, and the 08-05 session's
 validated DRUP-certification toolkit (`tools/satcert/`) was waiting.
 
 **Result.**
-- **CERTIFIED** — new exact generalized Schur numbers, the first in this
-  family since 2016 (final list in `conjectures/generalized-schur/data/new_values.csv`):
-  `S(3;4,4,8) = 87` and `S(3;4,4,9) = 98`, each deciding a previously open
-  instance of Ahmed–Schaal Conjecture 2.1 (both confirm it), and — in the
-  `s = 3` family, where no formula is even conjectured — `S(3;3,3,8) = 59`,
-  `S(3;3,3,9) = 68`, `S(3;3,4,8) = 67`, `S(3;3,4,9) = 78`, `S(3;3,5,8) = 91`,
-  plus the further values recorded in the CSV. Every value ships a DRUP
-  proof of the UNSAT side checked by the independent `rup_check`, and a
-  witness coloring of the SAT side checked by an independent bitset
-  verifier. Controls: 11 published boundary values reproduced with
-  identical certificate chains; all 12 published `(3,t,u)` values
-  reproduced by climb; all 10 published enumeration counts matched
-  exactly; the unique `(3,4,5)` extremal coloring matches the paper's
-  printed string character for character.
+- **CERTIFIED** — **eleven new exact generalized Schur numbers**, the first
+  in this family since 2016
+  (`conjectures/generalized-schur/data/new_values.csv`): `S(3;4,4,8) = 87`,
+  `S(3;4,4,9) = 98`, `S(3;4,5,8) = 111`, `S(3;4,6,7) = 118` — four
+  previously open instances of Ahmed–Schaal Conjecture 2.1, **all four
+  confirming it** — and, in the `s = 3` family where no formula is even
+  conjectured, `S(3;3,3,8) = 59`, `S(3;3,3,9) = 68`, `S(3;3,3,10) = 77`,
+  `S(3;3,3,11) = 86`, `S(3;3,4,8) = 67`, `S(3;3,4,9) = 78`,
+  `S(3;3,5,8) = 91`. Every value ships a DRUP proof of the UNSAT side
+  checked by the independent `rup_check`, and a witness coloring of the SAT
+  side checked by an independent bitset verifier. Controls: 11 published
+  boundary values reproduced with identical certificate chains; all 12
+  published `(3,t,u)` values reproduced by climb; all 10 published
+  enumeration counts matched exactly; the unique `(3,4,5)` extremal
+  coloring matches the paper's printed string character for character.
 - **CERTIFIED** — the complete extremal structure of the `(3,3,u)` family
-  at every computed size: for `u ∈ {4,5,6,8,9}` the valid colorings of
+  at every computed size: for `u ∈ {4,5,6,8,9,10}` the valid colorings of
   `[1, 9u−14]` are exactly one mirror-symmetric skeleton with `u−2` free
   ternary slots at positions `2u+1+5j` (`2·3^{u−2}` colorings; maximal
   `L(u)`-class exactly `5(u−2)`), while at `u = 7` the value drops one
   below the `9u−13` line, the 846 extremals form no single skeleton, and
   the deficit belongs to the Schur pair, not the `L(7)` class.
 - **Conjecture A** (new): `S(3;3,3,u) = 9u−13` for all `u ≥ 4` except
-  `u = 7` — certified at every computed size, open beyond.
+  `u = 7` — stated from `u ≤ 9`, then **predicted `u = 10` exactly on all
+  four statistics** (value 77, count 13122, slots 21+5j, class max 40) and
+  **predicted `u = 11` = 86**, both then certified. Open beyond 11.
 
 **What failed.**
 - The `(4,4,u)` ladder beyond `u = 9`: three proof-logged attempts at

@@ -6,20 +6,30 @@ independently checked certificate.*
 
 ## Abstract
 
-*(final numbers filled at session end)* We compute new exact values of the
-generalized off-diagonal Schur numbers `S(3;s,t,u)` — the first new values in
-this family since Ahmed–Schaal (Exp. Math. 2016) — with machine-checkable
-certificates on both sides of every boundary: a DRUP unsatisfiability proof at
-`S`, verified by an independent reverse-unit-propagation checker, and an
-explicit valid coloring at `S−1`, verified by an independent
-solution-enumeration algorithm. Each value with `4 ≤ s ≤ t ≤ u` decides a
-previously open instance of Ahmed–Schaal Conjecture 2.1
-(`S(3;s,t,u) = stu−tu−u−1`); the values with `s = 3` extend a family for which
-no formula is known or conjectured, only Song–Mao's strict lower bound
-(April 2026). We also enumerate all extremal colorings at `S−1` for each
-value, reproducing every enumeration count published in Ahmed–Schaal's
-Theorems 2.1–2.10 exactly, and use the extremal structure to describe the
-constructions that drive the `s = 3` family above its sandwich lower bound.
+We compute **eleven new exact values** of the generalized off-diagonal Schur
+numbers `S(3;s,t,u)` — the first new values in this family since Ahmed–Schaal
+(Exp. Math. 2016) — with machine-checkable certificates on both sides of
+every boundary: a DRUP unsatisfiability proof at `S`, verified by an
+independent reverse-unit-propagation checker, and an explicit valid coloring
+at `S−1`, verified by an independent solution-enumeration algorithm. The four
+values with `4 ≤ s ≤ t ≤ u` — `S(3;4,4,8) = 87`, `S(3;4,4,9) = 98`,
+`S(3;4,5,8) = 111`, `S(3;4,6,7) = 118` — each decide a previously open
+instance of Ahmed–Schaal Conjecture 2.1 (`S = stu−tu−u−1`), and all four
+confirm it. The seven values with `s = 3` — `S(3;3,3,u) = 59, 68, 77, 86`
+for `u = 8,…,11`, `S(3;3,4,8) = 67`, `S(3;3,4,9) = 78`, `S(3;3,5,8) = 91` —
+extend a family for which no formula is known or conjectured, only Song–Mao's
+strict lower bound (April 2026). Enumerating **all** extremal colorings shows
+the `(3,3,u)` family is governed, at every computed size except `u = 7`, by a
+single rigid skeleton with `u−2` free ternary slots (`2·3^{u−2}` extremal
+colorings, maximal `L(u)`-class exactly `5(u−2)`), giving `S(3;3,3,u) = 9u−13`
+at `u ∈ {3,4,5,6,8,9,10,11}` — stated as Conjecture A for all `u ≠ 7` after
+it predicted the value, the extremal count, the slot positions and the class
+maximum at `u = 10` and the value at `u = 11` in advance of computation. At
+`u = 7` the value drops exactly one below the line and the skeleton
+factorization fails; the deficit belongs to the two Schur classes, not the
+`L(7)` class. The pipeline reproduces every published enumeration count of
+Ahmed–Schaal's Theorems 2.1–2.10 and the unique `(3,4,5)` extremal coloring
+character for character.
 
 ## 1. Definitions
 
@@ -74,7 +84,32 @@ in `data/results_a1.csv` and `data/lane_*.log`.
 
 ## 3. Results
 
-*(filled at session end from `data/new_values.csv`)*
+Eleven new exact values (authoritative CSV: `data/new_values.csv`; per-run
+times, proof sizes and CNF hashes: `data/results_a1.csv`,
+`data/cnf_hashes.txt`; certificates: `certs/`):
+
+| (s,t,u) | S(3;s,t,u) | sandwich LB | Conjecture 2.1 |
+|---|---|---|---|
+| (3,3,8) | **59** | 39 | — |
+| (3,3,9) | **68** | 44 | — |
+| (3,3,10) | **77** | 49 | — |
+| (3,3,11) | **86** | 54 | — |
+| (3,4,8) | **67** | 55 | — |
+| (3,4,9) | **78** | 62 | — |
+| (3,5,8) | **91** | 71 | — |
+| (4,4,8) | **87** | 87 | **confirmed** (= stu−tu−u−1) |
+| (4,4,9) | **98** | 98 | **confirmed** |
+| (4,5,8) | **111** | 111 | **confirmed** |
+| (4,6,7) | **118** | 118 | **confirmed** |
+
+Every row: UNSAT at `S` by Glucose 4.2 with DRUP proof, RUP-checked by the
+independent `rup_check`; SAT at `S−1` with the witness verified by the
+independent bitset algorithm. All eleven are CERTIFIED in the repository's
+vocabulary. The `s = 3` values were located by Cadical climbs from Song–Mao's
+proved lower bound (every anchor SAT, as their theorem requires) and then
+certified at the boundary; the `s ≥ 4` values were certified directly at the
+conjectured boundary. No refutation of Conjecture 2.1 was found: all four
+testable open instances confirmed it.
 
 ## 4. Controls
 
@@ -105,22 +140,27 @@ Before any new claim, the pipeline reproduced, end to end:
 
 ## 5. The s = 3 family
 
-*(data table and structural analysis filled at session end)*
+The table after this session (**bold** = new; published values in roman;
+`u` across, `t` down):
 
-Published values, for reference (`u` across, `t` down; the sandwich bound in
-parentheses):
+|  | u=3 | u=4 | u=5 | u=6 | u=7 | u=8 | u=9 | u=10 | u=11 |
+|---|---|---|---|---|---|---|---|---|---|
+| t=3 | 14 | 23 | 32 | 41 | 49 | **59** | **68** | **77** | **86** |
+| t=4 | | 31 | 47 | 49 | 59 | **67** | **78** | | |
+| t=5 | | | 58 | 70 | 80 | **91** | | | |
+| t=6 | | | | 85 | 107 | | | | |
 
-|  | u=3 | u=4 | u=5 | u=6 | u=7 |
-|---|---|---|---|---|---|
-| t=3 | 14 (14) | 23 (19) | 32 (24) | 41 (29) | 49 (34) |
-| t=4 | | 31 (27) | 47 (34) | 49 (41) | 59 (48) |
-| t=5 | | | 58 (44) | 70 (53) | 80 (62) |
-| t=6 | | | | 85 (65) | 107 (76) |
+First differences in `u`:
+- `t=3`: 9, 9, 9, **8, 10**, 9, 9, 9 — the line `9u−13`, broken only by the
+  `u = 7` dip (§6).
+- `t=4`: 16, **2**, 10, 8, 11 — no linear law; the tail-slope-8 hypothesis
+  suggested by `u = 7,8` was killed by `S(3;3,4,9) = 78`.
+- `t=5`: 12, 10, 11 — likewise irregular.
 
-Observations already forced by the published data: the family is not given by
-any single linear-in-`u` law (`(3,3,u)` runs 9u−13 for `u ≤ 6` and then drops
-below it at `u = 7`; `(3,4,u)` steps +16, +2, +10), and the gaps over the
-sandwich bound grow (up to +31 at `(3,6,7)`).
+The gaps over the sandwich bound grow without apparent structure (from +4 at
+`(3,3,4)` to +32 at `(3,3,11)`); whatever the true law of this family is, it
+is not a perturbation of the sandwich construction. The `t = 3` row is the
+one place the data resolves into a clean statement — Conjecture A below.
 
 ## 6. Extremal structure of the (3,3,u) family — certified by enumeration
 
@@ -152,12 +192,13 @@ classes at maximum hold only `23 = 4(u−1)−1` elements. The deficit of
 **Conjecture A (new, this session).** `S(3;3,3,u) = 9u−13` for every
 `u ≥ 4` except `u = 7`, i.e. for all `u ≥ 8` the slot-skeleton family
 persists. The conjecture was stated from the data for `u ≤ 9` and then
-**tested as a prediction at `u = 10`**: the value (77), the extremal count
-(`2·3⁸ = 13122`), the slot positions (`21+5j`) and the maximal class size
-(40) all landed exactly as predicted. Certified wherever computed; open
-beyond. The skeleton prefixes share their first ten cells `0110201102`
-for `u = 8,9,10` but continue non-uniformly, which is why the session
-ends with a conjecture and not a construction proof.
+**tested as a prediction twice**: at `u = 10` the value (77), the extremal
+count (`2·3⁸ = 13122`), the slot positions (`21+5j`) and the maximal class
+size (40) all landed exactly as predicted, and at `u = 11` the predicted
+value 86 was then certified as well. Certified for
+`u ∈ {3,…,11} ∖ {7}`; open beyond. The skeleton prefixes share their first
+ten cells `0110201102` for `u = 8,9,10` but continue non-uniformly, which
+is why the session ends with a conjecture and not a construction proof.
 
 ## 7. Sources
 
@@ -184,9 +225,28 @@ families — checked for collision, none).
 
 Everything in this note is emitted by the scripts in this directory (see
 README for the table); certificates in `certs/`; per-run logs in `data/`.
-CNF files regenerate deterministically; `data/results_a1.csv` records their
-sha256. Total session compute: *(filled at end)*.
+CNF files regenerate deterministically; `data/results_a1.csv` and
+`data/cnf_hashes.txt` record their sha256. Total session compute: well under
+two CPU-hours of successful solver time on 4 cores / 15 GB (the certified
+runs sum to minutes — the largest single certified boundary, `(4,5,8)` at
+`n = 111`, took 113 s + 85 s); the failures (three OOM-killed attempts at
+`(4,4,10)`, three container restarts) cost more wall time than all successes
+combined. No randomness anywhere; there are no seeds.
 
 ## Open questions
 
-*(filled at session end)*
+1. Prove Conjecture A for `u ≥ 8` — the slot arithmetic (`2u+1+5j`, spacing
+   5, mirror symmetry) is understood; the missing piece is a uniform
+   description of the prefix blocks.
+2. Explain `u = 7` humanly: what obstruction costs the Schur pair exactly
+   one element against `L(7)`, and why only there? (Today it is a 35 KB
+   machine-checked proof.)
+3. `S(3;4,4,10) ?= 109` and the rest of the `(4,4,u)` ladder — blocked today
+   on proof-logging memory, not solver time; needs a disk-streaming
+   solver+checker (kissat/CaDiCaL + drat-trim).
+4. The `t = 4` and `t = 5` rows of the `s = 3` family: is there a law at
+   all, or a max-of-constructions with parity effects as in Robertson–
+   Schaal's 2-color formula?
+5. The 4-color family (only three values known) — collision risk with an
+   unverified report of a distributed effort was noted 08-05; re-verify and
+   attack.
