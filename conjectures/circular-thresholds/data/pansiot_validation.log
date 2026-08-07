@@ -1,0 +1,39 @@
+# Validation transcript, session 2026-08-06 (outputs as obtained in-session;
+# regenerate with the listed commands).
+
+## Conventions validation (scratch validate.py; logic now in pansiot.py)
+[2] checker cross-validation (run-based vs minimal-period): 400 random words,
+    n in {3,4,5,6}, mismatches = 0
+[1] roundtrip encode(decode(bits)) == bits: 200 random valid codewords,
+    n in {4,5,6}, failures = 0
+[3] n=4 valid-code language alive at depth k=60 (beam width 1970) --
+    consistent with Pansiot's theorem RT(4)=7/5
+[4] spec_n4.csv circular witnesses: 73 checked, 73 Pansiot-encodable
+    (the encoder consumes session 1's independently verified data)
+
+## Transfer lemma validation (scratch transfer2.py; Lemma T of NOTE Part II)
+n=3: 1870 (word,p) tests; max-mismatch=0 pos-mismatch=0 v3-mismatch=0
+n=4:  368 (word,p) tests; max-mismatch=0 pos-mismatch=0
+      (one v3 disagreement on a corrupted word located the small-period
+      regime p in {3,4} at n=4, below the p+n-1 transfer threshold; a
+      documented limitation of the H-prefix CHECKER only -- all search
+      verdicts used the complete decode-based checker)
+formula validated: max period-p letter-stretch length =
+                   (n-1) + max gid bit-stretch length (bare blocks included)
+
+## Certification (pansiot_certify.py, N0 = ceil((floor(aP0)+1+(n-1))/k)+1)
+n=6 k=21: Ha/Hb/Hc True, C2 pi=(1,2,3,0,4,5), P0=230 N0=15, Hd True (338 words)
+n=5 k=21: Ha/Hb/Hc True, C2 pi=(0,1,2,4,3), P0=180 N0=12, Hd True (144 words)
+n=3 k=19: Ha/Hb/Hc True, C2 pi=(2,0,1),     P0=52  N0=6,  Hd True (40 words)
+
+## Seeds (pansiot_seed.py check)
+n=6 m0=39 c0=101011011010110101101101011010110110101: monodromy id, S2 ok
+n=5 m0=28 c0=0110110101010101101101010101:            monodromy id, S2 ok
+n=3 m0=20 c0=11011010111011101101:                    monodromy id, S2 ok
+
+## Pump-and-verify (pansiot_seed.py pump; direct from Definition 1)
+n=6: j=0 len=39 ok; j=1 len=819 ok; j=2 len=17199 ok
+     (j<=1 re-verified by session-1 circspec.verify: (True, None) both)
+n=5: j=0 len=28 ok; j=1 len=588 ok; j=2 len=12348 ok
+n=3: j=0 len=20 ok; j=1 len=380 ok; j=2 len=7220 ok; j=3 len=137180 ok
+     (j<=1 also by naive O(m^3) checker and circspec.verify)

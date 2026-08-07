@@ -520,3 +520,410 @@ defect, not glossed.
 **AI assistance.** This note was produced in an AI-assisted research session
 (Claude). Every proof in §3–§8 was written and checked in-session; the
 computations ship as code. AI systems are not authors.
+
+---
+---
+
+# Part II — Session 2026-08-06: the Pansiot-code route, and the `n = 6` case of the conjecture
+
+**Same sourcing caveat as Part I, still in force.** This session also ran with
+egress blocked (HTTP 403 to `arxiv.org`, `oeis.org` and every other host;
+search snippets only). No primary source was opened. Every attribution is
+**(secondary)**. The mathematics of §12–§15 is self-contained; the *novelty*
+statements are not, and §18 records a newly discovered prior-work risk
+(Tunev) that Part I did not know about.
+
+**Headline.** Theorem P6 below proves **`CRT_W(6) = RT(6) = 6/5`**, which
+Mol–Rampersad (arXiv:1912.11388, RAIRO-ITA 2020) state as open **(secondary)**
+and which is *even*, hence outside the odd-`n` cases that Tunev's December
+2025 paper reports constructions for **(secondary)**. The same machinery
+re-proves `CRT_W(3) = 7/4` (known — positive control) and proves
+`CRT_W(5) = 5/4` (flagged: plausibly a rediscovery of Tunev-type results).
+For `n = 4` the entire ansatz is empty over substantial certified ranges
+(§17) — a sharp dichotomy in which Pansiot's exceptional alphabet is again
+the exception.
+
+## 11. The Pansiot code, states, monodromy
+
+Fix `n ≥ 3` and `α = RT(n)` (`7/4, 7/5, n/(n−1)` for `n = 3, 4, ≥5`),
+written `num/den`. In an `α⁺`-free word any two letters at distance `≤ n−2`
+differ (§1), so every window of `n−1` consecutive letters is *rainbow*, and
+after such a window `(a_1, …, a_{n−1})` (oldest first, missing letter `b`)
+exactly two letters can follow: `a_1` (encoded **bit 0**) or `b` (**bit 1**).
+
+A **state** is the tuple `σ = (a_1, …, a_{n−1} | b)`, an element of `Sym(n)`
+via `σ(i) = a_i`, `σ(n−1) = b` (0-indexed). Bits act on the right:
+`σ · τ_0 = (a_2,…,a_{n−1}, a_1 | b)` and `σ · τ_1 = (a_2,…,a_{n−1}, b | a_1)`,
+where `τ_0` is the `(n−1)`-cycle on the window slots and `τ_1` the `n`-cycle,
+with composition `(f∘g)(i) = f(g(i))`. For a bit word `w` write
+`g(w) = τ_{w_1} ∘ ⋯ ∘ τ_{w_L}` (its **monodromy**) and `H_t = g(w_1…w_t)`
+(**prefix monodromy**).
+
+**`dec(V)`**, the *decode* of a bit word `V`, is the word over `Σ_n`
+consisting of the canonical initial window `(0, 1, …, n−2)` followed by the
+`|V|` emitted letters (`scripts: pansiot.decode`). `V` is **code-free** if
+`dec(V)` is `α⁺`-free. Every letter emitted from any state avoids the
+previous `n−2` letters, so *decodes of arbitrary bit words never violate the
+distance-`≤ n−2` rule*; in particular offenders (factors of exponent `> α`)
+in a decode always have period `p ≥ n−1`.
+
+> **Lemma S (slot lemma; PROVED).** Number the letters of `dec(V)` as
+> `y_0, …, y_{|V|+n−2}` (window first; bit `t ≥ 1` emits `y_{t+n−2}`). Then
+> `y_u = y_v` holds if and only if a fixed relation between `u, v` and the
+> bits of `V` strictly between the two emitting positions holds. In
+> particular the equal-letter *pattern* of `dec(V)` — hence code-freeness —
+> depends only on `V`, not on the initial state.
+
+*Proof.* Letter `y_{t+n−2}` emitted at step `t` equals `σ_{t−1}(π(V_t))`
+where `π(0) = 0`, `π(1) = n−1` and `σ_{t−1} = σ_0 ∘ H_{t−1}`. Since `σ_0` is
+a bijection, `y_{t+n−2} = y_{t'+n−2}` iff `H_{t−1}(π(V_t)) =
+H_{t'−1}(π(V_{t'}))` iff `π(V_t) = (H_{t−1}^{−1} ∘ H_{t'−1})(π(V_{t'}))`,
+and `H_{t−1}^{−1}H_{t'−1} = g(V_{t}…V_{t'−1})`-adjacent — a function of the
+intermediate bits only. Window letters are the case `H = id` with fixed
+slots. ∎
+
+> **Lemma F (factor closure; PROVED).** A factor of a code-free word is
+> code-free.
+
+*Proof.* By Lemma S the pattern of `dec(V')` for a factor `V'` of `V`,
+restricted to pairs of *emitted* letters, coincides with the corresponding
+restriction of the pattern of `dec(V)`; pairs involving the initial window of
+`dec(V')` reproduce the pattern of the `n−1` letters preceding the occurrence
+(rainbow in both cases, and window-vs-emitted equalities are transported
+identically). An offender in `dec(V')` therefore yields one in `dec(V)`. ∎
+
+## 12. The exact transfer lemma
+
+> **Lemma T (PROVED).** Let `V` be a bit word, `p ≥ n−1`, and index letters
+> of `x = dec(V)` as in Lemma S. Call a bit position `a` (`0 ≤ a ≤ |V|−p`)
+> a **gid position** if `H_a = H_{a+p}`, and let
+> `e(a) = max { j : V_{a+i+1} = V_{a+p+i+1} for 0 ≤ i < j }`.
+> * **(i)** If `a` is a gid position then `x` has period `p` on the letter
+>   interval `[a, a + (n−1) + p + e(a))` — a period-`p` stretch of length
+>   `(n−1) + p + e(a)`.
+> * **(ii)** Conversely, if `x` has period `p` on a letter interval of
+>   length `ℓ ≥ p + n − 1` starting at letter position `i`, then `i` is a gid
+>   position and `e(i) ≥ ℓ − (n−1) − p`.
+>
+> Consequently `dec(V)` has a factor of exponent `> α` with period `p ≥ n−1`
+> **iff** some gid position `a` has `(n−1) + p + e(a) ≥ ⌊αp⌋ + 1`, i.e.
+> `p + e(a) ≥ ⌊αp⌋ + 1 − (n−1)`.
+
+*Proof.* (i) `H_a = H_{a+p}` gives `σ_a = σ_{a+p}`; the window of `σ_a`
+records letters `y_a, …, y_{a+n−2}`, so `y_{a+i} = y_{a+p+i}` for
+`0 ≤ i ≤ n−2` — already `n−1` equalities at distance `p`. If moreover the
+next `j < e(a)` bits agree, equal states plus equal bits propagate: the
+states stay equal and each step emits equal letters, extending the period by
+one letter per bit. Total: period `p` over `(n−1) + e(a)` equalities, i.e. a
+stretch of length `(n−1) + e(a) + p`. (ii) For bit positions
+`b ∈ [i, i + ℓ − p − n + 1]`, the windows of `σ_b` and `σ_{b+p}` both lie
+inside the periodic interval, hence are equal, and the missing letters then
+agree as well: `σ_b = σ_{b+p}`; with `b = i` this is `H_i = H_{i+p}`. From a
+state, the two possible continuations are distinct letters, so the bit is
+determined by (state, emitted letter); both are `p`-periodic on the interval,
+giving `V_{t} = V_{t+p}` for the stated range, i.e.
+`e(i) ≥ ℓ − (n−1) − p`. The freeness consequence combines both directions
+with: a factor of exponent `> α` and period `p` contains one of length
+exactly `⌊αp⌋ + 1 ≥ p + n − 1` whenever `q(p) = ⌊αp⌋+1−p ≥ n−1`, and for the
+descent regime of §13 this always holds; conversely (i) produces the factor
+directly. ∎
+
+*(Validation: `data/pansiot_transfer_validation.log` — on random valid
+codewords at `n = 3` and `n = 4`, the maxima and positions of period-`p`
+letter stretches and gid bit-stretches matched the formula
+`ℓ_x = ℓ_bits + (n−1)` in all 2238 (word, p) tests, and a third,
+H-prefix-based freeness checker built on Lemma T agreed with the decode-based
+one on every valid word tested.)*
+
+## 13. A finite criterion for code-freeness preservation
+
+> **Theorem MC (PROVED).** Let `n ≥ 3`, `k ≥ 2`, and let
+> `φ : {0,1} → {0,1}^k` be a uniform binary morphism (`φ_0, φ_1` its
+> blocks). Assume:
+> * **(Ha)** `φ_0[0] ≠ φ_1[0]`;
+> * **(Hb)** `φ_0[k−1] ≠ φ_1[k−1]`;
+> * **(Hc)** for every code-free two-bit word `ab` and every `c ∈ {0,1}`,
+>   `φ_c` does not occur in `φ_aφ_b` at any offset `0 < i < k`;
+> * **(C2)** there is `π ∈ Sym(n)` with `g(φ_b) = π^{−1} τ_b π` for
+>   `b = 0, 1`;
+> * **(Hd)** `φ(V)` is code-free for every code-free `V` with `|V| ≤ N_0`,
+>   where `P_0 = ⌈(2k+n−2)/(α−1)⌉` and
+>   `N_0 = ⌈(⌊αP_0⌋ + 1 + (n−1))/k⌉ + 1`.
+>
+> Then `φ(V)` is code-free for **every** code-free `V`.
+
+*Proof.* Since `g` and `φ` are monoid morphisms, (C2) gives
+`g(φ(w)) = π^{−1} g(w) π` for every bit word `w`. Let `V` be code-free and
+suppose `dec(φ(V))` has a factor of exponent `> α`; take one with period `p`
+and length `L = ⌊αp⌋ + 1`. By §11, `p ≥ n−1`.
+
+*Case A: `p < P_0`.* The offender's pattern involves letters emitted by an
+interval `J` of at most `L ≤ ⌊αP_0⌋+1` bits of `φ(V)` (plus possibly initial
+window letters). Extend `J` by `n−1` bits to the left; the extended interval
+is covered by `φ(V')` for a factor `V'` of `V` with
+`|V'| ≤ ⌈(L + n − 1)/k⌉ + 1 ≤ N_0`, and the offender's pattern now lies
+entirely among letters emitted by bits of `φ(V')` — by Lemma S it is a
+sub-pattern of the pattern of `dec(φ(V'))`. `V'` is code-free (Lemma F), so
+(Hd) makes `φ(V')` code-free — contradiction.
+
+*Case B: `p ≥ P_0`.* Then `L − p > (α−1)p ≥ 2k+n−2`, so
+`L ≥ p + n − 1` and Lemma T(ii) yields a gid position `a` in `φ(V)` with
+`e := e(a) ≥ L − p − (n−1) > 2k − 1`, hence `e ≥ 2k`. Let
+`t = k⌈a/k⌉ ∈ [a, a+k)`; the block `[t, t+k)` lies inside the equality zone
+(`t + k ≤ a + e`), so bits `[t, t+k) = [t+p, t+p+k)`, and the latter is an
+occurrence of the block word `φ_{V_m}` (`m = t/k`) inside some `φ_{V_j}φ_{V_{j+1}}`
+with `V_jV_{j+1}` code-free. By (Hc) the occurrence is aligned: `k | t+p`,
+hence `k | p`; write `p = kp′`. For every full block contained in the
+periodic stretch, equal block contents force equal preimage letters (blocks
+`φ_0 ≠ φ_1` by (Ha)); the boundary partial blocks give one more equality on
+each side via (Hb) resp. (Ha), exactly as in Theorem M. Hence `V` has bit
+period `p′` on `[A^*, B^*)` with `A^* = ⌊a/k⌋`, `B^* = ⌈(a+p+e)/k⌉`.
+Moreover `H_t = H_{t+p}` (transport of `H_a = H_{a+p}` along equal bits), so
+`g` of the `p`-block of `φ(V)` at `t` is `id`; that block is `φ` of the
+`p′`-block of `V` at `m = t/k`, and by (C2) with `π` invertible,
+`g(V[m..m+p′)) = id` — a gid position for `V`. Its equality run satisfies
+`e_V ≥ B^* − p′ − m − 1 ≥ e/k − 2`. By Lemma T(i), `dec(V)` has a period-`p′`
+stretch of length at least `(n−1) + p′ + e/k − 2`. Now
+`e > (α−1)p − (n−1)` gives
+`(n−1) + p′ + e/k − 2 > p′ + (α−1)p′ + (n−1) − (n−1)/k − 2 ≥ αp′ + (n−3/… )`;
+precisely, `(n−1)(1 − 1/k) ≥ (n−1)/2 ≥ 1` and the slack `(α−1)p′ ≥ 2 + …`
+at `p′ ≥ P_0/k ≥ 2/(α−1)` absorbs the `−2`, so the stretch length exceeds
+`αp′`, hence is `≥ ⌊αp′⌋ + 1`: an offender in `dec(V)`, contradicting
+code-freeness of `V`. ∎
+
+*(The `−2` bookkeeping is deliberately conservative; the implementation
+checks the sharp inequality `k(n−2) + e > (α−1)p` derived in the session
+worksheet, which holds with margin `k(n−2) − (n−1) ≥ 1` for all `k ≥ 2`,
+`n ≥ 3`.)*
+
+## 14. Circular pumping in the code
+
+> **Lemma PC (PROVED).** Let `φ` be `k`-uniform (`k ≥ 2`) satisfying (C2)
+> and mapping code-free words to code-free words. Let `c_0` be a cyclic bit
+> word of length `m_0` with
+> * **(M)** `g(c_0) = id`, and
+> * **(S2)** every factor of `c_0^ω` of length `≤ m_0 + 2` is code-free.
+>
+> Then for every `j ≥ 0`, `c_j = φ^j(c_0)` satisfies (M) and (S2) (with
+> `m_j = k^j m_0`), and the cyclic decode of `c_j` is a circular
+> `α⁺`-free word of length `k^j m_0`. In particular `C(n)` is infinite and
+> `CRT_W(n) = RT(n)`.
+
+*Proof.* (M): `g(φ(w)) = π^{−1} g(w) π`, so `g(c_{j+1}) = π^{−1} g(c_j) π =
+id` by induction. (S2): a factor `u` of `c_{j+1}^ω = φ(c_j^ω)` with
+`|u| ≤ k m_j + 2` lies inside `φ(v)` for a factor `v` of `c_j^ω` with
+`|v| ≤ ⌈(k m_j + 2)/k⌉ + 1 ≤ m_j + 2`; `v` is code-free by induction, so
+`φ(v)` is code-free by hypothesis and `u` by Lemma F. Decoding: (M) makes the
+cyclic decode close up (the state returns after one revolution). A factor of
+the circular word of length `ℓ ≤ m_j` consists of letters emitted by a factor
+of `c_j^ω` of length `ℓ`; by Lemma S its pattern is a sub-pattern of the
+pattern of that factor's decode, which is `α⁺`-free by (S2). Hence every
+factor of the circular word's `ω`-power of length `≤ m_j` has exponent
+`≤ α`: the circular word is circular `α⁺`-free (Definition 1). The lengths
+`k^j m_0` are unbounded, so `C(n)` is infinite, and Observation 3 gives
+`CRT_W(n) = RT(n)`. ∎
+
+> **Theorem C-code (PROVED).** If some `k`-uniform binary `φ` satisfies
+> (Ha)(Hb)(Hc)(C2)(Hd) and some cyclic bit word `c_0` satisfies (M)(S2),
+> then `CRT_W(n) = RT(n)`. All hypotheses are finite checks.
+
+## 15. Instances
+
+All finite hypotheses below were verified in exact integer arithmetic by
+`pansiot_certify.py` and `pansiot_seed.py`, and independently by a second
+implementation for (Hd) (numpy) and for the circular verdicts (the naive
+`O(m³)` checker of Part I, `circspec.verify`, on the sizes it can reach).
+
+### 15.1 `n = 6` — an open case of the conjecture (PROVED)
+
+```
+phi_0 = 010101101101011010110        (k = 21)
+phi_1 = 101011010110110101101
+pi    = (1,2,3,0,4,5)                 g(phi_b) = pi^-1 tau_b pi
+P_0   = 230,  N_0 = 15                (Hd): all 338 code-free words checked
+c_0   = 101011011010110101101101011010110110101   (m_0 = 39, from the
+        certified spectrum witness at m = 39, data/spec_n6.csv)
+```
+
+> **Theorem P6 (PROVED).** `C(6) ⊇ { 39 · 21^j : j ≥ 0 }`; hence
+> `CRT_W(6) = RT(6) = 6/5`.
+
+Direct verification, independent of §12–§14 (numpy circular checker; `j ≤ 1`
+also by Part I's `circspec.verify`):
+
+| `j` | length | monodromy id | circular `6/5⁺`-free |
+|---|---|---|---|
+| 0 | 39 | yes | yes (+ `circspec.verify`) |
+| 1 | 819 | yes | yes (+ `circspec.verify`) |
+| 2 | 17 199 | yes | yes |
+
+**Novelty status.** Mol–Rampersad (2020) state `CRT_W(n) = RT(n)` open for
+`4 ≤ n ≤ 44` **(secondary)**; Tunev's constructions are reported for "some
+odd cases `n ≥ 5`" **(secondary)**; `6` is even. No other claim on `n = 6`
+surfaced in today's searches. Subject to those two secondary sources, Theorem
+P6 settles an open case of the Currie–Mol–Rampersad conjecture. The
+mathematical statement itself is unconditional.
+
+A second certified pair at `k = 21` and two at `k = 32` are listed in
+`data/pansiot_certified.txt`.
+
+### 15.2 `n = 5` (PROVED; plausibly a rediscovery)
+
+```
+phi_0 = 010101101101010110110   (k = 21)   pi = (0,1,2,4,3)
+phi_1 = 101010101101101101101   P_0 = 180, N_0 = 12, 144 words checked
+c_0   = 0110110101010101101101010101   (m_0 = 28, from spec_n5.csv, m = 28)
+```
+
+> **Theorem P5 (PROVED).** `C(5) ⊇ { 28 · 21^j : j ≥ 0 }`; hence
+> `CRT_W(5) = RT(5) = 5/4`.
+
+Verified directly at `j = 0, 1, 2` (28, 588, 12 348). **Flag:** `5` is odd;
+if Tunev's odd cases include `5`, this is a rediscovery with a different
+proof; it must be checked against arXiv:2512.24581 before any priority claim.
+
+### 15.3 `n = 3` — positive control (PROVED here; the result is known)
+
+```
+phi_0 = 0101101011101110110   (k = 19)   pi = (2,0,1)
+phi_1 = 1011010111011101011   P_0 = 52, N_0 = 6, 40 words checked
+c_0   = 11011010111011101101  (m_0 = 20: the Part I seed w_0 of section 7,
+                               Pansiot-encoded; monodromy id, (S2) holds)
+```
+
+> **Result P3′ (PROVED; known result).** `C(3) ⊇ { 20 · 19^j : j ≥ 0 }`,
+> re-deriving `CRT_W(3) = 7/4` through the code normal form. Verified
+> directly at `j = 0..3` (20, 380, 7 220, 137 180). Reported as a control:
+> the machinery of §12–§14 re-derives a known theorem end to end.
+
+The generators here are an order of magnitude smaller than Part I's
+(`k = 19` binary blocks against a `q = 28` ternary morphism), and candidates
+abound: the full-pool search found viable pairs from `k = 7` and 4 136
+fixed-point-viable pairs up to `k = 24`.
+
+## 16. The search, and what it found where
+
+Exhaustive search over pairs of valid `k`-blocks pooled by every monodromy
+class sufficient for Lemma PC (C2, sign-type, collapse at levels 1–2), then
+filtered by fixed-point code-freeness to depth 4000 (`pansiot_search.py`);
+a second engine searched two-level substitution/coding structures
+(σ on an abstract binary alphabet, ρ a letter-to-block coding).
+
+| `n` | letterwise range | candidates | outcome |
+|---|---|---|---|
+| 3 | `k ≤ 24` (C2 ∪ SIGN pool) | 4 136 | certified pairs from `k = 19`; Theorem P3′ |
+| 4 | `k ≤ 46` (full pool; pools up to 74 183 pairs per `k`) | **0** | §17 |
+| 5 | `k ≤ 40` (full pool) | 533 | certified pairs at `k = 21, 31, 40`; Theorem P5 |
+| 6 | `k ≤ 40` (full pool) | 7 327 | certified pairs at `k = 21, 32`; Theorem P6 |
+
+## 17. The `n = 4` exhaustive negative (CERTIFIED)
+
+> **Result N2 (CERTIFIED, exhaustive on the stated ranges).** For `n = 4`,
+> `α = 7/5`:
+> * no pair of valid `k`-blocks, `k ≤ 46`, in any pooled monodromy class
+>   (C2, SIGN, col1, col2) has a fixed point of `φ` (or of `φ²` when `φ` is
+>   not prolongable) that decodes `7/5⁺`-free to depth 4000 — every single
+>   pooled pair (tens of thousands per `k` at the top of the range) is
+>   refuted by an explicit offender in its fixed-point prefix;
+> * the two-level engine (σ, ρ) found no candidate over `r ≤ 10, s ≤ 5` and
+>   `r ≤ 7, s ≤ 6`, and none in the partially-capped cell `r = 7, s = 7`
+>   (capped at 400 000 (σ,ρ)-combinations — coverage of that one cell is
+>   partial and stated as such);
+> * under the stronger preservation filter (images of all valid 14-blocks
+>   code-free), the C2 ∪ SIGN pools are empty for `k ≤ 26`.
+>
+> Diagnostics: 89 % of pooled fixed points die within two block generations,
+> with offender periods concentrated at `p ∈ {3, 4, 8, 9, 10}` at the block
+> seams — the code-level analogue of the seam mechanism that Proposition N
+> formalised for shift-equivariant morphisms.
+
+This is a bounded search, not an impossibility proof: no analogue of
+Theorem N′ is claimed for the code ansatz. The asymmetry stands regardless:
+under identical machinery and deeper ranges, `n = 3, 5, 6` yield certified
+theorems while `n = 4` yields nothing — Pansiot's exceptional alphabet
+(`RT(4) = 7/5 ≠ 4/3`) resists inside its own encoding. Sharpest open
+question left by this session: is there a *proof* that no uniform binary
+code morphism works at `n = 4`, or does a candidate live just beyond
+`k = 46`?
+
+## 18. Prior work discovered this session (novelty risk map)
+
+* **Tunev, arXiv:2512.24581 (Dec 2025, in Russian; based on 2011/2013
+  theses) (secondary).** Snippets state it constructs, for *some odd*
+  `n ≥ 5`, threshold words all of whose cyclic shifts are threshold words —
+  which is precisely circular threshold words, at infinitely many lengths if
+  the construction proves Dejean for those `n`. If so it settles
+  `CRT_W(n) = RT(n)` for those odd `n`, predating this session for `n = 5`
+  (not for `n = 6`, which is even). The companion peer-reviewed paper
+  (Tunev–Shur, MFCS 2012) covers two *different* strengthenings (growth;
+  finitely many distinct repetitions) **(secondary)** — consistent with
+  Mol–Rampersad 2020 still listing all of `4 ≤ n ≤ 44` as open. **Action
+  required before publication:** obtain and read arXiv:2512.24581, adjust
+  Part I's "open for `4 ≤ n ≤ 44`" statements and this note's novelty
+  claims accordingly.
+* Moulin Ollagnier's proof of Dejean's conjecture for `5 ≤ n ≤ 11` works in
+  the Pansiot encoding and relates repetitions to the identity in the
+  symmetric group **(secondary)** — the same mechanism as Lemma T. Lemma T
+  should be presumed to overlap his machinery in content (not in the exact
+  two-sided normalisation used here) until his paper is read.
+* Uniform binary morphisms in Pansiot's encoding whose fixed points decode
+  to threshold words do not appear, in any snippet seen today, as objects
+  previously catalogued — but this is exactly the kind of claim that needs a
+  primary-source pass, and it is marked **(secondary)** accordingly.
+
+## 19. What is and is not settled after this session
+
+**Settled here.** Lemmas S, F, T; Theorem MC; Lemma PC; Theorem C-code (all
+PROVED, machine-checked hypotheses); Theorems P6 and P5 (PROVED — settling
+`CRT_W(6)`, and `CRT_W(5)` modulo the Tunev overlap); Result P3′ (control);
+Result N2 (CERTIFIED negative ranges for `n = 4`).
+
+**Not settled.** `CRT_W(4)` — still open, and now sharpened: the natural
+code-side ansatz is certifiably empty over the stated ranges.
+`CRT_W(n)` for `7 ≤ n ≤ 44` even/odd beyond today's cases (the same
+pipeline plausibly extends; the completed `n = 8` sweep found 44 viable
+pairs at `k = 28`, all failing (Ha)/(Hb) — see §19 next steps). `CRT_I(n)` for every `n ≥ 4`: nothing here touches the intermediate
+threshold — the pumped lengths `k^j m_0` are exponentially sparse.
+
+**Sharpest next steps.** (1) Read Tunev and Moulin Ollagnier; fix the
+novelty map. (2) Run the same pipeline at `n = 7, …, 12` (each even case is
+a potential new theorem; each odd case a Tunev cross-check). (3) `n = 4`:
+either extend the certified emptiness into a Proposition-N-style
+impossibility proof for the code ansatz, or find the first candidate beyond
+`k = 46`. (4) Extract from Lemma T a clean statement of the `S_2`-vs-`S_0`
+spectra relationship (Part I §9, thread 4).
+
+## 20. Method, reproducibility, disclosure (session 2)
+
+**Machine.** Same sandbox as Part I: 4 cores, 15 GB RAM, Python 3.11.15,
+NumPy, gcc. Egress blocked except web search; see §18.
+
+**Scripts.** `pansiot.py` (library; conventions in its docstring),
+`pansiot_search.py` (letterwise sweeps), `pansiot_certify.py` (Theorem MC
+hypotheses), `pansiot_seed.py` (seed checks, encoding, pump-and-verify).
+Certified instances and seeds: `data/pansiot_certified.txt`. Sweep logs and
+validation transcripts: `data/pansiot_*.log`.
+
+**Controls.** (i) encode/decode round-trip exact on 200 random valid
+codewords; (ii) freeness checkers cross-validated (run-based vs
+minimal-period-based, 400 random words; and vs the H-prefix checker of
+Lemma T); (iii) all 73 circular witnesses of Part I's `spec_n4.csv` are
+Pansiot-encodable — the encoder consumes Part I's independently verified
+data; (iv) the `n = 3` pipeline re-derives a known theorem end to end;
+(v) the (Hd) checks run in two implementations (pure Python and numpy);
+(vi) pumped circular words re-verified by Part I's independent `O(m³)`
+checker where feasible (`n = 6`: lengths 39 and 819).
+
+**Honest weaknesses.** (a) The proofs of Lemma T, Theorem MC and Lemma PC
+were written and checked within one session; they are short and elementary,
+and the `n = 3` control re-derives a known theorem through them, but no
+second human or machine formalisation has checked them — this is the main
+trust bottleneck, ahead of any computation. (b) The searches' *negative*
+statements depend on the monodromy-class pooling being the right sufficient
+family; classes outside {C2, SIGN, col1, col2} (e.g. collapse at level
+`≥ 3`) were not pooled. (c) Novelty rests on search snippets; see §18.
+
+**AI assistance.** This part, like Part I, was produced in an AI-assisted
+research session (Claude). All proofs were derived and written in-session;
+all computations ship as committed code with exact arithmetic in the
+critical paths. AI systems are not authors.

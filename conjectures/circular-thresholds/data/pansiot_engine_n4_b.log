@@ -1,0 +1,13 @@
+n=4 r=2 s=6: |V_r|=3 sigma-pairs=3072 F3-calls=15068 hits=0 [6.0s]
+n=4 r=2 s=7: |V_r|=3 sigma-pairs=12288 F3-calls=52466 hits=0 [14.5s]
+n=4 r=3 s=6: |V_r|=4 sigma-pairs=3072 F3-calls=23328 hits=0 [5.8s]
+n=4 r=3 s=7: |V_r|=4 sigma-pairs=12288 F3-calls=89306 hits=0 [21.0s]
+n=4 r=4 s=6: |V_r|=5 sigma-pairs=3072 F3-calls=37020 hits=0 [7.4s]
+n=4 r=4 s=7: |V_r|=5 sigma-pairs=12288 F3-calls=126142 hits=0 [27.0s]
+n=4 r=5 s=6: |V_r|=7 sigma-pairs=3072 F3-calls=71604 hits=0 [15.5s]
+n=4 r=5 s=7: |V_r|=7 sigma-pairs=12288 F3-calls=303694 hits=0 [70.4s]
+n=4 r=6 s=6: |V_r|=9 sigma-pairs=3072 F3-calls=91684 hits=0 [17.8s]
+n=4 r=6 s=7: |V_r|=9 sigma-pairs=12288 F3-calls=295264 hits=0 [57.6s]
+n=4 r=7 s=6: |V_r|=12 sigma-pairs=3072 F3-calls=145456 hits=0 [32.1s]
+n=4 r=7 s=7: |V_r|=12 sigma-pairs=12288 F3-calls=533736 (CAPPED) hits=0 [93.2s]
+TOTAL HITS: 0
