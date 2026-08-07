@@ -1,0 +1,12 @@
+# Rigid skeletons of the complete extremal sets of (3,3,u) at n=9u-14.
+# '_' = free ternary slot (independently 0/1/2); orbit shown with f(1)=0;
+# doubling by the 0<->1 swap gives all extremals. Slots sit at 2u+1+5j.
+# u=10 was enumerated AFTER Conjecture A predicted S=77, slots 21+5j,
+# count 2*3^8=13122, max|C2|=40 - all four confirmed exactly.
+u=4 n=22 count=18=2*3^2: 01102021_2222_12020110
+u=5 n=31 count=54=2*3^3: 0110201202_1222_2221_2021020110
+u=6 n=40 count=162=2*3^4: 011020112201_2202_2222_2022_102211020110
+u=8 n=58 count=1458=2*3^6: 0110201102211022_1022_2022_2222_2202_2201_2201122011020110
+u=9 n=67 count=4374=2*3^7: 011020110202102021_2021_2221_2222_2222_1222_1202_120201202011020110
+u=10 n=76 count=13122=2*3^8: 01102011020120201202_1202_1222_1222_2222_2221_2221_2021_20210202102011020110
+u=7 n=48 count=846=2*9*47: NO single skeleton (37/48 positions vary; >=2 families)

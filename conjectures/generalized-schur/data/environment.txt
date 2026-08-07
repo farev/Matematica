@@ -1,0 +1,27 @@
+Session 2026-08-07, cloud sandbox (Claude Code scheduled research session).
+
+Hardware: 4 CPU cores, 15 GB RAM.
+OS: Linux 6.18.5-fc-v18 (Ubuntu 24.04 userland).
+Python 3.11.15; python-sat 1.9.dev7 (solvers used: Glucose42 for every
+proof-logged boundary run, Cadical153 for exploration probes only).
+gcc 13.3.0 (compiles tools/satcert/rup_check.c and check_coloring.c).
+
+No randomness anywhere in the pipeline: the CNF encoder is deterministic
+(sorted clause supports, fixed variable numbering v(x,j) = (x-1)*k + j + 1),
+solver runs are single-threaded with default deterministic settings, so
+there are no seeds to record. CNF files are regenerable byte-identically;
+data/results*.csv records each boundary CNF's SHA-256.
+
+Primary source read in-session (first primary source available to any
+session in this repository since 2026-08-01):
+  Ahmed-Schaal, "On Generalized Schur Numbers", Exp. Math. 25(2) 2016,
+  author preprint fetched from
+  https://raw.githubusercontent.com/tanbir/tanbir.github.io/master/files/preprints/ahmed_schaal_gen_schur.pdf
+  sha256 627c7db9bae06cb6b40cb12b4b86e335b85f31a7c4f1888c8cc0584d56e070c1
+  (PDF not committed; URL + hash recorded instead.)
+
+Independent checkers: tools/satcert/rup_check.c (forward DRUP checker,
+validated 2026-08-05 incl. negative controls) verifies every UNSAT proof;
+verify_witness.py (iterated-sumset bitset algorithm, deliberately different
+from the clause encoder) verifies every SAT witness; negative control run
+this session (corrupted witness rejected, see WRITEUP).

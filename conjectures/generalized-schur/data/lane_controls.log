@@ -1,0 +1,10 @@
+(4, 4, 4) S=43 CONFIRMED unsat=0.1s sat=0.0s proof=18606B rup=VERIFIED wit=OK
+(4, 4, 5) S=54 CONFIRMED unsat=0.2s sat=0.1s proof=22035B rup=VERIFIED wit=OK
+(4, 4, 6) S=65 CONFIRMED unsat=0.9s sat=0.4s proof=18007B rup=VERIFIED wit=OK
+(4, 5, 5) S=69 CONFIRMED unsat=0.5s sat=0.3s proof=30053B rup=VERIFIED wit=OK
+(5, 5, 5) S=94 CONFIRMED unsat=2.6s sat=1.7s proof=14432B rup=VERIFIED wit=OK
+(4, 4, 7) S=76 CONFIRMED unsat=4.1s sat=3.0s proof=26500B rup=VERIFIED wit=OK
+(4, 5, 6) S=83 CONFIRMED unsat=2.6s sat=1.9s proof=93551B rup=VERIFIED wit=OK
+(4, 6, 6) S=101 CONFIRMED unsat=13.9s sat=11.2s proof=24263B rup=VERIFIED wit=OK
+(4, 5, 7) S=97 CONFIRMED unsat=23.0s sat=14.7s proof=35363B rup=VERIFIED wit=OK
+(5, 5, 6) S=113 CONFIRMED unsat=13.5s sat=17.5s proof=40604B rup=VERIFIED wit=OK
