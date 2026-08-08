@@ -179,7 +179,9 @@ python3 make_table.py                     # rebuild the authoritative table
 1. Exact f₂(p^m) at odd prime powers: the surpluses over 3k² computed
    here (13, 5, …) fit no law tried; is there a closed form?
 2. Is f₂(k) = 3k² for all even k ≥ 4? (Their theorem: k = 3·2^m, m ≥ 1;
-   here also k = 4, (8?).)
+   certified here also at k = 4 and k = 8, the latter predicted before
+   its run.) Proving the upper bound via the half-diagonal web of §4 is
+   the natural attack.
 3. Growth of f_r(2): 60, 3276, … — is a closed form or even the right
    growth rate (in r) accessible? The dyadic pair constraints {z, 2z}
    alone force alternation on dyadic chains; the interaction with

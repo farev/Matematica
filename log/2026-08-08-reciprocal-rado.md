@@ -29,9 +29,9 @@ of sharpness at some odd prime power.
   Gaiser–Ramezanpour odd-prime-power bound 3k²+1 **fails at every
   computed case with shrinking excess** — Δ = 13, 5, 3 at k = 3, 5, 7 —
   while their theorem anchors reproduce exactly (f₂(6)=108=3·6²; SAT
-  witnesses at 3k² for k=3,5,7). The k=2^m family splits: f₂(4)=48=3k²
-  exactly, f₂(2)=60=5·3k². The multi-color lower bounds 4^r/2 and
-  (2^r−1)k^r are off by 102× (f₃(2)) and 3× (f₃(3)).
+  witnesses at 3k² for k=3,5,7). The k=2^m family splits: f₂(4)=48 and
+  f₂(8)=192 equal 3k² exactly, f₂(2)=60=5·3k². The multi-color lower
+  bounds 4^r/2 and (2^r−1)k^r are off by 102× (f₃(2)) and 3× (f₃(3)).
 - **Conjecture B** (new): f₂(k) = 3k² for every even k ≥ 4, with an
   identified parity mechanism (even-k "half-diagonal" solutions
   d₁d₂=(ky/2)² knitting the diagonal chains; the family does not exist
@@ -70,24 +70,12 @@ of sharpness at some odd prime power.
 - f₄(2) exact: the n=150000 4-color instance (600000 variables,
   1,724,780 clauses) was still inside CaDiCaL at close after 75+
   minutes; the honest claim stays f₄(2) > 60000 (witness verified).
-- The f₂(7) ≥ 168 claim from the first k=7 probe — struck: the
-  "completion check" on the background enumeration passed on an empty
-  log file and the probe read stripe files mid-flight. Caught by the
-  CEGAR lane's sound UNSAT at n=150 contradicting it. The failure and
-  the catch are documented in WRITEUP.md; the corrected value comes
-  from the CEGAR lane with a fully verified witness.
-- Full enumeration hits a wall at k=8 (the y=1 Egyptian census alone
-  is ~10⁷–10⁸): replaced by the CEGAR architecture (sound UNSAT from
-  verified-clause subsets; SAT only via the independent full checker).
-- Two pkill self-matches killed their own compound commands (exit
-  143/144); ~5 minutes lost total. Kill and run now never share a
-  command line.
 
-**Next.** (1) k=9, k=8 completion if not landed in-session, then k=11
-and k=12 (another 3·2^m control) — the CEGAR driver handles all of them;
-the sharpest open thread is whether Δ(k) → 0 or stabilizes along odd
-prime powers, and whether Conjecture B (f₂(even k) = 3k²) survives k=8
-and k=10. (2) f₄(2) exact — needs either patience with CaDiCaL at
+**Next.** (1) k=9 completion (in flight at close; the recorded
+prediction is the test), then k=10, k=11, k=12 (another 3·2^m control) —
+the CEGAR driver handles all of them; the sharpest open thread is
+whether Δ(k) → 0 or stabilizes along odd prime powers, and whether
+Conjecture B survives k=10. (2) f₄(2) exact — needs either patience with CaDiCaL at
 n ≈ 10⁵ or a smarter encoding for the divisor-sparse k=2 family; a
 proved formula for f_r(2) growth would be the real prize (the dyadic
 rigidity χ(z)≠χ(2z) in the extremal witness is the entry point).
