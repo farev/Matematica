@@ -14,13 +14,16 @@ r-coloring of {1,…,n} contains a monochromatic solution of
 (July 2026) proved f₂(3·2^m) = 3k² for m ≥ 1 and f₂(p^m) ≥ 3k²+1 for odd
 prime powers, leaving sharpness open. We compute certified exact values
 settling sharpness negatively at every odd prime power in reach —
-f₂(3) = 40, f₂(5) = 80, f₂(7) = (…) — each strictly and irregularly above
-3k²+1, and map the uncovered k = 2^m family: f₂(2) = 60 (far above 3k²),
-f₂(4) = 48 = 3k² exactly. We give the first values of the family at three
-colors, f₃(2) = 3276 and f₃(3) = 585, showing the known lower bounds
-(2^r−1)k^r and 4^r/2 are off by two orders of magnitude at k = 2, and (…
-f₄(2) outcome …). Every UNSAT boundary carries a machine-checked DRUP
-proof; every SAT boundary a machine-verified witness coloring.
+f₂(3) = 40, f₂(5) = 80, f₂(7) = 150 — with excess over 3k² shrinking
+(13, 5, 3), and map the uncovered k = 2^m family, which splits:
+f₂(2) = 60 = 5·3k², while f₂(4) = 48 = 3k² exactly. We conjecture
+f₂(k) = 3k² for all even k ≥ 4 and identify the even-k parity mechanism
+behind it. We give the first values of the family at three colors,
+f₃(2) = 3276 and f₃(3) = 585 — the known lower bounds 4^r/2 and
+(2^r−1)k^r are off by factors of 102 and 3.1 — plus the verified bound
+f₄(2) > 60000. Every UNSAT boundary carries a machine-checked DRUP
+proof; every SAT boundary a witness coloring verified by two
+independent checkers.
 
 ## 1. Definitions and conventions
 
