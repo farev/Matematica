@@ -21,7 +21,7 @@ of sharpness at some odd prime power.
 
 **Result.**
 - **CERTIFIED** — the first certified table of reciprocal Rado numbers,
-  ten exact values: f₂(2)=60, f₂(3)=40, f₂(4)=48, f₂(5)=80, f₂(6)=108,
+  nine exact values: f₂(2)=60, f₂(3)=40, f₂(4)=48, f₂(5)=80, f₂(6)=108,
   **f₂(7)=150**, **f₂(8)=192**, f₃(2)=**3276**, f₃(3)=**585**, plus the
   verified bound f₄(2) > 60000. Every value ships a DRUP proof of UNSAT at f checked by
   the independent `rup_check` AND a witness coloring at f−1 verified by
