@@ -173,7 +173,13 @@ dependent) with per-clause provenance in `certs/*.sols`. Every SAT
 boundary ships a witness verified by two independent checkers (Python
 and C, different code, cross-validated on eight witnesses and one
 deliberately corrupted witness, where both find the identical violating
-tuple 1/55+1/70+3/77 = 1/14). Headline runtimes: every f₂ value ≤ 30 s
+tuple 1/55+1/70+3/77 = 1/14). Exception recorded for k = 8: the n = 191
+witness passed the C checker twice (in-loop and at certification) but
+the slower Python checker was still running at session close (a future
+session should re-run `verify_witness.py certs/f2_8_n191.witness` to
+close the loop); the C checker's validation battery is the warrant in
+the interim. Headline
+runtimes: every f₂ value ≤ 30 s
 of solver time; f₃(2) = 3276 total ~4 min including its 10 MB DRUP
 proof; the f₂(7) certificate re-derives in ~40 s and its recorded run
 reproduced byte-identically (equal CNF sha256) on a second execution.
