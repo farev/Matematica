@@ -21,9 +21,9 @@ of sharpness at some odd prime power.
 
 **Result.**
 - **CERTIFIED** — the first certified table of reciprocal Rado numbers,
-  nine exact values: f₂(2)=60, f₂(3)=40, f₂(4)=48, f₂(5)=80, f₂(6)=108,
-  **f₂(7)=150**, f₃(2)=**3276**, f₃(3)=**585**, plus the verified bound
-  f₄(2) > 60000. Every value ships a DRUP proof of UNSAT at f checked by
+  ten exact values: f₂(2)=60, f₂(3)=40, f₂(4)=48, f₂(5)=80, f₂(6)=108,
+  **f₂(7)=150**, **f₂(8)=192**, f₃(2)=**3276**, f₃(3)=**585**, plus the
+  verified bound f₄(2) > 60000. Every value ships a DRUP proof of UNSAT at f checked by
   the independent `rup_check` AND a witness coloring at f−1 verified by
   two independent checkers (Python and C). Sharpness of the
   Gaiser–Ramezanpour odd-prime-power bound 3k²+1 **fails at every
@@ -35,10 +35,16 @@ of sharpness at some odd prime power.
 - **Conjecture B** (new): f₂(k) = 3k² for every even k ≥ 4, with an
   identified parity mechanism (even-k "half-diagonal" solutions
   d₁d₂=(ky/2)² knitting the diagonal chains; the family does not exist
-  for odd k). Verified at k=4, 6; k=8 in flight at close [RESOLVE-K8].
+  for odd k). Verified at k = 4, 6, and then **k = 8 = 192 — stated
+  before the run and confirmed by it**. Within k = 2^m, only k = 2
+  escapes (60 = 5·3k²).
 - Structure: odd-k extremals = interval core + sparse corrections
   (k=5, 7 displayed in NOTE §6); the f₃(2) extremal has χ(z) ≠ χ(2z) at
-  all 1637 applicable pairs. [RESOLVE-K9]
+  all 1637 applicable pairs.
+- k=9 (odd prime power 3², the Δ-pattern discriminator) did not land
+  in-session: its first decide at n=243 was still inside the C full
+  check at close. The prediction (f₂(9) ∈ {245, 246}) stays on record,
+  untested.
 
 **What failed.**
 - The **f₂(7) ≥ 168 claim from the first k=7 probe — struck** (it briefly
@@ -61,8 +67,9 @@ of sharpness at some odd prime power.
 - Two `pkill -f` self-matches killed their own compound commands; the
   Python weighted oracle was too slow at k ≥ 7 and was replaced by C
   (`enumw.c`, `check_class.c --dmax` staging).
-- f₄(2) exact: the n=150000 4-color instance did not decide within the
-  session [RESOLVE-F42]; the honest claim stays f₄(2) > 60000.
+- f₄(2) exact: the n=150000 4-color instance (600000 variables,
+  1,724,780 clauses) was still inside CaDiCaL at close after 75+
+  minutes; the honest claim stays f₄(2) > 60000 (witness verified).
 - The f₂(7) ≥ 168 claim from the first k=7 probe — struck: the
   "completion check" on the background enumeration passed on an empty
   log file and the probe read stripe files mid-flight. Caught by the

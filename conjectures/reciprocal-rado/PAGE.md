@@ -13,9 +13,9 @@ shrinking 13, 5, 3 at k = 3, 5, 7**.
 ## 2. Contributions
 
 1. **CERTIFIED** — the two-color ladder: f₂(2)=60, f₂(3)=40, f₂(4)=48,
-   f₂(5)=80, f₂(6)=108, f₂(7)=150. Each value = DRUP proof of UNSAT at f
-   (checked by an independent RUP checker) + witness coloring at f−1
-   (verified by two independent checkers, Python and C).
+   f₂(5)=80, f₂(6)=108, f₂(7)=150, f₂(8)=192. Each value = DRUP proof of
+   UNSAT at f (checked by an independent RUP checker) + witness coloring
+   at f−1 (verified by two independent checkers, Python and C).
 2. **CERTIFIED** — sharpness of f₂(p^m) ≥ 3k²+1 fails at k = 3, 5, 7
    (excesses +13, +5, +3), while the theorem-anchored controls
    reproduce: f₂(6) = 108 = 3·6² exactly as their 3·2^m theorem states,
@@ -25,14 +25,14 @@ shrinking 13, 5, 3 at k = 3, 5, 7**.
 3. **CERTIFIED** — first multi-color values: f₃(2) = 3276 (their bound:
    32 — off by 102×), f₃(3) = 585 (bound 189), and f₄(2) > 60000
    (verified 4-coloring witness; the n=150000 instance was still in the
-   solver at close). k=8 (Conjecture B test, expected 192) in flight,
-   f₂(8) ≥ 191 already verified.
+   solver at close).
 4. **Conjecture B** (new): f₂(k) = 3k² for every even k ≥ 4 — attained
-   at k = 4 (2^m family, covered by neither of their theorems) and 6,
-   with an explicit parity mechanism: for even k, "half-diagonal"
+   at k = 4 and 6, and then **f₂(8) = 192 = 3k², stated before the k=8
+   run and confirmed by it**. Mechanism: for even k, "half-diagonal"
    solutions k/2·(1/a + 1/b) = 1/y, parametrized by d₁d₂ = (ky/2)²,
    knit the diagonal chains {j, jk, jk²} into a rigid web at n = 3k²;
-   for odd k this family does not exist.
+   for odd k this family does not exist. Within k = 2^m, only k = 2
+   escapes (f₂(2) = 60 = 5·3k²).
 5. Structure of the extremal colorings: odd-k optima are an interval
    core plus sparse high corrections (displayed for k = 5, 7); the
    f₃(2) extremal 3-coloring of [1, 3275] has χ(z) ≠ χ(2z) at all 1637

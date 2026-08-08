@@ -16,9 +16,10 @@ prime powers, leaving sharpness open. We compute certified exact values
 settling sharpness negatively at every odd prime power in reach —
 f₂(3) = 40, f₂(5) = 80, f₂(7) = 150 — with excess over 3k² shrinking
 (13, 5, 3), and map the uncovered k = 2^m family, which splits:
-f₂(2) = 60 = 5·3k², while f₂(4) = 48 = 3k² exactly. We conjecture
-f₂(k) = 3k² for all even k ≥ 4 and identify the even-k parity mechanism
-behind it. We give the first values of the family at three colors,
+f₂(2) = 60 = 5·3k², while f₂(4) = 48 and f₂(8) = 192 equal 3k² exactly.
+We conjecture f₂(k) = 3k² for all even k ≥ 4, identify the even-k parity
+mechanism behind it, and record that the conjecture predicted the k = 8
+value before its computation. We give the first values of the family at three colors,
 f₃(2) = 3276 and f₃(3) = 585 — the known lower bounds 4^r/2 and
 (2^r−1)k^r are off by factors of 102 and 3.1 — plus the verified bound
 f₄(2) > 60000. Every UNSAT boundary carries a machine-checked DRUP
@@ -81,6 +82,7 @@ restricted enumeration sharing no code with the encoder.
 | 5 | **80** | 75 | +5 | odd prime power: GR bound 76; **not sharp** |
 | 6 | **108** | 108 | 0 | GR theorem (k = 3·2^m): reproduced exactly |
 | 7 | **150** | 147 | +3 | odd prime power: GR bound 148; **not sharp** |
+| 8 | **192** | 192 | 0 | k = 2^m: attains 3k²; **predicted by Conjecture B before the run** |
 
 (GR = Gaiser–Ramezanpour, arXiv:2607.04373, statements (secondary).)
 
@@ -92,8 +94,9 @@ Three observations the table forces:
    question this data poses. Note (k−2)·Δ(k) = 15 at both k = 5 and 7 —
    a two-point coincidence, recorded as such (the k = 9 run tests it;
    prediction logged before the run: f₂(9) ∈ {245, 246}).
-2. **The even column is exactly 3k² at k = 4, 6** (k = 8 in flight at
-   close). Conjecture B below.
+2. **The even column is exactly 3k² at k = 4, 6, 8** — the k = 8 value
+   was stated by Conjecture B before its run and confirmed. Note 8 = 2³:
+   within the 2^m family, 4 and 8 attain 3k² and only k = 2 escapes.
 3. **k = 2 is a different animal**: f₂(2) = 60 = 5·3k². The k = 2
    solution set (the optic equation 1/x+1/y = 1/z) is divisor-sparse —
    supports {z, x, y} with x = z+d₁, y = z+d₂, d₁d₂ = z² — and the

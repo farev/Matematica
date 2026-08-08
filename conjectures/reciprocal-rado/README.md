@@ -27,17 +27,18 @@ sharpness question at odd prime powers was open as of the July paper.
 ## Results (2026-08-08 session)
 
 Every value carries a DRUP proof of UNSAT at `f` checked by
-`tools/satcert/rup_check` and a witness coloring at `f−1` checked by the
-independent `verify_witness.py`; certificates in `certs/`, authoritative
-list with runtimes and CNF hashes in `data/results.csv`.
+`tools/satcert/rup_check` and a witness coloring at `f−1` verified by two
+independent checkers (`verify_witness.py` and `check_class.c`);
+certificates in `certs/`, append-only run log in `data/results.csv`,
+authoritative table in `data/values.csv` (built by `make_table.py`).
 
 | Claim | Label | Where |
 |---|---|---|
-| `f₂(2)=60, f₂(3)=40, f₂(4)=48, f₂(5)=80, f₂(6)=108, f₂(7)=150` | CERTIFIED | `certs/`, `data/values.csv` |
+| `f₂(2)=60, f₂(3)=40, f₂(4)=48, f₂(5)=80, f₂(6)=108, f₂(7)=150, f₂(8)=192` | CERTIFIED | `certs/`, `data/values.csv` |
 | Sharpness of the odd-prime-power bound `f₂(p^m) ≥ 3k²+1` **fails at every computed case, with shrinking excess**: Δ = f₂(k)−3k² = **13, 5, 3** at k = 3, 5, 7 (an earlier "f₂(7) ≥ 168" here was **struck** — mid-flight enumeration read, see WRITEUP; the certified value is 150) | CERTIFIED | `certs/` |
 | `f₃(2)=3276`, `f₃(3)=585` — first multi-color values of the family; the `4^r/2` and `(2^r−1)k^r` bounds are off by 102× and 3× | CERTIFIED | `certs/` |
-| `f₄(2) > 60000` (4-coloring of [1,60000], independently verified); n=150000 instance undecided at close | CERTIFIED (bound) | `work/f4_2_n60000.witness` |
-| `f₂(4)=48=3·4²` — the `k=2^m` family splits: k=4 attains `3k²`, k=2 sits at `5·3k²`; **Conjecture B**: `f₂(k)=3k²` for all even `k ≥ 4` (even-k half-diagonal mechanism, NOTE §4) | CERTIFIED + conjecture | `certs/`, NOTE |
+| `f₄(2) > 60000` (4-coloring of [1,60000], independently verified); n=150000 instance undecided at close | CERTIFIED (bound) | `certs/f4_2_n60000.witness` |
+| **Conjecture B**: `f₂(k)=3k²` for all even `k ≥ 4` (even-k half-diagonal mechanism, NOTE §4) — **f₂(8)=192=3k² was predicted before the run and confirmed**; the `k=2^m` family splits: 4 and 8 attain `3k²`, k=2 sits at `5·3k²` | CERTIFIED + conjecture | `certs/`, NOTE |
 | Extremal structure: odd-k two-colorings are an interval core `{1,2} ∪ [3,3k−1]-swaps ∪ [3k, …]` plus sparse high corrections; the `f₃(2)` extremal satisfies `χ(z) ≠ χ(2z)` at **all** 1637 applicable pairs | CERTIFIED (by inspection of verified witnesses) | NOTE §6 |
 
 ## Scripts
