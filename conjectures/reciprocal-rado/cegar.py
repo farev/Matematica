@@ -117,11 +117,15 @@ class Cegar:
         self.cap = n
         for y, tup in self._enumw(n, self.dmax):
             self.add_solution(y, tup, f"d{self.dmax}")
+        print(f"    seed: {len(self.supports)} supports at cap {n} "
+              f"({time.time()-t0:.0f}s)", flush=True)
         # oracle cache: one tier deeper than the seed
         self.oracle_pool = []
         for y, tup in self._enumw(n, min(self.k, self.dmax + 1)):
             S = frozenset([y] + [x for _, x in tup])
             self.oracle_pool.append((max(S), S, y, tup))
+        print(f"    pool: {len(self.oracle_pool)} cached solutions "
+              f"({time.time()-t0:.0f}s)", flush=True)
         return time.time() - t0
 
     def clauses(self, n):
@@ -184,14 +188,23 @@ class Cegar:
         return None
 
     def full_check(self, col, n, tag):
-        wpath = os.path.join(HERE, "work", f"{tag}_n{n}.witness")
+        """In-loop full oracle: the C checker (check_class), --all mode.
+        Unique filename per call — concurrent lanes must never share paths."""
+        self._fc = getattr(self, "_fc", 0) + 1
+        wpath = os.path.join(HERE, "work",
+                             f"{tag}_n{n}_p{os.getpid()}_{self._fc}.witness")
         os.makedirs(os.path.dirname(wpath), exist_ok=True)
         with open(wpath, "w") as f:
             f.write(f"{n} {self.r} {self.k}\n" + " ".join(map(str, col)) + "\n")
-        p = subprocess.run([sys.executable,
-                            os.path.join(HERE, "verify_witness.py"), wpath],
+        p = subprocess.run([os.path.join(HERE, "check_class"), wpath, "--all"],
                            capture_output=True, text=True)
-        return ("WITNESS OK" in p.stdout), p.stdout, wpath
+        ok = "WITNESS OK" in p.stdout
+        if ok:
+            os.rename(wpath, os.path.join(HERE, "work", f"{tag}_n{n}.witness"))
+            wpath = os.path.join(HERE, "work", f"{tag}_n{n}.witness")
+        else:
+            os.remove(wpath)
+        return ok, p.stdout, wpath
 
     def decide(self, n, tag, verbose=True):
         """CEGAR loop at fixed n. Returns (True, col, wpath) or (False, None, None)."""
@@ -216,33 +229,35 @@ class Cegar:
             if batch:
                 for y, tup in batch:
                     self.add_solution(y, tup, "oracle")
-                if verbose and rounds % 10 == 0:
+                if verbose:
                     print(f"    n={n}: round {rounds}, +{len(batch)} clauses "
                           f"({len(self.supports)} total)", flush=True)
                 continue
-            # cache clean: escalate to slow exact oracle then full check
-            viol = None
-            for dm in range(self.dmax + 2, min(self.k, 5) + 1):
-                viol = self.oracle_violation(col, n, dm)
-                if viol:
-                    break
-            if viol is None:
-                ok, msg, wpath = self.full_check(col, n, tag)
-                if ok:
-                    if verbose: print(f"    n={n}: SAT, full check OK "
-                                      f"({rounds} rounds)", flush=True)
-                    return True, col, wpath
-                # parse "VIOLATION in color c: 1/a + 1/b + ... = 1/y ..."
-                body = msg.split(":", 1)[1]
+            # cache clean: the C full checker is the remaining oracle (batch)
+            ok, msg, wpath = self.full_check(col, n, tag)
+            if ok:
+                if verbose: print(f"    n={n}: SAT, full check OK "
+                                  f"({rounds} rounds)", flush=True)
+                return True, col, wpath
+            from collections import Counter
+            added = 0
+            for ln in msg.splitlines():
+                if not ln.startswith("VIOLATION"):
+                    continue
+                body = ln.split(":", 1)[1]
                 lhs, rhs = body.split("=")
                 xs = [int(t.strip().split("/")[1]) for t in lhs.split("+")]
                 y = int(rhs.strip().split()[0].split("/")[1])
-                from collections import Counter
-                tup = tuple(sorted(Counter(xs).items(), key=lambda p: p[0]))
-                tup = tuple((w, x) for x, w in tup)
-                viol = (y, tup)
-            y, tup = viol
-            self.add_solution(y, tup, "oracle")
+                tup = tuple((w, x) for x, w in
+                            sorted(Counter(xs).items(), key=lambda p: p[0]))
+                self.add_solution(y, tup, "fullchk")
+                added += 1
+            if added == 0:
+                raise RuntimeError(f"checker said not-OK but no violations "
+                                   f"parsed: {msg[:400]}")
+            if verbose:
+                print(f"    n={n}: round {rounds}, full-check +{added} clauses "
+                      f"({len(self.supports)} total)", flush=True)
         # unreachable
 
     def bracket(self, nstart, nmax=10**6, verbose=True):
@@ -289,11 +304,15 @@ class Cegar:
         wpath = os.path.join(certdir, f"{tag}_n{f-1}.witness")
         with open(wpath, "w") as fh:
             fh.write(f"{f-1} {r} {k}\n" + " ".join(map(str, wit_col)) + "\n")
-        p = subprocess.run([sys.executable,
-                            os.path.join(HERE, "verify_witness.py"), wpath],
+        p = subprocess.run([os.path.join(HERE, "check_class"), wpath],
                            capture_output=True, text=True)
         if "WITNESS OK" not in p.stdout:
             raise RuntimeError(f"final witness FAILED: {p.stdout}")
+        # slow pristine Python checker runs detached; session reviews the log
+        with open(wpath + ".pyverify", "w") as lg:
+            subprocess.Popen([sys.executable,
+                              os.path.join(HERE, "verify_witness.py"), wpath],
+                             stdout=lg, stderr=lg)
         # UNSAT side: write CNF + solution provenance, glucose, rup_check
         cls = self.clauses(f)
         cnff = os.path.join(certdir, f"{tag}_n{f}.cnf")
@@ -337,12 +356,25 @@ class Cegar:
 
 if __name__ == "__main__":
     k, r = int(sys.argv[1]), int(sys.argv[2])
-    nstart, dmax, nmax = 3 * k * k, 3, 10**6
+    nstart, dmax, nmax, cert_at = 3 * k * k, 3, 10**6, None
     for a in sys.argv[3:]:
         if a.startswith("--start="): nstart = int(a.split("=")[1])
         if a.startswith("--dmax="): dmax = int(a.split("=")[1])
         if a.startswith("--nmax="): nmax = int(a.split("=")[1])
+        if a.startswith("--certify-at="): cert_at = int(a.split("=")[1])
     C = Cegar(k, r, dmax)
-    lo, hi, wit = C.bracket(nstart, nmax)
-    assert lo == hi - 1
-    C.certify(hi, wit)
+    if cert_at is not None:
+        # boundary known: witness at cert_at-1 must already sit in certs/;
+        # re-derive UNSAT at cert_at through the CEGAR loop, then certify.
+        wf = os.path.join(HERE, "certs", f"f{r}_{k}_n{cert_at-1}.witness")
+        with open(wf) as fh:
+            fh.readline()
+            wit = list(map(int, fh.readline().split()))
+        C.seed(int(cert_at * 1.3) + 32)
+        sat, _, _ = C.decide(cert_at, f"f{r}_{k}")
+        assert not sat, f"expected UNSAT at {cert_at}"
+        C.certify(cert_at, wit)
+    else:
+        lo, hi, wit = C.bracket(nstart, nmax)
+        assert lo == hi - 1
+        C.certify(hi, wit)
