@@ -1,0 +1,2 @@
+enum done: nsol=29272 nsupp=29052 55.9s
+n=108: UNSAT (theorem requires UNSAT) 0.1s
