@@ -53,8 +53,14 @@ projects to a valid coloring. Bracketing uses CaDiCaL 3.0.0 without
 proofs; the claimed value rests only on the boundary pair — Glucose 4.2.1
 (pure-RUP DRUP output, streamed to disk) proves UNSAT at f, checked by
 the independent forward-RUP checker `tools/satcert/rup_check`; the SAT
-witness at f−1 is re-verified by `verify_witness.py`, a per-class
-restricted enumeration sharing no code with the encoder.
+witness at f−1 is re-verified by per-class restricted enumeration
+sharing no code with the encoder, implemented twice independently
+(`verify_witness.py` and `check_class.c`). At k ≥ 7, where full
+enumeration is infeasible, values come from a CEGAR loop whose UNSAT
+verdicts are sound by construction (every clause is the support of an
+exactly-verified solution; a subset of true constraints being UNSAT
+implies the full encoding is) and whose SAT verdicts are accepted only
+when the complete independent checker passes the model.
 
 ## 3. Controls
 
@@ -113,8 +119,10 @@ valid 2-coloring; for **even** k there are additionally "half-diagonal"
 solutions — k/2 copies each of a and b with 1/a + 1/b = 2/(ky),
 parametrized by d₁d₂ = (ky/2)² exactly as in the optic equation, e.g.
 support {y, 3ky/4, 3ky/2} whenever 4 | ky — which knit the chains
-together. For odd k the half-diagonal family does not exist (ky/2 is not
-an integer for odd y), the constraint web at 3k² is strictly poorer, and
+together. For odd k the half-diagonal family does not exist (k/2 is not
+an integer — k cannot be split into two equal multiplicity blocks; the
+nearest analogues have unequal weights and different, sparser
+divisibility patterns), the constraint web at 3k² is strictly poorer, and
 the computed colorings indeed survive to 3k²+Δ. The odd-k extremals
 (§6) show exactly where the extra room lives.
 
@@ -137,13 +145,18 @@ stands as the honest bound.
 
 ## 6. Structure of the extremal colorings
 
-The k = 4 witness at n = 47 is exactly the three-interval construction
-A = {1,2} ∪ [3k, 3k²−1], B = [3, 3k−1]: B is solution-free because k
-terms from [3, 3k−1] sum to more than k/(3k) ≥ 1/3 ≥ 1/y for y ≥ 3, and
-A because k·y-type diagonal solutions need ky ≤ n. At odd k the optimum
-exceeds 3k² through sparse corrections to this skeleton (at k = 5:
-B = [3,12] ∪ {14, 65, 75, 78} with 13 moved to A) whose exact-hit
-avoidance is delicate; no uniform parametrization was found this session.
+The k = 4 witness at n = 47 and the k = 8 witness at n = 191 are exactly
+the three-interval construction A = {1,2} ∪ [3k, 3k²−1], B = [3, 3k−1]
+— at k = 8 with not a single deviation ([1..2]A [3..23]B [24..191]A). B
+is solution-free because k terms from [3, 3k−1] sum to more than
+k/(3k) ≥ 1/3 ≥ 1/y for y ≥ 3, and A because k·y-type diagonal solutions
+need ky ≤ n. At odd k the optimum exceeds 3k² through sparse corrections
+to this skeleton (at k = 5: B = [3,12] ∪ {14, 65, 75, 78} with 13 moved
+to A; at k = 7: B = [3,16] ∪ {18, 20} ∪ {119, 133, 136, 147} with 17, 19
+moved to A) whose exact-hit avoidance is delicate; no uniform
+parametrization was found this session. The picture: **even k — the
+interval skeleton is optimal; odd k — it is beatable by a shrinking
+margin.**
 
 ## 7. Reproducibility
 
