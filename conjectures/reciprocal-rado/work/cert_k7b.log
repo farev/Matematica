@@ -1,3 +1,5 @@
     seed: 8700 supports at cap 227 (1s)
     pool: 75998 cached solutions (28s)
     n=150: UNSAT after 1 rounds (8700 supports)
+  ==> f_2(7) = 150   CERTIFIED (witness OK, DRUP VERIFIED; clause provenance in f2_7_n150.sols)
+EXIT=0
