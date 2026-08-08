@@ -1,2 +1,4 @@
     seed: 13972 supports at cap 266 (1s)
     pool: 166187 cached solutions (67s)
+    n=190: SAT, full check OK (1 rounds)
+  n=190: SAT

@@ -209,8 +209,9 @@ class Cegar:
     def decide(self, n, tag, verbose=True):
         """CEGAR loop at fixed n. Returns (True, col, wpath) or (False, None, None)."""
         if n > getattr(self, "cap", 0):
-            if verbose: print(f"    re-seeding at cap {int(n*1.3)+32}", flush=True)
-            self.seed(int(n * 1.3) + 32)
+            newcap = int(n * 1.15) + 16
+            if verbose: print(f"    re-seeding at cap {newcap}", flush=True)
+            self.seed(newcap)
         rounds = 0
         while True:
             rounds += 1
@@ -263,7 +264,7 @@ class Cegar:
     def bracket(self, nstart, nmax=10**6, verbose=True):
         k, r = self.k, self.r
         tag = f"f{r}_{k}"
-        self.seed(min(nmax, max(nstart + 64, int(nstart * 1.4))))
+        self.seed(min(nmax, nstart + 8))
         n = nstart
         lo = hi = None
         wit = None

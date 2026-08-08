@@ -16,7 +16,7 @@
 typedef unsigned __int128 u128;
 typedef unsigned long long u64;
 
-static int n, r, k;
+static int n, r, k, dmax;    /* dmax: max distinct x-values (k = full) */
 static int *col;
 static u64 *cls;             /* current class, sorted */
 static int cn;               /* class size */
@@ -48,9 +48,9 @@ static int in_class(u64 v) {
     return i < cn && cls[i] == v;
 }
 
-/* j terms remain from cls[idx..], nondecreasing, remainder a/b exact.
-   Returns 1 iff the whole search should stop now. */
-static int dfs(int j, int idx, u128 a, u128 b, u64 y, int c) {
+/* j terms remain from cls[idx..], nondecreasing, remainder a/b exact,
+   nd = distinct values used so far.  Returns 1 iff stop everything. */
+static int dfs(int j, int idx, u128 a, u128 b, u64 y, int c, int nd) {
     if (a == 0) return 0;
     if (j == 1) {
         if (b % a == 0) {
@@ -58,7 +58,8 @@ static int dfs(int j, int idx, u128 a, u128 b, u64 y, int c) {
             if (x128 <= (u128)n) {
                 u64 x = (u64)x128;
                 u64 last = (k >= 2) ? xs[k - 2] : 0;    /* nondecreasing */
-                if (x > y && x >= last && in_class(x)) {
+                int nd2 = nd + (x != last || k < 2);
+                if (x > y && x >= last && nd2 <= dmax && in_class(x)) {
                     xs[k - 1] = x;
                     print_viol(c, y, k);
                     if (!print_all || nviol >= 1000) return 1;
@@ -75,21 +76,34 @@ static int dfs(int j, int idx, u128 a, u128 b, u64 y, int c) {
         if (xmin > (u128)cls[cn - 1]) return 0;
         start = lower_idx((u64)xmin);
     }
+    u64 last = (k - j >= 1) ? xs[k - j - 1] : 0;
     for (int i = start; i < cn; i++) {
         u128 x = cls[i];
         if (a * x > (u128)j * b) break;          /* even j copies too small */
+        int nd2 = nd + ((u64)x != last);
+        if (nd2 > dmax) {
+            if ((u64)x != last) break;           /* all further x also new */
+            continue;
+        }
         u128 na = a * x - b, nb = b * x;
         u128 g = gcd128(na, nb);
         if (g) { na /= g; nb /= g; }
         xs[k - j] = (u64)x;
-        if (dfs(j - 1, i, na, nb, y, c)) return 1;
+        if (dfs(j - 1, i, na, nb, y, c, nd2)) return 1;
     }
     return 0;
 }
 
 int main(int argc, char **argv) {
-    if (argc < 2) { fprintf(stderr, "usage: check_class witness [--all]\n"); return 2; }
-    print_all = (argc > 2 && !strcmp(argv[2], "--all"));
+    if (argc < 2) {
+        fprintf(stderr, "usage: check_class witness [--all] [--dmax=D]\n");
+        return 2;
+    }
+    dmax = 0;
+    for (int i = 2; i < argc; i++) {
+        if (!strcmp(argv[i], "--all")) print_all = 1;
+        else if (!strncmp(argv[i], "--dmax=", 7)) dmax = atoi(argv[i] + 7);
+    }
     FILE *f = fopen(argv[1], "r");
     if (!f) { fprintf(stderr, "cannot open %s\n", argv[1]); return 2; }
     if (fscanf(f, "%d %d %d", &n, &r, &k) != 3) { return 2; }
@@ -103,6 +117,7 @@ int main(int argc, char **argv) {
         if (col[i] < 0 || col[i] >= r) {
             fprintf(stderr, "BAD WITNESS: color out of range\n"); return 1;
         }
+    if (dmax <= 0 || dmax > k) dmax = k;
     cls = malloc(n * sizeof *cls);
     for (int c = 0; c < r; c++) {
         cn = 0;
@@ -112,10 +127,17 @@ int main(int argc, char **argv) {
             u64 y = cls[yi];
             int start = lower_idx(y + 1);
             if (start >= cn) continue;
-            if (dfs(k, start, (u128)1, (u128)y, y, c)) goto done;
+            if (dfs(k, start, (u128)1, (u128)y, y, c, 0)) goto done;
         }
     }
 done:
-    if (nviol == 0) { printf("WITNESS OK  (n=%d, r=%d, k=%d)\n", n, r, k); return 0; }
+    if (nviol == 0) {
+        if (dmax < k)
+            printf("NO VIOLATION up to dmax=%d  (n=%d, r=%d, k=%d) — PARTIAL\n",
+                   dmax, n, r, k);
+        else
+            printf("WITNESS OK  (n=%d, r=%d, k=%d)\n", n, r, k);
+        return 0;
+    }
     return 1;
 }

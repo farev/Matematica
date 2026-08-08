@@ -33,20 +33,26 @@ list with runtimes and CNF hashes in `data/results.csv`.
 
 | Claim | Label | Where |
 |---|---|---|
-| `f₂(2)=60, f₂(3)=40, f₂(4)=48, f₂(5)=80, f₂(6)=108, f₂(7)=…` (session in progress) | CERTIFIED | `certs/`, `data/results.csv` |
-| `f₃(2)=3276`, `f₃(3)=585` — first 3-color values at this scale; the `(2^r−1)k^r` and `4^r/2` lower bounds are far from the truth (32 vs 3276, 189 vs 585) | CERTIFIED | `certs/` |
-| Sharpness of `f₂(p^m) ≥ 3k²+1` **fails** at odd prime powers computed: `f₂(3)=40=3k²+13`, `f₂(5)=80=3k²+5` (k=7 in progress; an earlier `≥168` claim here was **struck** — it came from reading enumeration output mid-flight, see WRITEUP) | CERTIFIED | `certs/` |
-| `f₂(4)=48=3·4²` — the `k=2^m` family (covered by neither of their theorems) attains `3k²` at `k=4`; `k=2` does not (`60 ≠ 12`) | CERTIFIED | `certs/` |
+| `f₂(2)=60, f₂(3)=40, f₂(4)=48, f₂(5)=80, f₂(6)=108, f₂(7)=150` | CERTIFIED | `certs/`, `data/values.csv` |
+| Sharpness of the odd-prime-power bound `f₂(p^m) ≥ 3k²+1` **fails at every computed case, with shrinking excess**: Δ = f₂(k)−3k² = **13, 5, 3** at k = 3, 5, 7 (an earlier "f₂(7) ≥ 168" here was **struck** — mid-flight enumeration read, see WRITEUP; the certified value is 150) | CERTIFIED | `certs/` |
+| `f₃(2)=3276`, `f₃(3)=585` — first multi-color values of the family; the `4^r/2` and `(2^r−1)k^r` bounds are off by 102× and 3× | CERTIFIED | `certs/` |
+| `f₄(2) > 60000` (4-coloring of [1,60000], independently verified); n=150000 instance undecided at close | CERTIFIED (bound) | `work/f4_2_n60000.witness` |
+| `f₂(4)=48=3·4²` — the `k=2^m` family splits: k=4 attains `3k²`, k=2 sits at `5·3k²`; **Conjecture B**: `f₂(k)=3k²` for all even `k ≥ 4` (even-k half-diagonal mechanism, NOTE §4) | CERTIFIED + conjecture | `certs/`, NOTE |
+| Extremal structure: odd-k two-colorings are an interval core `{1,2} ∪ [3,3k−1]-swaps ∪ [3k, …]` plus sparse high corrections; the `f₃(2)` extremal satisfies `χ(z) ≠ χ(2z)` at **all** 1637 applicable pairs | CERTIFIED (by inspection of verified witnesses) | NOTE §6 |
 
 ## Scripts
 
 | file | what it does | cost |
 |---|---|---|
-| `enum.c` | canonical solution enumerator (exact 64/128-bit rational DFS), `--stripe=s/S` for parallel runs | ms–minutes; grows steeply in `k` |
-| `enum2.c` | independent k=2 enumerator via the divisor parametrization `x=z+d₁, y=z+d₂, d₁d₂=z²` (SPF sieve); cross-checks `enum.c` and scales to `n=10⁶` in <1 s | seconds |
+| `enum.c` | full solution enumerator (exact 64/128-bit rational DFS), `--stripe=s/S` | fast to k=6; wall at k=8 |
+| `enumw.c` | weighted enumerator: all solutions with ≤ dmax distinct values (partitions × orderings); CEGAR's seed/pool source | seconds |
+| `enum2.c` | independent k=2 enumerator via the divisor parametrization `d₁d₂=z²` (SPF sieve); `n=10⁶` in <1 s | seconds |
 | `recip.py` | reference Python enumerator + encoder + certified single-instance driver | small cases |
-| `sweep.py` | production driver: enumerate once, bracket with Cadical, certify boundary pair (Glucose DRUP → `rup_check`; witness → `verify_witness.py`), append `data/results.csv` | per value: seconds–minutes |
-| `verify_witness.py` | independent witness checker (per-class restricted DFS; shares no code with the encoder) | instant |
+| `sweep.py` | full-enumeration driver: enumerate once, bracket with Cadical, certify boundary pair, append `data/results.csv` | per value: seconds–minutes |
+| `cegar.py` | large-k driver: verified-clause subsets grown by counterexamples (UNSAT sound by construction; SAT gated by the full checker); `--certify-at=F` re-certifies a known boundary | per value: minutes |
+| `check_class.c` | independent C witness checker, 128-bit exact; `--all` batch mode, `--dmax=D` staged partial mode (partial results are labelled PARTIAL, never "OK") | seconds–minutes |
+| `verify_witness.py` | independent Python witness checker (the original gate; cross-validates `check_class`) | fast to k≈6 |
+| `make_table.py` | aggregates `data/results.csv` (append-only run log) into `data/values.csv` (authoritative table); aborts on any value conflict | instant |
 
 Reproduce (from inside this directory; build tools first):
 

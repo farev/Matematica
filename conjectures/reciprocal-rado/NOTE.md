@@ -70,11 +70,64 @@ restricted enumeration sharing no code with the encoder.
 
 ## 4. The two-color ladder
 
-(table and discussion at close of session)
+| k | f₂(k) | 3k² | Δ = f₂(k)−3k² | theorem context |
+|---|---|---|---|---|
+| 2 | **60** | 12 | +48 | k = 2^m: covered by neither GR theorem |
+| 3 | **40** | 27 | +13 | odd prime power: GR bound 28; **not sharp** |
+| 4 | **48** | 48 | 0 | k = 2^m: attains 3k² |
+| 5 | **80** | 75 | +5 | odd prime power: GR bound 76; **not sharp** |
+| 6 | **108** | 108 | 0 | GR theorem (k = 3·2^m): reproduced exactly |
+| 7 | **150** | 147 | +3 | odd prime power: GR bound 148; **not sharp** |
+
+(GR = Gaiser–Ramezanpour, arXiv:2607.04373, statements (secondary).)
+
+Three observations the table forces:
+
+1. **Sharpness fails at every odd prime power computed, but the excess
+   shrinks**: Δ = 13, 5, 3 at k = 3, 5, 7. Whether Δ(k) → 1 (their bound
+   eventually sharp), Δ(k) → some constant, or neither, is the sharpest
+   question this data poses. Note (k−2)·Δ(k) = 15 at both k = 5 and 7 —
+   a two-point coincidence, recorded as such (the k = 9 run tests it;
+   prediction logged before the run: f₂(9) ∈ {245, 246}).
+2. **The even column is exactly 3k² at k = 4, 6** (k = 8 in flight at
+   close). Conjecture B below.
+3. **k = 2 is a different animal**: f₂(2) = 60 = 5·3k². The k = 2
+   solution set (the optic equation 1/x+1/y = 1/z) is divisor-sparse —
+   supports {z, x, y} with x = z+d₁, y = z+d₂, d₁d₂ = z² — and the
+   dyadic pairs {z, 2z} (from d₁ = d₂ = z) dominate the constraint
+   graph. The 2^m family is not one family: 2 behaves like neither 4
+   nor the odd primes.
+
+**Conjecture B.** f₂(k) = 3k² for every even k ≥ 4.
+
+Mechanism sketch supporting Conjecture B (not a proof): at n = 3k² the
+diagonal solutions (k copies of ky, target y) give edges {y, ky} for
+y ≤ 3k, whose chains {j, jk, jk²} (j ≤ 3) force χ(jk²) = χ(j) in any
+valid 2-coloring; for **even** k there are additionally "half-diagonal"
+solutions — k/2 copies each of a and b with 1/a + 1/b = 2/(ky),
+parametrized by d₁d₂ = (ky/2)² exactly as in the optic equation, e.g.
+support {y, 3ky/4, 3ky/2} whenever 4 | ky — which knit the chains
+together. For odd k the half-diagonal family does not exist (ky/2 is not
+an integer for odd y), the constraint web at 3k² is strictly poorer, and
+the computed colorings indeed survive to 3k²+Δ. The odd-k extremals
+(§6) show exactly where the extra room lives.
 
 ## 5. Three and four colors
 
-(f₃(2) = 3276, f₃(3) = 585, further values and the f₄(2) outcome)
+| r | k | f_r(k) | GR lower bound | ratio |
+|---|---|---|---|---|
+| 3 | 2 | **3276** | 4³/2 = 32 | 102× |
+| 3 | 3 | **585** | (2³−1)·3³ = 189 | 3.1× |
+| 4 | 2 | **> 60000** (verified witness) | 4⁴/2 = 128 | > 468× |
+
+f₃(2) = 3276 = 2²·3²·7·13 and f₃(3) = 585 = 3²·5·13. The r-growth of
+f_r(2) — 2 (trivial), 60, 3276, > 6·10⁴ — is far beyond the 4^r/2 bound;
+the extremal 3-coloring of [1, 3275] satisfies χ(z) ≠ χ(2z) for **all**
+1637 applicable pairs (the dyadic constraint is everywhere binding) while
+being otherwise highly fragmented (1804 maximal runs; class sizes
+1849/1032/394). A 4-color instance at n = 150000 (600000 variables, 1724780 clauses) was
+still undecided by CaDiCaL at session close; the verified 60000-witness
+stands as the honest bound.
 
 ## 6. Structure of the extremal colorings
 
