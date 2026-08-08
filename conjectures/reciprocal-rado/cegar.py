@@ -337,7 +337,8 @@ class Cegar:
                              capture_output=True, text=True)
         if chk.returncode != 0:
             raise RuntimeError(f"RUP FAILED: {chk.stdout}{chk.stderr}")
-        os.remove(cnff)
+        # CEGAR CNFs are run-history-dependent (not regenerable from a
+        # deterministic encoder), so the CNF is retained for auditability.
         row = dict(k=k, r=r, f=f, nsol_at_f=f"cegar:{sum(1 for S in self.supports if max(S) <= f)}",
                    nsupp_at_f=sum(1 for S in self.supports if max(S) <= f),
                    enum_cap="cegar", enum_secs="", glucose_secs=round(gs, 1),
