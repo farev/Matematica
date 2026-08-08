@@ -19,11 +19,85 @@ as possible rediscoveries; certificates are new regardless. Stretch: a
 proved upper-bound construction at some parameter family, or a refutation
 of sharpness at some odd prime power.
 
-**Result.** (session in progress — filled at close)
+**Result.**
+- **CERTIFIED** — the first certified table of reciprocal Rado numbers,
+  nine exact values: f₂(2)=60, f₂(3)=40, f₂(4)=48, f₂(5)=80, f₂(6)=108,
+  **f₂(7)=150**, f₃(2)=**3276**, f₃(3)=**585**, plus the verified bound
+  f₄(2) > 60000. Every value ships a DRUP proof of UNSAT at f checked by
+  the independent `rup_check` AND a witness coloring at f−1 verified by
+  two independent checkers (Python and C). Sharpness of the
+  Gaiser–Ramezanpour odd-prime-power bound 3k²+1 **fails at every
+  computed case with shrinking excess** — Δ = 13, 5, 3 at k = 3, 5, 7 —
+  while their theorem anchors reproduce exactly (f₂(6)=108=3·6²; SAT
+  witnesses at 3k² for k=3,5,7). The k=2^m family splits: f₂(4)=48=3k²
+  exactly, f₂(2)=60=5·3k². The multi-color lower bounds 4^r/2 and
+  (2^r−1)k^r are off by 102× (f₃(2)) and 3× (f₃(3)).
+- **Conjecture B** (new): f₂(k) = 3k² for every even k ≥ 4, with an
+  identified parity mechanism (even-k "half-diagonal" solutions
+  d₁d₂=(ky/2)² knitting the diagonal chains; the family does not exist
+  for odd k). Verified at k=4, 6; k=8 in flight at close [RESOLVE-K8].
+- Structure: odd-k extremals = interval core + sparse corrections
+  (k=5, 7 displayed in NOTE §6); the f₃(2) extremal has χ(z) ≠ χ(2z) at
+  all 1637 applicable pairs. [RESOLVE-K9]
 
-**What failed.** (filled at close)
+**What failed.**
+- The **f₂(7) ≥ 168 claim from the first k=7 probe — struck** (it briefly
+  reached a pushed README). The "completion check" on the background
+  enumeration (`cat logfile && echo DONE`) succeeds on an existing-but-
+  empty log; the probe read stripe files mid-flight and reported SAT
+  against an incomplete constraint set. Caught because the CEGAR lane's
+  sound UNSAT at n=150 contradicted it; the discrepancy was chased to
+  two junk tuples in a Python-vs-stripes cross-check. Lessons now
+  standing: completion checks test markers, not file existence; a SAT
+  claim is nothing until its witness passes an independent checker.
+- Full enumeration walls at k=8 (the y=1 branch alone is an Egyptian
+  census in the tens of millions) — replaced by CEGAR on verified-clause
+  subsets, validated by reproducing f₂(4), f₂(5), f₂(6) from ground
+  truth before use at k ≥ 7.
+- Concurrent lanes twice shared file paths (orphaned checker processes;
+  two certify runs on one tag) — fixed with unique filenames and a
+  one-lane-per-(r,k) rule; the k=7 certificate was regenerated cleanly
+  and reproduced byte-identically (equal CNF sha256).
+- Two `pkill -f` self-matches killed their own compound commands; the
+  Python weighted oracle was too slow at k ≥ 7 and was replaced by C
+  (`enumw.c`, `check_class.c --dmax` staging).
+- f₄(2) exact: the n=150000 4-color instance did not decide within the
+  session [RESOLVE-F42]; the honest claim stays f₄(2) > 60000.
+- The f₂(7) ≥ 168 claim from the first k=7 probe — struck: the
+  "completion check" on the background enumeration passed on an empty
+  log file and the probe read stripe files mid-flight. Caught by the
+  CEGAR lane's sound UNSAT at n=150 contradicting it. The failure and
+  the catch are documented in WRITEUP.md; the corrected value comes
+  from the CEGAR lane with a fully verified witness.
+- Full enumeration hits a wall at k=8 (the y=1 Egyptian census alone
+  is ~10⁷–10⁸): replaced by the CEGAR architecture (sound UNSAT from
+  verified-clause subsets; SAT only via the independent full checker).
+- Two pkill self-matches killed their own compound commands (exit
+  143/144); ~5 minutes lost total. Kill and run now never share a
+  command line.
 
-**Next.** (filled at close)
+**Next.** (1) k=9, k=8 completion if not landed in-session, then k=11
+and k=12 (another 3·2^m control) — the CEGAR driver handles all of them;
+the sharpest open thread is whether Δ(k) → 0 or stabilizes along odd
+prime powers, and whether Conjecture B (f₂(even k) = 3k²) survives k=8
+and k=10. (2) f₄(2) exact — needs either patience with CaDiCaL at
+n ≈ 10⁵ or a smarter encoding for the divisor-sparse k=2 family; a
+proved formula for f_r(2) growth would be the real prize (the dyadic
+rigidity χ(z)≠χ(2z) in the extremal witness is the entry point).
+(3) Prove Conjecture B's upper bound for even k via the half-diagonal
+web — the mechanism is identified, the case analysis is not written.
+(4) Read the Gaiser–Ramezanpour PDF from a machine with arXiv access;
+reconcile their computational table with this one; then the OEIS
+submission for f₂(k) and f_r(2). (5) The k=8/k=9 full-check cost says
+the next capability step is a class-restricted *weighted* C checker
+used as the in-loop stage (the `--dmax` staging exists; wiring cegar to
+escalate 5 → 6 → full remains).
+
+**Prediction recorded before the k=9 run** (12:58 UTC): with Δ(k) :=
+f₂(k) − 3k² measured at 13, 5, 3 for k = 3, 5, 7 — decreasing, and
+(k−2)·Δ(k) = 15 at both k = 5 and k = 7 — the guess for k = 9 (odd prime
+power 3²) is f₂(9) ∈ {245, 246} (Δ ∈ {2, 3}), against 3k²+1 = 244. No
+formula is claimed; this is a two-point pattern being tested.
 
 ---
 
@@ -188,4 +262,25 @@ lane and pivots to E3.
 
 ## 5. Tool discipline
 
-(filled at close: controls run, seeds/runtimes, cross-checks)
+Positive controls, all run before the claims they guard: enumerator vs
+OEIS A002966 (1, 3, 14, 147 Egyptian representations of 1 for k = 2..5);
+C DFS ≡ Python DFS ≡ Fraction-arithmetic brute force on a (k,n) grid
+(8 cells); C DFS ≡ independent divisor-parametrization enumerator for
+k = 2 at n = 60, 500, 3276; Gaiser–Ramezanpour theorem anchors —
+f₂(6) = 108 = 3·6² boundary reproduced exactly, SAT witnesses at 3k² for
+k = 3, 5 (their odd-prime-power bound requires them; the k = 7 anchor is
+re-established by the CEGAR witness, the first attempt having been struck
+— §What failed). CEGAR reproduces ground-truth f₂(4), f₂(5), f₂(6) from
+15× smaller clause sets before being trusted at k ≥ 7. Negative controls:
+rup_check validated 08-05 against injected non-RUP and truncated proofs;
+a corrupted witness (mono solution planted by color flip) is rejected by
+verify_witness.py. Every UNSAT boundary in the results table carries a
+DRUP proof re-checked by rup_check; every SAT boundary a witness
+re-verified by the independent checker; CEGAR UNSAT CNFs ship per-clause
+solution provenance (.sols files) so an auditor can re-verify every
+constraint in exact arithmetic. No randomness anywhere: encoders and
+enumerators are deterministic, solvers run single-threaded default
+configurations; runtimes and CNF hashes in `data/results.csv`.
+Environment: 4 cores, 15 GB RAM, Python 3.11.15, gcc 13.3.0,
+python-sat 1.9.dev8 (Cadical153 bracketing), Glucose 4.2.1 standalone
+(DRUP), CaDiCaL 3.0.0 standalone (f₄ bracketing).

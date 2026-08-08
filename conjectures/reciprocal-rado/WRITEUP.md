@@ -84,9 +84,25 @@ had to conspire to pass all of these.
 - The full k = 7 enumeration at cap 224, launched before the k = 8 probe
   exposed the enumeration wall, was killed ~35 minutes in once CEGAR
   made it obsolete (two pkill mishaps along the way, below).
-- `verify_witness.py` shipped with a leftover garbage line from an
-  editing pass (caught by inspection before any use; fixed in the same
-  commit that introduced it would have been better).
+- **Concurrent lanes sharing file paths, twice.** (i) Orphaned checker
+  subprocesses from killed CEGAR lanes kept running and wrote/read the
+  same per-(tag,n) witness paths as their replacements — a live lane
+  could in principle have verified a stale coloring. Fixed with
+  per-process unique filenames. (ii) Two `--certify-at=150` runs for
+  k = 7 overlapped; the older binary-deleting version removed the CNF
+  the newer retaining version had just written. Re-run cleanly; the
+  second run's CNF sha256 matched the first — the CEGAR run is
+  reproducible — and the final artifact set was re-verified from disk.
+  Standing rule now: one lane per (r,k) tag, ever; kill commands and
+  run commands never share a shell line.
+- `verify_witness.py` and `check_class.c` each shipped with a garbled
+  block from an editing pass (caught by inspection/compile before any
+  use).
+- The oracle escalation initially fell back to the slow Python weighted
+  search (minutes per round at k = 7-8) — the C weighted enumerator and
+  the staged `--dmax` C checker replaced it; k = 8's first full check
+  dropped from 20+ Python-minutes to ~15 contended C-minutes, and
+  mid-loop rounds to seconds.
 - A README claim that f₁(2) = 6 was wrong (1/2 + 1/2 = 1/1 gives
   f₁(2) = 2); caught and fixed within minutes. The searched fingerprint
   "6, 60, 3276" was therefore also slightly wrong; "60, 3276" matches
