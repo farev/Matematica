@@ -7,3 +7,4 @@ k,r,f,nsol_at_f,nsupp_at_f,enum_cap,enum_secs,glucose_secs,cnf_sha,witness,proof
 4,2,48,cegar:213,213,cegar,,0.0,b25bcaff9d1c4ae1087a78d4e7a67036adb0deec79b338f841356316edff5952,f2_4_n47.witness,f2_4_n48.drup
 5,2,80,cegar:736,736,cegar,,0.0,0eff6165cd57310e01f0be377de90a813b6c60cc06c32e7585a72ff0bde83309,f2_5_n79.witness,f2_5_n80.drup
 6,2,108,cegar:1717,1717,cegar,,0.0,f051cc427ee1d2420cfadaa4561ad2ff1f013bb2c37c6e4d7dd6af906a9469b8,f2_6_n107.witness,f2_6_n108.drup
+5,2,80,cegar:736,736,cegar,,0.0,eb1c433b81dc1577d769734f238a400d4f5cf5c8659e76aa4e525c59fc445bc7,f2_5_n79.witness,f2_5_n80.drup

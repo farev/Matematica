@@ -99,15 +99,29 @@ class Cegar:
         self.supports.setdefault(S, f"{tag}: 1/{y} = " +
                                  "+".join(f"{w}/{x}" for w, x in wx_pairs))
 
+    def _enumw(self, n, dmax):
+        """C weighted enumerator; returns [(y, ((w,x),...)), ...]."""
+        p = subprocess.run([os.path.join(HERE, "enumw"), str(self.k), str(n),
+                            str(dmax)], capture_output=True, text=True,
+                           check=True)
+        out = []
+        for ln in p.stdout.splitlines():
+            t = list(map(int, ln.split()))
+            y, rest = t[0], t[1:]
+            out.append((y, tuple((rest[i], rest[i + 1])
+                                 for i in range(0, len(rest), 2))))
+        return out
+
     def seed(self, n):
         t0 = time.time()
-        for y in range(1, n // self.k + 1):
-            x = self.k * y
-            if x <= n:
-                self.add_solution(y, ((self.k, x),), "diag")
-        sols = weighted_solutions_clean(self.k, n, self.dmax)
-        for y, tup in sols:
+        self.cap = n
+        for y, tup in self._enumw(n, self.dmax):
             self.add_solution(y, tup, f"d{self.dmax}")
+        # oracle cache: one tier deeper than the seed
+        self.oracle_pool = []
+        for y, tup in self._enumw(n, min(self.k, self.dmax + 1)):
+            S = frozenset([y] + [x for _, x in tup])
+            self.oracle_pool.append((max(S), S, y, tup))
         return time.time() - t0
 
     def clauses(self, n):
@@ -181,6 +195,9 @@ class Cegar:
 
     def decide(self, n, tag, verbose=True):
         """CEGAR loop at fixed n. Returns (True, col, wpath) or (False, None, None)."""
+        if n > getattr(self, "cap", 0):
+            if verbose: print(f"    re-seeding at cap {int(n*1.3)+32}", flush=True)
+            self.seed(int(n * 1.3) + 32)
         rounds = 0
         while True:
             rounds += 1
@@ -189,9 +206,23 @@ class Cegar:
                 if verbose: print(f"    n={n}: UNSAT after {rounds} rounds "
                                   f"({len(self.supports)} supports)", flush=True)
                 return False, None, None
-            # cheap oracles first, escalate distinct-value bound
+            # batch oracle: every cached solution that is fully monochromatic
+            batch = []
+            for mx, S, y, tup in self.oracle_pool:
+                if mx <= n and S not in self.supports:
+                    c0 = col[y - 1]
+                    if all(col[x - 1] == c0 for x in S):
+                        batch.append((y, tup))
+            if batch:
+                for y, tup in batch:
+                    self.add_solution(y, tup, "oracle")
+                if verbose and rounds % 10 == 0:
+                    print(f"    n={n}: round {rounds}, +{len(batch)} clauses "
+                          f"({len(self.supports)} total)", flush=True)
+                continue
+            # cache clean: escalate to slow exact oracle then full check
             viol = None
-            for dm in range(2, min(self.k, 5) + 1):
+            for dm in range(self.dmax + 2, min(self.k, 5) + 1):
                 viol = self.oracle_violation(col, n, dm)
                 if viol:
                     break
