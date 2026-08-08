@@ -63,11 +63,20 @@ static void dfs(int j, uint64_t lo, uint64_t a, uint64_t b, uint64_t y) {
 }
 
 int main(int argc, char **argv) {
-    if (argc < 3) { fprintf(stderr, "usage: enum k n [--count]\n"); return 2; }
+    if (argc < 3) {
+        fprintf(stderr, "usage: enum k n [--count] [--stripe=s/S]\n");
+        return 2;
+    }
     g_k = atoi(argv[1]);
     g_n = strtoull(argv[2], 0, 10);
-    g_count_only = (argc > 3 && !strcmp(argv[3], "--count"));
-    for (uint64_t y = 1; y < g_n; y++)
+    uint64_t s0 = 0, S = 1;
+    for (int i = 3; i < argc; i++) {
+        if (!strcmp(argv[i], "--count")) g_count_only = 1;
+        else if (!strncmp(argv[i], "--stripe=", 9))
+            sscanf(argv[i] + 9, "%llu/%llu",
+                   (unsigned long long *)&s0, (unsigned long long *)&S);
+    }
+    for (uint64_t y = 1 + s0; y < g_n; y += S)
         dfs(g_k, y + 1, 1, y, y);
     if (g_count_only)
         printf("%llu\n", (unsigned long long)g_count);
