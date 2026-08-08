@@ -1,0 +1,2 @@
+n=20000: SAT  (196056 clauses, enum 0s, solve 2s)
+n=60000: SAT  (643540 clauses, enum 2s, solve 26s)
