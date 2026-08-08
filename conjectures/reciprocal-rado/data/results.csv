@@ -14,3 +14,4 @@ k,r,f,nsol_at_f,nsupp_at_f,enum_cap,enum_secs,glucose_secs,cnf_sha,witness,proof
 2,2,60,61,61,200,0.0,0.0,58a04618d183ab7b9bfd9c6e355df3960155925a8d935f372401e09948b4d4bb,f2_2_n59.witness,f2_2_n60.drup
 3,2,40,88,88,100,0.0,0.0,95579a6a67837eae36cd6c1c413ccd2b387dcb9387f26252031f8371fffdb1ab,f2_3_n39.witness,f2_3_n40.drup
 8,2,192,cegar:7828,7828,cegar,,0.1,94e5d4f1ea872dd8cabdccd1a4f04dcaaab682a02d4f3ac11287b6066f64c686,f2_8_n191.witness,f2_8_n192.drup
+8,2,192,cegar:7828,7828,cegar,,0.1,94e5d4f1ea872dd8cabdccd1a4f04dcaaab682a02d4f3ac11287b6066f64c686,f2_8_n191.witness,f2_8_n192.drup
