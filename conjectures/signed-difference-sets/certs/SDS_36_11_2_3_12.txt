@@ -1,0 +1,108 @@
+# Certificate: decision of SDS(36,11,2,[3,12])
+# Date: 2026-08-09 13:27:40 UTC
+# Database status at fetch (2026-08-09, sha256 39bab9fce78d5c4353c22ba482ff5c3bb8b8b9931edc5ca0fc60062dfe80ca85): Open ()
+# Engine: sds_search.c sha256=e9a34ac00672730d768a798f9c557d04ed61da2ce78efd9cadf65abdc6b1df78
+#         binary     sha256=f59fd7eec813c4144232718fbc403811b2f5ed3bf0d97a955962caee4bc0a689
+# Command: ./sds_search 36 11 2 3,12 --cap=50
+# Decision: EXIST
+# RESULT SDS(36,11,2,[3,12]) EXIST nP=10 nM=1 nodes=1407283482 witnesses=3240 mode=reduced0P secs=372.201
+WITNESS_INDICES P=[0, 1, 2, 4, 5, 8, 13, 18, 29, 34] M=[9]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 4], [0, 5], [0, 8], [1, 1], [1, 6], [2, 5], [2, 10]] M=[[0, 9]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 4, 5, 8, 14, 21, 26, 33] M=[9]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 4], [0, 5], [0, 8], [1, 2], [1, 9], [2, 2], [2, 9]] M=[[0, 9]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 4, 5, 8, 17, 22, 25, 30] M=[9]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 4], [0, 5], [0, 8], [1, 5], [1, 10], [2, 1], [2, 6]] M=[[0, 9]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 4, 5, 9, 12, 18, 28, 34] M=[8]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 4], [0, 5], [0, 9], [1, 0], [1, 6], [2, 4], [2, 10]] M=[[0, 8]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 4, 5, 9, 14, 20, 26, 32] M=[8]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 4], [0, 5], [0, 9], [1, 2], [1, 8], [2, 2], [2, 8]] M=[[0, 8]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 4, 5, 9, 16, 22, 24, 30] M=[8]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 4], [0, 5], [0, 9], [1, 4], [1, 10], [2, 0], [2, 6]] M=[[0, 8]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 4, 8, 9, 13, 22, 30, 33] M=[5]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 4], [0, 8], [0, 9], [1, 1], [1, 10], [2, 6], [2, 9]] M=[[0, 5]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 4, 8, 9, 14, 17, 26, 29] M=[5]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 4], [0, 8], [0, 9], [1, 2], [1, 5], [2, 2], [2, 5]] M=[[0, 5]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 4, 8, 9, 18, 21, 25, 34] M=[5]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 4], [0, 8], [0, 9], [1, 6], [1, 9], [2, 1], [2, 10]] M=[[0, 5]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 4, 6, 8, 13, 22, 25, 34] M=[10]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 4], [0, 6], [0, 8], [1, 1], [1, 10], [2, 1], [2, 10]] M=[[0, 10]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 4, 6, 8, 14, 17, 30, 33] M=[10]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 4], [0, 6], [0, 8], [1, 2], [1, 5], [2, 6], [2, 9]] M=[[0, 10]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 4, 6, 8, 18, 21, 26, 29] M=[10]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 4], [0, 6], [0, 8], [1, 6], [1, 9], [2, 2], [2, 5]] M=[[0, 10]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 4, 6, 10, 12, 17, 28, 33] M=[8]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 4], [0, 6], [0, 10], [1, 0], [1, 5], [2, 4], [2, 9]] M=[[0, 8]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 4, 6, 10, 13, 20, 25, 32] M=[8]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 4], [0, 6], [0, 10], [1, 1], [1, 8], [2, 1], [2, 8]] M=[[0, 8]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 4, 6, 10, 16, 21, 24, 29] M=[8]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 4], [0, 6], [0, 10], [1, 4], [1, 9], [2, 0], [2, 5]] M=[[0, 8]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 4, 8, 10, 13, 18, 25, 30] M=[6]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 4], [0, 8], [0, 10], [1, 1], [1, 6], [2, 1], [2, 6]] M=[[0, 6]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 4, 8, 10, 14, 21, 29, 34] M=[6]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 4], [0, 8], [0, 10], [1, 2], [1, 9], [2, 5], [2, 10]] M=[[0, 6]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 4, 8, 10, 17, 22, 26, 33] M=[6]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 4], [0, 8], [0, 10], [1, 5], [1, 10], [2, 2], [2, 9]] M=[[0, 6]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 4, 8, 13, 14, 25, 30, 34] M=[26]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 4], [0, 8], [1, 1], [1, 2], [2, 1], [2, 6], [2, 10]] M=[[2, 2]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 4, 8, 13, 14, 26, 29, 33] M=[25]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 4], [0, 8], [1, 1], [1, 2], [2, 2], [2, 5], [2, 9]] M=[[2, 1]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 4, 8, 13, 18, 22, 25, 26] M=[14]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 4], [0, 8], [1, 1], [1, 6], [1, 10], [2, 1], [2, 2]] M=[[1, 2]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 4, 8, 13, 17, 22, 29, 30] M=[21]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 4], [0, 8], [1, 1], [1, 5], [1, 10], [2, 5], [2, 6]] M=[[1, 9]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 4, 8, 13, 18, 21, 33, 34] M=[17]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 4], [0, 8], [1, 1], [1, 6], [1, 9], [2, 9], [2, 10]] M=[[1, 5]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 4, 8, 14, 17, 21, 25, 26] M=[13]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 4], [0, 8], [1, 2], [1, 5], [1, 9], [2, 1], [2, 2]] M=[[1, 1]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 4, 8, 14, 17, 22, 33, 34] M=[18]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 4], [0, 8], [1, 2], [1, 5], [1, 10], [2, 9], [2, 10]] M=[[1, 6]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 4, 8, 14, 18, 21, 29, 30] M=[22]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 4], [0, 8], [1, 2], [1, 6], [1, 9], [2, 5], [2, 6]] M=[[1, 10]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 4, 8, 17, 18, 25, 29, 34] M=[33]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 4], [0, 8], [1, 5], [1, 6], [2, 1], [2, 5], [2, 10]] M=[[2, 9]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 4, 8, 17, 18, 26, 30, 33] M=[34]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 4], [0, 8], [1, 5], [1, 6], [2, 2], [2, 6], [2, 9]] M=[[2, 10]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 4, 8, 21, 22, 25, 30, 33] M=[29]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 4], [0, 8], [1, 9], [1, 10], [2, 1], [2, 6], [2, 9]] M=[[2, 5]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 4, 8, 21, 22, 26, 29, 34] M=[30]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 4], [0, 8], [1, 9], [1, 10], [2, 2], [2, 5], [2, 10]] M=[[2, 6]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 4, 12, 13, 18, 20, 25, 34] M=[24]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 4], [1, 0], [1, 1], [1, 6], [1, 8], [2, 1], [2, 10]] M=[[2, 0]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 4, 12, 14, 17, 20, 26, 33] M=[24]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 4], [1, 0], [1, 2], [1, 5], [1, 8], [2, 2], [2, 9]] M=[[2, 0]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 4, 12, 16, 17, 22, 30, 33] M=[32]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 4], [1, 0], [1, 4], [1, 5], [1, 10], [2, 6], [2, 9]] M=[[2, 8]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 4, 12, 16, 18, 21, 29, 34] M=[32]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 4], [1, 0], [1, 4], [1, 6], [1, 9], [2, 5], [2, 10]] M=[[2, 8]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 4, 13, 22, 24, 25, 30, 32] M=[12]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 4], [1, 1], [1, 10], [2, 0], [2, 1], [2, 6], [2, 8]] M=[[1, 0]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 4, 14, 21, 24, 26, 29, 32] M=[12]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 4], [1, 2], [1, 9], [2, 0], [2, 2], [2, 5], [2, 8]] M=[[1, 0]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 4, 13, 16, 20, 22, 25, 30] M=[28]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 4], [1, 1], [1, 4], [1, 8], [1, 10], [2, 1], [2, 6]] M=[[2, 4]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 4, 13, 18, 25, 28, 32, 34] M=[16]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 4], [1, 1], [1, 6], [2, 1], [2, 4], [2, 8], [2, 10]] M=[[1, 4]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 4, 14, 16, 20, 21, 26, 29] M=[28]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 4], [1, 2], [1, 4], [1, 8], [1, 9], [2, 2], [2, 5]] M=[[2, 4]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 4, 14, 17, 26, 28, 32, 33] M=[16]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 4], [1, 2], [1, 5], [2, 2], [2, 4], [2, 8], [2, 9]] M=[[1, 4]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 4, 17, 22, 24, 28, 30, 33] M=[20]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 4], [1, 5], [1, 10], [2, 0], [2, 4], [2, 6], [2, 9]] M=[[1, 8]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 4, 18, 21, 24, 28, 29, 34] M=[20]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 4], [1, 6], [1, 9], [2, 0], [2, 4], [2, 5], [2, 10]] M=[[1, 8]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 5, 8, 9, 12, 22, 30, 32] M=[4]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 5], [0, 8], [0, 9], [1, 0], [1, 10], [2, 6], [2, 8]] M=[[0, 4]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 5, 8, 9, 14, 16, 26, 28] M=[4]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 5], [0, 8], [0, 9], [1, 2], [1, 4], [2, 2], [2, 4]] M=[[0, 4]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 5, 8, 9, 18, 20, 24, 34] M=[4]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 5], [0, 8], [0, 9], [1, 6], [1, 8], [2, 0], [2, 10]] M=[[0, 4]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 6, 8, 10, 12, 21, 29, 32] M=[4]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 6], [0, 8], [0, 10], [1, 0], [1, 9], [2, 5], [2, 8]] M=[[0, 4]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 6, 8, 10, 13, 16, 25, 28] M=[4]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 6], [0, 8], [0, 10], [1, 1], [1, 4], [2, 1], [2, 4]] M=[[0, 4]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 6, 8, 10, 17, 20, 24, 33] M=[4]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 6], [0, 8], [0, 10], [1, 5], [1, 8], [2, 0], [2, 9]] M=[[0, 4]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 5, 6, 9, 12, 22, 24, 34] M=[10]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 5], [0, 6], [0, 9], [1, 0], [1, 10], [2, 0], [2, 10]] M=[[0, 10]]  (independently verified: True)
+WITNESS_INDICES P=[0, 1, 2, 5, 6, 9, 14, 16, 30, 32] M=[10]
+WITNESS_COORDS  P=[[0, 0], [0, 1], [0, 2], [0, 5], [0, 6], [0, 9], [1, 2], [1, 4], [2, 6], [2, 8]] M=[[0, 10]]  (independently verified: True)

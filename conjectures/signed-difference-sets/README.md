@@ -21,9 +21,11 @@ artifact is machine-readable — openness verifiable per cell.
 |---|---|---|
 | Two nonexistence criteria for SDS (classical transfers; proofs in NOTE §2): **T1** — v even ⇒ k−λ a perfect square; **T2** — m \| exp(G), m > 2, p ∤ m self-conjugate mod m, v_p(k−λ) odd ⇒ no SDS | PROVED (criteria classical; transfer routine; possible overlap with the unread Gordon paper marked in NOTE) | `NOTE.md` §1–2, `theory.py` |
 | **45,328 of the 67,823 Open cells closed** by T1 (23,997) + T2 (21,331), each with a checkable one-line certificate; 0 violations on the 146 Yes/All cells; 984 of Gordon's 2,574 exhaust-No cells retro-covered | PROVED (per cell, via the criteria) | `data/theory_closures.csv` |
-| **Exhaustive decisions of previously-Open cells** (final table `data/values.csv`; every NONEXIST a completed exhaust, every witness independently re-verified; engine validated by full v ≤ 24 concordance — 42 decided cells, 0 discrepancies — and exact dual-implementation agreement on 8 cells) | CERTIFIED | `data/values.csv`, `certs/`, `data/results.csv` |
+| **58 previously-Open cells decided by exhaustive search** — **10 EXIST** (new SDS, no published source: a λ=1 set in Z₅×Z₅; (27,10,1) and (27,14,5) in both non-cyclic groups of order 27; (27,17,8) in Z₃³; (32,28,12) in Z₄×Z₈ and Z₂×Z₄×Z₄; (36,11,2) in Z₆×Z₆ and Z₃×Z₁₂), **48 NONEXIST**; every witness independently re-verified; engine validated by full v ≤ 24 concordance (42 decided cells, 0 discrepancies) and exact dual-implementation agreement on 8 cells; 0 conflicts with the criteria. **Open shelf: 67,823 → 22,453** | CERTIFIED | `data/values.csv`, `certs/`, `data/results.csv` |
+| **Group structure decides existence at fixed (v,k,λ)**: at order 27 the cyclic group is empty across all ten parameter triples while Z₃×Z₉ and Z₃³ carry SDS at three of them; SDS(36,11,2) exists exactly when the 3-Sylow is non-cyclic; SDS(32,28,12) exists in exactly the two order-32 groups containing Z₄×Z₄ (7-point pattern, observation only) | CERTIFIED (tables) / NUMERICAL (the Z₄×Z₄ pattern) | NOTE §5 |
 | **Witness audit of the published database: 147 of 280 stored witness sets fail the defining equation** (21 of 144 witness-bearing cells, all cyclic; not repairable by any symmetry of the definition); plus one witness stored in undeclared Z₃×Z₃×Z₂ coordinates that verifies once decoded | CERTIFIED (rerun `check_db.py` / `make_audit.py`) | `data/witness_audit.csv` |
 | Forensics on SDS(20,11,2,[20]) ("All", 4 stored sets, all invalid): complete enumeration finds **exactly 40 labeled SDS in 2 translation classes**; stored sets are true sets with P↔M swaps (nearest at symmetric difference 4) — status correct, export corrupt | CERTIFIED | `certs/audit_20_11_2_c20_full.txt` |
+| **Swap-repair of the corrupted witnesses**: 22 of the 147 invalid sets are ≤2 P↔M swaps from a valid SDS (each repaired set independently re-verified), recovering witnesses for **12 of the 21 affected cells** (all sets of (20,11,2), (35,21,10), (247,127,63), (499,250,123); one each for eight more up to v = 499); 9 cells remain witness-less | CERTIFIED | `data/repaired_witnesses.csv` |
 
 ## Scripts
 
@@ -36,6 +38,7 @@ artifact is machine-readable — openness verifiable per cell.
 | `check_engine.py` | dual-implementation control: independent Python exhaust must match engine witness lists exactly on 8 cells | 2 s |
 | `sweep.py` | production driver: run cells, verify witnesses independently, append `data/results.csv`, write `certs/` | varies |
 | `theory.py` | T0/T1/T2 criteria over all 70,543 cells + cross-checks (Yes/All violations must be 0; exhaust conflicts must be 0) | 1 s |
+| `repair.py` | ≤2-swap repair search over all invalid stored witnesses; repaired sets re-verified independently | 70 s |
 | `make_values.py` | aggregates `data/results.csv` → authoritative `data/values.csv`; aborts on conflicts | instant |
 
 Reproduce (from inside this directory):
@@ -56,7 +59,8 @@ python3 sweep.py --vmax 24   # reproduce the 42-cell concordance + first decisio
 | `data/theory_closures.csv` | `theory.py` | 45,328 closed Open cells with per-cell criterion certificates |
 | `data/witness_audit.csv` | `make_audit.py` | verdict for each of the 280 stored witness sets |
 | `data/results.csv` | `sweep.py` | append-only run log: every engine run with node counts, wall time, engine+source sha256 |
-| `data/values.csv` | `make_values.py` | authoritative table of decided previously-Open cells |
+| `data/values.csv` | `make_values.py` | authoritative table of the 58 decided previously-Open cells |
+| `data/repaired_witnesses.csv` | `repair.py` | swap-repair verdicts for all 147 invalid stored sets; 22 repaired+re-verified |
 | `certs/*.txt` | `sweep.py` | per-cell certificates: command, result, witnesses in index+coordinate form, provenance hashes |
 
 ## Known defects and open threads

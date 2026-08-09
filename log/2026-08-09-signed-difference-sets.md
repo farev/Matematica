@@ -18,39 +18,89 @@ the v ≤ 50 shelf and any structural lemma the pattern of decisions suggests.
 Mid-session pivot pre-committed to Erdős #699 (below) if the engine had not
 produced certified decisions by 16:30 UTC.
 
-**Result.** *(finalized at session close — see §6)*
-- **CERTIFIED** — new decisions of previously-Open cells of the database,
-  each by exhaustive search in a validated C engine, with every witness
-  re-verified by an independent Python checker and small cells additionally
-  reproduced exactly (identical witness lists) by an independent pure-Python
-  exhaust. Running count at first freeze: 6 (all NONEXIST):
-  SDS(9,8,1,[3,3]), SDS(18,15,2,[3,6]), SDS(20,17,8,[2,10]),
-  SDS(20,11,2,[2,10]), SDS(24,18,2,[2,12]), SDS(24,18,2,[2,2,6]).
+**Result.**
+- **PROVED** — two nonexistence criteria for SDS (classical transfers:
+  the even-order square condition via an order-2 character, and Turyn's
+  self-conjugacy argument; proofs in NOTE §2), applied to every cell of
+  the database: **45,328 of the 67,823 Open cells closed** (23,997 +
+  21,331), each with a one-line checkable certificate
+  (`data/theory_closures.csv`); zero violations across the 146 Yes/All
+  cells, zero conflicts with any exhaust, and 984 of Gordon's 2,574
+  exhaust-No cells retro-covered. The criteria themselves are marked as
+  possible rediscoveries (Gordon's paper is egress-blocked); the closures
+  are new to the database regardless — its Open shelf included cells as
+  small as SDS(18,15,2,[3,6]) that the square test kills instantly.
+- **CERTIFIED** — **58 previously-Open cells decided by exhaustive
+  search** (engine validated by full 42-cell concordance at v ≤ 24 and
+  exact dual-implementation witness agreement on 8 cells): **10 EXIST**,
+  each with an independently re-verified witness and no published source
+  — a λ = 1 signed difference set in Z₅×Z₅; SDS(27,10,1) and
+  SDS(27,14,5) in both non-cyclic groups of order 27; SDS(27,17,8) in
+  Z₃³ (empty in Z₂₇ — completing that parameter across all groups of
+  order 27); SDS(32,28,12) in Z₄×Z₈ and Z₂×Z₄×Z₄ and in no other group
+  of order 32; SDS(36,11,2) in Z₆×Z₆ and Z₃×Z₁₂ but not Z₂×Z₁₈ — and
+  **48 NONEXIST**. Combined with the criteria: **Open shelf 67,823 →
+  22,453 in one session.** Structure exhibits: at order 27 cyclicity
+  obstructs across the whole shelf; the (32,28,12) pattern matches
+  "contains Z₄×Z₄" exactly (7 points, observation only, NUMERICAL).
 - **CERTIFIED (audit)** — 147 of the 280 witness sets stored in the
   published database fail its own defining equation (21 of 144
-  witness-bearing cells affected, all cyclic; no symmetry of the definition
-  can repair a non-constant correlation profile, so this is not a
-  convention mismatch — 123 cells including all Paley, all He–Chen–Ge and
-  23 orbit-exhaust cells verify perfectly under the same checker). For the
-  one affected cell small enough to re-exhaust immediately,
-  SDS(20,11,2,[20]) (status "All", 4 stored sets, all invalid): the cell's
-  existence status is **correct** — the complete enumeration has exactly 40
-  labeled sets in 2 translation classes, and the stored sets are true sets
-  with elements swapped between P and M (nearest true set at symmetric
-  difference 4), pointing at an export-stage defect rather than a broken
-  exhaust.
+  witness-bearing cells, all cyclic; not repairable by any symmetry of
+  the definition, so not a convention mismatch — 123 cells including all
+  Paley and He–Chen–Ge cells verify perfectly under the same checker).
+  Forensics: SDS(20,11,2,[20]) ("All", 4 invalid stored sets) has
+  exactly 40 labeled sets in 2 translation classes, and the stored sets
+  are true sets with P↔M swaps — an export-stage defect. **≤2-swap
+  repair recovers independently re-verified witnesses for 22 of the 147
+  sets, covering 12 of the 21 affected cells**; 9 cells (v = 51 to 277)
+  hold no recoverable witness. Upstream report drafted
+  (`UPSTREAM.md`; Gordon's README invites reports).
 
 **What failed.**
 - Engine v1's interval pruning double-removed pairs adjacent to
   decided-zero elements (openp underflow → false NONEXIST on the known
   cell SDS(11,6,1,[11])). Caught immediately by the known-cells control
   battery, fixed, and the fixed engine then reproduced the full v ≤ 24
-  decided database (42 cells) with zero contradictions. The defect class
-  "prune soundness only ever tested on cells where nothing exists" is now
-  covered by EXIST controls.
-- *(remainder finalized at close)*
+  decided database (42 cells) with zero contradictions. The lesson,
+  recorded for every future exhaust session: pruning bugs produce false
+  NONEXIST — the dangerous direction — and only EXIST-side controls
+  catch them; a battery of No-cells would have validated the broken
+  engine happily.
+- `repair.py` v1 had two of its own bugs (crash on the
+  undeclared-coordinates entry; a cyclic-coordinate conversion returning
+  the exhausted quotient variable, so every repaired witness "failed"
+  re-verification with phantom duplicates). Both were caught because the
+  re-verification step is mandatory; fixed, and all 22 repairs then
+  verified.
+- The (32,20,4) family (seven groups of order 32, the smallest cells
+  surviving both criteria and today's exhausts): a 94 s node-limit probe
+  measured 3.2·10⁶ nodes/s against a ~5.5·10¹¹-node tree — ≈ 48
+  core-hours per group, out of range for this session. Left open with
+  the probe recorded (`data/results.csv` ABORTED row).
+- The audit re-exhaust of SDS(35,21,10,[35]) (complete count, like the
+  20-cell) had not terminated by session close; its existence question
+  was settled anyway by the swap-repair (4 recovered witnesses). Node
+  count at kill recorded in the cert file.
+- Batch 2 was queued before the criteria existed, so four cores spent
+  ~30 minutes exhausting cells (25,16,2), (27,23,1)×2, (27,12,2)×2 … that
+  T1/T2 close instantly. Harmless — the exhausts agree with the theorems,
+  which is the mutual control — but a criteria-first pipeline is the
+  right order and is now written down.
 
-**Next.** *(finalized at close)*
+**Next.** (1) The (32,20,4) family across all seven groups of order 32 —
+the smallest genuinely-open cells; needs automorphism-orbit
+canonicalization (|GL(5,2)| ≈ 10⁷ symmetry for the elementary-abelian
+case) or ~2 CPU-weeks of patience. (2) Which stronger classical tests
+(multiplier theorems, Mann, field descent) transfer to signed sets —
+ramified primes escape self-conjugacy here (Gauss sums), so the signed
+theory genuinely differs; each new test closes another slab of the
+22,453. (3) Explain the Z₄×Z₄ pattern at (32,28,12) and the
+non-cyclic-Sylow pattern at orders 27/36 — a transfer/projection
+argument would turn observations into theorems. (4) Send UPSTREAM.md to
+Gordon (needs a machine with email/GitHub); OEIS has nothing to submit
+here (no integer sequence), but the database update is the analogous
+contribution. (5) Deeper repair (support-changing moves) for the 9
+still-witness-less corrupted cells.
 
 ---
 
@@ -302,4 +352,29 @@ Positive controls, all run before any new claim:
 
 ## 6. Results
 
-*(finalized at session close)*
+Full tables and proofs: `conjectures/signed-difference-sets/`
+(README for the labelled results table, NOTE for theorems and exhibits,
+`data/` for the machine-readable artifacts, `certs/` for per-cell
+certificates). Headline numbers:
+
+| artifact | count |
+|---|---|
+| Open cells closed by the PROVED criteria | **45,328** (T1: 23,997; T2: 21,331) |
+| Open cells decided by validated exhaust | **58** (10 EXIST, 48 NONEXIST) |
+| — of which beyond the criteria's reach | 42 |
+| Open shelf of the database | 67,823 → **22,453** |
+| new SDS with verified witnesses (no published source) | **10** |
+| stored witnesses failing the defining equation | **147 of 280** (21 cells) |
+| corrupted sets repaired (≤2 swaps) + re-verified | 22, covering 12 of 21 cells |
+| Yes/All criterion violations; exhaust–criterion conflicts | **0; 0** |
+
+Session arc in one paragraph: the definitional control battery
+unexpectedly became a deliverable (the witness audit); the engine's own
+control battery caught a soundness bug before it could contaminate any
+claim; the soundness write-up surfaced the character identities, which
+closed two-thirds of the database's open shelf in 1.1 s of compute after
+seven hours of exhausts had closed 58 cells the criteria cannot touch.
+The two lanes validate each other at every overlap, and the surviving
+small cells — every one now past both classical tests and (v ≤ 32,
+minus the (32,20,4) family) past an exhaust — are a sharper open
+frontier than the one the day started with.

@@ -1,0 +1,10 @@
+# Certificate: decision of SDS(36,29,20,[3,12])
+# Date: 2026-08-09 13:27:40 UTC
+# Database status at fetch (2026-08-09, sha256 39bab9fce78d5c4353c22ba482ff5c3bb8b8b9931edc5ca0fc60062dfe80ca85): Open ()
+# Engine: sds_search.c sha256=e9a34ac00672730d768a798f9c557d04ed61da2ce78efd9cadf65abdc6b1df78
+#         binary     sha256=f59fd7eec813c4144232718fbc403811b2f5ed3bf0d97a955962caee4bc0a689
+# Command: ./sds_search 36 29 20 3,12 --cap=50
+# Decision: NONEXIST
+# RESULT SDS(36,29,20,[3,12]) NONEXIST nP=28 nM=1 nodes=192260071 witnesses=0 mode=reduced0P secs=72.082
+# Exhaustive search relative to the translation reduction (0 in P), which is existence-preserving;
+# independent verification: engine cross-validated against a pure-Python exhaust (check_engine.py).

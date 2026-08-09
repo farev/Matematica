@@ -117,13 +117,27 @@ referee can verify by hand.
 ## Sweeps
 
 The concordance sweep (v ≤ 24, all statuses) doubled as production:
-six previously-Open cells decided, all empty. A second batch took the
-Open shelf through v ≤ 32 below naive cost 6·10⁹; a third batch the
-cheap 32 < v ≤ 50 cells surviving the criteria; then probes at the
-(32,20,4) monsters and the audit re-exhaust of SDS(35,21,10,[35]).
-Final tables in README/values.csv; per-cell certificates in `certs/`.
-*(Batch outcomes recorded in the final commit of the session; the
-first-freeze counts are in NOTE §3/§5.)*
+six previously-Open cells decided, all empty. Batch 2 (Open, v 25–32,
+naive cost ≤ 6·10⁹, ~35 min on 4 cores) was the harvest: 36 decisions
+including the first eight EXIST cells — the moment the day turned from
+"closing empty cells" to "finding signed difference sets nobody has
+published". Batch 3 (v 33–50) added 16 more, including the
+(36,11,2) 3-Sylow split and both order-49 and order-50 cells; its
+slowest member, SDS(50,49,24,[50]), took 31 minutes. Total: 58
+decisions, 10 EXIST, wall times 30 ms to 31 min per cell.
+
+The (32,20,4) family — the smallest cells surviving both criteria and
+all exhausts — got a measured verdict rather than an attempt: a
+node-limit probe clocked 3.2·10⁶ nodes/s against a ~5.5·10¹¹-node
+tree, i.e. ≈ 48 core-hours per group × 7 groups. Recorded as the open
+frontier (an automorphism-canonical search would collapse it — the
+elementary-abelian member has |GL(5,2)| ≈ 10⁷ worth of unused
+symmetry). The audit re-exhaust of SDS(35,21,10,[35]) was still
+churning at close (its existence question had already been settled by
+the swap-repair recoveries) and was killed after ~60 minutes wall; the
+engine emits no progress lines, so the cert file records the kill and
+the wall time, not a node count — the complete-count question there
+stays open, honestly.
 
 ## What failed
 

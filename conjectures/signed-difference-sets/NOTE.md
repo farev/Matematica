@@ -20,15 +20,22 @@ them to every cell: **45,328 of the 67,823 Open cells are closed**
 checkable certificate. Independently, an exhaustive-search engine,
 validated by reproducing the entire decided database at v ≤ 24 (42 cells,
 zero discrepancies) and by exact witness-list agreement with a second
-implementation, decides the small Open cells the criteria do not reach
-(list in §5; every nonexistence double-checked against the criteria with
-zero conflicts). Finally, an audit with an independent checker found that
-**147 of the 280 witness sets stored in the database fail the defining
-equation** (21 of 144 witness-bearing cells); for the one such cell small
-enough to re-enumerate completely, SDS(20,11,2) in Z₂₀, we show the
-cell's "All" status is nonetheless correct (exactly 40 labeled sets in 2
-translation classes) and the stored sets are true sets with elements
-swapped between the plus- and minus-parts — an export-stage defect.
+implementation, decides **58 more Open cells** (every nonexistence
+consistent with the criteria, zero conflicts): **48 empty, and 10
+containing signed difference sets that appear in no published source**,
+including a λ = 1 set in Z₅×Z₅ and cells where, at fixed (v,k,λ), the
+group structure decides existence — at order 27 and at the 3-Sylow of
+order 36 cyclicity obstructs, and SDS(32,28,12) exists in exactly the
+two abelian groups of order 32 containing Z₄×Z₄. In total the Open
+shelf drops from 67,823 to **22,453**. Finally, an audit with an
+independent checker found that **147 of the 280 witness sets stored in
+the database fail the defining equation** (21 of 144 witness-bearing
+cells); for the one such cell small enough to re-enumerate completely,
+SDS(20,11,2) in Z₂₀, we show the cell's "All" status is nonetheless
+correct (exactly 40 labeled sets in 2 translation classes) and the
+stored sets are true sets with elements swapped between the plus- and
+minus-parts — an export-stage defect — and ≤2-swap repair recovers
+independently re-verified witnesses for 12 of the 21 affected cells.
 
 ## 1. Definitions and notation
 
@@ -176,6 +183,16 @@ elements as coordinates in the invariant-factor groups):
   groups of order 27).
 - SDS(32,28,12) in Z₄×Z₈ and in Z₂×Z₄×Z₄ — and in **no other** abelian
   group of order 32 (all five remaining groups exhausted empty).
+- SDS(36,11,2) in Z₆×Z₆ and Z₃×Z₁₂ but **not** in Z₂×Z₁₈: at fixed
+  parameters the split tracks whether the 3-Sylow subgroup is
+  non-cyclic — the same direction as the order-27 exhibit below.
+
+In total 58 previously-Open cells were decided (10 EXIST, 48
+NONEXIST; 42 beyond the criteria's reach, 16 double-covered), at wall
+times from 30 ms to 31 minutes per cell on 4 cores. A 94-second probe
+of the surviving (32,20,4,[32]) monster measured 3.2·10⁶ nodes/s
+against a ~5.5·10¹¹-leaf tree (~48 core-hours per group, seven
+groups) — out of this session's range, left open.
 
 **Group structure decides existence.** Two exhibits from today's table:
 
