@@ -130,6 +130,16 @@ Python 3 + NumPy, plus SciPy for `ck_exact.py`.
 
 - **`ck_analysis.py` reads `c6_exact.txt`, which does not exist.** The certified
   value lives in `c6_certified.txt`. Fix before relying on that script.
+- **New adjacent paper (flagged 2026-08-09, unread here):** Muney,
+  "Holes in Valid-Extension Sets of Finite Gilbreath Sequences",
+  arXiv:2606.23721 (Jun 2026, 36 pp., (secondary)) — the set of integers
+  appendable to a finite Gilbreath sequence can have interior holes
+  (smallest failure at (2,3,5,9,15)), refuting an interval-shaped
+  characterization proposed in earlier literature; gives an exact
+  membership criterion and an interval-filling condition described as an
+  order-sensitive Brown-completeness analogue. Opens a cheap computational
+  surface against this repo's prime machinery (hole statistics of
+  prime-prefix extension sets); read the PDF before building on it.
 - ~~The arXiv reference 2607.08712 has not been independently verified.~~
   Resolved 2026-07-29 (R3 session): the paper exists as cited (Chase, Hunter,
   Tao, "Gilbreath's conjecture: a Cramér random model and a deterministic
