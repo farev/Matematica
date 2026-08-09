@@ -1,0 +1,281 @@
+name,status,comment,set_index,verdict,detail
+"SDS(101,100,-1,[101])",Yes,Paley,0,VALID,
+"SDS(103,52,24,[103])",Yes,Paley and zero,0,VALID,
+"SDS(104,29,4,[104])",All,Orbit Exhaust,0,INVALID,autocorrelation at d=1 is 8 != lam=4
+"SDS(104,29,4,[104])",All,Orbit Exhaust,1,INVALID,autocorrelation at d=4 is 8 != lam=4
+"SDS(104,29,4,[104])",All,Orbit Exhaust,2,INVALID,autocorrelation at d=2 is 0 != lam=4
+"SDS(104,29,4,[104])",All,Orbit Exhaust,3,INVALID,autocorrelation at d=1 is 6 != lam=4
+"SDS(104,29,4,[104])",All,Orbit Exhaust,4,INVALID,autocorrelation at d=1 is 6 != lam=4
+"SDS(104,29,4,[104])",All,Orbit Exhaust,5,INVALID,autocorrelation at d=2 is 2 != lam=4
+"SDS(104,29,4,[104])",All,Orbit Exhaust,6,INVALID,autocorrelation at d=1 is 8 != lam=4
+"SDS(104,29,4,[104])",All,Orbit Exhaust,7,INVALID,autocorrelation at d=2 is 2 != lam=4
+"SDS(104,29,4,[104])",All,Orbit Exhaust,8,INVALID,autocorrelation at d=2 is 2 != lam=4
+"SDS(104,29,4,[104])",All,Orbit Exhaust,9,INVALID,autocorrelation at d=2 is 6 != lam=4
+"SDS(104,29,4,[104])",All,Orbit Exhaust,10,INVALID,autocorrelation at d=1 is 2 != lam=4
+"SDS(104,29,4,[104])",All,Orbit Exhaust,11,INVALID,autocorrelation at d=6 is 2 != lam=4
+"SDS(104,29,4,[104])",All,Orbit Exhaust,12,INVALID,autocorrelation at d=1 is 0 != lam=4
+"SDS(104,29,4,[104])",All,Orbit Exhaust,13,INVALID,autocorrelation at d=1 is 6 != lam=4
+"SDS(104,29,4,[104])",All,Orbit Exhaust,14,INVALID,autocorrelation at d=1 is 6 != lam=4
+"SDS(104,29,4,[104])",All,Orbit Exhaust,15,INVALID,autocorrelation at d=1 is 6 != lam=4
+"SDS(104,29,4,[104])",All,Orbit Exhaust,16,INVALID,autocorrelation at d=1 is 2 != lam=4
+"SDS(104,29,4,[104])",All,Orbit Exhaust,17,INVALID,autocorrelation at d=1 is 8 != lam=4
+"SDS(104,29,4,[104])",All,Orbit Exhaust,18,INVALID,autocorrelation at d=1 is 8 != lam=4
+"SDS(104,29,4,[104])",All,Orbit Exhaust,19,INVALID,autocorrelation at d=1 is 6 != lam=4
+"SDS(104,29,4,[104])",All,Orbit Exhaust,20,INVALID,autocorrelation at d=1 is 2 != lam=4
+"SDS(104,29,4,[104])",All,Orbit Exhaust,21,INVALID,autocorrelation at d=1 is 6 != lam=4
+"SDS(104,29,4,[104])",All,Orbit Exhaust,22,INVALID,autocorrelation at d=2 is 2 != lam=4
+"SDS(104,29,4,[104])",All,Orbit Exhaust,23,INVALID,autocorrelation at d=1 is 6 != lam=4
+"SDS(107,54,25,[107])",All,Paley and zero,0,VALID,
+"SDS(109,108,-1,[109])",Yes,Paley,0,VALID,
+"SDS(109,81,6,[109])",Yes,Orbit exhaust with forced multiplier,0,VALID,
+"SDS(11,6,1,[11])",All,Paley and zero,0,VALID,
+"SDS(111,66,17,[111])",All,Orbit Exhaust,0,INVALID,autocorrelation at d=2 is 13 != lam=17
+"SDS(111,66,17,[111])",All,Orbit Exhaust,1,INVALID,autocorrelation at d=1 is 25 != lam=17
+"SDS(111,66,17,[111])",All,Orbit Exhaust,2,INVALID,autocorrelation at d=3 is 25 != lam=17
+"SDS(111,66,17,[111])",All,Orbit Exhaust,3,INVALID,autocorrelation at d=1 is 13 != lam=17
+"SDS(111,66,17,[111])",All,Orbit Exhaust,4,INVALID,autocorrelation at d=1 is 19 != lam=17
+"SDS(111,66,17,[111])",All,Orbit Exhaust,5,INVALID,autocorrelation at d=1 is 21 != lam=17
+"SDS(113,112,-1,[113])",Yes,Paley,0,VALID,
+"SDS(121,120,-1,[11,11])",Yes,"PDS construction of He, Chen and Ge",0,VALID,
+"SDS(125,124,-1,[5,5,5])",Yes,"PDS construction of He, Chen and Ge",0,VALID,
+"SDS(126,96,32,[126])",Yes,Orbit exhaust with forced multiplier,0,VALID,
+"SDS(126,96,32,[126])",Yes,Orbit exhaust with forced multiplier,1,VALID,
+"SDS(126,96,32,[126])",Yes,Orbit exhaust with forced multiplier,2,VALID,
+"SDS(127,64,30,[127])",Yes,Paley and zero,0,VALID,
+"SDS(13,12,-1,[13])",Yes,Paley,0,VALID,
+"SDS(131,66,31,[131])",Yes,Paley and zero,0,VALID,
+"SDS(137,136,-1,[137])",Yes,Paley,0,VALID,
+"SDS(139,70,33,[139])",All,Paley and zero,0,VALID,
+"SDS(143,98,23,[143])",Yes,Orbit Exhaust,0,VALID,
+"SDS(149,112,81,[149])",All,Orbit exhaust,0,VALID,
+"SDS(149,148,-1,[149])",Yes,Paley,0,VALID,
+"SDS(151,76,36,[151])",Yes,Paley and zero,0,VALID,
+"SDS(157,156,-1,[157])",Yes,Paley,0,VALID,
+"SDS(163,82,39,[163])",All,Paley and zero,0,VALID,
+"SDS(167,84,40,[167])",Yes,Paley and zero,0,INVALID,autocorrelation at d=1 is 42 != lam=40
+"SDS(169,168,-1,[13,13])",Yes,"PDS construction of He, Chen and Ge",0,VALID,
+"SDS(17,16,-1,[17])",Yes,Paley,0,VALID,
+"SDS(173,172,-1,[173])",Yes,Paley,0,VALID,
+"SDS(179,90,43,[179])",All,Paley and zero,0,VALID,
+"SDS(18,13,4,[3,6])",Yes,Orbit Exhaust,0,VALID,"verifies under undeclared coordinates (2, 3, 3)"
+"SDS(181,136,11,[181])",All,Orbit Exhaust,0,INVALID,autocorrelation at d=1 is 23 != lam=11
+"SDS(181,180,-1,[181])",Yes,Paley,0,VALID,
+"SDS(182,101,20,[182])",All,Orbit Exhaust,0,INVALID,autocorrelation at d=1 is 22 != lam=20
+"SDS(182,101,20,[182])",All,Orbit Exhaust,1,INVALID,autocorrelation at d=1 is 10 != lam=20
+"SDS(182,101,20,[182])",All,Orbit Exhaust,2,INVALID,autocorrelation at d=1 is 18 != lam=20
+"SDS(182,101,20,[182])",All,Orbit Exhaust,3,INVALID,autocorrelation at d=1 is 8 != lam=20
+"SDS(182,101,20,[182])",All,Orbit Exhaust,4,INVALID,autocorrelation at d=1 is 12 != lam=20
+"SDS(182,101,20,[182])",All,Orbit Exhaust,5,INVALID,autocorrelation at d=1 is 24 != lam=20
+"SDS(182,101,20,[182])",All,Orbit Exhaust,6,INVALID,autocorrelation at d=1 is 18 != lam=20
+"SDS(182,101,20,[182])",All,Orbit Exhaust,7,INVALID,autocorrelation at d=1 is 24 != lam=20
+"SDS(182,101,20,[182])",All,Orbit Exhaust,8,INVALID,autocorrelation at d=1 is 32 != lam=20
+"SDS(182,101,20,[182])",All,Orbit Exhaust,9,INVALID,autocorrelation at d=1 is 14 != lam=20
+"SDS(182,101,20,[182])",All,Orbit Exhaust,10,INVALID,autocorrelation at d=1 is 16 != lam=20
+"SDS(182,101,20,[182])",All,Orbit Exhaust,11,INVALID,autocorrelation at d=1 is 18 != lam=20
+"SDS(182,101,20,[182])",All,Orbit Exhaust,12,INVALID,autocorrelation at d=1 is 26 != lam=20
+"SDS(182,101,20,[182])",All,Orbit Exhaust,13,INVALID,autocorrelation at d=2 is 26 != lam=20
+"SDS(182,101,20,[182])",All,Orbit Exhaust,14,INVALID,autocorrelation at d=1 is 18 != lam=20
+"SDS(182,101,20,[182])",All,Orbit Exhaust,15,INVALID,autocorrelation at d=1 is 30 != lam=20
+"SDS(182,101,20,[182])",All,Orbit Exhaust,16,INVALID,autocorrelation at d=1 is 14 != lam=20
+"SDS(182,101,20,[182])",All,Orbit Exhaust,17,INVALID,autocorrelation at d=1 is 10 != lam=20
+"SDS(182,101,20,[182])",All,Orbit Exhaust,18,INVALID,autocorrelation at d=1 is 14 != lam=20
+"SDS(182,101,20,[182])",All,Orbit Exhaust,19,INVALID,autocorrelation at d=2 is 26 != lam=20
+"SDS(182,101,20,[182])",All,Orbit Exhaust,20,INVALID,autocorrelation at d=1 is 26 != lam=20
+"SDS(182,101,20,[182])",All,Orbit Exhaust,21,INVALID,autocorrelation at d=1 is 22 != lam=20
+"SDS(182,101,20,[182])",All,Orbit Exhaust,22,INVALID,autocorrelation at d=1 is 18 != lam=20
+"SDS(182,101,20,[182])",All,Orbit Exhaust,23,INVALID,autocorrelation at d=1 is 16 != lam=20
+"SDS(182,101,20,[182])",All,Orbit Exhaust,24,INVALID,autocorrelation at d=1 is 22 != lam=20
+"SDS(182,38,2,[182])",Yes,"Orbit Exhaust, assuming multiplier 3",0,INVALID,autocorrelation at d=1 is -2 != lam=2
+"SDS(182,38,2,[182])",Yes,"Orbit Exhaust, assuming multiplier 3",1,INVALID,autocorrelation at d=2 is 4 != lam=2
+"SDS(182,38,2,[182])",Yes,"Orbit Exhaust, assuming multiplier 3",2,INVALID,autocorrelation at d=1 is 4 != lam=2
+"SDS(182,38,2,[182])",Yes,"Orbit Exhaust, assuming multiplier 3",3,INVALID,autocorrelation at d=2 is 0 != lam=2
+"SDS(182,38,2,[182])",Yes,"Orbit Exhaust, assuming multiplier 3",4,INVALID,autocorrelation at d=1 is 0 != lam=2
+"SDS(182,38,2,[182])",Yes,"Orbit Exhaust, assuming multiplier 3",5,INVALID,autocorrelation at d=1 is 6 != lam=2
+"SDS(182,38,2,[182])",Yes,"Orbit Exhaust, assuming multiplier 3",6,INVALID,autocorrelation at d=2 is -2 != lam=2
+"SDS(182,38,2,[182])",Yes,"Orbit Exhaust, assuming multiplier 3",7,INVALID,autocorrelation at d=1 is 4 != lam=2
+"SDS(182,38,2,[182])",Yes,"Orbit Exhaust, assuming multiplier 3",8,INVALID,autocorrelation at d=1 is 0 != lam=2
+"SDS(182,38,2,[182])",Yes,"Orbit Exhaust, assuming multiplier 3",9,INVALID,autocorrelation at d=1 is 4 != lam=2
+"SDS(182,38,2,[182])",Yes,"Orbit Exhaust, assuming multiplier 3",10,INVALID,autocorrelation at d=1 is 0 != lam=2
+"SDS(182,38,2,[182])",Yes,"Orbit Exhaust, assuming multiplier 3",11,INVALID,autocorrelation at d=2 is 4 != lam=2
+"SDS(187,97,48,[187])",All,Prime Power Pair,0,VALID,
+"SDS(19,10,3,[19])",All,Paley and zero,0,VALID,
+"SDS(19,13,2,[19])",All,Orbit exhaust,0,VALID,
+"SDS(19,13,6,[19])",All,Orbit exhaust,0,VALID,
+"SDS(191,96,46,[191])",Yes,Orbit exhaust with forced multiplier,0,INVALID,autocorrelation at d=4 is 48 != lam=46
+"SDS(193,192,-1,[193])",Yes,Paley,0,VALID,
+"SDS(197,196,-1,[197])",Yes,Paley,0,VALID,
+"SDS(199,100,48,[199])",Yes,Orbit exhaust with forced multiplier,0,INVALID,autocorrelation at d=1 is 50 != lam=48
+"SDS(20,11,2,[20])",All,Orbit Exhaust,0,INVALID,autocorrelation at d=3 is 0 != lam=2
+"SDS(20,11,2,[20])",All,Orbit Exhaust,1,INVALID,autocorrelation at d=4 is 0 != lam=2
+"SDS(20,11,2,[20])",All,Orbit Exhaust,2,INVALID,autocorrelation at d=1 is 0 != lam=2
+"SDS(20,11,2,[20])",All,Orbit Exhaust,3,INVALID,autocorrelation at d=1 is 4 != lam=2
+"SDS(200,151,102,[200])",All,Orbit Exhaust,0,INVALID,autocorrelation at d=1 is 100 != lam=102
+"SDS(200,151,102,[200])",All,Orbit Exhaust,1,INVALID,autocorrelation at d=1 is 108 != lam=102
+"SDS(200,151,102,[200])",All,Orbit Exhaust,2,INVALID,autocorrelation at d=1 is 104 != lam=102
+"SDS(200,151,102,[200])",All,Orbit Exhaust,3,INVALID,autocorrelation at d=2 is 106 != lam=102
+"SDS(200,151,102,[200])",All,Orbit Exhaust,4,INVALID,autocorrelation at d=1 is 100 != lam=102
+"SDS(200,151,102,[200])",All,Orbit Exhaust,5,INVALID,autocorrelation at d=3 is 104 != lam=102
+"SDS(200,151,102,[200])",All,Orbit Exhaust,6,INVALID,autocorrelation at d=1 is 106 != lam=102
+"SDS(200,151,102,[200])",All,Orbit Exhaust,7,INVALID,autocorrelation at d=5 is 104 != lam=102
+"SDS(200,151,102,[200])",All,Orbit Exhaust,8,INVALID,autocorrelation at d=1 is 100 != lam=102
+"SDS(200,151,102,[200])",All,Orbit Exhaust,9,INVALID,autocorrelation at d=1 is 106 != lam=102
+"SDS(200,151,102,[200])",All,Orbit Exhaust,10,INVALID,autocorrelation at d=2 is 104 != lam=102
+"SDS(200,151,102,[200])",All,Orbit Exhaust,11,INVALID,autocorrelation at d=2 is 100 != lam=102
+"SDS(200,151,102,[200])",All,Orbit Exhaust,12,INVALID,autocorrelation at d=1 is 100 != lam=102
+"SDS(200,151,102,[200])",All,Orbit Exhaust,13,INVALID,autocorrelation at d=1 is 106 != lam=102
+"SDS(200,151,102,[200])",All,Orbit Exhaust,14,INVALID,autocorrelation at d=3 is 104 != lam=102
+"SDS(200,151,102,[200])",All,Orbit Exhaust,15,INVALID,autocorrelation at d=2 is 100 != lam=102
+"SDS(200,151,102,[200])",All,Orbit Exhaust,16,INVALID,autocorrelation at d=1 is 106 != lam=102
+"SDS(200,151,102,[200])",All,Orbit Exhaust,17,INVALID,autocorrelation at d=2 is 104 != lam=102
+"SDS(200,151,102,[200])",All,Orbit Exhaust,18,INVALID,autocorrelation at d=1 is 104 != lam=102
+"SDS(200,151,102,[200])",All,Orbit Exhaust,19,INVALID,autocorrelation at d=1 is 104 != lam=102
+"SDS(200,151,102,[200])",All,Orbit Exhaust,20,INVALID,autocorrelation at d=1 is 104 != lam=102
+"SDS(200,151,102,[200])",All,Orbit Exhaust,21,INVALID,autocorrelation at d=2 is 104 != lam=102
+"SDS(200,151,102,[200])",All,Orbit Exhaust,22,INVALID,autocorrelation at d=1 is 104 != lam=102
+"SDS(200,151,102,[200])",All,Orbit Exhaust,23,INVALID,autocorrelation at d=1 is 100 != lam=102
+"SDS(200,151,102,[200])",All,Orbit Exhaust,24,INVALID,autocorrelation at d=2 is 100 != lam=102
+"SDS(200,151,102,[200])",All,Orbit Exhaust,25,INVALID,autocorrelation at d=1 is 106 != lam=102
+"SDS(200,151,102,[200])",All,Orbit Exhaust,26,INVALID,autocorrelation at d=2 is 110 != lam=102
+"SDS(200,151,102,[200])",All,Orbit Exhaust,27,INVALID,autocorrelation at d=1 is 104 != lam=102
+"SDS(200,151,102,[200])",All,Orbit Exhaust,28,INVALID,autocorrelation at d=2 is 104 != lam=102
+"SDS(200,151,102,[200])",All,Orbit Exhaust,29,INVALID,autocorrelation at d=1 is 104 != lam=102
+"SDS(200,151,102,[200])",All,Orbit Exhaust,30,INVALID,autocorrelation at d=1 is 100 != lam=102
+"SDS(200,151,102,[200])",All,Orbit Exhaust,31,INVALID,autocorrelation at d=1 is 104 != lam=102
+"SDS(200,151,102,[200])",All,Orbit Exhaust,32,INVALID,autocorrelation at d=4 is 100 != lam=102
+"SDS(200,151,102,[200])",All,Orbit Exhaust,33,INVALID,autocorrelation at d=1 is 100 != lam=102
+"SDS(200,151,102,[200])",All,Orbit Exhaust,34,INVALID,autocorrelation at d=1 is 100 != lam=102
+"SDS(200,151,102,[200])",All,Orbit Exhaust,35,INVALID,autocorrelation at d=1 is 98 != lam=102
+"SDS(200,151,102,[200])",All,Orbit Exhaust,36,INVALID,autocorrelation at d=2 is 104 != lam=102
+"SDS(200,151,102,[200])",All,Orbit Exhaust,37,INVALID,autocorrelation at d=1 is 104 != lam=102
+"SDS(200,151,102,[200])",All,Orbit Exhaust,38,INVALID,autocorrelation at d=1 is 100 != lam=102
+"SDS(200,151,102,[200])",All,Orbit Exhaust,39,INVALID,autocorrelation at d=1 is 104 != lam=102
+"SDS(219,172,108,[219])",All,Orbit exhaust,0,VALID,
+"SDS(219,83,19,[219])",All,Orbit exhaust,0,VALID,
+"SDS(227,114,55,[227])",All,Paley and zero,0,VALID,
+"SDS(229,172,13,[229])",All,Orbit Exhaust,0,VALID,
+"SDS(229,228,-1,[229])",Yes,Paley,0,VALID,
+"SDS(23,12,4,[23])",All,Paley and zero,0,VALID,
+"SDS(233,232,-1,[233])",Yes,Paley,0,VALID,
+"SDS(241,240,-1,[241])",Yes,Paley,0,VALID,
+"SDS(243,242,161,[3,3,3,3,3])",Yes,"PDS construction of He, Chen and Ge",0,VALID,
+"SDS(247,127,63,[247])",All,Prime Power Pair,0,INVALID,autocorrelation at d=3 is 61 != lam=63
+"SDS(247,127,63,[247])",All,Prime Power Pair,1,INVALID,autocorrelation at d=1 is 65 != lam=63
+"SDS(247,127,63,[247])",All,Prime Power Pair,2,INVALID,autocorrelation at d=2 is 61 != lam=63
+"SDS(247,127,63,[247])",All,Prime Power Pair,3,INVALID,autocorrelation at d=1 is 61 != lam=63
+"SDS(25,24,-1,[5,5])",Yes,"PDS construction of He, Chen and Ge",0,VALID,
+"SDS(257,256,-1,[257])",Yes,Paley,0,VALID,
+"SDS(269,201,16,[269])",Yes,Orbit Exhaust with forced multiplier,0,VALID,
+"SDS(269,268,-1,[269])",Yes,Paley,0,VALID,
+"SDS(277,208,17,[277])",All,Orbit Exhaust,0,INVALID,autocorrelation at d=1 is 21 != lam=17
+"SDS(277,276,-1,[277])",Yes,Paley,0,VALID,
+"SDS(281,280,-1,[281])",Yes,Paley,0,VALID,
+"SDS(283,142,69,[283])",All,Paley and zero,0,VALID,
+"SDS(289,288,-1,[17,17])",Yes,"PDS construction of He, Chen and Ge",0,VALID,
+"SDS(29,28,-1,[29])",Yes,Paley,0,VALID,
+"SDS(29,8,1,[29])",All,Quartic residues and zero,0,VALID,
+"SDS(293,292,-1,[293])",Yes,Paley,0,VALID,
+"SDS(307,154,75,[307])",All,Paley and zero,0,VALID,
+"SDS(307,154,75,[307])",All,Paley and zero,1,VALID,
+"SDS(31,16,6,[31])",Yes,"First SDS is Paley with zero, second is from orbit exhaust with forced multiplier",0,VALID,
+"SDS(31,16,6,[31])",Yes,"First SDS is Paley with zero, second is from orbit exhaust with forced multiplier",1,VALID,
+"SDS(31,19,9,[31])",Yes,Orbit Exhaust with forced multiplier,0,VALID,
+"SDS(31,24,4,[31])",All,Orbit Exhaust,0,VALID,
+"SDS(311,156,76,[311])",Yes,Paley and zero,0,VALID,
+"SDS(313,312,-1,[313])",Yes,Paley,0,VALID,
+"SDS(317,316,-1,[317])",Yes,Paley,0,VALID,
+"SDS(331,166,81,[331])",Yes,Paley and zero,0,VALID,
+"SDS(337,336,-1,[337])",Yes,Paley,0,VALID,
+"SDS(347,174,85,[347])",All,Orbit Exhaust,0,INVALID,autocorrelation at d=3 is 87 != lam=85
+"SDS(349,348,-1,[349])",Yes,Paley,0,VALID,
+"SDS(349,88,21,[349])",All,Quartic residues and zero,0,VALID,
+"SDS(35,19,3,[35])",All,Orbit exhaust,0,VALID,
+"SDS(35,21,10,[35])",All,Orbit Exhaust,0,INVALID,autocorrelation at d=1 is 12 != lam=10
+"SDS(35,21,10,[35])",All,Orbit Exhaust,1,INVALID,autocorrelation at d=1 is 8 != lam=10
+"SDS(35,21,10,[35])",All,Orbit Exhaust,2,INVALID,autocorrelation at d=1 is 12 != lam=10
+"SDS(35,21,10,[35])",All,Orbit Exhaust,3,INVALID,autocorrelation at d=2 is 12 != lam=10
+"SDS(353,352,-1,[353])",Yes,Paley,0,VALID,
+"SDS(359,180,88,[359])",Yes,Paley and zero,0,VALID,
+"SDS(361,360,-1,[19,19])",Yes,"PDS construction of He, Chen and Ge",0,VALID,
+"SDS(367,184,90,[367])",Yes,Paley and zero,0,VALID,
+"SDS(37,36,-1,[37])",Yes,Paley,0,VALID,
+"SDS(373,280,207,[373])",All,Orbit exhaust,0,VALID,
+"SDS(373,372,-1,[373])",Yes,Paley,0,VALID,
+"SDS(379,190,93,[379])",All,Orbit Exhaust,0,INVALID,autocorrelation at d=1 is 95 != lam=93
+"SDS(383,192,94,[383])",Yes,Paley and zero,0,VALID,
+"SDS(389,388,-1,[389])",Yes,Paley,0,VALID,
+"SDS(391,199,99,[391])",All,Prime Power Pair,0,VALID,
+"SDS(397,396,-1,[397])",Yes,Paley,0,VALID,
+"SDS(401,400,-1,[401])",Yes,Paley,0,VALID,
+"SDS(409,408,-1,[409])",Yes,Paley,0,VALID,
+"SDS(41,40,-1,[41])",Yes,Paley,0,VALID,
+"SDS(421,420,-1,[421])",Yes,Paley,0,VALID,
+"SDS(43,22,9,[43])",All,Paley and zero,0,VALID,
+"SDS(431,216,106,[431])",Yes,Paley and zero,0,VALID,
+"SDS(433,432,-1,[433])",Yes,Paley,0,VALID,
+"SDS(439,220,108,[439])",Yes,Orbit Exhaust with forced multiplier,0,VALID,
+"SDS(439,220,108,[439])",Yes,Orbit Exhaust with forced multiplier,1,VALID,
+"SDS(443,222,109,[443])",All,Orbit Exhaust,0,INVALID,autocorrelation at d=1 is 111 != lam=109
+"SDS(449,448,-1,[449])",Yes,Paley,0,VALID,
+"SDS(457,456,-1,[457])",Yes,Paley,0,VALID,
+"SDS(461,460,-1,[461])",Yes,Paley,0,VALID,
+"SDS(463,232,114,[463])",Yes,Paley and zero,0,VALID,
+"SDS(467,234,115,[467])",Yes,Paley and zero,0,VALID,
+"SDS(47,24,10,[47])",Yes,Paley and zero,0,VALID,
+"SDS(479,240,118,[479])",Yes,Paley and zero,0,VALID,
+"SDS(487,244,120,[487])",Yes,Paley and zero,0,VALID,
+"SDS(49,48,-1,[7,7])",Yes,"PDS construction of He, Chen and Ge",0,VALID,
+"SDS(491,246,121,[491])",All,Orbit Exhaust,0,INVALID,autocorrelation at d=1 is 123 != lam=121
+"SDS(499,250,123,[499])",All,Orbit Exhaust,0,INVALID,autocorrelation at d=1 is 121 != lam=123
+"SDS(499,250,123,[499])",All,Orbit Exhaust,1,INVALID,autocorrelation at d=4 is 125 != lam=123
+"SDS(5,4,-1,[5])",Yes,Paley,0,VALID,
+"SDS(51,19,3,[51])",All,Orbit Exhaust,0,INVALID,autocorrelation at d=1 is 5 != lam=3
+"SDS(51,19,3,[51])",All,Orbit Exhaust,1,INVALID,autocorrelation at d=3 is 5 != lam=3
+"SDS(51,19,3,[51])",All,Orbit Exhaust,2,INVALID,autocorrelation at d=1 is 5 != lam=3
+"SDS(51,19,3,[51])",All,Orbit Exhaust,3,INVALID,autocorrelation at d=2 is 5 != lam=3
+"SDS(53,40,27,[53])",All,Orbit exhaust,0,VALID,
+"SDS(53,52,-1,[53])",Yes,Paley,0,VALID,
+"SDS(55,10,1,[55])",All,Orbit exhaust,0,VALID,
+"SDS(55,31,15,[55])",All,Prime Power Pair,0,VALID,
+"SDS(59,30,13,[59])",All,Paley and zero,0,VALID,
+"SDS(61,16,3,[61])",All,Quartic residues and zero,0,VALID,
+"SDS(61,49,36,[61])",All,Orbit Exhaust,0,INVALID,autocorrelation at d=1 is 38 != lam=36
+"SDS(61,60,-1,[61])",Yes,Paley,0,VALID,
+"SDS(67,34,15,[67])",All,Paley and zero,0,VALID,
+"SDS(67,49,12,[67])",All,Orbit exhaust,0,VALID,
+"SDS(67,49,20,[67])",All,Orbit exhaust,0,VALID,
+"SDS(71,36,16,[71])",Yes,Paley and zero,0,VALID,
+"SDS(71,51,1,[71])",All,Orbit Exhaust,0,VALID,
+"SDS(73,36,4,[73])",All,Orbit Exhaust,0,VALID,
+"SDS(73,64,0,[73])",All,Orbit Exhaust,0,VALID,
+"SDS(73,72,-1,[73])",Yes,Paley,0,VALID,
+"SDS(78,53,28,[78])",All,Orbit Exhaust,0,INVALID,autocorrelation at d=2 is 30 != lam=28
+"SDS(78,53,28,[78])",All,Orbit Exhaust,1,INVALID,autocorrelation at d=1 is 30 != lam=28
+"SDS(78,53,28,[78])",All,Orbit Exhaust,2,INVALID,autocorrelation at d=1 is 26 != lam=28
+"SDS(78,53,28,[78])",All,Orbit Exhaust,3,INVALID,autocorrelation at d=1 is 26 != lam=28
+"SDS(78,53,28,[78])",All,Orbit Exhaust,4,INVALID,autocorrelation at d=1 is 30 != lam=28
+"SDS(78,53,28,[78])",All,Orbit Exhaust,5,INVALID,autocorrelation at d=2 is 24 != lam=28
+"SDS(78,53,28,[78])",All,Orbit Exhaust,6,INVALID,autocorrelation at d=1 is 26 != lam=28
+"SDS(78,53,28,[78])",All,Orbit Exhaust,7,INVALID,autocorrelation at d=2 is 30 != lam=28
+"SDS(78,53,28,[78])",All,Orbit Exhaust,8,INVALID,autocorrelation at d=1 is 30 != lam=28
+"SDS(78,53,28,[78])",All,Orbit Exhaust,9,INVALID,autocorrelation at d=2 is 30 != lam=28
+"SDS(78,53,28,[78])",All,Orbit Exhaust,10,INVALID,autocorrelation at d=1 is 30 != lam=28
+"SDS(78,53,28,[78])",All,Orbit Exhaust,11,INVALID,autocorrelation at d=2 is 30 != lam=28
+"SDS(79,40,18,[79])",Yes,Paley and zero,0,VALID,
+"SDS(80,44,8,[80])",Yes,Orbit Exhaust with forced multiplier,0,VALID,
+"SDS(80,44,8,[80])",Yes,Orbit Exhaust with forced multiplier,1,VALID,
+"SDS(80,44,8,[80])",Yes,Orbit Exhaust with forced multiplier,2,VALID,
+"SDS(80,44,8,[80])",Yes,Orbit Exhaust with forced multiplier,3,VALID,
+"SDS(80,44,8,[80])",Yes,Orbit Exhaust with forced multiplier,4,VALID,
+"SDS(80,72,36,[80])",Yes,Orbit Exhaust with forced multiplier,0,VALID,
+"SDS(81,80,-1,[3,3,3,3])",Yes,"PDS construction of He, Chen and Ge",0,VALID,
+"SDS(83,42,19,[83])",All,Paley and zero,0,VALID,
+"SDS(883,442,219,[883])",All,Orbit Exhaust,0,VALID,
+"SDS(89,33,1,[89])",All,Orbit exhaust,0,VALID,
+"SDS(89,33,1,[89])",All,Orbit exhaust,1,VALID,
+"SDS(89,88,-1,[89])",Yes,Paley,0,VALID,
+"SDS(9,8,-1,[3,3])",Yes,"PDS construction of He, Chen and Ge",0,VALID,
+"SDS(91,49,24,[91])",All,Prime Power Pair,0,VALID,
+"SDS(91,76,60,[91])",All,Orbit exhaust,0,VALID,
+"SDS(93,32,7,[93])",All,Orbit Exhaust,0,VALID,
+"SDS(93,73,48,[93])",All,Orbit Exhaust,0,VALID,
+"SDS(97,96,-1,[97])",Yes,Paley,0,VALID,
