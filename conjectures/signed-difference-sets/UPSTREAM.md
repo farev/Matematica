@@ -33,9 +33,16 @@ error: for SDS(20,11,2) in Z₂₀ we re-enumerated completely — exactly 40
 labeled sets, 2 translation classes — and your stored set 0 is a true
 set with 9 and 11 exchanged between P and N (stored
 P=[0,4,6,7,8,11,12,13,15], N=[1,9]; true
-P=[0,4,6,7,8,9,12,13,15], N=[1,11]). The "All"/"Yes" statuses of the
-affected cells may therefore all be correct; the listed sets need
-regeneration. (Also, one intact entry — SDS(18,13,4,[3,6]) — stores its
+P=[0,4,6,7,8,9,12,13,15], N=[1,11]). Searching the ≤2-swap
+neighborhood of every invalid set repairs 22 of the 147 (each
+re-verified): at least one valid witness is recovered for 12 of the 21
+cells — all sets of SDS(20,11,2), SDS(35,21,10), SDS(247,127,63),
+SDS(499,250,123), and one set each of SDS(61,49,36), SDS(167,84,40),
+SDS(191,96,46), SDS(199,100,48), SDS(347,174,85), SDS(379,190,93),
+SDS(443,222,109), SDS(491,246,121) — see
+`data/repaired_witnesses.csv`. The other 9 cells' stored sets are
+further from valid; their statuses presumably rest on your original
+exhaust runs. (Also, one intact entry — SDS(18,13,4,[3,6]) — stores its
 set in Z₃×Z₃×Z₂ coordinates without a `G_rep` field.)
 
 **2. 45,328 of the 67,823 Open cells follow from two classical
