@@ -40,3 +40,6 @@ conjectures/additive-squares/afsfv
 # compiled searchers (rebuilt by gcc -O3 from the .c sources)
 conjectures/circular-thresholds/dejean_morph
 conjectures/circular-thresholds/dejean_fixpoint
+
+# session-transient build area (solver sources and binaries; rebuilt per session)
+work/
