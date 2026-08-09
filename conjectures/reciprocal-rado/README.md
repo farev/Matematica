@@ -23,6 +23,7 @@ sharpness question at odd prime powers was open as of the July paper.
 
 **Status:** active
 **Sessions:** [2026-08-08](../../log/2026-08-08-reciprocal-rado.md)
+**Write-up page:** [fabianarevalo.com/reciprocal-rado](https://fabianarevalo.com/reciprocal-rado)
 
 ## Results (2026-08-08 session)
 
@@ -88,3 +89,40 @@ pristine source (see the session log for provenance).
   evidence, (secondary)); `60, 3276` (the `f_r(2)` column; the trivial
   `f₁(2) = 2` via `1/2+1/2 = 1/1`) matches nothing indexed. Candidate
   OEIS submission after the paper PDF becomes readable.
+
+**Correction, added 2026-08-08 during the local publish pass (arXiv reachable
+from this machine; it was not reachable from the session sandbox above).**
+The hedges in this session's own documents ("may reproduce", "possible
+rediscovery") understated what is actually true, now checked directly against
+the primary sources:
+
+- Every one of this session's nine "new" certified values was already
+  published, uncertified, before this session ran: Myers–Parrish computed
+  `f₂(2), f₂(3), f₂(4), f₃(2)`; Gaiser–Ramezanpour's own paper (arXiv:2607.04373)
+  computed the rest, and extends further than this repo does: their Table 1/2
+  cover `f₂(k)` for every `k ≤ 25`, their Table 3 covers `f₃(k)` for `k ≤ 5`
+  (`f₃(4)=960, f₃(5)=1650`, not certified here). No `f₄` table appears in
+  either source, so `f₄(2) > 60000` still appears to be new.
+- "Conjecture B" (`f₂(k)=3k²` for even `k ≥ 4`) is **not new**: it is a strict
+  special case of Gaiser–Ramezanpour's own **Conjecture 1.3** ("if `k ≥ 4` is
+  not an odd prime power, then `f₂(k)=3k²`"), which they state explicitly from
+  their own table and which also covers odd composite non-prime-power `k`
+  (verified true in their table at `k=15, 21`). The even-k mechanism sketch in
+  NOTE.md §4 is not in their paper and may still be a genuine small
+  contribution, but it explains only the even case, not the odd-composite one.
+- Gaiser–Ramezanpour's own concluding remarks already state that their
+  odd-prime-power bound is never attained in their table, and pose improving
+  it as their own **Problem 5.2**; "Problem 5.3" asks for a quadratic upper
+  bound for `f₂(k)`, `k ≥ 4` in general. The certified contribution here is a
+  proof for three of their already-noted cases (`k=3,5,7`), not the
+  observation itself.
+- Their table reports `f₂(9) = 252` (Δ = 9, uncertified by them, not certified
+  here). This falsifies the standing session prediction (`f₂(9) ∈ {245,246}`)
+  and shows Δ does **not** shrink monotonically past `k=7`: their reported Δ
+  sequence for `k=9..25` is `9, 9, 6, 0, 13, 9, 0, 21, 12` (the two zeros are
+  `k=15, 21`, both non-prime-powers). Certifying `k=9` onward against their
+  reported values is the sharpest next step, ahead of any new problem
+  selection.
+- Full detail, including the exact paper title, authors and verbatim theorem/
+  conjecture statements pulled from the arXiv HTML rendering, is in the
+  published page's section 1 and section 8.

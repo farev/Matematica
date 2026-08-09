@@ -26,6 +26,47 @@ f₄(2) > 60000. Every UNSAT boundary carries a machine-checked DRUP
 proof; every SAT boundary a witness coloring verified by two
 independent checkers.
 
+**Correction, added 2026-08-09 during the local publish pass.** arXiv is
+reachable from the machine that produced this correction, though it was not
+reachable from the session sandbox that produced everything above, so the
+paragraph above hedges this material as (secondary) where the sandbox could
+only see abstract-level snippets. Checked directly against the primary
+sources, three claims above overstate novelty:
+
+- "We give the first values of the family at three colors, f₃(2) = 3276 and
+  f₃(3) = 585" is **wrong**: Myers–Parrish already report f₃(2) = 3276;
+  Gaiser–Ramezanpour's own Table 3 already reports f₃(3) = 585 (and extends
+  to f₃(4) = 960, f₃(5) = 1650, neither attempted here). All nine exact
+  values in this note — the seven-entry f₂ ladder included — were already
+  published, uncertified, before this session ran. What this note actually
+  contributes for those nine is the certificate: a DRUP proof of UNSAT and
+  an independently re-verified witness at SAT, which neither source ships.
+  f₄(2) > 60000 has no counterpart in either source and appears to still be
+  new, as a bound (not an exact value).
+- "We conjecture f₂(k) = 3k² for all even k ≥ 4" (Conjecture B, §4) is
+  **not a new conjecture**: it is the even-k restriction of
+  Gaiser–Ramezanpour's own **Conjecture 1.3**, which they state explicitly
+  from their own table and which is strictly more general — it also covers
+  odd composite non-prime-power k (their table confirms it at k = 15, 21,
+  neither certified here). The even-k half-diagonal mechanism of §4 does not
+  appear in their paper and may still be a genuine small contribution, but
+  it explains only the even case.
+- "Sharpness fails at every odd prime power computed... whether Δ(k) → 1"
+  (§4, item 1) reads as an original observation; Gaiser–Ramezanpour's own
+  concluding remarks already note that their bound is never attained in
+  their table and pose improving it as their own Problem 5.2. This note's
+  actual contribution is the certificate for three of their already-noted
+  cases (k = 3, 5, 7), not the pattern itself.
+
+One prediction in this note is now falsified: Gaiser–Ramezanpour's table
+reports f₂(9) = 252 (Δ = 9, uncertified by them, not certified here),
+against this note's logged pre-run guess f₂(9) ∈ {245, 246} (§4, item 1).
+Their reported Δ sequence for k = 9..25 is 9, 9, 6, 0, 13, 9, 0, 21, 12 (the
+two zeros at the non-prime-powers k = 15, 21) — Δ does not shrink
+monotonically past k = 7. Full detail, exact paper titles/authors and
+verbatim statements pulled from the arXiv HTML rendering: `README.md`
+"Known defects" and the published page's sections 1 and 8.
+
 ## 1. Definitions and conventions
 
 f_r(k): least n such that every function χ : {1,…,n} → {0,…,r−1} admits
