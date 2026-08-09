@@ -1,0 +1,59 @@
+name,decision,method,witnesses_found,witnesses_verified,wall_s,criterion_note
+"SDS(18,15,2,[3,6])",NONEXIST,exhaust+criterion,0,True,0.111,"T1: |G| even, k-lam=13 not a perfect square"
+"SDS(20,11,2,[2,10])",NONEXIST,exhaust,0,True,0.481,
+"SDS(20,17,8,[2,10])",NONEXIST,exhaust,0,True,0.032,
+"SDS(24,18,2,[2,12])",NONEXIST,exhaust,0,True,54.956,
+"SDS(24,18,2,[2,2,6])",NONEXIST,exhaust,0,True,41.398,
+"SDS(25,12,1,[5,5])",EXIST,exhaust,50,True,48.690,
+"SDS(25,16,2,[5,5])",NONEXIST,exhaust+criterion,0,True,181.137,"T2: m=5 | exp(G)=5, p=2 self-conjugate mod 5, v_p(k-lam)=1 odd"
+"SDS(25,24,5,[5,5])",NONEXIST,exhaust+criterion,0,True,0.659,"T2: m=5 | exp(G)=5, p=19 self-conjugate mod 5, v_p(k-lam)=1 odd"
+"SDS(27,10,1,[3,3,3])",EXIST,exhaust,50,True,16.990,
+"SDS(27,10,1,[3,9])",EXIST,exhaust,50,True,16.958,
+"SDS(27,12,2,[3,3,3])",NONEXIST,exhaust+criterion,0,True,57.211,"T2: m=3 | exp(G)=3, p=2 self-conjugate mod 3, v_p(k-lam)=1 odd"
+"SDS(27,12,2,[3,9])",NONEXIST,exhaust+criterion,0,True,53.437,"T2: m=3 | exp(G)=9, p=2 self-conjugate mod 3, v_p(k-lam)=1 odd"
+"SDS(27,14,5,[3,3,3])",EXIST,exhaust,50,True,21.018,
+"SDS(27,14,5,[3,9])",EXIST,exhaust,50,True,20.213,
+"SDS(27,17,4,[3,3,3])",NONEXIST,exhaust,0,True,355.586,
+"SDS(27,17,4,[3,9])",NONEXIST,exhaust,0,True,346.113,
+"SDS(27,17,8,[27])",NONEXIST,exhaust,0,True,14.124,
+"SDS(27,17,8,[3,3,3])",EXIST,exhaust,50,True,14.622,
+"SDS(27,22,3,[3,3,3])",NONEXIST,exhaust,0,True,464.751,
+"SDS(27,22,3,[3,9])",NONEXIST,exhaust,0,True,456.049,
+"SDS(27,22,9,[3,3,3])",NONEXIST,exhaust,0,True,19.088,
+"SDS(27,22,9,[3,9])",NONEXIST,exhaust,0,True,19.449,
+"SDS(27,23,1,[3,3,3])",NONEXIST,exhaust+criterion,0,True,541.114,"T2: m=3 | exp(G)=3, p=2 self-conjugate mod 3, v_p(k-lam)=1 odd"
+"SDS(27,23,1,[3,9])",NONEXIST,exhaust+criterion,0,True,539.194,"T2: m=3 | exp(G)=9, p=2 self-conjugate mod 3, v_p(k-lam)=1 odd"
+"SDS(27,23,13,[3,3,3])",NONEXIST,exhaust+criterion,0,True,1.117,"T2: m=3 | exp(G)=3, p=2 self-conjugate mod 3, v_p(k-lam)=1 odd"
+"SDS(27,23,13,[3,9])",NONEXIST,exhaust+criterion,0,True,1.161,"T2: m=3 | exp(G)=9, p=2 self-conjugate mod 3, v_p(k-lam)=1 odd"
+"SDS(27,25,16,[27])",NONEXIST,exhaust,0,True,0.033,
+"SDS(27,25,16,[3,3,3])",NONEXIST,exhaust,0,True,0.030,
+"SDS(27,25,16,[3,9])",NONEXIST,exhaust,0,True,0.030,
+"SDS(28,10,2,[2,14])",NONEXIST,exhaust+criterion,0,True,5.733,"T1: |G| even, k-lam=8 not a perfect square"
+"SDS(28,13,4,[2,14])",NONEXIST,exhaust,0,True,26.618,
+"SDS(28,19,10,[2,14])",NONEXIST,exhaust,0,True,15.558,
+"SDS(28,22,14,[2,14])",NONEXIST,exhaust+criterion,0,True,1.935,"T1: |G| even, k-lam=8 not a perfect square"
+"SDS(28,27,2,[2,14])",NONEXIST,exhaust,0,True,13.717,
+"SDS(32,28,12,[2,16])",NONEXIST,exhaust,0,True,134.758,
+"SDS(32,28,12,[2,2,2,2,2])",NONEXIST,exhaust,0,True,81.316,
+"SDS(32,28,12,[2,2,2,4])",NONEXIST,exhaust,0,True,99.284,
+"SDS(32,28,12,[2,2,8])",NONEXIST,exhaust,0,True,115.245,
+"SDS(32,28,12,[2,4,4])",EXIST,exhaust,50,True,115.615,
+"SDS(32,28,12,[32])",NONEXIST,exhaust,0,True,142.933,
+"SDS(32,28,12,[4,8])",EXIST,exhaust,50,True,129.556,
+"SDS(36,11,2,[2,18])",NONEXIST,exhaust,0,True,306.603,
+"SDS(36,11,2,[3,12])",EXIST,exhaust,50,True,372.206,
+"SDS(36,11,2,[6,6])",EXIST,exhaust,50,True,340.675,
+"SDS(36,29,20,[2,18])",NONEXIST,exhaust,0,True,83.497,
+"SDS(36,29,20,[3,12])",NONEXIST,exhaust,0,True,72.086,
+"SDS(36,29,20,[6,6])",NONEXIST,exhaust,0,True,69.852,
+"SDS(37,28,18,[37])",NONEXIST,exhaust+criterion,0,True,560.944,"T2: m=37 | exp(G)=37, p=2 self-conjugate mod 37, v_p(k-lam)=1 odd"
+"SDS(37,36,15,[37])",NONEXIST,exhaust+criterion,0,True,24.984,"T2: m=37 | exp(G)=37, p=3 self-conjugate mod 37, v_p(k-lam)=1 odd"
+"SDS(37,36,24,[37])",NONEXIST,exhaust+criterion,0,True,0.110,"T2: m=37 | exp(G)=37, p=3 self-conjugate mod 37, v_p(k-lam)=1 odd"
+"SDS(37,36,8,[37])",NONEXIST,exhaust,0,True,380.106,
+"SDS(43,39,25,[43])",NONEXIST,exhaust+criterion,0,True,451.949,"T2: m=43 | exp(G)=43, p=2 self-conjugate mod 43, v_p(k-lam)=1 odd"
+"SDS(44,38,26,[2,22])",NONEXIST,exhaust+criterion,0,True,1744.744,"T1: |G| even, k-lam=12 not a perfect square"
+"SDS(49,48,26,[49])",NONEXIST,exhaust,0,True,233.759,
+"SDS(49,48,26,[7,7])",NONEXIST,exhaust,0,True,236.867,
+"SDS(50,49,24,[5,10])",NONEXIST,exhaust,0,True,1808.632,
+"SDS(50,49,24,[50])",NONEXIST,exhaust,0,True,1883.417,
+"SDS(9,8,1,[3,3])",NONEXIST,exhaust,0,True,0.002,

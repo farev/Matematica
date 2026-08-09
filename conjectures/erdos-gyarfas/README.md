@@ -72,9 +72,26 @@ graph" beyond rerunning.
 
 ## Known defects and open threads
 
+- **Superseded shelf (recorded 2026-08-09):** Tranquilli (arXiv:2608.02675,
+  Aug 2, 2026, (secondary)) certifies that every cubic bipartite graph on
+  ≤ 58 vertices contains a C4, C8 or C16, via a Levi-graph/configuration
+  reduction with two independent implementations — cubic bipartite
+  counterexamples need ≥ 60 vertices. This supersedes the bipartite-cubic
+  row above (n ≤ 26, girth-≥6 class), which stands as correct but is no
+  longer the frontier. His method stops below his own Moore-bound ceiling
+  of 62; n = 60 bipartite is open. Non-bipartite cubic {4,8,16}-free in
+  the 54–62 window is untouched by it.
 - n=19 (min-degree-3) needs ~2×10¹⁰ C4-free graphs, a multi-day run;
   n=20 (~5×10¹¹) wants generation-time C8 pruning (Markström-style modified
-  minibaum).
+  minibaum). **Cheaper route recorded 2026-08-09:** Carr (arXiv:2605.22844,
+  May 2026, (secondary), proofs unread here) — in a minimal counterexample
+  the deg-≥4 vertices are independent, every vertex is adjacent to a
+  degree-3 vertex, and ≥ 4/7 of vertices have degree 3. Since no
+  counterexample has ≤ 18 vertices (Thm C1 here), a 19-vertex
+  counterexample of minimum size is exactly Carr's object, so the n = 19
+  sweep may be restricted to his degree structure — but only after
+  re-deriving his lemmas from minimality (the independence one is an
+  elementary edge-deletion argument; re-derive the rest before trusting).
 - The {4,8,16}-free window 54–62 is only touched heuristically here; nobody
   (including us) has exhausted it.
 - The 18 (3,9)-cages at n=58 remain unscreened for C16/C32 (data
@@ -94,4 +111,8 @@ the general bound to 17 vertices (superseded by Thm C1 here); Heckman–
 Krakovski proved the 3-connected cubic planar case; Liu–Montgomery refuted
 the strong (large-min-degree) negative belief; Exoo constructed the
 smallest known {4,8,16}- and {4,8,16,32}-avoiding cubic graphs (orders not
-verifiable this session); Carr (2025–26) constrains minimal counterexamples.
+verifiable this session); Carr (2025–26) constrains minimal counterexamples
+— now pinned to arXiv:2605.22844 (May 2026): deg-≥4 independence, universal
+degree-3 adjacency, ≥ 4/7 degree-3 fraction (secondary); Tranquilli
+(arXiv:2608.02675, Aug 2026) certifies cubic bipartite counterexamples need
+≥ 60 vertices (secondary) — see open threads.
