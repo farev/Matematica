@@ -1,0 +1,8 @@
+# scan699 v3 production sweep, 2026-08-10, 4 workers + endpoint check
+# launched 12:52 UTC, finished ~15:45 UTC (first ~40 min with 2.5x core oversubscription)
+range [4,350000000): strict=9 cex=0 flagged=41138389 walkcand=4177325300 slowdirect=0
+range [350000000,625000000): strict=0 cex=0 flagged=33760330 walkcand=4771709769 slowdirect=0
+range [625000000,830000000): strict=0 cex=0 flagged=25463005 walkcand=4060628796 slowdirect=0
+range [830000000,1000000000): strict=0 cex=0 flagged=21251220 walkcand=3641275014 slowdirect=0
+range [1000000000,1000000001): strict=0 cex=0 flagged=1 walkcand=245 slowdirect=0
+# totals: n in [4, 1e9]; strict=9 (all EXC); cex=0; flagged=121612945; walkcand=16650939124; slowdirect=0; hard errors=0

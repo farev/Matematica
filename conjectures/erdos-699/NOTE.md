@@ -145,12 +145,15 @@ n ≤ 120); (b) a C brute force over all pairs with per-prime bitsets,
 n ≤ 3000; (c) the production engine `scan699.c` (windowed segmented
 factorization, R3 gap cut, R5 prime-power CRT filter with exact
 per-level slow path). (b) and (c) produce **byte-identical censuses on
-[4, 3000]**; (c) ran [4, 10⁹) in four disjoint chunks; a fourth
-implementation, `audit699.c` (trial-division factoring, full j-scans,
-LCG seeds 699–702 recorded), re-derived the strict-failure sets at 48
-random (n,i) plus all nine census pairs as positive controls. Worker
-ranges, stats, runtimes: `data/`. Scope note: "verified for n ≤ 10⁹" is
-a CERTIFIED statement about that range, not evidence beyond it.
+[4, 3000]**; (c) ran [4, 10⁹) in four disjoint chunks plus a separate endpoint
+check at n = 10⁹ (121,612,945 n escalated to the exact slow path,
+16.65·10⁹ candidate j walked and tested, zero fallbacks, zero hard
+errors, all workers exit 0); a fourth implementation, `audit699.c`
+(trial-division factoring, full j-scans, LCG seeds 699–702 recorded),
+re-derived the strict-failure sets at 48 random (n,i) plus all nine
+census pairs as positive controls. Worker ranges, stats, runtimes:
+`data/census_1e9.log`. Scope note: "verified for n ≤ 10⁹" is a
+CERTIFIED statement about that range, not evidence beyond it.
 
 ## 4. The i = 3 family: exact characterization (PROVED)
 

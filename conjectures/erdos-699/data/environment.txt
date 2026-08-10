@@ -6,11 +6,13 @@ randomness: none in any engine; audit699 LCG seeds 699,700,701,702 (recorded in 
 
 runs:
   brute699 [4,3000]:        4 workers, ~4 min wall (n^4-balanced chunks)
-  scan699  [4,1e9):         4 workers, chunks [4,350e6),[350e6,625e6),
+  scan699  [4,1e9] + n=1e9:  4 workers, chunks [4,350e6),[350e6,625e6),
                             [625e6,830e6),[830e6,1e9); rate 4.3/6.6/9.7 s
                             per 1e6 at n=1e7/1e8/1e9 single-core dedicated;
                             wall ~2h10m with ~40 min of 2.5x core
-                            oversubscription mid-run (stats in census log)
+                            oversubscription mid-run; wall 12:52-15:45 UTC;
+                            121,612,945 flagged n, 16.65e9 candidates, 0
+                            fallbacks, 0 hard errors (data/census_1e9.log)
   audit699 seeds 699-702:   12 random (n,i) each + 9 positive controls, ~10 min
   families.py pow3 120:     ~21 min (cyclotomic split + Brent rho)
   families.py pow2 120:     ~19 min
