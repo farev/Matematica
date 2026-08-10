@@ -1,0 +1,54 @@
+--- 2^4: n=16, i=2, claimed strict-failure j = [6]
+    witness pool T_2 = [(3, '^1', 'r=1'), (5, '^1', 'r=1')]  [all primality DETERMINISTIC (Sorenson–Webster < 3.317e24)]
+    j=6: dominated for all 2 witness primes; saved by p=2  => EXC verified
+    completeness: candidate re-enumeration finds exactly [6]
+--- 2^9: n=512, i=2, claimed strict-failure j = [147]
+    witness pool T_2 = [(7, '^1', 'r=1'), (73, '^1', 'r=1')]  [all primality DETERMINISTIC (Sorenson–Webster < 3.317e24)]
+    j=147: dominated for all 2 witness primes; saved by p=2  => EXC verified
+    completeness: candidate re-enumeration finds exactly [147]
+--- 2^11: n=2048, i=2, claimed strict-failure j = [713]
+    witness pool T_2 = [(23, '^1', 'r=1'), (89, '^1', 'r=1')]  [all primality DETERMINISTIC (Sorenson–Webster < 3.317e24)]
+    j=713: dominated for all 2 witness primes; saved by p=2  => EXC verified
+    completeness: candidate re-enumeration finds exactly [713]
+--- 2^41: n=2199023255552, i=2, claimed strict-failure j = [285920731515]
+    witness pool T_2 = [(13367, '^1', 'r=1'), (164511353, '^1', 'r=1')]  [all primality DETERMINISTIC (Sorenson–Webster < 3.317e24)]
+    j=285920731515: dominated for all 2 witness primes; saved by p=2  => EXC verified
+    completeness: candidate re-enumeration finds exactly [285920731515]
+--- 2^67: n=147573952589676412928, i=2, claimed strict-failure j = [23206563898901803639]
+    witness pool T_2 = [(193707721, '^1', 'r=1'), (761838257287, '^1', 'r=1')]  [all primality DETERMINISTIC (Sorenson–Webster < 3.317e24)]
+    j=23206563898901803639: dominated for all 2 witness primes; saved by p=2  => EXC verified
+    completeness: candidate re-enumeration finds exactly [23206563898901803639]
+--- 2^101: n=2535301200456458802993406410752, i=2, claimed strict-failure j = [137177249633792241973877360183]
+    witness pool T_2 = [(7432339208719, '^1', 'r=1'), (341117531003194129, '^1', 'r=1')]  [all primality DETERMINISTIC (Sorenson–Webster < 3.317e24)]
+    j=137177249633792241973877360183: dominated for all 2 witness primes; saved by p=2  => EXC verified
+    completeness: candidate re-enumeration finds exactly [137177249633792241973877360183]
+--- 2^137: n=174224571863520493293247799005065324265472, i=2, claimed strict-failure j = [16141961986503368055107762054812561012816]
+    witness pool T_2 = [(32032215596496435569, '^1', 'r=1'), (5439042183600204290159, '^1', 'r=1')]  [all primality DETERMINISTIC (Sorenson–Webster < 3.317e24)]
+    j=16141961986503368055107762054812561012816: dominated for all 2 witness primes; saved by p=2  => EXC verified
+    completeness: candidate re-enumeration finds exactly [16141961986503368055107762054812561012816]
+--- 3^2+1: n=10, i=3, claimed strict-failure j = [5]
+    witness pool T_3 = [(5, '^1', 'r=0')]  [all primality DETERMINISTIC (Sorenson–Webster < 3.317e24)]
+    j=5: dominated for all 1 witness primes; saved by p=3  => EXC verified
+    completeness: candidate re-enumeration finds exactly [5]
+--- 3^3+1: n=28, i=3, claimed strict-failure j = [14]
+    witness pool T_3 = [(7, '^1', 'r=0'), (13, '^1', 'r=2')]  [all primality DETERMINISTIC (Sorenson–Webster < 3.317e24)]
+    j=14: dominated for all 2 witness primes; saved by p=3  => EXC verified
+    completeness: candidate re-enumeration finds exactly [14]
+--- 3^5+1: n=244, i=3, claimed strict-failure j = [122]
+    witness pool T_3 = [(61, '^1', 'r=0'), (11, '^2', 'r=2')]  [all primality DETERMINISTIC (Sorenson–Webster < 3.317e24)]
+    j=122: dominated for all 2 witness primes; saved by p=3  => EXC verified
+    completeness: candidate re-enumeration finds exactly [122]
+--- 3^7+1: n=2188, i=3, claimed strict-failure j = [1094]
+    witness pool T_3 = [(547, '^1', 'r=0'), (1093, '^1', 'r=2')]  [all primality DETERMINISTIC (Sorenson–Webster < 3.317e24)]
+    j=1094: dominated for all 2 witness primes; saved by p=3  => EXC verified
+    completeness: candidate re-enumeration finds exactly [1094]
+--- 3^13+1: n=1594324, i=3, claimed strict-failure j = [797162]
+    witness pool T_3 = [(398581, '^1', 'r=0'), (797161, '^1', 'r=2')]  [all primality DETERMINISTIC (Sorenson–Webster < 3.317e24)]
+    j=797162: dominated for all 2 witness primes; saved by p=3  => EXC verified
+    completeness: candidate re-enumeration finds exactly [797162]
+--- 28(i=5): n=28, i=5, claimed strict-failure j = [14]
+    witness pool T_5 = [(7, '^1', 'r=0'), (13, '^1', 'r=2')]  [all primality DETERMINISTIC (Sorenson–Webster < 3.317e24)]
+    j=14: dominated for all 2 witness primes; saved by p=5  => EXC verified
+    completeness: candidate re-enumeration finds exactly [14]
+
+ALL VERIFIED — every primality DETERMINISTIC (Sorenson-Webster bound)
