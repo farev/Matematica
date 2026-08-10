@@ -139,5 +139,31 @@ the headline results.
   violated knowingly and the cost was paid in wall-clock, not
   correctness.
 
-⟨CLOSE: final timings, the 4·10⁹ extension decision, and end-of-session
-state — filled at close⟩
+## Close
+
+The sweep was deliberately capped at 10⁹ — 100× the prior frontier —
+rather than stretched to 4·10⁹: by early afternoon the family theory
+had produced results (four new triples, the bipartite heuristic) worth
+far more than another factor of four in range, and the writing time
+went there. The mid-session checkpoint (15:30) passed without firing:
+by then the sweep was past halfway with the census stable at nine, all
+thirteen triples were verified, and both deep family runs were done.
+
+End state: census [4, 10⁹] complete (nine strict failures, zero
+counterexamples, endpoint n = 10⁹ checked separately); thirteen
+exceptional triples verified with deterministic primality; the i = 3
+family decided to m = 120 minus two factorization walls and empty
+under its prime-power criterion to m = 1400; the i = 2 family decided
+for all k ≤ 120 plus seven self-verified exponents to 241, with four
+members beyond the classical three. The strengthening looks false;
+the base problem looks true; the distance between them is exactly the
+composite-i channel, which stayed empty everywhere anyone has ever
+looked.
+
+What I would tell the next session: the verification-gate pattern
+(recalled data admitted only through exact in-script checks) turned
+fallible memory into a safe source three times this session; and the
+two theory bugs (the filter hole, the corollary's even-m caveat) were
+both caught by *re-deriving proofs against data*, not by any test
+battery — budget explicit time for that on any session with a
+correctness-critical reduction.
