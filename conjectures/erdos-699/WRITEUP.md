@@ -110,8 +110,22 @@ expected. So the two families should have opposite fates: i = 3 finite
 (twin repunit-prime events, density 1/m²), i = 2 infinite. The
 Erdős–Szekeres *strengthening* is heuristically false as stated, while
 the base problem is protected by Lemma 6 (every 2^k level-2 failure is
-saved by p = 2). ⟨POW2-DEEP: outcome of the k ≤ 120 run — filled at
-close⟩
+saved by p = 2).
+
+The k ≤ 120 run then delivered the session's headline: **three new
+exceptional triples**, at k = 41, 67 (the Cole semiprime) and 101 —
+the first additions to the exceptional set beyond the classical list,
+found by theory at heights (up to 2.5·10³⁰) that no sweep will ever
+reach. A self-verifying big-k pass (recalled Cunningham factorizations,
+gated by exact product + primality checks so that wrong memory can
+only produce UNDECIDED — and three recollections *were* wrong and
+bounced) added a **fourth at k = 137** and six more decided misses to
+k = 241. The final score for the alignment event: 7 hits in 22
+decided two-prime-power exponents. Every prime in every exhibited
+triple sits below the Sorenson–Webster bound, so the independent
+verifier certifies all thirteen exceptional triples with
+*deterministic* Miller–Rabin — no probable-prime caveat anywhere in
+the headline results.
 
 ## Operational failures worth logging
 

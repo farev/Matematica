@@ -26,8 +26,11 @@ form, a *counterexample* to #699 otherwise.
 (10, 3, 5), (16, 2, 6), (28, 3, 14), (28, 5, 14), (244, 3, 122),
 (512, 2, 147), (2048, 2, 713), (2188, 3, 1094), (1594324, 3, 797162).
 The prior frontier was an unpublished forum sweep to 10⁷ (secondary; no
-code or certificate); (2048, 2, 713) and everything in rows 2, 4–6 are
-new to this session.
+code or certificate). (2048, 2, 713) appears in no source readable from
+this sandbox — but the problem page's i = 2 examples are an unspecified
+"particular powers of 2" (secondary), so it may be classically known;
+the k = 41, 67, 101, 137 triples of row 2 exceed every range any source
+reports having examined.
 
 ## Scripts
 

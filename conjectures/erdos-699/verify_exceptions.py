@@ -18,9 +18,10 @@ engines:
      direct CRT over the verified prime powers (independent of the search
      engine's enumeration) and confirms the claimed j-list is complete.
 
-Primality: gmpy2.is_prime with 50 extra MR rounds; factors below 2^64 are
-DETERMINISTIC (BPSW has no counterexample below 2^64, Gilchrist/Feitsma
-verification); factors above 2^64 are flagged BPSW-grade in the output.
+Primality: Miller-Rabin with the 13 bases {2,...,41}, DETERMINISTIC for
+x < 3 317 044 064 679 887 385 961 981 (Sorenson & Webster 2015); gmpy2
+BPSW + 50 MR rounds above that bound, flagged per-claim in the output.
+Every prime in every claimed triple is below the bound.
 
 Exit 0 with "ALL VERIFIED" only if every claim checks. Output is the
 certificate; commit it under certs/.
