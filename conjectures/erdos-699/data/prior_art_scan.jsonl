@@ -1,0 +1,8 @@
+{"n":10,"strategy":"lucas","weak_counterexample":false,"near_miss_count":1,"near_misses":[{"i":3,"j":5,"shared_primes_geq_i":[]}],"profile_micros":9}
+{"n":16,"strategy":"lucas","weak_counterexample":false,"near_miss_count":1,"near_misses":[{"i":2,"j":6,"shared_primes_geq_i":[]}],"profile_micros":4}
+{"n":28,"strategy":"lucas","weak_counterexample":false,"near_miss_count":2,"near_misses":[{"i":3,"j":14,"shared_primes_geq_i":[]},{"i":5,"j":14,"shared_primes_geq_i":[]}],"profile_micros":25}
+{"n":244,"strategy":"lucas","weak_counterexample":false,"near_miss_count":1,"near_misses":[{"i":3,"j":122,"shared_primes_geq_i":[]}],"profile_micros":6}
+{"n":2048,"strategy":"lucas","weak_counterexample":false,"near_miss_count":1,"near_misses":[{"i":2,"j":713,"shared_primes_geq_i":[]}],"profile_micros":31}
+{"n":2188,"strategy":"lucas","weak_counterexample":false,"near_miss_count":1,"near_misses":[{"i":3,"j":1094,"shared_primes_geq_i":[]}],"profile_micros":26}
+{"n":512,"strategy":"lucas","weak_counterexample":false,"near_miss_count":1,"near_misses":[{"i":2,"j":147,"shared_primes_geq_i":[]}],"profile_micros":10}
+{"n":1594324,"strategy":"lucas","weak_counterexample":false,"near_miss_count":1,"near_misses":[{"i":3,"j":797162,"shared_primes_geq_i":[]}],"profile_micros":19719}
