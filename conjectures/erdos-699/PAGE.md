@@ -13,13 +13,13 @@ independently re-verified certificate.
 
 ## 2. Contributions
 
-1. **CERTIFIED.** Weak version verified for all 4 ≤ n ≤ 10⁸: 94,609,120
-   composite n, 1,363,743,928 hard rows examined, zero weak
-   counterexamples.  This is 10× the previously public frontier (an
-   uncertified Rust scan to 10⁷, Jan 2026, posted on the problem's
-   forum), and the first dense search of (10⁷, 10⁸].  Engine time 5,972 s
-   on 4 cores (~1.7 core-hours) vs the prior art's 121 CPU-hours at 10⁷
-   — the reduction lemmas are doing the work.
+1. **CERTIFIED.** Weak version verified for all 4 ≤ n ≤ 10⁸: 94,238,544
+   composite n (consistent with π(10⁸) = 5,761,455), 1,354,839,011 hard
+   rows examined, zero weak counterexamples.  This is 10× the previously
+   public frontier (an uncertified Rust scan to 10⁷, Jan 2026, posted on
+   the problem's forum), and the first dense search of (10⁷, 10⁸].
+   Engine time 11,368 s ≈ 3.2 core-hours vs the prior art's 121
+   CPU-hours at 10⁷ — the reduction lemmas are doing the work.
 2. **CERTIFIED.** The complete census of p > i exceptional triples on
    [4, 10⁸]: exactly (10,3,5), (16,2,6), (28,3,14), (28,5,14),
    (244,3,122), (512,2,147), (2048,2,713), (2188,3,1094),
@@ -62,10 +62,11 @@ independently re-verified certificate.
   is sixty times longer than everything before it."
 - **Fig 2 — why the computation is cheap.**  Data: `data/summary.csv`
   (per-chunk composites, hard rows, engine seconds).  Bar or annotated
-  table contrasting ~2.5·10¹⁵ naive pairs with 1.36·10⁹ hard rows and
-  5,972 engine-seconds.  Reader sentence: "One classical lemma about the
-  largest prime below n eliminates 99.99995% of the work before any bit
-  is set."
+  table contrasting ~2.5·10¹⁵ naive rows (i.e. Σ ⌊n/2⌋ pairs (n,i); the
+  pair count (n,i,j) is ~4·10²²) with the 1,354,839,011 hard rows
+  actually examined and 11,368 engine-seconds.  Reader sentence: "One
+  classical lemma about the largest prime below n eliminates 99.99995%
+  of the work before any bit is set."
 - **Fig 3 — what an exception looks like.**  Data:
   `certs/EXC_512_2_147.txt` (digit tables).  Typeset the base-7 and
   base-73 digit comparisons of j = 147 against n = 512 (147 = 300₇ fits

@@ -59,7 +59,7 @@ python3 proto.py 3000 --census                 # reference census, ~15 s
 ./sweep 4 1000000 --engine=both                # dual-engine base range, ~1 min
 python3 oeis_controls.py                       # OEIS anchors
 python3 verify_exceptions.py --selftest
-# full production run (4 cores, ~2.5 core-hours):
+# full production run (4 cores, 3.2 core-hours engine time, ~75 min wall):
 ./sweep 4        1000000  --engine=both     > data/chunk_A.txt
 ./sweep 1000001  40000000 --engine=interval > data/chunk_B1.txt &
 ./sweep 40000001 65000000 --engine=interval > data/chunk_B2.txt &

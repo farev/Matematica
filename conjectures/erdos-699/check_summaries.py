@@ -67,7 +67,7 @@ def main():
     tot_comp = sum(c[3] for c in chunks)
     tot_rows = sum(c[4] for c in chunks)
     tot_exc = sum(c[6] for c in chunks)
-    tot_secs = sum(c[10] for c in chunks)
+    tot_secs = sum(c[9] for c in chunks)
     with open("data/summary.csv", "w") as f:
         f.write("chunk,lo,hi,composites,hard_rows,exc_candidates,exceptions,"
                 "weakfails,max_gap,engine_secs\n")
