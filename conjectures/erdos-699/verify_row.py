@@ -61,16 +61,20 @@ def factor(m):
 
 def Sp_mask(n, p, half):
     """bitmask over [0, half]: bit j set <=> p | C(n,j), via
-    exists t: j mod p^t > n mod p^t (arithmetic tiling)."""
+    exists t: j mod p^t > n mod p^t.  One period is built directly and
+    tiled by shift-or doubling (linear in half, unlike the division
+    trick, which is quadratic for mid-size periods)."""
     S = 0
     pt = p
     while pt <= n:
         r = n % pt
         if r < pt - 1:
-            period = ((1 << (pt - 1 - r)) - 1) << (r + 1)
-            nb = half // pt + 1
-            tile = ((1 << (pt * nb)) - 1) // ((1 << pt) - 1)
-            S |= period * tile
+            block = ((1 << (pt - 1 - r)) - 1) << (r + 1)
+            length = pt
+            while length <= half:
+                block |= block << length
+                length *= 2
+            S |= block
         pt *= p
     return S & ((1 << (half + 1)) - 1)
 

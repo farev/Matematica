@@ -46,3 +46,6 @@ work/
 
 # compiled searcher (rebuilt by gcc -O2 from sds_search.c)
 conjectures/signed-difference-sets/sds_search
+
+# compiled verifier binaries (rebuilt from source)
+conjectures/erdos-699/sweep

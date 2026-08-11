@@ -91,7 +91,16 @@ Everything lives in this directory and is exact-integer end to end:
    script that emits it — exists precisely because in-flight drafting
    invites this; the table now carries the certificate values and a
    note of the correction.
-5. **Not attempted, by decision:** proving finiteness of the i = 2
+5. **Quadratic tiling in the row verifier (caught by the clock).**
+   `verify_row.py` originally built its big-int divisibility masks with
+   an arithmetic-division tiling trick that is linear for small periods
+   but quadratic for mid-size ones; at n ≈ 10⁸ a single row would have
+   taken hours, and the 12-row production sample sat silent for 15
+   minutes before I killed it.  Rewritten with shift-or doubling (still
+   pure Python big-ints, still no shared code with the C engines): the
+   same 12 rows then verified in 7.7 s.  The rewritten verifier was
+   re-validated on all seven exception rows before the sample re-ran.
+6. **Not attempted, by decision:** proving finiteness of the i = 2
    exceptional family.  It is equivalent to a Lucas-avoidance statement
    over the factor structures of Mersenne composites 2^k − 1; after an
    hour of digit games it was clear this is Mersenne-hard, and the
