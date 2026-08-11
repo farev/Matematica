@@ -202,17 +202,21 @@ throughout; no randomness in the production path).
 **Census (CERTIFIED).** On 4 ≤ n ≤ 10⁸ the exceptional triples for the
 p > i strengthening are exactly:
 
-| n | i | j | gcd structure | family |
+| n | i | j | gcd | family |
 |---|---|---|---|---|
 | 10 | 3 | 5 | 2²·3 | n = 3²+1, j = n/2 |
 | 16 | 2 | 6 | 2³ | n = 2⁴ |
 | 28 | 3 | 14 | 2²·3² | n = 3³+1, j = n/2 |
 | 28 | 5 | 14 | 2³·3³·5 | sporadic (i ≥ 4; known to [ErSz78]) |
 | 244 | 3 | 122 | 2²·3⁴ | n = 3⁵+1, j = n/2 |
-| 512 | 2 | 147 | 2⁴ | n = 2⁹ |
-| 2048 | 2 | 713 | 2⁵ | n = 2¹¹ |
-| 2188 | 3 | 1094 | 2²·3⁸ | n = 3⁷+1, j = n/2 |
-| 1594324 | 3 | 797162 | 2²·3¹⁴ | n = 3¹³+1, j = n/2 |
+| 512 | 2 | 147 | 2⁸ | n = 2⁹ |
+| 2048 | 2 | 713 | 2¹⁰ | n = 2¹¹ |
+| 2188 | 3 | 1094 | 2²·3⁶ | n = 3⁷+1, j = n/2 |
+| 1594324 | 3 | 797162 | 2²·3¹² | n = 3¹³+1, j = n/2 |
+
+(Exact valuations computed and re-verified in the per-triple
+certificates; an earlier draft of this table carried guessed exponents —
+caught by the certificate generator's bigint cross-check.)
 
 (gcd structures from the per-triple certificates in `certs/`, each
 re-derived independently; for n ≤ 3000 additionally by bigint gcd.)
@@ -287,11 +291,12 @@ gcd(C(28,5), C(28,14)) = 2³·3³·5 has no prime > 5, as [ErSz78] found.  ∎
 1. Prove the j = n/2 rigidity for i = 3 exceptions (finite-digit
    argument may suffice for candidates > √n; the small candidates are
    the obstruction).
-2. Prove finiteness of the i = 2 family assuming standard conjectures on
-   the factor structure of Mersenne numbers — or unconditionally for a
-   subfamily (e.g. k with a Mersenne factor p > 2^{k/2}: then p has two
-   base-p... digits argument closes the row for j > n − ⌊stuff⌋; the
-   sweep data suggests which k are closable this way).
+2. Prove finiteness of the i = 2 family — equivalently, that only
+   finitely many k admit a j ≤ 2^{k−1} that Lucas-fits 2^k in every
+   prime base p | 2^k−1.  This is Mersenne-hard in general (Lemma 7
+   kills exactly the Mersenne-prime exponents); even a conditional
+   result under standard heuristics on the factorization of 2^k−1
+   would be of interest.
 3. Extend the dense range to 10⁹ (segmented SPF sieve; ~2.8 μs/row
    measured here makes it a single-session run at ~4 GB memory).
 4. The exceptional sequences {10,16,28,244,512,2048,2188,1594324,…} and

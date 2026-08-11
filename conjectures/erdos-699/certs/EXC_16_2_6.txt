@@ -1,0 +1,25 @@
+# Certificate: exceptional triple (n, i, j) = (16, 2, 6)
+# Claim: no prime p > 2 divides gcd(C(16,2), C(16,6)),
+#        while p = 2 divides both (weak version holds).
+# Checkable with Kummer's criterion: p | C(n,k) iff exists t:
+#        k mod p^t > n mod p^t.   Generated 2026-08-11.
+
+[weak witness p = i = 2]
+i is prime; n mod i^2 = 0 < 2  =>  i | C(n,i)   (Lemma 6)
+v_2(C(n,i)) = 3, v_2(C(n,j)) = 3  (Legendre)
+
+[candidate primes p > 2 dividing C(n,i)]  (Lemma 5: primes > i
+ dividing the window n..n-i+1 = [16, 15])
+P = [3, 5]
+  p = 3: v_p(C(n,i)) = 1; base-p check of j = 6 vs n:
+      t: p^t = 3             j mod p^t = 0            <= 1            = n mod p^t   (no carry)
+      t: p^t = 9             j mod p^t = 6            <= 7            = n mod p^t   (no carry)
+    => p = 3 does NOT divide C(n,j); not in gcd.
+  p = 5: v_p(C(n,i)) = 1; base-p check of j = 6 vs n:
+      t: p^t = 5             j mod p^t = 1            <= 1            = n mod p^t   (no carry)
+    => p = 5 does NOT divide C(n,j); not in gcd.
+
+[gcd factorization]
+  common prime 2: v_p(C(n,i)) = 3, v_p(C(n,j)) = 3 -> v_p(gcd) = 3
+  bigint check: gcd = 8 = 2^3   AGREES
+  largest common prime = 2 = i   (exception confirmed)

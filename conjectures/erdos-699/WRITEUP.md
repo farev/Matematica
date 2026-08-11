@@ -82,7 +82,16 @@ Everything lives in this directory and is exact-integer end to end:
    harmless here, but a shell habit worth killing: a detached child that
    died would have silently truncated the range, and only the
    chunk-tiling control would have caught it.
-4. **Not attempted, by decision:** proving finiteness of the i = 2
+4. **Guessed numbers in a draft table (caught by a control).**  While
+   the production run was in flight I drafted the NOTE's census table
+   with gcd exponents written from memory — 2⁴ at n = 512 where the
+   truth is 2⁸, 3⁸ at 2188 where it is 3⁶.  `make_certs.py`'s bigint
+   cross-check exposed all four wrong entries the moment it ran.  The
+   rule this repository already has — every number in a note has a
+   script that emits it — exists precisely because in-flight drafting
+   invites this; the table now carries the certificate values and a
+   note of the correction.
+5. **Not attempted, by decision:** proving finiteness of the i = 2
    exceptional family.  It is equivalent to a Lucas-avoidance statement
    over the factor structures of Mersenne composites 2^k − 1; after an
    hour of digit games it was clear this is Mersenne-hard, and the
