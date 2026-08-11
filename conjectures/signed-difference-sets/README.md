@@ -14,6 +14,7 @@ artifact is machine-readable — openness verifiable per cell.
 
 **Status:** active
 **Sessions:** [2026-08-09](../../log/2026-08-09-signed-difference-sets.md)
+**Write-up page:** [fabianarevalo.com/signed-difference-sets](https://fabianarevalo.com/signed-difference-sets)
 
 ## Results (2026-08-09 session)
 
