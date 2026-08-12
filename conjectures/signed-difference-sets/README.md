@@ -13,7 +13,8 @@ character-theoretic nonexistence machinery to the shelf, and the primary
 artifact is machine-readable — openness verifiable per cell.
 
 **Status:** active
-**Sessions:** [2026-08-09](../../log/2026-08-09-signed-difference-sets.md)
+**Sessions:** [2026-08-09](../../log/2026-08-09-signed-difference-sets.md),
+[2026-08-12](../../log/2026-08-12-signed-difference-sets.md)
 **Write-up page:** [fabianarevalo.com/signed-difference-sets](https://fabianarevalo.com/signed-difference-sets)
 
 ## Results (2026-08-09 session)
@@ -28,6 +29,24 @@ artifact is machine-readable — openness verifiable per cell.
 | Forensics on SDS(20,11,2,[20]) ("All", 4 stored sets, all invalid): complete enumeration finds **exactly 40 labeled SDS in 2 translation classes**; stored sets are true sets with P↔M swaps (nearest at symmetric difference 4) — status correct, export corrupt | CERTIFIED | `certs/audit_20_11_2_c20_full.txt` |
 | **Swap-repair of the corrupted witnesses**: 22 of the 147 invalid sets are ≤2 P↔M swaps from a valid SDS (each repaired set independently re-verified), recovering witnesses for **12 of the 21 affected cells** (all sets of (20,11,2), (35,21,10), (247,127,63), (499,250,123); one each for eight more up to v = 499); 9 cells remain witness-less | CERTIFIED | `data/repaired_witnesses.csv` |
 
+## Results (2026-08-12 session: review of Masselot's census)
+
+Masselot's `certified-small-sds-census` v1.0 (2026-08-12) resolves all
+68 Open cells of order ≤ 36 in the same frozen snapshot, 58 of them
+agreeing with this census (his novelty screen credits this repository;
+zero conflicts, confirmed from our side), plus the 10 cells left open
+here: signed (32,20,4) sets exist in an abelian group of order 32 iff
+the group is noncyclic, and no signed (36,29,4) set exists at order 36.
+Reviewed at his request; full report in
+[`masselot-review/REVIEW.md`](masselot-review/REVIEW.md).
+
+| Claim | Label | Where |
+|---|---|---|
+| All 16 of Masselot's existence witnesses (incl. the six (32,20,4) noncyclic constructions) pass this repo's independent checker; the six order-32 file hashes match his note | CERTIFIED | `masselot-review/out/witness_verification.csv` |
+| All four of his nonexistence legs re-derived by complete searches with independent code and no symmetry reduction: (32,20,4,[32]) via C8→C16→C32 (2,985,984 refinements, 0), (36,29,4) in [2,18] and [3,12] via full quotient systems (0 each), and in [6,6] via 16,964,640 marginal-consistent vectors (0), solver-free; every §5–§7 count of his note (9,528 / 56 / 12 / 248,832 / 144 / 420 / 106,353 / 9) reproduced exactly | CERTIFIED | `masselot-review/check_targets.py`, `out/targets_report.json` |
+| **The C18 quotient system of (36,29,4) is empty**, so no SDS(36,29,4) exists in C36 or C2×C18: the abelian order-36 classification no longer needs the database's unreplicated cyclic exhaust | CERTIFIED (complete enumeration; projection lemma PROVED in NOTE §5.1) | `masselot-review/out/targets_run_log.txt` |
+| Gordon's paper and He–Chen–Ge read in full (session 1 had them secondary-only): neither states the T1/T2 transfers, so the session-1 rediscovery caveat is lifted; Lemma 1 = Gordon's Lemma 1.1 + He–Chen–Ge Lemma 2.2 | resolved caveat | NOTE §2 remarks (updated) |
+
 ## Scripts
 
 | file | what it does | cost |
@@ -41,6 +60,9 @@ artifact is machine-readable — openness verifiable per cell.
 | `theory.py` | T0/T1/T2 criteria over all 70,543 cells + cross-checks (Yes/All violations must be 0; exhaust conflicts must be 0) | 1 s |
 | `repair.py` | ≤2-swap repair search over all invalid stored witnesses; repaired sets re-verified independently | 70 s |
 | `make_values.py` | aggregates `data/results.csv` → authoritative `data/values.csv`; aborts on conflicts | instant |
+| `masselot-review/verify_witnesses.py` | re-verify Masselot's 16 witnesses with `sdslib` | 2 s |
+| `masselot-review/validate_pipeline.py` | known-answer controls for the review's search machinery (must all PASS) | 10 s |
+| `masselot-review/check_targets.py` | complete independent re-derivation of his four nonexistence legs + the C18 observation | 55 s |
 
 Reproduce (from inside this directory):
 
@@ -66,32 +88,44 @@ python3 sweep.py --vmax 24   # reproduce the 42-cell concordance + first decisio
 
 ## Known defects and open threads
 
-- The (32,20,4) family across all seven abelian groups of order 32
+- ~~The (32,20,4) family across all seven abelian groups of order 32
   survives both criteria and is beyond today's exhaust budget (naive
-  5.5·10¹¹ per group). Automorphism-orbit canonicalization (huge for
-  [2,2,2,2,2]: \|GL(5,2)\| ≈ 10⁷) would collapse it; the engine only
-  uses translation reduction.
-- The remaining Open shelf after this session (~22k cells) passes T1/T2;
-  which stronger classical tests (multiplier theorems, Mann test, field
-  descent) transfer to signed sets is the open theory question — ramified
+  5.5·10¹¹ per group).~~ Closed externally by Masselot (v1.0,
+  2026-08-12): exists iff the group is noncyclic. Fully verified here
+  (session 2); the quotient-ladder route that cracked it costs seconds,
+  not core-hours — the lesson for the ~22k remaining Open cells is that
+  layered quotient refinement beats raw DFS wherever the marginal
+  systems are tight.
+- The remaining Open shelf (~22k cells) passes T1/T2; which stronger
+  classical tests (multiplier theorems, Mann test, field descent)
+  transfer to signed sets is the open theory question — ramified
   primes escape self-conjugacy here (Gauss sums realize \|α\|² = p).
 - Gordon's equivalence convention for "All" cells (how his set lists are
   normalized) is not pinned; complete enumerations here report labeled
   counts and translation classes instead. Pin before contributing
   upstream.
 - The audit and closures should be reported to Gordon
-  (dmgordo@gmail.com per his README) — an upstream contribution pass is
-  queued for a session with email/github access.
-- Everything cites the paper only at abstract level (egress-blocked);
-  criteria marked as possible rediscoveries of statements his paper may
-  contain. The per-cell closures are new to the database regardless.
+  (dmgordo@gmail.com per his README) — now best coordinated with
+  Masselot, whose census closes the whole order ≤ 36 shelf; suggested
+  in the review reply.
+- ~~Everything cites the paper only at abstract level (egress-blocked).~~
+  Session 2 read Gordon and He–Chen–Ge in full: neither states the
+  T1/T2 transfers (rediscovery caveat lifted); Gordon's Lemma 5.2 is
+  the moment form of the quotient projection lemma; his sporadic table
+  and He–Chen–Ge's families do not touch the ten closed cells.
 
 ## Prior work
 
 Gordon (2023) introduced SDS, built the database, ran cyclic orbit
-exhausts (2,574 No cells, 87 Yes, 59 All). He–Chen–Ge (arXiv:2306.05631)
-added PDS-based constructions (ten Yes cells credited in the DB). The
+exhausts (2,574 No cells, 87 Yes, 59 All); read in full 2026-08-12.
+He–Chen–Ge (Des. Codes Cryptogr. 92 (2024), arXiv:2306.05631) added
+PDS-based constructions (ten Yes cells credited in the DB); read in
+full 2026-08-12. Masselot's `certified-small-sds-census` v1.0
+(2026-08-12, github.com/NicolasMasselot, Zenodo 10.5281/zenodo.21901581)
+closes all 68 Open cells of order ≤ 36, replicating this repo's 58
+decisions (credited, zero conflicts) and adding the ten this repo left
+open; reviewed and verified here, see `masselot-review/`. The
 nonexistence criteria used here are classical: the even-order square
-condition of symmetric-design theory and Turyn's self-conjugacy argument
-(Pacific J. Math. 1965), both (secondary). No other work on signed
-difference sets was findable by search (2024–2026: nothing).
+condition of symmetric-design theory and Turyn's self-conjugacy
+argument (Pacific J. Math. 1965, still secondary). No other work on
+signed difference sets was findable by search (2024–2026: nothing).

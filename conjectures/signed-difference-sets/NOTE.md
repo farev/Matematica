@@ -99,15 +99,23 @@ symmetric designs / abelian difference sets, and Theorem 2 is Turyn's
 self-conjugacy test, standard in difference-set and weighing-matrix
 nonexistence. Their transfer to SDS is immediate from Lemma 1 (the
 {−1,0,+1} coefficients play no role beyond χ(A) lying in Z[ζ_m]).
-Gordon's paper (arXiv:2212.10630) is egress-blocked from this sandbox and
-unread — it may well state one or both transfers, and we mark the
-*criteria* as possible rediscoveries accordingly (secondary). What is
-demonstrably new is their systematic application to the database: cells
-as small as SDS(18,15,2,[3,6]) (k−λ = 13, v even) were Open in the
-2026-08-09 snapshot, so the artifact had not absorbed even Theorem 1.
-Lemma 1's trivial-character part reproduces, as a special case at λ = 0,
-the classical fact that the weight of a circulant weighing matrix is a
-perfect square — a literature anchor for the machinery.
+~~Gordon's paper (arXiv:2212.10630) is egress-blocked from this sandbox
+and unread — it may well state one or both transfers, and we mark the
+*criteria* as possible rediscoveries accordingly (secondary).~~
+*Resolved 2026-08-12 (session 2, with web access): Gordon's paper and
+He–Chen–Ge were read in full. Neither states either transfer, so the
+rediscovery caveat is lifted; the criteria remain classical in
+substance but their SDS statements appear to be new to this line.
+Lemma 1's trivial-character identity is Gordon's Lemma 1.1, and its
+nontrivial-character identity is He–Chen–Ge's Lemma 2.2; both are now
+verified against the papers rather than inferred from the abstracts.*
+What is demonstrably new is their systematic application to the
+database: cells as small as SDS(18,15,2,[3,6]) (k−λ = 13, v even) were
+Open in the 2026-08-09 snapshot, so the artifact had not absorbed even
+Theorem 1. Lemma 1's trivial-character part reproduces, as a special
+case at λ = 0, the classical fact that the weight of a circulant
+weighing matrix is a perfect square — a literature anchor for the
+machinery.
 
 ## 3. Bulk application to the database
 
@@ -221,6 +229,43 @@ The two existing groups are exactly the ones containing a Z₄×Z₄
 subgroup. With seven data points this is an observation, not a theorem
 (NUMERICAL-grade pattern; recorded as open question 5 in §7).
 
+### 5.1 Addendum (2026-08-12, session 2): the order-32/36 closure, verified, and a C18-quotient proof
+
+Masselot's `certified-small-sds-census` v1.0 (released 2026-08-12)
+decides all 68 Open cells of order ≤ 36 in the same frozen snapshot:
+his census replicates this note's 58 decisions with zero conflicts and
+closes the remaining ten — signed (32,20,4) difference sets exist in an
+abelian group of order 32 **iff the group is noncyclic** (settling open
+question 1 of §7), and no abelian group of order 36 admits a signed
+(36,29,4) difference set. At his request this repository reviewed the
+note; all sixteen witnesses pass the independent checker of §6, and all
+four nonexistence legs were re-derived here by complete searches with
+independent code (`masselot-review/`, every reported count reproduced
+exactly). CERTIFIED.
+
+The review also produced one small new fact. For K ≤ G with |K| = m
+and Q = G/K, projecting an SDS(v,k,λ) to cell sums over the fibers
+gives B ∈ Z[Q] with coefficients in [−m, m], and applying the
+projection to (1):
+
+**Lemma 3 (quotient projection).** B·B^(−1) = (k−λ)·e + λm·Q in Z[Q];
+equivalently Σ_q b_q² = k + (m−1)λ and every nonzero shift of the
+Q-autocorrelation equals mλ. *Proof.* Projection Z[G] → Z[Q] is a ring
+homomorphism sending e ↦ e and G ↦ m·Q; apply it to (1). ∎
+(The moment identities are Gordon's Lemma 5.2; the full convolution
+form is the engine of Masselot's note.)
+
+**Observation (C18 emptiness).** For (v,k,λ) = (36,29,4) and m = 2 the
+C18 system of Lemma 3 — coefficients in [−2,2], Σb = 13, Σb² = 33,
+every nonzero shift equal to 8 — has **no solutions** (complete
+enumeration, `masselot-review/check_targets.py`; 0.6 s). Hence no
+SDS(36,29,4) exists in any abelian group of order 36 with a C18
+quotient: **C36 and C2×C18 at once**. CERTIFIED. This makes the
+abelian (36,29,4) classification independent of the database's
+unreplicated cyclic orbit exhaust (relevant given §6: the database's
+witness exports are corrupted at 147 of 280 sets, so removing trust
+dependencies on it is worth doing where cheap).
+
 ## 6. The witness audit
 
 `check_db.py` runs the independent checker over every stored witness:
@@ -266,11 +311,16 @@ invites problem reports to dmgordo@gmail.com).
 
 ## 7. Open questions
 
-1. The surviving small cells: after criteria + exhausts, the smallest
+1. ~~The surviving small cells: after criteria + exhausts, the smallest
    still-Open cells (see README table) — do sporadic SDS live there?
    The (32,20,4) family across all seven abelian groups of order 32 is
    the natural next target (naive cost 5.5·10¹¹ per group; needs either
-   patience or automorphism-orbit canonicalization).
+   patience or automorphism-orbit canonicalization).~~ Settled by
+   Masselot (v1.0, 2026-08-12), verified in §5.1: exists iff noncyclic.
+   The method lesson: his C8→C16→C32 quotient ladder costs seconds
+   where the flat DFS estimate was 48 core-hours per group. The
+   successor question: apply layered quotient refinement to the
+   smallest cells still Open at order > 36.
 2. Equivalence conventions: Gordon's "All" cells list orbit
    representatives under an equivalence we did not need to pin for
    existence questions; pinning it (translations × Aut(G) × inversion ×
@@ -292,16 +342,24 @@ invites problem reports to dmgordo@gmail.com).
 
 ## References
 
-(All secondary unless noted: the papers are egress-blocked from this
-sandbox; the database and code are primary, fetched 2026-08-09.)
+(Primary/secondary status per item; the session-1 sandbox was
+egress-blocked, session 2 (2026-08-12) read the two SDS papers in
+full.)
 
 - D. M. Gordon, *Signed difference sets*, Des. Codes Cryptogr. 91 (2023)
-  2107–2115; arXiv:2212.10630. (secondary)
+  2107–2115; arXiv:2212.10630. (read in full 2026-08-12)
 - Companion repository `dmgordo/signed-difference-sets` (primary:
   `sds.json` sha256 `39bab9fce78d5c4353c22ba482ff5c3bb8b8b9931edc5ca0fc60062dfe80ca85`,
-  `sds_code.py`, README; fetched 2026-08-09, snapshot in `data/`).
-- Z. He, X. Chen, G. Ge, *New constructions of signed difference sets*,
-  arXiv:2306.05631 (2023). (secondary)
+  `sds_code.py`, README; fetched 2026-08-09, snapshot in `data/`;
+  HEAD unchanged as of 2026-08-12, commit `e3bf810c`).
+- Z. He, T. Chen, G. Ge, *New constructions of signed difference sets*,
+  Des. Codes Cryptogr. 92 (2024) 2323–2340; arXiv:2306.05631.
+  (read in full 2026-08-12)
+- N. Masselot, *Certified census of small signed difference sets*, v1.0
+  (2026-08-12), github.com/NicolasMasselot/certified-small-sds-census;
+  CNF/DRAT archive: Zenodo, doi:10.5281/zenodo.21901581. (primary:
+  note, census, witnesses fetched and reviewed 2026-08-12, see
+  `masselot-review/`)
 - R. J. Turyn, *Character sums and difference sets*, Pacific J. Math. 15
   (1965) 319–346 — the self-conjugacy argument of Theorem 2. (secondary)
 - Classical even-v square condition for symmetric designs (Schützenberger;

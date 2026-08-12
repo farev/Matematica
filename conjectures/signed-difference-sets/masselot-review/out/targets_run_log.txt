@@ -1,0 +1,28 @@
+=== (32,20,4) cyclic: chain C8 -> C16 -> C32 ===
+C8 system: 9528 sum+norm candidates (Masselot: 9528), 56 solutions (Masselot: 56)
+affine orbits on C8: 5 (Masselot: 5), sizes [8, 8, 8, 16, 16] (Masselot: [8,8,8,16,16])
+C16 solutions summed over one representative per orbit: 12 (Masselot: 12)
+    stage C8: 9528 sum+norm candidates, 56 system solutions [0.0s]
+    stage C16: 492096 refinements tried, 144 survive [0.6s]
+    stage C32: 2985984 refinements tried, 0 survive [5.9s]
+complete chain stages (n, tried, survive): [(8, 9528, 56), (16, 492096, 144), (32, 2985984, 0)]
+FINAL C32 solutions: 0  => SDS(32,20,4,[32]) NONEXISTENT [6.7s]
+=== (36,29,4) marginal systems ===
+C3 system (m=12): 3 solutions: [(1, 6, 6), (6, 1, 6), (6, 6, 1)]
+C2 system (m=18): 2 solutions: [(4, 9), (9, 4)]
+C2^2 system (m=9): 4 solutions in 1 translation orbit(s); rep (2, 2, 2, 7) (Masselot: translates of (7,2,2,2))
+C3^2 system (m=4): 106353 sum+norm candidates (Masselot: 106353), 9 solutions (Masselot: 9) in 1 translation orbit(s); rep (-3, 2, 2, 2, 2, 2, 2, 2, 2) (Masselot: translates of (-3,2,...,2))
+=== (36,29,4) in C2 x C18: [2,2,3] quotient system ===
+candidates with canonical marginals (1,6,6)/(7,2,2,2) passing norm: 144 (Masselot: 144)
+FULL [2,2,3] system solutions over all marginal pairs: 0  => SDS(36,29,4,[2,18]) NONEXISTENT [0.1s]
+=== (36,29,4) in C3 x C12: [2,3,3] quotient system ===
+candidates with canonical marginals (-3,2^8)/(4,9) passing norm: 420 (Masselot: 420)
+FULL [2,3,3] system solutions over all marginal pairs: 0  => SDS(36,29,4,[3,12]) NONEXISTENT [0.1s]
+=== (36,29,4) in C36 (independent check of the imported cyclic nonexistence) ===
+C9 system (m=4): 9 solutions
+C18 system (m=2): 0 solutions
+C18 system EMPTY => SDS(36,29,4) nonexistent in EVERY order-36 abelian group with a C18 quotient (C36 and C2xC18) [0.6s]
+=== (36,29,4) in C6 x C6: complete two-layer search ===
+marginal-consistent candidates over all 9x4 marginal pairs: 16964640; surviving full correlation: 0  => SDS(36,29,4,[6,6]) NONEXISTENT [43.7s]
+
+ALL NONEXISTENCE LEGS CONFIRMED: True [51.7s total]

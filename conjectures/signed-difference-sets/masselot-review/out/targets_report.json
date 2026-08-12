@@ -1,0 +1,94 @@
+{
+ "c32_20_4": {
+  "c8_sum_norm": 9528,
+  "c8_solutions": 56,
+  "orbits": [
+   8,
+   8,
+   8,
+   16,
+   16
+  ],
+  "rep_c16_total": 12,
+  "chain_counts": [
+   [
+    8,
+    9528,
+    56
+   ],
+   [
+    16,
+    492096,
+    144
+   ],
+   [
+    32,
+    2985984,
+    0
+   ]
+  ],
+  "final_solutions": 0,
+  "verdict": "NONEXISTENT",
+  "wall_s": 6.7
+ },
+ "marginal_systems_36": {
+  "c3": [
+   [
+    1,
+    6,
+    6
+   ],
+   [
+    6,
+    1,
+    6
+   ],
+   [
+    6,
+    6,
+    1
+   ]
+  ],
+  "c2": [
+   [
+    4,
+    9
+   ],
+   [
+    9,
+    4
+   ]
+  ],
+  "c22_solutions": 4,
+  "c22_orbits": 1,
+  "c33_sum_norm": 106353,
+  "c33_solutions": 9,
+  "c33_orbits": 1,
+  "wall_s": 0.5
+ },
+ "c2x18": {
+  "canonical_candidates": 144,
+  "solutions": 0,
+  "verdict": "NONEXISTENT",
+  "wall_s": 0.1
+ },
+ "c3x12": {
+  "canonical_candidates": 420,
+  "solutions": 0,
+  "verdict": "NONEXISTENT",
+  "wall_s": 0.1
+ },
+ "c36": {
+  "c18_solutions": 0,
+  "verdict": "NONEXISTENT (C18 quotient empty)",
+  "wall_s": 0.6
+ },
+ "c6x6": {
+  "candidates": 16964640,
+  "survivors": 0,
+  "verdict": "NONEXISTENT",
+  "wall_s": 43.7
+ },
+ "all_nonexistence_confirmed": true,
+ "total_wall_s": 51.7
+}
