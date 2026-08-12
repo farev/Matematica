@@ -203,16 +203,21 @@ but $D$ composite with two large primes; $m = 23$ is decided clean.
 All computations 2026-08-12, 4 cores (see WRITEUP for timings), exact
 integer arithmetic throughout, no randomness in any result-bearing path.
 
-**R1 (CERTIFIED).** *Erdős #699 holds for all $4 \le n \le 10^7$,
-independently confirming the January 2026 scan with a different algorithm
-and codebase in 30 s (their run: ~120 core-hours).* A deeper sweep is in
-flight; this bound will be updated only when it completes. (Level $i=1$ by
-Prop 0; levels $2 \le i \le g(n)$ by the sweep; levels $i > g(n)$ by
-Prop 2.)
+**R1 (CERTIFIED).** *Erdős #699 holds for all
+$4 \le n \le 1{,}371{,}537{,}407 \approx 1.372\cdot10^9$ — no
+counterexample exists in that range* — a **137× extension** of the
+previously recorded bound $10^7$, which is itself independently confirmed
+(different algorithm and codebase; 30 s for the $10^7$ range vs the
+January scan's ~120 core-hours). The bound is the contiguous prefix of
+654 completed $2^{21}$-wide segments of a deeper run that was stopped at
+its time budget (per-segment completion markers make the prefix exactly
+certifiable; `data/sweep_segments_done.txt`). (Level $i=1$ by Prop 0;
+levels $2 \le i \le g(n)$ by the sweep; levels $i > g(n)$ by Prop 2.)
 
-**R2 (CERTIFIED).** *Complete census of tight triples for $n \le 10^7$
-(full sweep) and for the structured families far beyond (R4):* exactly ten
-are known, the nine previously known and one new:
+**R2 (CERTIFIED).** *Complete census of tight triples for
+$n \le 1.372\cdot10^9$ (full sweep — exactly the nine previously known,
+`data/census_prefix_1p372e9.csv`) and for the structured families far
+beyond (R4):* eleven triples are known in total, two of them new:
 
 | n | i | j | structure |
 |---|---|---|---|
@@ -263,6 +268,13 @@ the $2^{67}$ uniqueness scan is in `certs/uniq67.txt`.
   $i \ge 3$ at $k > 64$ were not swept (each admissible set there contains
   generic large primes, making a tight triple astronomically unlikely, but
   this is *not* a decided claim).
+- Fermat-side control: the same mechanism at $n = 2^{2^a}{+}1$ has its
+  densities suppressed by the trailing digit ($q \mid n$ forces $t = 0$,
+  so dominated $j \equiv 0 \bmod q$): $E = 0.0113$ at
+  $n = 2^{32}{+}1 = 641\cdot6700417$ and $E = 0.00085$ at
+  $n = 2^{64}{+}1 = 274177\cdot67280421310721$ — both decided **clean**
+  (`data/domclose_fermat.txt`), consistent with the model and explaining
+  why the observed family sits at $2^k$ and not $2^k{+}1$.
 - $n = 3^m+1$, $2 \le m \le 40$: every danger level $i \ge 2$ decided
   (levels $i = 1$ are settled by Prop 0; two $i=1$ dominated-set blowups at
   $m = 37, 39$ are therefore vacuous); the only tight triples are

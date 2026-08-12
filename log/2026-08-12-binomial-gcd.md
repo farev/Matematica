@@ -33,7 +33,7 @@ the strengthening's finite-exceptional-set form.
 - **PROVED** — Theorem 7: at n = 2^k, (n,2,j) is tight iff j ≤ 2^{k−1} is
   base-q dominated by n for every prime q | 2^k−1 (and counterexamples are
   impossible there); if 2^k−1 is a Mersenne prime there is **no** tight
-  triple — explaining why the family is k ∈ {4, 9, 11, 41} (all with
+  triple — explaining why the family is k ∈ {4, 9, 11, 41, 67} (all with
   2^k−1 semiprime, OEIS A085724) and not the Mersenne exponents
   {2,3,5,7,13,…}. Theorem 8: for m = 2 or m odd with (3^m+1)/4 prime and
   (3^m−1)/2 a prime power, (3^m+1, 3, (3^m+1)/2) is tight — the hypotheses
@@ -53,9 +53,14 @@ the strengthening's finite-exceptional-set form.
   7.4·10^12); n = 3^m+1 complete at i ≥ 2 for m ≤ 40, plus m = 41, 43
   decided clean (m = 43 is the next sufficiency-theorem candidate and
   fails the digit criterion); nine levels at m ∈ {42,...,48} undecided
-  (min sizes ≥ 10^11, measured). **Deep sweep to 4·10^9 in flight at
-  log-writing** — the verified-range claim stays at 10^7 until it
-  completes (updated below if it lands in-session).
+  (min sizes ≥ 10^11, measured). **Final sweep bound: the deep run
+  (target 4·10^9) was stopped at the 15:30 checkpoint after its
+  per-segment cost collapsed at n ≈ 1.3·10^9 (smooth-window fallback
+  scales linearly in n); the certified contiguous prefix is
+  4 ≤ n ≤ 1,371,537,407 (654 complete 2^21-segments) — a 137× extension
+  of the recorded bound, with exactly the 9 known tight triples and no
+  counterexample.** Deep-sample audit over the full certified range: 258
+  random n re-decided independently, 0 failures.
 - **NUMERICAL** — the calibrated density model (exact dominated-set
   counts by digit DP, no sampling): E_k = Θ(1) at exactly the five
   members (2.67, 1.0, 1.97, 0.55, 1.85), E = 0.2–0.7 at the decided-clean

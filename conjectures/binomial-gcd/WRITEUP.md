@@ -75,7 +75,18 @@ in doubt.
 - 14:40–15:00 the remaining closure levels turn out to be $10^{10}$–
   $10^{11}$-node problems (the Python "min size" figures were capped
   lower bounds) — deferred honestly as undecided; documents updated;
-  deep sweep given the machine.
+  deep sweep given the machine. Fermat-side control decided clean at
+  suppressed $E$, as the model says.
+- 15:30 checkpoint: the deep sweep's per-segment cost had collapsed at
+  $n \approx 1.3\cdot10^9$ (the doubly-smooth-window scalar fallback
+  scales linearly in $n$ — invisible at $10^7$, dominant at $10^9$;
+  projections said 8–14 h more). Killed on schedule; the per-segment
+  completion markers yield the certified contiguous prefix
+  $n \le 1{,}371{,}537{,}407$ (654 segments, 137× the recorded bound),
+  census = exactly the nine known triples. Final audit over the full
+  range: 258 random $n$, 0 failures. The fallback fix (three-prime CRT
+  or dominated-set enumeration for smooth windows) is the next session's
+  first engineering task if the $4\cdot10^9$ target is wanted.
 
 ## What failed (kept per repo policy)
 
@@ -107,6 +118,22 @@ in doubt.
    (Prop 0) but the checker still reports them — cosmetic defect, kept
    as-is and documented, since deleting them by hand would break the
    log-equals-artifact discipline.
+6. **The u64 truncation flood** (timeline 13:50): the first compiled
+   enumerator run at $k \ge 83$ emitted 355 MB of false EXC rows from
+   silently truncated $>2^{64}$ primes. Caught before any claim was
+   written; fixed to u128; a JOBFAIL canary (>10⁴ hits aborts) now
+   enforces the "a correct run emits at most a handful of hits"
+   expectation structurally; the earlier job batch was audited and had no
+   $\ge 2^{64}$ primes, so its results stood.
+7. **Process hygiene**: a `; cat` suffix masked the closure batch's death
+   at $2^{64}$'s $5\cdot10^{10}$-node level; a pkill pattern matched the
+   wrapper but not the binary, leaving a zombie burning a core against
+   the deep sweep for half an hour; and the deep sweep itself hid a
+   linear-in-$n$ fallback path that only manifested at $10^9$. Between
+   them these cost the $4\cdot10^9$ target. All three are now written
+   down as standing practice: exit codes unmasked, kills verified by ps,
+   and any fallback path's cost model checked at the target scale, not
+   the test scale.
 
 ## Controls that carried weight
 
@@ -125,11 +152,15 @@ in doubt.
 
 ## Where this should go next
 
-The 19+9 UNKNOWN family levels are a compiled enumerator away. The
+$(2^{101}, 2)$ is the model's strongest open prediction ($E = 0.78$) and
+needs either meet-in-the-middle intersection or ~a CPU-day; the smooth-
+window fallback fix would reopen the road to $4\cdot10^9$ and beyond. The
 $i{=}2$-family infinitude question (NOTE §5 Q3) is the mathematically live
-one: the semiprime pattern (A085724) plus measured non-decaying coincidence
-densities make "the exceptional set is infinite" a serious possibility —
-which would falsify the strengthening as formalized in
-`formal-conjectures`. Both the erdosproblems forum thread and the
-`erdos_699_rust` repository are natural places to report the $2^{41}$
-triple once this repository's results are checked by a human.
+one: the semiprime pattern (A085724), the validated density model, and the
+$k = 67$ predict-then-confirm make "the exceptional set is infinite" a
+serious possibility — which would falsify the strengthening as formalized
+in `formal-conjectures`; making the divergence heuristic a conditional
+theorem is a paper-shaped goal. Both the erdosproblems forum thread and
+the `erdos_699_rust` repository are natural places to report the $2^{41}$
+and $2^{67}$ triples once this repository's results are checked by a
+human.

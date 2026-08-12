@@ -18,7 +18,7 @@ the right algorithm. Status of #699 verified open 2026-08-12 from
 | Claim | Label | Where |
 |---|---|---|
 | **Two new tight triples**: $(2^{41},\,2,\,285920731515)$ and $(2^{67},\,2,\,23206563898901803639)$ — the first new ones since Jan 2026, the largest known ($n \approx 1.5\cdot10^{20}$), each with unique $j$ (dual-codebase scans), each verified by a standalone checker; **$2^{67}$ was predicted by the density model before it was found** | CERTIFIED | NOTE §4 R3, `certs/` |
-| #699 holds for $4 \le n \le 10^7$ — independent confirmation of the Jan 2026 scan (different algorithm, 30 s vs ~120 core-h); deeper sweep in flight at session close | CERTIFIED | NOTE §4 R1 |
+| #699 holds for $4 \le n \le 1{,}371{,}537{,}407$ — a **137× extension** of the recorded bound (contiguous certified prefix of the deep sweep), independently confirming the Jan 2026 scan at $10^7$ on the way (30 s vs ~120 core-h) | CERTIFIED | NOTE §4 R1 |
 | Family censuses: $2^k$ complete at all danger levels for $k \le 63$ (17 levels closed by compiled enumerator, up to $4.4\cdot10^9$ candidates each); $i=2$ at semiprime exponents decided through $k = 109$ except $k=101$; $3^m{+}1$ complete at $i \ge 2$ for $m \le 40$, plus $m = 41, 43$ — members are exactly $k \in \{4,9,11,41,67\}$, $m \in \{2,3,5,7,13\}$ | CERTIFIED | NOTE §4 R2/R4 |
 | Mersenne exclusion: $2^k{-}1$ prime ⇒ no tight triple at $(2^k, 2)$; exact criterion for any $k$; the five members all have $2^k{-}1$ semiprime (A085724) | PROVED + observed | NOTE Thm 7 |
 | $i=3$ family mechanism: $m=2$ or ($m$ odd, $(3^m{+}1)/4$ prime, $(3^m{-}1)/2$ a prime power) ⇒ $(3^m{+}1, 3, n/2)$ tight — explains all five known members | PROVED | NOTE Thm 8 |
@@ -60,15 +60,20 @@ gcc -O2 -march=native -o domclose domclose.c -lm && python3 domclose_driver.py >
 | `data/domclose_highk_semiprimes.txt` | domclose | $i=2$ decisions at $k = 67, 83, 97, 103, 109$ |
 | `data/family_3m_41_48.log` | family699.py | the $3^m{+}1$ extension, $m = 41..48$ |
 | `data/density_2k.csv` | measure_density.py | exact $E_k$ table, $k \le 64$ plus semiprime $k \le 131$ |
-| `data/audit_1e7_report.txt` | audit699.py | 408 random $n$ re-decided independently: 0 failures |
+| `data/audit_1e7_report.txt` | audit699.py | 408 random $n \le 10^7$ re-decided independently: 0 failures |
+| `data/audit_1p372e9_report.txt` | audit699.py | 258 random $n$ over the full certified range: 0 failures |
+| `data/census_prefix_1p372e9.csv` + `data/sweep_segments_done.txt` | sweep699 | the certified-prefix census and its segment evidence |
+| `data/domclose_fermat.txt` | domclose | Fermat-side control: $2^{32}{+}1$, $2^{64}{+}1$ clean (suppressed $E$, as modeled) |
 | `certs/verify_2_41.txt`, `certs/verify_2_67.txt` | verify_triple.py | independent verification transcripts of the new triples |
 | `certs/uniq67.txt` | standalone scan | $2^{67}$ uniqueness: 1.94·10⁸ candidates, one solution |
 
 ## Known defects and open threads
 
-- The deep-sweep bound (target $4\cdot10^9$) was **in flight at session
-  close**; only $10^7$ is claimed until it lands (see log for the final
-  state).
+- The deep sweep targeted $4\cdot10^9$ but was stopped at its time
+  budget: the certified bound is the contiguous prefix
+  $n \le 1.372\cdot10^9$. Blocker: the scalar fallback for doubly-smooth
+  windows scales linearly in $n$ (fine at $10^7$, dominant at $10^9$) — a
+  three-prime CRT or dominated-set fallback would fix it; next session.
 - Undecided levels, stated plainly: $(2^{64}, i{=}2,3)$ (min dominated set
   $5.15\cdot10^{10}$); nine $3^m{+}1$ levels, $m \in \{42,44,45,46,47,48\}$
   (min sizes $\gtrsim 10^{11}$, measured); $(2^{101}, 2)$ (min

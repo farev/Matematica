@@ -1,0 +1,11 @@
+# Full-sweep census, certified prefix n <= 1371537407 (654 contiguous segments of 2^21, run killed at 15:30 UTC with 4e9 target unreached; see WRITEUP)
+# kind,n,i,j
+EXC,10,3,5
+EXC,16,2,6
+EXC,28,3,14
+EXC,28,5,14
+EXC,244,3,122
+EXC,512,2,147
+EXC,2048,2,713
+EXC,2188,3,1094
+EXC,1594324,3,797162

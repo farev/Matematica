@@ -31,11 +31,12 @@ at n = 2⁴¹ and n = 2⁶⁷ — the largest known, the first found since Janua
 4. **PROVED.** Theorem 8: for m = 2 or m odd with (3ᵐ+1)/4 prime and
    (3ᵐ−1)/2 a prime power, (3ᵐ+1, 3, (3ᵐ+1)/2) is tight — the hypotheses
    hold exactly for m ∈ {2, 3, 5, 7, 13}, i.e. every known i=3 member.
-5. **CERTIFIED.** Independent confirmation of the January 2026 Rust scan
-   (conglu1997/erdos_699_rust): #699 holds for n ≤ 10⁷, with exactly the
-   9 known tight pairs — different algorithm (danger-zone reduction:
-   exceptional triples need i ≤ n − prevprime(n)), 30 s on 4 cores vs
-   ~120 core-hours. Family censuses far beyond any sweep: 2ᵏ complete at
+5. **CERTIFIED.** #699 holds for all n ≤ 1,371,537,407 — a 137×
+   extension of the recorded verification bound — with exactly the 9
+   previously known tight pairs in range and no counterexample; the
+   January 2026 Rust scan's 10⁷ result is independently confirmed on the
+   way (different algorithm — danger-zone reduction: exceptional triples
+   need i ≤ n − prevprime(n) — 30 s on 4 cores vs ~120 core-hours). Family censuses far beyond any sweep: 2ᵏ complete at
    every danger level for k ≤ 63; i=2 decided at every semiprime exponent
    through k = 109 except k = 101; 3ᵐ+1 complete (i ≥ 2) for m ≤ 40 plus
    m = 41, 43.
@@ -86,9 +87,9 @@ at n = 2⁴¹ and n = 2⁶⁷ — the largest known, the first found since Janua
 - Undecided levels are listed explicitly (README defects): (2⁶⁴, i=2,3),
   nine 3ᵐ levels m ∈ {42..48}, (2¹⁰¹, 2) with E = 0.78 (the model's
   strongest open prediction), (2¹³¹, 2), and i ≥ 3 at 2ᵏ for k > 64.
-- The deep full sweep past 10⁷ was in flight at session close — the page
-  must state whatever bound the log's final update records, not assume
-  4·10⁹.
+- The deep full sweep's certified bound is n ≤ 1,371,537,407 (contiguous
+  segment prefix; the 4·10⁹ target was cut at the time budget). State
+  1.372·10⁹, not 4·10⁹.
 - The uniqueness of j at 2⁶⁷ rests on one C scan plus one Python scan
   written the same day (independent code, same author-session);
   the tightness itself is verified by a third, no-shared-code checker.

@@ -1,0 +1,7 @@
+# Fermat-side check (2026-08-12): n = 2^(2^a)+1 semiprime, level i=2.
+# The density model gives E = 0.0113 (n=2^32+1 = 641*6700417) and
+# E = 0.000854 (n=2^64+1 = 274177*67280421310721) -- suppressed ~50-500x
+# relative to Mersenne-side semiprimes because q | n gives trailing digit
+# t=0 (dominated j must be = 0 mod q) instead of t=1. Both decided CLEAN:
+CLEAN n=4294967297 i=2 enumerated=320 base=6700417
+CLEAN n=18446744073709551617 i=2 enumerated=137088 base=67280421310721
