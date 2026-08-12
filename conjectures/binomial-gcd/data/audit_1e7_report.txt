@@ -1,0 +1,14 @@
+  audit-n=10 EXC n=10 i=3 j=5
+  ...0/408 n checked
+  audit-n=16 EXC n=16 i=2 j=6
+  audit-n=28 EXC n=28 i=3 j=14
+  audit-n=28 EXC n=28 i=5 j=14
+  audit-n=244 EXC n=244 i=3 j=122
+  audit-n=512 EXC n=512 i=2 j=147
+  audit-n=2048 EXC n=2048 i=2 j=713
+  audit-n=2188 EXC n=2188 i=3 j=1094
+  audit-n=1594324 EXC n=1594324 i=3 j=797162
+  ...200/408 n checked
+  ...400/408 n checked
+
+AUDIT: 408 n fully re-decided, 0 skipped (blowup), 9 hits reproduced, 0 FAILURES

@@ -1,0 +1,20 @@
+# domclose closures of the family levels UNDECIDED after the Python pass (2026-08-12)
+# 17 of the 19 2^k levels closed CLEAN; 2^64 i=2,3 remain UNDECIDED (min dominated set 5.15e10);
+# the nine 3^m+1 levels (m in 42..48) remain UNDECIDED (min dominated sets ~1e11 or larger, measured).
+CLEAN n=35184372088832 i=2 enumerated=71124478 base=7
+CLEAN n=35184372088832 i=3 enumerated=71124478 base=7
+CLEAN n=35184372088832 i=4 enumerated=71124478 base=7
+CLEAN n=1125899906842624 i=2 enumerated=932190334 base=1801
+CLEAN n=9007199254740992 i=2 enumerated=294099760 base=20394401
+CLEAN n=18014398509481984 i=3 enumerated=267127804 base=262657
+CLEAN n=36028797018963968 i=2 enumerated=17756204248 base=201961
+CLEAN n=36028797018963968 i=3 enumerated=1592560107 base=262657
+CLEAN n=36028797018963968 i=4 enumerated=1592560107 base=262657
+CLEAN n=36028797018963968 i=5 enumerated=1592560107 base=262657
+CLEAN n=72057594037927936 i=2 enumerated=559871998 base=5
+CLEAN n=72057594037927936 i=3 enumerated=559871998 base=5
+CLEAN n=72057594037927936 i=4 enumerated=559871998 base=5
+CLEAN n=72057594037927936 i=5 enumerated=4563393230 base=15790321
+CLEAN n=288230376151711744 i=2 enumerated=4353564670 base=3
+CLEAN n=1152921504606846976 i=2 enumerated=1605795838 base=11
+CLEAN n=9223372036854775808 i=2 enumerated=2351462398 base=7

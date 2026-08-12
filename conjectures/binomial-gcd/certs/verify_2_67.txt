@@ -1,0 +1,15 @@
+=== triple (n=2^67=147573952589676412928, i=2, j=23206563898901803639): VERIFIED TIGHT ===
+  PASS: range 1 <= 2 < 23206563898901803639 <= 147573952589676412928//2
+  PASS: 2 (factor of n-0) is prime
+  PASS: product of claimed factorization of n-0 equals 147573952589676412928
+  PASS: 193707721 (factor of n-1) is prime
+  PASS: 761838257287 (factor of n-1) is prime
+  PASS: product of claimed factorization of n-1 equals 147573952589676412927
+  PASS: admissible 193707721 divides C(n,2) (Kummer)
+  PASS: admissible 761838257287 divides C(n,2) (Kummer)
+  PASS: 193707721 does not divide C(n,23206563898901803639)
+  PASS: 761838257287 does not divide C(n,23206563898901803639)
+  NOTE: by C(n,i)=n^(i)/i! and p>i, the admissible primes are exactly the >i prime factors of the window — covered above.
+  PASS: i = 2 is prime
+  PASS: 2 divides C(n,2)
+  PASS: 2 divides C(n,23206563898901803639)

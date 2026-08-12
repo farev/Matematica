@@ -20,7 +20,15 @@ $2^k$ and $3^m{+}1$ checkable at sizes no full sweep reaches ($2^{64}$,
 $3^{48}$), and the very first family run found a **new tight triple at
 $n = 2^{41} \approx 2.2\cdot10^{12}$** — 200,000× beyond the previous
 largest — which a standalone verifier then confirmed, including uniqueness
-of $j$ among $9.07\cdot10^7$ dominated candidates.
+of $j$ among $9.07\cdot10^7$ dominated candidates. The afternoon closed
+the loop: an exact density model built from the census flagged $k = 67$
+as the strongest undecided exponent ($E = 1.85$), and the enumeration
+found the predicted triple — $(2^{67}, 2, 23206563898901803639)$,
+$n \approx 1.5\cdot10^{20}$, unique $j$, independently verified. A
+predict-then-confirm result is the strongest evidence a heuristic model
+can earn in a day, and this model's verdict is that the exceptional set
+is infinite (NOTE R5) — putting the formalized finite-set strengthening
+in doubt.
 
 ## Timeline (UTC)
 
@@ -48,8 +56,26 @@ of $j$ among $9.07\cdot10^7$ dominated candidates.
   re-proved, Kummer carries, uniqueness scan); 3^m side clean through
   $m \le 40$; extension to $m \le 48$ launched.
 - 13:20 3^m extension done ($m = 43$, the next sufficiency-candidate:
-  decided clean). Theorems 7–8 written with proofs; documents; audit and
-  the deep-sweep close-out follow.
+  decided clean). Theorems 7–8 written with proofs; first commit pushed.
+- 13:35 deep-sample audit: 408 random $n$ re-decided independently, 0
+  failures. Density table computed (exact digit DP): the five-known-member
+  pattern emerges — $E_k = \Theta(1)$ exactly at members and near-miss
+  semiprimes.
+- 13:50–14:10 compiled enumerator (`domclose.c`) closes the Python-capped
+  levels; extended to the semiprime exponents $k > 64$ flagged by the
+  model. **First high-$k$ run produced a 355 MB flood of false positives**
+  — primes above $2^{64}$ truncated in a u64 field. Caught by inspection
+  (impossible hit counts, $j$'s in arithmetic progressions), fixed to
+  u128, canary added, prior batch audited unaffected.
+- 14:20 fixed run: **$k = 67$ tight — exactly as the model predicted**
+  ($E_{67} = 1.85$, the largest undecided value; Cole's 1903
+  factorization). $k = 83, 97, 103, 109$ clean (enumerations to
+  $2.55\cdot10^9$). Standalone verification + dual-codebase uniqueness
+  scan pass.
+- 14:40–15:00 the remaining closure levels turn out to be $10^{10}$–
+  $10^{11}$-node problems (the Python "min size" figures were capped
+  lower bounds) — deferred honestly as undecided; documents updated;
+  deep sweep given the machine.
 
 ## What failed (kept per repo policy)
 

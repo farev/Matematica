@@ -17,15 +17,19 @@ k ≤ 27, m ≤ 17 by the exact criterion; (3) an honest numerical verdict on
 the strengthening's finite-exceptional-set form.
 
 **Result.**
-- **CERTIFIED** — **a new exceptional ("tight") triple
-  (2^41, 2, 285920731515)**: gcd(C(2^41,2), C(2^41,285920731515)) is a
-  power of 2, so the pair is satisfied only at p = i = 2. It is the first
-  new tight triple since the January census, the largest known
-  (n ≈ 2.2·10^12, ~200,000× beyond the previous record 1594324), and j is
-  unique at (2^41, 2) — verified by a standalone checker
-  (factorizations re-proved by multiplication + primality; Kummer by
-  carry-propagation, not shared code; uniqueness by an independent scan of
-  all 9.07·10^7 dominated candidates). `conjectures/binomial-gcd/certs/`.
+- **CERTIFIED** — **two new exceptional ("tight") triples**, the first
+  since the January census. (2^41, 2, 285920731515):
+  gcd(C(2^41,2), C(2^41,·)) is a power of 2 — found by the family
+  criterion sweep, n ≈ 2.2·10^12, ~200,000× beyond the previous record.
+  And **(2^67, 2, 23206563898901803639)** — n ≈ 1.5·10^20, found by
+  **prediction**: the exact-density model (below) flagged k = 67 (Cole's
+  1903 factorization 2^67−1 = 193707721·761838257287) as the strongest
+  undecided exponent (E = 1.85, computed before the enumeration), and the
+  enumeration produced exactly one tight j. Both triples verified by a
+  standalone checker (factorizations re-proved by multiplication +
+  primality; Kummer by carry-propagation, no shared code) and both j's
+  unique by dual-codebase scans (9.07·10^7 and 1.94·10^8 candidates).
+  `conjectures/binomial-gcd/certs/`.
 - **PROVED** — Theorem 7: at n = 2^k, (n,2,j) is tight iff j ≤ 2^{k−1} is
   base-q dominated by n for every prime q | 2^k−1 (and counterexamples are
   impossible there); if 2^k−1 is a Mersenne prime there is **no** tight
@@ -41,23 +45,31 @@ the strengthening's finite-exceptional-set form.
   (different algorithm: danger-zone reduction + CRT candidate enumeration;
   30 s on 4 cores vs their ~120 core-hours — a ~5000× algorithmic speedup,
   which is what makes everything else reachable). Family censuses by the
-  exact criterion: n = 2^k complete for k ≤ 44 (only k = 4, 9, 11, 41
-  tight; semiprime exponents 23, 37, 49, 59 decided clean), k ≤ 64 minus
-  19 honestly-UNKNOWN levels; n = 3^m+1 complete at i ≥ 2 for m ≤ 40 and
-  decided at m = 41, 43 (clean; m = 43 is the next sufficiency-theorem
-  candidate and fails the digit criterion), 9 UNKNOWN levels at m ∈
-  [42,48]. **Deep sweep to 4·10^9 in flight at log-writing** — the
-  verified-range claim stays at 10^7 until it completes (updated below if
-  it lands in-session).
-- **NUMERICAL** — the i=3 mechanism requires simultaneous
-  near-primality of (3^m±1)/{2,4}: probability ≍ 1/m² per m under standard
-  heuristics, so a finite family is expected (observed cutoff m = 13
-  through m ≤ 48). The i=2 mechanism shows **no decay**: measured
-  coincidence densities at the four known k give per-semiprime-k expected
-  solution counts O(0.1–1) with no visible trend, so an infinite i=2
-  family — which would falsify the strengthening as formalized — is a live
-  possibility. Verdict: the finite-set form is unrefuted but not
-  numerically supported.
+  exact criterion: n = 2^k complete at **every danger level for k ≤ 63**
+  (the 17 levels past the Python enumeration cap were closed CLEAN by a
+  compiled u128 enumerator, up to 4.4·10^9 candidates each; 2^64's two
+  levels remain undecided at 5.15·10^10); i=2 decided at every semiprime
+  exponent through k = 109 **except k = 101** (min dominated set
+  7.4·10^12); n = 3^m+1 complete at i ≥ 2 for m ≤ 40, plus m = 41, 43
+  decided clean (m = 43 is the next sufficiency-theorem candidate and
+  fails the digit criterion); nine levels at m ∈ {42,...,48} undecided
+  (min sizes ≥ 10^11, measured). **Deep sweep to 4·10^9 in flight at
+  log-writing** — the verified-range claim stays at 10^7 until it
+  completes (updated below if it lands in-session).
+- **NUMERICAL** — the calibrated density model (exact dominated-set
+  counts by digit DP, no sampling): E_k = Θ(1) at exactly the five
+  members (2.67, 1.0, 1.97, 0.55, 1.85), E = 0.2–0.7 at the decided-clean
+  balanced semiprimes (23, 37, 59, 103, 109 — Poisson-consistent misses),
+  E ≤ 10^−5 everywhere else. Along balanced semiprimes E_k does not decay,
+  and with semiprime density ≍ (log k)/k the heuristic ΣE_k **diverges**:
+  the model predicts infinitely many i=2 tight triples — against the
+  finite-exceptional-set form of the strengthening as formalized in
+  Lean — with five members below 2^67 being the expected order. The i=3
+  mechanism needs simultaneous near-primality of (3^m±1)/{2,4}
+  (probability ≍ 1/m² per m): convergent, finite family expected
+  (observed cutoff m = 13 through m ≤ 48). The k = 67 prediction-then-
+  discovery is the model's strongest validation; its independence
+  assumption remains untested beyond the census itself.
 
 **What failed.**
 - The selection-time framing ("first recorded verification bound") was
@@ -75,23 +87,43 @@ the strengthening's finite-exceptional-set form.
   Segment-completion markers added so an interrupted run still certifies
   a prefix.
 - The family checker died twice on dominated-set blowups before getting
-  streaming enumeration + catch-and-mark-UNKNOWN semantics. 28 levels
-  remain UNKNOWN (listed with sizes in the data) rather than silently
-  dropped.
+  streaming enumeration + catch-and-mark-UNKNOWN semantics. Its "min
+  size" figures for UNKNOWN levels are capped partial products (lower
+  bounds), which briefly misled the closure planning: the true minima at
+  the 3^m levels are ≥ 10^11, not ~10^8.
+- **The u128 bug that mattered**: the first compiled enumerator stored
+  primes as u64; the k ≥ 83 semiprime jobs (factors up to 1.4·10^25)
+  silently truncated and spewed a 355 MB flood of false "EXC" rows.
+  Caught by inspection before any claim was written (j-values in
+  arithmetic progressions = carries misfiring), fixed to full u128,
+  a JOBFAIL canary added (> 10^4 hits aborts the job), and the earlier
+  job batch audited clean (no prime ≥ 2^64 — its results stood). Every
+  claimed triple was then re-derived in the fixed engine AND by the
+  no-shared-code verifier. Lesson: a tool that can only ever emit a
+  handful of hits must enforce that expectation itself.
+- Process hygiene cost real time: a `; cat` suffix masked the exit code
+  of the first closure batch (it died silently at 2^64's 5·10^10-node
+  level and looked "completed"); and a pkill pattern matched the wrapper
+  but not the binary, leaving a zombie burning a core against the
+  4·10^9 sweep for half an hour. Both now standing lessons: exit codes
+  unmasked, kills verified by ps afterwards.
 - Two "UNKNOWN at i=1" rows in the 3^m log are vacuous (Prop 0 settles
   i=1) — cosmetic checker defect, documented rather than hand-edited.
 
-**Next.** (1) Close the 28 UNKNOWN family levels (compiled dominated-set
-enumerator; the i=2 levels at k ∈ {45,50,53,55,56,58,60,63,64} are the
-interesting ones). (2) The sharpest open thread: prove or refute
-infinitude of the i=2 family — the semiprime pattern plus non-decaying
-densities suggest a conditional infinitude theorem (under standard
-heuristics for factors of 2^k−1) may be in reach, which would bear
-directly on the formalized strengthening. (3) Report the 2^41 triple to
-the erdosproblems #699 forum thread and the erdos_699_rust repository
-after human check (needs a machine with GitHub/forum access). (4) A
-structural proof that i=2 tightness forces n = 2^k (true empirically to
-10^7, soon 4·10^9) would turn the census pattern into a theorem.
+**Next.** (1) Decide (2^101, 2) — the model's strongest open prediction
+(E = 0.78; min dominated set 7.4·10^12 wants a meet-in-the-middle
+intersection algorithm or ~a day of CPU); then 2^131 (needs >128-bit) and
+A085724 beyond. (2) The sharpest open thread: make the divergence
+heuristic a conditional theorem (under standard heuristics for Mersenne
+factorizations, the expected number of i=2 tight triples diverges) — or
+find the flaw in its independence assumption; either outcome bears
+directly on the formalized strengthening. (3) Report the 2^41 and 2^67
+triples to the erdosproblems #699 forum thread and the erdos_699_rust
+repository after human check (needs a machine with forum access). (4) A
+structural proof that i=2 tightness forces n = 2^k would turn the census
+pattern into a theorem. (5) Mop-up: 2^64's two levels (5·10^10
+candidates), the nine 3^m levels at m ∈ {42..48} (≥ 10^11 each), and
+i ≥ 3 at 2^k, k > 64.
 
 ---
 

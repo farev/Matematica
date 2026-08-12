@@ -125,14 +125,17 @@ $k$). Hence tight, never a counterexample.
 dominated by $n$ are $\{0, 1, q, q+1\}$, and none lies in $(2, 2^{k-1}]$
 since $q = n - 1 > n/2$. $\square$
 
-*Remark.* Theorem 7(b) explains the shape of the known family: the four
-known members $k = 4, 9, 11, 41$ all have $2^k-1$ a **semiprime**
+*Remark.* Theorem 7(b) explains the shape of the known family: the five
+known members $k = 4, 9, 11, 41, 67$ all have $2^k-1$ a **semiprime**
 ($15 = 3\cdot 5$, $511 = 7\cdot 73$, $2047 = 23\cdot 89$,
-$2^{41}-1 = 13367 \cdot 164511353$), i.e. they lie in OEIS A085724 (fetched
-from the OEIS mirror 2026-08-12: A085724 begins $4, 9, 11, 23, 37, 41, 49,
-59, \dots$). Semiprimality is not sufficient: $k = 23, 37, 49, 59$ are
-decided and clean (§4). Membership for each $k$ is the finite domination
-check of Theorem 7(a).
+$2^{41}-1 = 13367 \cdot 164511353$,
+$2^{67}-1 = 193707721 \cdot 761838257287$ — Cole's 1903 factorization),
+i.e. they lie in OEIS A085724 (fetched from the OEIS mirror 2026-08-12:
+A085724 begins $4, 9, 11, 23, 37, 41, 49, 59, \dots$). Semiprimality is
+not sufficient: $k = 23, 37, 49, 59, 83, 97, 103, 109$ are decided and
+clean (§4) — the discriminating quantity is the measured digit-coincidence
+density of R5. Membership for each $k$ is the finite domination check of
+Theorem 7(a).
 
 **Theorem 8 ($i=3$ at $n = 3^m+1$; a sufficient criterion).** Let $m \ge 2$
 and $n = 3^m + 1$, $j = n/2 = (3^m+1)/2$. Suppose either
@@ -223,58 +226,111 @@ are known, the nine previously known and one new:
 | 2188 | 3 | 1094 | $3^7+1$, $j=n/2$ |
 | 1594324 | 3 | 797162 | $3^{13}+1$, $j=n/2$ |
 | **2199023255552** | **2** | **285920731515** | **$2^{41}$ — new** |
+| **147573952589676412928** | **2** | **23206563898901803639** | **$2^{67}$ — new, predicted before found** |
 
-**R3 (CERTIFIED, new).** *$(2^{41},\, 2,\, 285920731515)$ is a tight
-triple:* $\gcd\bigl(\binom{2^{41}}{2}, \binom{2^{41}}{285920731515}\bigr)$ is a power
-of 2. It is the largest known tight triple ($n \approx 2.2\cdot 10^{12}$),
-the first new one since the January 2026 census, and $j$ is unique at
-$(n,i) = (2^{41}, 2)$ (independent uniqueness scan over all $9.07\cdot
-10^7$ dominated candidates). Verified by the standalone verifier
-(`certs/verify_2_41.txt`).
+**R3 (CERTIFIED, new).** *Two new tight triples.*
+$(2^{41}, 2, 285920731515)$:
+$\gcd\bigl(\binom{2^{41}}{2}, \binom{2^{41}}{285920731515}\bigr)$ is a power
+of 2 — found by the family criterion sweep; $j$ unique at $(2^{41}, 2)$
+(independent uniqueness scan over all $9.07\cdot 10^7$ dominated
+candidates in a second codebase). And
+$(2^{67}, 2, 23206563898901803639)$ — $n \approx 1.5\cdot10^{20}$, found
+by *prediction*: the density heuristic of R5 flagged $k = 67$ (Cole's 1903
+factorization $2^{67}-1 = 193707721 \cdot 761838257287$) as the strongest
+undecided exponent ($E_{67} = 1.85$, computed before the enumeration), and
+the enumeration then produced exactly one tight $j$. Both verified by the
+standalone verifier (`certs/verify_2_41.txt`, `certs/verify_2_67.txt`);
+the $2^{67}$ uniqueness scan is in `certs/uniq67.txt`.
 
 **R4 (CERTIFIED).** *Family censuses far beyond the sweep:*
-- $n = 2^k$, $4 \le k \le 64$: every danger level $2 \le i \le g(n)$
-  decided for $k \le 44$; the only tight triples are $k = 4, 9, 11, 41$
-  (all at $i = 2$, one $j$ each). For $45 \le k \le 64$ all levels are
-  decided **except** 19 specific $(k,i)$ levels listed in
-  `data/family_unknown_levels.csv` (dominated sets exceed $10^8$; honest
-  UNKNOWNs, not failures). In particular the semiprime exponents
-  $k = 23, 37, 49, 59$ are decided and clean.
+- $n = 2^k$, $4 \le k \le 63$: **every danger level $2 \le i \le g(n)$
+  decided.** The Python pass left 19 $(k,i)$ levels open
+  (`data/family_unknown_levels.csv`); a compiled dominated-set enumerator
+  (`domclose.c`, validated on three positive controls) closed 17 of them
+  CLEAN, with enumerations up to $4.4\cdot10^9$ candidates
+  (`data/domclose_closures.txt`). The only tight triples with $k \le 63$
+  are $k = 4, 9, 11, 41$ (all at $i = 2$, one $j$ each); the semiprime
+  exponents $k = 23, 37, 49, 59$ are decided and clean. At $k = 64$,
+  levels $i = 2, 3$ remain **undecided** (minimum dominated set
+  $5.15\cdot10^{10}$; $E_{64} \approx 10^{-26}$, so nothing is expected
+  there, but it is not decided).
+- Level $i = 2$ at the semiprime exponents beyond 64 (A085724):
+  $k = 67$ **tight** (R3), $k = 83, 97, 103, 109$ **clean** (enumerations
+  of $166$ to $2.55\cdot10^9$ dominated candidates,
+  `data/domclose_highk_semiprimes.txt`); $k = 101$ undecided (minimum
+  dominated set $7.4\cdot10^{12}$, beyond enumeration), $k = 131$
+  undecided ($n > 2^{127}$, outside the tool's integer type). Levels
+  $i \ge 3$ at $k > 64$ were not swept (each admissible set there contains
+  generic large primes, making a tight triple astronomically unlikely, but
+  this is *not* a decided claim).
 - $n = 3^m+1$, $2 \le m \le 40$: every danger level $i \ge 2$ decided
   (levels $i = 1$ are settled by Prop 0; two $i=1$ dominated-set blowups at
   $m = 37, 39$ are therefore vacuous); the only tight triples are
-  $m = 2, 3, 5, 7, 13$ (at $i=3$, $j = n/2$; plus $(28,5,14)$). An
-  extension to $m \le 48$ is in flight (factoring-limited; UNKNOWN levels
-  will be marked in `data/family_census.csv`).
+  $m = 2, 3, 5, 7, 13$ (at $i=3$, $j = n/2$; plus $(28,5,14)$). Extension
+  $41 \le m \le 48$: $m = 41, 43$ fully decided clean ($m = 43$ is the
+  next candidate with $(3^m{+}1)/4$ prime, and it *fails* the digit
+  criterion); nine levels at $m \in \{42,44,45,46,47,48\}$ remain
+  **undecided** — their minimum dominated sets were measured at
+  $\ge 10^{11}$ (e.g. $2.9\cdot10^{11}$ at $m=42$, $i=3$), beyond today's
+  enumeration budget (`data/family_3m_41_48.log`).
 
-**R5 (NUMERICAL).** Heuristic accounting for the strengthening (§5 of
-WRITEUP has the computation): the $i=3$ mechanism needs, by Theorem 8-type
-structure, simultaneous near-primality of $(3^m\pm1)/\{2,4\}$ — events of
-probability $\asymp 1/m^2$ under standard heuristics, so finitely many
-members are expected beyond any bound (consistent with the observed cutoff
-at $m = 13$ through $m \le 40$). The $i=2$ mechanism is *not* visibly
-decaying: the four known members sit inside the semiprime exponents
-(A085724), the per-$k$ expected solution count measured from the actual
-dominated-set densities is $O(0.1$–$1)$ at $k = 41$ and does not trend to
-zero on the available data, and 17 levels in $[45, 64]$ remain undecided.
-On present evidence the $i=2$ family being infinite is a live possibility;
-the strengthening as formalized (a finite exceptional set) should not be
-considered numerically supported — only unrefuted.
+**R5 (NUMERICAL).** *Measured coincidence densities and what they say
+about the strengthening* (`data/density_2k.csv`; `measure_density.py`
+computes every entry exactly by digit DP — the only floating point is the
+final ratio). For each $k$, let $E_k = (n/2+1)\prod_{q \mid 2^k-1}
+\frac{|\mathrm{Dom}_q \cap [0, n/2]|}{n/2+1}$ — the expected number of
+tight $j$ under an independence heuristic, computed from the *actual*
+dominated-set sizes.
+- The heuristic is sharply predictive. Hits: $E_4 = 2.67$, $E_9 = 1.0$,
+  $E_{11} = 1.97$, $E_{41} = 0.55$, $E_{67} = 1.85$ — all five observed
+  members have $E = \Theta(1)$. Near-misses: $E_{23} = 0.68$,
+  $E_{37} = 0.41$, $E_{59} = 0.44$, $E_{109} = 0.62$, $E_{103} = 0.24$ —
+  all decided clean, consistent with Poisson misses. Everything with
+  $\omega(2^k-1) \ge 3$ or a small algebraic factor has $E$ collapsing
+  ($10^{-5}$ to $10^{-46}$): the family lives on *balanced semiprime*
+  Mersenne numbers.
+- **The $k = 67$ triple was predicted before it was found**: the density
+  table flagged it as the strongest undecided exponent, and the
+  enumeration confirmed it. This is the session's strongest evidence that
+  the model is capturing the real mechanism.
+- Along balanced-semiprime exponents, $E_k$ shows **no decay in $k$**
+  (0.55 at 41, 1.85 at 67, 0.78 at 101, 0.62 at 109). The density of such
+  exponents is governed by $P[2^k-1 \text{ semiprime, balanced}]$, which
+  standard heuristics put at $\asymp (\log k)/k$; then
+  $\sum_k E_k \cdot \mathbf{1}_{\text{semiprime}}$ **diverges** (like
+  $(\log K)^2$), i.e. the model predicts **infinitely many $i=2$ tight
+  triples** — against the finite-exceptional-set form of the
+  strengthening (`erdos_szekeres_strengthening` in the Lean
+  formalization), though at a density so low that five members below
+  $2^{67}$ is exactly the expected order. By contrast the $i=3$ mechanism
+  needs simultaneous near-primality of $(3^m\pm1)/\{2,4\}$ — probability
+  $\asymp 1/m^2$ per $m$, convergent sum, finitely many expected
+  (observed cutoff $m = 13$ through $m \le 48$).
+- Verdict, honestly labeled: this is a heuristic, not a theorem, and its
+  independence assumption is untested beyond the census itself. But the
+  data currently *disfavors* the strengthening as formalized: predicted
+  next candidates are the balanced-semiprime exponents $k = 101$
+  ($E = 0.78$, undecided) and whatever A085724 holds beyond 131.
 
 ## 5. Open questions
 
-1. Decide the 19 UNKNOWN $(k,i)$ levels for $2^k$ (and 9 more for $3^m{+}1$, $m \ge 42$) (needs a
-   compiled dominated-set enumerator or a smarter intersection bound).
+1. Decide $(2^{101}, 2)$ — the strongest undecided prediction of the
+   density model ($E = 0.78$; minimum dominated set $7.4\cdot10^{12}$
+   needs either a smarter intersection algorithm than enumeration, e.g.
+   meet-in-the-middle over digit blocks, or ~a day of CPU). Then
+   $(2^{131}, 2)$ (needs $>128$-bit arithmetic) and A085724 beyond.
 2. Is there any tight triple with $n$ not of the form $2^k$ or $3^m+1$?
-   (None for $n \le 4\cdot 10^9$.) A structural proof that tightness at
-   $i=2,3$ forces these shapes would turn R2's pattern into a theorem.
-3. Prove or refute: infinitely many $k$ with $2^k-1$ semiprime admit the
-   digit coincidence of Theorem 7(a). Even a conditional result (under
-   standard heuristics for the factorization of $2^k-1$) deciding the
-   *expected* infinitude of the $i=2$ family would sharpen the
-   strengthening's status considerably.
+   A structural proof that tightness at $i=2,3$ forces these shapes would
+   turn R2's pattern into a theorem.
+3. Prove, under standard heuristics for the factorization of Mersenne
+   numbers, that the expected number of $i=2$ tight triples diverges
+   (R5's calculation made rigorous as a conditional theorem). This would
+   put the formalized strengthening (finite exceptional set) in serious
+   doubt — or finding the flaw in R5's independence assumption would
+   rescue it.
 4. The $i \ge 4$ shelf: $(28,5,14)$ is still the only known member; is it
-   truly isolated? (It is for $n \le 4\cdot 10^9$.)
+   truly isolated?
+5. Levels $i \ge 3$ at $2^k$, $k > 64$ (not swept; see R4).
 
 ## References
 

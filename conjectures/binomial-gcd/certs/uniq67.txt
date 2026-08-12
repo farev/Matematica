@@ -1,0 +1,2 @@
+scanned 193707720 dominated candidates base 761838257287; solutions = [23206563898901803639]
+UNIQUE
