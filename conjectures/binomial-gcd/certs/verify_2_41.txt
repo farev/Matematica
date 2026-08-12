@@ -1,0 +1,39 @@
+
+=== triple (n=1594324, i=3, j=797162): VERIFIED TIGHT ===
+  PASS: range 1 <= 3 < 797162 <= 1594324//2
+  PASS: 2 (factor of n-0) is prime
+  PASS: 398581 (factor of n-0) is prime
+  PASS: product of claimed factorization of n-0 equals 1594324
+  PASS: 3 (factor of n-1) is prime
+  PASS: product of claimed factorization of n-1 equals 1594323
+  PASS: 2 (factor of n-2) is prime
+  PASS: 797161 (factor of n-2) is prime
+  PASS: product of claimed factorization of n-2 equals 1594322
+  PASS: admissible 398581 divides C(n,3) (Kummer)
+  PASS: admissible 797161 divides C(n,3) (Kummer)
+  PASS: 398581 does not divide C(n,797162)
+  PASS: 797161 does not divide C(n,797162)
+  NOTE: by C(n,i)=n^(i)/i! and p>i, the admissible primes are exactly the >i prime factors of the window — covered above.
+  PASS: i = 3 is prime
+  PASS: 3 divides C(n,3)
+  PASS: 3 divides C(n,797162)
+
+=== triple (n=2199023255552, i=2, j=285920731515): VERIFIED TIGHT ===
+  PASS: range 1 <= 2 < 285920731515 <= 2199023255552//2
+  PASS: 2 (factor of n-0) is prime
+  PASS: product of claimed factorization of n-0 equals 2199023255552
+  PASS: 13367 (factor of n-1) is prime
+  PASS: 164511353 (factor of n-1) is prime
+  PASS: product of claimed factorization of n-1 equals 2199023255551
+  PASS: admissible 13367 divides C(n,2) (Kummer)
+  PASS: admissible 164511353 divides C(n,2) (Kummer)
+  PASS: 13367 does not divide C(n,285920731515)
+  PASS: 164511353 does not divide C(n,285920731515)
+  NOTE: by C(n,i)=n^(i)/i! and p>i, the admissible primes are exactly the >i prime factors of the window — covered above.
+  PASS: i = 2 is prime
+  PASS: 2 divides C(n,2)
+  PASS: 2 divides C(n,285920731515)
+
+uniqueness scan for n=2^41, i=2: dominated-set size base 13367 = 90709960, solutions in (2, n/2] = [285920731515]
+
+ALL VERIFICATIONS PASS
