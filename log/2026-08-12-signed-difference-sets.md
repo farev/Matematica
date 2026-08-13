@@ -38,7 +38,7 @@ space); replaced by a witness-branch walk, which is the sharper
 control anyway. Nothing else: his claims survived everything thrown at
 them, which is itself the finding.
 
-**Next.** Send the reply (draft ready; Fabián to send). Coordinate the
+**Next.** Send the reply (draft ready; Fabian to send). Coordinate the
 upstream report to Gordon jointly with Masselot: our witness audit
 (147/280 invalid exports) plus his order ≤ 36 closure. Method thread:
 his quotient ladder does in seconds what our flat DFS priced at

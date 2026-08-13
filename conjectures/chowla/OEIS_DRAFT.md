@@ -40,7 +40,7 @@ Liouville function lambda at some starting point <= m.
 
 **Keywords.** nonn,hard,more
 
-**Author.** Fabián Arévalo, Jul 29 2026. (AI-assisted computation,
+**Author.** Fabian Arevalo, Jul 29 2026. (AI-assisted computation,
 disclosed.)
 
 ## Possible companion sequence (not yet drafted in full)

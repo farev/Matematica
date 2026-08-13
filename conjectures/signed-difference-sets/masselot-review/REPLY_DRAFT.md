@@ -87,4 +87,4 @@ with substantial AI assistance (Claude), with the same boundary you
 use. Nothing model-generated was treated as evidence; every claim
 above is backed by the committed code and its outputs.
 
-Fabián
+Fabian
