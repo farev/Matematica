@@ -1,0 +1,62 @@
+RESULT n=2 m=1 status=NONE solutions=0 nodes=1 depth_nodes=1,0 time=0.000
+SOLUTION n=2 m=2 set=1,2
+RESULT n=2 m=2 status=FOUND solutions=1 nodes=2 depth_nodes=1,1 time=0.000
+f(2) = 2  [matches A276661; 1 optimal set(s); clears+hit nodes recorded]
+RESULT n=3 m=2 status=NONE solutions=0 nodes=1 depth_nodes=1,0,0 time=0.000
+RESULT n=3 m=3 status=NONE solutions=0 nodes=1 depth_nodes=1,0,0 time=0.000
+SOLUTION n=3 m=4 set=2,3,4
+RESULT n=3 m=4 status=FOUND solutions=1 nodes=3 depth_nodes=1,1,1 time=0.000
+f(3) = 4  [matches A276661; 2 optimal set(s); clears+hit nodes recorded]
+RESULT n=4 m=4 status=NONE solutions=0 nodes=1 depth_nodes=1,0,0,0 time=0.000
+RESULT n=4 m=5 status=NONE solutions=0 nodes=1 depth_nodes=1,0,0,0 time=0.000
+RESULT n=4 m=6 status=NONE solutions=0 nodes=3 depth_nodes=1,1,1,0 time=0.000
+SOLUTION n=4 m=7 set=3,5,6,7
+RESULT n=4 m=7 status=FOUND solutions=1 nodes=4 depth_nodes=1,1,1,1 time=0.000
+f(4) = 7  [matches A276661; 1 optimal set(s); clears+hit nodes recorded]
+RESULT n=5 m=7 status=NONE solutions=0 nodes=1 depth_nodes=1,0,0,0,0 time=0.000
+RESULT n=5 m=8 status=NONE solutions=0 nodes=1 depth_nodes=1,0,0,0,0 time=0.000
+RESULT n=5 m=9 status=NONE solutions=0 nodes=1 depth_nodes=1,0,0,0,0 time=0.000
+RESULT n=5 m=10 status=NONE solutions=0 nodes=1 depth_nodes=1,0,0,0,0 time=0.000
+RESULT n=5 m=11 status=NONE solutions=0 nodes=11 depth_nodes=1,2,3,5,0 time=0.000
+RESULT n=5 m=12 status=NONE solutions=0 nodes=34 depth_nodes=1,3,9,21,0 time=0.000
+SOLUTION n=5 m=13 set=6,9,11,12,13
+RESULT n=5 m=13 status=FOUND solutions=1 nodes=5 depth_nodes=1,1,1,1,1 time=0.000
+f(5) = 13  [matches A276661; 2 optimal set(s); clears+hit nodes recorded]
+RESULT n=6 m=13 status=NONE solutions=0 nodes=1 depth_nodes=1,0,0,0,0,0 time=0.000
+RESULT n=6 m=14 status=NONE solutions=0 nodes=1 depth_nodes=1,0,0,0,0,0 time=0.000
+RESULT n=6 m=15 status=NONE solutions=0 nodes=1 depth_nodes=1,0,0,0,0,0 time=0.000
+RESULT n=6 m=16 status=NONE solutions=0 nodes=1 depth_nodes=1,0,0,0,0,0 time=0.000
+RESULT n=6 m=17 status=NONE solutions=0 nodes=1 depth_nodes=1,0,0,0,0,0 time=0.000
+RESULT n=6 m=18 status=NONE solutions=0 nodes=4 depth_nodes=1,1,1,1,0,0 time=0.000
+RESULT n=6 m=19 status=NONE solutions=0 nodes=19 depth_nodes=1,2,5,7,4,0 time=0.000
+RESULT n=6 m=20 status=NONE solutions=0 nodes=80 depth_nodes=1,4,11,25,39,0 time=0.001
+RESULT n=6 m=21 status=NONE solutions=0 nodes=205 depth_nodes=1,5,19,64,116,0 time=0.002
+RESULT n=6 m=22 status=NONE solutions=0 nodes=488 depth_nodes=1,6,31,138,312,0 time=0.004
+RESULT n=6 m=23 status=NONE solutions=0 nodes=855 depth_nodes=1,8,45,247,554,0 time=0.007
+SOLUTION n=6 m=24 set=11,17,20,22,23,24
+RESULT n=6 m=24 status=FOUND solutions=1 nodes=6 depth_nodes=1,1,1,1,1,1 time=0.000
+f(6) = 24  [matches A276661; 1 optimal set(s); clears+hit nodes recorded]
+RESULT n=7 m=24 status=NONE solutions=0 nodes=1 depth_nodes=1,0,0,0,0,0,0 time=0.000
+RESULT n=7 m=25 status=NONE solutions=0 nodes=1 depth_nodes=1,0,0,0,0,0,0 time=0.000
+RESULT n=7 m=26 status=NONE solutions=0 nodes=1 depth_nodes=1,0,0,0,0,0,0 time=0.000
+RESULT n=7 m=27 status=NONE solutions=0 nodes=1 depth_nodes=1,0,0,0,0,0,0 time=0.000
+RESULT n=7 m=28 status=NONE solutions=0 nodes=1 depth_nodes=1,0,0,0,0,0,0 time=0.000
+RESULT n=7 m=29 status=NONE solutions=0 nodes=1 depth_nodes=1,0,0,0,0,0,0 time=0.000
+RESULT n=7 m=30 status=NONE solutions=0 nodes=1 depth_nodes=1,0,0,0,0,0,0 time=0.000
+RESULT n=7 m=31 status=NONE solutions=0 nodes=3 depth_nodes=1,1,1,0,0,0,0 time=0.000
+RESULT n=7 m=32 status=NONE solutions=0 nodes=9 depth_nodes=1,2,3,3,0,0,0 time=0.000
+RESULT n=7 m=33 status=NONE solutions=0 nodes=27 depth_nodes=1,3,7,11,5,0,0 time=0.000
+RESULT n=7 m=34 status=NONE solutions=0 nodes=92 depth_nodes=1,4,13,31,34,9,0 time=0.001
+RESULT n=7 m=35 status=NONE solutions=0 nodes=303 depth_nodes=1,5,21,62,118,96,0 time=0.002
+RESULT n=7 m=36 status=NONE solutions=0 nodes=776 depth_nodes=1,7,31,116,303,318,0 time=0.007
+RESULT n=7 m=37 status=NONE solutions=0 nodes=1642 depth_nodes=1,8,44,191,661,737,0 time=0.017
+RESULT n=7 m=38 status=NONE solutions=0 nodes=3366 depth_nodes=1,9,58,300,1302,1696,0 time=0.037
+RESULT n=7 m=39 status=NONE solutions=0 nodes=5707 depth_nodes=1,10,74,439,2279,2904,0 time=0.078
+RESULT n=7 m=40 status=NONE solutions=0 nodes=10287 depth_nodes=1,12,93,624,3661,5896,0 time=0.132
+RESULT n=7 m=41 status=NONE solutions=0 nodes=14936 depth_nodes=1,13,114,864,5525,8419,0 time=0.245
+RESULT n=7 m=42 status=NONE solutions=0 nodes=23958 depth_nodes=1,14,136,1168,8314,14325,0 time=0.301
+RESULT n=7 m=43 status=NONE solutions=0 nodes=32805 depth_nodes=1,16,163,1549,11733,19343,0 time=0.404
+SOLUTION n=7 m=44 set=20,31,37,40,42,43,44
+RESULT n=7 m=44 status=FOUND solutions=1 nodes=7 depth_nodes=1,1,1,1,1,1,1 time=0.000
+f(7) = 44  [matches A276661; 1 optimal set(s); clears+hit nodes recorded]
+f(8) = 84  [matches A276661; 3 optimal set(s); clears+hit nodes recorded]
