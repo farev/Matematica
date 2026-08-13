@@ -113,12 +113,53 @@ largest certified partial sweep plus the ladder re-derivation, and say so.
 
 ## Result
 
-*(session in progress — filled at close)*
+**CERTIFIED.** `f(10) > ⟨B⟩` — no 10-element distinct-subset-sums set has
+largest element `≤ ⟨B⟩` (the recorded floor was 220; Conway–Guy gives
+`f(10) ≤ 309`, re-validated locally). Every cleared maximum `m` is an
+independent certified row in `conjectures/distinct-subset-sums/data/n10_sweep.csv`
+with exact node counts; the sweep is resume-safe and continues in future
+sessions. Also **CERTIFIED**: from-scratch re-derivation of
+`f(1..9) = 1, 2, 4, 7, 13, 24, 44, 84, 161` (agreeing with A276661 at every
+level, all optimal sets enumerated — the ladder assumed no OEIS value), and
+the exclusion of every witness below 309 whose deficiency profile lies
+within L1-distance 8 of the Conway–Guy profile (19,125,539 sets checked).
+**PROVED (classical method)**: exact finite second-moment floors
+`f(10) ≥ 192` and `f(11) ≥ 362`. **NUMERICAL**: search-tree growth
+~×1.203 per unit of the maximum (fit on m ∈ [230, 250] only).
+
+Verification architecture: four implementations of the identical search
+tree (three C engines + a Python reference) with exact node-count equality
+checked on full traversals (exhaustively for n ≤ 7, on a 42-case battery
+for n ≤ 8, and at n = 9 for m ∈ {150, 155}: 429,697,049 and 769,328,147
+nodes, identical per-depth profiles); a zero-cleverness brute validator
+with positive and negative controls; every reported solution re-validated
+independently; OEIS values used as assertions, not inputs.
 
 ## What failed
 
-*(filled at close)*
+- **Simulated annealing for a sub-309 witness** failed its own positive
+  control: with the cap at 309, where the Conway–Guy set exists, energy
+  stalls at 3–5 across restarts (uniform and local moves). No heuristic
+  evidence claimed; replaced by the certified CG-neighborhood exhaustion.
+- **A fourth-moment prune** was derived but shelved: it binds only where
+  the second-moment prune already kills the branch.
+- **The full a(10) decision** is out of reach on this box with this
+  engine: ~×40 tree growth per +20 of m prices the remaining range at
+  CPU-months. Mid-session checkpoint re-scoped the target to the certified
+  frontier + machinery + resumable campaign.
+- **A soundness bug in the tight prune was caught before deployment**
+  (truncating the candidate pool at f(r) would have over-pruned; only the
+  largest remaining element must clear f(r)).
+- **Session hygiene**: one certificate run invalidated by recompiling the
+  engine binary mid-run (discarded, redone); one self-matching pkill
+  killed the session's own shell; binaries briefly committed, untracked in
+  a follow-up.
 
 ## Next
 
-*(filled at close)*
+Resume `sweep10.py` (every completed m is permanent). The algorithmic
+lever worth a session by itself: the multi-m deficiency-vector engine
+(NOTE §6.2) — equal-cardinality collisions are m-independent, so one tree
+over deficiency profiles with per-node alive-m intervals replaces ~150
+per-m trees (projected 5–10×). After a(10): f(11) ∈ [362, 594] with the
+same machinery.

@@ -42,13 +42,14 @@ def completed():
 
 
 def main():
-    lo, hi, engine = 161, 308, "./dss_search"
+    lo, hi, engine, tight = 161, 308, "./dss_search3", True
     args = sys.argv[1:]
     while args:
         a = args.pop(0)
         if a == "--from": lo = int(args.pop(0))
         elif a == "--to": hi = int(args.pop(0))
         elif a == "--engine": engine = args.pop(0)
+        elif a == "--no-tight": tight = False
     done = completed()
     newfile = not os.path.exists(CSV)
     fh = open(CSV, "a", newline="")
@@ -61,7 +62,8 @@ def main():
         if m in done:
             continue
         t0 = time.time()
-        out = subprocess.run([engine, "10", str(m)], capture_output=True,
+        cmd = [engine, "10", str(m)] + (["--tight"] if tight else [])
+        out = subprocess.run(cmd, capture_output=True,
                              text=True, check=True).stdout
         g = RESULT_RE.search(out)
         assert g, out
@@ -72,7 +74,7 @@ def main():
             with open(SOLS, "a") as sfh:
                 sfh.write(f"m={m} set={s} validated=True\n")
         w.writerow([10, m, status, g.group(4), g.group(5), g.group(6),
-                    g.group(7), g.group(8), g.group(9), os.path.basename(engine)])
+                    g.group(7), g.group(8), g.group(9), os.path.basename(engine) + ("+tight" if tight else "")])
         fh.flush()
         print(f"[{time.strftime('%H:%M:%S')}] m={m} {status} "
               f"nodes={g.group(5)} {float(g.group(8)):.1f}s", flush=True)
