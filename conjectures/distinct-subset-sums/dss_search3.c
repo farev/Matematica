@@ -25,16 +25,25 @@
  * Modes:
  *   default: node-for-node identical tree to dss_search.c — node counts on
  *            full traversals must match it and dss_reference.py exactly.
- *   --tight: adds node-level prune P5: every future element lies in
+ *   --tight: replaces the consecutive-integer window caps by exact caps over
+ *            the true candidate pool. Every future element lies in
  *            V = [1, c-1] \ D, because D only grows down the tree, so an
  *            element equal to a current difference can never be added later.
- *            Hence the r remaining elements are r distinct members of V, and
- *            total + (sum of the r largest members of V) >= 2^n - 1 and the
- *            square analogue with (4^n - 1)/3 are necessary; so is |V| >= r.
+ *            The node builds V as a descending array with prefix sums and
+ *            prefix squares; the candidate loop then iterates only over V,
+ *            enforcing per candidate a = V[i]:
+ *              - a >= fmin[r]                                   (P1)
+ *              - at least r-1 further members of V below a      (pool size)
+ *              - total + a + (sum of the r-1 largest members of V below a)
+ *                    >= 2^n - 1                                 (tight P2)
+ *              - sqsum + a^2 + (their squares) >= (4^n - 1)/3   (tight P3)
+ *            All four conditions are monotone along the descending iteration,
+ *            so each failure is a break, not a skip. This is strictly
+ *            stronger than the default prunes (V-caps <= consecutive caps),
+ *            hence shrinks the tree; statuses and solution sets must be
+ *            unchanged vs the default mode.
  *            (V is NOT truncated at fmin[r]: only the largest remaining
  *            element must clear fmin[r]; smaller ones may lie below it.)
- *            Changes (shrinks) the tree; statuses and solution sets must be
- *            unchanged vs the default mode.
  *
  * Build: gcc -O3 -march=native -fopenmp -o dss_search3 dss_search3.c
  * Usage: ./dss_search3 n m [--enum] [--tight] [--threads T] [--split D]
@@ -53,6 +62,7 @@ typedef uint64_t u64;
 
 #define MAXN 12
 #define MAXW 128
+#define VCAP 1100
 
 static const int fmin[10] = {0, 1, 2, 4, 7, 13, 24, 44, 84, 161};
 
@@ -115,21 +125,22 @@ static void make_child(const State *p, State *ch, int a)
     setbit(ch->R, LB - a);
 }
 
-/* P5 (--tight): sums/squares of the r largest members of [1, hi] \ D;
- * returns 0 if fewer than r such members exist (node then has no
- * completion). The scan stops as soon as r members are found, so its cost
- * is ~r plus the number of forbidden values near the top of the window. */
-static inline int tight_caps(const u64 *D, int hi, int r,
-                             u64 *cap_sum, u64 *cap_sq)
+/* --tight helper: extract V = [1, hi] \ D as a descending array with prefix
+ * sums / prefix squares: ps[i] = sum of vals[0..i-1] (the i largest members
+ * of V), psq[i] likewise for squares. Returns the number of members. */
+static inline int build_valid(const u64 *D, int hi, int *vals,
+                              u64 *ps, u64 *psq)
 {
-    u64 s = 0, q = 0;
-    int got = 0;
-    for (int a = hi; a >= 1 && got < r; a--)
+    int nv = 0;
+    ps[0] = 0; psq[0] = 0;
+    for (int a = hi; a >= 1; a--)
         if (!getbit(D, a)) {
-            s += (u64)a; q += (u64)a * (u64)a; got++;
+            vals[nv] = a;
+            ps[nv + 1] = ps[nv] + (u64)a;
+            psq[nv + 1] = psq[nv] + (u64)a * (u64)a;
+            nv++;
         }
-    *cap_sum = s; *cap_sq = q;
-    return got == r;
+    return nv;
 }
 
 static void report_solution(const int *chosen, int n)
@@ -157,9 +168,29 @@ static void search(State *st, Stats *stats)
     int lo = fmin[r], hi = c - 1;
     if (hi < lo) return;
     if (TIGHT) {
-        u64 cs, cq;
-        if (!tight_caps(st->D, hi, r, &cs, &cq)) return;
-        if (st->total + cs < TARGET_SUM || st->sqsum + cq < TARGET_SQ) return;
+        int vals[VCAP]; u64 ps[VCAP + 1], psq[VCAP + 1];
+        int nv = build_valid(st->D, hi, vals, ps, psq);
+        if (nv < r) return;
+        for (int i = 0; i < nv; i++) {
+            int a = vals[i];
+            if (a < lo) break;                       /* P1 */
+            if (i + r > nv) break;                   /* pool exhausted */
+            u64 caps = (u64)a + (ps[i + r] - ps[i + 1]);
+            u64 capq = (u64)a * (u64)a + (psq[i + r] - psq[i + 1]);
+            if (st->total + caps < TARGET_SUM ||
+                st->sqsum + capq < TARGET_SQ) break; /* tight P2/P3 */
+            State child;
+            child.depth = st->depth + 1;
+            memcpy(child.chosen, st->chosen, sizeof(int) * st->depth);
+            child.chosen[st->depth] = a;
+            child.total = st->total + (u64)a;
+            child.sqsum = st->sqsum + (u64)a * a;
+            make_child(st, &child, a);
+            stats->nodes[child.depth]++;
+            search(&child, stats);
+            if (!ENUM && g_found) return;
+        }
+        return;
     }
     u64 g = 0, h = 0;
     for (int j = 0; j <= r - 1; j++) {
@@ -207,9 +238,28 @@ static void gen_prefix(State *st, Stats *stats, State **tasks,
     int lo = fmin[r], hi = c - 1;
     if (hi < lo) return;
     if (TIGHT) {
-        u64 cs, cq;
-        if (!tight_caps(st->D, hi, r, &cs, &cq)) return;
-        if (st->total + cs < TARGET_SUM || st->sqsum + cq < TARGET_SQ) return;
+        int vals[VCAP]; u64 ps[VCAP + 1], psq[VCAP + 1];
+        int nv = build_valid(st->D, hi, vals, ps, psq);
+        if (nv < r) return;
+        for (int i = 0; i < nv; i++) {
+            int a = vals[i];
+            if (a < lo) break;
+            if (i + r > nv) break;
+            u64 caps = (u64)a + (ps[i + r] - ps[i + 1]);
+            u64 capq = (u64)a * (u64)a + (psq[i + r] - psq[i + 1]);
+            if (st->total + caps < TARGET_SUM ||
+                st->sqsum + capq < TARGET_SQ) break;
+            State child;
+            child.depth = st->depth + 1;
+            memcpy(child.chosen, st->chosen, sizeof(int) * st->depth);
+            child.chosen[st->depth] = a;
+            child.total = st->total + (u64)a;
+            child.sqsum = st->sqsum + (u64)a * a;
+            make_child(st, &child, a);
+            stats->nodes[child.depth]++;
+            gen_prefix(&child, stats, tasks, ntasks, cap);
+        }
+        return;
     }
     u64 g = 0, h = 0;
     for (int j = 0; j <= r - 1; j++) {
@@ -245,7 +295,7 @@ int main(int argc, char **argv)
         else if (!strcmp(argv[i], "--threads")) nthreads = atoi(argv[++i]);
         else if (!strcmp(argv[i], "--split")) SPLIT = atoi(argv[++i]);
     }
-    if (N < 2 || N > 10 || M < 1 || (u64)N * (u64)M >= 64u * MAXW - 64) {
+    if (N < 2 || N > 10 || M < 1 || M >= VCAP || (u64)N * (u64)M >= 64u * MAXW - 64) {
         fprintf(stderr, "bad n/m\n"); return 2;
     }
     if (SPLIT >= N) SPLIT = N - 1;
