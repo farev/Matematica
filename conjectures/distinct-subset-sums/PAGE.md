@@ -1,20 +1,19 @@
 # PAGE.md — handoff for the distinct-subset-sums page (new page)
 
 *Written per the CLAUDE.md cloud-session contract. This is a NEW conjecture
-directory; no page exists yet. Numbers marked ⟨…⟩ are finalized in the
-session-close commit — trust the committed data files over prose if they
-ever disagree.*
+directory; no page exists yet. If prose and committed data files ever
+disagree, trust the data files.*
 
 ## 1. Headline claim
 
 **CERTIFIED.** The tenth value of the Erdős distinct-subset-sums function
-satisfies `⟨B⟩ < f(10) ≤ 309`: an exhaustive, cross-verified search proves
-no 10-element set with all subset sums distinct has largest element `≤ ⟨B⟩`
+satisfies `262 < f(10) ≤ 309`: an exhaustive, cross-verified search proves
+no 10-element set with all subset sums distinct has largest element `≤ 262`
 (previous published floor: 220), while the Conway–Guy set attains 309.
 
 ## 2. Contributions
 
-1. **CERTIFIED** — `f(10) > ⟨B⟩` (final value in `data/n10_sweep.csv`;
+1. **CERTIFIED** — `f(10) > 262` (final value in `data/n10_sweep.csv`;
    every row is an independently certified `f(10) > m` statement; the
    engine's per-depth node counts are recorded per row).
 2. **CERTIFIED** — full re-derivation of the known ladder
@@ -30,20 +29,23 @@ no 10-element set with all subset sums distinct has largest element `≤ ⟨B⟩
 4. **PROVED (classical method)** — exact finite second-moment floors:
    `f(10) ≥ 192`, `f(11) ≥ 362` (the latter is the standing analytic floor
    for the next open value; `f(11) ≤ 594` from Conway–Guy).
-5. **NUMERICAL** — the search-tree growth law ~×1.203 per unit of maximum
-   (measured 230 → 250), pricing the full `a(10)` decision at CPU-months;
-   and a documented negative: simulated annealing fails its own positive
-   control on this landscape (cannot rediscover the Conway–Guy set at cap
-   309), so heuristic witness searches carry no evidence here.
+5. **NUMERICAL** — the search-tree growth law: ×1.203 per unit of maximum
+   over m ∈ [230, 250], easing to ×1.138 over m ∈ [250, 262]
+   (21.2 billion nodes at m = 262 alone; 166.9 billion across the whole
+   certified sweep, 2.87 h on 4 threads), pricing the full `a(10)`
+   decision at CPU-months; and a documented negative: simulated annealing
+   fails its own positive control on this landscape (cannot rediscover
+   the Conway–Guy set at cap 309), so heuristic witness searches carry no
+   evidence here.
 
 ## 3. Figure specs
 
 1. **The ladder and the gap.** Data: `data/ladder_sweep.csv` (f-values),
    Conway–Guy values 1,2,4,7,13,24,44,84,161,309 (computed in
    `validate_set.py`). Log-scale `f(n)` vs `n` with the certified window
-   `(⟨B⟩, 309]` drawn at `n = 10` as an interval, prior floor 220 marked.
+   `(262, 309]` drawn at `n = 10` as an interval, prior floor 220 marked.
    Reader's sentence: "Every value up to n = 9 is settled; at n = 10 the
-   answer is now pinned between ⟨B⟩ and 309."
+   answer is now pinned between 262 and 309."
 2. **Cost of certainty.** Data: `data/n10_sweep.csv` columns (m, nodes,
    seconds). Log-scale nodes (and seconds) vs m with the ×1.203/step fit
    drawn over the fitted range only. Reader's sentence: "Each +1 on the
@@ -52,7 +54,7 @@ no 10-element set with all subset sums distinct has largest element `≤ ⟨B⟩
 3. **Where the witness cannot be.** Data: `cg_neighborhood.py` output
    summary (19,125,539 checks, K = 8, all m ≤ 308). A schematic of
    deficiency space: Conway–Guy profile at center, L1-ball of radius 8
-   shaded "empty", the exhaustive strip `m ≤ ⟨B⟩` shaded "empty", the
+   shaded "empty", the exhaustive strip `m ≤ 262` shaded "empty", the
    rest open. Reader's sentence: "If a better-than-Conway–Guy set exists,
    it is neither small nor a tweak of Conway–Guy."
 
@@ -66,7 +68,7 @@ no 10-element set with all subset sums distinct has largest element `≤ ⟨B⟩
   claim that only nine values were previously known all rest on snippet
   quotes of OEIS A276661 and arXiv 2502.19182.
 - `f(10)` is NOT decided. The certified statement is the window
-  `(⟨B⟩, 309]`, nothing stronger.
+  `(262, 309]`, nothing stronger.
 - The ×1.203 growth rate is a NUMERICAL fit over m ∈ [230, 250] only.
 - The optimal-set multiplicity counts (contribution 2) are *possibly
   known* — Lunnon 1988 could not be read; treat as data, not novelty.

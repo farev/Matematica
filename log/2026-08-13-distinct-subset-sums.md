@@ -113,8 +113,8 @@ largest certified partial sweep plus the ladder re-derivation, and say so.
 
 ## Result
 
-**CERTIFIED.** `f(10) > ⟨B⟩` — no 10-element distinct-subset-sums set has
-largest element `≤ ⟨B⟩` (the recorded floor was 220; Conway–Guy gives
+**CERTIFIED.** `f(10) > 262` — no 10-element distinct-subset-sums set has
+largest element `≤ 262` (the recorded floor was 220; Conway–Guy gives
 `f(10) ≤ 309`, re-validated locally). Every cleared maximum `m` is an
 independent certified row in `conjectures/distinct-subset-sums/data/n10_sweep.csv`
 with exact node counts; the sweep is resume-safe and continues in future

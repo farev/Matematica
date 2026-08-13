@@ -100,9 +100,19 @@ Chronologically:
 - The compiled binaries were briefly committed against repo convention,
   then untracked in a follow-up commit.
 
+## How it ended
+
+The sweep ran to the session boundary and was stopped cleanly between
+instances: **102 contiguous maxima `m = 161..262` exhausted, all NONE —
+`f(10) > 262`** — 166,893,497,453 nodes in 2.87 h of 4-thread wall time,
+the last instance (`m = 262`) alone costing 21.2×10⁹ nodes / 20 min. The
+growth rate measured ×1.203/step on [230, 250] and ×1.138/step on
+[250, 262]. Every row was committed and pushed as it landed, so nothing
+depended on the session surviving to the end.
+
 ## Where the next session picks up
 
 `python3 sweep10.py` resumes the frontier from `data/n10_sweep.csv`
-exactly where this session stopped; every completed `m` is permanent.
-The multi-`m` engine sketch is the algorithmic lever if grinding is to be
-replaced by thought.
+exactly where this session stopped (`m = 263` is next); every completed
+`m` is permanent. The multi-`m` engine sketch is the algorithmic lever if
+grinding is to be replaced by thought.

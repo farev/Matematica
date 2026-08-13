@@ -15,8 +15,9 @@ construction gives `f(10) ≤ 309`, conjectured sharp, and OEIS recorded
 `f(10) > 220`. We (i) re-derive `f(1..9) = 1, 2, 4, 7, 13, 24, 44, 84, 161`
 from scratch with three mutually node-count-verifying implementations,
 enumerating *all* optimal sets at each level; (ii) push the certified
-frontier to **`f(10) > ⟨B⟩`** (placeholder — final value at session close)
-by exhaustive branch-and-bound over each possible maximum `m`; (iii) rule
+frontier to **`f(10) > 262`** — 102 exhausted maxima `m = 161..262`,
+166,893,497,453 search-tree nodes in 2.87 h of 4-thread wall time — by
+exhaustive branch-and-bound over each possible maximum `m`; (iii) rule
 out every witness below 309 whose deficiency profile lies within
 L1-distance 8 of the Conway–Guy profile (19,125,539 sets); (iv) record the
 empirical growth law of the search tree (~×1.20 per unit of `m` in the
@@ -57,8 +58,8 @@ as search-pruning floors for *later* levels, in increasing order of `n` —
 see the bootstrap note in §3).
 
 **Theorem 2 (frontier, CERTIFIED).** No 10-element DSS set has largest
-element `≤ ⟨B⟩`. Hence `f(10) > ⟨B⟩`. Combined with the validated
-Conway–Guy witness (Theorem 3(i)), `⟨B⟩ < f(10) ≤ 309`.
+element `≤ 262`. Hence `f(10) > 262`. Combined with the validated
+Conway–Guy witness (Theorem 3(i)), `262 < f(10) ≤ 309`.
 *Every row of `data/n10_sweep.csv` with status NONE is an independent
 statement of this form for its own `m`; the theorem is the union of the
 contiguous cleared prefix.*
@@ -188,9 +189,11 @@ magnitudes bounded by `3·(nm)² < 2^63`.
 
 ## 5. Numerical observations (not certified)
 
-- **Tree growth.** Between the probes at `m = 230` and `m = 250` the
-  tight-mode tree grows by ×40.4, i.e. ×1.203 per unit of `m`. At that
-  rate the remaining range to 308 costs ~10^4× the `m = 250` instance —
+- **Tree growth.** Between `m = 230` and `m = 250` the tight-mode tree
+  grows ×40.4, i.e. ×1.203 per unit of `m`; over the final certified
+  stretch `m = 250..262` the measured rate eased to ×1.138 per unit
+  (21.2×10⁹ nodes at `m = 262` alone). Even at the gentler rate the
+  remaining range to 308 costs ~10²·⁶ ≈ 400× the `m = 262` instance —
   CPU-months on this box. This prices the full `a(10)` decision and
   motivates §6.
 - **Optimal-set multiplicities** (CERTIFIED by the enum runs; listed in

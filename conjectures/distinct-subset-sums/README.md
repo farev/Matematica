@@ -19,7 +19,7 @@ certified milestones (`f(10) > m` for every exhausted maximum `m`).
 | Claim | Label | Where |
 |---|---|---|
 | Ladder re-derived from scratch: `f(n)` = 1, 2, 4, 7, 13, 24, 44, 84, 161 for `n = 1..9`, agreeing with A276661; all optimal sets enumerated per level | CERTIFIED | `data/ladder_sweep.csv`, `data/optimal_sets.txt` |
-| `f(10) > B` (see NOTE for the final frontier `B` of this session; supersedes the recorded 220): no 10-element DSS set has largest element `≤ B` | CERTIFIED | `data/n10_sweep.csv` |
+| `f(10) > 262` (supersedes the recorded floor 220): no 10-element DSS set has largest element `≤ 262` — 102 exhausted maxima m = 161..262, 166.9×10⁹ nodes, 2.87 h / 4 threads | CERTIFIED | `data/n10_sweep.csv` |
 | `f(10) ≤ 309`: the Conway–Guy 10-set `{148,225,265,285,296,302,305,307,308,309}` is DSS (validated by brute enumeration) | CERTIFIED | `validate_set.py` controls |
 | No 10-element DSS set with max `≤ 308` exists whose deficiency profile lies within L1-distance 8 of the Conway–Guy profile (19,125,539 sets checked) | CERTIFIED | `cg_neighborhood.py` output, `data/` |
 | `f(10) ≥ 192` by the second-moment (Erdős–Moser) bound, exact finite form | PROVED (classical method) | NOTE §3 |
