@@ -60,3 +60,5 @@ SOLUTION n=7 m=44 set=20,31,37,40,42,43,44
 RESULT n=7 m=44 status=FOUND solutions=1 nodes=7 depth_nodes=1,1,1,1,1,1,1 time=0.000
 f(7) = 44  [matches A276661; 1 optimal set(s); clears+hit nodes recorded]
 f(8) = 84  [matches A276661; 3 optimal set(s); clears+hit nodes recorded]
+f(9) = 161  [matches A276661; 1 optimal set(s); clears+hit nodes recorded]
+ladder complete in 2991.2s; C-vs-Python node counts matched exhaustively for n <= 7
