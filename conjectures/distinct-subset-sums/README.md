@@ -13,6 +13,7 @@ certified milestones (`f(10) > m` for every exhausted maximum `m`).
 
 **Status:** active
 **Sessions:** 2026-08-13
+**Write-up page:** [fabianarevalo.com/distinct-subset-sums](https://fabianarevalo.com/distinct-subset-sums)
 
 ## Results
 
