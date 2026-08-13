@@ -46,3 +46,7 @@ work/
 
 # compiled searcher (rebuilt by gcc -O2 from sds_search.c)
 conjectures/signed-difference-sets/sds_search
+# DSS engines: build from source (gcc -O3 -march=native -fopenmp), do not commit binaries
+conjectures/distinct-subset-sums/dss_search
+conjectures/distinct-subset-sums/dss_search3
+conjectures/distinct-subset-sums/dss_search_basic
