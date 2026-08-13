@@ -77,5 +77,5 @@ already known to you or in the literature.
 
 With admiration for the paper,
 
-Fabian Arevalo
+Fabian Arévalo
 fabiareor@gmail.com · fabianarevalo.com/math

@@ -1,6 +1,6 @@
 # Bounded review: "Two Small-Order Classification Theorems for Signed Difference Sets" (Masselot, v1.0, 2026-08-12)
 
-Reviewer: Fabian Arevalo (farev/Matematica), with substantial AI
+Reviewer: Fabian Arévalo (farev/Matematica), with substantial AI
 assistance (Claude); every computational statement below was produced
 by review-owned code committed under `masselot-review/` and can be
 rerun from the commands at the end. Review date: 2026-08-12. Scope as
