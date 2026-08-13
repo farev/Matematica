@@ -178,8 +178,9 @@ Equality checks performed (all PASS):
   `n = 9, m = 161` enum run.
 
 Hardware and cost: 4 cores (shared cloud sandbox), 15 GB RAM, gcc 13.3,
-`-O3 -march=native -fopenmp`. Representative certified costs: `n=9`
-full-sweep ladder step ≈ 1 h wall; `n=10` probes: `m=230`:
+`-O3 -march=native -fopenmp`. Certified costs: the full ladder
+(`n = 2..9`, every sweep plus enum reruns, with the Python cross-checks)
+took 2,991 s wall on 4 threads with engine v2; `n=10` probes: `m=230`:
 1.1×10⁸ nodes / 16 s; `m=250`: 4.5×10⁹ nodes / 566 s (both 4 threads,
 tight mode). No floating point exists anywhere in any engine's critical
 path (`time` fields excepted); all arithmetic is 64-bit integer with
@@ -192,11 +193,16 @@ magnitudes bounded by `3·(nm)² < 2^63`.
   rate the remaining range to 308 costs ~10^4× the `m = 250` instance —
   CPU-months on this box. This prices the full `a(10)` decision and
   motivates §6.
-- **Optimal-set multiplicities** for `n = 2..9` are in
-  `data/optimal_sets.txt` (e.g. two optimal 5-sets: `{6,9,11,12,13}` and
-  `{3,6,11,12,13}`; one optimal 7-set; three optimal 8-sets). Whether
+- **Optimal-set multiplicities** (CERTIFIED by the enum runs; listed in
+  `data/optimal_sets.txt`): for `n = 2..9` the numbers of optimal sets are
+  `1, 2, 1, 2, 1, 1, 3, 1`. In particular the optimal set is UNIQUE at
+  `n = 9` and equals Grossman's (= the 9-element Conway–Guy set), while
+  `n = 8` has three optimal sets, two of them not of Conway–Guy shape
+  (`{20,40,71,77,80,82,83,84}`, `{39,59,70,77,78,79,81,84}`). Whether
   these multiplicities were previously published is unknown to this
-  session (Lunnon's paper was unreachable) — *possibly known*.
+  session (Lunnon's paper was unreachable) — *possibly known* for
+  `n ≤ 8`; the `n = 9` uniqueness may be new (Grossman's value is an OEIS
+  credit line, not a paper).
 - **Annealing fails its positive control.** Simulated annealing over
   10-sets (uniform + local ±δ moves, exact collision-count energy) stalls
   at energy 3–5 and cannot rediscover any DSS set even with the cap at
@@ -222,10 +228,10 @@ magnitudes bounded by `3·(nm)² < 2^63`.
    Projected ~5–10×; unimplemented.
 3. **`f(11) ∈ [362, 594]`** (Lemma 4 + Conway–Guy): once `a(10)` closes,
    the same machinery applies with `f(10)` as the new P1 floor.
-4. **Multiplicity question.** Is the optimal set unique at every
-   `n ≥ 6`? (Data here: unique at `n = 6, 7`? — see
-   `data/optimal_sets.txt` for the actual counts; `n = 9`'s count is new
-   data if nonzero beyond Conway–Guy.)
+4. **Multiplicity question.** The optimal set is unique at
+   `n = 4, 6, 7, 9` but not at `n = 3, 5, 8` (counts 2, 2, 3). Is there
+   structure in which `n` admit non-Conway–Guy optima (as `n = 5, 8` do)?
+   What is the multiplicity at `n = 10` once `a(10)` closes?
 
 ## Disclosure
 

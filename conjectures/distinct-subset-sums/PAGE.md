@@ -19,9 +19,10 @@ no 10-element set with all subset sums distinct has largest element `≤ ⟨B⟩
    engine's per-depth node counts are recorded per row).
 2. **CERTIFIED** — full re-derivation of the known ladder
    `f(1..9) = 1, 2, 4, 7, 13, 24, 44, 84, 161` from scratch (no OEIS value
-   assumed), with ALL optimal sets enumerated at each level — counts:
-   ⟨per-level counts from data/optimal_sets.txt⟩; agreement with A276661
-   at every level.
+   assumed), with ALL optimal sets enumerated at each level — counts
+   `1, 2, 1, 2, 1, 1, 3, 1` for `n = 2..9`; the optimal 9-set is UNIQUE
+   and equals Grossman's (the Conway–Guy 9-set); agreement with A276661 at
+   every level.
 3. **CERTIFIED** — no witness below 309 lies near the Conway–Guy
    structure: all 19,125,539 ten-element sets whose deficiency profile is
    within L1-distance 8 of Conway–Guy's, over every maximum `m ≤ 308`,
