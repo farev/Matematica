@@ -50,3 +50,6 @@ conjectures/signed-difference-sets/sds_search
 conjectures/distinct-subset-sums/dss_search
 conjectures/distinct-subset-sums/dss_search3
 conjectures/distinct-subset-sums/dss_search_basic
+
+# graham-105 engine: build from source (gcc -O3 -march=native), do not commit
+conjectures/graham-105/engine
