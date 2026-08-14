@@ -94,6 +94,21 @@ scales), which is exactly the kind of structure the flat N^0.02595
 statement of the heuristic hides. Final numbers in NOTE §3/§5 once the
 big rungs closed.
 
+## The task-skew fix
+
+The depth-130 split of the L = 600 tree has a design flaw: task 0, the
+all-zero prefix, is the entire [0, 3^470) subtree — by itself a complete
+L = 470 census, hours of single-threaded work while the other workers
+drain thousands of small tasks. The fix used the split's own structure:
+because the pruning thresholds satisfy W(600, 130+d) = W(470, d), the
+task-0 subtree *is* the L = 470 tree, node for node and value for value.
+So task 0 was removed from the top split (its class-0 worker restarted at
+task 4) and run as its own depth-130 sub-campaign of 4906 subtasks —
+`merge600.py` composes the two campaigns and checks the accounting
+identity nodes(600) = taskgen(600) + Σ split tasks 1..3753 + taskgen(470)
++ Σ subtasks, the same identity validated against a monolithic run at
+L = 300.
+
 ## Session hygiene, honestly
 
 - A self-matching pkill killed the session's own shell mid-migration —

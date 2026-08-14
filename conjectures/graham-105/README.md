@@ -40,10 +40,18 @@ cd conjectures/graham-105
 gcc -O3 -march=native -o engine_td engine_td.c
 ./engine_td full 148 100000 0        # reproduces Thompson's 1374 terms, <1 s
 python3 topdown.py 148               # same, independently; diff the outputs
-./engine_td taskgen 600 130 > data/tasks600_130.txt
-for w in 0 1 2 3; do ./engine_td tasks 600 130 data/tasks600_130.txt $w 4 999999 \
-  2000 100000 data/prod600_w$w.csv data/prod600_terms_w$w.txt & done; wait
-python3 validate_terms.py data/prod600_terms_w*.txt --sample 500
+./engine_td taskgen 600 130 > data/tasks600_130.txt   # 3754 tasks; task 0 = [0, 3^470)
+./engine_td taskgen 470 130 > data/tasks470_130.txt   # task 0 re-split into 4906 subtasks
+# L=600 split: classes 1..3 start at tasks 1..3; class 0 starts at task 4
+# (task 0 is excluded — it runs as the L=470 sub-campaign below)
+for w in 1 2 3; do ./engine_td tasks 600 130 data/tasks600_130.txt $w 4 999999 \
+  2000 100000 data/prod600_w$w.csv data/prod600_terms_w$w.txt & done
+./engine_td tasks 600 130 data/tasks600_130.txt 4 4 999999 2000 100000 \
+  data/prod600_w0.csv data/prod600_terms_w0.txt &
+for s in 0 1 2 3; do ./engine_td tasks 470 130 data/tasks470_130.txt $s 4 999999 \
+  2000 100000 data/prod470_s$s.csv data/prod470_terms_s$s.txt & done; wait
+python3 merge600.py
+python3 validate_terms.py data/prod600_terms_w*.txt data/prod470_terms_s*.txt --sample 500
 python3 analyze.py 600 data/prod600_hist_w*.log --terms data/terms_3e250_full.txt
 ```
 
