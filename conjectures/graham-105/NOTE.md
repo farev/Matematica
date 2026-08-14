@@ -112,7 +112,7 @@ exactly ⟨PENDING-600: total⟩ elements (3^600 ≈ 1.87·10^286). The ladder
 | 300 | 1.4·10^143 | 288,836 | 36,430,897 | C full ≡ C 4-worker ≡ Python |
 | 350 | 1.9·10^167 | 674,540 | 85,263,581 | C full |
 | 400 | 7.1·10^190 | 4,190,720 | 529,206,039 | C full |
-| 500 | 3.6·10^238 | ⟨PENDING-500⟩ | ⟨PENDING-500⟩ | C full |
+| 500 | 3.6·10^238 | 29,814,852 | 3,760,885,157 | C full |
 | 600 | 1.9·10^286 | ⟨PENDING-600⟩ | ⟨PENDING-600⟩ | C, 4-worker task mode |
 
 is cumulative and nests (each run reproduces every smaller run's list —
