@@ -11,15 +11,18 @@ Graham (is G infinite?), raised by Erdős, Graham, Ruzsa and Straus in 1975
 and listed as erdosproblems.com #376. The published computational frontier
 was a complete enumeration of G up to 10^70 (1374 terms; C. E. Thompson,
 OEIS A030979 b-file, Nov 2015). We give a complete, five-way cross-verified
-enumeration of G below 3^600 ≈ 1.87·10^286 — ⟨PENDING-600: total⟩ terms —
-extending the complete range by 216 orders of magnitude. Along the way we
-verify that n = 3160 remains the largest known element of G whose binomial
-coefficient is also coprime to 11 (Graham conjectured it is the last), now
-confirmed below 3^600, and we compute the counting function G(N) across the
-full range, giving the first empirical test of the N^0.02595 independence
-heuristic far beyond 10^70. The infinitude question itself is untouched: it
-is a question about ideas, not ranges; what this note contributes is the
-data layer that the heuristic arguments rest on.
+enumeration of G below 3^600 ≈ 1.87·10^286 — 585,823,270 terms — extending
+the complete range by 216 orders of magnitude and the term count ×426,363.
+Along the way we verify that n = 3160 remains the largest known element of
+G whose binomial coefficient is also coprime to 11 (Graham conjectured it
+is the last), now confirmed below 3^600, and we compute the counting
+function G(N) across the full range — the first counts beyond 10^70. The
+counts reveal structure the independence heuristic cannot see: G grows in
+rare bursts along only 82 of the 601 base-3 lengths, separated by certified
+term-free deserts as long as 26.7 decimal orders of magnitude, while the
+global exponent stays near the heuristic 0.02595. The infinitude question
+itself is untouched: it is a question about ideas, not ranges; what this
+note contributes is the data layer the heuristic arguments rest on.
 
 ## 1. The problem and its classical reduction
 
@@ -102,7 +105,7 @@ All labels follow the repository convention (PROVED / CERTIFIED /
 NUMERICAL); every number below is emitted by a committed script.
 
 **C1 (CERTIFIED). Complete census below 3^600.** G ∩ [0, 3^600) has
-exactly ⟨PENDING-600: total⟩ elements (3^600 ≈ 1.87·10^286). The ladder
+exactly 585,823,270 elements (3^600 ≈ 1.87·10^286). The ladder
 
 | L | 3^L ≈ | terms G(3^L) | nodes | engine |
 |---|---|---|---|---|
@@ -113,7 +116,7 @@ exactly ⟨PENDING-600: total⟩ elements (3^600 ≈ 1.87·10^286). The ladder
 | 350 | 1.9·10^167 | 674,540 | 85,263,581 | C full |
 | 400 | 7.1·10^190 | 4,190,720 | 529,206,039 | C full |
 | 500 | 3.6·10^238 | 29,814,852 | 3,760,885,157 | C full |
-| 600 | 1.9·10^286 | ⟨PENDING-600⟩ | ⟨PENDING-600⟩ | C, 4-worker task mode |
+| 600 | 1.9·10^286 | 585,823,270 | 73,906,945,791 | C, composite task mode (3753 + 4906 tasks, 10.7 core-h) |
 
 is cumulative and nests (each run reproduces every smaller run's list —
 checked by fingerprint). The complete term list is committed to 3^200
@@ -145,16 +148,23 @@ filters, 2140 exhaustive tasks) reproduced the census below
 3.66·10^19 > 3^41 — covering Alekseyev's entire reported 2008 range — with
 zero discrepancies on terms, counts, or flags.
 
-**C5 (NUMERICAL). The heuristic exponent.** The independence heuristic
-(EGRS; Pomerance) predicts G(N) ≍ N^θ with
-θ = log2/log3 + log3/log5 + log4/log7 − 2 = 0.025954…. The data:
-⟨PENDING-ANALYZE: local exponents per band, global fit, discussion⟩.
+**C5 (CERTIFIED counts / NUMERICAL fit). The heuristic exponent and the
+burst structure.** The independence heuristic (EGRS; Pomerance) predicts
+G(N) ≍ N^θ with θ = log2/log3 + log3/log5 + log4/log7 − 2 = 0.025954….
+A least-squares fit of ln G against ln N over 3^100 ≤ N ≤ 3^600 gives
+G(N) ≈ 48.2·N^0.0248 (NUMERICAL) — the global exponent tracks the
+heuristic across 240 orders of magnitude. But the local exponent per
+50-level band swings between 0.0144 and 0.0408, and at finer resolution
+the growth is not gradual at all: only 82 of the 601 base-3 lengths carry
+any terms, and the counting function is a staircase of rare bursts (§5).
 
-**C6 (NUMERICAL). Expected further 1155 terms.** Conditional on the same
-independence heuristic, the expected number of further 1155-terms —
-⟨PENDING-ANALYZE: value among enumerated range and the tail beyond⟩ —
-quantifying how unsurprising C2 is and why Graham's finiteness prediction
-is safe from computation alone.
+**C6 (NUMERICAL). Expected further 1155 terms.** Conditional on the
+independence heuristic, the expected number of 1155-terms beyond 3160 is
+≈ 0.81 — with 0.72 of it contributed by the seven terms below 60,000 —
+so the probability of the observed "none" is ≈ e^−0.81 ≈ 0.44. The
+question was probabilistically settled at small n; the contribution of
+all terms above 10^16 is < 10^-4. C2's role is to convert "expected
+none" into "certifiably none below 3^600".
 
 ## 4. Verification architecture
 
@@ -184,10 +194,56 @@ is safe from computation alone.
 6. **Leaf identities.** The Gray engine's leaf count equals the digit-DP
    closed form for #{base-3-valid n ≤ T} exactly, per task and in total.
 
-## 5. Counts against the heuristic
+## 5. Counts against the heuristic: a power law made of bursts
 
-⟨PENDING-ANALYZE: table of decade milestones, band exponents, fit, and the
-discussion of the swings; nothing here yet — the run has not finished.⟩
+Milestones (all CERTIFIED; `data/counts600.txt` has every k ≤ 600):
+
+| k | 100 | 148 | 200 | 250 | 300 | 350 | 400 | 450 | 500 | 550 | 600 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| G(3^k) | 300 | 1374 | 10,215 | 95,861 | 288,836 | 674,540 | 4,190,720 | 13,502,992 | 29,814,852 | 102,130,119 | 585,823,270 |
+
+Local exponents per 50-level band (ln-ratio over band width): 0.0310,
+0.0332, 0.0408, 0.0201, 0.0154, 0.0333, 0.0213, 0.0144, 0.0224, 0.0318
+for the ten bands from 3^100 to 3^600 — swings of a factor 2.8 around the
+heuristic's 0.02595, while the global fit stays at 0.0248 (C5).
+
+At single-length resolution the mechanism shows itself. The number of
+terms with base-3 length exactly k is zero for 519 of the 601 lengths;
+the entire census is carried by 82 bursts. The largest bursts sit at the
+top: lengths 600 (168,330,827 terms), 589 (144,139,469), 567
+(86,478,633), 564 (63,277,668), 531 (39,030,864) — 82.6% of all terms
+below 3^600 have length ≥ 564. Between bursts lie certified deserts:
+
+| desert (lengths) | term-free interval | span |
+|---|---|---|
+| 475–530 | [3^474, 3^530) | 26.7 decimal orders |
+| 395–419 | [3^394, 3^419) | 11.9 decimal orders |
+| 541–563 | [3^540, 3^563) | 11.0 decimal orders |
+| 568–588 | [3^567, 3^588) | 10.0 decimal orders |
+
+Each is an exact statement: e.g. **no term of A030979 lies in
+[3^474, 3^530)** — a gap of nearly 27 decimal orders — after which
+39 million terms appear at length 531 alone. Under the independence
+heuristic, the expected number of terms in that gap is in the tens of
+millions; a desert there has probability indistinguishable from zero.
+The heuristic is right about the exponent and qualitatively wrong about
+the local law.
+
+The qualitative mechanism (heuristic, not proved): a term of length k
+satisfies n/3^(k−1) ∈ [1, 3/2), a multiplicatively narrow window; its
+leading base-5 and base-7 digit blocks are then forced into windows
+determined by the fractional parts of (k−1)·log_5 3 and (k−1)·log_7 3.
+Those two rotations (≈ 0.6826 and 0.5646 per step) are incommensurate
+with each other and with the window widths, and the caps compound down
+the digit cascade, so for most k the compounded window has measure ~0 —
+and for rare aligned k it opens wide. The bursts are the alignments.
+Making this quantitative — predicting burst positions and masses from
+the two rotations, in the spirit of a log-periodic refinement of the
+heuristic — is the sharpest question this data raises (§7). We could
+not source any prior observation of the phenomenon; the counts that
+exhibit it did not previously exist, but the possibility that it is
+known folklore near Pomerance's §4 heuristic must be checked against
+the actual papers (all blocked from this sandbox; §6).
 
 ## 6. Caveats
 
@@ -211,17 +267,20 @@ discussion of the swings; nothing here yet — the run has not finished.⟩
   is sufficient for a from-scratch reimplementation to be compared
   fingerprint-for-fingerprint at every rung.
 - Terms beyond 3^250 are committed as heads/samples/extremes/histograms,
-  not full lists (the full 3^600 list is ~⟨PENDING-600: size⟩; the
-  repository policy caps committed data at ~10 MB). Anyone needing the
-  full list reruns one command per rung.
+  not full lists (the full 3^600 list is 585.8 million terms ≈ 150 GB;
+  the repository policy caps committed data at ~10 MB). Anyone needing
+  the full list reruns one command per rung; the whole ladder cost
+  ≈ 12.5 core-hours on this 4-core sandbox.
 
 ## 7. Open questions this data sharpens
 
-1. The local exponent of G(N) fluctuates about θ (§5). Is there a
-   quantitative log-periodic prediction — the three digit systems beat
-   against each other at incommensurate scales log 3 : log 5 : log 7 —
-   that matches the observed swings? Pomerance's heuristic argument is the
-   natural starting point.
+1. G(N) grows in rare bursts separated by deserts of up to 27 decimal
+   orders (§5). Is there a quantitative log-periodic prediction — burst
+   positions and masses from the rotations (k·log_5 3, k·log_7 3) mod 1 —
+   that reproduces the observed staircase? Pomerance's heuristic argument
+   is the natural starting point, and the 82 inhabited lengths in
+   `data/structure600.txt` are the data to fit. A proved version would
+   turn the census into theorems about term-free intervals.
 2. EGRS proved infinitude for any two odd primes. The three-prime case is
    the wall. Does the two-prime method plus any quantitative equidistribution
    input give infinitude for {3,5,7} along a sparse explicit sequence?

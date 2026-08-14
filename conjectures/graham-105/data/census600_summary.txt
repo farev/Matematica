@@ -1,0 +1,7 @@
+L=600 census merge: 3753 top-split tasks + 4906 sub-campaign tasks, all present exactly once
+nodes: tg600=113049 + split=71298879563 + tg470=121021 + sub=2607832158 => full-tree nodes=73906945791
+terms=585823270
+sum64=6991919326877387601
+xor64=8921638826477525423
+summodp=287162594
+n1155=3 (terms 0, 1, 3160)

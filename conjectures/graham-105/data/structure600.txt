@@ -1,0 +1,32 @@
+total terms below 3^600: 585823270
+inhabited base-3 lengths: 82 of 601 (0..600)
+largest 12 spikes (length: count):
+  600: 168330827
+  589: 144139469
+  567: 86478633
+  564: 63277668
+  531: 39030864
+  540: 30762346
+  598: 12543483
+  474: 9129040
+  565: 8923071
+  458: 3954865
+  448: 3733191
+  467: 2876810
+longest empty-length runs (k1..k2, span in decimal orders):
+  475..530  (56 lengths, 26.7 decimal orders term-free above 3^474)
+  395..419  (25 lengths, 11.9 decimal orders term-free above 3^394)
+  541..563  (23 lengths, 11.0 decimal orders term-free above 3^540)
+  188..208  (21 lengths, 10.0 decimal orders term-free above 3^187)
+  333..353  (21 lengths, 10.0 decimal orders term-free above 3^332)
+  568..588  (21 lengths, 10.0 decimal orders term-free above 3^567)
+  120..137  (18 lengths, 8.6 decimal orders term-free above 3^119)
+  212..229  (18 lengths, 8.6 decimal orders term-free above 3^211)
+
+G(3^567) = 260809491; terms in [3^567, 3^588): 0; terms in [3^588, 3^600): 325013779
+terms with length >= 564 (i.e. in [3^563, 3^600)): 483693151 = 82.6% of all terms
+inhabited lengths in [100,200): 14/100
+inhabited lengths in [200,300): 13/100
+inhabited lengths in [300,400): 15/100
+inhabited lengths in [400,500): 10/100
+inhabited lengths in [500,600): 8/100

@@ -85,14 +85,36 @@ the last node (36,417,860 + 13,037 taskgen = 36,430,897).
 ## The runs
 
 Ladder, full-mode: L = 148 (1374 terms — Thompson's count, from scratch,
-matching the b-file exactly including a(1) = 0), 200, 250, 300, 350, 400;
-then task-mode on 4 workers for L = 600 (3754 tasks from a depth-130
-split). The count function misbehaves beautifully along the way: the
-local exponent θ swings from ~0.017 to ~0.041 between 50-level bands
-(the three digit systems beat against each other at incommensurate log
-scales), which is exactly the kind of structure the flat N^0.02595
-statement of the heuristic hides. Final numbers in NOTE §3/§5 once the
-big rungs closed.
+matching the b-file exactly including a(1) = 0), 200, 250, 300, 350, 400,
+500; then the composite task-mode campaign for L = 600. Final:
+**585,823,270 terms below 3^600**, 73.9 billion tree nodes, 12.5
+core-hours for the whole ladder, the nodes-per-term constant pinned at
+126.16 at every height it was measured.
+
+## What the data revealed
+
+The plan was "extend the census and tabulate G(N) against the N^0.02595
+heuristic". The tabulation turned out to be the discovery. The counting
+function does not creep — it detonates. Only 82 of the 601 base-3
+lengths carry any terms at all. The interval [3^474, 3^530) — nearly 27
+decimal orders of magnitude — contains not a single term (a certified,
+exact statement), and then length 531 alone contributes 39 million. Four
+of the five biggest bursts sit at lengths 564–600, carrying 82.6% of the
+entire census. The independence heuristic, which predicts tens of
+millions of terms inside that desert, is qualitatively wrong locally
+even as its global exponent survives (fit 0.0248 vs predicted 0.02595
+across 240 orders).
+
+The mechanism is visible in the geometry: a term of length k is confined
+to n/3^(k−1) ∈ [1, 1.5), so its leading base-5 and base-7 digit blocks
+are dictated by the fractional parts of (k−1)·log_5 3 and (k−1)·log_7 3
+— two incommensurate rotations. Where both land well, a burst; where
+either lands badly and the cascade compounds, a desert. Turning that
+picture into predicted burst positions is the sharpest question the
+session leaves open (NOTE §7), and the first max-mode probes were the
+right tool at the right moment: when the histogram showed 21 consecutive
+empty lengths, three millisecond-scale max queries at intermediate
+heights confirmed the desert independently before it was believed.
 
 ## The task-skew fix
 
