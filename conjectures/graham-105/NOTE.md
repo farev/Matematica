@@ -111,7 +111,7 @@ exactly ⟨PENDING-600: total⟩ elements (3^600 ≈ 1.87·10^286). The ladder
 | 250 | 1.9·10^119 | 95,861 | 11,963,213 | C + Python, identical |
 | 300 | 1.4·10^143 | 288,836 | 36,430,897 | C full ≡ C 4-worker ≡ Python |
 | 350 | 1.9·10^167 | 674,540 | 85,263,581 | C full |
-| 400 | 7.1·10^190 | ⟨PENDING-400⟩ | ⟨PENDING-400⟩ | C full |
+| 400 | 7.1·10^190 | 4,190,720 | 529,206,039 | C full |
 | 500 | 3.6·10^238 | ⟨PENDING-500⟩ | ⟨PENDING-500⟩ | C full |
 | 600 | 1.9·10^286 | ⟨PENDING-600⟩ | ⟨PENDING-600⟩ | C, 4-worker task mode |
 
@@ -121,8 +121,9 @@ plain (`data/terms_3e200_full.txt`, 10,215 lines) and to 3^250 gzipped
 (`data/terms_3e250_full.txt.gz`, 95,861 terms); beyond that, runs commit
 the first 2000 terms, every 100,000th term, all 1155-flagged terms, the
 largest term, per-length histograms and fingerprints. The largest element
-of G below 3^600 is the ⟨PENDING-600: digits⟩-digit number in
-`data/max600.txt`.
+of G below 3^600 is a 286-digit number (base-3 length 600), in
+`data/max600.txt`; the previous largest published term (≤ 10^70) has 66
+digits.
 
 **C2 (CERTIFIED). The 1155 companion.** The only n < 3^600 with
 gcd(C(2n,n), 1155) = 1 are n = 0, 1, 3160. Equivalently, Graham's
