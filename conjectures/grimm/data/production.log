@@ -1,0 +1,7 @@
+=== chunk c2: [1000000000, 10000000000) start 12:15:44 ===
+done [1000000000,10000000000): primes=404204977 maxgap=353(at 4302407359) cand=133108963 criticals=1076022 gaps_w_crit=1049580 max_s=6 min_margin=0 wall=44.7s OK
+=== chunk c2 done 12:16:28 ===
+=== chunk c3: [10000000000, 100000000000) start 12:16:28 ===
+done [10000000000,100000000000): primes=3663002302 maxgap=463(at 42652618343) cand=572737066 criticals=3807285 gaps_w_crit=3761362 max_s=5 min_margin=0 wall=335.7s OK
+=== chunk c3 done 12:22:04 ===
+=== chunk c4: [100000000000, 1000000000000) start 12:22:04 ===

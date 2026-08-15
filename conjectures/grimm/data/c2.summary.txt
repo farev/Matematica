@@ -1,0 +1,10 @@
+grimm_sweep LO=1000000000 HI=10000000000 threads=4 BSMALL=600 BSLOW=2000
+primes_in_range=404204977
+first_prime=1000000007 last_right_prime=10000000019
+max_gap_k=353 at_p=4302407359
+smooth_candidates=133108963 criticals=1076022 gaps_with_criticals=1049580 max_criticals_in_gap=6
+min_hall_margin=0 at_p=1073741789
+hall_failures=0
+wall_secs=44.7
+thread_secs=44.7 40.0 37.3 36.7 
+VERDICT: GRIMM HOLDS ON ALL GAPS IN RANGE

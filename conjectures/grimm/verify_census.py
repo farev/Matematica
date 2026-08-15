@@ -135,13 +135,29 @@ def mode_window(lo, hi, census):
 
 
 def mode_check(census, sample, seed):
+    """Light arithmetic pass on ALL rows (no sympy primality — feasible on
+    million-row censuses), then heavy sympy verification (primality,
+    maximality, full refactorization, completeness) on `sample` gaps."""
     gaps = load(census)
     nerr = 0
     for (p, k), rows in gaps.items():
-        errs = check_gap_rows(p, k, rows, full=False)
-        for e in errs: print(f"ERROR gap p={p}: {e}")
-        nerr += len(errs)
-    print(f"row check: {len(gaps)} gaps, {sum(len(r) for r in gaps.values())} rows, errors={nerr}")
+        assigned_seen = set()
+        margins = set()
+        for m, fac, L, assigned, margin in rows:
+            if not (p < m < p + k + 1): print(f"ERROR p={p}: m={m} outside gap"); nerr += 1
+            if max(fac) != L: print(f"ERROR p={p}: m={m} L mismatch"); nerr += 1
+            if L > k: print(f"ERROR p={p}: m={m} L={L} > k={k}"); nerr += 1
+            if assigned == 0: print(f"ERROR p={p}: m={m} unassigned"); nerr += 1
+            else:
+                if m % assigned: print(f"ERROR p={p}: assigned {assigned} !| m={m}"); nerr += 1
+                if assigned > k: print(f"ERROR p={p}: assigned {assigned} > k"); nerr += 1
+                if assigned in assigned_seen: print(f"ERROR p={p}: assigned {assigned} reused"); nerr += 1
+                assigned_seen.add(assigned)
+            for f_ in fac:
+                if m % f_: print(f"ERROR p={p}: listed factor {f_} !| m={m}"); nerr += 1
+            margins.add(margin)
+        if len(margins) != 1: print(f"ERROR p={p}: inconsistent margins {margins}"); nerr += 1
+    print(f"light pass: {len(gaps)} gaps, {sum(len(r) for r in gaps.values())} rows, errors={nerr}")
     if sample:
         rng = random.Random(seed)
         keys = sorted(gaps.keys())
@@ -151,7 +167,8 @@ def mode_check(census, sample, seed):
             errs = check_gap_rows(p, k, gaps[(p, k)], full=True)
             for e in errs: print(f"ERROR(sampled) gap p={p}: {e}")
             serr += len(errs)
-        print(f"sampled completeness: {len(chosen)} gaps fully refactored, errors={serr}")
+        print(f"sampled heavy check: {len(chosen)} gaps (primality, maximality, "
+              f"full refactor, completeness), errors={serr}")
         nerr += serr
     return nerr
 
