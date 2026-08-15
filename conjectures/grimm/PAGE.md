@@ -8,26 +8,29 @@ session.
 **CERTIFIED** — Grimm's conjecture (1969) verified for all n ≤ 10¹², a 52×
 extension of the record that had stood since 2006, together with the first
 census of the gap members that make the conjecture nontrivial: the
-{{TOTAL_CRIT}} "critical" members below 10¹², each with its factorization,
-its explicitly assigned prime, and the exact Hall margin of its gap.
+18,575,022 "critical" members below 10¹², each with its factorization, its
+explicitly assigned prime, and the exact Hall margin of its gap.
 
 ## 2. Contributions
 
 1. **CERTIFIED** — Grimm's conjecture holds for all n ≤ 10¹²: every maximal
    prime gap with left prime p < 10¹² carries an explicit system of
    distinct prime representatives. Previous record n ≤ 1.9236701629×10¹⁰
-   (Laishram–Shorey 2006, (secondary)); factor 52 extension; under an hour
+   (Laishram–Shorey 2006, (secondary)); factor 52 extension; 52.1 minutes
    of 4-core wall time for the whole range (c1–c4: 8.9 s + 44.7 s +
-   335.7 s + {{C4_WALL}}).
-2. **CERTIFIED** — the critical-interval census: {{TOTAL_CRIT}} critical
-   members in {{TOTAL_GAPSC}} gaps below 10¹², with factorizations,
-   matchings, exact Hall margins; per-decade table in
-   `data/stats_by_decade.csv`; no margin is negative (a negative margin
-   would be a Grimm counterexample).
+   335.7 s + 2736.2 s).
+2. **CERTIFIED** — the critical-interval census: 18,575,022 critical
+   members in 18,400,995 gaps below 10¹², with factorizations, matchings,
+   exact Hall margins; per-decade table in `data/stats_by_decade.csv`; no
+   margin is negative (a negative margin would be a Grimm counterexample).
 3. **CERTIFIED** — every tight gap (margin 0) below 10¹² is *prime-power
-   tight*: all {{TIGHT_TOTAL}} of them contain a prime power p^a with
-   p ≤ k, and none requires a genuine multi-member interaction; the
-   largest is at p = {{LAST_TIGHT_P}} (containing {{LAST_TIGHT_WITNESS}}).
+   tight*: all 133 of them contain a prime power p^a with p ≤ k achieving
+   the minimum alone, and none requires a genuine multi-member
+   interaction; the ten largest are tight at 31⁸, 3²⁵, 97⁶, 5¹⁷, 7¹⁴, 2³⁹,
+   29⁸, 19⁹, 11¹¹, 3²⁴, the largest at p = 852,891,037,337 (k = 109,
+   containing 31⁸ = 852,891,037,441). Bonus charm for the page: the
+   largest critical member below 10¹² is 10¹² itself (2¹²·5¹², assigned
+   prime available as low as 5, in the 49-gap after 999,999,999,989).
 4. **PROVED** (elementary) — Lemma 2.1 (reduction to critical members;
    classical in substance, stated with proof in NOTE §2, no novelty
    claimed); Lemma 5.1 + Proposition 5.2: margin-≤-0 gaps occur infinitely
@@ -78,9 +81,9 @@ its explicitly assigned prime, and the exact Hall margin of its gap.
   evidence of no counterexample, not evidence for the conjecture.
 - Census completeness rests on the C engine, cross-verified exhaustively on
   three windows and by sampling elsewhere (250–300 gaps per chunk, seed
-  20260815); the full ~{{TOTAL_CRIT}}-row censuses are not in the repo
-  (size rule) — sha256 hashes are committed and regeneration is one
-  50-minute command.
+  20260815); the full 18,575,022-row censuses (~940 MB) are not in the
+  repo (size rule) — sha256 hashes are committed and regeneration is one
+  52-minute command.
 - The infinitude in Proposition 5.2 is of margin-**≤-0** gaps; margin
   exactly 0 for all of them is conditional on Grimm (unconditionally they
   could in principle be negative — none is, below 10¹²).

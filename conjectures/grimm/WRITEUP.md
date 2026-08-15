@@ -89,11 +89,40 @@ on a 4-core/15 GB sandbox):
 - c3 [10¹⁰, 10¹¹): 335.7 s. 3,807,285 criticals in 3,761,362 gaps; max
   s = 5; the 464-gap at 42652618343 reproduced; prime count = π(10¹¹) −
   π(10¹⁰) exactly.
-- c4 [10¹¹, 10¹²): (filled at close)
+- c4 [10¹¹, 10¹²): 2736.2 s. 13,281,870 criticals in 13,206,090 gaps; max
+  s = 4; min margin 0; the largest gap below 10¹² (k = 539 after
+  738832927927) reproduced, and it contains a critical member; prime count
+  = π(10¹²) − π(10¹¹) exactly.
+
+Post-run: seams verified across all four chunks; light verification pass
+over all 18,575,022 rows and heavy sympy re-derivation of 250–300 sampled
+gaps per chunk — zero errors anywhere; mining and tight-gap classification
+(below).
+
+## The tight gaps
+
+All 133 margin-0 gaps below 10¹² are prime-power tight — the minimum is
+achieved by a singleton prime power in every single one; no gap anywhere in
+range is tight (or negative) through genuine interaction of several
+criticals. The ten largest tight gaps are tight at 31⁸, 3²⁵, 97⁶, 5¹⁷,
+7¹⁴, 2³⁹, 29⁸, 19⁹, 11¹¹, 3²⁴. Two pre-data predictions made from the
+mechanism (before c4 finished): that 3²⁵ = 847,288,609,443 would be tight,
+and that the last tight gap below 10¹² would be 31⁸ if its local gap
+reached k ≥ 31 — both confirmed (31⁸ sits in a k = 109 gap). The rate of
+tight gaps per decade (9–18) is roughly constant, as the prime-power
+mechanism predicts.
 
 ## What failed / what surprised
 
-- (filled at close: census-volume surprise, anything from c3/c4)
+- `mine_stats.py` first crashed on a name-shadowing bug (`dec` as both
+  function and dict) that my own post-chain surfaced; fixed and rerun —
+  the kind of bug the census pipeline can afford, since it only mines
+  already-verified data.
+- An LLM-typical hallucination was caught in review: a draft NOTE line
+  invented a factorization (with a stray CJK character) for the max-L
+  member 614,487,453,811; the real factorization (7·11·139·263·419·521)
+  was computed and substituted. Every specific number in the final NOTE
+  either comes from a data file or was recomputed explicitly.
 - Criticals turned out ~30× more numerous than the back-of-envelope
   Dickman estimate made during selection (10⁵ predicted; 1.5M already below
   10¹⁰). The error: the estimate integrated only mid-length gaps and

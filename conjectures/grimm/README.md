@@ -20,14 +20,14 @@ a 52× extension — and yields that census as a by-product.
 
 ## Results
 
-(final numbers in `data/`; labels per repository convention)
-
 | Claim | Label | Where |
 |---|---|---|
-| Grimm's conjecture holds for all `n ≤ 10¹²` — every maximal prime gap with left prime `p < 10¹²` carries an explicit system of distinct prime representatives; 52× the 2006 record | CERTIFIED | `data/c*.summary.txt`, census (regenerable, hashes in `data/census_hashes.txt`) |
-| Census of every *critical member* (gap member whose prime factors are all ≤ the gap length `k`) below 10¹²: counts, factorizations, assigned primes, exact Hall margins, per decade | CERTIFIED | `data/stats_by_decade.csv`, `data/tight.csv`, `data/multi.csv`, `data/extremes.csv` |
-| Reduction lemma: Grimm on every window of a gap ⇔ the gap's criticals admit a matching into primes ≤ k (classical in substance; stated and proved in NOTE §2) | PROVED (folklore) | `NOTE.md` §2 |
-| Tightness mechanism: any gap containing a prime power `pᵃ` (`p ≤ k`) has Hall margin ≤ 0; census locates every tight gap below 10¹² | PROVED (trivial) + CERTIFIED | `NOTE.md` §5, `data/tight.csv` |
+| Grimm's conjecture holds for all `n ≤ 10¹²` — every maximal prime gap with left prime `p < 10¹²` carries an explicit system of distinct prime representatives; 52× the 2006 record, 52.1 min of 4-core wall time | CERTIFIED | `data/c*.summary.txt`, censuses (regenerable, sha256 in `data/census_hashes.txt`) |
+| The critical-member census: **18,575,022** members (gap members whose prime factors are all ≤ the gap length `k`) in 18,400,995 gaps, each factored, matched, with exact Hall margin; **no margin is negative** (one would be a counterexample) | CERTIFIED | `data/stats_by_decade.csv`, `data/tight.csv`, `data/multi.csv`, `data/extremes.csv`, `data/crit_by_k.csv` |
+| **Every tight gap (margin 0) below 10¹² is prime-power tight** — all 133 contain a prime power `pᵃ ≤ k`-smooth achieving the minimum alone; interaction tightness (≥ 2 criticals sharing too few primes — the only way Grimm can actually fail) never occurs in range; largest tight gap: `31⁸` at p = 852,891,037,337 (k = 109) | CERTIFIED | `data/tight.csv`, `analyze_tight.py` output in WRITEUP |
+| Reduction lemma: Grimm on every window of a gap ⇔ the gap's criticals admit a matching into primes ≤ k (classical in substance; stated and proved in NOTE §2, no novelty claimed) | PROVED (folklore) | `NOTE.md` §2 |
+| Tight gaps occur infinitely often: powers `2ᵃ`, `a ≡ 3 (mod 6)`, force margin ≤ 0 forever (= 0 under Grimm) | PROVED (elementary) | `NOTE.md` §5, Prop. 5.2 |
+| π(10⁸), π(10⁹), π(10¹⁰), π(10¹¹), π(10¹²) and six first-occurrence maximal gaps (86, 220, 282, 354, 464, 540) reproduced exactly | CERTIFIED (controls) | `data/c*.summary.txt`, WRITEUP |
 
 ## Scripts
 

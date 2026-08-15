@@ -1,0 +1,33 @@
+=== seam checks ===
+c1 (2, 1000000007, 50847534)
+c2 (1000000007, 10000000019, 404204977)
+c3 (10000000019, 100000000003, 3663002302)
+c4 (100000000003, 1000000000039, 33489857205)
+pi(1e10) check: 455052511 expected 455052511 True
+pi(1e11)-pi(1e10) check: 3663002302 expected 3663002302 True
+pi(1e12)-pi(1e11) check: 33489857205 expected 33489857205 True
+pi(1e12) check: 37607912018 expected 37607912018 True
+SEAMS OK
+=== verify c3 (sampled) ===
+light pass: 3761362 gaps, 3807285 rows, errors=0
+sampled heavy check: 250 gaps (primality, maximality, full refactor, completeness), errors=0
+=== verify c4 (sampled) ===
+light pass: 13206090 gaps, 13281870 rows, errors=0
+sampled heavy check: 250 gaps (primality, maximality, full refactor, completeness), errors=0
+=== mine stats ===
+Traceback (most recent call last):
+  File "/home/user/Matematica/conjectures/grimm/mine_stats.py", line 112, in <module>
+    main(sys.argv[1:])
+  File "/home/user/Matematica/conjectures/grimm/mine_stats.py", line 69, in main
+    d = dec(p)
+        ^^^^^^
+TypeError: 'collections.defaultdict' object is not callable
+=== analyze tight ===
+Traceback (most recent call last):
+  File "/home/user/Matematica/conjectures/grimm/analyze_tight.py", line 69, in <module>
+    main()
+  File "/home/user/Matematica/conjectures/grimm/analyze_tight.py", line 25, in main
+    with open("data/tight.csv") as f:
+         ^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'data/tight.csv'
+=== POSTPROCESSING COMPLETE ===
