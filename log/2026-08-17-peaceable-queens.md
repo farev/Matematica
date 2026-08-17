@@ -185,7 +185,15 @@ finite upper bound to beat is Pratt's a(16) ≤ 64.
   reading input — caught by its own negative control.
 - **Session hygiene**: `&&`-chaining after `./bnb` swallowed a test
   batch (exit code 10 = SAT by design); a 2-minute default timeout
-  killed a benchmark batch mid-loop (moved to background tasks).
+  killed a benchmark batch mid-loop (moved to background tasks); a
+  `pkill -f` pattern matched the invoking shell itself — the exact
+  failure class the 2026-08-13 log recorded — leaving four orphaned
+  workers burning cores until killed by PID.
+- **n = 15 on the plain engine was killed mid-run** (~8.5 min in) once
+  the SYM16 engine was validated: the certified a(15) refutation is
+  the sym run (1.48B nodes, 156 s); the plain engine's n = 15 node
+  count was therefore never measured — noted so the growth table's
+  engine column is read correctly.
 
 ## Next
 

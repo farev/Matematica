@@ -227,8 +227,11 @@ This agrees with every published value (a(1)–a(13): Pratt via ILP,
 (secondary)) and gives what appears to be the first independently
 reproducible derivation with published artifacts for a(14) = 28 and
 a(15) = 32 (see §1 caveat on their provenance). Runtimes in
-`results/ladder_bnb.csv`; the largest, a(15), took [TBD] on 4 cores
-([TBD] nodes).
+`results/ladder_bnb.csv`. The largest refutations: a(13) at m = 25,
+477,786,646 nodes, 99 s serial (plain engine; identical total from the
+4-way stride partition); a(14) at m = 29, 2,264,952,960 nodes, 231 s
+wall on 4 workers (plain); a(15) at m = 33, 1,476,498,420 nodes, 156 s
+wall on 4 workers (SYM16 engine, 8 resumable chunks, all UNSAT).
 
 ## 6. Results at the open case n = 16
 
