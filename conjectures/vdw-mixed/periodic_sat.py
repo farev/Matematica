@@ -86,16 +86,20 @@ def scan(s, t, n, pmin, pmax, save=True, verbose=True, budget=200000):
                                 f"period), verified\n")
                         f.write("".join(str(col[i])
                                         for i in range(1, n + 1)) + "\n")
-                    return hits, path
-    return hits, None
+                    return hits, path, unknown
+    return hits, None, unknown
 
 
 if __name__ == "__main__":
     s, t, n = int(sys.argv[1]), int(sys.argv[2]), int(sys.argv[3])
     pmin, pmax = int(sys.argv[4]), int(sys.argv[5])
-    hits, path = scan(s, t, n, pmin, pmax)
+    hits, path, unknown = scan(s, t, n, pmin, pmax)
     if hits:
         print(f"periods with witnesses: {hits} -> {path}")
-    else:
+    elif not unknown:
         print(f"NO exactly-periodic witness for ({s},{t}) n={n} "
               f"with p in [{pmin},{pmax}] (complete per-period result)")
+    else:
+        print(f"no periodic witness found for ({s},{t}) n={n}, p in "
+              f"[{pmin},{pmax}], BUT {len(unknown)} periods UNKNOWN "
+              f"(budget-limited): {unknown} — NOT a completeness claim")

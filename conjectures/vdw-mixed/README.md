@@ -27,7 +27,7 @@ monotonicity pins the value), and opens a certified campaign on `w(2;5,8)`.
 | w(2;4,7) | 109 | witness ✓; UNSAT proof produced, 1.1 GB check in flight | pending |
 | w(2;5,6) | 206 | both legs in flight | pending |
 | w(2;5,7) | 260 | planned (stretch) | pending |
-| w(2;5,8) | — (open) | lower-bound walk in flight | pending |
+| w(2;5,8) | — (open) | **> 292 CERTIFIED** (74-periodic witness at n=292, verified; walk continuing) | witness committed |
 
 ## Scripts
 
