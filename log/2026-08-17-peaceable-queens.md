@@ -119,14 +119,82 @@ Mid-session checkpoint: if the measured growth prices n = 16 out of
 ~30 core-hours, say so, ship the certified ladder, and leave the
 campaign resumable.
 
+## Mid-session checkpoint (invoked, with data)
+
+The SAT plan died on measurement, not on speculation. Cell-pairwise
+encoding: UNSAT growth ~12–20×/rung (n=7: 2.0 s, n=8: 46 s). Line
+encoding: same wall. Provable counting cuts (unit-tested exhaustively):
+no help where it matters — and the diagnostic: n=16 m=64, where a
+one-line counting argument collapses the search space, still blew a
+240 s cadical timeout, because CDCL re-proves the diagonal-span
+argument per row/column subset. Resolution is the wrong proof system
+for this problem's counting core. Pivot: exact branch-and-bound in the
+line-labeling formulation with proved pruning lemmas (NOTE Lemmas 1–6),
+Python reference + C port with node-count equality, SAT pipeline
+retained as the small-n cross-validation and DRUP anchor layer.
+
 ## Result
 
-(session in progress)
+**PROVED** — line-labeling reformulation and pruning lemmas (NOTE
+Lemmas 1–6, with proofs).
+
+**CERTIFIED** — the complete known ladder re-derived from scratch, no
+external values assumed: a(1..15) = 0,0,1,2,4,5,7,9,12,14,17,21,24,28,32.
+Boundaries: exhaustive B&B refutations at a(n)+1 (a(13): 478M nodes,
+99 s serial; a(14): 2.26B nodes, 231 s on 4 workers; a(15): [pending
+at time of writing — see final section]); checker-verified witnesses
+at a(n) for every n (all in `witnesses/`). For a(14) = 28 and
+a(15) = 32 no published proof artifact could be located from the
+sandbox (Pratt 2014 recorded only 28 ≤ a(14) ≤ 43, 32 ≤ a(15) ≤ 53;
+the 2024 paper reports the values as known): these appear to be the
+first independently reproducible derivations, phrased with that
+caveat.
+
+**CERTIFIED** — a(16) ≥ 37: the engine independently found a 37+37
+placement on 16×16 (29 s, 177M nodes), verified by the from-definition
+checker. Matches Ainley's 1977 construction bound (secondary).
+
+**Validation record** — two engines with node-for-node equality
+(477,786,646 nodes at the n=13 boundary, serial and 4-way-parallel
+alike); 40/40 verdict agreement vs an independent SAT pipeline on all
+army sizes for n ≤ 8; DRUP proofs at the n ≤ 7 boundaries verified by
+`tools/satcert/rup_check`; every witness re-verified independently.
+
+**In flight at n = 16** — the decisive UNSAT run at m = 38 (auto-chained
+after a(15)'s refutation completes): UNSAT proves a(16) = 37 (first new
+term of A250000 in a decade); SAT refutes the conjectured value. Every
+completed stride chunk is a permanent partial certificate; the recorded
+finite upper bound to beat is Pratt's a(16) ≤ 64.
 
 ## What failed
 
-(session in progress)
+- **Encoder v1 soundness bug**: no same-cell exclusion — the solver
+  stacked both colors on one 5-queens solution ("a(5) ≥ 5"). Caught by
+  the independent witness checker before any claim was made.
+- **Pure SAT at scale**: three escalations (cell encoding, line
+  encoding, counting cuts), each measured, each dead — documented with
+  timings in WRITEUP.md. The m = 64 diagnostic experiment is the clean
+  demonstration that the failure is structural (resolution vs
+  counting), not an encoding detail.
+- **Witness extraction after DFS unwinding**: the first B&B "witness"
+  at n = 11 had 90 attacking pairs because backtracking had revived
+  every killed cell before extraction. Caught by the checker; verdicts
+  unaffected (separately validated); fixed by snapshotting at the SAT
+  leaf; all witnesses re-verified.
+- **check_peaceable v1** segfaulted on 16 MB of stack arrays before
+  reading input — caught by its own negative control.
+- **Session hygiene**: `&&`-chaining after `./bnb` swallowed a test
+  batch (exit code 10 = SAT by design); a 2-minute default timeout
+  killed a benchmark batch mid-loop (moved to background tasks).
 
 ## Next
 
-(session in progress)
+If m = 38 completes UNSAT: a(16) = 37 is decided; write PAGE.md, update
+the top-level index, and the note becomes preprint-shaped (the natural
+venue continuation of arXiv:2406.06974's table). If still running at
+session end: the run is stride-resumable; the next session re-launches
+remaining chunks (`drive.py 16 38`, chunk state in `results/`).
+Then: a(17) (Pratt: 42 ≤ a(17) ≤ 72) with the same machinery; the
+family-sum bound joined across diagonal families (NOTE §7.2) is the
+algorithmic lever; the torus (A279405, odd case reported open) is the
+adjacent frontier.
