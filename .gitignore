@@ -50,3 +50,7 @@ conjectures/signed-difference-sets/sds_search
 conjectures/distinct-subset-sums/dss_search
 conjectures/distinct-subset-sums/dss_search3
 conjectures/distinct-subset-sums/dss_search_basic
+
+# peaceable-queens engines: build from source (gcc -O2 -march=native), do not commit
+conjectures/peaceable-queens/bnb
+conjectures/peaceable-queens/check_peaceable

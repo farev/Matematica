@@ -58,4 +58,3 @@ placements; `results/` the run records with node counts and times.
 - The DRUP anchors stop at n = 7 (cell encoding; n = 8 feasible but
   slow with `--plain`). Beyond that, certification rests on the proved
   lemmas + two-engine node equality + the SAT cross-validation battery.
-```
