@@ -24,10 +24,10 @@ monotonicity pins the value), and opens a certified campaign on `w(2;5,8)`.
 | w(2;4,5) | 55 | **55 CERTIFIED** | witness + RUP-verified UNSAT |
 | w(2;4,6) | 73 | **73 CERTIFIED** | witness + RUP-verified UNSAT (also closed by the validated cube-and-conquer driver, 64/64 leaves) |
 | w(2;5,5) | 178 | **178 CERTIFIED** | witness + RUP-verified UNSAT (1.56M-line proof) |
-| w(2;4,7) | 109 | witness ✓; UNSAT proof produced, 1.1 GB check in flight | pending |
+| w(2;4,7) | 109 | **109 CERTIFIED** | witness + RUP-verified UNSAT (18.4M-line proof; sha256 + verdict in MANIFEST, file re-derivable) |
 | w(2;5,6) | 206 | both legs in flight | pending |
 | w(2;5,7) | 260 | planned (stretch) | pending |
-| w(2;5,8) | — (open) | **> 292 CERTIFIED** (74-periodic witness at n=292, verified; walk continuing) | witness committed |
+| w(2;5,8) | — (open) | **> 295 CERTIFIED** (exactly-74-periodic witness at n=295, both verifiers; escalation running) | witness committed |
 
 ## Scripts
 

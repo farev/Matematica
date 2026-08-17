@@ -52,21 +52,29 @@ brute force for tiny cells (`w(2;3,3)=9`, `w(2;3,4)=18` reproduced).
 | w(2;4,6) | **73** | 253,728 lines | RUP-VERIFIED (also closed independently by cube-and-conquer, 64/64 leaves each RUP-VERIFIED) |
 | w(2;5,5) | **178** | 1,561,916 lines | RUP-VERIFIED |
 
-All six agree with the published table (secondary). Solvers: CaDiCaL 1.9.5
+| w(2;4,7) | **109** | 18,434,058 lines | RUP-VERIFIED (1.14 GB proof; sha256 + verdict in MANIFEST, file re-derivable) |
+
+All seven agree with the published table (secondary). Solvers: CaDiCaL 1.9.5
 (fast leg), Glucose 4.2 with proof logging (certificate leg), via
-python-sat 1.9.dev15. In flight at time of writing: `w(2;4,7)=109` (witness
-verified; 1.1 GB proof produced, check running) and `w(2;5,6)=206` (UNSAT
-leg running); their rows move here when their checks complete.
+python-sat 1.9.dev15. In flight at time of writing: `w(2;5,6)=206` (both
+legs running); its row moves here when its checks complete.
 
 ## 3. Bounds for the open cell w(2;5,8)
 
-**Theorem 2 (CERTIFIED).** `w(2;5,8) > 292.`
+**Theorem 2 (CERTIFIED).** `w(2;5,8) > 295.`
 
-*Certificate.* A 74-periodic coloring of `[1,292]` (committed:
-`data/witness_5_8_n292_persat_p74ext.txt`), found as the extension-maximum
-of a period-74 block that yields good partitions at `n = 280` and `290`;
-verified good by independent enumeration. By Lemma 1 this also certifies all
-smaller `n`. ∎
+*Certificate.* An exactly-74-periodic coloring of `[1,295]` (committed:
+`data/witness_5_8_n295_perdef_p74k0.txt`), found by the complete
+defect-tolerant search at `(p,k) = (74, ≤8)` — the solver returned a
+0-defect solution — and verified good by both independent verifiers (Python
+re-enumeration and the from-definition C checker `vdw_check.c`). By Lemma 1
+this also certifies all smaller `n`. Earlier steps of the walk (74-periodic
+witnesses at `n = 280, 290, 292`) are committed alongside. ∎
+
+Remark: distinct period-74 blocks govern different `n` — the block found at
+`n = 290` extends only to 292, while a different 74-block covers 295. A
+block dying is not the period dying, and the period dying is not the row
+dying: defect-tolerant and larger-period searches continue above 295.
 
 Context (all secondary): the row reads 178, 206, 260 at `t = 5, 6, 7`;
 first differences +28, +54 suggest `w(2;5,8)` in the low-to-mid 300s. No
