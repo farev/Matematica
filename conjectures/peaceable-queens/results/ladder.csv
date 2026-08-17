@@ -1,0 +1,13 @@
+n,a_n,m_unsat,sat_s,unsat_s,nvars,nclauses,symbreak
+3,1,2,0.00,0.00,46,111,False
+4,2,3,0.00,0.00,110,304,False
+5,4,5,0.00,0.01,250,715,False
+6,5,6,0.00,0.16,432,1288,False
+7,7,8,0.00,1.98,754,2247,False
+8,9,10,0.02,46.29,1208,3592,False
+3,1,2,0.00,0.00,62,118,False/lines=True
+4,2,3,0.00,0.00,132,264,False/lines=True
+5,4,5,0.00,0.01,278,570,False/lines=True
+6,5,6,0.00,0.17,466,960,False/lines=True
+7,7,8,0.00,1.69,794,1638,False/lines=True
+8,9,10,0.05,31.91,1254,2584,False/lines=True
