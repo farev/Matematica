@@ -1,0 +1,1 @@
+UNSAT nodes=2704844440 time=539.63s

@@ -256,10 +256,13 @@ workers (`results/n16_m38_bnb_sym_chunk*.txt`); the lower half is
 Theorem B's verified witness. The sym engine also reproduces the
 witness (89,333,324 nodes, 17 s, same canonical row/column sets
 S = 127, T = 3615). A full second exhaustion of m = 38 by the plain
-engine (independent canonical form, independent code path through the
-outer loop) was launched as belt-and-braces confirmation; its status
-is recorded in the daily log and its chunks in
-`results/n16_m38_bnb_chunk*.txt`.
+engine (independent canonical form — color swap only, Lemma 6 — and an
+independent outer-loop code path) **completed and agrees**:
+45,021,245,984 nodes, 3691 s wall on 4 workers, all 16 chunks UNSAT
+(`results/n16_m38_bnb_chunk*.txt`). The node ratio between the two
+exhaustions, 45,021,245,984 / 5,032,610,558 ≈ 8.95, matches the
+symmetry-group order ratio 16/2 = 8 up to orbit boundary effects — an
+internal consistency check on the canonicalization.
 
 To our knowledge — with the connectivity caveats of §1, and the OEIS
 entry and the 2024 survey as the ledger — this is the first

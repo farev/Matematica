@@ -203,12 +203,11 @@ Next.
 
 ## Next
 
-1. **The plain-engine confirmation of m = 38** was still running at
-   session end (16 chunks, `results/n16_m38_bnb_chunk*.txt`,
-   `run_chunked.py 16 38 16 4 ./bnb` resumes it). Pure redundancy on
-   an already multiply-validated engine, but a first determination
-   deserves it; the next session should check it completed all-UNSAT
-   and record the node total in NOTE §6.
+1. ~~The plain-engine confirmation of m = 38~~ **Completed in-session
+   and agrees**: 45,021,245,984 nodes, 3691 s, 16/16 chunks UNSAT.
+   a(16) = 37 rests on two independent full exhaustions (plain and
+   SYM16 canonical forms); node ratio 8.95 ≈ group-order ratio 8.
+   Recorded in NOTE §6.
 2. **OEIS**: submit a(16) = 37 to A250000 with the witness and chunk
    certificates (local session decides; external submission policy).
 3. **a(17)** (recorded bracket [42, 72]): the boundary refutation

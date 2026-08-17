@@ -85,12 +85,11 @@ dropped: two numbers, 64 → 41 → exact, don't need a figure.)
   lemmas + the two-engine/SAT-cross-validation stack + committed
   chunk records. Say this plainly; do not imply a DRUP proof of the
   n = 16 result exists.
-- **A second, plain-engine full exhaustion of m = 38 was still running
-  at session end** (`results/n16_m38_bnb_chunk*.txt`). It is
-  redundancy, not a dependency — but if it has completed by page-build
-  time, check it reported all-UNSAT and add its node total; if it
-  found anything else, STOP and re-open the investigation before
-  publishing.
+- The second, plain-engine full exhaustion of m = 38 **completed
+  in-session and agrees**: 45,021,245,984 nodes, 3691 s, 16/16 chunks
+  UNSAT (`results/n16_m38_bnb_chunk*.txt`). The page can state that
+  a(16) = 37 rests on two independent full exhaustions with different
+  canonical forms, node ratio ≈ 8.95 vs the group-order ratio 8.
 - Attack model: A250000's convention — attacks are not blocked by
   intervening pieces. The ladder controls (a(1..13) reproduced
   exactly) are the operational evidence this is the right model.
