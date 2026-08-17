@@ -160,11 +160,17 @@ alike); 40/40 verdict agreement vs an independent SAT pipeline on all
 army sizes for n ≤ 8; DRUP proofs at the n ≤ 7 boundaries verified by
 `tools/satcert/rup_check`; every witness re-verified independently.
 
-**In flight at n = 16** — the decisive UNSAT run at m = 38 (auto-chained
-after a(15)'s refutation completes): UNSAT proves a(16) = 37 (first new
-term of A250000 in a decade); SAT refutes the conjectured value. Every
-completed stride chunk is a permanent partial certificate; the recorded
-finite upper bound to beat is Pratt's a(16) ≤ 64.
+**CERTIFIED — a(16) = 37, the smallest open case of A250000 decided.**
+Upper half: exhaustive refutation of 38 + 38 by the SYM16 engine —
+5,032,610,558 nodes, 462 s wall on 4 workers, 16 resumable chunks,
+every chunk UNSAT. Lower half: a 37 + 37 witness found by both engines
+(plain: 177M nodes, 29 s; sym: 89M nodes, 17 s; identical canonical
+row/column sets), verified by the from-definition checker. En route,
+**CERTIFIED a(16) ≤ 41** (m = 42 exhausted: 607M nodes, 174 s) — the
+OEIS-recorded finite bracket had been [37, 64] since 2014. A full
+second exhaustion of m = 38 by the plain engine (independent canonical
+form) was launched as confirmation; status at session end recorded in
+Next.
 
 ## What failed
 
@@ -197,12 +203,20 @@ finite upper bound to beat is Pratt's a(16) ≤ 64.
 
 ## Next
 
-If m = 38 completes UNSAT: a(16) = 37 is decided; write PAGE.md, update
-the top-level index, and the note becomes preprint-shaped (the natural
-venue continuation of arXiv:2406.06974's table). If still running at
-session end: the run is stride-resumable; the next session re-launches
-remaining chunks (`drive.py 16 38`, chunk state in `results/`).
-Then: a(17) (Pratt: 42 ≤ a(17) ≤ 72) with the same machinery; the
-family-sum bound joined across diagonal families (NOTE §7.2) is the
-algorithmic lever; the torus (A279405, odd case reported open) is the
-adjacent frontier.
+1. **The plain-engine confirmation of m = 38** was still running at
+   session end (16 chunks, `results/n16_m38_bnb_chunk*.txt`,
+   `run_chunked.py 16 38 16 4 ./bnb` resumes it). Pure redundancy on
+   an already multiply-validated engine, but a first determination
+   deserves it; the next session should check it completed all-UNSAT
+   and record the node total in NOTE §6.
+2. **OEIS**: submit a(16) = 37 to A250000 with the witness and chunk
+   certificates (local session decides; external submission policy).
+3. **a(17)** (recorded bracket [42, 72]): the boundary refutation
+   m = 43 projects to ~5–8× the n = 16 cost — an hour-scale run on
+   this hardware. The lever if it's worse: the joint two-family bound
+   (NOTE §7.2).
+4. **Torus A279405** (odd case reported open): the engine ports — all
+   diagonals become full-length, Lemma 1 carries over verbatim.
+5. The note is preprint-shaped (natural continuation of
+   arXiv:2406.06974's table); needs the primary sources read first —
+   from a machine that can reach them.

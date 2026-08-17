@@ -19,10 +19,11 @@ DRUP proofs checked by an independent reverse-unit-propagation checker;
 every SAT witness is re-verified by a from-the-definition checker
 sharing no code with the search. With this machinery we re-derive the
 complete known ladder a(1..15) from scratch — including a(14) = 28 and
-a(15) = 32, for which we could locate no published proof artifact — and
-compute new certified upper bounds at the open case n = 16 (Section 6;
-the OEIS-recorded finite bound there was a(16) ≤ 64, from Pratt's 2014
-integer programming (secondary)).
+a(15) = 32, for which we could locate no published proof artifact —
+and then decide the smallest open case: **a(16) = 37** (Theorem D), by
+an exhaustive 5.03-billion-node refutation of army size 38 paired with
+a checker-verified 37 + 37 witness. The OEIS-recorded finite bracket
+at n = 16 had stood at [37, 64] (Pratt 2014, (secondary)).
 
 ## 1. The problem
 
@@ -248,18 +249,40 @@ finite upper bound at n = 16 was a(16) ≤ 64 (Pratt 2014, OEIS,
 (secondary); the 0.1716 n² bound of arXiv:2406.06974 is asymptotic
 only). This tightens the recorded bracket from [37, 64] to [37, 41].
 
-[m = 38 decision run in flight at time of writing — see final
-section/log for the outcome.]
+**Theorem D (CERTIFIED).** a(16) = 37. The upper half is the
+exhaustive refutation of army size 38: SYM16 engine, 16 resumable
+chunks, every chunk UNSAT, 5,032,610,558 nodes in 462 s wall on 4
+workers (`results/n16_m38_bnb_sym_chunk*.txt`); the lower half is
+Theorem B's verified witness. The sym engine also reproduces the
+witness (89,333,324 nodes, 17 s, same canonical row/column sets
+S = 127, T = 3615). A full second exhaustion of m = 38 by the plain
+engine (independent canonical form, independent code path through the
+outer loop) was launched as belt-and-braces confirmation; its status
+is recorded in the daily log and its chunks in
+`results/n16_m38_bnb_chunk*.txt`.
+
+To our knowledge — with the connectivity caveats of §1, and the OEIS
+entry and the 2024 survey as the ledger — this is the first
+determination of a(16), the smallest open case of A250000. It confirms
+the value conjectured from Ainley's construction and extends the
+exact-value table of Clinch–Drescher–Huynh–Saffidine (secondary).
 
 ## 7. Open questions
 
-1. Decide a(16) = 37. [Update after session results.]
+1. a(17): Pratt's recorded bracket is [42, 72] (secondary). The
+   boundary refutation (m = 43) is projected at roughly 5–8× the
+   n = 16 cost from the observed growth — about an hour of this
+   session's hardware, longer if the sub-optimum hardening seen at
+   n = 15 recurs. Within reach of the next session.
 2. The B&B's family-sum bound (Lemma 5) treats the two diagonal
    families independently. A joint bound (e.g. LP over both families)
    would cut deeper near the optimum; can it be kept exact and cheap?
 3. Port the engine to the torus (A279405), where the odd case is
    reported open (Harries 2026 is reported to have settled even tori
    with an exact parity formula (secondary); unread from this sandbox).
+4. Submit a(16) = 37 to OEIS A250000 (with the witness and the chunk
+   certificates as the linked artifacts) — a decision for the local
+   session, per repo policy on external submissions.
 
 ## Reproducibility
 

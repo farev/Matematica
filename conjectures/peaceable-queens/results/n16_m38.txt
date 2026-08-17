@@ -1,0 +1,1 @@
+RESULT n=16 m=38: UNSAT total_nodes=5032610558 chunks=16 wall=462s

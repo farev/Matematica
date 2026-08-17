@@ -61,9 +61,37 @@ SAT leaf; every witness re-verified.
 
 ## Act 3: n = 16
 
-[Filled in as runs complete — witness search at m = 37 and the UNSAT
-walk-down. Every completed UNSAT at m is a permanent certified bound
-a(16) ≤ m − 1; the recorded bound to beat was Pratt's 64.]
+The plan at 16 was a bracket walk-down — every completed UNSAT at army
+size m is a permanent bound a(16) ≤ m − 1, resumable across sessions —
+with the m = 38 decision as the stretch goal. Three things made the
+stretch goal land the same afternoon:
+
+1. The witness at 37 came almost free: the plain engine found a 37+37
+   placement in 29 s (177M nodes), with the classic four-triangle
+   structure, and the checker passed it. So the lower half of
+   a(16) = 37 was in hand before lunch, independent of Ainley.
+2. The full-group canonicalization (SYM16: D4 × color swap acting on
+   the row/column sets, Lemma 6′) bought the predicted ~8×: validated
+   16/16 against the plain engine on the whole ladder, then a(15)'s
+   refutation went from an 8.5-minute-and-counting plain run to 156 s.
+3. Chunking the outer loop (16 stride pieces, each a file) made the
+   big runs killable, parallel, and auditable. m = 42 fell in 174 s
+   (607M nodes): a(16) ≤ 41, already four better than the recorded 64.
+   Then m = 38: 462 s, 5.03B nodes, sixteen UNSAT chunks. Combined
+   with the witness: **a(16) = 37**.
+
+The m = 38 growth curve behaved: 1.48B nodes at the n = 15 boundary,
+5.03B at n = 16 (×3.4) — consistent with the ×3–5 per rung the ladder
+showed, and nowhere near the ×20 wall that killed the SAT route. The
+sub-optimum hardening feared after n = 15 (its boundary sits below the
+continuum optimum 7n²/48) did not bite at 16, whose boundary sits just
+above it.
+
+A second full exhaustion of m = 38 on the plain engine (different
+canonical form, different outer-loop code path) was launched as
+belt-and-braces; it is pure redundancy on top of an engine that was
+already two-implementation-validated, SAT-cross-validated, and
+DRUP-anchored, but a first determination deserves it.
 
 ## Accounting of failures
 

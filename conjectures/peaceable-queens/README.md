@@ -3,10 +3,10 @@
 **Statement.** a(n) is the largest m such that m white and m black
 queens fit on an n × n board with no queen attacking a queen of the
 opposite color (attacks are not blocked; no line — row, column or
-diagonal — may carry both colors). Known exactly only for n ≤ 15
-(secondary: OEIS A250000; arXiv:2406.06974). At n = 16: 37 ≤ a(16),
-conjectured sharp (Ainley's 1977 construction); the OEIS-recorded
-finite upper bound was Pratt's a(16) ≤ 64 (ILP, 2014, secondary).
+diagonal — may carry both colors). Before this session, known exactly
+only for n ≤ 15 (secondary: OEIS A250000; arXiv:2406.06974), with the
+n = 16 bracket recorded as [37, 64] since 2014. **This session:
+a(16) = 37 (CERTIFIED).**
 
 **Status.** Active, 1 session (2026-08-17). See
 [`NOTE.md`](NOTE.md) for theorems and proofs,
@@ -16,10 +16,11 @@ finite upper bound was Pratt's a(16) ≤ 64 (ILP, 2014, secondary).
 
 | # | Result | Label |
 |---|---|---|
-| 1 | Line-labeling reformulation + exact B&B with proved pruning lemmas (NOTE Lemmas 1–6) | **PROVED** |
-| 2 | Full ladder a(1..15) = 0,0,1,2,4,5,7,9,12,14,17,21,24,28,32 re-derived from scratch: exhaustive refutations at a(n)+1, checker-verified witnesses at a(n); first reproducible artifacts for a(14), a(15) (provenance caveat in NOTE §1) | **CERTIFIED** |
-| 3 | n = 16 upper-bound walk-down (see NOTE §6 and `results/`) | **CERTIFIED** |
-| 4 | Two-engine node-count equality; 40/40 SAT cross-validation (n ≤ 8, all m); DRUP-certified anchors n ≤ 7 | validation record |
+| 1 | **a(16) = 37** — smallest open case of A250000 decided: exhaustive refutation of 38+38 (5.03B nodes, 462 s, 16 chunks, SYM16 engine) + checker-verified 37+37 witness found by both engines | **CERTIFIED** |
+| 2 | Line-labeling reformulation + exact B&B with proved pruning lemmas and canonical forms (NOTE Lemmas 1–6′) | **PROVED** |
+| 3 | Full ladder a(1..15) = 0,0,1,2,4,5,7,9,12,14,17,21,24,28,32 re-derived from scratch: exhaustive refutations at a(n)+1, checker-verified witnesses at a(n); first reproducible artifacts for a(14), a(15) (provenance caveat in NOTE §1) | **CERTIFIED** |
+| 4 | a(16) ≤ 41 en route (m = 42 exhausted: 607M nodes, 174 s) — recorded bracket had been [37, 64] | **CERTIFIED** |
+| 5 | Two-engine node-count equality; 40/40 SAT cross-validation (n ≤ 8, all m); DRUP-certified anchors n ≤ 7; sym-vs-plain 16/16 on ladder boundaries | validation record |
 
 ## Scripts
 
