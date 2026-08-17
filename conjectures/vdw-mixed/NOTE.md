@@ -10,11 +10,13 @@ The mixed van der Waerden number `w(2;s,t)` is the least `n` such that every
 red/blue coloring of `{1,…,n}` has a red `s`-term or blue `t`-term arithmetic
 progression. The exact values published for `4 ≤ s ≤ t ≤ 7` (Landman;
 Ahmed 2009–2013 (secondary)) predate certificate-producing SAT practice: no
-machine-checkable proofs exist for them. We (i) re-derive the cells up to
-`w(2;5,6)=206` from scratch, each with a witness verified by independent
-enumeration and a DRUP proof validated by a from-definition RUP checker;
+machine-checkable proofs exist for them. We (i) re-derive seven cells of
+the table from scratch, through `w(2;4,7)=109` and `w(2;5,5)=178`, each
+with a witness verified by independent enumeration and a DRUP proof
+validated by a from-definition RUP checker (the `w(2;5,6)=206` legs were in
+flight at the time of writing);
 (ii) prove the first bounds on the open cell `w(2;5,8)`, currently
-**`w(2;5,8) > 292` (CERTIFIED)**, via exactly-periodic witnesses found by a
+**`w(2;5,8) > 295` (CERTIFIED)**, via exactly-periodic witnesses found by a
 complete per-period SAT projection; (iii) record structural facts about
 extremal witnesses (near-periodicity with few defects) that make the
 lower-bound legs tractable; and (iv) open a resumable cube-and-conquer
@@ -51,7 +53,6 @@ brute force for tiny cells (`w(2;3,3)=9`, `w(2;3,4)=18` reproduced).
 | w(2;4,5) | **55** | 7,636 lines | RUP-VERIFIED |
 | w(2;4,6) | **73** | 253,728 lines | RUP-VERIFIED (also closed independently by cube-and-conquer, 64/64 leaves each RUP-VERIFIED) |
 | w(2;5,5) | **178** | 1,561,916 lines | RUP-VERIFIED |
-
 | w(2;4,7) | **109** | 18,434,058 lines | RUP-VERIFIED (1.14 GB proof; sha256 + verdict in MANIFEST, file re-derivable) |
 
 All seven agree with the published table (secondary). Solvers: CaDiCaL 1.9.5
@@ -94,8 +95,9 @@ Empirical facts from this session's verified witnesses:
 3. `w(2;5,6)`: at `n=205` there is **no exactly periodic witness** with
    period `p ∈ [30, 49]` (complete per-period result), and none with
    `p = 41, k ≤ 6` defects (complete). Larger-defect searches in flight.
-4. `(5,8)` at `n ∈ {280, 290}`: exactly-74-periodic witnesses exist; the
-   period-74 structure dies at `n = 293`.
+4. `(5,8)` at `n ∈ {280, 290, 295}`: exactly-74-periodic witnesses exist,
+   but no single block covers the whole range — the block found at `n=290`
+   extends only to 292, while a different 74-block is good through 295.
 
 The pattern — boundary witnesses are periodic-with-few-defects, and the
 required defect count grows as cells harden — is what makes the lower-bound
