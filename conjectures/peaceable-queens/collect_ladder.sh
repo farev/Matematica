@@ -21,7 +21,7 @@ awk -F'[= ]' '/UNSAT/{print "13,25,UNSAT," $3 "," $5+0 ",1,results/n13_m25.txt"}
 grep -o 'total_nodes=[0-9]* wall=[0-9.]*' results/n14_m29.txt | sed 's/total_nodes=\([0-9]*\) wall=\([0-9.]*\)/14,29,UNSAT,\1,\2,4,results\/n14_m29.txt/' >> $out
 for f in results/n15_m33.txt results/n16_m42.txt results/n16_m38.txt; do
   if [ -s "$f" ]; then
-    nm=$(sed -n 's/n=\([0-9]*\) m=\([0-9]*\):.*/\1,\2/p' "$f" | head -1)
+    nm=$(sed -n 's/.*n=\([0-9]*\) m=\([0-9]*\):.*/\1,\2/p' "$f" | head -1)
     v=$(grep -oE 'UNSAT|SAT' "$f" | head -1)
     tn=$(grep -o 'total_nodes=[0-9]*' "$f" | cut -d= -f2)
     wl=$(grep -o 'wall=[0-9.]*' "$f" | cut -d= -f2)

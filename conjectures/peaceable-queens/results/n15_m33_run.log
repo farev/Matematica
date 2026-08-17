@@ -4,3 +4,7 @@ chunk 2: UNSAT nodes=134312960 time=37.63s [72s elapsed]
 chunk 1: UNSAT nodes=141315042 time=39.56s [74s elapsed]
 chunk 4: UNSAT nodes=112387736 time=31.62s [80s elapsed]
 chunk 3: UNSAT nodes=238679370 time=57.72s [100s elapsed]
+chunk 5: UNSAT nodes=245843300 time=62.33s [142s elapsed]
+chunk 6: UNSAT nodes=243499926 time=63.24s [146s elapsed]
+chunk 7: UNSAT nodes=333353632 time=69.50s [156s elapsed]
+RESULT n=15 m=33: UNSAT total_nodes=1476498420 chunks=8 wall=156s
