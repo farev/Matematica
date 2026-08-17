@@ -104,7 +104,16 @@ required defect count grows as cells harden — is what makes the lower-bound
 legs computable: the `(p, k)`-restricted searches are complete in a space of
 size `2^p · C(n, ≤k)` instead of `2^n`.
 
-## 5. Methodology and verification
+## 5. Methodology, environment, and verification
+
+**Environment.** 4-core cloud sandbox, 15 GB RAM; Python 3.11.15;
+python-sat 1.9.dev15 (CaDiCaL 1.9.5 as `cd19`, Glucose 4.2 as `g42`);
+gcc -O2 for `rup_check.c`, `check_coloring.c`, `vdw_check.c`. Search seeds:
+`random.Random(20260816)` in both incomplete searchers (the complete SAT
+searches are deterministic given solver version). Expensive runs, wall/CPU:
+w(2;5,5)@178 UNSAT 17.9 s + 56 s check; w(2;4,7)@109 UNSAT ≈ 35 min
+(Glucose) + ≈ 50 CPU-min check (1.14 GB proof); w(2;5,6)@206 UNSAT
+> 2 h at session close.
 
 - **Independence:** encoder self-checks; brute-force ground truth (tiny
   cells); witness verification by a re-enumeration that shares no code path
