@@ -11,3 +11,4 @@ n,a_n,m_unsat,sat_s,unsat_s,nvars,nclauses,symbreak
 6,5,6,0.00,0.17,466,960,False/lines=True
 7,7,8,0.00,1.69,794,1638,False/lines=True
 8,9,10,0.05,31.91,1254,2584,False/lines=True
+9,12,13,3.52,274.86,1982,4074,False/lines=True

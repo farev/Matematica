@@ -153,7 +153,160 @@ def _fix_singletons(mp, n):
     return out
 
 
-def build_lines(n, m, symbreak=False):
+def _unary_counter(lits, next_aux, clauses):
+    """Full-equivalence sequential unary counter.
+
+    Returns geq, a list where geq[k] (1 <= k <= len(lits)) is a literal
+    equivalent to (at least k of lits are true).  Both directions are
+    encoded, so these literals propagate in either polarity.
+    s[i][j] <-> (at least j of the first i literals are true).
+    Conventions: s[0][j] = false (j >= 1); "at least 0" = true (implicit).
+    """
+    N = len(lits)
+    s = [[None] * (N + 1) for _ in range(N + 1)]
+    for i in range(1, N + 1):
+        for j in range(1, i + 1):
+            s[i][j] = next_aux()
+
+    for i in range(1, N + 1):
+        x = lits[i - 1]
+        for j in range(1, i + 1):
+            tgt = s[i][j]
+            carry = s[i - 1][j] if j <= i - 1 else None   # None = false
+            below = s[i - 1][j - 1] if j >= 2 else None   # None = "true" (j=1)
+            # forward: carry -> tgt
+            if carry is not None:
+                clauses.append([-carry, tgt])
+            # forward: (below &) x -> tgt
+            if j == 1:
+                clauses.append([-x, tgt])
+            elif below is not None:
+                clauses.append([-below, -x, tgt])
+            # backward: tgt -> carry | x
+            cl = [-tgt, x]
+            if carry is not None:
+                cl.append(carry)
+            clauses.append(cl)
+            # backward: tgt -> carry | below   (for j >= 2)
+            if j >= 2:
+                cl = [-tgt]
+                if carry is not None:
+                    cl.append(carry)
+                if below is not None:
+                    cl.append(below)
+                clauses.append(cl)
+    return [None] + [s[N][k] for k in range(1, N + 1)]
+
+
+def _weighted_atleast(lits, weights, bound, next_aux, clauses):
+    """Sequential weighted counter enforcing sum(w_i * x_i) >= bound.
+    Unary state capped at bound; one direction (prunes when the
+    remaining capacity cannot reach the bound)."""
+    N = len(lits)
+    cap = bound
+    # state[i][j]: after first i lits, accumulated >= j  (j in 1..cap)
+    prev = [None] * (cap + 1)
+    suffix = [0] * (N + 2)
+    for i in range(N, 0, -1):
+        suffix[i] = suffix[i + 1] + weights[i - 1]
+    for i in range(1, N + 1):
+        cur = [None] * (cap + 1)
+        w, x = weights[i - 1], lits[i - 1]
+        for j in range(1, cap + 1):
+            # reachable at all?
+            prefix_max = sum(weights[:i])
+            if j > prefix_max:
+                continue
+            cur[j] = next_aux()
+            # carry: prev[j] -> cur[j]
+            if prev[j] is not None:
+                clauses.append([-prev[j], cur[j]])
+            # increment: (prev[j-w] or j<=w) and x -> cur[j]
+            if j <= w:
+                clauses.append([-x, cur[j]])
+            elif prev[j - w] is not None:
+                clauses.append([-prev[j - w], -x, cur[j]])
+            # completeness: cur[j] -> prev[j] or (x and (j<=w or prev[j-w]))
+            big = [-cur[j], x]
+            if prev[j] is not None:
+                big.append(prev[j])
+            clauses.append(big)
+            if j > w:
+                small = [-cur[j]]
+                if prev[j] is not None:
+                    small.append(prev[j])
+                if prev[j - w] is not None:
+                    small.append(prev[j - w])
+                clauses.append(small)
+        prev = cur
+    assert prev[cap] is not None, "bound exceeds total weight"
+    clauses.append([prev[cap]])
+
+
+def counting_cuts(n, m, clauses, next_aux):
+    """Sound counting cuts (Lemmas 2-3 of NOTE.md) over the line labels.
+
+    Product cuts: m <= RW*CW and m <= (n-RW)(n-CW), where RW/CW count
+    W-labeled rows/columns (label counts dominate true occupancy counts).
+    Diagonal capacity: in each diagonal family, the total number of grid
+    cells on W-labeled diagonals is >= m, and likewise for B-labeled.
+    """
+    row, col, dp, dm = line_vars(n)
+    rows = [row(r) for r in range(n)]
+    cols = [col(c) for c in range(n)]
+
+    geq_r = _unary_counter(rows, next_aux, clauses)
+    geq_c = _unary_counter(cols, next_aux, clauses)
+
+    TRUE, FALSE = "T", "F"
+
+    def w_geq(geq, k):
+        """Literal for (W-label count >= k) over one family of n lines."""
+        if k <= 0:
+            return TRUE
+        if k > n:
+            return FALSE
+        return geq[k]
+
+    def b_geq(geq, k):
+        """Literal for (B-label count >= k) == (W-label count <= n-k)
+        == not (W-label count >= n-k+1)."""
+        v = w_geq(geq, n - k + 1)
+        if v is TRUE:
+            return FALSE
+        if v is FALSE:
+            return TRUE
+        return -v
+
+    def add_or(*parts):
+        """Add clause OR(parts) with constant folding."""
+        if any(p is TRUE for p in parts):
+            return
+        cl = [p for p in parts if p is not FALSE]
+        assert cl, "counting cut produced the empty clause"
+        clauses.append(cl)
+
+    # product cuts:  count >= m  requires  (rows >= a+1) or (cols >= ceil(m/a))
+    # for every a; a = 0 forces rows >= 1 (since m >= 1).
+    def product_cut(row_geq_fn, col_geq_fn):
+        add_or(row_geq_fn(1))
+        add_or(col_geq_fn(1))
+        for a in range(1, n):
+            need = (m + a - 1) // a
+            add_or(row_geq_fn(a + 1), col_geq_fn(need))
+
+    product_cut(lambda k: w_geq(geq_r, k), lambda k: w_geq(geq_c, k))
+    product_cut(lambda k: b_geq(geq_r, k), lambda k: b_geq(geq_c, k))
+
+    # diagonal capacity, both families, both colors
+    for fam in (dp, dm):
+        lits = [fam(s) for s in range(2 * n - 1)]
+        lens = [min(s + 1, n, 2 * n - 1 - s) for s in range(2 * n - 1)]
+        _weighted_atleast(lits, lens, m, next_aux, clauses)                # W
+        _weighted_atleast([-x for x in lits], lens, m, next_aux, clauses)  # B
+
+
+def build_lines(n, m, symbreak=False, cuts=False):
     row, col, dp, dm = line_vars(n)
     wa, ba = avail_vars(n)
     clauses = []
@@ -183,6 +336,9 @@ def build_lines(n, m, symbreak=False):
         v = aux_next[0]
         aux_next[0] += 1
         return v
+
+    if cuts:
+        counting_cuts(n, m, clauses, new_aux)
 
     if symbreak:
         nlines = 6 * n - 2

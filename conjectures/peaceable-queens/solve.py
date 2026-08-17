@@ -105,9 +105,9 @@ def sha256(path):
 
 
 def solve_instance(n, m, symbreak=False, plain=False, proof=None,
-                   timeout=None, rowvars=False, lines=False):
+                   timeout=None, rowvars=False, lines=False, cuts=False):
     if lines:
-        nvars, clauses = build_lines(n, m, symbreak=symbreak)
+        nvars, clauses = build_lines(n, m, symbreak=symbreak, cuts=cuts)
     else:
         nvars, clauses, _ = build(n, m, symbreak=symbreak, rowvars=rowvars)
     tmp = os.path.join(HERE, f".tmp_n{n}_m{m}.cnf")
@@ -137,7 +137,8 @@ def cmd_ladder(args):
             last_sat, sat_time = None, 0.0
             while True:
                 status, model, dt, nv, nc = solve_instance(
-                    n, m, symbreak=args.symbreak, lines=args.lines)
+                    n, m, symbreak=args.symbreak, lines=args.lines,
+                    cuts=args.cuts)
                 print(f"n={n} m={m}: {status} in {dt:.2f}s", flush=True)
                 if status == "SAT":
                     last_sat, sat_time = m, dt
@@ -145,7 +146,8 @@ def cmd_ladder(args):
                 elif status == "UNSAT":
                     wcsv.writerow([n, last_sat, m, f"{sat_time:.2f}",
                                    f"{dt:.2f}", nv, nc,
-                                   f"{args.symbreak}/lines={args.lines}"])
+                                   f"{args.symbreak}/lines={args.lines}"
+                                   f"/cuts={args.cuts}"])
                     f.flush()
                     print(f"  -> a({n}) = {last_sat} "
                           f"(UNSAT at {m} in {dt:.2f}s)", flush=True)
@@ -198,7 +200,8 @@ def cmd_certify(args):
 def cmd_solve(args):
     r = solve_instance(args.n, args.m, symbreak=args.symbreak,
                        plain=args.plain, proof=args.proof,
-                       rowvars=args.rowvars, lines=args.lines)
+                       rowvars=args.rowvars, lines=args.lines,
+                       cuts=args.cuts)
     status, model, dt, nv, nc = r[:5]
     print(f"n={args.n} m={args.m}: {status} in {dt:.2f}s "
           f"({nv} vars, {nc} clauses)")
@@ -214,6 +217,7 @@ def main():
     lad.add_argument("--start-m", type=int, default=1)
     lad.add_argument("--symbreak", action="store_true")
     lad.add_argument("--lines", action="store_true")
+    lad.add_argument("--cuts", action="store_true")
     lad.set_defaults(func=cmd_ladder)
 
     cer = sub.add_parser("certify")
@@ -230,6 +234,7 @@ def main():
     sol.add_argument("--proof")
     sol.add_argument("--rowvars", action="store_true")
     sol.add_argument("--lines", action="store_true")
+    sol.add_argument("--cuts", action="store_true")
     sol.set_defaults(func=cmd_solve)
 
     args = ap.parse_args()

@@ -1,0 +1,30 @@
+witness at m=1: verified, 0.0s -> /home/user/Matematica/conjectures/peaceable-queens/certs/witness_n3_m1.txt
+  s WITNESS VERIFIED  n=3 white=1 black=1 (need 1)
+UNSAT at m=2: 0.0s, proof 259 bytes, rup_check: s VERIFIED (empty clause derived; 111 cnf clauses, 21 proof lines)
+  sha256 d8fb85e6fe8c09da…  pq_n3_m2.cnf
+  sha256 75599feaf1a885ac…  pq_n3_m2.drat
+  sha256 15aa13ebcd1a9271…  witness_n3_m1.txt
+witness at m=2: verified, 0.0s -> /home/user/Matematica/conjectures/peaceable-queens/certs/witness_n4_m2.txt
+  s WITNESS VERIFIED  n=4 white=3 black=2 (need 2)
+UNSAT at m=3: 0.0s, proof 3223 bytes, rup_check: s VERIFIED (empty clause derived; 304 cnf clauses, 221 proof lines)
+  sha256 78eb3debb10bd3ba…  pq_n4_m3.cnf
+  sha256 c5b21a8b1a68449d…  pq_n4_m3.drat
+  sha256 140b41a116e0750e…  witness_n4_m2.txt
+witness at m=4: verified, 0.0s -> /home/user/Matematica/conjectures/peaceable-queens/certs/witness_n5_m4.txt
+  s WITNESS VERIFIED  n=5 white=4 black=4 (need 4)
+UNSAT at m=5: 0.0s, proof 33287 bytes, rup_check: s VERIFIED (empty clause derived; 715 cnf clauses, 1315 proof lines)
+  sha256 721a858f64029c25…  pq_n5_m5.cnf
+  sha256 b12a487520d2c1ca…  pq_n5_m5.drat
+  sha256 137f197cec28770a…  witness_n5_m4.txt
+witness at m=5: verified, 0.0s -> /home/user/Matematica/conjectures/peaceable-queens/certs/witness_n6_m5.txt
+  s WITNESS VERIFIED  n=6 white=5 black=5 (need 5)
+UNSAT at m=6: 0.1s, proof 557386 bytes, rup_check: s VERIFIED (empty clause derived; 1288 cnf clauses, 14689 proof lines)
+  sha256 53f263f8a489729e…  pq_n6_m6.cnf
+  sha256 3ec5205499035c21…  pq_n6_m6.drat
+  sha256 39a958e3f0a3e6ac…  witness_n6_m5.txt
+witness at m=7: verified, 0.0s -> /home/user/Matematica/conjectures/peaceable-queens/certs/witness_n7_m7.txt
+  s WITNESS VERIFIED  n=7 white=7 black=7 (need 7)
+UNSAT at m=8: 2.0s, proof 5770011 bytes, rup_check: s VERIFIED (empty clause derived; 2247 cnf clauses, 99440 proof lines)
+  sha256 913c424fbaef9681…  pq_n7_m8.cnf
+  sha256 7575f8f1c2d16d08…  pq_n7_m8.drat
+  sha256 eb61bc15879909ff…  witness_n7_m7.txt
