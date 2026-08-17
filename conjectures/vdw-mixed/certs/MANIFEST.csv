@@ -1,0 +1,2 @@
+file,kind,s,t,n,bytes,sha256,verdict,solver,note
+vdw_5_5_n178.drup,drup-unsat,5,5,178,103399908,3db6cde6020e1e42ae07d179da85df37cf2eac67b5cfffb32a9870b2f959f76c,RUP-VERIFIED,glucose42,"103MB, checked 56.2s pre-restart, kept out of git per size rule"

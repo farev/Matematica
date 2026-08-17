@@ -1,0 +1,2 @@
+# good partition of [1,34] for (s,t)=(4,4): no 4-AP in color 0, no 4-AP in color 1
+0010001110100100011101101000111011

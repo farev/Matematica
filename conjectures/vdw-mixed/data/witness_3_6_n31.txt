@@ -1,0 +1,2 @@
+# good partition of [1,31] for (s,t)=(3,6): no 3-AP in color 0, no 6-AP in color 1
+1111010011111011100111110011111

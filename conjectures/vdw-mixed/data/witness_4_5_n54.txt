@@ -1,0 +1,2 @@
+# good partition of [1,54] for (s,t)=(4,5): no 4-AP in color 0, no 5-AP in color 1
+111011011110001001000111101101111000100100011110110111
