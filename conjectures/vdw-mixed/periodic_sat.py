@@ -39,12 +39,29 @@ def projected_clauses(n, s, t, p):
     return [list(c) for c in pos] + [list(c) for c in cls_t]
 
 
-def scan(s, t, n, pmin, pmax, save=True, verbose=True):
+def scan(s, t, n, pmin, pmax, save=True, verbose=True, budget=200000):
+    """budget: conflict cap per period (Glucose42 supports budgets; result
+    None = UNKNOWN at that period, scan continues)."""
+    from pysat.solvers import Glucose42
+    import time
     hits = []
+    unknown = []
     for p in range(pmin, pmax + 1):
         cls = projected_clauses(n, s, t, p)
-        with Cadical195(bootstrap_with=cls) as S:
-            if S.solve():
+        t0 = time.time()
+        with Glucose42(bootstrap_with=cls) as S:
+            if budget:
+                S.conf_budget(budget)
+                res = S.solve_limited()
+            else:
+                res = S.solve()
+            el = time.time() - t0
+            if verbose:
+                lab = {True: "SAT", False: "unsat", None: "UNKNOWN"}[res]
+                print(f"  p={p}: {lab} ({el:.1f}s)", flush=True)
+            if res is None:
+                unknown.append(p)
+            if res:
                 model = S.get_model()
                 block = [0] * (p + 1)
                 for lit in model:
@@ -59,7 +76,7 @@ def scan(s, t, n, pmin, pmax, save=True, verbose=True):
                 hits.append(p)
                 if verbose:
                     print(f"  p={p}: PERIODIC WITNESS exists", flush=True)
-                if save:
+                if save:  # noqa: keep structure
                     os.makedirs(DATA, exist_ok=True)
                     path = os.path.join(
                         DATA, f"witness_{s}_{t}_n{n}_persat_p{p}.txt")
