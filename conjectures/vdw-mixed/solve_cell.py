@@ -52,9 +52,18 @@ def model_to_coloring(model, n):
     return col
 
 
-def decide_fast(n, s, t, return_witness=False):
+def decide_fast(n, s, t, return_witness=False, phase_seed=None):
+    """phase_seed: 0/1 list indexed 1..m (any length); sets solver polarity
+    hints so the search starts in the seed's neighborhood (warm start)."""
     cls = vdw_clauses(n, s, t)
     with Cadical195(bootstrap_with=cls) as S:
+        if phase_seed:
+            phases = []
+            for i in range(1, n + 1):
+                b = phase_seed[i] if i < len(phase_seed) else phase_seed[
+                    1 + (i - 1) % (len(phase_seed) - 1)]   # extend periodically
+                phases.append(i if b == 1 else -i)
+            S.set_phases(phases)
         t0 = time.time()
         sat = S.solve()
         el = time.time() - t0
@@ -144,7 +153,13 @@ if __name__ == "__main__":
         r = certified_unsat(n, s, t)
         print(r)
     elif cmd == "wit":
-        sat, el, col = decide_fast(n, s, t, return_witness=True)
+        seed = None
+        if len(sys.argv) > 5:
+            with open(sys.argv[5]) as f:
+                bits = [l for l in f if not l.startswith("#")][0].strip()
+            seed = [0] + [int(c) for c in bits]
+        sat, el, col = decide_fast(n, s, t, return_witness=True,
+                                   phase_seed=seed)
         if sat:
             p = save_witness(col, n, s, t)
             print(f"SAT in {el:.2f}s, witness verified, saved {p}")

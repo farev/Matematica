@@ -80,9 +80,19 @@ def search(n, s, t, budget_s, seed_coloring=None, rng=None, report=None):
         best_cost = cost
         while cost > 0 and time.time() < t_end:
             it += 1
-            # pick best flip among a random sample of positions
+            # WalkSAT-style: focus on positions inside violated APs, with an
+            # exploratory random sample mixed in
+            viol_pos = set()
+            for j in range(len(s_aps)):
+                if zc[j] == slen:
+                    viol_pos.update(s_aps[j])
+            for j in range(len(t_aps)):
+                if oc[j] == tlen:
+                    viol_pos.update(t_aps[j])
+            sample = list(viol_pos)
+            if rng.random() < 0.25 or not sample:
+                sample += rng.sample(range(1, n + 1), min(24, n))
             cand_best, cand_delta = None, 10 ** 9
-            sample = rng.sample(range(1, n + 1), min(48, n))
             for p in sample:
                 if tabu[p] > it and cost + 1 > best_cost:
                     continue
