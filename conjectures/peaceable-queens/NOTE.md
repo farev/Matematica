@@ -235,11 +235,21 @@ wall on 4 workers (SYM16 engine, 8 resumable chunks, all UNSAT).
 
 ## 6. Results at the open case n = 16
 
-[TBD — walk-down in progress at session time: each completed UNSAT run
-at army size m is an exhaustive refutation proving a(16) ≤ m − 1;
-the recorded finite bound to beat is Pratt's a(16) ≤ 64 (secondary).
-Lower bound: a(16) ≥ 37 (Ainley construction (secondary)); we also
-re-derive 37 by our own search, with a checker-verified witness.]
+**Theorem B (CERTIFIED).** a(16) ≥ 37: the engine found a 37 + 37
+peaceable placement on 16 × 16 (177,220,136 nodes, 29 s, plain
+engine), independently of Ainley's construction; the witness
+(`witnesses/witness_n16_m37.txt`) passes the from-definition checker.
+
+**Theorem C (CERTIFIED).** a(16) ≤ 41: exhaustive refutation of army
+size 42 by the SYM16 engine — 607,406,702 nodes, 174 s wall on 4
+workers, 8 resumable chunks, every chunk UNSAT
+(`results/n16_m42_bnb_sym_chunk*.txt`). The best previously recorded
+finite upper bound at n = 16 was a(16) ≤ 64 (Pratt 2014, OEIS,
+(secondary); the 0.1716 n² bound of arXiv:2406.06974 is asymptotic
+only). This tightens the recorded bracket from [37, 64] to [37, 41].
+
+[m = 38 decision run in flight at time of writing — see final
+section/log for the outcome.]
 
 ## 7. Open questions
 
