@@ -266,9 +266,12 @@ class UInc:
     All integer arithmetic.
     """
 
-    def __init__(self, num, den, maxlen):
+    def __init__(self, num, den, maxlen, strict=True):
+        """strict=True: forbid exponents > num/den (the + version).
+        strict=False: forbid exponents >= num/den as well."""
         self.num = num
         self.den = den
+        self.strict = strict
         self.N = maxlen
         self.w = []
         self.csuf_stack = []
@@ -293,7 +296,11 @@ class UInc:
             new[1:] = runs
             # offender iff runs[p-1] >= qq(p)
             pvec = np.arange(1, q + 1)
-            qqv = (num - den) * pvec // den + 1
+            if self.strict:
+                qqv = (num - den) * pvec // den + 1
+            else:
+                # forbid exponent >= num/den: l*den >= (num-den)*p
+                qqv = -((-(num - den) * pvec) // den)  # ceil
             bad_ord = bool((runs >= qqv).any())
         else:
             bad_ord = False
@@ -320,7 +327,11 @@ class UInc:
             l2 = runs2
             Ga = svec - 2 * pvec2 + 1
             ok_pairs = l2 > 0
-            bad_rev = bool((den * Ga > num * (Ga - l2))[ok_pairs].any()) if ok_pairs.any() else False
+            if self.strict:
+                cond = den * Ga > num * (Ga - l2)
+            else:
+                cond = den * Ga >= num * (Ga - l2)
+            bad_rev = bool(cond[ok_pairs].any()) if ok_pairs.any() else False
         self.ar_stack.append(ar)
         return not (bad_ord or bad_rev)
 

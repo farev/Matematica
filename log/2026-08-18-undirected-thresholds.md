@@ -122,8 +122,53 @@ checkpoint: if no certified pair by mid-session, either relax the ansatz
 (palindromic pair `ρ = id`, larger `k`, two-level morphisms) or write up the
 machinery + negative and say so plainly.
 
-**Result.** _(session in progress — filled at close)_
+**Result.** URT(22) not settled; no PROVED threshold case. What stands
+(full statements in `conjectures/undirected-thresholds/NOTE.md`):
+**CERTIFIED** — (1) undirected exponents `≥ (k−1)/(k−2)` are unavoidable
+over `k` letters beyond length exactly `k+3`, for `k = 22, 23, 24, 25`
+(exhaustive 451/483/516/550-node trees) — an independent in-repo
+re-derivation of the Currie–Mol lower bound at these `k`; (2) the strict
+languages are thick: a quadruply-verified U-`(21/20)⁺`-free word of length
+20 000 over 22 letters (lex-least canonical; committed), length 5 000 for
+`k = 23, 24, 25`, and 1 606 755 canonical words at length 55; (3) the
+binary Pansiot class is empty at these thresholds for every `n ∈ [20, 23]`
+(max 4 code bits) — threshold witnesses are forced to use
+distance-`(n−2)` recurrences; (4) the affine-morphism ansatz
+`φ(x) = m·x + B₀` is empty at `k = 22, 23, 24` for all ten units `m`
+(and for `m = 1` at further block lengths up to 36; exact certified set
+in the committed scan logs). **PROVED** — local structure lemmas (gap bound,
+no palindromic factors, reversed-pair spacing, no periodic witness);
+exact reversal-transfer identities for the binary Pansiot code
+(`code(wᴿ) = code(w)ᴿ`, `g(Vᴿ) = r g(V)^{−1} r`, anti-gid
+correspondence); and **Theorem D**, a finite-check descent criterion
+(sync + reversal-exclusion + short-factor check ⟹ U-freeness of any
+uniform-morphic fixed point) with explicit constant `L₀ = 42k − 20`.
+**Conjecture C3** (new, from data): the max length at the non-strict
+threshold is `k+3` for all `k ≥ 22`.
 
-**What failed.** _(filled at close)_
+**What failed.** The opening plan — reversal-closed binary Pansiot
+morphism pairs — collapsed when the binary class itself proved empty
+(certified, all `n ∈ [20, 23]`); its derived machinery (parity
+constraints, r-commuting conjugators) was orphaned, the reversal lemmas
+kept. Twisted-periodic ansätze refuted on paper (periodic words are never
+U-free). Reversal-*closure* designs at block level are impossible (an
+`ℓ = 1` pigeonhole kills every twist family; exclusion is the right
+design, and became Theorem D). A concrete-space block search was
+symmetry-doomed (~21! redundancy); its canonical replacement had a
+soundness hole (retroactive constraints), replaced by symbolic affine
+forms with GF(2)×GF(11) elimination. Two near-miss wrong claims were
+caught in-session: a "unique canonical bottleneck at length 50" (artifact
+of a node-capped run; the uncapped run found 1.6 M words) and an affine
+"survivor" at `(k, m) = (22, 9)` (artifact of a shallow depth target; died
+at exactly `3k` when rerun deep). The general uniform-morphic search hits
+a hard forcing wall at depth `20k` (first block reuse) and 4 M-node runs
+neither pass nor exhaust it — left honestly inconclusive.
 
-**Next.** _(filled at close)_
+**Next.** The `20k` wall: re-attack `selfsim_search.py` with a
+solver-grade engine (C + conflict learning, or SAT with class-forcing and
+incremental undirected constraints); any survivor feeds directly into
+Theorem D's finite checks, whose scripts exist. Prove Conjecture C3 by
+hand. Build the 3-choice automaton for the true `gap ≥ n−2` class. And
+read Currie–Mol's two papers the moment egress allows — every literature
+statement this session is (secondary), including the definition
+conventions.
