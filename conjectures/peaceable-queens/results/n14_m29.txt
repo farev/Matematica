@@ -1,0 +1,1 @@
+n=14 m=29: UNSAT total_nodes=2264952960 wall=231.0s workers=4

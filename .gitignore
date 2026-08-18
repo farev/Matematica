@@ -55,3 +55,8 @@ conjectures/distinct-subset-sums/dss_search_basic
 conjectures/graham-105/engine
 conjectures/graham-105/engine_td
 conjectures/graham-105/data/tasks600_130.txt
+
+# peaceable-queens engines: build from source (gcc -O2 -march=native), do not commit
+conjectures/peaceable-queens/bnb
+conjectures/peaceable-queens/check_peaceable
+*.part

@@ -1,0 +1,10 @@
+n16_m42_bnb_sym: 0/8 chunks already done; running 8 on 4 workers
+chunk 0: UNSAT nodes=16643620 time=31.48s [44s elapsed]
+chunk 3: UNSAT nodes=86133834 time=65.01s [88s elapsed]
+chunk 2: UNSAT nodes=78356892 time=65.40s [90s elapsed]
+chunk 1: UNSAT nodes=82516118 time=68.48s [94s elapsed]
+chunk 4: UNSAT nodes=62199686 time=54.66s [118s elapsed]
+chunk 7: UNSAT nodes=69256484 time=44.52s [146s elapsed]
+chunk 5: UNSAT nodes=103388752 time=73.08s [170s elapsed]
+chunk 6: UNSAT nodes=108911316 time=74.85s [174s elapsed]
+RESULT n=16 m=42: UNSAT total_nodes=607406702 chunks=8 wall=174s

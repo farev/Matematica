@@ -1,0 +1,423 @@
+#!/usr/bin/env python3
+"""Line-labeling CNF encoder for peaceable queens (the strong encoding).
+
+Reformulation (Lemma 1 of NOTE.md; standard structure, implicit in
+Bosch's 1999 ILP model): in any placement, no queen line (row, column,
+or diagonal) contains both colors.  Conversely, given any labeling of
+all 6n-2 lines by {W, B}, placing white queens on every cell whose four
+lines are all W, and black queens on every cell whose four lines are all
+B, yields a valid placement (two cells of opposite colors would have to
+share a line labeled both ways).  Hence
+
+  PQ(n, m) is satisfiable
+    iff  some labeling ell: Lines -> {W, B} has
+         #{cells all-four-W} >= m  and  #{cells all-four-B} >= m.
+
+Variables:
+  lw(row r)    = 1 + r                    r in 0..n-1   (true = W label)
+  lw(col c)    = n + 1 + c                c in 0..n-1
+  lw(diag+ s)  = 2n + 1 + s               s = r+c in 0..2n-2
+  lw(diag- d)  = 4n - 1 + 1 + d           d = r-c+n-1 in 0..2n-2
+  wa(r,c)      = 6n - 2 + 1 + r*n + c     (white-available)
+  ba(r,c)      = 6n - 2 + n*n + 1 + r*n + c
+  cardinality aux vars above that.
+
+Clauses:  wa(r,c) -> each of the 4 line lits;  ba -> negations;
+  atleast-m over wa, atleast-m over ba.
+  (Only the -> direction is needed: for a lower bound on the count the
+  solver gains nothing by setting wa false when available.  Soundness of
+  a model: every wa=true cell really is all-W.  UNSAT direction: any
+  placement of m+m yields a model with wa/ba set from the true armies.)
+
+Optional --symbreak: lex-leader over the 8 board symmetries x color
+swap, acting on the line-variable vector (color swap = global flip, and
+board maps permute lines; flip composes as lex over negated image).
+"""
+
+import argparse
+from pysat.card import CardEnc, EncType
+
+
+def line_vars(n):
+    def row(r):
+        return 1 + r
+
+    def col(c):
+        return n + 1 + c
+
+    def dp(s):  # r+c
+        return 2 * n + 1 + s
+
+    def dm(d):  # r-c+n-1
+        return 4 * n - 1 + 1 + d
+
+    return row, col, dp, dm
+
+
+def avail_vars(n):
+    base = 6 * n - 2
+
+    def wa(r, c):
+        return base + 1 + r * n + c
+
+    def ba(r, c):
+        return base + n * n + 1 + r * n + c
+
+    return wa, ba
+
+
+def d4_line_maps(n):
+    """Each board symmetry induces a permutation (possibly with family
+    exchange) of lines.  Represent a line by its lw literal builder and
+    return, for each symmetry, a function cell-free: line-lit -> line-lit.
+    We implement it concretely: for each symmetry g we return a dict
+    mapping every line var to its image line var."""
+    row, col, dp, dm = line_vars(n)
+    maps = []
+
+    def build(g):
+        # image of each line under the cell map g: map two cells of the
+        # line and read off the image line.
+        m = {}
+        # rows
+        for r in range(n):
+            (r1, c1), (r2, c2) = g(r, 0), g(r, 1)
+            m[row(r)] = _classify(n, r1, c1, r2, c2)
+        for c in range(n):
+            (r1, c1), (r2, c2) = g(0, c), g(1, c)
+            m[col(c)] = _classify(n, r1, c1, r2, c2)
+        for s in range(2 * n - 1):
+            # two cells on diag+ s
+            cells = [(r, s - r) for r in range(n) if 0 <= s - r < n]
+            if len(cells) == 1:
+                (r1, c1) = g(*cells[0])
+                m[dp(s)] = None, (r1, c1)  # single-cell line: see below
+            else:
+                (r1, c1), (r2, c2) = g(*cells[0]), g(*cells[1])
+                m[dp(s)] = _classify(n, r1, c1, r2, c2)
+        for d in range(2 * n - 1):
+            cells = [(r, r - (d - n + 1)) for r in range(n)
+                     if 0 <= r - (d - n + 1) < n]
+            if len(cells) == 1:
+                (r1, c1) = g(*cells[0])
+                m[dm(d)] = None, (r1, c1)
+            else:
+                (r1, c1), (r2, c2) = g(*cells[0]), g(*cells[1])
+                m[dm(d)] = _classify(n, r1, c1, r2, c2)
+        return m
+
+    def _classify(n_, r1, c1, r2, c2):
+        row_, col_, dp_, dm_ = line_vars(n_)
+        if r1 == r2:
+            return row_(r1)
+        if c1 == c2:
+            return col_(c1)
+        if r1 + c1 == r2 + c2:
+            return dp_(r1 + c1)
+        assert r1 - c1 == r2 - c2
+        return dm_(r1 - c1 + n_ - 1)
+
+    gs = [
+        lambda r, c: (c, n - 1 - r),
+        lambda r, c: (n - 1 - r, n - 1 - c),
+        lambda r, c: (n - 1 - c, r),
+        lambda r, c: (r, n - 1 - c),
+        lambda r, c: (n - 1 - r, c),
+        lambda r, c: (c, r),
+        lambda r, c: (n - 1 - c, n - 1 - r),
+    ]
+    for g in gs:
+        maps.append(build(g))
+    return maps
+
+
+def _fix_singletons(mp, n):
+    """Diagonal corner lines have a single cell; classify by that cell's
+    diagonal coordinates directly."""
+    row, col, dp, dm = line_vars(n)
+    out = {}
+    for k, v in mp.items():
+        if isinstance(v, tuple) and v[0] is None:
+            (r1, c1) = v[1]
+            # a single-cell diagonal maps to the diagonal (same family
+            # ambiguity: corner cell lies on one dp and one dm; choose by
+            # which family k belongs to under the symmetry's parity).
+            # Correctness for lex-leader only needs a permutation of vars;
+            # we map dp-corner to the dp of the image cell and dm-corner
+            # to the dm of the image cell, EXCEPT when the symmetry swaps
+            # the diagonal families (odd rotations / transpositions),
+            # in which case the families exchange.
+            out[k] = (r1, c1)
+        else:
+            out[k] = v
+    return out
+
+
+def _unary_counter(lits, next_aux, clauses):
+    """Full-equivalence sequential unary counter.
+
+    Returns geq, a list where geq[k] (1 <= k <= len(lits)) is a literal
+    equivalent to (at least k of lits are true).  Both directions are
+    encoded, so these literals propagate in either polarity.
+    s[i][j] <-> (at least j of the first i literals are true).
+    Conventions: s[0][j] = false (j >= 1); "at least 0" = true (implicit).
+    """
+    N = len(lits)
+    s = [[None] * (N + 1) for _ in range(N + 1)]
+    for i in range(1, N + 1):
+        for j in range(1, i + 1):
+            s[i][j] = next_aux()
+
+    for i in range(1, N + 1):
+        x = lits[i - 1]
+        for j in range(1, i + 1):
+            tgt = s[i][j]
+            carry = s[i - 1][j] if j <= i - 1 else None   # None = false
+            below = s[i - 1][j - 1] if j >= 2 else None   # None = "true" (j=1)
+            # forward: carry -> tgt
+            if carry is not None:
+                clauses.append([-carry, tgt])
+            # forward: (below &) x -> tgt
+            if j == 1:
+                clauses.append([-x, tgt])
+            elif below is not None:
+                clauses.append([-below, -x, tgt])
+            # backward: tgt -> carry | x
+            cl = [-tgt, x]
+            if carry is not None:
+                cl.append(carry)
+            clauses.append(cl)
+            # backward: tgt -> carry | below   (for j >= 2)
+            if j >= 2:
+                cl = [-tgt]
+                if carry is not None:
+                    cl.append(carry)
+                if below is not None:
+                    cl.append(below)
+                clauses.append(cl)
+    return [None] + [s[N][k] for k in range(1, N + 1)]
+
+
+def _weighted_atleast(lits, weights, bound, next_aux, clauses):
+    """Sequential weighted counter enforcing sum(w_i * x_i) >= bound.
+    Unary state capped at bound; one direction (prunes when the
+    remaining capacity cannot reach the bound)."""
+    N = len(lits)
+    cap = bound
+    # state[i][j]: after first i lits, accumulated >= j  (j in 1..cap)
+    prev = [None] * (cap + 1)
+    suffix = [0] * (N + 2)
+    for i in range(N, 0, -1):
+        suffix[i] = suffix[i + 1] + weights[i - 1]
+    for i in range(1, N + 1):
+        cur = [None] * (cap + 1)
+        w, x = weights[i - 1], lits[i - 1]
+        for j in range(1, cap + 1):
+            # reachable at all?
+            prefix_max = sum(weights[:i])
+            if j > prefix_max:
+                continue
+            cur[j] = next_aux()
+            # carry: prev[j] -> cur[j]
+            if prev[j] is not None:
+                clauses.append([-prev[j], cur[j]])
+            # increment: (prev[j-w] or j<=w) and x -> cur[j]
+            if j <= w:
+                clauses.append([-x, cur[j]])
+            elif prev[j - w] is not None:
+                clauses.append([-prev[j - w], -x, cur[j]])
+            # completeness: cur[j] -> prev[j] or (x and (j<=w or prev[j-w]))
+            big = [-cur[j], x]
+            if prev[j] is not None:
+                big.append(prev[j])
+            clauses.append(big)
+            if j > w:
+                small = [-cur[j]]
+                if prev[j] is not None:
+                    small.append(prev[j])
+                if prev[j - w] is not None:
+                    small.append(prev[j - w])
+                clauses.append(small)
+        prev = cur
+    assert prev[cap] is not None, "bound exceeds total weight"
+    clauses.append([prev[cap]])
+
+
+def counting_cuts(n, m, clauses, next_aux):
+    """Sound counting cuts (Lemmas 2-3 of NOTE.md) over the line labels.
+
+    Product cuts: m <= RW*CW and m <= (n-RW)(n-CW), where RW/CW count
+    W-labeled rows/columns (label counts dominate true occupancy counts).
+    Diagonal capacity: in each diagonal family, the total number of grid
+    cells on W-labeled diagonals is >= m, and likewise for B-labeled.
+    """
+    row, col, dp, dm = line_vars(n)
+    rows = [row(r) for r in range(n)]
+    cols = [col(c) for c in range(n)]
+
+    geq_r = _unary_counter(rows, next_aux, clauses)
+    geq_c = _unary_counter(cols, next_aux, clauses)
+
+    TRUE, FALSE = "T", "F"
+
+    def w_geq(geq, k):
+        """Literal for (W-label count >= k) over one family of n lines."""
+        if k <= 0:
+            return TRUE
+        if k > n:
+            return FALSE
+        return geq[k]
+
+    def b_geq(geq, k):
+        """Literal for (B-label count >= k) == (W-label count <= n-k)
+        == not (W-label count >= n-k+1)."""
+        v = w_geq(geq, n - k + 1)
+        if v is TRUE:
+            return FALSE
+        if v is FALSE:
+            return TRUE
+        return -v
+
+    def add_or(*parts):
+        """Add clause OR(parts) with constant folding."""
+        if any(p is TRUE for p in parts):
+            return
+        cl = [p for p in parts if p is not FALSE]
+        assert cl, "counting cut produced the empty clause"
+        clauses.append(cl)
+
+    # product cuts:  count >= m  requires  (rows >= a+1) or (cols >= ceil(m/a))
+    # for every a; a = 0 forces rows >= 1 (since m >= 1).
+    def product_cut(row_geq_fn, col_geq_fn):
+        add_or(row_geq_fn(1))
+        add_or(col_geq_fn(1))
+        for a in range(1, n):
+            need = (m + a - 1) // a
+            add_or(row_geq_fn(a + 1), col_geq_fn(need))
+
+    product_cut(lambda k: w_geq(geq_r, k), lambda k: w_geq(geq_c, k))
+    product_cut(lambda k: b_geq(geq_r, k), lambda k: b_geq(geq_c, k))
+
+    # diagonal capacity, both families, both colors
+    for fam in (dp, dm):
+        lits = [fam(s) for s in range(2 * n - 1)]
+        lens = [min(s + 1, n, 2 * n - 1 - s) for s in range(2 * n - 1)]
+        _weighted_atleast(lits, lens, m, next_aux, clauses)                # W
+        _weighted_atleast([-x for x in lits], lens, m, next_aux, clauses)  # B
+
+
+def build_lines(n, m, symbreak=False, cuts=False):
+    row, col, dp, dm = line_vars(n)
+    wa, ba = avail_vars(n)
+    clauses = []
+
+    for r in range(n):
+        for c in range(n):
+            lits = [row(r), col(c), dp(r + c), dm(r - c + n - 1)]
+            for lit in lits:
+                clauses.append([-wa(r, c), lit])
+                clauses.append([-ba(r, c), -lit])
+
+    wlist = [wa(r, c) for r in range(n) for c in range(n)]
+    blist = [ba(r, c) for r in range(n) for c in range(n)]
+    top = 6 * n - 2 + 2 * n * n
+    cardw = CardEnc.atleast(lits=wlist, bound=m, top_id=top,
+                            encoding=EncType.seqcounter)
+    top = max(top, cardw.nv)
+    cardb = CardEnc.atleast(lits=blist, bound=m, top_id=top,
+                            encoding=EncType.seqcounter)
+    top = max(top, cardb.nv)
+    clauses.extend(cardw.clauses)
+    clauses.extend(cardb.clauses)
+
+    aux_next = [top + 1]
+
+    def new_aux():
+        v = aux_next[0]
+        aux_next[0] += 1
+        return v
+
+    if cuts:
+        counting_cuts(n, m, clauses, new_aux)
+
+    if symbreak:
+        nlines = 6 * n - 2
+        base_vec = list(range(1, nlines + 1))
+        images = []
+        # color swap alone: vector of negated vars.
+        images.append([-v for v in base_vec])
+        for mp in d4_line_maps(n):
+            mp = {k: v for k, v in mp.items()}
+            ok = all(not isinstance(v, tuple) for v in mp.values())
+            if not ok:
+                continue  # skip maps with unresolved singleton diagonals
+            img = [mp[v] for v in base_vec]
+            images.append(img)
+            images.append([-x for x in img])
+        for img in images:
+            _lex_leader_lits(base_vec, img, clauses, new_aux)
+
+    return max(aux_next[0] - 1, top), clauses
+
+
+def _lex_leader_lits(vec_x, vec_y, clauses, new_aux):
+    """vec_x <=_lex vec_y where entries are literals (possibly negated)."""
+    prev_e = None
+    k = len(vec_x)
+    for i in range(k):
+        x, y = vec_x[i], vec_y[i]
+        if prev_e is None:
+            clauses.append([-x, y])
+            if i < k - 1:
+                e = new_aux()
+                clauses.append([-e, -x, y])
+                clauses.append([-e, x, -y])
+                prev_e = e
+        else:
+            clauses.append([-prev_e, -x, y])
+            if i < k - 1:
+                e = new_aux()
+                clauses.append([-e, prev_e])
+                clauses.append([-e, -x, y])
+                clauses.append([-e, x, -y])
+                prev_e = e
+
+
+def decode_grid(n, model):
+    """Read the line labels from a model and place the maximal armies."""
+    row, col, dp, dm = line_vars(n)
+    rows = []
+    for r in range(n):
+        s = ""
+        for c in range(n):
+            lits = [row(r), col(c), dp(r + c), dm(r - c + n - 1)]
+            vals = [lit in model for lit in lits]
+            if all(vals):
+                s += "W"
+            elif not any(vals):
+                s += "B"
+            else:
+                s += "."
+        rows.append(s)
+    return rows
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("n", type=int)
+    ap.add_argument("m", type=int)
+    ap.add_argument("out")
+    ap.add_argument("--symbreak", action="store_true")
+    args = ap.parse_args()
+    nvars, clauses = build_lines(args.n, args.m, args.symbreak)
+    with open(args.out, "w") as f:
+        f.write(f"c peaceable queens LINE encoding n={args.n} m={args.m} "
+                f"symbreak={args.symbreak}\n")
+        f.write(f"p cnf {nvars} {len(clauses)}\n")
+        for cl in clauses:
+            f.write(" ".join(map(str, cl)) + " 0\n")
+    print(f"wrote {args.out}: {nvars} vars, {len(clauses)} clauses")
+
+
+if __name__ == "__main__":
+    main()

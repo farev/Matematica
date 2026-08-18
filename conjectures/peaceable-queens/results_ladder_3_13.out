@@ -1,0 +1,30 @@
+n=3 m=1: SAT in 0.00s
+n=3 m=2: UNSAT in 0.00s
+  -> a(3) = 1 (UNSAT at 2 in 0.00s)
+n=4 m=1: SAT in 0.00s
+n=4 m=2: SAT in 0.00s
+n=4 m=3: UNSAT in 0.00s
+  -> a(4) = 2 (UNSAT at 3 in 0.00s)
+n=5 m=2: SAT in 0.00s
+n=5 m=3: SAT in 0.00s
+n=5 m=4: SAT in 0.00s
+n=5 m=5: UNSAT in 0.01s
+  -> a(5) = 4 (UNSAT at 5 in 0.01s)
+n=6 m=4: SAT in 0.00s
+n=6 m=5: SAT in 0.00s
+n=6 m=6: UNSAT in 0.16s
+  -> a(6) = 5 (UNSAT at 6 in 0.16s)
+n=7 m=5: SAT in 0.00s
+n=7 m=6: SAT in 0.00s
+n=7 m=7: SAT in 0.00s
+n=7 m=8: UNSAT in 1.98s
+  -> a(7) = 7 (UNSAT at 8 in 1.98s)
+n=8 m=7: SAT in 0.00s
+n=8 m=8: SAT in 0.00s
+n=8 m=9: SAT in 0.02s
+n=8 m=10: UNSAT in 46.29s
+  -> a(8) = 9 (UNSAT at 10 in 46.29s)
+n=9 m=9: SAT in 0.00s
+n=9 m=10: SAT in 0.00s
+n=9 m=11: SAT in 0.04s
+n=9 m=12: SAT in 0.14s
