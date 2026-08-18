@@ -1,0 +1,2 @@
+# good partition of [1,54] for (4,5); exactly 22-periodic block, verified
+000100100011110110111100010010001111011011110001001000

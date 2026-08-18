@@ -1,0 +1,5 @@
+# DRUP proofs above the repo's ~10 MB commit threshold stay out of git
+# (CLAUDE.md: oversized certificates go to Zenodo; sandbox sessions cannot
+# upload, so MANIFEST.csv carries sha256 + rup_check verdict and the proof is
+# re-derivable from the committed scripts). Small proofs are force-added.
+*.drup
