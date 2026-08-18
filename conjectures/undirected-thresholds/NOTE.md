@@ -247,12 +247,14 @@ verification; deterministic, no seed).
 Likewise length 5 000 for `k = 23, 24, 25` (`witness_n{23,24,25}_L5000.txt`,
 `python3 certify_witness.py <k> 5000 300`).
 
-**Result C5 (CERTIFIED counts).** Over `Σ_22` at `21/20⁺` there are at
-least **1 606 755** canonical U-free words of length 55 (DFS with
-50 M-node budget; whether that run exhausted the depth-55 tree is being
-re-verified — treat the count as a lower bound). The lex-DFS needed only
-22 backtracks to reach length 20 000: the language is not thin.
-Letter-gap spectra of words at length 55 lie in `{20, …, 25}`.
+**Result C5 (CERTIFIED lower bound on counts).** Over `Σ_22` at `21/20⁺`
+there are at least **1 606 755** canonical U-free words of length 55.
+(Both 50 M-node DFS runs hit the node cap at exactly this count —
+deterministic traversal — so the depth-55 tree is *not* exhausted and the
+true count is strictly larger; this is a certified lower bound only.)
+The lex-DFS needed only 22 backtracks to reach length 20 000: the
+language is not thin. Letter-gap spectra of words at length 55 lie in
+`{20, …, 25}`.
 
 Together with C1 this gives a sharp certified picture at `k = 22`: at
 exponent cutoff `≥ 21/20` everything dies by length 25; at cutoff
