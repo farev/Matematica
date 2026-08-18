@@ -1,0 +1,6 @@
+grimm_sweep
+*.o
+data/*.census.csv
+data/*.census.t*.csv
+data/ctl_*
+data/probe_*
