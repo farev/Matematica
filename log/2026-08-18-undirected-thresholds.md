@@ -122,15 +122,23 @@ checkpoint: if no certified pair by mid-session, either relax the ansatz
 (palindromic pair `ρ = id`, larger `k`, two-level morphisms) or write up the
 machinery + negative and say so plainly.
 
-**Result.** URT(22) not settled; no PROVED threshold case. What stands
-(full statements in `conjectures/undirected-thresholds/NOTE.md`):
-**CERTIFIED** — (1) undirected exponents `≥ (k−1)/(k−2)` are unavoidable
-over `k` letters beyond length exactly `k+3`, for `k = 22, 23, 24, 25`
-(exhaustive 451/483/516/550-node trees) — an independent in-repo
-re-derivation of the Currie–Mol lower bound at these `k`; (2) the strict
+**Result.** URT(22) not settled (the upper bound remains open), but the
+session ends with a theorem. **PROVED (Theorem T1)** — for every
+`n ≥ 5`, the maximal length of a word over `Σ_n` with no undirected
+repetition of exponent `≥ (n−1)/(n−2)` is exactly `n+3`, with a unique
+extremal word `0 1 ⋯ (n−2) 0 (n−1) 1 3`; hence
+`URT(n) ≥ (n−1)/(n−2)` for all `n ≥ 5` by an elementary one-page case
+analysis (the inequality is Currie–Mol's (secondary); the sharp length
+and uniqueness look new, (secondary)). The theorem grew out of the
+certificates below: the `k+3` pattern was conjectured from four data
+points mid-session and hand-proved from the machine's 10-node parametric
+case tree in the final hour. Also standing (full statements in
+`conjectures/undirected-thresholds/NOTE.md`):
+**CERTIFIED** — (1) the same statement as exhaustive certificates at
+`k = 22, 23, 24, 25` (451/483/516/550-node trees, found first); (2) the strict
 languages are thick: a quadruply-verified U-`(21/20)⁺`-free word of length
 20 000 over 22 letters (lex-least canonical; committed), length 5 000 for
-`k = 23, 24, 25`, and 1 606 755 canonical words at length 55; (3) the
+`k = 23, 24, 25`, and at least 1 606 755 canonical words at length 55; (3) the
 binary Pansiot class is empty at these thresholds for every `n ∈ [20, 23]`
 (max 4 code bits) — threshold witnesses are forced to use
 distance-`(n−2)` recurrences; (4) the affine-morphism ansatz

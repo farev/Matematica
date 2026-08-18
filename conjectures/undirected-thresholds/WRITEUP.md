@@ -95,6 +95,24 @@ That became **Theorem D** (NOTE §8), proved with exact constants
 (`L₀ = 42k−20`), including the boundary-extension bookkeeping and the
 square-fallback when the parent arm exceeds its period.
 
+## Act IV: the theorem in the final hour
+
+While waiting on verification runs, the `k+3` pattern from the four
+lower-bound certificates asked for a proof. The right move turned out to
+be asking the machine for the *shape* of the proof: extracting the
+case tree of head-extensions (candidates by back-distance) and comparing
+it across alphabets. It is the **same 10-node tree for every
+`n ∈ {5..31, 40, 60, 100}`** — root branches `A|F`, unique depth-4 path
+`A·F·B·A`, every other branch killed by one of three one-line
+inequalities (distance `≤ n−2`; ordinary adjacent-pair repeat at period
+`≤ 2n−4`; reversed adjacent pair within `2n−4`). Hand-verifying all ten
+nodes parametrically took under an hour and produced Theorem T1: maximal
+U-`α`-free length is exactly `n+3` for all `n ≥ 5`, extremal word unique.
+The session's interim Conjecture C3 lasted about three hours before
+becoming a theorem. Notable: the reversed condition does real work in
+three of the eight kill-branches — the sharp `n+3` law is genuinely an
+*undirected* phenomenon; the ordinary-only analogue is longer.
+
 ## What failed, compressed
 
 - The session-opening plan (binary Pansiot + reversal-closed pairs):

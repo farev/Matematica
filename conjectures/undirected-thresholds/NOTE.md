@@ -18,11 +18,13 @@ An *undirected `r`-power* is a word `x y x′` with `x` nonempty,
 avoidable over `k` letters. Currie and Mol proved `URT(k) ≥ (k−1)/(k−2)`
 for `k ≥ 4`, conjectured equality, and confirmed it for `4 ≤ k ≤ 21`; the
 conjecture is open for every `k ≥ 22` (all (secondary)). This session
-attacked `k = 22`. It did not settle it. It produced: **(1)** exhaustive
-micro-certificates (451–550 nodes) that undirected exponents `≥ (k−1)/(k−2)`
-are unavoidable over `k` letters for `k = 22, 23, 24, 25` — an independent,
-in-repo re-derivation of the lower bound at these `k`, with the sharp
-maximal lengths `k+3`; **(2)** certified `(21/20)⁺`-free words over 22
+attacked `k = 22`. It did not settle it. It produced: **(1)** a theorem
+(T1): for every `n ≥ 5` the maximal length of a word over `n` letters
+with no undirected exponent `≥ (n−1)/(n−2)` is exactly `n+3`, with a
+unique extremal word — an elementary sharp form of the lower bound,
+found first as exhaustive micro-certificates (451–550 nodes) at
+`k = 22, 23, 24, 25` and then proved for all `n ≥ 5` from the machine's
+parametric case tree; **(2)** certified `(21/20)⁺`-free words over 22
 letters of length 20 000 (and length 5 000 for `k = 23, 24, 25`), quadruply
 cross-checked; **(3)** proofs that the natural binary Pansiot ansatz is
 empty at these thresholds for every alphabet `20 ≤ n ≤ 23` — threshold
@@ -151,10 +153,85 @@ This re-derives, for these four `k`, the lower-bound theorem of Currie–Mol
 (they prove it for all `k ≥ 4` (secondary)); the value here is that the
 certificate is primary, in-repo, and tiny.
 
-**Conjecture C3 (from the data).** For all `k ≥ 22`, the maximal length of
-a word over `Σ_k` with no undirected exponent `≥ (k−1)/(k−2)` is `k+3`.
-(Certified only at `k = 22..25`. A hand proof looks tractable and would
-give the lower bound uniformly.)
+**Theorem T1 (PROVED; supersedes the session's interim Conjecture C3).**
+For every `n ≥ 5`, the maximal length of a word over `Σ_n` containing no
+undirected repetition of exponent `≥ (n−1)/(n−2)` is exactly `n+3`, and
+the extremal word of length `n+3` is unique up to renaming:
+
+```
+w* = 0 1 2 ⋯ (n−2) 0 (n−1) 1 3
+```
+
+(head of `n−1` distinct letters; then the letter at distance `n−1`; the
+one remaining fresh letter; the letters at distances `n` and `n−1`).
+Consequently `URT(n) ≥ (n−1)/(n−2)` for all `n ≥ 5` — an elementary,
+self-contained proof of the lower bound (the bound itself is Currie–Mol's
+theorem (secondary); the sharp extremal length `n+3` and the uniqueness
+appear to be unrecorded, though that judgement is itself (secondary)).
+
+*Proof.* Write `α = (n−1)/(n−2)`. Three elementary facts, each an exact
+integer computation with Definition 1 (non-strict form):
+
+- **(i)** equal letters at distance `d ≤ n−2` are forbidden
+  (`(d+1)/d ≥ α ⟺ d ≤ n−2`); so every `n−1` consecutive letters are
+  pairwise distinct;
+- **(ii)** an ordinary arm-2 match `w[i]w[i+1] = w[i+p]w[i+p+1]` with
+  `p ≤ 2n−4` is forbidden (`(p+2)/p ≥ α ⟺ p ≤ 2(n−2)`);
+- **(iii)** a reversed pair `w[i]w[i+1] = ab`, `w[j]w[j+1] = ba` with
+  `j−i ≤ 2n−4` is forbidden (gap `g = j−i−2`; `(4+g)/(2+g) ≥ α ⟺
+  g ≤ 2n−6`).
+
+*Upper bound.* Let `w` be U-`α`-free of length `n+4`. By (i) the first
+`n−1` letters are distinct; rename them `0, …, n−2`. Every later letter
+must avoid the `n−2` letters preceding it, so at position `n−1+j`
+(`j = 0..4`) the only candidates are the letters at back-distances
+`n−1, n, n+1, n+2` (call these `A, B, C, D`) and the single unused letter
+(`F`, available once). The case tree closes in four steps:
+
+| word so far (tail after the head) | candidate | verdict |
+|---|---|---|
+| `ε` | `A` (= letter 0), `F` (= letter n−1) | both possible a priori |
+| `A` | `A′`: pos `n` letter `w[1]` | pairs `(0,n−1),(1,n)` adjacent at distance `n−1`: **(ii)**, `p = n−1` |
+| `A` | `B`: letter `w[0]` again | adjacent equal letters: **(i)** |
+| `A` | → only `F` survives | |
+| `AF` | `A` (= `w[2]`), `B` (= `w[1]`) | both survive this step |
+| `F` | `A` (= `w[1]`), `B` (= `w[0]`) | both survive this step |
+| `FA` | `C` (= `w[0]`) | `w[n]w[n+1] = 1·0` reverses `w[0]w[1] = 0·1`, `j−i = n ≤ 2n−4`: **(iii)** |
+| `FA` | `A` (= `w[2]`) | pairs `(1,n),(2,n+1)` adjacent at `n−1`: **(ii)** |
+| `FB` | `B` (= `w[1]`) | pairs `(0,n),(1,n+1)` adjacent at `n`: **(ii)**, `p = n ≤ 2n−4` |
+| `FB` | `A` (= `w[2]`) | survives |
+| `AFA` | `C` (= `w[1]`) | `w[n+1]w[n+2] = 2·1` reverses `w[1]w[2]`: **(iii)** |
+| `AFA` | `A` (= `w[3]`) | adjacent pairs at `n−1`: **(ii)** |
+| `AFB` | `B` (= `w[2]`) | adjacent pairs at `n`: **(ii)** |
+| `AFB` | `A` (= `w[3]`) | survives |
+| `FBA` | `C` (= `w[1]`) | reversed `2·1` vs `1·2`: **(iii)** |
+| `FBA` | `A` (= `w[3]`) | adjacent pairs at `n−1`: **(ii)** |
+| `AFBA` | `C` (= `w[2]`) | `w[n+2]w[n+3] = 3·2` reverses `w[2]w[3]`: **(iii)** |
+| `AFBA` | `A` (= `w[4]`) | adjacent pairs at `n−1`: **(ii)** |
+
+(`F` is unavailable after its single use; `D` never enters because at
+every node the distance-`n+2` letter is inside the forbidden window or
+coincides with a killed candidate — at each node the candidate list above
+is exhaustive by (i).) Every branch dies by tail length ≤ 4, i.e. total
+length ≤ `n+3` — contradiction. The tree also shows the only tail
+reaching length 4 is `A·F·B·A`, giving the uniqueness.
+
+*Lower bound.* `w* = 0 1 ⋯ (n−2) 0 (n−1) 1 3` (length `n+3`; `n ≥ 5`
+makes the final letter `3 = w[3]` a head letter distinct from the others
+in play). Its complete list of equal-letter pairs is `(0, n−1)` at
+distance `n−1`, `(1, n+1)` at distance `n`, `(3, n+2)` at distance `n−1`;
+all other letters occur once. Arm-1 offenders need distance `≤ n−2`:
+none. An ordinary arm-`≥2` offender needs two equal pairs at the same
+distance with adjacent left endpoints: the left endpoints are `0, 1, 3`
+with distances `n−1, n, n−1` — no adjacent pair matches. A reversed
+arm-`≥2` offender needs pairs `(a, b)` and `(a+1, b−1)`: checking the
+three pairs pairwise, no such mirror configuration exists. Palindromic
+factors of length 2 or 3 need equal letters at distance 1 or 2: none, and
+longer palindromes contain these. So `w*` is U-`α`-free. ∎
+
+The exhaustive certificates of Result C1 (`k = 22..25`) and a
+machine-verification of the identical parametric case tree at every
+`n ∈ {5, …, 31} ∪ {40, 60, 100}` (`case_tree.py`) corroborate the proof.
 
 ## 5. Above the threshold the language is thick: certified witnesses
 
@@ -170,9 +247,10 @@ verification; deterministic, no seed).
 Likewise length 5 000 for `k = 23, 24, 25` (`witness_n{23,24,25}_L5000.txt`,
 `python3 certify_witness.py <k> 5000 300`).
 
-**Result C5 (CERTIFIED counts).** Over `Σ_22` at `21/20⁺` there are
-**1 606 755** canonical U-free words of length 55 (exhaustive DFS with
-50 M-node budget, tree exhausted to that depth). The lex-DFS needed only
+**Result C5 (CERTIFIED counts).** Over `Σ_22` at `21/20⁺` there are at
+least **1 606 755** canonical U-free words of length 55 (DFS with
+50 M-node budget; whether that run exhausted the depth-55 tree is being
+re-verified — treat the count as a lower bound). The lex-DFS needed only
 22 backtracks to reach length 20 000: the language is not thin.
 Letter-gap spectra of words at length 55 lie in `{20, …, 25}`.
 
@@ -363,10 +441,10 @@ is currently a criterion without a known instance:
   elimination over the letter-injection) dies by depth ≤ 3k for every `m`
   (trees exhausted; `data/scan_affine_m.log`, `scan_affine_m2.log`,
   `scan_affine_m1_fill.log`). For `m = 1` it is additionally empty at
-  `k ∈ {21, 26, 30, 36}` and every other `k ≤ 35` covered by the fill
-  scan (exhausted; `k = 44, 52` reached node caps without survivors,
-  inconclusive). Deaths cluster at depths `2k`–`3k`: the second block,
-  a constant shift of `B₀`, collides with `B₀`.
+  every `k ∈ {21, …, 36}` **except `k = 25`**, which hit its node cap
+  without a survivor (inconclusive), as did `k = 44, 52`. Deaths cluster
+  at depths `2k`–`3k`: the second block, a constant shift of `B₀`,
+  collides with `B₀`.
 * the **general** `k`-uniform search (`selfsim_search.py`: canonical DFS
   with block-class forcing, subsuming every uniform ansatz) is
   **inconclusive**: at `k = 21, 22` it hits a hard forcing wall at depth
@@ -395,7 +473,7 @@ Machine: 4-core sandbox, 15 GB RAM, Python 3.11.15, NumPy 2.4.6. All
 searches single-threaded. Every table row above states its script; the
 witness files and scan logs are committed under `data/`. Deterministic
 unless a seed is shown (`probe.py` runs used seed 7; nothing labelled
-CERTIFIED depends on a seeded run). Total session compute ≈ 2.5 h of the
+CERTIFIED depends on a seeded run). Total session compute ≈ 4 h of the
 4-core box.
 
 AI assistance: this session (mathematics, code, prose) was produced with
