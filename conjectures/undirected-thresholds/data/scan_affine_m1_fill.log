@@ -1,0 +1,12 @@
+# m=1 gap fill (k=23..35), affine_search.py, 2026-08-18; k=26,30,36 exhausted in the earlier session runs (see WRITEUP)
+k=23 m=1: reach 47, nodes 23890, surv 0, EXHAUSTED [30s]
+k=24 m=1: reach 48, nodes 40044, surv 0, EXHAUSTED [52s]
+k=25 m=1: reach 50, nodes 600018, surv 0, CAPPED [727s]
+k=27 m=1: reach 27, nodes 2738, surv 0, EXHAUSTED [0s]
+k=28 m=1: reach 28, nodes 4748, surv 0, EXHAUSTED [0s]
+k=29 m=1: reach 29, nodes 8444, surv 0, EXHAUSTED [0s]
+k=31 m=1: reach 31, nodes 27078, surv 0, EXHAUSTED [1s]
+k=32 m=1: reach 32, nodes 48320, surv 0, EXHAUSTED [2s]
+k=33 m=1: reach 33, nodes 86395, surv 0, EXHAUSTED [3s]
+k=34 m=1: reach 34, nodes 154900, surv 0, EXHAUSTED [5s]
+k=35 m=1: reach 35, nodes 277979, surv 0, EXHAUSTED [9s]
