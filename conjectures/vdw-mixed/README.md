@@ -14,6 +14,8 @@ they predate DRUP/DRAT certificate practice.
 independently verified + DRUP-checked UNSAT at `w`, which by restriction
 monotonicity pins the value), and opens a certified campaign on `w(2;5,8)`.
 
+**Write-up page:** [fabianarevalo.com/vdw-mixed](https://fabianarevalo.com/vdw-mixed)
+
 ## Status (2026-08-16, session 1 — in progress)
 
 | cell | published (secondary) | this repo | certificate |

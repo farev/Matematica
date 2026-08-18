@@ -13,6 +13,7 @@ sources unreadable; see NOTE §1)*
 structure at the threshold, ansatz exclusions, and a proved descent
 criterion for future construction attempts.
 **Sessions:** [2026-08-18](../../log/2026-08-18-undirected-thresholds.md)
+**Write-up page:** [fabianarevalo.com/undirected-thresholds](https://fabianarevalo.com/undirected-thresholds)
 
 ## Results
 

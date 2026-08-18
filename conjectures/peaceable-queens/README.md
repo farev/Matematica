@@ -11,6 +11,7 @@ a(16) = 37 (CERTIFIED).**
 **Status.** Active, 1 session (2026-08-17). See
 [`NOTE.md`](NOTE.md) for theorems and proofs,
 [`WRITEUP.md`](WRITEUP.md) for the session narrative.
+**Write-up page:** [fabianarevalo.com/peaceable-queens](https://fabianarevalo.com/peaceable-queens)
 
 ## Results (labels per repo convention)
 

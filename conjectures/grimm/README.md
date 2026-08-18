@@ -17,6 +17,7 @@ a 52× extension — and yields that census as a by-product.
 
 **Status:** active
 **Sessions:** [2026-08-15](../../log/2026-08-15-grimm.md)
+**Write-up page:** [fabianarevalo.com/grimm](https://fabianarevalo.com/grimm)
 
 ## Results
 
