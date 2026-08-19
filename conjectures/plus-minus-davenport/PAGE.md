@@ -30,23 +30,28 @@ order ≤ 100 left open (secondary).
    page must carry:** a 2021 PhD thesis computed many values with
    100 < |G| ≤ 200 "with some exceptions" — whether order 147 is among
    them was not verifiable from the sandbox.
-3. **CERTIFIED table of dissociation numbers** dim±(G) = D±(G) − 1 for
+3. **First open case of the Perez-Lavin thesis conjecture confirmed
+   (CERTIFIED):** D±(C₂⊕C₃^r) attains the basic upper bound for r ≤ 3 and
+   first fails at r = 4 (dim±(C₂⊕C₃⁴) = 6 < cap 7, order 162) — the
+   thesis (2021, (secondary)) conjectured failure for growing r; same
+   thesis-coverage caveat as contribution 2.
+4. **CERTIFIED table of dissociation numbers** dim±(G) = D±(G) − 1 for
    ⟨N_FINAL⟩ groups of rank ≤ 4 (all rank-2 of order ≤ 256, rank-3 to
    order 200, cyclic to 128, targeted cells to order ~450), every value
    from exhaustive search with exact cross-engine node-count agreement
    (`data/table.csv`).
-4. **PROVED window + forced families**: floor ≤ dim± ≤ cap with
+5. **PROVED window + forced families**: floor ≤ dim± ≤ cap with
    floor = max Σ⌊log₂ nᵢ⌋ over cyclic decompositions, cap = ⌊log₂|G|⌋
    (subset-sum argument valid for all G, not only odd order); all
    2-groups and the C2⊕C2n family forced (recovering known values,
    (secondary), with two-line proofs).
-5. **Structure findings (CERTIFIED data + PROVED where stated):** at rank 2
+6. **Structure findings (CERTIFIED data + PROVED where stated):** at rank 2
    every computed gap cell sits at an endpoint of its width-1 window —
    only C3⊕C3 and C5⊕C15 stuck at the floor; the first strictly
    intermediate value appears at rank 3 (dim±(C3⊕C3⊕C15) = 6, window
    {5,…,7}); appending a C₂ factor can raise dim± by 2 (C5⊕C15 → C5⊕C30:
    5 → 7) though the easy bound is +1 (PROVED).
-6. **Lemma R (PROVED)**: dissociativity in C_p⊕C_{3p} is equivalent to a
+7. **Lemma R (PROVED)**: dissociativity in C_p⊕C_{3p} is equivalent to a
    subset-sum injectivity system over F_p²; it shows no counting argument
    can decide C5⊕C15 (class sizes 22/21/21 inside 25) and localizes the
    75-vs-147 contrast to a finite field-plane statement.

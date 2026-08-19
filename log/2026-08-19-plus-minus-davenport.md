@@ -176,6 +176,11 @@ lower bound an explicit 7-set verified against all 2,186 signed subsets;
 caveat: the 2021 Perez-Lavin thesis computed values in 100 < |G| ≤ 200
 "with some exceptions" and its coverage of order 147 could not be checked
 from this sandbox.
+**CERTIFIED — first open case of the Perez-Lavin thesis conjecture**: the
+thesis conjectures D±(C2⊕C3^r) fails the basic upper bound as r grows
+((secondary)); the table decides where failure begins — attained for
+r ≤ 3, first failure at r = 4 (dim±(C2⊕C3⁴) = 6 < 7, order 162; E2
+re-verification of the cell in `certs/`), same coverage caveat as C7⊕C21.
 **CERTIFIED — the table**: dissociation numbers dim± = D± − 1 for 300+
 groups of rank ≤ 4 (exact count in `data/table.csv`), every cell an
 exhaustive search with node count = #±zsf multisets, cross-checked

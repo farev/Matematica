@@ -174,6 +174,23 @@ randomized hunter (366 restarts). C7⊕C21 has exactly 2,016 maximum
 dissociated 7-sets up to sign normalization (258,048 = 2⁷ × 2,016 as raw
 sets — the identity holds classwise, §5).
 
+**Result 3 (CERTIFIED).** The first open case of the Perez-Lavin thesis
+conjecture is confirmed. The thesis ((secondary), 2021) conjectures that
+D±(C₂ ⊕ C₃^r) fails the basic upper bound ⌊log₂|G|⌋ + 1 as r increases.
+The table decides where failure begins:
+
+| r | group (invariant form) | order | dim± | cap | attains cap? |
+|---|---|---|---|---|---|
+| 1 | C₆ | 6 | 2 | 2 | yes (forced) |
+| 2 | C₃⊕C₆ | 18 | 4 | 4 | **yes** |
+| 3 | C₃⊕C₃⊕C₆ | 54 | 5 | 5 | **yes** |
+| 4 | C₃⊕C₃⊕C₃⊕C₆ | 162 | **6** | 7 | **no** |
+
+So r = 4 is the first failure: dim±(C₂⊕C₃⁴) = 6 < 7. (Whether the thesis
+already computed r = 4 is unknown from here — same caveat class as
+Theorem 2; its abstract phrases the statement as a conjecture "as r
+increases", which reads as open at the time of writing, (secondary).)
+
 *Context ((secondary), from the vetting evidence in WRITEUP.md).* The 2014
 paper determines every |G| ≤ 100; snippets of its PDF state C5⊕C15 is the
 only unknown of order ≤ 100 ("either 6 or 7"). C7⊕C21 = 147 lies outside

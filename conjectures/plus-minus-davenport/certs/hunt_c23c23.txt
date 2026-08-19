@@ -1,0 +1,1 @@
+NOT-FOUND 23 23 L=9 after 100000000 restarts (proves nothing)
