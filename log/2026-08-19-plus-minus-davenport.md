@@ -154,3 +154,86 @@ reformulation, cap-achievement phenomenology. Success = (1) and (2)
 decided with certificates; the table and structure are the body of the
 note. Mid-session checkpoint: if the exhaustive negatives do not
 cross-validate, ship only what does, labeled honestly.
+
+**Result.**
+**CERTIFIED (headline) — D±(C5⊕C15) = 6**: the last unknown plus-minus
+weighted Davenport constant of order ≤ 100 (per MOS-2014's determination,
+(secondary)) is decided. Lower bound **PROVED** (explicit dissociated
+5-set via binary sets in the factors; also from-definition verified);
+upper bound CERTIFIED by six independent exhaustive computations across
+three distinct methods: DFS census over sign-representatives (139,052
+nodes; C and Python engines agreeing node-for-node), the same DFS with no
+sign reduction (3,520,083 nodes; per-size counts matching the predicted
+2^l identity in every class), plain combination enumeration over both
+universes (2,324,784 and 185,250,786 six-element sets, zero dissociated),
+and a class-injectivity reduction over F₅² (Lemma R; all seven splits
+infeasible).
+**CERTIFIED — D±(C7⊕C21) = 8**: first case of the next open family
+("unknown already for n = 3", (secondary)). Upper bound **PROVED**
+(subset-sums cap, NOTE Lemma 2 — valid for all G, not just odd order);
+lower bound an explicit 7-set verified against all 2,186 signed subsets;
+2,016 maximum dissociated 7-sets counted up to sign. Carries a prominent
+caveat: the 2021 Perez-Lavin thesis computed values in 100 < |G| ≤ 200
+"with some exceptions" and its coverage of order 147 could not be checked
+from this sandbox.
+**CERTIFIED — the table**: dissociation numbers dim± = D± − 1 for 300+
+groups of rank ≤ 4 (exact count in `data/table.csv`), every cell an
+exhaustive search with node count = #±zsf multisets, cross-checked
+engine-vs-engine; literature controls (C2⊕C4, C3⊕C3, C3⊕C9, C3⊕C3⊕C9 = 6,
+2-groups at cap, cyclic ladder) all reproduced.
+**PROVED** — the floor/cap window (subset-sum cap for every finite abelian
+G; concatenation floor maximized over cyclic decompositions), forced
+families (all 2-groups; C2⊕C2n recovering the known formula), cyclic
+values, dim±(G⊕C2) ≥ dim±(G)+1, and **Lemma R** (dissociativity in
+C_p⊕C_3p ⟺ class-injective subset sums in F_p²), which also shows no
+counting argument can decide C5⊕C15 (class sizes 22/21/21 ≤ 25).
+**Structure findings (data)**: every rank-2 group computed sits at an
+endpoint of its window — only C3⊕C3 and C5⊕C15 stuck at floor; first
+strictly-intermediate value at rank 3 (dim±(C3⊕C3⊕C15) = 6 ∈ (5,7));
+appending C2 can add 2 (C5⊕C15 → C5⊕C30: 5 → 7); 75 = 3·5² fails its cap
+while 147 = 3·7² achieves a tighter one.
+
+**What failed.**
+- The "1.5-second computation ⟹ cannot be open" inference — vetting
+  (34-search dedicated agent) says it really was open; the community
+  apparently never ran the search. The session's weight moved to
+  verification redundancy and structure accordingly.
+- The naive dichotomy conjecture ("dim± ∈ {floor, cap} always") died at
+  order 135: C3⊕C3⊕C15 = 6, strictly inside its width-2 window — killed
+  by the table within the hour of being formed. Demoted to a rank-2
+  question (NOTE Q2).
+- The hand-proof timebox for the 75 negative: two counting attacks (fiber
+  counting over the Z5² projection; a ν: x ↦ σ−x involution structure on
+  the class-0 value set) both end at "22 ≤ 25, no contradiction". Lemma R
+  then explains why counting must fail. Productive failure — it became
+  engine E5 and the sharpest open thread.
+- Aut(G)-orbit search reduction: designed (orbit-block soundness argument
+  worked out), then discarded — it complicates the exhaustiveness
+  argument certificates rest on for a ~3× saving that mattered nowhere.
+- Process hygiene, twice: a `pgrep -f`-based kill matched the invoking
+  shell's own command line and killed it (exit 144) — the exact failure
+  class in the 08-13 and 08-17 logs; switched to literal-PID kills. A
+  background verification run silently wrote nothing because its shell
+  was in the repo root and `certs/` didn't exist there (swallowed
+  redirect failure); relaunched with explicit `cd`.
+- The C23⊕C23 stretch (window {8,9}, motivated by an unverified
+  "23, 46, 47" snippet): the seeded hunter that finds 147's maximum set
+  in 366 restarts found no 9-set in its 30-minute box. Proves nothing;
+  recorded as such.
+
+**Next.**
+1. Read the primary sources (arXiv:1308.3316, Perez-Lavin thesis, Adhikari
+   survey) from a machine with egress — every citation this session is
+   (secondary), and the thesis's 100–200 coverage decides whether
+   D±(C7⊕C21) = 8 is new or a confirmation.
+2. Human proof of the F₅² infeasibility behind Theorem 1 via Lemma R
+   (finite, structured; the b = 6 case is six elements of F₅² with subset
+   sums injective on |A| mod 3 classes).
+3. The rank-2 endpoint dichotomy (NOTE Q2): prove or refute; a
+   characterization of cap-achievement would decide infinitely many D±
+   values at once.
+4. C23⊕C23 ∈ {9, 10}: longer witness hunt (decides at cap if found, by
+   Lemma 2 alone) or a ~10¹¹-node exhaustive campaign.
+5. The plus-minus Harborth constants g±(C3⊕C3n) — apparently uncomputed
+   ((secondary), conference-abstract-level evidence), one fixed-length
+   constraint away from this engine family.
