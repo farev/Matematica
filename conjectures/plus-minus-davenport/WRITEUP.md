@@ -82,12 +82,25 @@ chain before any open cell was trusted:
   certificates rest on, for a ~3× saving that mattered nowhere. The
   committed engines use only the sign-flip reduction (Lemma 1) — and run
   it both on and off, with the classwise 2^l identity binding the two.
-- **Process hygiene, again.** A `pgrep -f`/`kill` pattern matched the
-  invoking shell's own command line and killed the session's shell
-  mid-command — the *exact* failure class recorded in the 2026-08-13 and
-  2026-08-17 logs (exit 144, twice, before switching to literal-PID
-  kills). The repo apparently needs a `tools/` helper for this; until
-  then: kill by numeric PID only, never by pattern.
+- **Process hygiene, again — three distinct self-inflicted failures.**
+  (i) A `pgrep -f`/`kill` pattern matched the invoking shell's own command
+  line and killed the session's shell mid-command — the *exact* failure
+  class recorded in the 2026-08-13 and 2026-08-17 logs (exit 144, twice,
+  before switching to literal-PID kills). (ii) A background verification
+  run silently produced nothing: launched without `cd`, its relative
+  `certs/` redirect failed in the wrong directory and the wrapper swallowed
+  the error. (iii) Worst: a priority-cell driver was launched three times
+  without its `cd` line while the *diagnosis* ("cwd wrong, so it did
+  nothing") was itself wrong — the tool's cwd persistence meant the
+  "dead" drivers were all alive, and five copies of the same 225-element
+  search ended up racing on one tmp file (a real, if unrealized,
+  corruption risk — caught because `ps` showed five identical workers).
+  Recovery: kill by PID chain (worker → timeout wrapper → parent loop),
+  purge all partial tmp files, and relaunch exactly one driver from a
+  script file with an absolute `cd` baked in. The repo lesson, now
+  three sessions old and counting: background compute belongs in
+  committed script files with absolute paths, never in ad-hoc shell
+  one-liners; and process kills go by numeric PID only.
 - **Redundant compute was left running and had to be culled.** The
   scratchpad-era sweep kept burning cores after the committed sweep
   superseded it; on a 4-core box that halved throughput for ~15 minutes.

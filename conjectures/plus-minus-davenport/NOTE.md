@@ -126,11 +126,13 @@ cells, by CRT). In particular:
 (b) C₂ ⊕ C_{2n} and C₂ ⊕ C₂ ⊕ C_{2n} are forced for every n — recovering
     the known value of D±(C₂⊕C_{2n}) ((secondary): the 2014 paper covers
     this family) with a two-line proof;
-(c) for rank-2 groups, cap − floor ∈ {0, 1} when floor is computed from
-    the invariant decomposition C_a⊕C_b (since
-    ⌊x⌋+⌊y⌋ ≤ ⌊x+y⌋ ≤ ⌊x⌋+⌊y⌋+1); merging coprime factors can only
-    increase the floor, so gap cells are those with
-    {log₂ a} + {log₂ b} ≥ 1 under the best decomposition.
+(c) for rank-2 groups, cap − floor ∈ {0, 1}: the invariant decomposition
+    C_a⊕C_b gives ⌊log₂a⌋+⌊log₂b⌋ ≥ ⌊log₂ab⌋ − 1, and re-decomposition
+    only increases the floor. A gap requires {log₂ a} + {log₂ b} ≥ 1
+    **and** that no finer decomposition closes it — e.g. C₃⊕C₆₃ has
+    fractional parts summing ≥ 1, yet C₉⊕C₂₁ re-splits it to floor
+    ⌊log₂9⌋+⌊log₂21⌋ = 7 = cap: forced after all. The floor in
+    `data/table.csv` is always the maximum over decompositions.
 
 *Proof.* Lemmas 2–4 and CRT; (a) Σ a_i = log₂ |G| for invariant factors
 2^{a_i}; (b) ⌊log₂ 2n⌋ + 1 = ⌊log₂ 4n⌋ and ⌊log₂ 2n⌋ + 2 = ⌊log₂ 8n⌋. ∎
@@ -349,7 +351,7 @@ above is emitted by a committed script (§ headers name them); the sweep is
 rerunnable cell-by-cell (`run_sweep.sh`, resumable, per-cell timeout
 3600 s). Runtimes: C5⊕C15 exhaustive 0.02 s (E1) / 1.5 s (E2);
 C7⊕C21 exhaustive ≈ 2 s (E1) / 35 s (E2); E1 no-signred at 147 ≈ 90 s;
-E4 full-universe at 75 ≈ 186 s; E5 all splits ≈ 25 min; full sweep ≈ 2 h
-of 3-worker wall time. Seeds: witness_hunt runs use --seed 42 (committed
+E4 full-universe at 75 ≈ 186 s; E5 all splits 166 s (measured, single
+core); full sweep ≈ 2–3 h of 3-worker wall time. Seeds: witness_hunt runs use --seed 42 (committed
 outputs) and --seed 1 (controls); all other computations are
 deterministic.
