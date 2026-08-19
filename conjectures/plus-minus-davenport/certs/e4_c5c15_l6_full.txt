@@ -1,0 +1,1 @@
+5 15 size=6 universe=74 count=0 tried=185250786

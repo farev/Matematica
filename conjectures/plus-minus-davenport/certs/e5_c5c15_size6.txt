@@ -1,0 +1,4 @@
+p=5 size=6 split(a=6,b=0): infeasible
+p=5 size=6 split(a=5,b=1): infeasible
+p=5 size=6 split(a=4,b=2): infeasible
+p=5 size=6 split(a=3,b=3): infeasible

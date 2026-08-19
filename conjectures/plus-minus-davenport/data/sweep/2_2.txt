@@ -1,0 +1,1 @@
+2 2 1 1 4 maxlen=2 dpm=3 nodes=7 witness=(0,1,0,0)(1,0,0,0)
