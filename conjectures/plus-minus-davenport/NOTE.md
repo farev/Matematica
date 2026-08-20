@@ -322,7 +322,7 @@ value CERTIFIED by the primary engine; ✓ = attains ⌊log₂ 9n⌋, ✗ = defi
 
 | n | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| dis | 2✗ | 4✓ | 4✓ | 5✓ | 5✓ | 5✓ | 5✓ | 6✓ | 6✓ | 6✓ | 6✓ | 6✓ | 6✓ | 6✓ | **6✗** | 7✓ | 7✓ | 7✓ | 7✓ | 7✓ | [n21] |
+| dis | 2✗ | 4✓ | 4✓ | 5✓ | 5✓ | 5✓ | 5✓ | 6✓ | 6✓ | 6✓ | 6✓ | 6✓ | 6✓ | 6✓ | **6✗** | 7✓ | 7✓ | 7✓ | 7✓ | 7✓ | 7✓ |
 
 With T1 covering every n outside the failing blocks, the family
 D±(C₃⊕C₃ₙ) is now determined for **all n ≤ 56 except any member of
