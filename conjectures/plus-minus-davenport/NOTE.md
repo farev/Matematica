@@ -355,14 +355,15 @@ today's box is n = 21 (order 525, a gap case at depth 9).
 **Table, C₇ ⊕ C₇ₙ** (same sources; the unmarked n = 5 cell was not
 searched — bounds coincide, value PROVED by L2 + L3):
 
-| n | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |
-|---|---|---|---|---|---|---|---|---|
-| dis | 5✓ | 6✓ | 7✓ | 7✓ | 7 | 8✓ | 8✓ | 8✓ |
+| n | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
+|---|---|---|---|---|---|---|---|---|---|
+| dis | 5✓ | 6✓ | 7✓ | 7✓ | 7 | 8✓ | 8✓ | 8✓ | 8✓ |
 
-**Every member attains**, including all six gap cases n = 2, 3, 4, 6, 7, 8
-— five of them only through mixed witnesses. No deficit exists in this
-family in computed range; the first case beyond the box is n = 9
-(order 441, gap, depth 8 — marginal for this hardware, untested today).
+**Every member attains**, including all seven gap cases n = 2, 3, 4, 6, 7,
+8, 9 — most only through mixed witnesses (n = 9 at order 441:
+(0,1),(0,2),(0,4),(0,8),(1,0),(1,16),(1,32),(3,1), 193k nodes). No deficit
+exists in this family in computed range; the first case beyond the box is
+n = 10 (order 490, gap, depth 8).
 
 ## 7. Census and the dichotomy
 

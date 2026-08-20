@@ -78,6 +78,7 @@ group,order,dis,Dpm,counting_bound,attains,witness_checked_size,nonexistence_at,
 5x30,150,7,8,7,yes,7,,family_le200.txt
 5x35,175,7,8,7,yes,7,,family_le200.txt
 5x40,200,7,8,7,yes,7,,family_le200.txt
+5x55,275,7,8,8,NO,,8,c5c55_shardA.txt
 5x60,300,8,9,8,yes,8,,gap_probes.txt
 7x7,49,5,6,5,yes,5,,family_le200.txt
 7x14,98,6,7,6,yes,6,,family_le200.txt
@@ -86,6 +87,7 @@ group,order,dis,Dpm,counting_bound,attains,witness_checked_size,nonexistence_at,
 7x42,294,8,9,8,yes,8,,gap_probes.txt
 7x49,343,8,9,8,yes,8,,gap_probes.txt
 7x56,392,8,9,8,yes,8,,gap_probes.txt
+7x63,441,8,9,8,yes,8,,c7_n9.txt
 8x8,64,6,7,6,yes,6,,controls.txt
 2x2x2,8,3,4,3,yes,3,,controls.txt
 2x2x4,16,4,5,4,yes,4,,controls.txt
