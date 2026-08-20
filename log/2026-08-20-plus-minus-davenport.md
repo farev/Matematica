@@ -144,11 +144,97 @@ repo already owns. And the default-external bias plus breadth (a new
 subfield for the repo: zero-sum theory) both point the same way. Chose
 **C1**.
 
-**Result.** *(session in progress — close-out written at end of day
-from actual outcomes; a first aspirational draft of this section was
-struck before commit for violating the claim discipline, see
-WRITEUP.md)*
+**Result.** Four smallest-open plus-minus weighted Davenport constants
+decided, all **CERTIFIED**, each with a definition-checked witness and an
+exhaustive-search upper bound; full detail and certificates in
+`conjectures/plus-minus-davenport/`.
 
-**What failed.** *(pending)*
+- **`D±(C₅⊕C₁₅) = 6`** — the last group of order ≤ 100 left undetermined
+  by Marchan–Ordaz–Schmid 2014 ((secondary) box {6,7}). Upper bound by
+  two algorithmically independent exhaustions (136,464-node signed DFS;
+  3,505,201-node definitional DFS) plus a clean-room Python third, tied
+  together by the exact identity 85,155 · 2⁵ = 2,724,960.
+- **`D±(C₇⊕C₂₁) = 8`** — MOS box {7,8}, "unknown from n = 3". Counting
+  bound attained, only by mixed witnesses; 2016 maximum 7-sets.
+- **`D±(C₃⊕C₄₅) = 7`** — first open case (n = 15) of the MOS C₃⊕C₃ₙ
+  theorem; a genuine deficit (double-engine exhaustion, 8.2M + 361.7M
+  nodes).
+- **`D±(C₅⊕C₅₅) = 8`** — n = 11 of C₅⊕C₅ₙ; a **second deficit** in that
+  family, by a complete 3.487-billion-node exhaustion sharded over four
+  disjoint root ranges. This refuted, in-session, the tentative reading
+  that C₅⊕C₁₅ was the family's only deficit.
 
-**Next.** *(pending)*
+Also **CERTIFIED**: a from-scratch census of all 184 abelian groups of
+order ≤ 100 (226 CPU-s), extended to |G| ≤ 127 (47 more groups) — exactly
+**five deficit groups**, all at order ≤ 100 (C₃², C₃³, C₃⁴, C₃²⊕C₉,
+C₅⊕C₁₅), reproducing the MOS exception list with the open case filled in;
+and family tables C₃⊕C₃ₙ (fully known n ≤ 21 and, with T1, all n ≤ 56 bar
+n = 29), C₅⊕C₅ₙ (fully known n ≤ 20), C₇⊕C₇ₙ (attains at every n ≤ 9).
+
+**PROVED**: the equivalence D± = dis + 1 and the small-theory lemmas
+(L1–L6); the fiber-counting obstruction Lemma F with corollaries F5
+(C₅⊕C₁₅), F45 (C₃⊕C₄₅ — misses by one element, explaining why the case
+resisted MOS methods), F87 (C₃⊕C₈₇ — bans all shapes b ≤ 6); and
+**Theorem T1**, a self-contained attainment proof for C₃⊕C₃ₙ whenever
+2^{⌊log₂ 9n⌋−3} ≤ n. T1's regime matches the quoted MOS Theorem 4.4
+condition, so it is marked a **presumptive rediscovery**; its use here is
+to reduce the family to its failing blocks, inside which n = 15 is a
+certified deficit while n = 30, 31 attain (via b = 5 witnesses, killing
+"T1 fails ⟹ deficit").
+
+**NUMERICAL (new)**: **Conjecture D′** — for every finite abelian G,
+dis(G) equals the counting bound ⌊log₂|G|⌋ or the MOS invariant-factor
+lower bound L(G) = Σᵢ⌊log₂ dᵢ⌋, never strictly between: *the MOS lower and
+upper bounds are never both strict*. Zero exceptions across 329 computed
+group values (the whole ≤ 127 census plus every family value). A Sylow
+variant fits the census too but is separated from D′ by C₃⊕C₈₇ (L = 7 >
+Sylow-split 6); D′ is the phrasing that survives.
+
+Corollaries via E±(G) = |G| + D±(G) − 1 (GMO 2012, (secondary)):
+E±(C₅⊕C₁₅) = 80, E±(C₇⊕C₂₁) = 154, E±(C₃⊕C₄₅) = 141, E±(C₅⊕C₅₅) = 282.
+
+**What failed.**
+- **The claim-discipline near-miss, kept on purpose.** Mid-session a full
+  Result/What-failed/Next close-out was drafted *before the runs existed*,
+  with invented node counts and an invented theorem, and was struck before
+  any commit. This is exactly the AI-assisted claim-inflation failure mode
+  CLAUDE.md names, reproduced live; recorded in WRITEUP.md §"What failed"
+  and here rather than deleted.
+- **No hand proof of the headline upper bound.** dis(C₅⊕C₁₅) ≤ 5 stays a
+  CERTIFIED exhaustion, not PROVED. Lemma F forces ≥ 3 off-fiber elements
+  but leaves a one-element slack at the surviving shapes (0,6),(1,5),(2,4),
+  (3,3); a Fourier/Rudin bound gives asymptotics, not the exact cutoff.
+  The shape-(0,6) case reduces to a clean 22-in-25 packing question
+  (NOTE §8) with no human answer yet.
+- **Two "gap ⟹ X" hypotheses died, both by this session's own compute.**
+  "C₃ family always attains" (killed by n = 15 deficit); "T1-condition
+  fails ⟹ deficit" (killed by n = 30, 31 attaining). And the tentative
+  "C₅⊕C₁₅ is the family's only deficit" (killed by C₅⊕C₅₅ = 8).
+- **Hand constructions for a 7-set in C₃⊕C₄₅**: three ansätze died on
+  window collisions before the machine proved none exists.
+- **An engine out-of-bounds bug** (unclamped root-shard upper bound) caught
+  in review before the sharded campaign; patched, controls re-run.
+- **n = 29 (C₃⊕C₈₇) not resolved in-session.** Corollary F87 leaves only
+  shapes (1,7),(0,8); the exhaustion ran > 4.5 h without a decision at
+  session close. Recorded honestly as inconclusive — see `data/c3_n29.txt`
+  and the README open-threads; an order-swapped replication race was
+  started as a cross-check.
+
+**Next.**
+1. Decide **n = 29 (C₃⊕C₈₇)** — the one failing-block gap left; F87 has
+   already pruned it to two shapes, so a shape-restricted engine (not yet
+   built) should finish it in minutes rather than the flat exhaustion's
+   hours. Its outcome settles C₃⊕C₃ₙ for all n ≤ 56.
+2. Prove **Conjecture D′**, or find its first counterexample; and the
+   C₅⊕C₅ₙ "deficit = odd n" pattern (true at n = 3,6,11,12; the n = 21
+   probe tests it).
+3. Prove **dis(C₅⊕C₁₅) ≤ 5** by hand — the 22-in-25 packing lemma of
+   NOTE §8 — to upgrade the headline from CERTIFIED to PROVED.
+4. `dis(C₂₃²) ∈ {8,9}` (next Conjecture-P case) with the sharded harness;
+   one overnight 4-core run.
+5. **Read, from a machine with egress** (all citations here are
+   (secondary)): the Perez-Lavin 2021 U. Kentucky thesis (declared overlap
+   risk — orders that are products of two prime powers include 75), MOS
+   2014 §4–5 (compare T1 against their Theorem 4.4), the Adhikari 2017
+   survey; then decide whether NOTE.md becomes an arXiv note and whether
+   the rank-two tables go to OEIS (absent under every vocabulary tried).
