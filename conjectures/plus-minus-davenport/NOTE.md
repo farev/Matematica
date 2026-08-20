@@ -1,4 +1,4 @@
-# The plus-minus weighted Davenport constant at the smallest open cases: D±(C₅⊕C₁₅) = 6, D±(C₇⊕C₂₁) = 8, D±(C₃⊕C₄₅) = 7
+# The plus-minus weighted Davenport constant at the smallest open cases: D±(C₅⊕C₁₅) = 6, D±(C₇⊕C₂₁) = 8, D±(C₃⊕C₄₅) = 7, D±(C₅⊕C₅₅) = 8
 
 **Session date:** 2026-08-20.
 **Status of this note:** research note from a one-day session; computational
@@ -19,7 +19,7 @@ single exception of C₅ ⊕ C₁₅, boxed between 6 and 7, and reported the
 rank-two families C₅⊕C₅ₙ and C₇⊕C₇ₙ unknown from n = 3; their C₃⊕C₃ₙ theorem
 leaves n = 15 as the first open member of that family.
 
-We decide all three smallest open cases by exhaustive exact computation with
+We decide the four smallest open cases by exhaustive exact computation with
 cross-checking independent implementations:
 
 - **D±(C₅ ⊕ C₁₅) = 6** — completing the order ≤ 100 table. The upper-bound
@@ -31,14 +31,20 @@ cross-checking independent implementations:
   normalization.
 - **D±(C₃ ⊕ C₄₅) = 7** — the first open case (n = 15) of the C₃⊕C₃ₙ family is
   a *deficit* case: the counting bound 8 is not attained.
+- **D±(C₅ ⊕ C₅₅) = 8** — n = 11 of the C₅⊕C₅ₙ family, a *second* deficit in
+  that family (so C₅⊕C₁₅ is not its only one), by a complete
+  3.487-billion-node exhaustion sharded over four disjoint root ranges.
 
-The three answers land on both sides of the general bounds, so no uniform
-"upper bound is always right in rank two" heuristic survives. We add a proved
-fiber-counting obstruction (Lemma F) constraining how a hypothetical
-6-set in C₅⊕C₁₅ would have to sit over the C₃-fiber, [family tables and a
-census of all abelian groups of small order — see §6–§7], and the E±
-corollaries via the Grynkiewicz–Marchan–Ordaz identity E±(G) = |G| + D±(G) − 1
-((secondary)).
+The answers land on both sides of the general bounds, so no uniform "upper
+bound is always right in rank two" heuristic survives. We add a proved
+fiber-counting obstruction (Lemma F) constraining how a hypothetical 6-set
+in C₅⊕C₁₅ would have to sit over the C₃-fiber; an attainment theorem (T1)
+plus machine decisions that determine the C₃⊕C₃ₙ family for all n ≤ 56 bar
+one; a from-scratch census of all 184 abelian groups of order ≤ 100
+(extended to 127) locating exactly five deficit groups; a dichotomy
+conjecture (D′) with zero exceptions in 329 computed values; and the E±
+corollaries via the Grynkiewicz–Marchan–Ordaz identity
+E±(G) = |G| + D±(G) − 1 ((secondary)).
 
 ## 1. Definitions
 
