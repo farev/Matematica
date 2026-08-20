@@ -74,10 +74,15 @@ group,order,dis,Dpm,counting_bound,attains,witness_checked_size,nonexistence_at,
 5x10,50,5,6,5,yes,5,,family_le200.txt
 5x15,75,5,6,6,NO,5,6,controls.txt
 5x20,100,6,7,6,yes,6,,family_le200.txt
+5x25,125,6,7,6,yes,6,,family_le200.txt
+5x30,150,7,8,7,yes,7,,family_le200.txt
+5x35,175,7,8,7,yes,7,,family_le200.txt
+5x40,200,7,8,7,yes,7,,family_le200.txt
 5x60,300,8,9,8,yes,8,,gap_probes.txt
-7x7,49,5,6,5,yes,5,,controls.txt
-7x14,98,6,7,6,yes,6,,controls.txt
+7x7,49,5,6,5,yes,5,,family_le200.txt
+7x14,98,6,7,6,yes,6,,family_le200.txt
 7x21,147,7,8,7,yes,7,,c7c21_certificate.txt
+7x28,196,7,8,7,yes,7,,family_le200.txt
 7x42,294,8,9,8,yes,8,,gap_probes.txt
 7x49,343,8,9,8,yes,8,,gap_probes.txt
 7x56,392,8,9,8,yes,8,,gap_probes.txt

@@ -333,7 +333,36 @@ machine, 32–56 by T1); the first fully open case beyond that is **n = 57**
 (n = 1 is C₃², dis 2 < 3, a deficit — covered by L4, outside T1, whose
 n ≥ 2 hypothesis is used in step (iii).)
 
-[C₅ ⊕ C₅ₙ AND C₇ ⊕ C₇ₙ TABLES — TO FILL FROM SWEEPS IN FLIGHT.]
+**Table, C₅ ⊕ C₅ₙ** (from `data/family_le200.txt` /
+`data/gap_probes.txt`; ✓ = attains ⌊log₂ 25n⌋ by machine, ✗ = deficit by
+machine; unmarked cells (n = 9, 10) were **not searched** — there the MOS
+bounds coincide (L = 7 = ⌊log₂ 25n⌋), so the value is PROVED by L2 + L3
+alone):
+
+| n | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| dis | 4✓ | 5✓ | **5✗** | 6✓ | 6✓ | 7✓ | 7✓ | 7✓ | 7 | 7 | [in flight] | 8✓ |
+
+n = 9, 10 are bounds-determined (L = ⌊log₂ 25n⌋ = 7); n = 6 is a gap case
+that *attains*, by a fully mixed witness
+(0,1),(0,2),(1,1),(1,9),(1,22),(2,15),(2,19) — so within this family too,
+"gap ⟹ deficit" is false, and (pending n = 11) **C₅⊕C₁₅ is the only
+deficit found in the family**. With n ≤ 10 and 12 decided and n = 13…20
+bounds-determined (no gap: {log₂ 5n} < 1 − {log₂ 5} there), the family is
+known for all n ≤ 20 except the n = 11 run in flight; the next case beyond
+today's box is n = 21 (order 525, a gap case at depth 9).
+
+**Table, C₇ ⊕ C₇ₙ** (same sources; the unmarked n = 5 cell was not
+searched — bounds coincide, value PROVED by L2 + L3):
+
+| n | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |
+|---|---|---|---|---|---|---|---|---|
+| dis | 5✓ | 6✓ | 7✓ | 7✓ | 7 | 8✓ | 8✓ | 8✓ |
+
+**Every member attains**, including all six gap cases n = 2, 3, 4, 6, 7, 8
+— five of them only through mixed witnesses. No deficit exists in this
+family in computed range; the first case beyond the box is n = 9
+(order 441, gap, depth 8 — marginal for this hardware, untested today).
 
 ## 7. Census and the dichotomy
 
