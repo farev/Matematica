@@ -290,9 +290,9 @@ reading of the n ≤ 10 data ("gap ⟹ attain, except n = 3") is refuted by
 this session's own computation. Within the family's gap cases (those with
 L < counting bound) in range, the split is: **n = 3 deficit, n = 6 attain,
 n = 11 deficit, n = 12 attain**. On these four points deficit coincides
-with odd n; that is a 4-point observation, not a conjecture, and the
-running n = 21 probe (order 525, the next gap case, odd) is a live test of
-it — outcome recorded in `data/c5_n21.txt` and the log.
+with odd n; that is a 4-point observation, not a conjecture. Its natural
+test is the next gap case n = 21 (order 525, odd); a probe was launched
+but not decided within the session (`data/c5_n21.txt`).
 
 ### 5.5 E± corollaries (conditional on a (secondary) identity)
 
@@ -349,14 +349,24 @@ new content in this family is what happens when the condition *fails*:
   727k nodes respectively; definitionally re-verified. So T1's b = 3
   construction is not the family's only attainment mechanism, and
   "T1-condition fails ⟹ deficit" is false.
-- **n = 29 is different, provably**: Lemma F at ℓ = 8 over the C₈₇ fiber
-  (capacity 87) gives loads 2^{8−b}·max_j #{A ⊆ [b] : |A| ≡ j mod 3}
-  = 256, 128, 128, 96, 96, **88, 88**, 86, 85 for b = 0…8, so **every
-  shape with b ≤ 6 is impossible — including the b = 5 shape that saves
-  n = 30 (capacity 90 ≥ 88) and n = 31 (93 ≥ 88)**. Only (a, b) = (1, 7)
-  and (0, 8) survive counting at n = 29 (Corollary F87). [Machine decision
-  for n = 29 in flight at this writing — final outcome in the log and
-  `data/c3_n29.txt`.]
+- **n = 29 is a deficit** (CERTIFIED): `dis(C₃⊕C₈₇) = 7`, so
+  **D±(C₃⊕C₈₇) = 8**, one below the counting bound. Upper bound: complete
+  exhaustion over all 130 sign-representatives, **no dissociated 8-set**,
+  2,029,247,290 nodes (≈ 4.7 h single-core). Lower bound: the split
+  witness (0,1),(0,2),(0,4),(0,8),(0,16),(0,32),(1,0), definitionally
+  verified. Certificate: `data/c3_n29.txt`.
+  Lemma F predicted the difficulty exactly: at ℓ = 8 over the C₈₇ fiber
+  (capacity 87) the loads 2^{8−b}·max_j #{A ⊆ [b] : |A| ≡ j mod 3} are
+  256, 128, 128, 96, 96, **88, 88**, 86, 85 for b = 0…8, so **every shape
+  with b ≤ 6 is impossible — including the b = 5 shape that saves n = 30
+  (capacity 90 ≥ 88) and n = 31 (93 ≥ 88)**. Only (a, b) = (1, 7) and
+  (0, 8) survive counting (Corollary F87), and the search shows neither is
+  realizable.
+
+**Consequence for the family.** With T1 covering every n outside the
+failing blocks and machine decisions at n = 15, 29, 30, 31, the family
+`D±(C₃⊕C₃ₙ)` is now **determined for every n ≤ 56**: deficits at n = 1,
+15, 29; attainment everywhere else. The first open case is n = 57.
 
 **Machine table, C₃ ⊕ C₃ₙ** (from `data/family_le200.txt` and §5.3; every
 value CERTIFIED by the primary engine; ✓ = attains ⌊log₂ 9n⌋, ✗ = deficit):
@@ -365,11 +375,13 @@ value CERTIFIED by the primary engine; ✓ = attains ⌊log₂ 9n⌋, ✗ = defi
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | dis | 2✗ | 4✓ | 4✓ | 5✓ | 5✓ | 5✓ | 5✓ | 6✓ | 6✓ | 6✓ | 6✓ | 6✓ | 6✓ | 6✓ | **6✗** | 7✓ | 7✓ | 7✓ | 7✓ | 7✓ | 7✓ |
 
+(n = 29, 30, 31 continue the table beyond its width: **7✗**, 8✓, 8✓.)
+
 With T1 covering every n outside the failing blocks, the family
-D±(C₃⊕C₃ₙ) is now determined for **all n ≤ 56 except any member of
-{29} left unresolved today** (n ≤ 21 by machine, 22–28 by T1, 29–31 by
-machine, 32–56 by T1); the first fully open case beyond that is **n = 57**
-(the next failing block, 57 ≤ n ≤ 63, order ≥ 513 — beyond today's box).
+D±(C₃⊕C₃ₙ) is now determined for **every n ≤ 56** (n ≤ 21 by machine,
+22–28 by T1, 29–31 by machine, 32–56 by T1), with deficits exactly at
+n = 1, 15, 29; the first open case is **n = 57** (the next failing block,
+57 ≤ n ≤ 63, order ≥ 513 — beyond today's box).
 
 (n = 1 is C₃², dis 2 < 3, a deficit — covered by L4, outside T1, whose
 n ≥ 2 hypothesis is used in step (iii).)
@@ -391,7 +403,9 @@ cases split: n = 6 and n = 12 attain — n = 6 by a fully mixed witness
 So "gap ⟹ deficit" is false here, and so is "gap ⟹ attain". With n ≤ 12
 decided and n = 13…20 bounds-determined (L = counting bound there), the
 family is **known for every n ≤ 20**; the first open case is n = 21
-(order 525, gap, depth 9 — probe in flight, see §5.4).
+(order 525, gap, depth 9 — a probe was launched but not decided within
+the session; `data/c5_n21.txt` holds its final state, and the "deficit =
+odd n" question of §5.4 makes n = 21, odd, the natural next target).
 
 **Table, C₇ ⊕ C₇ₙ** (same sources; the unmarked n = 5 cell was not
 searched — bounds coincide, value PROVED by L2 + L3):
@@ -435,9 +449,13 @@ groups whose Sylow 3-part is the deficient C₃³ still attain: coprime
 mixing fully repairs the 3-part's deficiency there. (Order 128 is excluded
 from the machine census: C₂⁷ has rank 7, beyond the engine's rank cap; by
 L4 it attains, dis = 7, and the remaining order-128 groups were not run.)
-So in 2 ≤ |G| ≤ 127 the deficit groups are exactly the five listed above,
-and the next deficit anywhere in computed territory is C₃⊕C₄₅ at order
-135 (§5.3).
+So in 2 ≤ |G| ≤ 127 the deficit groups are **exactly the five listed
+above**. Orders 128–275 were not fully censused (only family members were
+run), but the session's targeted searches found three further deficit
+groups there — C₃⊕C₄₅ (135, §5.3), C₃⊕C₈₇ (261, §6), C₅⊕C₅₅ (275, §5.4) —
+each with dis = L(G), consistent with Conjecture D′. All eight known
+deficit groups are 3- or 5-heavy; no 2-group or {7,11,13}-only group is a
+deficit in any range examined.
 
 **Conjecture D′ (dichotomy, new here as far as today's searches show).**
 For every finite abelian G with invariant factors d₁ | d₂ | ⋯ | d_r, write
@@ -452,11 +470,15 @@ zero values strictly between the bounds (scripts in §10). The five census
 deficit groups and C₃⊕C₄₅ all sit exactly at L(G).
 Status: **NUMERICAL/conjectural** — verified in computed range only.
 
-*Remarks.* (1) A Sylow-split variant ("dis(G) ∈ {Σ_p dis(G_p), counting}")
-also fits the census, but the two phrasings part company at groups like
-C₃⊕C₈₇, where L = 7 exceeds the Sylow split dis(C₃²) + dis(C₂₉) = 6: if
-C₃⊕C₈₇ turns out to be a deficit case (run in flight at writeup time), the
-Sylow variant is refuted while D′ survives — see §6/log for the outcome.
+*Remarks.* (1) **The Sylow-split variant is refuted; D′ survives.** The
+variant "dis(G) ∈ {Σ_p dis(G_p), counting bound}" also fits the whole
+census, but the two phrasings part company at C₃⊕C₈₇ ≅ C₃² ⊕ C₂₉, where
+L = 7 exceeds the Sylow split dis(C₃²) + dis(C₂₉) = 2 + 4 = 6. The
+exhaustion (§6) gives dis(C₃⊕C₈₇) = 7 = L, which is neither the Sylow
+split (6) nor the counting bound (8): the Sylow phrasing is false, the
+invariant-factor phrasing D′ holds. This was a genuine prediction — the
+separating case was identified and the run launched *before* the outcome
+was known.
 (2) The strongest generally-valid split bound is recursive
 (max over decompositions G = A ⊕ B of dis(A) + dis(B), e.g.
 dis(C₇⊕C₁₄) ≥ dis(C₇²) + dis(C₂) = 6 > 5 = L); D′ deliberately uses the

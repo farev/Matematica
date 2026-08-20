@@ -144,7 +144,7 @@ repo already owns. And the default-external bias plus breadth (a new
 subfield for the repo: zero-sum theory) both point the same way. Chose
 **C1**.
 
-**Result.** Four smallest-open plus-minus weighted Davenport constants
+**Result.** Five smallest-open plus-minus weighted Davenport constants
 decided, all **CERTIFIED**, each with a definition-checked witness and an
 exhaustive-search upper bound; full detail and certificates in
 `conjectures/plus-minus-davenport/`.
@@ -163,13 +163,24 @@ exhaustive-search upper bound; full detail and certificates in
   family, by a complete 3.487-billion-node exhaustion sharded over four
   disjoint root ranges. This refuted, in-session, the tentative reading
   that C₅⊕C₁₅ was the family's only deficit.
+- **`D±(C₃⊕C₈₇) = 8`** — n = 29, the last failing-block case of C₃⊕C₃ₙ; a
+  deficit, by a complete 2.029-billion-node exhaustion. This was the
+  **predicted separating case**: chosen and launched before its outcome
+  was known because dis = 7 there would be the invariant-factor bound L
+  but neither the Sylow split (6) nor the counting bound (8) — so a
+  deficit **refutes the Sylow-split form of the dichotomy while confirming
+  D′**. It came back a deficit. With T1, this completes **C₃⊕C₃ₙ for every
+  n ≤ 56** (deficits exactly at n = 1, 15, 29).
 
 Also **CERTIFIED**: a from-scratch census of all 184 abelian groups of
 order ≤ 100 (226 CPU-s), extended to |G| ≤ 127 (47 more groups) — exactly
-**five deficit groups**, all at order ≤ 100 (C₃², C₃³, C₃⁴, C₃²⊕C₉,
-C₅⊕C₁₅), reproducing the MOS exception list with the open case filled in;
-and family tables C₃⊕C₃ₙ (fully known n ≤ 21 and, with T1, all n ≤ 56 bar
-n = 29), C₅⊕C₅ₙ (fully known n ≤ 20), C₇⊕C₇ₙ (attains at every n ≤ 9).
+**five deficit groups** in that range, all at order ≤ 100 (C₃², C₃³, C₃⁴,
+C₃²⊕C₉, C₅⊕C₁₅), reproducing the MOS exception list with the open case
+filled in; and family tables C₃⊕C₃ₙ (**fully known for every n ≤ 56** via
+T1 + machine at the failing blocks; deficits at n = 1, 15, 29), C₅⊕C₅ₙ
+(fully known n ≤ 20; deficits at n = 3, 11), C₇⊕C₇ₙ (attains at every
+n ≤ 9). Eight deficit groups are now known through order 275, all with
+dis = L(G).
 
 **PROVED**: the equivalence D± = dis + 1 and the small-theory lemmas
 (L1–L6); the fiber-counting obstruction Lemma F with corollaries F5
@@ -214,20 +225,21 @@ E±(C₅⊕C₁₅) = 80, E±(C₇⊕C₂₁) = 154, E±(C₃⊕C₄₅) = 141, 
   window collisions before the machine proved none exists.
 - **An engine out-of-bounds bug** (unclamped root-shard upper bound) caught
   in review before the sharded campaign; patched, controls re-run.
-- **n = 29 (C₃⊕C₈₇) not resolved in-session.** Corollary F87 leaves only
-  shapes (1,7),(0,8); the exhaustion ran > 4.5 h without a decision at
-  session close. Recorded honestly as inconclusive — see `data/c3_n29.txt`
-  and the README open-threads; an order-swapped replication race was
-  started as a cross-check.
+- **No hand proof of dis(C₃⊕C₈₇) ≤ 7 either.** Corollary F87 prunes it to
+  shapes (1,7),(0,8) but the closing step was the 2.03-billion-node
+  exhaustion, not an argument. (The value itself *is* decided — CERTIFIED
+  deficit, above; what failed is the hope of a human proof.) An
+  order-swapped replication race (indexing the group as C₈₇⊕C₃) was
+  launched as an independent cross-check and was still running at close.
 
 **Next.**
-1. Decide **n = 29 (C₃⊕C₈₇)** — the one failing-block gap left; F87 has
-   already pruned it to two shapes, so a shape-restricted engine (not yet
-   built) should finish it in minutes rather than the flat exhaustion's
-   hours. Its outcome settles C₃⊕C₃ₙ for all n ≤ 56.
-2. Prove **Conjecture D′**, or find its first counterexample; and the
-   C₅⊕C₅ₙ "deficit = odd n" pattern (true at n = 3,6,11,12; the n = 21
-   probe tests it).
+1. Prove **Conjecture D′**, or find its first counterexample. The Sylow
+   variant is already dead (C₃⊕C₈₇); D′ itself stands at 329/329. A proof
+   likely needs a structural reason why a group either hits the counting
+   maximum or collapses to the invariant-factor bound with nothing between.
+   Also the C₅⊕C₅ₙ "deficit = odd n" pattern (true at n = 3, 6, 11, 12;
+   the n = 21 probe, order 525, was running at close — its result is the
+   next data point).
 3. Prove **dis(C₅⊕C₁₅) ≤ 5** by hand — the 22-in-25 packing lemma of
    NOTE §8 — to upgrade the headline from CERTIFIED to PROVED.
 4. `dis(C₂₃²) ∈ {8,9}` (next Conjecture-P case) with the sharded harness;

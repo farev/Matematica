@@ -58,15 +58,20 @@ in 10.7 s during the survey quarter.
    n = 29 (capacity 87) ban every shape b ≤ 6 — including the b = 5 shape
    that rescues n = 30 (fits under 90) and n = 31 (93). So within one
    failing block, counting alone separates the case that resisted from
-   the two that fell. The n = 29 exhaustion was still running at writeup
-   time; final state in the log.
-10. **The dichotomy sharpened under fire.** The census observation was
-    first phrased with Sylow splits; preparing the n = 29 run exposed
-    that C₃⊕C₈₇ has invariant-factor bound L = 7 strictly above its
-    Sylow split 6 — so a deficit there would have *refuted* the Sylow
-    phrasing while confirming the invariant-factor one. Conjecture D′
-    (MOS lower and upper bounds never both strict) is the version that
-    survives all data and is the one the NOTE states.
+   the two that fell.
+10. **The dichotomy sharpened under fire, then tested by prediction.** The
+    census observation was first phrased with Sylow splits; preparing the
+    n = 29 run exposed that C₃⊕C₈₇ has invariant-factor bound L = 7
+    strictly above its Sylow split 6 — so its outcome would *decide
+    between* the two phrasings: a deficit (dis = 7) refutes the Sylow form
+    and confirms the invariant-factor form D′. The separating case was
+    identified and the 2-billion-node run launched before the answer was
+    known. It came back a deficit — Sylow phrasing dead, D′ alive at
+    329/329. This is the session's cleanest instance of a made-in-advance
+    prediction confirmed by an independent computation, and it also closed
+    C₃⊕C₃ₙ for every n ≤ 56 (deficits n = 1, 15, 29). Two cross-checks were
+    left running at close: an order-swapped replication of n = 29 and the
+    n = 21 (C₅⊕C₁₀₅) probe.
 
 ## What failed (kept deliberately)
 
