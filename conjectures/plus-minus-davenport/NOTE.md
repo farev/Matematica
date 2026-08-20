@@ -253,7 +253,42 @@ exhaustion with **exists = NO**, 8,202,091 nodes; the definitional engine
 confirms 0 dissociated 7-subsets. (Counting alone would allow 7:
 2⁷ = 128 ≤ 135.)
 
-### 5.4 E± corollaries (conditional on a (secondary) identity)
+### 5.4 D±(C₅ ⊕ C₅₅) = 8 (CERTIFIED) — a second deficit in the C₅ family
+
+MOS report C₅⊕C₅ₙ unknown from n = 3 ((secondary)); this is n = 11, order
+275. dis(C₅⊕C₅₅) = 7 = L(G), one below the counting bound
+⌊log₂ 275⌋ = 8.
+
+*Lower bound.* {(0,1),(0,2),(0,4),(0,8),(0,16),(1,0),(2,0)} — the split
+construction L3c, definitionally verified.
+
+*Upper bound.* No dissociated 8-set, by a **sharded exhaustion** over the
+137 sign-representatives, run as four disjoint root ranges whose union is
+exactly [0, 137) (verified: `./dis_search all 5 55 1` counts 137
+representatives):
+
+| shard | root range | nodes | result |
+|---|---|---|---|
+| A | [0, 6) | 853,600,001 | no 8-set |
+| B | [6, 20) | 1,336,994,871 | no 8-set |
+| C | [20, 50) | 1,095,242,317 | no 8-set |
+| D | [50, 137) | 201,849,471 | no 8-set |
+| **total** | **[0, 137)** | **3,487,686,660** | **none exists** |
+
+Shards are independent searches distinguished by their root element, so
+they compose exactly; ≈ 4.2 wall-hours across 4 cores. Certificates:
+`data/c5c55_shard{A,B,C,D}.txt`.
+
+**Consequence.** C₅⊕C₁₅ is *not* the family's only deficit — the tentative
+reading of the n ≤ 10 data ("gap ⟹ attain, except n = 3") is refuted by
+this session's own computation. Within the family's gap cases (those with
+L < counting bound) in range, the split is: **n = 3 deficit, n = 6 attain,
+n = 11 deficit, n = 12 attain**. On these four points deficit coincides
+with odd n; that is a 4-point observation, not a conjecture, and the
+running n = 21 probe (order 525, the next gap case, odd) is a live test of
+it — outcome recorded in `data/c5_n21.txt` and the log.
+
+### 5.5 E± corollaries (conditional on a (secondary) identity)
 
 Grynkiewicz–Marchan–Ordaz (Ramanujan J. 28 (2012), (secondary)) prove
 E_A(G) = |G| + D_A(G) − 1 for all finite abelian G and nonempty A ⊆ ℤ.
@@ -341,16 +376,16 @@ alone):
 
 | n | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| dis | 4✓ | 5✓ | **5✗** | 6✓ | 6✓ | 7✓ | 7✓ | 7✓ | 7 | 7 | [in flight] | 8✓ |
+| dis | 4✓ | 5✓ | **5✗** | 6✓ | 6✓ | 7✓ | 7✓ | 7✓ | 7 | 7 | **7✗** | 8✓ |
 
-n = 9, 10 are bounds-determined (L = ⌊log₂ 25n⌋ = 7); n = 6 is a gap case
-that *attains*, by a fully mixed witness
-(0,1),(0,2),(1,1),(1,9),(1,22),(2,15),(2,19) — so within this family too,
-"gap ⟹ deficit" is false, and (pending n = 11) **C₅⊕C₁₅ is the only
-deficit found in the family**. With n ≤ 10 and 12 decided and n = 13…20
-bounds-determined (no gap: {log₂ 5n} < 1 − {log₂ 5} there), the family is
-known for all n ≤ 20 except the n = 11 run in flight; the next case beyond
-today's box is n = 21 (order 525, a gap case at depth 9).
+n = 9, 10 are bounds-determined (L = ⌊log₂ 25n⌋ = 7). The family has
+**two deficits in range**, n = 3 (§5.1) and n = 11 (§5.4), and its gap
+cases split: n = 6 and n = 12 attain — n = 6 by a fully mixed witness
+(0,1),(0,2),(1,1),(1,9),(1,22),(2,15),(2,19) — while n = 3 and 11 do not.
+So "gap ⟹ deficit" is false here, and so is "gap ⟹ attain". With n ≤ 12
+decided and n = 13…20 bounds-determined (L = counting bound there), the
+family is **known for every n ≤ 20**; the first open case is n = 21
+(order 525, gap, depth 9 — probe in flight, see §5.4).
 
 **Table, C₇ ⊕ C₇ₙ** (same sources; the unmarked n = 5 cell was not
 searched — bounds coincide, value PROVED by L2 + L3):

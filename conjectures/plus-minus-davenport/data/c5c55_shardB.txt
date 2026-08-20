@@ -1,0 +1,1 @@
+group=5x55 N=275 T=8 exists=NO nodes=1336994871 root=[6,20)

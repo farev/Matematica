@@ -20,6 +20,7 @@ first at n = 15. The fault line: each value is a bounded exact search.
 | D±(C₅⊕C₁₅) = 6 — the last open group of order ≤ 100 | CERTIFIED | NOTE §5.1, `data/c5c15_certificate.txt` |
 | D±(C₇⊕C₂₁) = 8, exactly 2016 maximum 7-sets | CERTIFIED | NOTE §5.2, `data/c7c21_certificate.txt` |
 | D±(C₃⊕C₄₅) = 7 — first open case (n=15) of the C₃⊕C₃ₙ family, a deficit | CERTIFIED | NOTE §5.3, `data/c3c45_certificate.txt` |
+| D±(C₅⊕C₅₅) = 8 — n=11 of the C₅⊕C₅ₙ family, a second family deficit (3.49B-node sharded exhaustion) | CERTIFIED | NOTE §5.4, `data/c5c55_shard*.txt` |
 | Census: all 184 abelian groups of order ≤ 100; exactly 5 miss ⌊log₂\|G\|⌋+1 | CERTIFIED | NOTE §7, `data/census.csv` |
 | Attainment for C₃⊕C₃ₙ whenever 2^{⌊log₂9n⌋−3} ≤ n (rediscovers MOS regime) | PROVED | NOTE §6 (Theorem T1) |
 | Equivalence, bounds, normalization, fiber obstruction (L1–L6, F, F5, F45) | PROVED | NOTE §2–§3 |
@@ -70,8 +71,9 @@ python3 make_tables.py         # audit everything
 - The three headline upper bounds are exhaustive searches (CERTIFIED), not
   proofs; the hand-proof of dis(C₅⊕C₁₅) ≤ 5 is open (NOTE §8), and Lemma F
   shows any proof must beat a one-element slack.
-- Sharpest open questions: Conjecture D (dichotomy); C₃⊕C₃ₙ at n = 57…63;
-  C₅⊕C₅ₙ at n = 21…25; dis(C₂₃²) ∈ {8, 9}.
+- Sharpest open questions: Conjecture D′ (dichotomy); the C₅⊕C₅ₙ deficit
+  pattern (n = 3, 11 deficit; 6, 12 attain — does deficit = odd n hold? the
+  n = 21 probe tests it); C₃⊕C₃ₙ at n = 57…63; dis(C₂₃²) ∈ {8, 9}.
 
 ## Prior work
 

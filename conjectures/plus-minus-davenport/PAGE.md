@@ -26,6 +26,9 @@ with it the two smallest open family cases `D±(C₇ ⊕ C₂₁) = 8` and
    C₃⊕C₃ₙ family is a genuine *deficit* — counting allows 8, the truth is
    the split bound 7; exhaustions of 8.2M nodes (signed engine) and
    361.7M nodes / 6.99B extension tests (definitional engine).
+3b. **CERTIFIED** `D±(C₅⊕C₅₅) = 8`: n = 11 of the C₅⊕C₅ₙ family, a *second*
+   deficit in that family (so C₅⊕C₁₅ is not the only one) — a complete
+   3.49-billion-node exhaustion sharded over four disjoint root ranges.
 4. **CERTIFIED** census: all **184** abelian groups of order ≤ 100 from
    scratch (226 CPU-s); exactly **five** deficit groups: C₃², C₃³, C₃⁴,
    C₃²⊕C₉, C₅⊕C₁₅.
