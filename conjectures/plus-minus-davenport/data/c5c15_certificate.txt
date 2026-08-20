@@ -1,0 +1,23 @@
+# D_pm(C5+C15) = 6 certificate suite, 2026-08-20
+# Claim: dis(C5 x C15) = 5, i.e. D_pm = 6. Lower bound: witness below.
+# Upper bound: exhaustive absence of dissociated 6-sets by two independent engines.
+
+## engine 1: dis_search.c (signed-sum DFS over +/- representatives)
+group=5x15 N=75 dis=5 Dpm=6 nodes=139052 root=[0,37) witness=(0,1),(0,2),(0,4),(1,0),(2,0)
+group=5x15 N=75 T=6 count=0 nodes=136464 root=[0,37)
+group=5x15 N=75 T=5 count=85155 nodes=138538 root=[0,37)
+first=(0,1),(0,2),(0,4),(1,0),(2,0)
+
+## engine 2: verify_defn.c (definitional subset-sum DFS, all 75 elements, no reductions)
+group=5x15 N=75 T=6 dissociated_T_subsets=0 nodes=3505201 extensions_tried=42579925
+first_witness=(0,1),(0,2),(0,4),(1,0),(2,0)
+group=5x15 N=75 T=5 dissociated_T_subsets=2724960 nodes=3518237 extensions_tried=11376554
+
+## engine 3: dis_reference.py (clean-room Python DFS)
+group=5x15 dis=5 Dpm=6 witness=[(0, 1), (0, 2), (0, 4), (1, 0), (2, 0)]
+
+## witness check from the definition
+group=5x15 |S|=5 dissociated=True
+
+## cross-check identity: representative-form 5-set count x 2^5 must equal raw definitional count
+85155 * 32 = 2724960 (engine-2 count: 2724960) OK
