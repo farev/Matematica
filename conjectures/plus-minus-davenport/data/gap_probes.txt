@@ -1,0 +1,16 @@
+# gap-case attainment probes (decide T=counting, 300s timeout each), 2026-08-20
+--- probe: 5 55 8 ---
+TIMEOUT/undecided at 300s: 5 55 8
+--- probe: 5 60 8 ---
+group=5x60 N=300 T=8 exists=YES nodes=1223123 root=[0,150)
+witness=(0,1),(0,2),(0,4),(1,1),(1,28),(1,53),(2,2),(2,46)
+--- probe: 7 42 8 ---
+group=7x42 N=294 T=8 exists=YES nodes=608828 root=[0,147)
+witness=(0,1),(0,2),(0,4),(1,1),(1,10),(2,3),(2,20),(3,38)
+--- probe: 7 49 8 ---
+group=7x49 N=343 T=8 exists=YES nodes=66168 root=[0,171)
+witness=(0,1),(0,2),(0,4),(0,8),(1,0),(1,16),(1,32),(3,15)
+--- probe: 7 56 8 ---
+group=7x56 N=392 T=8 exists=YES nodes=124510 root=[0,196)
+witness=(0,1),(0,2),(0,4),(0,8),(1,0),(1,16),(1,32),(3,8)
+--- probe: 23 23 9 ---

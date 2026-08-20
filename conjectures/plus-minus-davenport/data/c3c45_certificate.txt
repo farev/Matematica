@@ -1,0 +1,8 @@
+# D_pm(C3+C45) certificate, 2026-08-20 (first open case n=15 of the MOS C3+C3n family, secondary)
+# Box: dis in {6,7} i.e. D_pm in {7,8}. Counting bound (L2): dis <= floor(log2 135) = 7.
+
+group=3x45 N=135 T=7 exists=NO nodes=8202091 root=[0,67)
+group=3x45 N=135 dis=6 Dpm=7 nodes=8293370 root=[0,67) witness=(0,1),(0,2),(0,4),(0,8),(0,16),(1,0)
+group=3x45 N=135 T=7 dissociated_T_subsets=0 nodes=361708948 extensions_tried=6986646530
+witness_from_max=(0,1),(0,2),(0,4),(0,8),(0,16),(1,0)
+group=3x45 |S|=6 dissociated=True

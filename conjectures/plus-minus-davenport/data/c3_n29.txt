@@ -1,0 +1,1 @@
+# C3+C3n failing-block cases (T1 hypothesis fails at n=29,30,31), 2026-08-20

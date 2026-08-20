@@ -1,0 +1,9 @@
+# D_pm(C7+C21) = 8 certificate suite, 2026-08-20
+# Claim: dis(C7 x C21) = 7, i.e. D_pm = 8. Upper bound is the counting bound (NOTE L2): 2^8 = 256 > 147.
+# Lower bound: witness below (found by dis_search, verified from the definition).
+
+group=7x21 N=147 dis=7 Dpm=8 nodes=16528742 root=[0,73) witness=(0,1),(0,2),(1,1),(1,5),(2,1),(2,10),(3,19)
+group=7x21 N=147 T=7 count=2016 nodes=16386057 root=[0,73)
+first=(0,1),(0,2),(1,1),(1,5),(2,1),(2,10),(3,19)
+
+group=7x21 |S|=7 dissociated=True

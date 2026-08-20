@@ -110,7 +110,7 @@ static void dfs(int start, const uint64_t *mask, int depth) {
         bestlen = depth;
         memcpy(bestset, cur, depth * sizeof(int));
     }
-    int hi = (depth == 0 && root_hi >= 0) ? root_hi : nreps;
+    int hi = (depth == 0 && root_hi >= 0 && root_hi < nreps) ? root_hi : nreps;
     int lo = (depth == 0) ? root_lo : start;
     uint64_t next[MAXW];
     for (int j = lo; j < hi; j++) {
