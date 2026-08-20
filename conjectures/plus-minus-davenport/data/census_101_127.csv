@@ -1,0 +1,5 @@
+order,invariant_factors,dis,Dpm,log2_upper,attains_upper,nodes,secs
+101,101,6,7,6,yes,993251,2.18
+102,102,6,7,6,yes,1256823,3.05
+103,103,6,7,6,yes,1140973,2.71
+104,104,6,7,6,yes,1529619,3.44
