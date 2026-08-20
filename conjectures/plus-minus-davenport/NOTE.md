@@ -388,6 +388,16 @@ in.
 also one, forced by their own elementary-3-group theorem D± = r + 1, so we
 read the snippet's list as illustrative, not exhaustive.)
 
+**Extension 101 ≤ |G| ≤ 127** (`data/census_101_127.csv`, 47 groups): **no
+further deficit group exists in that range** — notably the order-108
+groups whose Sylow 3-part is the deficient C₃³ still attain: coprime
+mixing fully repairs the 3-part's deficiency there. (Order 128 is excluded
+from the machine census: C₂⁷ has rank 7, beyond the engine's rank cap; by
+L4 it attains, dis = 7, and the remaining order-128 groups were not run.)
+So in 2 ≤ |G| ≤ 127 the deficit groups are exactly the five listed above,
+and the next deficit anywhere in computed territory is C₃⊕C₄₅ at order
+135 (§5.3).
+
 **Conjecture D′ (dichotomy, new here as far as today's searches show).**
 For every finite abelian G with invariant factors d₁ | d₂ | ⋯ | d_r, write
 L(G) = Σᵢ ⌊log₂ dᵢ⌋ (the MOS lower bound, L3c). Then

@@ -29,15 +29,20 @@ def check(source, inv_factors, dis, order):
 
 def main():
     bad = total = 0
-    with open("data/census.csv") as f:
-        for r in csv.DictReader(f):
-            inv = [int(x) for x in r["invariant_factors"].split("x")]
-            L, ub, ok = check("census", inv, int(r["dis"]), int(r["order"]))
-            total += 1
-            if not ok:
-                bad += 1
-                print(f"VIOLATION census {r['invariant_factors']}: "
-                      f"dis={r['dis']} L={L} ub={ub}")
+    for cf in ("data/census.csv", "data/census_101_127.csv"):
+        try:
+            f = open(cf)
+        except FileNotFoundError:
+            continue
+        with f:
+            for r in csv.DictReader(f):
+                inv = [int(x) for x in r["invariant_factors"].split("x")]
+                L, ub, ok = check(cf, inv, int(r["dis"]), int(r["order"]))
+                total += 1
+                if not ok:
+                    bad += 1
+                    print(f"VIOLATION {cf} {r['invariant_factors']}: "
+                          f"dis={r['dis']} L={L} ub={ub}")
     try:
         with open("data/families.csv") as f:
             for r in csv.DictReader(f):
