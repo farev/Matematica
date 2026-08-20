@@ -159,6 +159,14 @@ b = 5, 6, 7. ∎
 The one-element slack is why n = 15 resisted the MOS-era methods: the
 deficit is real (§5.3) but invisible to fiber counting.
 
+**Corollary F87.** Every dissociated 8-set in C₃ ⊕ C₈₇ has at least 7
+elements with nonzero C₃-coordinate: with fiber capacity |H| = 87, the
+loads 2^{8−b} · max_j #{A ⊆ [b] : |A| ≡ j (mod 3)} for b = 0…8 are
+256, 128, 128, 96, 96, 88, 88, 86, 85, exceeding 87 for every b ≤ 6. ∎
+(Note the contrast inside one failing block of §6: the b = 5 load 88 fits
+under the capacities 90 and 93 of n = 30, 31 — where the machine indeed
+found b = 5 witnesses — but not under 87.)
+
 ## 4. Computation: three cross-checking implementations
 
 All arithmetic is exact (integer indices, bitmasks); no floating point
@@ -294,15 +302,33 @@ new content in this family is what happens when the condition *fails*:
 - **n = 15 is a genuine deficit** (§5.3): dis(C₃⊕C₄₅) = 6 = the split
   bound, not 7. The first failing n is the first counterexample to
   upper-bound attainment in the family.
-- [n = 29, 30, 31 — RUNS IN FLIGHT; fill with certified outcomes or mark
-  "not reached today".]
+- **n = 30 and n = 31 attain** (CERTIFIED): witnesses with *five*
+  spread points (b = 5) — e.g. at n = 31:
+  (0,1),(0,2),(0,4),(1,3),(1,11),(1,44),(1,71),(1,87) — found in 594k and
+  727k nodes respectively; definitionally re-verified. So T1's b = 3
+  construction is not the family's only attainment mechanism, and
+  "T1-condition fails ⟹ deficit" is false.
+- **n = 29 is different, provably**: Lemma F at ℓ = 8 over the C₈₇ fiber
+  (capacity 87) gives loads 2^{8−b}·max_j #{A ⊆ [b] : |A| ≡ j mod 3}
+  = 256, 128, 128, 96, 96, **88, 88**, 86, 85 for b = 0…8, so **every
+  shape with b ≤ 6 is impossible — including the b = 5 shape that saves
+  n = 30 (capacity 90 ≥ 88) and n = 31 (93 ≥ 88)**. Only (a, b) = (1, 7)
+  and (0, 8) survive counting at n = 29 (Corollary F87). [Machine decision
+  for n = 29 in flight at this writing — final outcome in the log and
+  `data/c3_n29.txt`.]
 
 **Machine table, C₃ ⊕ C₃ₙ** (from `data/family_le200.txt` and §5.3; every
 value CERTIFIED by the primary engine; ✓ = attains ⌊log₂ 9n⌋, ✗ = deficit):
 
 | n | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| dis | 2✗ | 4✓ | 4✓ | 5✓ | 5✓ | 5✓ | 5✓ | 6✓ | 6✓ | 6✓ | 6✓ | 6✓ | 6✓ | 6✓ | **6✗** | 7✓ | 7✓ | 7✓ | 7✓ | [n20] | [n21] |
+| dis | 2✗ | 4✓ | 4✓ | 5✓ | 5✓ | 5✓ | 5✓ | 6✓ | 6✓ | 6✓ | 6✓ | 6✓ | 6✓ | 6✓ | **6✗** | 7✓ | 7✓ | 7✓ | 7✓ | 7✓ | [n21] |
+
+With T1 covering every n outside the failing blocks, the family
+D±(C₃⊕C₃ₙ) is now determined for **all n ≤ 56 except any member of
+{29} left unresolved today** (n ≤ 21 by machine, 22–28 by T1, 29–31 by
+machine, 32–56 by T1); the first fully open case beyond that is **n = 57**
+(the next failing block, 57 ≤ n ≤ 63, order ≥ 513 — beyond today's box).
 
 (n = 1 is C₃², dis 2 < 3, a deficit — covered by L4, outside T1, whose
 n ≥ 2 hypothesis is used in step (iii).)
@@ -332,21 +358,29 @@ in.
 also one, forced by their own elementary-3-group theorem D± = r + 1, so we
 read the snippet's list as illustrative, not exhaustive.)
 
-**Conjecture D (dichotomy, new here as far as today's searches show).** For
-every finite abelian G with Sylow decomposition G = ⊕_p G_p,
-dis(G) = ⌊log₂ |G|⌋ or dis(G) = Σ_p dis(G_p).
-That is: coprime mixing either achieves the absolute counting maximum or
-gains nothing over the Sylow-split bound (L3a applied to ⊕_p G_p) — never
-something strictly in between.
+**Conjecture D′ (dichotomy, new here as far as today's searches show).**
+For every finite abelian G with invariant factors d₁ | d₂ | ⋯ | d_r, write
+L(G) = Σᵢ ⌊log₂ dᵢ⌋ (the MOS lower bound, L3c). Then
+dis(G) = ⌊log₂ |G|⌋ or dis(G) = L(G):
+**the MOS lower and upper bounds are never both strict.**
 
-*Evidence.* All 184 groups of order ≤ 100 (script in §10): 179 attain
-(among them 28 where mixing strictly beats the Sylow split — e.g.
-C₂₁: 4 = ⌊log₂ 21⌋ > 3 = dis(C₃) + dis(C₇), and C₇⊕C₂₁), and the 5 deficit
-groups all have dis exactly equal to the Sylow split (for the three
-3-groups trivially; for C₅⊕C₁₅: 4 + 1 = 5 ✓). Beyond 100:
-C₃⊕C₄₅ (135): Sylow split dis(C₃⊕C₉) + dis(C₅) = 4 + 2 = 6 = dis ✓;
-C₇⊕C₂₁ (147): attains ✓; every family value computed today is consistent.
+*Evidence.* All 184 groups of order ≤ 100 plus every value computed today
+beyond 100 (C₃⊕C₄₅, C₇⊕C₂₁, C₃⊕C₉₀, C₃⊕C₉₃, C₅⊕C₆₀, C₇⊕C₄₂, C₇⊕C₄₉,
+C₇⊕C₅₆, C₁₁², C₁₃², C₁₄₇, C₃⊕C₃ₙ for 16 ≤ n ≤ 20): zero exceptions, and
+zero values strictly between the bounds (scripts in §10). The five census
+deficit groups and C₃⊕C₄₅ all sit exactly at L(G).
 Status: **NUMERICAL/conjectural** — verified in computed range only.
+
+*Remarks.* (1) A Sylow-split variant ("dis(G) ∈ {Σ_p dis(G_p), counting}")
+also fits the census, but the two phrasings part company at groups like
+C₃⊕C₈₇, where L = 7 exceeds the Sylow split dis(C₃²) + dis(C₂₉) = 6: if
+C₃⊕C₈₇ turns out to be a deficit case (run in flight at writeup time), the
+Sylow variant is refuted while D′ survives — see §6/log for the outcome.
+(2) The strongest generally-valid split bound is recursive
+(max over decompositions G = A ⊕ B of dis(A) + dis(B), e.g.
+dis(C₇⊕C₁₄) ≥ dis(C₇²) + dis(C₂) = 6 > 5 = L); D′ deliberately uses the
+non-recursive L, and every group where the recursive bound beats L has, so
+far, attained the counting bound outright.
 
 Within p-groups the deficit question reduces to: which p-groups miss the
 counting bound? In range, *only* 3-groups do (all 2-groups attain — MOS,
@@ -359,10 +393,19 @@ misses (C₃⊕C₉, C₃⊕C₂₇, C₉⊕C₉, C₈₁ … attain), while eve
 ## 8. Open questions from this session
 
 1. Prove dis(C₅⊕C₁₅) ≤ 5 by hand. Lemma F reduces to b ∈ {3,4,5,6} nonzero
-   C₃-coordinates; the b = 4 case is equivalent to: for every dissociated
-   4-set F ⊂ 𝔽₅² and pair {v₅, v₆} with v₅ − v₆ outside the signed span
-   Σ±(F) ∪ {0} … no such configuration exists. A conceptual reason is
-   missing.
+   C₃-coordinates (shapes (a,b) = (3,3), (2,4), (1,5), (0,6), with fiber
+   loads 24, 24, 22, 22 against capacity 25 — all survive counting). The
+   extreme shape (0,6) reduces to a clean finite-geometry question: six
+   distinct points v₁…v₆ ∈ 𝔽₅² with total F = Σv_i such that (i) all 20
+   triple-sums σ_T avoid {0, F}, are pairwise distinct, and satisfy
+   2σ_T ≠ F (equivalently: {0, F} ∪ {σ_T} is a 22-point subset of the
+   25-point plane, closed under the fixed-point-free involution
+   v ↦ F − v); (ii) the 15 pair-sums are pairwise distinct; (iii)
+   F ≠ 2v_e + v_f for all ordered pairs. The machine says no such
+   configuration exists; a human reason — a 22-in-25 packing obstruction —
+   is the missing lemma. The b = 4 case is equivalent to: no dissociated
+   4-set F ⊂ 𝔽₅² admits a pair {v₅, v₆} with v₅ − v₆ outside the signed
+   span Σ±(F) ∪ {0}. A conceptual reason is missing in both.
 2. Characterize the groups with dis(G) < ⌊log₂|G|⌋ ("deficit groups").
    Known at ≤ 100 (MOS (secondary) + this session): C₃², C₃³, C₃⁴-adjacent
    families, C₃²⊕C₉, C₅⊕C₁₅; new at 135: C₃⊕C₄₅. [Update with census.]

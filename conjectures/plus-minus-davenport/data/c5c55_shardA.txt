@@ -1,0 +1,1 @@
+# C5+C55 (order 275, n=11) decide T=8, sharded exhaustion; shards over [0,137) compose
