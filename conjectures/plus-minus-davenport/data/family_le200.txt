@@ -18,3 +18,8 @@ group=3x51 N=153 dis=7 Dpm=8 nodes=22655909 root=[0,76) witness=(0,1),(0,2),(0,4
 group=3x54 N=162 dis=7 Dpm=8 nodes=42533766 root=[0,81) witness=(0,1),(0,2),(0,4),(0,8),(1,4),(1,24),(1,42)
 group=3x57 N=171 dis=7 Dpm=8 nodes=56500022 root=[0,85) witness=(0,1),(0,2),(0,4),(0,8),(1,3),(1,26),(1,44)
 group=3x60 N=180 dis=7 Dpm=8 nodes=101421556 root=[0,90) witness=(0,1),(0,2),(0,4),(0,8),(1,2),(1,28),(1,46)
+group=3x63 N=189 dis=7 Dpm=8 nodes=129254261 root=[0,94) witness=(0,1),(0,2),(0,4),(0,8),(1,1),(1,30),(1,48)
+group=5x5 N=25 dis=4 Dpm=5 nodes=394 root=[0,12) witness=(0,1),(0,2),(1,0),(2,0)
+group=5x10 N=50 dis=5 Dpm=6 nodes=15162 root=[0,25) witness=(0,1),(0,2),(0,4),(1,0),(2,0)
+group=5x20 N=100 dis=6 Dpm=7 nodes=1215168 root=[0,50) witness=(0,1),(0,2),(0,4),(0,8),(1,0),(2,0)
+group=5x25 N=125 dis=6 Dpm=7 nodes=5015644 root=[0,62) witness=(0,1),(0,2),(0,4),(0,8),(1,0),(2,0)

@@ -454,6 +454,8 @@ gcc -O2 -march=native -o verify_defn verify_defn.c
 python3 dis_reference.py max 5 15
 python3 dis_reference.py check 5 15 "(0,1),(0,2),(0,4),(1,0),(2,0)"
 python3 census.py 100 > data/census.csv
+python3 make_tables.py        # parses data/, re-verifies EVERY witness
+python3 check_dichotomy.py    # Conjecture D': zero violations expected
 ```
 
 Certificates and run logs: `data/`.

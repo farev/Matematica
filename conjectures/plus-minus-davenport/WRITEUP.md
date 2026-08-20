@@ -52,9 +52,21 @@ in 10.7 s during the survey quarter.
    genuine deficit.
 8. **Failing-block runs**: n = 30 ATTAINS (via a b = 5 witness the
    T1-style analysis said b = 3 could not deliver) — so "construction fails
-   ⟹ deficit" died within the hour of being conjectured. n = 29, 31 and
-   the 5-family holdout n = 11 (C₅⊕C₅₅) were still running at writeup
-   time; see the log for their final state.
+   ⟹ deficit" died within the hour of being conjectured. n = 31 then also
+   attained, again with b = 5, in 727k nodes.
+9. **Corollary F87 explains the asymmetry**: the fiber-counting loads at
+   n = 29 (capacity 87) ban every shape b ≤ 6 — including the b = 5 shape
+   that rescues n = 30 (fits under 90) and n = 31 (93). So within one
+   failing block, counting alone separates the case that resisted from
+   the two that fell. The n = 29 exhaustion was still running at writeup
+   time; final state in the log.
+10. **The dichotomy sharpened under fire.** The census observation was
+    first phrased with Sylow splits; preparing the n = 29 run exposed
+    that C₃⊕C₈₇ has invariant-factor bound L = 7 strictly above its
+    Sylow split 6 — so a deficit there would have *refuted* the Sylow
+    phrasing while confirming the invariant-factor one. Conjecture D′
+    (MOS lower and upper bounds never both strict) is the version that
+    survives all data and is the one the NOTE states.
 
 ## What failed (kept deliberately)
 

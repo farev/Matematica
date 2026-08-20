@@ -35,6 +35,7 @@ first at n = 15. The fault line: each value is a bounded exact search.
 | `dis_reference.py` | clean-room Python DFS + definitional witness checker | slow | third confirmations |
 | `census.py` | all abelian groups of order ≤ N → `data/census.csv` | 226 s at N=100 | the ≤ 100 table |
 | `make_tables.py` | parses run logs, **re-verifies every witness from the definition**, audits bounds | seconds | `data/families.csv` |
+| `check_dichotomy.py` | verifies Conjecture D′ on every computed group value | seconds | "violations: 0" |
 
 Run from inside this directory:
 
