@@ -1,1 +1,7 @@
 n= 270 C2+C3+C5+C9            lb=7 cap=8 lmax=8  (340.51s, 730197075 nodes)
+n= 288 C3+C3+C32              lb=7 cap=8 lmax=8  (0.01s, 11753 nodes)
+n= 288 C2+C3+C3+C16           lb=7 cap=8 lmax=8  (0.13s, 209617 nodes)
+n= 288 C3+C3+C4+C8            lb=7 cap=8 lmax=8  (0.05s, 64173 nodes)
+n= 288 C2+C2+C3+C3+C8         lb=7 cap=8 lmax=8  (2.45s, 4470029 nodes)
+n= 288 C2+C3+C3+C4+C4         lb=7 cap=8 lmax=8  (0.14s, 215890 nodes)
+n= 288 C2+C2+C2+C3+C3+C4      lb=7 cap=8 lmax=8  (38.69s, 83313547 nodes)
