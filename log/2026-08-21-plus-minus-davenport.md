@@ -194,9 +194,30 @@ sandwich argument, 12 sit in genuine windows (5, 7, 19, 29, 31, 37,
 not new): Lemma E (±-zsf ⟺ dissociated), the sandwich bounds, and
 `D±(C₂^r) = D±(C₃^r) = r + 1`.
 
-*Still running at log-writing time (final status in Next):* the
-256–330 census sweep; `C₃⊕C₅³` (order 375) and `C₅⊕C₃⁴` (order 405)
-window decisions; the `C₁₉⊕C₅₇` (order 1083) witness hunt.
+*Stretch runs, final status at session end:*
+
+- **256–330 census sweep: completed** — 168 further groups
+  (`census_256_330.csv`), combined total **661 groups over orders
+  2–330**, group counts confirmed by an independent sieve. 156 of the
+  168 resolved within the 600 s per-cell budget, **all attaining**; 12
+  window cells timed out and two of those were then decided by
+  dedicated runs (275 and 261, below); 10 remain unresolved (270
+  `C₂⊕C₃³⊕C₅`, 279 `C₃²⊕C₃₁`, 288 `C₂⁵⊕C₃²`, 294 `C₂⊕C₃⊕C₇²` — killed
+  at wrap if unfinished, see run_294.log — 297 `C₃³⊕C₁₁`, 300
+  `C₃⊕C₄⊕C₅²`, 300 `C₂²⊕C₃⊕C₅²`, 315 `C₃²⊕C₅⊕C₇`, 324 `C₃⁴⊕C₄`, 324
+  `C₂²⊕C₃⁴`).
+- **CERTIFIED — `C₃²⊕C₂₉` (order 261) is deficient with neither bound
+  tight** (`LB = 6 < ℓ_max = 7 < cap = 8`, `D± = 8`; 2 029 669 538-node
+  full exhaustion) — the **tenth** deficient group and the third
+  neither-bound-tight case.
+- `C₃⊕C₅³` (order 375): **no verdict** — the full exhaustion was
+  killed at 2 h 35 min CPU (well past the 25.6 min the order-275 case
+  needed); priced at several more core-hours. Open.
+- `C₁₉⊕C₅₇` (order 1083, first open window prime of Corollary F):
+  **no verdict** — the cap-witness hunt found nothing in 2 h 26 min;
+  since witness-mode must exhaust to prove absence, deficiency is the
+  live hypothesis but the cell is UNDECIDED. Open.
+- `C₅⊕C₃⁴` (order 405): never started (queued behind 375). Open.
 
 **What failed.**
 
@@ -235,13 +256,15 @@ window decisions; the `C₁₉⊕C₅₇` (order 1083) witness hunt.
    `B±(G)` papers — first to confirm the openness of the two headline
    values, second to harvest their exact-value tables as controls for
    the census. Every citation this session is (secondary).
-2. **Q1 (characterize deficiency)** is the sharpest open thread: nine
-   catalogued exceptions below 256 with no unifying invariant; extend
-   the census (the engine does ≤ 255 in 40 s; 256–511 needs only the
-   handful of heavy exhaustion cells managed carefully) and hunt the
-   law. The `C₅²`-loses / `C₇²`-wins window pattern begs for either a
-   third data point per family (575 = `C₅²⊕C₂₃`, priced ~20–40
-   core-hours; 1083 = `C₁₉⊕C₅₇` pending) or an idea.
+2. **Q1 (characterize deficiency)** is the sharpest open thread: ten
+   catalogued exceptions through order 330 (nine below 256, plus
+   `C₃²⊕C₂₉`) with no unifying invariant; eleven window cells in
+   256–405 remain undecided (list in the stretch-run block above),
+   each a single `./dissoc` run priced between minutes and a few
+   core-hours — `C₂⊕C₃⊕C₇²` (294) and `C₃²⊕C₃₁` (279) first. The
+   `C₅²`-loses / `C₇²`-wins window pattern begs for either a third
+   data point per family (575 = `C₅²⊕C₂₃`, priced ~20–40 core-hours;
+   1083 = `C₁₉⊕C₅₇`, killed undecided after 2.4 h) or an idea.
 3. **Q4**: the order-75 hand proof via the `k ∈ {3,4,5,6}` case
    analysis — would upgrade the headline to PROVED.
 4. OEIS: `ℓ_max` by group (lex order of abelian groups) may merit a
