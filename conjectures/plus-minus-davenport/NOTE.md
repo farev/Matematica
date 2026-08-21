@@ -163,15 +163,18 @@ below the cap; attainment at 147 comes with uniqueness at the cap.
 `census.py` computes `ℓ_max(G)` for every abelian group of order ≤ 255
 (493 groups; the per-order group counts match the partition-product
 formula). Methodology per group: **pinned** cells (447) are proved by
-Proposition B and verified by a witness search; **Theorem T3** cells (4:
+Proposition B and verified by *constructing* the product witness from an
+optimal regrouping and checking it against the definition (an earlier
+committed run additionally verified every pinned cell ≤ 255 by DFS
+witness search; both runs are in git history); **Theorem T3** cells (4:
 `C₃^r`, `r = 2..5`) are proved and search-verified for order ≤ 100 (and
-`C₃⁵` by a separate full C-engine exhaustion, `run_243_verify.log`);
-**search** cells (42) are decided by the C engine — a found witness
-settles attainment, a completed DFS exhaustion settles deficiency
-(CERTIFIED). Cross-validation: the pure-Python engine recomputed all 184
-groups of order ≤ 100 with **exact node-count equality**
-(`verify_census.py`). Total census runtime 54 s on 4 cores (sequential;
-1 core per group).
+`C₃⁵` by a separate full C-engine exhaustion: 131 590 491 nodes,
+`run_243_verify.log`); **search** cells (42) are decided by the C
+engine — a found witness settles attainment, a completed DFS exhaustion
+settles deficiency (CERTIFIED). Cross-validation: the pure-Python engine
+recomputed all 184 groups of order ≤ 100 with **exact node-count
+equality** (`verify_census.py`). Canonical census runtime 40 s
+(sequential, 1 core per group).
 
 **Result (CERTIFIED / PROVED as marked): 484 of 493 groups attain the
 counting bound** `D± = ⌊log₂|G|⌋ + 1`. The complete list of deficient
@@ -193,8 +196,14 @@ Beyond 255, decided the same way (CERTIFIED):
 
 - `C₅⊕C₅₅` (order 275): **deficient**, `ℓ_max = 7 = LB` < cap 8, so
   `D± = 8`. Full exhaustion: 3 487 686 656 nodes, 25.6 min, 1 core.
-- Orders 256–330 sweep and the family probes: see `census_256_330.csv` /
-  `run_*.log` as committed.
+- `C₇²⊕C₉` (order 441): **attains**, `ℓ_max = 8` = cap, so `D± = 9`
+  (witness found after 740 741 480 nodes). With order 147 this is the
+  second window the `C₇²` family wins, while the `C₅²` family loses
+  both of its computed windows (75, 275).
+- Orders 256–330 sweep and the remaining probes (`C₃⊕C₅³`, order 375;
+  `C₁₉⊕C₅₇`, order 1083): see `census_256_330.csv` / `run_*.log` as
+  committed, and the session log's Next section for anything still
+  running at session end.
 
 **Phenomena.** The deficient set resists the invariants we tried:
 
@@ -267,7 +276,7 @@ python3 dissoc.py controls        # Lemma E validation + all controls (~2 s)
 python3 dissoc.py 5 15            # Theorem A, Python engine (~1 s)
 gcc -O2 -o dissoc dissoc.c && ./dissoc 5 15 && ./dissoc 7 21
 gcc -O2 -o verify_75 verify_75.c && ./verify_75          # 0.13 s
-gcc -O2 -DG147 -o verify_147 verify_75.c && ./verify_147 # ~9 min
+gcc -O2 -DG147 -o verify_147 verify_75.c && ./verify_147 # verify_147.time
 python3 orbit_147.py              # rigidity at 147 (~3 s)
 python3 orbit_75.py               # 85155 sets, 193 orbits (~13 min)
 python3 census.py 255             # full census (~1 min)

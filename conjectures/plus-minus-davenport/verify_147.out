@@ -1,5 +1,0 @@
-group C7+C21 order 147, 73 plus-minus classes, k = 7
-subsets tested: 1629348612  (C(73,7) expected)
-dissociated 7-sets found: 2016
-prefixes of size 6 dissociated (evidence of near-misses): 76133053
-FOUND witness: 41 52 58 64 73 74 76  =>  lmax = 7 (= cap)  =>  D_pm = 8

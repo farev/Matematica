@@ -1,0 +1,26 @@
+p,order,t,lb,cap,pinned,status
+2,12,1.0000,3,3,True,"D=lmax+1=4 (PROVED, pinned)"
+3,27,1.5000,4,4,True,"D=lmax+1=5 (PROVED, pinned)"
+5,75,1.2500,5,6,False,"D=6=cap (CERTIFIED deficient, Theorem A)"
+7,147,1.7500,6,7,False,"D=8=cap+1 (CERTIFIED attained, Theorem B)"
+11,363,1.3750,8,8,True,"D=lmax+1=9 (PROVED, pinned)"
+13,507,1.6250,8,8,True,"D=lmax+1=9 (PROVED, pinned)"
+17,867,1.0625,9,9,True,"D=lmax+1=10 (PROVED, pinned)"
+19,1083,1.1875,9,10,False,OPEN (window)
+23,1587,1.4375,10,10,True,"D=lmax+1=11 (PROVED, pinned)"
+29,2523,1.8125,10,11,False,OPEN (window)
+31,2883,1.9375,10,11,False,OPEN (window)
+37,4107,1.1562,11,12,False,OPEN (window)
+41,5043,1.2812,11,12,False,OPEN (window)
+43,5547,1.3438,12,12,True,"D=lmax+1=13 (PROVED, pinned)"
+47,6627,1.4688,12,12,True,"D=lmax+1=13 (PROVED, pinned)"
+53,8427,1.6562,12,13,False,OPEN (window)
+59,10443,1.8438,12,13,False,OPEN (window)
+61,11163,1.9062,12,13,False,OPEN (window)
+67,13467,1.0469,13,13,True,"D=lmax+1=14 (PROVED, pinned)"
+71,15123,1.1094,13,13,True,"D=lmax+1=14 (PROVED, pinned)"
+73,15987,1.1406,13,13,True,"D=lmax+1=14 (PROVED, pinned)"
+79,18723,1.2344,13,14,False,OPEN (window)
+83,20667,1.2969,13,14,False,OPEN (window)
+89,23763,1.3906,14,14,True,"D=lmax+1=15 (PROVED, pinned)"
+97,28227,1.5156,14,14,True,"D=lmax+1=15 (PROVED, pinned)"

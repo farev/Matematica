@@ -1,0 +1,5 @@
+group C5+C15 order 75, 37 plus-minus classes, k = 6
+subsets tested: 2324784  (C(37,6) expected)
+dissociated 6-sets found: 0
+prefixes of size 5 dissociated (evidence of near-misses): 424848
+VERIFIED: no dissociated 6-set in C5+C15; with a 5-set existing (424848 near-miss prefixes), lmax = 5  =>  D_pm = 6

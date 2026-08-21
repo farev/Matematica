@@ -1,0 +1,4 @@
+Aut-orbit size of the witness (as class sets): 2016
+all orbit members dissociated: True
+desc-run witness lies in the same orbit: True
+=> UNIQUE up to Aut (orbit size == exhaustive count 2016)
