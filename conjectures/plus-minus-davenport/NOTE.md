@@ -254,7 +254,11 @@ decides a window?
 `2^{ℓ} / |G|` close to 1, is the extremal set always unique up to
 `Aut(G)` (as at order 147)? A second data point either way would be
 informative — `C₁₉⊕C₅₇` (density `1024/1083 = 0.945`) is the natural
-candidate.
+candidate. At `C₇²⊕C₉` (density `256/441 = 0.58`, so rigidity is not
+expected) the found witness alone has an Aut-orbit of 1008 maximum sets
+with a 6-element stabilizer (`orbit_441.py`); the full count was not
+enumerated (the complete depth-8 tree walk is priced beyond this
+session).
 
 **Q4 (hand proof for 75).** The `C₃`-support analysis reduces
 `ℓ_max(C₅⊕C₁₅) = 5` to four cases `k ∈ {3,4,5,6}` (`k` = number of
