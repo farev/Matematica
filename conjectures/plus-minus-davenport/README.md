@@ -17,7 +17,9 @@ where it is open; equivalently (Lemma E, `NOTE.md` §1) determine
   the extremal 7-set is **unique up to Aut(G)** (2016 = one orbit).
 - **CERTIFIED/PROVED** census of all 493 abelian groups of order ≤ 255:
   484 attain `D± = ⌊log₂|G|⌋ + 1`; the 9 exceptions are catalogued
-  (NOTE §3). Extras: `C₅⊕C₅₅` deficient (D± = 8), `C₇²⊕C₉` attains
+  (NOTE §3). Extended to order 330 (661 groups; 11 window cells still
+  open). Extras: `C₅⊕C₅₅` and `C₃²⊕C₂₉` deficient (both D± = 8; the
+  latter with *neither* classical bound tight), `C₇²⊕C₉` attains
   (D± = 9).
 - **PROVED** Lemma E (±-zsf ⟺ dissociated, elementary, not new),
   Theorem T3 (`D±(C₂^r) = D±(C₃^r) = r+1`, not new), Corollary F

@@ -30,10 +30,13 @@ attains it with an extremal set unique up to symmetry.
    catalogued exactly (table in NOTE.md §3). Verified two-engine with
    exact node-count equality on all 184 groups of order ≤ 100.
 4. **CERTIFIED** beyond 255: `C₅⊕C₅₅` (order 275) is deficient
-   (D± = 8; full exhaustion, 3 487 686 656 nodes, 25.6 min) while
-   `C₇²⊕C₉` (order 441) attains (D± = 9; witness after 740 741 480
-   nodes). The C₅² family fails its windows, the C₇² family attains
-   them — twice each, unexplained.
+   (D± = 8; full exhaustion, 3 487 686 656 nodes, 25.6 min) and so is
+   `C₃²⊕C₂₉` (order 261; D± = 8; 2 029 669 538 nodes) — the latter
+   with *neither* classical bound tight — while `C₇²⊕C₉` (order 441)
+   attains (D± = 9; witness after 740 741 480 nodes). The census
+   extension to order 330 (661 groups total) found no other resolved
+   deficient group; 11 window cells stay open. The C₅² family fails
+   its windows, the C₇² family attains them — twice each, unexplained.
 5. **PROVED** the family `D±(C_p⊕C_{3p})` is `⌊log₂ 3p²⌋ + 1` for
    every prime `p ≤ 17`, with `p = 5` the unique exception (value 6,
    one below the bound); of the 25 primes < 100, 13 are pinned by the
@@ -45,12 +48,14 @@ attains it with an extremal set unique up to symmetry.
 
 ## 3. Figure specs
 
-- **Fig 1 — attainment map.** Data: `census.csv` (columns order,
-  group, lb, cap, lmax). Plot all 493 groups (x = order, y = cap −
-  lmax, jittered or stacked per order), highlighting the 9 deficient
-  groups by name. Reader sentence: *"Below order 256, all but nine
-  abelian groups contain a full binary ladder — and the nine
-  exceptions follow no obvious rule."*
+- **Fig 1 — attainment map.** Data: `census.csv` +
+  `census_256_330.csv` (columns order, group, lb, cap, lmax; skip
+  TIMEOUT rows or mark them open). Plot the resolved groups (x =
+  order, y = cap − lmax, jittered or stacked per order), highlighting
+  the deficient groups by name (9 below 256; `C₃²⊕C₂₉` and `C₅⊕C₅₅`
+  above). Reader sentence: *"Almost every abelian group contains a
+  full binary ladder — and the few exceptions follow no obvious
+  rule."*
 - **Fig 2 — rigidity vs abundance.** Data: `orbit_147.out`,
   `orbit_75.out` (orbit counts and sizes). Two panels: order 147 —
   2016 maximum sets, one orbit; order 75 — 85 155 maximum sets, 193
