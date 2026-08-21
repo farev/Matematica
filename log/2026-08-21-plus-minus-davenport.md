@@ -152,8 +152,98 @@ convert the map into at least one proved theorem. Mid-session checkpoint:
 if the order-147 decision or the census stalls, ship what is decided with
 honest pricing and record the wall.
 
-**Result.** *(session in progress — filled at end)*
+**Result.** The session's targets landed, plus structure nobody asked for.
 
-**What failed.** *(filled at end)*
+**CERTIFIED — `D±(C₅⊕C₁₅) = 6`**, the reported last unresolved
+plus–minus weighted Davenport constant among groups of order ≤ 100
+((secondary) — openness caveat in NOTE §2/§6). No dissociated 6-set
+exists in the order-75 group: the counting bound `⌊log₂ 75⌋ + 1 = 7` is
+not attained and the product construction of size 5 is optimal. Four
+verifications: two node-count-identical DFS engines (Python and C,
+136 463 nodes; isomorphic presentation `C₅⊕C₅⊕C₃`: 136 421 nodes, same
+verdict), a from-scratch enumeration of all C(37,6) = 2 324 784
+subsets, and non-extendability of all 85 155 maximum 5-sets.
 
-**Next.** *(filled at end)*
+**CERTIFIED — `D±(C₇⊕C₂₁) = 8`**, the `n = 3` case of the sibling
+`C₇⊕C₇ₙ` family, resolved the *opposite* way: a dissociated 7-set
+packs 128 subset sums into 147 slots. Enumeration of all
+C(73,7) = 1 629 348 612 subsets finds exactly **2016** maximum sets —
+one `Aut(G)`-orbit: **the extremal set is unique up to automorphism**
+(and both engines' independently-found witnesses lie in it).
+
+**CERTIFIED/PROVED — the first census of `ℓ_max(G) = D±(G) − 1`** (max
+dissociated-set size) **for all 493 abelian groups of order ≤ 255**
+(group count confirmed by an independent sieve): 484 attain the
+counting bound; the nine exceptions are catalogued exactly (NOTE §3
+table) and refuse every simple invariant — attainment is not monotone
+in packing density (fails at 0.948, succeeds at 0.871), two groups
+(`C₃³⊕C₅`, `C₂⊕C₃⁴`) have *neither* classical bound tight, and the 147
+extremal set beats every per-Sylow construction. Verified two-engine
+with exact node-count equality on all 184 groups of order ≤ 100.
+Beyond 255: `C₅⊕C₅₅` **deficient** (`D± = 8`; 3 487 686 656-node
+exhaustion, 25.6 min) and `C₇²⊕C₉` **attains** (`D± = 9`; witness
+after 740 741 480 nodes, orbit ≥ 1008 with a 6-element stabilizer) —
+the `C₅²` family has now lost both its computed windows and the `C₇²`
+family won both, unexplained.
+
+**PROVED — Corollary F**: `D±(C_p⊕C_{3p}) = ⌊log₂ 3p²⌋ + 1` for every
+prime `p ≤ 17`, with `p = 5` the unique exception (`D± = 6`, one below
+the bound); of the 25 primes below 100, 13 are pinned by the
+sandwich argument, 12 sit in genuine windows (5, 7, 19, 29, 31, 37,
+41, 53, 59, 61, 79, 83), open from `p = 19` up. Also PROVED (elementary,
+not new): Lemma E (±-zsf ⟺ dissociated), the sandwich bounds, and
+`D±(C₂^r) = D±(C₃^r) = r + 1`.
+
+*Still running at log-writing time (final status in Next):* the
+256–330 census sweep; `C₃⊕C₅³` (order 375) and `C₅⊕C₃⁴` (order 405)
+window decisions; the `C₁₉⊕C₅₇` (order 1083) witness hunt.
+
+**What failed.**
+
+- The first controls run hung: `C₃⁵`'s full exhaustion (~10⁹-node
+  scale) was mistakenly placed in the Python control suite; re-scoped
+  to `r ≤ 4`, and `C₃⁵` later search-verified in C (131 590 491 nodes,
+  agreeing with Theorem T3).
+- `verify_75.c`'s verdict message had an off-by-one (printed `D± = 7`
+  for the no-6-set case); the enumeration itself was correct. Caught
+  against the DFS engines before any claim was recorded; fixed.
+- The census sweep crashed at order 258: pinned-cell verification by
+  DFS witness search is not viable at packing density 0.992. Replaced
+  by construct-the-product-witness + definition-level check; the ≤ 255
+  census was re-run under the new scheme, with the old run's
+  DFS-verification of all 447 pinned cells retained in git history as
+  an extra layer.
+- A first draft of Corollary F claimed the family closed for all
+  `p ≥ 11` — wrong: window primes (19, 29, 31, …) are not pinned. The
+  arithmetic was re-derived and the claim scoped to `p ≤ 17` before
+  anything was committed.
+- A Fourier/Riesz-product route to a hand proof of the order-75
+  refutation (NOTE Q4) closes at the first moment — the identity is
+  automatically consistent, so a human proof needs higher moments or
+  real case analysis; left open rather than forced.
+- Background-job hygiene, again (as the 08-13 and 08-17 logs warned):
+  one launch from the wrong working directory (exit 127), one
+  shell-`&` launch needing a manual liveness check, and a mid-run
+  artifact briefly committed (superseded next commit). No lost
+  results, some lost minutes.
+
+**Next.**
+
+1. **Read the primary sources** the moment egress allows:
+   Marchan–Ordaz–Schmid IJNT 10 (2014) (HAL hal-00835688), the CANT-II
+   survey (Springer 978-3-319-68376-8_1), and the citing 2024–2026
+   `B±(G)` papers — first to confirm the openness of the two headline
+   values, second to harvest their exact-value tables as controls for
+   the census. Every citation this session is (secondary).
+2. **Q1 (characterize deficiency)** is the sharpest open thread: nine
+   catalogued exceptions below 256 with no unifying invariant; extend
+   the census (the engine does ≤ 255 in 40 s; 256–511 needs only the
+   handful of heavy exhaustion cells managed carefully) and hunt the
+   law. The `C₅²`-loses / `C₇²`-wins window pattern begs for either a
+   third data point per family (575 = `C₅²⊕C₂₃`, priced ~20–40
+   core-hours; 1083 = `C₁₉⊕C₅₇` pending) or an idea.
+3. **Q4**: the order-75 hand proof via the `k ∈ {3,4,5,6}` case
+   analysis — would upgrade the headline to PROVED.
+4. OEIS: `ℓ_max` by group (lex order of abelian groups) may merit a
+   sequence submission once primary sources are checked (local
+   session decides; external submission policy).
