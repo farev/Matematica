@@ -34,6 +34,10 @@ for n in range(2, M + 1):
             print(f"VALUE MISMATCH {name}: python {lmax} vs census {r['lmax']}")
             bad += 1
             continue
+        # pinned cells (constructed witness, nodes=0) have no comparable
+        # node count; search/theorem cells must match exactly
+        if r["method"] == "pinned":
+            continue
         if r["nodes"] not in ("", "-1") and int(r["nodes"]) != nodes:
             print(f"NODE MISMATCH {name}: python {nodes} vs census {r['nodes']}")
             bad += 1

@@ -1,0 +1,5 @@
+group order 441, classes 220, product lower 7, cap 8, target 8
+lmax = 8  nodes = 740741480
+witness = 1 7 9 11 22 49 98 196
+witness coords = (0,0,1) (0,1,0) (0,1,2) (0,1,4) (0,3,1) (1,0,0) (2,0,0) (4,0,0)
+D_pm = 9

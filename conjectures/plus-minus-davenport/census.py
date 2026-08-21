@@ -31,9 +31,10 @@ def flog2(x):
     return x.bit_length() - 1
 
 
-def best_product_bound(factors):
+def best_product_bound(factors, want_parts=False):
     """Max sum of floor(log2 .) over regroupings of prime-power factors
-    into parts with pairwise-distinct primes."""
+    into parts with pairwise-distinct primes.  With want_parts, also
+    return one optimal regrouping as a list of lists of prime powers."""
     # factors are prime powers; group by prime
     def prime_of(q):
         for p in (2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47,
@@ -58,32 +59,68 @@ def best_product_bound(factors):
     from itertools import permutations
 
     best = -1
+    best_asn = None
 
     def slot_choices(powers):
         # ways to place powers into distinct slots 0..k-1
         for pos in permutations(range(k), len(powers)):
             yield pos
 
-    def rec(i, slots):
-        nonlocal best
+    def rec(i, slots, asn):
+        nonlocal best, best_asn
         if i == len(primes):
             val = sum(flog2(s) for s in slots if s > 1)
-            best = max(best, val)
+            if val > best:
+                best = val
+                best_asn = [list(part) for part in asn]
             return
         p = primes[i]
         for pos in slot_choices(byp[p]):
             new = list(slots)
+            new_asn = [list(part) for part in asn]
             for q, j in zip(byp[p], pos):
                 new[j] *= q
-            rec(i + 1, new)
+                new_asn[j].append(q)
+            rec(i + 1, new, new_asn)
 
-    rec(0, [1] * k)
+    rec(0, [1] * k, [[] for _ in range(k)])
+    if want_parts:
+        return best, [part for part in best_asn if part]
     return best
 
 
 def exponent(factors):
     from math import lcm
     return lcm(*factors)
+
+
+def product_witness(factors, parts):
+    """Build the dissociated set realizing the product bound: for each
+    part (a set of prime powers with distinct primes, CRT-cyclic of size
+    M) take the elements 2^j * gen, j = 0..floor(log2 M)-1, where gen has
+    coordinate 1 in each factor used by the part (a cyclic generator by
+    CRT) and 0 elsewhere.  Returns element indices in Group(factors)."""
+    G = Group(factors)
+    # assign each part's prime powers to distinct factor positions
+    used = [False] * len(factors)
+    witness = []
+    for part in parts:
+        pos = []
+        for q in part:
+            for i, f in enumerate(factors):
+                if not used[i] and f == q:
+                    used[i] = True
+                    pos.append(i)
+                    break
+            else:
+                raise AssertionError("part does not match factors")
+        M = prod(part)
+        for j in range(flog2(M)):
+            coords = [0] * len(factors)
+            for i in pos:
+                coords[i] = pow(2, j, factors[i])
+            witness.append(G.index(coords))
+    return witness
 
 
 def run_c_engine(binpath, factors, need=None, order=None, timeout=None):
@@ -124,10 +161,19 @@ def main():
             name = "+".join(f"C{f}" for f in factors)
             if lb == cap:
                 method = "pinned"
-                # quick verification: witness search with need=cap
-                lmax, nodes, wit, dt = run_c_engine("./dissoc", factors,
-                                                    need=cap, timeout=60)
-                assert lmax == cap, (name, lmax, cap)
+                # verification: construct the product witness from an
+                # optimal regrouping and check it at definition level
+                t0 = time.time()
+                _, parts = best_product_bound(factors, want_parts=True)
+                witness = product_witness(factors, parts)
+                from dissoc import is_dissociated
+                G = Group(factors)
+                assert len(witness) == cap and is_dissociated(G, witness), \
+                    (name, parts)
+                lmax, nodes = cap, 0
+                wit = " ".join(str(G.coords(g)).replace(" ", "")
+                               for g in witness)
+                dt = time.time() - t0
             elif exp == 3:
                 method = "theorem-T3"
                 # verify by search only when modest
