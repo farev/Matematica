@@ -29,7 +29,7 @@ where it is open; equivalently (Lemma E, `NOTE.md` §1) determine
 |---|---|---|
 | `dissoc.py` | Python engine + `controls` (Lemma E validation, formula and negative controls) | seconds |
 | `dissoc.c` | C engine, node-count-identical to Python; `need=K`, `order=desc` modes | seconds–minutes |
-| `verify_75.c` | independent brute-force refutation for `C₅⊕C₁₅` (`-DG147`: enumeration for `C₇⊕C₂₁`) | 0.13 s / 9 min |
+| `verify_75.c` | independent brute-force refutation for `C₅⊕C₁₅` (`-DG147`: enumeration for `C₇⊕C₂₁`) | 0.13 s / 1.8 min |
 | `orbit_147.py` | rigidity: Aut-orbit of the 147-witness = all 2016 maximum sets | 3 s |
 | `orbit_75.py` | all 85 155 maximum 5-sets at order 75, 193 orbits, 0 extendable | 13 min |
 | `census.py N [start] [out]` | census: pinned cells by constructed witness, `C₃^r` by Theorem T3, the rest by C-engine search | 40 s to N=255 |
