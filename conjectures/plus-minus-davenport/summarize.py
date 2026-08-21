@@ -40,9 +40,10 @@ for r in sorted(deficient, key=lambda r: (int(r["order"]), r["group"])):
           f"{lm+1:>3}  {'; '.join(notes)}")
 
 # attainment count
-att = sum(1 for r in rows if r["lmax"] not in ("", "TIMEOUT")
-          and int(r["lmax"]) == int(r["cap"]))
-print(f"\nattain cap: {att}/{total}")
+resolved = [r for r in rows if r["lmax"] not in ("", "TIMEOUT")]
+att = sum(1 for r in resolved if int(r["lmax"]) == int(r["cap"]))
+print(f"\nattain cap: {att}/{len(resolved)} resolved "
+      f"({total - len(resolved)} unresolved/timeout)")
 
 # sanity: number of abelian groups per order matches partition products
 from dissoc import abelian_groups_of_order

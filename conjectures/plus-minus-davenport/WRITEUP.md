@@ -93,6 +93,16 @@ groups.
   directory (exit 127), one launched with shell `&` whose survival then
   had to be confirmed by hand. No results were lost, but both cost
   minutes.
+- **The sweep overwrote the canonical census.** When the census driver
+  grew an output-filename parameter, the parameter was added to the
+  argument parsing but not wired into the final `open()` — so the
+  256–330 sweep wrote its rows over `census.csv`. Caught because the
+  summarizer could not find the sweep's own file; repaired by renaming
+  the on-disk data (it was purely sweep rows) and restoring the ≤ 255
+  census from its commit — nothing had been committed on top, and the
+  two files' row counts and leading orders confirmed the split. The
+  lesson is old: a parameter added under time pressure needs its *use*
+  checked, not just its parse.
 
 ## Judgement calls
 

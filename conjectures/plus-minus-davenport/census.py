@@ -203,7 +203,7 @@ def main():
                 print(f"n={n:4d} {name:22s} lb={lb} cap={cap} "
                       f"lmax={lmax} {tag} ({dt:.2f}s, {nodes} nodes)",
                       flush=True)
-    with open("census.csv", "w", newline="") as f:
+    with open(out, "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=["order", "group", "lb", "cap",
                                           "lmax", "dpm", "method", "nodes",
                                           "seconds", "witness"])
