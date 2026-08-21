@@ -1,0 +1,5 @@
+group order 261, classes 130, product lower 6, cap 8, target 8
+lmax = 7  nodes = 2029669538
+witness = 1 2 4 29 88 101 109
+witness coords = (0,0,1) (0,0,2) (0,0,4) (0,1,0) (1,0,1) (1,0,14) (1,0,22)
+D_pm = 8

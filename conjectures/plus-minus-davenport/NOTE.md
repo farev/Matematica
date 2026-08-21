@@ -196,6 +196,13 @@ Beyond 255, decided the same way (CERTIFIED):
 
 - `C₅⊕C₅₅` (order 275): **deficient**, `ℓ_max = 7 = LB` < cap 8, so
   `D± = 8`. Full exhaustion: 3 487 686 656 nodes, 25.6 min, 1 core.
+- `C₃⊕C₃⊕C₂₉` (order 261): **deficient with neither bound tight** —
+  `LB = 6 < ℓ_max = 7 < cap = 8`, so `D± = 8`. Full exhaustion:
+  2 029 669 538 nodes (~18 min alongside three other runs). The third
+  neither-bound-tight case, and the first deficient group found above
+  order 255; its witness mixes the `C₂₉` binary ladder, a `C₃`
+  generator, and three genuinely mixed elements
+  (`run_261.log`).
 - `C₇²⊕C₉` (order 441): **attains**, `ℓ_max = 8` = cap, so `D± = 9`
   (witness found after 740 741 480 nodes). With order 147 this is the
   second window the `C₇²` family wins, while the `C₅²` family loses
