@@ -87,6 +87,44 @@ queries), and a specific series of papers that would cite the answer.
   session had planned five paths and delivered four in-session for that
   group.
 
+## The afternoon: the sweep rewrites the story twice
+
+The 162 probe (`C₃³⊕C₆`, bracket `{6,7,8}`) was launched as "the first
+test of Question A" and refuted it within the hour: `D± = 7`, strictly
+between the bounds. Then the finished 101–150 sweep demoted it: order
+**135** (`C₃²⊕C₁₅`, same bracket shape) is also a middle cell, and
+smaller. The provisional claim "first middle value, at 162" never made it
+into a pushed document with the "smallest" attribute attached — the
+analysis script ran before the NOTE section was finalized, which is the
+right order of operations.
+
+The same sweep produced a surprise the session had not gone looking for:
+`D±(C₃⊕C₄₅) = 7` at order 135 — the `C₃⊕C₃ₙ` family attaining the
+*lower* bound after ten consecutive upper-bound gap cells, in tension
+with the snippet-paraphrase of MOS's family theorem ("matches the upper
+bound", `n ≥ 2`). Both order-135 values got the full battery (second
+encoding, witnesses, raw + Python engines); the tension is flagged in
+NOTE §5 as a paraphrase artifact until the paper can be read, *not* as a
+contradiction claim.
+
+Two sweep cells timed out at 1800 s (`C₂⁵⊕C₄`, `C₂⁵⊕C₅`, both rank-6
+2-groups whose censuses are enormous). Instead of burning hours, the
+session noticed both have coinciding Theorem 3.1 bounds — and that the
+binary upper bound has a two-line in-house pigeonhole proof (NOTE Lemma
+3b). That lemma upgraded every bounds-coincide cell of the table from
+"CERTIFIED, trusting a (secondary) theorem for context" to "PROVED
+outright", and turned the timeouts from a defect into a footnote.
+
+Smaller failures: the order-196 background chain silently died after its
+first item (orphaned subshell) and had to be relaunched — background
+chains need their own completion markers, which the relaunch got. A
+quick structural probe of the unique 147-extremal configuration (conic?
+collinearity? Sidon?) came back negative on all three — recorded and
+dropped. The sweep's control-tagger missed that coprime prime-power
+products are cyclic (e.g. `C₅⊕C₂₇ ≅ C₁₃₅`), so 111 rows went untagged;
+the post-hoc check found all 111 match the cyclic formula — a lucky
+extra control, and a tagging bug worth fixing before any rerun.
+
 ## Honesty inventory
 
 - Every literature statement this session is **(secondary)** — snippets

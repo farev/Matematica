@@ -21,9 +21,10 @@ for.
 | `D±(C₇ ⊕ C₂₁) = 8` — upper end of the derived bracket `{7,8}`; no published value found; three verification paths | **CERTIFIED** | NOTE §3, Thm 8 |
 | Extremal sequence of `C₇ ⊕ C₂₁` is **unique** up to `Aut(G)` and signs (single orbit of size 2016 = \|GL(2,7)\|); all its elements have nonzero `C₃`-part | **CERTIFIED** | NOTE §4, Thm 10 |
 | Extremal 5-sets of `C₅ ⊕ C₁₅`: exactly 85,155 in **193 Aut-orbits**, with `C₃`-support profile `3375/13500/29040/27960/11280` | **CERTIFIED** | NOTE §4, Thm 11 |
-| Complete `D±` table, all abelian groups of order ≤ 150; ≤ 100 half (184 groups) matches every snippet-recoverable published value/bound (MOS Thm 3.1, exception list, `C₃⊕C₃ₙ` family) | **CERTIFIED** | NOTE §5, `table_*.csv` |
-| Class model (free sequences = free sign-class subsets), elementary-2/3 linear-independence values, product bound, reduction lemma over `F₅²⊕Z₃`, saturation of maximal free sets, case (4,2) of the 6-set nonexistence | **PROVED** | NOTE §2 |
-| In every computed cell `D±(G)` equals a Theorem 3.1 bound; the five sub-binary groups ≤ 100 all attain the lower bound (Question A) | observation on CERTIFIED data | NOTE §5 |
+| `D±(C₃²⊕C₁₅) = 7` (order 135) and `D±(C₃³⊕C₆) = 7` (order 162), both in Theorem 3.1 brackets `{6,8}`: **the constant can lie strictly between the MOS bounds** — the only middle cells ≤ 162; each double-encoded-censused with verified witnesses | **CERTIFIED** | NOTE §5, Thm 12 |
+| Complete `D±` table, all 312 abelian groups of order ≤ 162 (309 engine-censused, 3 by lemmas); ≤ 100 half (184 groups) matches every snippet-recoverable published value/bound (MOS Thm 3.1, exception list, `C₃⊕C₃ₙ` family); 111 hidden-cyclic rows match the cyclic formula; 15 new gap-cell determinations past 100, incl. `D±(C₃⊕C₄₅) = 7` at the family's first lower-bound cell | **CERTIFIED** | NOTE §5, `table_*.csv` |
+| Class model, elementary-2/3 linear-independence values, product bound, **binary upper bound (pigeonhole)**, cyclic exact value, reduction lemma over `F₅²⊕Z₃`, saturation, case (4,2) — so every bounds-coincide cell of the table is proved without the engine | **PROVED** | NOTE §2 |
+| Every below-binary group in range is split-tight (`P(G)`-attaining); mixing groups sit on the binary ceiling — Question A′ | observation on CERTIFIED data | NOTE §5 |
 
 See [`NOTE.md`](NOTE.md) for statements and proofs, [`WRITEUP.md`](WRITEUP.md)
 for the session narrative including what failed.
@@ -32,13 +33,14 @@ for the session narrative including what failed.
 
 | file | what it does | cost | headline output |
 |---|---|---|---|
-| `dpm.c` | census DFS for `L(G)`/`D±(G)` over sign classes; `--raw` multiset mode; `--enum S` extremal enumeration; `--target`, `--maxdepth` | `5 15`: 0.1 s; `7 21`: 34 s; `--raw 7 21`: ~19 min | `L 5 / DPM 6`; `L 7 / DPM 8` |
+| `dpm.c` | census DFS for `L(G)`/`D±(G)` over sign classes; `--raw` multiset mode; `--enum S` extremal enumeration; `--target`, `--maxdepth` | `5 15`: 0.1 s; `7 21`: 34 s; `--raw 7 21`: 45 min (17.2G nodes) | `L 5 / DPM 6`; `L 7 / DPM 8` |
 | `dpm_indep.py` | clean-room Python re-implementation (tuples, immutable reach sets) | `5 15`: 27 s | census match, digit for digit |
 | `verify_witness.py` | definition-level witness checker (all `3^k−1` signed sums); `--selftest` has 1 positive + 3 negative controls | ms | `VERIFIED` / `SELFTEST PASS` |
 | `verify_maximality.py` | checks every enumerated extremal set is free and non-extendable — independent of both engines' DFS | 85,155 sets: ~9 min | `MAXIMALITY PASS` × 2 |
 | `case_audit.py` | 4th path for `C₅⊕C₁₅`: enumeration in the `F₅² ⊕ Z₃` decomposition (NOTE Lemma 4); also proves `L(F₅²)=4` + saturation | ~4 min | `CASE AUDIT PASS`, min-violations 2 |
 | `classify_extremal.py` | Aut-orbit classification of extremal sets (`--p 5` / `--p 7`) | 10 min / 1 min | 193 orbits; **1 orbit** |
-| `sweep.py` | all abelian groups in an order range through `dpm`; CSV + formula controls | 2–100: ~6 min; 101–150: ~1 h | `table_002_100.csv`, `table_101_150.csv` |
+| `sweep.py` | all abelian groups in an order range through `dpm`; CSV + formula controls | 2–100: 80 s engine time; 101–162: ~90 min + two 1800 s timeouts (values lemma-forced) | `table_002_100.csv`, `table_101_150.csv`, `table_151_162.csv` |
+| `analyze_tables.py` | endpoint attribution, middle-value scan, new-cell list, family rows | s | `analysis_2_162.txt` |
 
 Run from inside this directory:
 
@@ -62,8 +64,12 @@ python3 sweep.py 2 100 --out table_002_100.csv
 | `max_5_15.txt`, `max_7_21.txt` | verify_maximality | definition-level maximality certificates (`PASS`) |
 | `case_audit_out.txt` | case_audit | the five-case decomposition audit (`PASS`) |
 | `classify_5_15.txt`, `classify_7_21.txt` | classify_extremal | orbit classifications (193 orbits / 1 orbit) |
-| `table_002_100.csv`, `table_101_150.csv` | sweep | the full `D±` table with per-group census, witness, nodes, seconds |
-| `sweep_100.log`, `sweep_150.log` | sweep | run logs (control mismatches would appear here; none did) |
+| `table_002_100.csv`, `table_101_150.csv`, `table_151_162.csv` | sweep | the full `D±` table with per-group census, witness, nodes, seconds |
+| `sweep_100.log`, `sweep_150.log`, `sweep_162.log` | sweep | run logs (control mismatches would appear here; none did; two 2-group timeouts did) |
+| `analysis_2_162.txt` | analyze_tables | endpoint attribution, the two middle cells, the 15 new gap determinations, family rows |
+| `run_135_c3c3c15.txt`, `run_135_c3c45.txt` (+ `_raw`, `_indep` variants), `witness_135_*.txt` | dpm / dpm_indep / verify_witness | the order-135 battery: both groups re-censused under a second encoding, witnesses verified |
+| `run_162_c333c6.txt`, `run_162_reordered.txt`, `witness_162_check.txt` | dpm / verify_witness | the order-162 middle cell: census, permuted-encoding census, verified witness |
+| `run_196_c7c28.txt`, `run_196_c14c14.txt`, `run_175_c5c35.txt` | dpm | family cells past 162 (see WRITEUP for status) |
 
 ## Known defects and open threads
 
@@ -78,9 +84,19 @@ python3 sweep.py 2 100 --out table_002_100.csv
 - `dpm_indep.py` on `C₇⊕C₂₁` — see WRITEUP for whether the Python census
   finished in-session; the 147 determination stands on
   census + raw + maximality regardless.
-- Sharpest open thread: **Question A** (NOTE §5) — is `D±(G)` always one
-  of the two MOS Theorem 3.1 bounds? True in every cell ≤ 150. Order 162
-  (`C₃³⊕C₆`, bracket `{6,7,8}`) is the first real test.
+- Two sweep cells (`C₂⁵⊕C₄`, `C₂⁵⊕C₅`) hit the 1800 s census timeout;
+  their values (both 8) are PROVED by the product + pigeonhole lemmas
+  (coinciding bounds), so the table is complete, but those two rows carry
+  no census counts.
+- ⚠ The `C₃⊕C₄₅ = 7` cell is in tension with a search-engine paraphrase
+  of MOS 2014's `C₃⊕C₃ₙ` family theorem ("matches the upper bound",
+  n ≥ 2). Most likely the paraphrase dropped a hypothesis. **Read MOS §5
+  before citing any contradiction** — NOTE §5 and §8.
+- Sharpest open thread: **Question A′** (NOTE §5) — `L(G)` was attained
+  in every cell ≤ 162 either by a proper direct-sum split (exact
+  component values) or by the binary ceiling; middle-bracket groups (135,
+  162) are split-tight ones hiding a mixing component. Does any group
+  exceed all splits and miss the ceiling?
 
 ## Prior work
 

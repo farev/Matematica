@@ -1,0 +1,1 @@
+VERIFIED ±zero-sum-free - all 728 signed subset sums nonzero

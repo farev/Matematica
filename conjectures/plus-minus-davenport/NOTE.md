@@ -1,4 +1,4 @@
-# The plus–minus weighted Davenport constants of C₅⊕C₁₅ and C₇⊕C₂₁, and the complete table for all abelian groups of order ≤ 150
+# The plus–minus weighted Davenport constants of C₅⊕C₁₅ and C₇⊕C₂₁, and the complete table for all abelian groups of order ≤ 162
 
 *Research note, 2026-08-22 session. AI-assisted (Claude); disclosed per
 repository policy. All literature citations in this note are* (secondary)*:
@@ -33,16 +33,18 @@ The inverse problems are solved as well: `C₅ ⊕ C₁₅` has exactly **85,155
 7-sets forming a **single orbit** — its extremal sequence is unique up to
 automorphisms and signs, and every element of it has nonzero `C₃`-part.
 
-Finally we recompute `D±(G)` from the definition for every abelian group
-of order ≤ 150: the 184 groups of order ≤ 100 agree with every published
-value and bound we could extract from snippets — the Marchan–Ordaz–Schmid
-Theorem 3.1 bounds, their exception list, and their `C₃ ⊕ C₃ₙ` family
-values — and the orders 101–150 (sweep transcript and CSV committed)
-appear to be new except where the general bounds already coincide. In
-every computed cell, `D±(G)` equals one of the two Theorem 3.1 bounds;
-the five groups of order ≤ 100 sitting strictly below the binary bound
-(`C₃²`, `C₃³`, `C₃⁴`, `C₃² ⊕ C₉`, `C₅ ⊕ C₁₅`) all attain the lower bound
-exactly.
+Finally we compute `D±(G)` from the definition for **every abelian group
+of order ≤ 162** — 312 groups. The 184 of order ≤ 100 agree with every
+published value and bound we could extract from snippets (the
+Marchan–Ordaz–Schmid Theorem 3.1 bounds, their exception list, their
+`C₃ ⊕ C₃ₙ` family values); the 15 cells past 100 where the bounds leave a
+gap appear to be new. Among them: **`D±(C₃² ⊕ C₁₅) = 7` (order 135) and
+`D±(C₃³ ⊕ C₆) = 7` (order 162) lie strictly between their Theorem 3.1
+bounds `{6, 8}`** — the constant is not always at an endpoint — and
+`D±(C₃ ⊕ C₄₅) = 7` attains the *lower* bound in a family that hits the
+upper bound at every other gap cell in range. The five groups of order
+≤ 100 strictly below the binary bound (`C₃²`, `C₃³`, `C₃⁴`, `C₃² ⊕ C₉`,
+`C₅ ⊕ C₁₅`) all attain the lower bound exactly.
 
 ## 1. Definitions and background
 
@@ -105,6 +107,29 @@ Consistent with the values credited to MOS/JCTA-2015 in snippets.)
 signed zero subsum projects to a signed zero subsum in each component, so
 both parts must be empty. ∎ (This is the lower half of MOS Theorem 3.1
 applied inductively; included for completeness.)
+
+**Lemma 3b (binary upper bound).** *`D±(G) ≤ ⌊log₂|G|⌋ + 1`, i.e.
+`L(G) ≤ ⌊log₂|G|⌋`.*
+
+*Proof.* If `ℓ > ⌊log₂|G|⌋` then `2^ℓ > |G|`, so two distinct `{0,1}`-
+subset sums of any `ℓ` elements coincide; the symmetric difference of the
+two subsets, signed `+1`/`−1`, is a nonempty signed zero subsum. ∎
+(The upper half of MOS Theorem 3.1; the pigeonhole proof is standard.)
+
+**Lemma 3c (cyclic groups).** *`L(C_n) = ⌊log₂ n⌋`, so
+`D±(C_n) = ⌊log₂ n⌋ + 1` (Adhikari–Rath (secondary); in-house proof).*
+
+*Proof.* `{1, 2, 4, …, 2^{k−1}}` with `2^k ≤ n` is free: a signed sum of
+distinct powers of two is a nonzero integer of absolute value `< 2^k ≤ n`,
+hence nonzero mod `n`. Lemma 3b gives the matching upper bound. ∎
+
+Lemmas 3, 3b, 3c make every cell of the table where the two Theorem 3.1
+bounds coincide **PROVED in-house** — engine runs there are confirmations,
+not the source of truth. In particular the two sweep cells whose census
+timed out (`C₂⁵ ⊕ C₄` at order 128 and `C₂⁵ ⊕ C₅` at order 160, both
+1800 s) have `D± = 8` proved outright: product lower `5·1 + 2 + 1 = 8`
+(resp. `4·1 + 3 + 1 = 8`) meets the pigeonhole upper `⌊log₂128⌋ + 1 = 8`
+(resp. `⌊log₂160⌋ + 1 = 8`).
 
 **Lemma 4 (reduction over `G = V ⊕ Z₃`, `V = F₅²`).** *Sign-normalize a
 free set `S` so every element has `Z₃`-part `t ∈ {0, 1}` (Lemma 1); write
@@ -229,33 +254,85 @@ supported on the two visible cyclic factors `(C₅ × 0) ∪ (0 × C₁₅)`.*
 automorphism image of an enumerated set is again an enumerated set — is a
 further consistency test of the censuses, and it passed.)
 
-## 5. The complete table to 150
+## 5. The complete table to 162, and two strictly intermediate values
 
-`sweep.py` ran `dpm` on **every** abelian group of order 2–150 (280
-groups; elementary `C₂^r, C₃^r` of rank ≥ 7 filled in by Lemma 2). Orders
-≤ 100 (184 groups): **every** value consistent with MOS Theorem 3.1
-(neither bound ever violated), with the blanket `⌊log₂|G|⌋ + 1` claim and
-its exception list, and with the `C₃ ⊕ C₃ₙ` family equalling the upper
-bound for all `2 ≤ n ≤ 11` in range (secondary sources as in §1). Full
-data: `table_002_100.csv`, `table_101_150.csv`.
+`sweep.py` ran `dpm` on **every** abelian group of order 2–162: 312
+groups, of which 309 were engine-censused, one (`C₂⁷`) recorded by
+Lemma 2, and two (`C₂⁵⊕C₄`, `C₂⁵⊕C₅`) timed out at 1800 s but are PROVED
+`= 8` by Lemmas 3 + 3b (coinciding bounds), so the table is complete.
+Engine time ≈ 91 min total across the three sweeps (plus the two timeout
+burns), dominated by the order-128 and order-160 2-groups. Full data:
+`table_002_100.csv`, `table_101_150.csv`, `table_151_162.csv`; analysis
+transcript: `analysis_2_162.txt`.
 
-Observations across `2 ≤ |G| ≤ 150`:
+**Concordance (orders ≤ 100, 184 groups):** every value consistent with
+MOS Theorem 3.1 (neither bound ever violated anywhere in the table), with
+the blanket `⌊log₂|G|⌋ + 1` claim and its exception list, and with the
+`C₃ ⊕ C₃ₙ` family equalling the upper bound for all `2 ≤ n ≤ 11` in that
+range (secondary sources as in §1). A further control found after the
+fact: 111 sweep rows are coprime products of prime-power cyclics (hence
+cyclic in disguise, e.g. `C₅⊕C₂₇ ≅ C₁₃₅`); all 111 match `⌊log₂n⌋ + 1`.
 
-1. `D±(G)` **always equals one of the two Theorem 3.1 bounds** — no group
-   in range takes a strictly intermediate value. (Verified over the ≤ 100
-   table; the 101–150 verdict is read off `table_101_150.csv` — see the
-   figures in §5a below, filled in from the finished sweep.)
-2. The groups strictly below the binary bound `⌊log₂|G|⌋ + 1` in the
-   ≤ 100 range are exactly `C₃², C₃³, C₃⁴, C₃² ⊕ C₉, C₅ ⊕ C₁₅`, and each
-   attains the lower bound `Σ⌊log₂ n_i⌋ + 1` exactly.
-3. Families:
-   `D±(C₅ ⊕ C₅ₙ) = 5, 6, 6, 7, 7` for `n = 1..5` — the `n = 3` cell is
-   the unique lower-bound holdout in range;
-   `D±(C₇ ⊕ C₇ₙ) = 6, 7, 8` (n = 1, 2, 3) — upper bound throughout.
+**Theorem 12 (CERTIFIED).** `D±(C₃² ⊕ C₁₅) = 7` (order 135) and
+`D±(C₃³ ⊕ C₆) = 7` (order 162), while their Theorem 3.1 brackets are both
+`{6, 8}`: **the plus–minus Davenport constant can lie strictly between
+the MOS bounds**, and these are the only two such groups of order ≤ 162.
+Verification for both: census + a second census under a different factor
+encoding (different DFS tree, identical count vectors:
+`67, 2211, 46449, 632138, 4105426, 2186496` for `C₃²⊕C₁₅`;
+`81, 3240, 83200, 1422850, 12783888, 6654960` for `C₃³⊕C₆`) + verified
+witnesses; raw-multiset runs and clean-room Python censuses were also
+launched — statuses in WRITEUP and the committed `run_135_*`, `run_162_*`
+transcripts.
 
-### 5a. Orders 101–150 (from the finished sweep)
+**Endpoint attribution over all 310 valued cells** (312 minus the two
+timeout cells, which are lower=upper anyway): bounds coincide for 278;
+value = lower bound only: 6; value = upper bound only: 24; strictly
+between: the 2 of Theorem 12.
 
-_(figures inserted after `table_101_150.csv` completed; see below)_
+**The fifteen genuinely new determinations past 100** (cells where the
+Theorem 3.1 bounds differ, so no known result forces the value —
+everything else in 101–162 is forced by the bounds): in
+`(order, invariant factors, D±, {bracket})` form —
+108 `(3,3,12) → 7` and `(3,6,6) → 7` (upper); 135 `(3,45) → 7` (**lower**)
+and `(3,3,15) → 7` (**middle**); 144 `(3,48), (6,24), (12,12), (2,6,12),
+(2,2,6,6) → 8` (upper); 147 `(7,21) → 8` (upper, Theorem 8); 150
+`(5,30) → 8` (upper); 153 `(3,51) → 8` (upper); 162 `(3,54) → 8`,
+`(3,3,18) → 8` (upper) and `(3,3,3,6) → 7` (**middle**, Theorem 12).
+
+**Families.**
+`D±(C₅ ⊕ C₅ₙ) = 5, 6, 6, 7, 7, 8` for `n = 1..6` — `n = 3` remains the
+unique sub-binary cell; `n = 6` (order 150, bracket `{7,8}`) resolves
+**upper**. `D±(C₇ ⊕ C₇ₙ) = 6, 7, 8` (`n = 1, 2, 3`) — upper throughout.
+`D±(C₃ ⊕ C₃ₙ)` for `n = 2..18`: `5, 5, 6, 6, 6, 6, 7, 7, 7, 7, 7, 7, 7,
+7, 8, 8, 8` — **the `n = 15` cell (order 135, bracket `{7,8}`) attains
+the lower bound**, the family's first deviation from the binary value in
+our data. ⚠ A search-engine paraphrase of MOS 2014 says the family value
+"is known for n ≥ 2 … and matches the upper bound"; if their theorem
+really covers all `n ≥ 2` unconditionally, our `n = 15` value would
+contradict it — far more likely the paraphrase dropped a hypothesis or
+their range. **Do not cite the `n = 15` tension until MOS §5 is read in
+full**; the computation itself is battery-verified (Theorem-12-level
+checks, plus the identical `3+5+9` vs `3+45` encodings).
+
+**Question A — answered.** The session's early data (≤ 150 at the time)
+suggested `D±(G)` might always sit at a Theorem 3.1 endpoint; Theorem 12
+refutes that at orders 135 and 162. The refined pattern in range: writing
+`P(G) = max` over direct-sum splits `G = A ⊕ B` of `L(A) + L(B)` *with
+exact component values from this table*, every below-binary group is
+split-tight — `L(C₅⊕C₁₅) = L(C₅) + L(C₁₅) = 2 + 3`,
+`L(C₃²⊕C₁₅) = L(C₃) + L(C₃⊕C₁₅) = 1 + 5`,
+`L(C₃³⊕C₆) = L(C₃) + L(C₃) + L(C₃⊕C₆) = 1 + 1 + 4` — while the "mixing"
+groups (`C₃⊕C₆`, `C₃⊕C₁₅`, `C₇²`, `C₇⊕C₂₁`, …) strictly exceed every
+split and sit on the binary ceiling. The middle values exist exactly
+because a split can capture a mixing component whose own value already
+beats its invariant-factor estimate.
+
+**Question A′ (new).** Is `L(G)` always attained either by a direct-sum
+split into proper subgroups (with the components' exact values) or by
+meeting the binary ceiling `⌊log₂|G|⌋`? True for all 312 groups here. A
+counterexample needs a group that exceeds all of its splits yet misses
+the ceiling.
 
 **Question A.** Does `D±(G) ∈ {Σ⌊log₂ n_i⌋ + 1, ⌊log₂|G|⌋ + 1}` for every
 finite abelian `G`? (True for all 280 groups of order ≤ 150. We found no
@@ -305,11 +382,15 @@ the thesis, and re-verify every (secondary) statement above.**
 
 1. Prove Theorem 7 fully by hand (the reduction framework of §2 does case
    `(4,2)`; the audit's "≥ 2 violations everywhere" suggests slack).
-2. Questions A and B of §5.
-3. Push the table past 150 — orders with wide Theorem 3.1 gaps and rank
-   ≥ 3 (e.g. 162 = `C₃³ ⊕ C₆`, bracket `{6, 7, 8}`) are the natural
-   hunting ground for either a middle value (refuting A) or more
-   lower-bound groups.
+   Same question for the two middle values of Theorem 12 — *why* 7?
+2. Question A′ and Question B of §5. The next hunting orders for a
+   Question A′ counterexample: 3-heavy rank ≥ 3 groups past 162 (189,
+   225, 243-neighborhood, 270).
+3. Read MOS 2014 §5 on a network-enabled day and settle whether the
+   `C₃ ⊕ C₃ₙ` family theorem has hypotheses that exempt `n = 15` — until
+   then the family tension in §5 stays a paraphrase artifact, not a
+   contradiction claim.
 4. The coding-theory route (JCTA 2015 links `D±` to intersecting codes
    (secondary)): does the uniqueness in Theorem 10 correspond to a known
-   optimal code?
+   optimal code? (A quick conic/collinearity/Sidon probe of the unique
+   147-configuration found no classical structure — see WRITEUP.)
