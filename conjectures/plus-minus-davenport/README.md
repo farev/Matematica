@@ -81,9 +81,9 @@ python3 sweep.py 2 100 --out table_002_100.csv
 - The hand proof of `D±(C₅⊕C₁₅) = 6` is complete only for case `(4,2)`
   (plus a pigeonhole start on `(0,6)`); the other cases rest on the
   machine audit. NOTE §8.
-- `dpm_indep.py` on `C₇⊕C₂₁` — see WRITEUP for whether the Python census
-  finished in-session; the 147 determination stands on
-  census + raw + maximality regardless.
+- ~~`dpm_indep.py` on `C₇⊕C₂₁` still running~~ — finished in-session
+  (~1.7 h): census match digit for digit. The 147 determination has four
+  independent paths.
 - Two sweep cells (`C₂⁵⊕C₄`, `C₂⁵⊕C₅`) hit the 1800 s census timeout;
   their values (both 8) are PROVED by the product + pigeonhole lemmas
   (coinciding bounds), so the table is complete, but those two rows carry

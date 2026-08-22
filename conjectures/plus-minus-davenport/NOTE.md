@@ -219,10 +219,9 @@ Bracket `{7, 8}` from MOS Thm 3.1 (`2 + 4 + 1 = 7 ≤ D± ≤ ⌊log₂147⌋ + 
 | V1 | `dpm.c` census over 73 classes | counts `k = 1..7`: **73, 2628, 60468, 914526, 7151382, 8397648, 2016**; zero at `k = 8`; 166.8M nodes, 33.7 s |
 | V2 | `dpm.c --raw` over 146 raw elements (multisets, repetitions allowed, no class model) | max length 7; **all seven counts equal `2^k ×` V1 exactly** (146, 10512, 483744, 14632416, 228844224, 537449472, 258048); 17,204,330,175 nodes, 2725.7 s |
 | V3 | `verify_maximality.py` on all 2016 extremal sets | each free (`3⁷−1 = 2186` sums) and non-extendable by any of the 73 classes: `MAXIMALITY PASS` |
+| V4 | `dpm_indep.py`: clean-room Python census (≈ 1.7 h) | reproduces the V1 census digit for digit, same maximum and witness orbit |
 
-(V2 and a clean-room Python census were still running when this note was
-first drafted; the committed transcripts are the record — see WRITEUP for
-final status of each.) A free 7-witness, hand-checkable:
+A free 7-witness, hand-checkable:
 `(0,1) (1,1) (2,1) (0,2) (4,2) (1,5) (2,10)` — verified by
 `verify_witness.py`.
 

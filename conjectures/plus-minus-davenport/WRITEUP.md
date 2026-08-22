@@ -80,12 +80,11 @@ queries), and a specific series of papers that would cite the answer.
   disjoint-support ones; 3-term-progression collisions are invisible to
   `±1` coefficients. Left as an open thread with the machine audit
   covering the case.
-- **`dpm_indep.py` on the 147 group** was still running at final-writeup
-  time (Python census over 166M-node-equivalent tree); its result is
-  recorded in `run_7_21_indep.txt` whenever it lands — the determination
-  never depended on it (census + raw + maximality suffice), but the
-  session had planned five paths and delivered four in-session for that
-  group.
+- **`dpm_indep.py` on the 147 group** ran ~1.7 h and finished in-session:
+  census match, digit for digit (`run_7_21_indep.txt`). So `C₇⊕C₂₁`
+  ended with four verification paths after all — census, raw multiset
+  (17.2G nodes, exact `2^k` relation), maximality certificate, and the
+  clean-room Python census.
 
 ## The afternoon: the sweep rewrites the story twice
 
