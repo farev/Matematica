@@ -151,6 +151,17 @@ alone does not finish this case. The machine audit below shows every
 configuration in fact violates ≥ 2 constraints. A fully hand-written proof
 of Theorem 7 remains open.
 
+**Remark (missing-set data for cases (3,3) and (2,4)).** Writing
+`M(S₀) = V ∖ ({0} ∪ Reach(S₀))` in sign classes: over all 180 free 3-sets
+of `F₅²`, `|M| = 2` for 120 of them and `|M| = 5` for 60; over all 66 free
+2-sets, `|M| = 8` for 60 and `|M| = 10` for 6. For the 120 sets with
+`|M| = 2`, case `(3,3)` dies by counting alone (the four derived classes
+`v_x − v_y, v_x − v_z, v_y − v_z, v_x + v_y + v_z` cannot fit, and their
+coincidences are either fatal `±`-relations or 3-AP degeneracies handled
+directly); the 60 sets with `|M| = 5` need the structure of `M`, and case
+`(2,4)` (13 derived values into ≤ 10 classes, some coincidences legal)
+likewise — both closed here only by the audit.
+
 ## 3. The two determinations
 
 **Theorem 7 (CERTIFIED).** `D±(C₅ ⊕ C₁₅) = 6`.
