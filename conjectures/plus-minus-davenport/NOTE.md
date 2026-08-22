@@ -192,7 +192,7 @@ Bracket `{7, 8}` from MOS Thm 3.1 (`2 + 4 + 1 = 7 ≤ D± ≤ ⌊log₂147⌋ + 
 | # | method | result |
 |---|---|---|
 | V1 | `dpm.c` census over 73 classes | counts `k = 1..7`: **73, 2628, 60468, 914526, 7151382, 8397648, 2016**; zero at `k = 8`; 166.8M nodes, 33.7 s |
-| V2 | `dpm.c --raw` over 146 raw elements | run recorded in `run_7_21_raw.txt`; the acceptance criterion is max length 7 with all seven counts equal to `2^k ×` V1 |
+| V2 | `dpm.c --raw` over 146 raw elements (multisets, repetitions allowed, no class model) | max length 7; **all seven counts equal `2^k ×` V1 exactly** (146, 10512, 483744, 14632416, 228844224, 537449472, 258048); 17,204,330,175 nodes, 2725.7 s |
 | V3 | `verify_maximality.py` on all 2016 extremal sets | each free (`3⁷−1 = 2186` sums) and non-extendable by any of the 73 classes: `MAXIMALITY PASS` |
 
 (V2 and a clean-room Python census were still running when this note was
