@@ -287,8 +287,9 @@ full Theorem-7 battery. The companion order-135 cell `C₃⊕C₄₅ = 7` (the
 family deviation) carries the same battery: second encoding
 (`3+5+9` vs `3+45` — identical counts `67, 2211, 46452, 633074, 4220095,
 3391470`), raw run (7.48G nodes, 1075 s, `2^k` relation PASS), verified
-witness; its Python census result is recorded in
-`run_135_c3c45_indep.txt`.
+witness, and a clean-room Python census matching digit for digit
+(`run_135_c3c45_indep.txt`) — the full four-path battery for both
+order-135 cells.
 
 **Endpoint attribution over all 310 valued cells** (312 minus the two
 timeout cells, which are lower=upper anyway): bounds coincide for 278;
