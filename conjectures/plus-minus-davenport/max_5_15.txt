@@ -1,0 +1,8 @@
+sets read: 85155, distinct: 85155, expected: 85155
+  ...0 checked
+  ...20000 checked
+  ...40000 checked
+  ...60000 checked
+  ...80000 checked
+free: 85155/85155; non-extendable: 85155/85155
+MAXIMALITY PASS

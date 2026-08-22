@@ -1,0 +1,21 @@
+|GL(2,5)| = 480
+effective automorphism actions on classes: 480
+sets: 85155
+t-profile (elements with nonzero Z_3 part -> #sets): {1: 3375, 2: 13500, 3: 29040, 4: 27960, 5: 11280}
+product-type sets (supported on C_5 x 0 union 0 x C_15): 23
+ORBITS: 193
+  orbit size    480  t-elems 1  rep [(0, 3), (1, 0), (1, 5), (1, 6), (2, 0)]
+  orbit size    480  t-elems 5  rep [(0, 1), (1, 1), (1, 4), (2, 1), (2, 8)]
+  orbit size    480  t-elems 5  rep [(0, 1), (1, 1), (1, 4), (1, 7), (2, 1)]
+  orbit size    480  t-elems 2  rep [(0, 1), (1, 0), (2, 1), (2, 9), (2, 12)]
+  orbit size    480  t-elems 3  rep [(0, 1), (1, 0), (2, 1), (2, 5), (2, 12)]
+  orbit size    480  t-elems 4  rep [(0, 1), (1, 0), (2, 1), (2, 5), (2, 7)]
+  orbit size    480  t-elems 2  rep [(0, 1), (1, 0), (2, 1), (2, 3), (2, 9)]
+  orbit size    480  t-elems 3  rep [(0, 1), (1, 0), (2, 1), (2, 3), (2, 8)]
+  orbit size    480  t-elems 3  rep [(0, 1), (1, 0), (2, 1), (2, 3), (2, 7)]
+  orbit size    480  t-elems 2  rep [(0, 1), (1, 0), (2, 1), (2, 3), (2, 6)]
+  orbit size    480  t-elems 4  rep [(0, 1), (1, 0), (1, 10), (2, 2), (2, 5)]
+  orbit size    480  t-elems 3  rep [(0, 1), (1, 0), (1, 7), (2, 1), (2, 12)]
+  ... and 181 more orbits
+orbit size histogram: {480: 167, 240: 17, 120: 7, 60: 1, 15: 1}
+CLASSIFY515_DONE

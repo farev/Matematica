@@ -1,0 +1,8 @@
+|GL(2,7)| = 2016
+effective automorphism actions on classes: 2016
+sets: 2016
+t-profile (elements with nonzero Z_3 part -> #sets): {7: 2016}
+product-type sets (supported on C_7 x 0 union 0 x C_21): 0
+ORBITS: 1
+  orbit size   2016  t-elems 7  rep [(0, 1), (0, 2), (1, 1), (1, 5), (2, 1), (2, 10), (3, 19)]
+orbit size histogram: {2016: 1}

@@ -1,0 +1,9 @@
+A: free 4-class-subsets of F_5^2: 135; free 5-subsets: 0 (must be 0)
+B: free 4-sets with Reach != V\0: 0 (must be 0)
+C: case (|S0|,|S1|)=(4,2): EMPTY; min violated constraints over all configs: 2
+C: case (|S0|,|S1|)=(3,3): EMPTY; min violated constraints over all configs: 2
+C: case (|S0|,|S1|)=(2,4): EMPTY; min violated constraints over all configs: 2
+C: case (|S0|,|S1|)=(1,5): EMPTY; min violated constraints over all configs: 2
+C: case (|S0|,|S1|)=(0,6): EMPTY; min violated constraints over all configs: 2
+CASE AUDIT PASS — no ±free 6-set in F_5^2 ⊕ Z_3
+AUDIT_EXIT_0
