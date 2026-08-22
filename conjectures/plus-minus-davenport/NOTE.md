@@ -280,9 +280,15 @@ Verification for both: census + a second census under a different factor
 encoding (different DFS tree, identical count vectors:
 `67, 2211, 46449, 632138, 4105426, 2186496` for `C₃²⊕C₁₅`;
 `81, 3240, 83200, 1422850, 12783888, 6654960` for `C₃³⊕C₆`) + verified
-witnesses; raw-multiset runs and clean-room Python censuses were also
-launched — statuses in WRITEUP and the committed `run_135_*`, `run_162_*`
-transcripts.
+witnesses. For `C₃²⊕C₁₅` additionally: raw-multiset run (5.66G nodes,
+824 s) matching the exact `2^k` relation on all six counts, and a
+clean-room Python census reproducing the census digit for digit — the
+full Theorem-7 battery. The companion order-135 cell `C₃⊕C₄₅ = 7` (the
+family deviation) carries the same battery: second encoding
+(`3+5+9` vs `3+45` — identical counts `67, 2211, 46452, 633074, 4220095,
+3391470`), raw run (7.48G nodes, 1075 s, `2^k` relation PASS), verified
+witness; its Python census result is recorded in
+`run_135_c3c45_indep.txt`.
 
 **Endpoint attribution over all 310 valued cells** (312 minus the two
 timeout cells, which are lower=upper anyway): bounds coincide for 278;
@@ -300,9 +306,20 @@ and `(3,3,15) → 7` (**middle**); 144 `(3,48), (6,24), (12,12), (2,6,12),
 `(3,3,18) → 8` (upper) and `(3,3,3,6) → 7` (**middle**, Theorem 12).
 
 **Families.**
-`D±(C₅ ⊕ C₅ₙ) = 5, 6, 6, 7, 7, 8` for `n = 1..6` — `n = 3` remains the
-unique sub-binary cell; `n = 6` (order 150, bracket `{7,8}`) resolves
-**upper**. `D±(C₇ ⊕ C₇ₙ) = 6, 7, 8` (`n = 1, 2, 3`) — upper throughout.
+`D±(C₅ ⊕ C₅ₙ) = 5, 6, 6, 7, 7, 8, 8` for `n = 1..7` — `n = 3` remains
+the unique sub-binary cell; `n = 6` (order 150, bracket `{7,8}`)
+resolves **upper**; `n = 7` (order 175, bounds coincide) is
+lemma-forced and engine-confirmed. `D±(C₇ ⊕ C₇ₙ) = 6, 7, 8, 8`
+(`n = 1..4`) — upper throughout, including the new `n = 4` gap cell
+(order 196, 2.57G-node census, 10,782,828 extremal 7-sets).
+
+**Beyond 162 (spot cells, lighter verification tier).** Three gap or
+family cells past the systematic table, each a single census plus a
+`verify_witness.py`-checked witness (no second encoding or raw run —
+stated so the tier is not mistaken for the headline battery):
+`D±(C₇ ⊕ C₂₈) = 8` (bracket `{7,8}`, upper), `D±(C₁₄ ⊕ C₁₄) = 8`
+(bracket `{7,8}`, upper; 3.22G nodes), `D±(C₅ ⊕ C₃₅) = 8` (bounds
+coincide, so PROVED by Lemmas 3+3b+3c independently of the run).
 `D±(C₃ ⊕ C₃ₙ)` for `n = 2..18`: `5, 5, 6, 6, 6, 6, 7, 7, 7, 7, 7, 7, 7,
 7, 8, 8, 8` — **the `n = 15` cell (order 135, bracket `{7,8}`) attains
 the lower bound**, the family's first deviation from the binary value in

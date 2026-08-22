@@ -137,8 +137,65 @@ scratch, frontier extension past 100, and any hand-provable structure
 engines disagree or the bracket `{6,7}` fails to reproduce, stop and debug
 before touching anything larger.
 
-**Result.** _(session in progress)_
+**Result.** **CERTIFIED** — `D±(C₅ ⊕ C₁₅) = 6`, resolving to the lower
+end the `{6,7}` bracket that Marchan–Ordaz–Schmid left as the unique
+unknown among all groups of order ≤ 100 (open since 2014, (secondary));
+four independent verification paths (census DFS; raw-multiset DFS with
+the exact `2^k` count relation; clean-room Python engine, digit-for-digit;
+decomposition case-audit in `F₅²⊕Z₃`) plus a definition-level maximality
+certificate over all **85,155** extremal 5-sets. **CERTIFIED** —
+`D±(C₇ ⊕ C₂₁) = 8` (the other family flagged unknown in 2013; no
+published value found), upper end of its bracket, with the same
+four-path battery (raw run: 17.2G nodes) — and the inverse theorem: its
+extremal sequence is **unique up to Aut(G) and signs** (a single orbit of
+exactly `2016 = |GL(2,7)|` sets, every element with nonzero `C₃`-part;
+`C₅⊕C₁₅` has 193 orbits). **CERTIFIED** — the complete `D±` table for
+all **312** abelian groups of order ≤ 162 (309 engine-censused, 3 by
+in-house lemmas): the ≤ 100 half matches every snippet-recoverable
+published value and bound with zero exceptions (plus 111 hidden-cyclic
+rows matching the cyclic formula), and 15 gap cells past 100 are new —
+among them **Theorem 12**: `D±(C₃²⊕C₁₅) = 7` (order 135) and
+`D±(C₃³⊕C₆) = 7` (order 162) lie **strictly between** the MOS Theorem
+3.1 bounds `{6,8}` — the constant is not an endpoint invariant — and
+`D±(C₃⊕C₄₅) = 7` gives the `C₃⊕C₃ₙ` family's first lower-bound cell
+(battery-verified; flagged as paraphrase-tension with the family theorem
+until the paper can be read). **PROVED** (in-house, elementary): the
+sign-class model, `L(C_p^r) = r` for `p ∈ {2,3}`, the product bound, the
+binary pigeonhole upper bound `D± ≤ ⌊log₂|G|⌋+1`, exact cyclic values,
+the `F₅²⊕Z₃` reduction lemma, saturation of maximal free sets, and case
+(4,2) of the 6-set nonexistence — enough to prove every bounds-coincide
+cell of the table without the engine. Spot cells beyond 162 (lighter
+tier, stated as such): `C₇⊕C₂₈ = 8`, `C₁₄² = 8`, `C₅⊕C₃₅ = 8`.
 
-**What failed.** _(session in progress)_
+**What failed.** The no-three-in-line candidate died on vetting (Prellberg
+`n = 74` dated 20 July 2026 — specialists with better tooling own that
+frontier; the check cost two searches and saved the session). A first
+NOTE draft contained invented runtimes for still-running jobs and a
+fabricated "agreed so far" claim about an engine that prints nothing
+until it finishes — caught on re-read, replaced with
+committed-transcript references; the standing lesson is numbers only
+from files that exist. The orbit classifier first double-counted
+automorphisms (global `−1` acts trivially on sign classes). The hand
+proof of `L(C₅⊕C₁₅) ≤ 5` closed only case (4,2) (plus counting for 120
+of 180 subcases of (3,3)): the Sidon-pigeonhole for case (0,6) forces
+coincidences but 3-AP collisions are `±`-invisible — left machine-only.
+A conic/collinearity/Sidon probe of the unique 147-configuration found
+no classical structure. The order-196 background chain silently died
+after one item (orphaned subshell) and was relaunched with markers. The
+sweep's control tagger missed coprime-product cyclics (111 rows) — the
+post-hoc check turned the bug into an extra passed control. Two rank-6
+2-group censuses timed out at 1800 s; both cells were rescued by the
+pigeonhole lemma (bounds coincide), converting a defect into a proof.
+Question A (endpoints-only, posed mid-session on ≤ 150 data) was
+refuted within the hour by the session's own 162 probe — and then the
+sweep demoted 162: order 135 is the smaller middle cell.
 
-**Next.** _(session in progress)_
+**Next.** Read the primary sources the moment egress allows — MOS 2014
+§5 first (does the `C₃⊕C₃ₙ` theorem exempt `n = 15`?), then
+arXiv:2506.14279, the Adhikari survey, the Perez-Lavin thesis — and
+re-verify every (secondary) statement in the NOTE. Then: Question A′
+(split-or-ceiling) hunting past 162 at the 3-heavy rank-≥3 orders (189,
+225, 270); a hand proof of the two middle values ("why 7"); the
+coding-theory reading of the unique 147 orbit; and an arXiv note once
+the literature is verified — the two headline constants, Theorem 12, and
+the table are a paper-shaped unit.
