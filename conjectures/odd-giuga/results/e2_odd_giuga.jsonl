@@ -1,0 +1,9 @@
+{"engine": "engine2", "m": 3, "eps": -1, "parity": "odd", "complete": true, "solutions": [], "solution_sets": [], "nodes": 2, "walltime_s": 0.0}
+{"engine": "engine2", "m": 4, "eps": -1, "parity": "odd", "complete": true, "solutions": [], "solution_sets": [], "nodes": 2, "walltime_s": 0.0}
+{"engine": "engine2", "m": 5, "eps": -1, "parity": "odd", "complete": true, "solutions": [], "solution_sets": [], "nodes": 4, "walltime_s": 0.0}
+{"engine": "engine2", "m": 6, "eps": -1, "parity": "odd", "complete": true, "solutions": [], "solution_sets": [], "nodes": 6, "walltime_s": 0.0}
+{"engine": "engine2", "m": 7, "eps": -1, "parity": "odd", "complete": true, "solutions": [], "solution_sets": [], "nodes": 9, "walltime_s": 0.0}
+{"engine": "engine2", "m": 8, "eps": -1, "parity": "odd", "complete": true, "solutions": [], "solution_sets": [], "nodes": 18, "walltime_s": 0.0}
+{"engine": "engine2", "m": 9, "eps": -1, "parity": "odd", "complete": true, "solutions": [], "solution_sets": [], "nodes": 46, "walltime_s": 0.001}
+{"engine": "engine2", "m": 10, "eps": -1, "parity": "odd", "complete": true, "solutions": [], "solution_sets": [], "nodes": 452, "walltime_s": 0.006}
+{"engine": "engine2", "m": 11, "eps": -1, "parity": "odd", "complete": true, "solutions": [], "solution_sets": [], "nodes": 111087, "walltime_s": 1.844}

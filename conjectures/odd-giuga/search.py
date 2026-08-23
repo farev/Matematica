@@ -473,10 +473,11 @@ def worker(job):
         complete = False
     d = stats.as_dict()
     d["complete"] = complete
+    d["unit"] = list(prefix)
     return d
 
 
-def run_m(m, eps, parity, jobs, budget, split_depth):
+def run_m(m, eps, parity, jobs, budget, split_depth, resume=None):
     parity_odd = parity == "odd"
     t0 = time.time()
     stats = Stats()
@@ -492,12 +493,40 @@ def run_m(m, eps, parity, jobs, budget, split_depth):
         # heaviest subtrees first: cost grows as the deficit shrinks
         units.sort(key=lambda u: (mpz(u[0]) - mpz(u[1])) / mpz(u[0])
                    if mpz(u[0]) > 0 else 1)
+        done = {}
+        if resume and os.path.exists(resume):
+            with open(resume) as f:
+                for line in f:
+                    rec = json.loads(line)
+                    if (rec.get("engine") == engine_sha()
+                            and rec["m"] == m and rec["eps"] == eps
+                            and rec["parity"] == parity):
+                        done[tuple(rec["unit"])] = rec
+        for key, rec in done.items():
+            complete &= rec["complete"]
+            stats.merge_dict(rec["stats"])
         jobs_list = [(P, A, last, t, prefix, eps, parity_odd, budget)
-                     for (P, A, last, t, prefix) in units]
+                     for (P, A, last, t, prefix) in units
+                     if tuple(prefix) not in done]
+        total = len(units)
+        done_n = len(done)
         with mp.Pool(jobs) as pool:
             for d in pool.imap_unordered(worker, jobs_list, chunksize=1):
-                complete &= d.pop("complete")
+                c = d.pop("complete")
+                unit = d.pop("unit")
+                complete &= c
                 stats.merge_dict(d)
+                done_n += 1
+                if resume:
+                    with open(resume, "a") as f:
+                        f.write(json.dumps(
+                            {"engine": engine_sha(), "m": m, "eps": eps,
+                             "parity": parity, "unit": unit,
+                             "complete": c, "stats": d}) + "\n")
+                if done_n % 200 == 0:
+                    print(f"# progress {done_n}/{total} units, "
+                          f"nodes={stats.nodes} t={time.time()-t0:.0f}s",
+                          file=sys.stderr, flush=True)
     if stats.hard:
         complete = False
     return {
@@ -553,13 +582,17 @@ def main():
                     help="per-worker node budget, 0 = unlimited")
     ap.add_argument("--split-depth", type=int, default=3)
     ap.add_argument("--out", default=None, help="append JSONL here")
+    ap.add_argument("--resume", default=None,
+                    help="per-unit progress file: completed units are "
+                         "recorded here and skipped on restart (same "
+                         "engine hash required)")
     args = ap.parse_args()
 
     mmax = args.mmax or args.m
     ok = True
     for m in range(args.m, mmax + 1):
         rec = run_m(m, args.eps, args.parity, args.jobs, args.budget,
-                    args.split_depth)
+                    args.split_depth, resume=args.resume)
         rec["engine_sha"] = engine_sha()
         line = json.dumps(rec)
         print(line, flush=True)

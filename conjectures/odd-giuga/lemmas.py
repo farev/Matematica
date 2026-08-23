@@ -41,6 +41,23 @@ def main():
           f"exceeds 2 (last prime < {p}); exact sum = {float(s):.6f}")
     print(f"          => an odd set with T or T' >= 2 has m >= {m2_odd}")
 
+    # PPN-side refinement: certify S_odd(m) < 2 - 3^(-m) for all m < m2_odd
+    from sympy import nextprime as np_
+    s_run = Fraction(0)
+    pp = 3
+    ok = True
+    worst = None
+    for m in range(1, m2_odd):
+        s_run += Fraction(1, pp)
+        gap = (2 - Fraction(3) ** (-m)) - s_run
+        if gap <= 0:
+            ok = False
+        if worst is None or gap < worst[1]:
+            worst = (m, gap)
+        pp = np_(pp)
+    print(f"L1b: S_odd(m) < 2 - 3^-m for ALL m <= {m2_odd - 1}: {ok} "
+          f"(tightest at m = {worst[0]}, margin ≈ {float(worst[1]):.2e})")
+
     m1_no3 = last_below(1, 5)
     print(f"L2: sum 1/p over the {m1_no3} smallest odd primes >= 5 is still "
           f"<= 1; the ({m1_no3 + 1})-th pushes past 1")
