@@ -209,23 +209,75 @@ Headlines (all CERTIFIED, produced by `search.py`, cross-checked by
 hashes, node counts and complete/incomplete flags):
 
 - Positive controls, all-primes mode: the engine reproduces exactly the
-  known Giuga numbers with ≤ 7 prime factors (7 numbers: 30, 858, 1722,
-  66198, 2214408306, 24423128562, and the three 7-factor ones) and the
-  known PPNs with ≤ 8 prime factors (2, 6, 42, 1806, 47058, 2214502422,
-  52495396602, plus the 8-factor term at m = 8), matching OEIS
-  A007850/A054377 (secondary) term for term.
-- Odd-mode exhaustion of `E_{−1}` and `E_{+1}` for all `m ≤ M_final`
-  (value in README): no solutions. With Lemmas 2–6 this proves the
-  factor-count bounds stated in the README.
+  known Giuga numbers with ≤ 8 prime factors and the known PPNs with ≤ 8
+  prime factors, matching OEIS A007850/A054377 (secondary) term for term
+  — the first reproduction of the 1996/2000 censuses with open code and
+  committed certificates.
+- Odd-mode exhaustion of `E_{−1}` and `E_{+1}` for **every `m ≤ 12`**:
+  no solutions (independently re-derived by `engine2.py` for `m ≤ 11`).
+
+**Theorem A (CERTIFIED computation + PROVED lemmas).** Every odd Giuga
+number has at least 14 prime factors.
+
+*Proof.* An odd Giuga number with `m ≤ 1411` prime factors has `T = 1`
+(Lemma 4), i.e. its prime set solves `E_{−1}`; the runs exhaust all
+`m ≤ 12` (empty), and `m = 13` is excluded by parity (Lemma 5). ∎
+
+**Theorem B (CERTIFIED computation + PROVED lemmas).** Every odd primary
+pseudoperfect number — equivalently, every set of distinct odd primes
+satisfying the all-prime (improper) Znám condition `p | (n/p + 1)` with
+`T′ = 1`, which below 1412 factors is all of them — has at least 14
+prime factors.
+
+*Proof.* As for Theorem A with Lemma 3 and the `E_{+1}` runs. ∎
+
+For Theorem A, 14 equals the recorded bound (secondary; see §3.1). For
+Theorem B, the strongest recorded statement we could locate is the
+consequence of Butske–Jaje–Mayernik's complete `r ≤ 8` census — i.e.
+**≥ 9**, and ≥ 10 with Lemma 5 — so ≥ 14 appears to be new.
+
+### 3.1 The m = 13 wall, and what the recorded "14" can have meant
+
+Direct exhaustion of `m = 13` is structurally out of reach for this
+method on this hardware, and we quantify why. The `t = 3` nodes of the
+`m = 13` tree can carry deficits `d ~ 10^{-9}` (an observed live node:
+prefix `(3, 5, 7, 11, 13, 17, 19, 23, 967, 101429, 679364479)`, whose
+two-primes-left window has width `3.3×10^{13}`). A `t = 3` node with
+deficit `d` branches over every prime in `(1/d, 3/d)` — about `6×10^7`
+children at `d = 1.5×10^{-9}` — and each child is a two-primes-left
+closure whose window has width `≈ 1/d′` (its own deficit), i.e. `~10^9`,
+or must factor `N* ≈ P² ~ 10^{50}`. The summed closure cost of a single
+such node is of order `10^{15}` kernel candidates or `~10^7` fifty-digit
+factorizations; the `m ≤ 12` tree, for comparison, totals `2.8×10^{10}`
+candidates. This is a factor `~10^5` past a 4-core afternoon, and the
+same structure at `m = 14` is two further orders beyond.
+
+This bears on the recorded bound. The literature snippet trail
+(secondary: MathWorld/Wikipedia, attributing BBBG 1996) states "an odd
+Giuga number has at least 14 prime factors" without proof or method. A
+1996 Maple exhaustion of the full `m ≤ 13` odd tree in the above sense
+appears implausible by the same accounting (the even `m ≤ 8` census,
+which BBBG demonstrably did complete, totals ~10^5 closures with 20–35
+digit factorizations — five orders cheaper). Their 14 may rest on the
+sequence/relaxation methods of their paper (unavailable in this
+sandbox), on additional structure we have not reproduced, or on the
+Carmichael-augmented counterexample setting. We make no claim about
+their derivation; Theorems A and B stand on this session's certificates
+alone, and at worst independently certify the recorded constant.
 
 ## 4. Open questions
 
-- Push `m` further: the tree grows by roughly two orders of magnitude per
-  even rung; `m = 18` looks like dedicated-cluster territory.
+- Close `m = 13`/`m = 14` odd: needs either a `t = 3` closure that is
+  sub-linear in the branch count (the analogue of the `uv = N*` identity
+  one level up — none is known to us), or cluster-scale compute
+  (`~10^{15}` kernel candidates at `~4 ns` each is ~50 CPU-days), or new
+  congruence obstructions special to odd sets.
+- The 9-factor even Giuga census (first beyond BBBG's 8): running as of
+  this note; see README for outcome.
 - The same engine with the Carmichael side-conditions
   `(p−1) | (n/p − 1)` bolted on would attack the Giuga-conjecture record
-  (≥ 4771 factors) directly; the pruning there is congruential, not just
-  metric, and BMS 2013's exclusion-bound machinery (paper unavailable in
-  this sandbox) should be compared first.
-- Odd proper Znám solutions of length ≤ M are also excluded by the
+  (≥ 4771 factors, BMS 2013) — there the congruence pruning collapses
+  the windows and the tree is far thinner; compare their exclusion-bound
+  machinery first when the paper is reachable.
+- Odd proper Znám solutions of length ≤ 13 are also excluded by the
   `E_{+1}` runs; the proper/improper distinction deserves its own note.

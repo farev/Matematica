@@ -144,15 +144,47 @@ def _split64(x):
     return (int(x) >> 64) & ((1 << 64) - 1), int(x) & ((1 << 64) - 1)
 
 
+FLINT_DIGITS_CAP = 52        # in-process flint factoring below this size
+
+
+def factor_flint(n):
+    """Full factorization via FLINT (C, fast qsieve). Verified here like
+    factor_subprocess: wrong output can only become None, never wrong
+    divisors. Returns {prime: exp} or None."""
+    try:
+        import flint
+    except ImportError:
+        return None
+    try:
+        res = flint.fmpz(n).factor()
+    except Exception:                           # noqa: BLE001
+        return None
+    fac = {mpz(int(p)): int(e) for p, e in res}
+    check = mpz(1)
+    for p, e in fac.items():
+        if not is_prime(p):
+            return None
+        check *= p ** e
+    if check != n:
+        return None
+    return fac
+
+
 def factor_subprocess(n, timeout):
     """Full factorization of n via sympy in a killable subprocess.
     Returns {prime: exponent} or None on timeout/failure.  The result is
     verified here (product check + primality of each factor), so a wrong
     or partial factorization can only become None, never wrong divisors."""
     import subprocess
-    code = ("import sys,json\nfrom sympy import factorint\n"
-            "print(json.dumps({str(k): v for k, v in "
-            "factorint(int(sys.argv[1])).items()}))")
+    code = ("import sys,json\n"
+            "n = int(sys.argv[1])\n"
+            "try:\n"
+            "    import flint\n"
+            "    fac = {str(int(p)): int(e) for p, e in flint.fmpz(n).factor()}\n"
+            "except Exception:\n"
+            "    from sympy import factorint\n"
+            "    fac = {str(k): v for k, v in factorint(n).items()}\n"
+            "print(json.dumps(fac))")
     try:
         cp = subprocess.run([sys.executable, "-c", code, str(n)],
                             capture_output=True, timeout=timeout, text=True)
@@ -347,7 +379,10 @@ def close_t2(P, A, D, last, eps, parity_odd, prefix, stats):
 
     def divisor_pass(cap=DIVISOR_TIME_CAP):
         stats.divisor_nodes += 1
-        fac = factor_subprocess(int(Nstar), cap)
+        if Nstar.num_digits() <= FLINT_DIGITS_CAP:
+            fac = factor_flint(int(Nstar))
+        else:
+            fac = factor_subprocess(int(Nstar), cap)
         if fac is None:
             return False
         ndiv = 1
@@ -377,12 +412,10 @@ def close_t2(P, A, D, last, eps, parity_odd, prefix, stats):
             try_q(q, False)
         return True
 
-    # python tiers, cheapest certain method first: a bounded sieve beats
-    # an unbounded factorization for every moderate window
-    if width <= SIEVE_FAST_CAP and q_hi < (1 << 64):
-        sieve_pass()
-        return
-    if Nstar.num_digits() <= FACTOR_DIGITS_CAP and divisor_pass():
+    # python tiers: with FLINT, factoring Nstar (<= ~52 digits here) costs
+    # ~10-500 ms regardless of window width, so the divisor route leads;
+    # the bounded sieve is the fallback when a factorization fails
+    if Nstar.num_digits() <= FLINT_DIGITS_CAP and divisor_pass():
         return
     if width <= SIEVE_CAP and q_hi < (1 << 64):
         sieve_pass()
