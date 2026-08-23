@@ -92,7 +92,61 @@ Giuga and PPN censuses) before the odd frontier runs are believed.
 - **Oversubscription**: exploratory runs competed with each other for the
   4 cores; the official runs are serialized.
 
+## The m = 13 wall (the session's pivot)
+
+The plan was m = 14: exhaust it, apply parity at 15, and beat the
+recorded 14 with "≥ 16". The m = 13 rung refused, three engine versions
+in a row, and the third failure was informative rather than annoying:
+py-spy with `--locals` on a stuck worker exposed a live node with prefix
+`(3, 5, 7, 11, 13, 17, 19, 23, 967, 101429, 679364479)` and a
+two-primes-left window of width 3.3×10^13. Tracing the arithmetic showed
+this is not an implementation defect but the shape of the tree: t = 3
+nodes with deficit d ~ 10^-9 branch over every prime in (1/d, 3/d) —
+tens of millions of children — and every child is a t = 2 closure of
+width ~ 1/d' or a 50-digit factorization. The m ≤ 12 tree totals
+2.8×10^10 closure candidates; m = 13 is ~10^15–10^16. No constant-factor
+engine improvement crosses five orders of magnitude, so the target moved
+from "beat 14" to "certify 14, for both families, and quantify the wall"
+— plus a redeployment of the now-fast machinery to where it does break
+new ground: the even side at m = 9, which BBBG's 1996 census stopped
+short of and nobody has determined since (the known Giuga numbers jump
+from twelve with ≤ 8 factors to a sporadic ten-factor find from 2006).
+
+Two consequences worth recording. First, the parity lemma makes m = 13
+computation worthless for the bound (13 is odd): m ≤ 12 exhaustion
+already gives ≥ 14 for both families, so the wall costs the session
+nothing beyond ambition — "≥ 16" needed m = 14, which is two further
+orders beyond the wall. Second, the same accounting casts doubt on any
+reading of the recorded "14" as a 1996 full odd-tree exhaustion (the
+even m ≤ 8 census BBBG demonstrably did is five orders cheaper); their
+14 presumably came from the sequence/relaxation or Carmichael-augmented
+methods of their paper, which this sandbox cannot read. NOTE §3.1 states
+this carefully; our Theorems A and B stand on this session's
+certificates alone.
+
+## Tooling milestones on the way
+
+- The two-primes-left identity `(Dq − P)(Dr − P) = P² + εD` with
+  `gcd(Dq − P, D) = 1` turns the closure into "divisors of N* in one
+  residue class mod D" — testable with one 128-bit remainder per
+  candidate (C kernel, wheel-filtered, ~4 ns) or, better when N* is
+  factorable, one factorization per node regardless of window width.
+- sympy's pure-Python factoring was the wrong tool at 40+ digits;
+  `python-flint` (FLINT with qsieve, pip-installable in this sandbox)
+  factors the 50-digit N* of the deep nodes in ~0.1 s and a worst-case
+  25×26-digit semiprime in 0.5 s — verified in-wrapper (product +
+  primality re-check) so a wrong factorization can only degrade to
+  "unfactored", never to wrong divisors.
+- Every engine change was gated by the same battery: the ≤ 7-factor
+  regressions on both signs, and the m = 12 odd fingerprint
+  (240,534 closures / width sum 28,131,218,255), which ended up
+  reproduced identically by five independent traversals across engine
+  versions — plus the clean-room `engine2.py` agreeing on everything it
+  can reach (both censuses to m = 6, odd emptiness to m = 11 on both
+  signs).
+
 ## Endgame
 
-(Filled at close: the official frozen-engine ladder, the m = 14 runs, the
-final bounds, and the verification pass.)
+(Final official records, control censuses, and the 9-factor census
+outcome are appended to README.md as the frozen-engine driver completes;
+the official engine hash is stamped in every run record.)
