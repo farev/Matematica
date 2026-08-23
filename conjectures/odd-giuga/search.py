@@ -52,7 +52,8 @@ SIEVE_CAP = 4_000_000_000    # below this width: rough segmented sieve
 SIEVE_CHUNK = 200_000_000    # sieve segment size (memory bound)
 SIEVE_BASE = 1_000_000       # base primes for the rough sieve
 FACTOR_DIGITS_CAP = 42       # divisor route only when Nstar has <= this many digits
-FACTOR_WIDTH_MIN = 100_000_000   # prefer divisor route above this width
+FACTOR_WIDTH_MIN = 1_000_000     # prefer divisor route above this width
+                                 # (only nodes the kernel cannot take)
 DIVISOR_TIME_CAP = 900       # seconds allowed for factoring one Nstar
 DIVISOR_COUNT_CAP = 2_000_000    # refuse divisor enumeration beyond this
 ONE = mpz(1)
@@ -74,11 +75,11 @@ def base_primes():
     return _base_primes
 
 
-def rough_candidates(lo, hi):
-    """Odd integers in [lo, hi] with no prime factor <= SIEVE_BASE (plus any
-    base primes that fall inside the window themselves).  Superset of the
-    primes in the window; every candidate is screened exactly downstream.
-    Segmented into SIEVE_CHUNK-wide slabs to bound memory."""
+def rough_chunks(lo, hi):
+    """uint64 arrays of odd integers in [lo, hi] (requires hi < 2^64) with
+    no prime factor <= SIEVE_BASE, plus any base primes inside the window.
+    Superset of the primes in the window; every survivor is screened
+    exactly downstream.  Segmented into SIEVE_CHUNK-wide slabs."""
     lo = max(int(lo), 3)
     hi = int(hi)
     if lo % 2 == 0:
@@ -101,8 +102,7 @@ def rough_candidates(lo, hi):
             if start > seg_hi:
                 continue
             mask[(start - seg_lo) // 2::p] = False
-        for j in np.nonzero(mask)[0]:
-            yield seg_lo + 2 * int(j)
+        yield np.uint64(seg_lo) + 2 * np.nonzero(mask)[0].astype(np.uint64)
         seg_lo = seg_hi + 2
 
 
@@ -110,8 +110,9 @@ def rough_candidates(lo, hi):
 _KLIB = None
 KERNEL_CHUNK = 500_000_000
 KERNEL_OUTCAP = 4096
-KERNEL_P_CAP = 1 << 62
-KERNEL_Q_CAP = 1 << 63
+KERNEL_P_CAP = 1 << 63       # Nstar = P^2 ± D < 2^127 and isqrt(Nstar) <= P
+KERNEL_U_CAP = 1 << 64       # u <= isqrt(Nstar) + 2D + 2 must stay < 2^64
+KERNEL_Q_CAP = 1 << 64       # q0 passed as uint64
 
 
 def kernel_lib():
@@ -289,7 +290,8 @@ def close_t2(P, A, D, last, eps, parity_odd, prefix, stats):
             q = next_prime(q)
         return
 
-    if P < KERNEL_P_CAP and q_hi < KERNEL_Q_CAP:
+    if (P < KERNEL_P_CAP and q_hi < KERNEL_Q_CAP
+            and P + 2 * D + 2 < KERNEL_U_CAP):
         # C kernel: scan every odd q, keep q with (Dq-P) | Nstar
         stats.t2_kernel += 1
         import ctypes
@@ -321,13 +323,25 @@ def close_t2(P, A, D, last, eps, parity_odd, prefix, stats):
         # exact test per candidate: u | Pq+eps  <=>  u | Nstar
         # (valid because gcd(u, D) = gcd(P, D) = gcd(P, A) = 1: each prefix
         # prime p_i divides P but A = sum P/p_j = prod_{j != i} p_j (mod p_i)
-        # is nonzero mod p_i)
+        # is nonzero mod p_i).  Vectorized wheel: for a small prime p with
+        # p ∤ Nstar and p ∤ D, the q with p | u form the single residue
+        # class q ≡ P·D^{-1} (mod p); those u can never divide Nstar.
+        # (p | D would need p | P for a kill — impossible, gcd(P, D) = 1.)
         stats.t2_sieved += 1
-        for qi in rough_candidates(int(q_lo) + 1, int(q_hi)):
-            q = mpz(qi)
-            u = D * q - P
-            if u > 0 and Nstar % u == 0:
-                try_q(q, True)
+        excl = []
+        for sp in (3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47,
+                   53, 59, 61):
+            if Nstar % sp and D % sp:
+                cls = (int(P) % sp) * pow(int(D) % sp, -1, sp) % sp
+                excl.append((np.uint64(sp), np.uint64(cls)))
+        for arr in rough_chunks(int(q_lo) + 1, int(q_hi)):
+            for sp, cls in excl:
+                arr = arr[arr % sp != cls]
+            for qi in arr.tolist():
+                q = mpz(qi)
+                u = D * q - P
+                if u > 0 and Nstar % u == 0:
+                    try_q(q, True)
 
     def divisor_pass():
         stats.divisor_nodes += 1
@@ -365,7 +379,7 @@ def close_t2(P, A, D, last, eps, parity_odd, prefix, stats):
     if small_nstar and width >= FACTOR_WIDTH_MIN:
         if divisor_pass():
             return
-    if width <= SIEVE_CAP:
+    if width <= SIEVE_CAP and q_hi < (1 << 64):
         sieve_pass()
         return
     if not small_nstar and divisor_pass():
@@ -398,12 +412,13 @@ def iter_primes(lo, hi, parity_odd):
                 yield p
             p = next_prime(p)
         return
-    if int(hi - lo) > SIEVE_CAP:
+    if int(hi - lo) > SIEVE_CAP or hi >= (1 << 64):
         raise WideWindow(int(hi - lo))
-    for c in rough_candidates(int(lo) + 1, int(hi)):
-        cm = mpz(c)
-        if is_prime(cm):
-            yield cm
+    for arr in rough_chunks(int(lo) + 1, int(hi)):
+        for c in arr.tolist():
+            cm = mpz(c)
+            if is_prime(cm):
+                yield cm
 
 
 class WideWindow(Exception):
