@@ -51,10 +51,10 @@ WALK_CAP = 200_000           # below this window width: next_prime walk
 SIEVE_CAP = 4_000_000_000    # below this width: rough segmented sieve
 SIEVE_CHUNK = 200_000_000    # sieve segment size (memory bound)
 SIEVE_BASE = 1_000_000       # base primes for the rough sieve
-FACTOR_DIGITS_CAP = 42       # divisor route only when Nstar has <= this many digits
-FACTOR_WIDTH_MIN = 1_000_000     # prefer divisor route above this width
-                                 # (only nodes the kernel cannot take)
-DIVISOR_TIME_CAP = 900       # seconds allowed for factoring one Nstar
+FACTOR_DIGITS_CAP = 46       # divisor route only when Nstar has <= this many digits
+SIEVE_FAST_CAP = 1_500_000_000   # sieve first below this width (~100 s worst)
+DIVISOR_TIME_CAP = 300       # seconds for factoring one Nstar (first try)
+DIVISOR_TIME_CAP_LAST = 900  # last-resort factoring of huge-window nodes
 DIVISOR_COUNT_CAP = 2_000_000    # refuse divisor enumeration beyond this
 ONE = mpz(1)
 
@@ -110,9 +110,12 @@ def rough_chunks(lo, hi):
 _KLIB = None
 KERNEL_CHUNK = 500_000_000
 KERNEL_OUTCAP = 4096
-KERNEL_P_CAP = 1 << 63       # Nstar = P^2 ± D < 2^127 and isqrt(Nstar) <= P
-KERNEL_U_CAP = 1 << 64       # u <= isqrt(Nstar) + 2D + 2 must stay < 2^64
-KERNEL_Q_CAP = 1 << 64       # q0 passed as uint64
+# The kernel is exact whenever every intermediate fits its types:
+#   Nstar = P^2 + eps*D < 2^128  (holds for P < 2^64),
+#   u <= isqrt(Nstar) + D + 1 <= P + D + 2 < 2^64  (the U cap below),
+#   q0 and q_hi as uint64.
+KERNEL_U_CAP = 1 << 64
+KERNEL_Q_CAP = 1 << 64
 
 
 def kernel_lib():
@@ -290,8 +293,7 @@ def close_t2(P, A, D, last, eps, parity_odd, prefix, stats):
             q = next_prime(q)
         return
 
-    if (P < KERNEL_P_CAP and q_hi < KERNEL_Q_CAP
-            and P + 2 * D + 2 < KERNEL_U_CAP):
+    if q_hi < KERNEL_Q_CAP and P + 2 * D + 2 < KERNEL_U_CAP:
         # C kernel: scan every odd q, keep q with (Dq-P) | Nstar
         stats.t2_kernel += 1
         import ctypes
@@ -343,9 +345,9 @@ def close_t2(P, A, D, last, eps, parity_odd, prefix, stats):
                 if u > 0 and Nstar % u == 0:
                     try_q(q, True)
 
-    def divisor_pass():
+    def divisor_pass(cap=DIVISOR_TIME_CAP):
         stats.divisor_nodes += 1
-        fac = factor_subprocess(int(Nstar), DIVISOR_TIME_CAP)
+        fac = factor_subprocess(int(Nstar), cap)
         if fac is None:
             return False
         ndiv = 1
@@ -375,14 +377,17 @@ def close_t2(P, A, D, last, eps, parity_odd, prefix, stats):
             try_q(q, False)
         return True
 
-    small_nstar = Nstar.num_digits() <= FACTOR_DIGITS_CAP
-    if small_nstar and width >= FACTOR_WIDTH_MIN:
-        if divisor_pass():
-            return
+    # python tiers, cheapest certain method first: a bounded sieve beats
+    # an unbounded factorization for every moderate window
+    if width <= SIEVE_FAST_CAP and q_hi < (1 << 64):
+        sieve_pass()
+        return
+    if Nstar.num_digits() <= FACTOR_DIGITS_CAP and divisor_pass():
+        return
     if width <= SIEVE_CAP and q_hi < (1 << 64):
         sieve_pass()
         return
-    if not small_nstar and divisor_pass():
+    if divisor_pass(DIVISOR_TIME_CAP_LAST):
         return
     stats.hard.append({"prefix": [int(x) for x in prefix],
                        "P": str(P), "D": str(D), "width": width,
