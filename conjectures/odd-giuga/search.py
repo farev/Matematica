@@ -570,7 +570,12 @@ def run_m(m, eps, parity, jobs, budget, split_depth, resume=None):
                 complete &= c
                 stats.merge_dict(d)
                 done_n += 1
-                if resume:
+                # ledger only the units worth not redoing: cheap units
+                # rerun in microseconds on resume, and ledgering every
+                # t2-closure unit made the file balloon (282 MB at the
+                # m=8 control)
+                if resume and (not c or d["nodes"] >= 1000
+                               or d["solutions"] or d["hard"]):
                     with open(resume, "a") as f:
                         f.write(json.dumps(
                             {"engine": engine_sha(), "m": m, "eps": eps,
