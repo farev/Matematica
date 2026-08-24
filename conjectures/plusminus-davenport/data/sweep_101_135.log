@@ -23,3 +23,19 @@
 (22/72) [8, 2, 2, 2, 2] d=7 [forced (search capped)] nodes=2000001 23.67s
 (23/72) [4, 4, 2, 2, 2] d=7 [forced (search capped)] nodes=2000001 28.033s
 (24/72) [4, 2, 2, 2, 2, 2] d=7 [forced (search capped)] nodes=2000001 38.153s
+(25/72) [127] d=6 [forced (search capped)] nodes=2000001 26.818s
+(26/72) [9, 7, 2] d=6 [forced (search capped)] nodes=2000001 26.424s
+(27/72) [2, 2, 2, 2, 2, 2, 2] d=7 [forced (search capped)] nodes=2000001 62.634s
+(28/72) [7, 3, 3, 2] d=6 [forced (search capped)] nodes=2000001 25.635s
+(29/72) [125] d=6 [forced (search capped)] nodes=2000001 26.058s
+(30/72) [25, 5] d=6 [forced (search capped)] nodes=2000001 26.614s
+(31/72) [5, 5, 5] d=6 [forced (search capped)] nodes=2000001 27.318s
+(32/72) [31, 4] d=6 [forced (search capped)] nodes=2000001 26.019s
+(33/72) [31, 2, 2] d=6 [forced (search capped)] nodes=2000001 26.568s
+(34/72) [41, 3] d=6 [forced (search capped)] nodes=2000001 25.912s
+(35/72) [61, 2] d=6 [forced (search capped)] nodes=2000001 25.332s
+(36/72) [121] d=6 [forced (search capped)] nodes=2000001 24.873s
+(37/72) [11, 11] d=6 [forced (search capped)] nodes=2000001 25.455s
+(38/72) [8, 5, 3] d=6 [forced (search capped)] nodes=2000001 22.273s
+(39/72) [5, 4, 3, 2] d=6 [forced (search capped)] nodes=2000001 27.073s
+(40/72) [5, 3, 2, 2, 2] d=6 [forced (search capped)] nodes=2000001 26.465s

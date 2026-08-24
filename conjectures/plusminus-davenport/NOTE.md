@@ -209,10 +209,17 @@ quad (y₁+y₄) − (y₂+y₃) = (1+4) − (2+3) = 0, a contradiction. ∎
 
 **Stratum (2,4) with independent kernel pair, and strata (1,5), (0,6) —
 CERTIFIED empty.** For independent T = {e₁, e₂} the forbidden set is the
-3×3 box {−1,0,1}², and the constraints say: all pairwise differences avoid
-the box, all xᵢ avoid the box s − B (s = Σxᵢ), and all six pair-sums avoid
-the box 3s + {0,±2}². We did not find a short hand argument for this
-sub-stratum or for t₁ = 5, 6 (constraint families as in `verify_strata.py`:
+3×3 box B = {−1,0,1}², and the constraints say: all pairwise differences
+avoid the box, all xᵢ avoid the box s − B (s = Σxᵢ), and all six pair-sums
+avoid the box 3s + {0,±2}². A machine-checked reduction brings this
+sub-stratum to within one page of a hand proof: among all 12 650 four-point
+subsets of 𝔽₅², exactly **two** satisfy the difference and triple
+constraints — the punctured lines {(t, 2t) : t ≠ 0} and {(t, 3t) : t ≠ 0} —
+and each is then killed by the balanced quad x₁+x₄−x₂−x₃ = 0 (on the line
+this is 1+4−2−3 = 0 in 𝔽₅, the same arithmetic that ends the parallel
+case). What is missing is a hand derivation of that two-survivor
+classification. We did not find a short argument for it, nor for
+t₁ = 5, 6 (constraint families as in `verify_strata.py`:
 differences; triple sums; balanced 2+2− sums; 4+1− sums; for t₁ = 6 also
 3+3− sums and the full sum). Exhaustive enumeration finds no admissible
 configuration in any of them (66, 12, 1 kernel sets respectively; 0
