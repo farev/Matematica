@@ -1,12 +1,25 @@
 72 group types, orders 101..135
-(1/72) [5, 3, 3, 3] d=6 [gap:search-decided] nodes=6972788 126.286s
-(2/72) [9, 5, 3] d=6 [gap:search-decided] nodes=8293370 153.424s
-(3/72) [27, 5] d=7 [forced+confirmed] nodes=8724246 160.831s
-(4/72) [67, 2] d=7 [forced+confirmed] nodes=9959248 181.795s
-(5/72) [19, 7] d=7 [forced+confirmed] nodes=7776655 141.168s
-(6/72) [131] d=7 [forced+confirmed] nodes=6945641 146.858s
-(7/72) [11, 4, 3] d=7 [forced+confirmed] nodes=8909700 191.856s
-(8/72) [11, 3, 2, 2] d=7 [forced+confirmed] nodes=12070575 302.858s
-(9/72) [13, 5, 2] d=7 [forced+confirmed] nodes=7937402 251.168s
-(10/72) [43, 3] d=7 [forced+confirmed] nodes=6049919 207.82s
-(11/72) [128] d=7 [forced+confirmed] nodes=7147395 226.19s
+(1/72) [27, 5] d=7 [forced (search capped)] nodes=2000001 28.389s
+(2/72) [67, 2] d=7 [forced (search capped)] nodes=2000001 28.173s
+(3/72) [19, 7] d=7 [forced (search capped)] nodes=2000001 28.26s
+(4/72) [5, 3, 3, 3] d=6 [gap:search-decided] nodes=6972788 87.943s
+(5/72) [9, 5, 3] d=6 [gap:search-decided] nodes=8293370 105.427s
+(6/72) [11, 4, 3] d=7 [forced (search capped)] nodes=2000001 28.311s
+(7/72) [11, 3, 2, 2] d=7 [forced (search capped)] nodes=2000001 27.287s
+(8/72) [131] d=7 [forced (search capped)] nodes=2000001 27.267s
+(9/72) [13, 5, 2] d=7 [forced (search capped)] nodes=2000001 27.915s
+(10/72) [43, 3] d=7 [forced (search capped)] nodes=2000001 26.794s
+(11/72) [128] d=7 [forced (search capped)] nodes=2000001 23.996s
+(12/72) [64, 2] d=7 [forced (search capped)] nodes=2000001 22.912s
+(13/72) [32, 4] d=7 [forced (search capped)] nodes=2000001 22.059s
+(14/72) [32, 2, 2] d=7 [forced (search capped)] nodes=2000001 21.952s
+(15/72) [16, 8] d=7 [forced (search capped)] nodes=2000001 20.319s
+(16/72) [16, 4, 2] d=7 [forced (search capped)] nodes=2000001 20.407s
+(17/72) [16, 2, 2, 2] d=7 [forced (search capped)] nodes=2000001 20.959s
+(18/72) [8, 8, 2] d=7 [forced (search capped)] nodes=2000001 19.309s
+(19/72) [8, 4, 4] d=7 [forced (search capped)] nodes=2000001 19.36s
+(20/72) [8, 4, 2, 2] d=7 [forced (search capped)] nodes=2000001 18.963s
+(21/72) [4, 4, 4, 2] d=7 [forced (search capped)] nodes=2000001 21.354s
+(22/72) [8, 2, 2, 2, 2] d=7 [forced (search capped)] nodes=2000001 23.67s
+(23/72) [4, 4, 2, 2, 2] d=7 [forced (search capped)] nodes=2000001 28.033s
+(24/72) [4, 2, 2, 2, 2, 2] d=7 [forced (search capped)] nodes=2000001 38.153s

@@ -83,6 +83,19 @@ strictly between both bounds, explained by a better direct-sum split. That
 observation crystallized into Conjecture A (split-or-pigeonhole), which
 holds at every cell computed today.
 
+## Predictions registered before the late runs finished
+
+Lemma C applied with the *computed* table (rather than invariant factors)
+forces several cells that were still in the search queue when this paragraph
+was written (13:10 UTC), because a best split meets the pigeonhole bound:
+d±(C₁₅⊕C₁₅) = 7 via (C₃⊕C₁₅)⊕C₅ = 5+2; d±(C₃⊕C₆₃) = 7 via C₉⊕C₂₁ = 3+4;
+d±(C₇⊕C₂₈) = 7 via C₄⊕(C₇⊕C₇) = 2+5; d±(C₁₄⊕C₁₄) = 7 via
+(C₇⊕C₇)⊕(C₂⊕C₂) = 5+2; d±(C₃⊕C₃⊕C₂₇) = 7 via C₃⊕(C₃⊕C₂₇) = 1+6. The
+searches, therefore, are confirmations for these five; the genuinely open
+searches in the queue are C₃⊕C₅₇ (Conjecture B predicts 7), C₃⊕C₃⊕C₂₁, and
+C₉⊕C₃⊕C₃⊕C₃. If any of the five forced cells comes back different, a lemma
+or an engine is wrong and the session fails loudly.
+
 ## What failed
 
 - The first engine design (Python sets) died on the control suite; rewritten.

@@ -1,0 +1,14 @@
+# Raw dpm_fast output lines, assembled 2026-08-24. Sharded runs prefixed shard=i/k.
+# NOTE on the 13,13 block: the binary did not echo its shard index in this
+# first batch (fixed afterwards), so the shard=i labels below are positional.
+# The set is complete: the launcher ran exactly i=0,1,2,3 with -s i/4 and
+# `wait` returned after all four exited 0, each printing one line. Node totals
+# and the dpm maximum are label-independent.
+moduli=7,7,3 N=147 nclasses=73 dpm=7 nodes=16528742 capped=0 stopped=0 witness=(0,1,1);(0,2,2);(1,0,1);(1,2,1);(2,0,2);(2,3,1);(3,6,1)
+moduli=5,5,3,2 N=150 nclasses=75 dpm=7 nodes=24551983 capped=0 stopped=0 witness=(0,1,0,1);(0,1,1,0);(1,0,0,1);(1,2,2,1);(1,3,1,1);(2,1,2,0);(2,4,1,0)
+moduli=17,3,3 N=153 nclasses=76 dpm=7 nodes=22655909 capped=0 stopped=0 witness=(1,0,0);(1,0,1);(1,1,0);(1,2,2);(2,1,2);(4,2,1);(8,1,2)
+moduli=19,3,3 N=171 nclasses=85 dpm=7 nodes=56500022 capped=0 stopped=0 witness=(1,0,0);(1,0,1);(1,0,2);(1,1,0);(2,2,1);(4,1,2);(8,2,1)
+shard=0/4 moduli=13,13 N=169 nclasses=84 dpm=7 nodes=12260129 capped=0 stopped=0 witness=(0,4);(0,5);(1,0);(1,3);(1,6);(3,2);(6,0)
+shard=1/4 moduli=13,13 N=169 nclasses=84 dpm=7 nodes=13310791 capped=0 stopped=0 witness=(0,3);(0,5);(1,0);(1,1);(1,7);(3,1);(6,0)
+shard=2/4 moduli=13,13 N=169 nclasses=84 dpm=7 nodes=13890688 capped=0 stopped=0 witness=(0,2);(0,4);(1,0);(1,3);(1,8);(3,1);(6,0)
+shard=3/4 moduli=13,13 N=169 nclasses=84 dpm=7 nodes=14990073 capped=0 stopped=0 witness=(0,1);(0,2);(1,0);(1,4);(1,8);(3,3);(6,6)

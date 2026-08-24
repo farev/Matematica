@@ -110,6 +110,7 @@ int main(int argc, char **argv) {
     uint64_t R0[MAXW];
     memset(R0, 0, sizeof(uint64_t) * W);
     rec(0, 0, R0);
+    if (shard >= 0) printf("shard=%d/%d ", shard, nshards);
     printf("moduli=");
     for (int i = 0; i < nmod; i++) printf("%d%s", moduli[i], i + 1 < nmod ? "," : "");
     printf(" N=%d nclasses=%d dpm=%d nodes=%lld capped=%d stopped=%d witness=", N, nclasses, best, nodes, capped, stopped);

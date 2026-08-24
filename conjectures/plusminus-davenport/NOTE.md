@@ -139,10 +139,11 @@ Lemmas P and C give, for every G, the bracket
 **Labels.** The lower bound (d± ≥ 5) is **PROVED** (Lemma C + Lemma Cy;
 explicit witness {(0,1), (0,2), (0,4), (1,0), (2,0)} verified by
 `verify_witness.py`, all 3⁵−1 = 242 signed sums nonzero). The upper bound
-(no ±-zsf 6-set) is **CERTIFIED** by four independent computations (§6), and
-**PROVED** for two of the five strata of the stratified argument below. The
-remaining three strata rest on exhaustive computation; the theorem as a whole
-therefore carries the label CERTIFIED.
+(no ±-zsf 6-set) is **CERTIFIED** by four independent computations (§6);
+of the stratified argument below, strata (4,2) and (3,3) and the
+parallel-kernel half of stratum (2,4) are **PROVED**. The remaining parts
+rest on exhaustive computation; the theorem as a whole therefore carries the
+label CERTIFIED.
 
 ### 4.1 Stratified nonexistence argument
 
@@ -196,13 +197,28 @@ one of these six. There are 120 such T, and 60 + 120 = 180 matches the
 machine census of ±-zsf 3-subsets. Hence no triangle, and the stratum is
 empty. ∎
 
-**Strata (2,4), (1,5), (0,6) — CERTIFIED empty.** Constraint families as in
-`verify_strata.py` (differences; triple sums; balanced 2+2− sums; 4+1− sums;
-for t₁ = 6 also 3+3− sums and the full sum). Exhaustive enumeration finds no
-admissible configuration: 66, 12, 1 kernel sets and 0 admissible outside
-configurations in each stratum. We did not find a short hand argument for
-these three strata; the search spaces are small (≤ 10⁶ configurations each)
-and independently re-verified by the global searches of §6.
+**Stratum (2,4), parallel kernel pair — PROVED empty.** If T = {a, 2a}
+(both classes on one line L = ⟨a⟩), then R(T) ∪ {0} = L. All thirteen
+balanced combinations of the four outside σ-parts must avoid L, so their
+images under the quotient q : 𝔽₅² → 𝔽₅²/L ≅ 𝔽₅ must be nonzero. Write
+yᵢ = q(xᵢ). The six differences give: the yᵢ are pairwise distinct, so
+{y₁,…,y₄} = 𝔽₅ ∖ {m} for some m. The four triple sums are
+(Σy) − yᵢ = −m − yᵢ (since Σ_{𝔽₅∖{m}} = −m), nonzero for all i iff
+−m ∉ {y} iff −m = m iff m = 0. So {y} = {1,2,3,4} — and then the balanced
+quad (y₁+y₄) − (y₂+y₃) = (1+4) − (2+3) = 0, a contradiction. ∎
+
+**Stratum (2,4) with independent kernel pair, and strata (1,5), (0,6) —
+CERTIFIED empty.** For independent T = {e₁, e₂} the forbidden set is the
+3×3 box {−1,0,1}², and the constraints say: all pairwise differences avoid
+the box, all xᵢ avoid the box s − B (s = Σxᵢ), and all six pair-sums avoid
+the box 3s + {0,±2}². We did not find a short hand argument for this
+sub-stratum or for t₁ = 5, 6 (constraint families as in `verify_strata.py`:
+differences; triple sums; balanced 2+2− sums; 4+1− sums; for t₁ = 6 also
+3+3− sums and the full sum). Exhaustive enumeration finds no admissible
+configuration in any of them (66, 12, 1 kernel sets respectively; 0
+admissible outside configurations); the search spaces are ≤ 10⁶
+configurations each and are independently re-verified by the global searches
+of §6.
 
 ### 4.2 Extremal structure (inverse problem)
 
