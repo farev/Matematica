@@ -12,3 +12,7 @@ shard=0/4 moduli=13,13 N=169 nclasses=84 dpm=7 nodes=12260129 capped=0 stopped=0
 shard=1/4 moduli=13,13 N=169 nclasses=84 dpm=7 nodes=13310791 capped=0 stopped=0 witness=(0,3);(0,5);(1,0);(1,1);(1,7);(3,1);(6,0)
 shard=2/4 moduli=13,13 N=169 nclasses=84 dpm=7 nodes=13890688 capped=0 stopped=0 witness=(0,2);(0,4);(1,0);(1,3);(1,8);(3,1);(6,0)
 shard=3/4 moduli=13,13 N=169 nclasses=84 dpm=7 nodes=14990073 capped=0 stopped=0 witness=(0,1);(0,2);(1,0);(1,4);(1,8);(3,3);(6,6)
+shard=3/4 moduli=3,3,3,7 N=189 nclasses=94 dpm=7 nodes=27240169 capped=0 stopped=0 witness=(0,0,1,4);(0,0,1,5);(0,0,1,6);(0,1,0,1);(1,0,0,1);(1,1,0,6);(1,2,0,3)
+shard=2/4 moduli=3,3,3,7 N=189 nclasses=94 dpm=7 nodes=27443221 capped=0 stopped=0 witness=(0,0,1,3);(0,0,1,4);(0,0,1,5);(0,1,0,1);(1,0,0,1);(1,1,0,6);(1,2,0,3)
+shard=1/4 moduli=3,3,3,7 N=189 nclasses=94 dpm=7 nodes=29586640 capped=0 stopped=0 witness=(0,0,1,2);(0,0,1,3);(0,0,1,4);(0,1,0,1);(1,0,0,1);(1,1,0,6);(1,2,0,3)
+shard=0/4 moduli=3,3,3,7 N=189 nclasses=94 dpm=7 nodes=31628906 capped=0 stopped=0 witness=(0,0,1,1);(0,0,1,2);(0,0,1,3);(0,1,0,1);(1,0,0,1);(1,1,0,6);(1,2,0,3)
