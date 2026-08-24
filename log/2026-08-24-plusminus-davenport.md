@@ -103,7 +103,9 @@ bounds, 17 decided by search; the published anchor D±(C₉⊕C₃⊕C₃) = 6
 reproduced); extension to all types of order 101–135 and
 targeted C-engine cells to order 243, apparently the first values past 100
 ((secondary)): D±(C₇⊕C₂₁) = 8 and D±(C₅⊕C₃₀) = 8 (both pigeonhole-tight;
-16.5M and 24.6M nodes), D±(C₃⊕C₅₁) = 8, more in
+16.5M and 24.6M nodes), D±(C₁₃⊕C₁₃) = 8 (54.45M nodes, 4-shard exhaustive),
+D±(C₃⊕C₅₁) = D±(C₃⊕C₅₇) = 8, D±(C₃⊕C₃⊕C₂₁) = 8 (115.9M nodes, an open
+[6,7]-cell decided at the top), more in
 `conjectures/plusminus-davenport/data/`. Landscape: 12 of the 17 open cells
 ≤ 100 attain the pigeonhole bound — C₅⊕C₁₅ (lower) is the exception, not
 the rule; d± separates four of the five order-81 groups; first cell strictly
