@@ -1,0 +1,12 @@
+72 group types, orders 101..135
+(1/72) [5, 3, 3, 3] d=6 [gap:search-decided] nodes=6972788 126.286s
+(2/72) [9, 5, 3] d=6 [gap:search-decided] nodes=8293370 153.424s
+(3/72) [27, 5] d=7 [forced+confirmed] nodes=8724246 160.831s
+(4/72) [67, 2] d=7 [forced+confirmed] nodes=9959248 181.795s
+(5/72) [19, 7] d=7 [forced+confirmed] nodes=7776655 141.168s
+(6/72) [131] d=7 [forced+confirmed] nodes=6945641 146.858s
+(7/72) [11, 4, 3] d=7 [forced+confirmed] nodes=8909700 191.856s
+(8/72) [11, 3, 2, 2] d=7 [forced+confirmed] nodes=12070575 302.858s
+(9/72) [13, 5, 2] d=7 [forced+confirmed] nodes=7937402 251.168s
+(10/72) [43, 3] d=7 [forced+confirmed] nodes=6049919 207.82s
+(11/72) [128] d=7 [forced+confirmed] nodes=7147395 226.19s
