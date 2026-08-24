@@ -53,3 +53,16 @@
 (52/72) [7, 4, 4] d=6 [forced (search capped)] nodes=2000001 24.734s
 (53/72) [7, 4, 2, 2] d=6 [forced (search capped)] nodes=2000001 25.841s
 (54/72) [7, 2, 2, 2, 2] d=6 [forced (search capped)] nodes=2000001 27.466s
+(55/72) [37, 3] d=6 [forced+confirmed] nodes=1926848 21.404s
+(56/72) [11, 5, 2] d=6 [forced (search capped)] nodes=2000001 23.386s
+(57/72) [109] d=6 [forced+confirmed] nodes=1715527 19.396s
+(58/72) [27, 4] d=6 [forced+confirmed] nodes=1966329 22.604s
+(59/72) [9, 4, 3] d=6 [forced+confirmed] nodes=1854327 21.401s
+(60/72) [27, 2, 2] d=6 [forced (search capped)] nodes=2000001 24.251s
+(61/72) [9, 3, 2, 2] d=6 [forced (search capped)] nodes=2000001 22.259s
+(62/72) [4, 3, 3, 3] d=6 [gap:search-decided] nodes=1502661 15.517s
+(63/72) [3, 3, 3, 2, 2] d=6 [gap:search-decided] nodes=1951229 22.791s
+(64/72) [107] d=6 [forced+confirmed] nodes=1499424 17.111s
+(65/72) [53, 2] d=6 [forced+confirmed] nodes=1695540 18.483s
+(66/72) [7, 5, 3] d=6 [forced+confirmed] nodes=1284976 14.656s
+(67/72) [13, 8] d=6 [forced+confirmed] nodes=1529619 16.495s

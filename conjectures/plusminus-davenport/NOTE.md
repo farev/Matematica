@@ -221,8 +221,11 @@ case). What is missing is a hand derivation of that two-survivor
 classification. We did not find a short argument for it, nor for
 t₁ = 5, 6 — in stratum (1,5) the balanced 2+2− sums alone annihilate all
 2 800 difference-and-triple survivors (ablation profile
-19 375 → 2 800 → 0, the 4+1− family never needed), with no two-survivor
-collapse to exploit (constraint families as in `verify_strata.py`:
+19 375 → 2 800 → 0, the 4+1− family never needed), and in stratum (0,6)
+the profile is 64 260 → 1 680 → 0 with the 4+1− sums finishing it (the
+3+3− splits and the full sum are never load-bearing in either stratum), with
+no two-survivor collapse to exploit (constraint families as in
+`verify_strata.py`:
 differences; triple sums; balanced 2+2− sums; 4+1− sums; for t₁ = 6 also
 3+3− sums and the full sum). Exhaustive enumeration finds no admissible
 configuration in any of them (66, 12, 1 kernel sets respectively; 0
@@ -295,9 +298,14 @@ d±(C₃⊕C₆) = 4 > 3 = d±(C₃) + d±(C₆).
 Cross-checks: the anchor C₉⊕C₃⊕C₃ reproduces the published D± = 6
 ((secondary)); all cyclic rows match Lemma Cy; all forced rows match their
 proved value (the search never disagreed with a proved bound — asserted at
-runtime); for the two largest 2-group trees (C₂⁶ and C₃⊕C₂⁵ shapes) the
-confirmation search was node-capped, which is recorded in the CSV — their
-values rest on the PROVED bracket, not on search.
+runtime); **all seventeen gap cells were re-run in the independent C engine,
+and the search-tree node counts match the Python engine exactly, cell by
+cell** (11, 111, 326, …, 899 134 — table in the session transcript;
+rerunnable via `dpm_fast`); C₇⊕C₇ additionally carries the full
+implementation-B cross-check (0 six-sets; 1 008 five-sets in both A and B).
+For the two largest 2-group trees (C₂⁶ and C₃⊕C₂⁵ shapes) the confirmation
+search was node-capped, which is recorded in the CSV — their values rest on
+the PROVED bracket, not on search.
 
 ## 6. Certification of Theorem 1
 
