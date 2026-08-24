@@ -252,6 +252,19 @@ factorizations; the `m ≤ 12` tree, for comparison, totals `2.8×10^{10}`
 candidates. This is a factor `~10^5` past a 4-core afternoon, and the
 same structure at `m = 14` is two further orders beyond.
 
+The same wall was then measured on the **even** side: the attempted
+9-factor Giuga census (first stratum beyond BBBG's complete m = 8) ran
+into the identical structure one level down — live workers profiled at
+prefixes `(2, 3, 7, 43, 1811, ≈654371, ≈1.8×10⁹)`, i.e. chains of
+near-perfect fills with deficits `~10⁻⁶ → ~10⁻⁹ → ~10⁻¹²`, two-primes-
+left windows of width `~10¹²`, and `~10⁸`-prime fanouts at `t = 3` under
+`~1.3×10⁵` sibling branches. So the even m = 9 stratum sits `~10⁵×`
+beyond the m = 8 census by this method: Butske–Jaje–Mayernik's remark
+that the next step "requires factoring large auxiliary integers"
+understates it — the count of required factorizations, not their size,
+is the obstruction. The censuses of 1996/2000 stopped at 8 factors at a
+structural horizon of branch-and-close, not a hardware one.
+
 This bears on the recorded bound. The literature snippet trail
 (secondary: MathWorld/Wikipedia, attributing BBBG 1996) states "an odd
 Giuga number has at least 14 prime factors" without proof or method. A
@@ -272,8 +285,9 @@ alone, and at worst independently certify the recorded constant.
   one level up — none is known to us), or cluster-scale compute
   (`~10^{15}` kernel candidates at `~4 ns` each is ~50 CPU-days), or new
   congruence obstructions special to odd sets.
-- The 9-factor even Giuga census (first beyond BBBG's 8): running as of
-  this note; see README for outcome.
+- The 9-factor even Giuga census: blocked by the same wall (measured
+  live; see §3.1). Any sub-linear `t = 3` closure unlocks both this and
+  the odd `m = 13` rung at once.
 - The same engine with the Carmichael side-conditions
   `(p−1) | (n/p − 1)` bolted on would attack the Giuga-conjecture record
   (≥ 4771 factors, BMS 2013) — there the congruence pruning collapses

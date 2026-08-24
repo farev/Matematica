@@ -42,10 +42,15 @@ reductions make the computation cover both families).
    width 3.3×10¹³ is preserved in NOTE §3.1). This also argues the
    recorded 1996 "14" cannot have been a plain odd-tree exhaustion —
    discussed carefully, with both readings, in NOTE §3.1.
-6. **9-factor Giuga census** (first beyond the 1996 census's 8 factors;
-   no 9-factor Giuga number has ever been found) — launched, running at
-   session close; outcome lands in `results/giuga9_census.jsonl` and
-   this page should carry it once known.
+6. **The 9-factor census attempt closed the story instead of a table**:
+   the even m = 9 stratum hits the identical near-fill wall (live worker
+   profile: prefixes 2·3·7·43·1811·≈654371·≈1.8×10⁹, two-primes-left
+   windows of width ~10¹², ~10⁸-prime fanouts), putting it ~10⁵× beyond
+   the complete m = 8 census. Together with contribution 5 this says the
+   1996/2000 census horizon at 8 factors was *structural* — the
+   branch-and-close method itself runs out exactly there, on both the
+   odd frontier and the even census — which is the page's closing
+   argument, not a loose end.
 
 ## 3. Figure specs
 
@@ -64,8 +69,8 @@ reductions make the computation cover both families).
   there is nothing odd in either family — and for pseudoperfect numbers
   that is five factors further than anyone had shown."
 
-No other figures; the census (contribution 6) gets a number in the text
-when it completes, not a figure.
+No other figures; contribution 6 is prose (its numbers live in Figure 1's
+m = 13 bar and NOTE §3.1).
 
 ## 4. Caveats the page must carry
 

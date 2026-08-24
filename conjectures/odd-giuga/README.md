@@ -25,7 +25,7 @@ like a fault line a certified 4-core branch-and-bound could move.
 | 4 | Lemma layer: both families are the two signs of `Σ 1/pᵢ + ε/n = 1` below 1412 odd factors; **odd solutions have an even number of prime factors** (possibly folklore); engine-soundness lemmas (windows, `(Dq−P)(Dr−P) = P²+εD` closure with `gcd(u,D)=1`, one-sided primality, wheel filter) | **PROVED** |
 | 5 | Classical constants reproduced by exact computation: ≥ 9 factors for odd members (both signs), ≥ 59 factors for `sum − prod ≥ 2`; the parity-refined floor is ≥ 10 | **PROVED** (exact sums) |
 | 6 | The `m = 13` wall quantified: the odd `m = 13` tree contains `t = 3` nodes of deficit `~10⁻⁹` whose closure cost is `~10¹⁵` kernel candidates (observed live node recorded in NOTE §3.1) vs `2.8×10¹⁰` for all of `m ≤ 12` — direct exhaustion is ~5 orders past a 4-core session, which also bears on what the 1996 "14" can have been | analysis (NOTE §3.1) |
-| 7 | 9-factor Giuga census (`m = 9`, all primes — first beyond BBBG's 8; no 9-factor Giuga number is known): run in progress at session close of 2026-08-23; see `results/giuga9_census.jsonl` | pending |
+| 7 | **9-factor Giuga census attempted; the same wall, measured on the even side** — the run reached the near-fill region and its live workers were profiled at prefixes `(2, 3, 7, 43, 1811, ≈654371, ≈1.8×10⁹)` with two-primes-left windows of width `~10¹²`, each t = 3 near-fill node fanning into `~10⁸` p₇-candidates and each candidate demanding a ~43-digit factorization: the 9-factor stratum is `~10⁵×` beyond the complete m = 8 census. Conclusion: BBBG (1996) and BJM (2000) stopped at 8 factors at a *structural* horizon of the branch-and-close method, not a hardware one — consistent with BJM's own remark about the 9-factor step, and with the 2026 PPN-side finds coming from constructive methods | analysis (NOTE §3.1) |
 
 ## Scripts
 
@@ -66,12 +66,19 @@ traversals across engine versions).
 | `results/control_giuga_official.jsonl`, `results/control_ppn_official.jsonl` | `search.py` | the census records with the published solutions found (12 and 8 numbers) |
 | `results/resume_odd_*.jsonl` | `search.py` | per-unit exhaustion ledgers of the odd ladders |
 | `results/e2_odd_giuga.jsonl`, `results/e2_odd_ppn.jsonl` | `engine2.py` | independent-engine emptiness records, odd `m ≤ 11` |
-| `results/giuga9_census.jsonl` | `search.py` | the 9-factor census record (see result 7) |
 | `results/official_driver.log` | `run_official.sh` | the full driver transcript with phase timestamps |
 
 Fat per-unit ledgers of the control/census runs (hundreds of MB) are
 regenerable and excluded from git per the repository's ~10 MB policy;
 the official run records above are the committed certificates.
+
+Provenance note: a driver launched twice by accident, so the odd ladders
+(and part of the Giuga control) appear **twice** in the official files —
+two complete passes under two engine builds. All closure invariants
+(`t2_closures`, `t2_width_sum`, `t2_width_max`, solutions, complete
+flags) agree pair-for-pair; only `nodes` differs at odd m = 8, 9 because
+serial runs count the frontier-side nodes that parallel runs leave to
+the splitter. Kept as an (unplanned) additional cross-validation.
 
 ## Known defects and open threads
 

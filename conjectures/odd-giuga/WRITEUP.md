@@ -147,6 +147,16 @@ certificates alone.
 
 ## Endgame
 
-(Final official records, control censuses, and the 9-factor census
-outcome are appended to README.md as the frozen-engine driver completes;
-the official engine hash is stamped in every run record.)
+The official driver ran the full set: both odd ladders `m ≤ 12` (empty,
+twice — an accidentally duplicated driver gave a second full pass whose
+closure invariants match the first pair-for-pair), both even control
+censuses `m ≤ 8` (the 12 published Giuga numbers and 8 published PPNs
+reproduced exactly; 29/29 independent verification), and the 9-factor
+census attempt, which turned into the measurement that closes the story:
+the even `m = 9` stratum hits the same near-fill wall as odd `m = 13`
+(live worker profiles preserved in NOTE §3.1), so the 1996/2000 horizon
+at 8 factors was structural. Final bounds: **≥ 14 prime factors for odd
+Giuga numbers and for odd primary pseudoperfect numbers**. Small
+operational scars of the endgame, kept honest above and in the log: the
+double-launched driver, a serial-mode misclassification that ran one
+census single-core, a 282 MB resume ledger, and two self-matching pkills.
