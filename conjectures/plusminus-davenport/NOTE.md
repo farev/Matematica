@@ -32,7 +32,10 @@ what appear to be the first values past the published range, including
 D±(C₇⊕C₂₁) = 8 (pigeonhole-tight) and the first cell strictly between both
 elementary bounds (C₃⊕C₃⊕C₁₅, order 135). The landscape suggests a clean
 structural conjecture: **either d±(G) = ⌊log₂|G|⌋, or d± splits over a proper
-direct-sum decomposition** — verified at every group computed today.
+direct-sum decomposition** — verified at every group computed today. An
+interim family conjecture the session formulated at midday (C₃⊕C₃ₙ always
+pigeonhole-tight) was refuted by its own sweep an hour later at C₃⊕C₄₅
+(order 135); the refutation is reported in full (§8).
 
 ## 1. The problem
 
@@ -339,9 +342,17 @@ below is *possibly new* with that (secondary)-strength caveat. Highlights
   (bracket [5,7]) — the first such cell anywhere in our data. It is
   explained by the best *split*: C₃ ⊕ (C₃⊕C₁₅) gives
   d± ≥ 1 + 5 = 6 via Lemma C with the computed d±(C₃⊕C₁₅) = 5.
-* Further values in `data/` (see README table): the C₃⊕C₃ₙ family through
-  n = 21, C₅⊕C₃₀, C₁₃⊕C₁₃, C₇⊕C₂₈, C₁₄⊕C₁₄, C₁₅⊕C₁₅, and the order-243
-  cells C₃⊕C₃⊕C₂₇ and C₉⊕C₃⊕C₃⊕C₃.
+* **d±(C₃⊕C₄₅) = 6 < 7 = pigeonhole** (order 135; the n = 15 member of the
+  C₃⊕C₃ₙ family) — refuting this session's own interim Conjecture B within
+  the hour (§8) and joining the short list of lower-attained cells.
+* The other order-101–135 gap cells: d±(C₃⊕C₆⊕C₆) = d±(C₃⊕C₃⊕C₁₂) = 6
+  (both order 108, both = pigeonhole and split-attained simultaneously).
+* Further values in `data/` (see README table): the C₃⊕C₃ₙ family
+  (n = 17, 19 searched; n = 21 forced by split), C₅⊕C₃₀, C₁₃⊕C₁₃
+  (54.45M-node sharded exhaustion), and the batch of order-189–243 cells
+  whose values Lemma C over the computed table already forces
+  (C₃⊕C₆₃, C₇⊕C₂₈, C₁₄⊕C₁₄, C₁₅⊕C₁₅, C₃⊕C₃⊕C₂₇ — predictions
+  pre-registered in WRITEUP.md before the confirming runs).
 
 ## 8. Conjectures from the data
 
@@ -354,17 +365,33 @@ Verified at every group computed in this session. Equivalently: the
 pigeonhole-tight groups. Conjecture A would reduce the computation of d± to
 identifying which groups are pigeonhole-tight.
 
-**Conjecture B.** d±(C₃⊕C₃ₙ) = ⌊log₂ 9n⌋ (pigeonhole) for all n ≥ 2.
-(Computed: true for n = 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, and the odd-prime
-tail cases run today; false at n = 1.)
+**Conjecture B — REFUTED the same day, by this session's own sweep.** The
+midday form, "d±(C₃⊕C₃ₙ) = ⌊log₂ 9n⌋ (pigeonhole) for all n ≥ 2",
+formulated from the n ≤ 11 data, is **false at n = 15**:
+d±(C₃⊕C₄₅) = 6 < 7 = ⌊log₂135⌋ (double-engine certified, 8 293 370 nodes
+in both engines; the maximum witness is exactly the concatenation
+{1}∪{1,2}∪{1,2,4} across C₃⊕C₅⊕C₉). The family is tight at every other
+computed n — n = 2, 4, 5, 8, 9, 10, 17, 19 by search, n = 3, 6, 7, 11, 12,
+13, 14 forced by the elementary bracket, n = 21 forced by the split
+C₉ ⊕ C₂₁ = 3+4 meeting the pigeonhole bound — and fails exactly where no
+split reaches ⌊log₂ 9n⌋ (at n = 15 every split tops out at 6). The
+refutation is kept here deliberately: it is the session's own cautionary
+exhibit on curve-fitting small tables, and it converts Conjecture B into
+evidence *for* Conjecture A, which predicted the two admissible values at
+n = 15 and is consistent with the one realized.
 
 **Conjecture C.** d±(C₇⊕C₇ₙ) = ⌊log₂ 49n⌋ (pigeonhole) for all n ≥ 1.
-(Computed: true for n = 1, 2, 3, 4.)
+(n = 1, 2, 3 by search; n = 4 forced by the split C₄⊕(C₇⊕C₇) = 2+5 meeting
+the bound; n = 5 forced by the elementary bracket. First open case: n = 6,
+C₇⊕C₄₂, order 294. After the fate of Conjecture B, held with appropriate
+humility.)
 
-**Question D.** Is C₅⊕C₁₅ the only rank-2 group whose d± attains the
-concatenation bound while the pigeonhole bound is strictly larger? (In our
-data the other lower-attained cells all have rank ≥ 2 exponent-3 structure;
-C₅⊕C₃₀ = the n = 6 sibling is decided in `data/`.)
+**Question D.** Which groups attain the concatenation bound while the
+pigeonhole bound is strictly larger? In our data: the exponent-3 groups
+C₃^r (Lemma E3), C₉⊕C₃⊕C₃, C₅⊕C₁₅, and now C₃⊕C₄₅ — while the siblings
+C₅⊕C₃₀ (n = 6) and the C₃⊕C₃ₙ tight cases go to the top. No pattern
+covering all four families is apparent yet; Conjecture A says the right
+question is which groups are pigeonhole-tight.
 
 ## 9. Methodology, reproducibility, and what must be re-checked
 

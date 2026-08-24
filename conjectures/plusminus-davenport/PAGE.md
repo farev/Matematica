@@ -37,16 +37,23 @@ three of the five strata of the nonexistence argument PROVED by hand).
    sharded exhaustion), D±(C₅⊕C₃₀) = 8, D±(C₃⊕C₅₁) = D±(C₃⊕C₅₇) = 8 —
    and the **first cell strictly between the concatenation and pigeonhole
    bounds**: d±(C₃⊕C₃⊕C₁₅) = 6 ∈ (5,7) at order 135.
+   Also **d±(C₃⊕C₄₅) = 6 < 7**: the same order 135, and it refuted the
+   session's own interim conjecture (see contribution 6) within the hour —
+   double-engine certified both times.
 5. **PROVED** — the toolkit lemmas: pigeonhole d± ≤ ⌊log₂|G|⌋; cyclic
    d±(C_n) = ⌊log₂n⌋; quotient concatenation d±(G) ≥ d±(G/H)+d±(H);
    saturation (maximal ⇒ reachable set covers G∖{0}); exponent-3 groups:
    ±-zsf = 𝔽₃-linear independence, so d±(C₃^r) = r.
-6. **Conjecture A** (new, machine-tested at every computed group, ~250
+6. **Conjecture A** (new, machine-tested at every computed group, ~260
    groups): for every finite abelian G, either d±(G) = ⌊log₂|G|⌋ or some
    proper direct-sum splitting attains d±(G) = d±(A)+d±(B). The noncyclic
-   "atoms" below 100 are exactly C₃⊕C₃ₘ (m = 2,4,5,8,9) and C₇⊕C₇ —
-   giving Conjecture B (C₃⊕C₃ₙ pigeonhole-tight for all n ≥ 2; verified
-   n = 2–11, 17, 19) and Conjecture C (C₇⊕C₇ₙ tight; verified n = 1–4).
+   "atoms" below 100 are exactly C₃⊕C₃ₘ (m = 2,4,5,8,9) and C₇⊕C₇.
+   An interim **Conjecture B** (C₃⊕C₃ₙ always pigeonhole-tight) was
+   **refuted by the session's own sweep** at n = 15 (C₃⊕C₄₅) an hour after
+   it was formulated — reported in full as the cautionary exhibit, and
+   consistent with Conjecture A, which allowed both values there.
+   **Conjecture C** (C₇⊕C₇ₙ tight) stands at n = 1–5, first open case
+   n = 6 (order 294).
 
 ## 3. Figure specs
 

@@ -66,3 +66,14 @@
 (65/72) [53, 2] d=6 [forced+confirmed] nodes=1695540 18.483s
 (66/72) [7, 5, 3] d=6 [forced+confirmed] nodes=1284976 14.656s
 (67/72) [13, 8] d=6 [forced+confirmed] nodes=1529619 16.495s
+(68/72) [103] d=6 [forced+confirmed] nodes=1140973 11.346s
+(69/72) [13, 4, 2] d=6 [forced (search capped)] nodes=2000001 21.475s
+(70/72) [13, 2, 2, 2] d=6 [forced (search capped)] nodes=2000001 22.021s
+(71/72) [101] d=6 [forced+confirmed] nodes=993251 9.713s
+(72/72) [17, 3, 2] d=6 [forced+confirmed] nodes=1256823 12.374s
+
+72 groups; 4 gap cells decided by search:
+  [3, 3, 3, 2, 2]: d in [5,6] -> 6 (D_pm = 7), 1951229 nodes
+  [4, 3, 3, 3]: d in [5,6] -> 6 (D_pm = 7), 1502661 nodes
+  [5, 3, 3, 3]: d in [5,7] -> 6 (D_pm = 7), 6972788 nodes
+  [9, 5, 3]: d in [6,7] -> 6 (D_pm = 7), 8293370 nodes

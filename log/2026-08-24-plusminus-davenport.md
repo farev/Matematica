@@ -112,8 +112,13 @@ the split C₃⊕(C₃⊕C₁₅)). **PROVED lemmas:** pigeonhole, cyclic, quoti
 concatenation, saturation, exponent-3 = 𝔽₃-rank. **Conjecture A**
 (split-or-pigeonhole: every G has d± = ⌊log₂|G|⌋ or splits), verified
 mechanically at every computed group; the noncyclic "atoms" ≤ 100 are
-exactly C₃⊕C₃ₘ (m = 2,4,5,8,9) and C₇⊕C₇, giving Conjectures B/C
-(those families stay pigeonhole-tight).
+exactly C₃⊕C₃ₘ (m = 2,4,5,8,9) and C₇⊕C₇. An interim **Conjecture B**
+(C₃⊕C₃ₙ always pigeonhole-tight, formulated from the n ≤ 11 data) was
+**refuted by this same session's sweep an hour later**: d±(C₃⊕C₄₅) = 6 < 7
+at n = 15 (double-engine certified) — reported in full in NOTE §8 as the
+cautionary exhibit; Conjecture A allowed both values there and survives.
+**Conjecture C** (C₇⊕C₇ₙ tight) stands at n = 1–5, first open case
+n = 6 (order 294).
 
 **What failed.**
 - The set-based Python engine was ~20× too slow for the control suite;

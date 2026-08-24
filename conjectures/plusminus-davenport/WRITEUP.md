@@ -83,6 +83,20 @@ strictly between both bounds, explained by a better direct-sum split. That
 observation crystallized into Conjecture A (split-or-pigeonhole), which
 holds at every cell computed today.
 
+**A conjecture lived for one hour.** From the ≤ 100 data (C₃⊕C₃ₙ tight at
+every computed n ≥ 2) we formulated Conjecture B: the family is always
+pigeonhole-tight. The order-101–135 sweep refuted it the same afternoon:
+d±(C₃⊕C₄₅) = 6 < 7 at n = 15, double-engine certified, with the maximum
+witness being exactly the concatenation {1}∪{1,2}∪{1,2,4} across
+C₃⊕C₅⊕C₉. In hindsight the failure mode is visible: tightness at
+n = 3m rides on splits like C₉⊕C₃ₘ reaching the bound, and at n = 15 the
+cofactor arithmetic (⌊log₂15⌋ = 3, just below the 2⁴ boundary) leaves every
+split one short. We kept the dead conjecture in NOTE §8 on purpose: it is
+the sharpest small example this repository has produced of why a family law
+fitted to a dozen cells is evidence, not truth — and it turned into support
+for Conjecture A, which permitted both outcomes and matched the realized
+one.
+
 ## Predictions registered before the late runs finished
 
 Lemma C applied with the *computed* table (rather than invariant factors)

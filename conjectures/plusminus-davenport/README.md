@@ -20,7 +20,8 @@ push past 100, where (as far as snippets showed) no values are published.
 | Beyond order 100 (possibly first published values, (secondary)): all types of order 101–135 + targeted cells to 243; D±(C₇⊕C₂₁) = 8, D±(C₅⊕C₃₀) = 8, D±(C₃⊕C₅₁) = 8, …; first cell strictly inside both bounds: d±(C₃⊕C₃⊕C₁₅) = 6 ∈ (5,7) | CERTIFIED | NOTE §7, `data/table_101_135.csv`, `data/beyond.csv` |
 | Elementary bound/reduction lemmas (pigeonhole, cyclic, concatenation/quotient, saturation, exponent-3 = 𝔽₃-rank) | PROVED | NOTE §2–§3 |
 | Extremal census for C₅⊕C₁₅: 85 155 maximum ±-zsf 5-sets, stratified 3 375/13 500/29 040/27 960/11 280; the 3 375 = 135×25 explained exactly | CERTIFIED | NOTE §4.2 |
-| Conjecture A (split-or-pigeonhole), Conjecture B (C₃⊕C₃ₙ tight, n ≥ 2), Conjecture C (C₇⊕C₇ₙ tight) | conjectures, machine-tested only | NOTE §8 |
+| Conjecture A (split-or-pigeonhole; holds at every computed group) and Conjecture C (C₇⊕C₇ₙ tight, n ≤ 5 verified) | conjectures, machine-tested only | NOTE §8 |
+| Interim Conjecture B (C₃⊕C₃ₙ always tight) **refuted by this session's own sweep**: d±(C₃⊕C₄₅) = 6 < 7 at n = 15 | CERTIFIED refutation | NOTE §8 |
 
 ## Scripts
 
