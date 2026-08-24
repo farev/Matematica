@@ -63,3 +63,7 @@ conjectures/peaceable-queens/check_peaceable
 
 # odd-giuga kernel: build from source (gcc -O2 -shared -fPIC), do not commit
 conjectures/odd-giuga/kernel.so
+
+# odd-giuga: fat regenerable resume ledgers (100MB+); official run records ARE committed
+conjectures/odd-giuga/results/resume_control_*.jsonl
+conjectures/odd-giuga/results/resume_giuga9.jsonl
