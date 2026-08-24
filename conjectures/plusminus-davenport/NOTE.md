@@ -369,7 +369,7 @@ below is *possibly new* with that (secondary)-strength caveat. Highlights
 either d±(G) = ⌊log₂|G|⌋, or there is a proper direct-sum decomposition
 G = A ⊕ B with d±(G) = d±(A) + d±(B).
 
-Verified mechanically at all 261 groups computed in this session
+Verified mechanically at all 263 groups computed in this session
 (`conjecture_check.py` over the three data tables; also zero violations of
 component-removal monotonicity). Equivalently: the "superadditive atoms" —
 groups exceeding every split — are exactly the pigeonhole-tight groups. The

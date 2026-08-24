@@ -110,6 +110,16 @@ searches in the queue are C₃⊕C₅₇ (Conjecture B predicts 7), C₃⊕C₃�
 C₉⊕C₃⊕C₃⊕C₃. If any of the five forced cells comes back different, a lemma
 or an engine is wrong and the session fails loudly.
 
+*Outcome:* all three genuinely open searches completed and were folded into
+`data/` (C₃⊕C₅₇ = 7 as Conjecture B then predicted — an hour before that
+conjecture died elsewhere — and both remaining open cells = 7). The five
+confirmation searches were cut at session end after repeated single-thread
+timeouts; those five values stand on the PROVED split-plus-pigeonhole
+argument alone, which is exactly why the predictions were registered in
+advance, and they are *not* rows of `beyond.csv` (search-decided cells
+only). No forced cell was ever contradicted by any search at any point in
+the session.
+
 ## What failed
 
 - The first engine design (Python sets) died on the control suite; rewritten.

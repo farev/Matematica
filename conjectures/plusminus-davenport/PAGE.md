@@ -44,7 +44,7 @@ three of the five strata of the nonexistence argument PROVED by hand).
    d±(C_n) = ⌊log₂n⌋; quotient concatenation d±(G) ≥ d±(G/H)+d±(H);
    saturation (maximal ⇒ reachable set covers G∖{0}); exponent-3 groups:
    ±-zsf = 𝔽₃-linear independence, so d±(C₃^r) = r.
-6. **Conjecture A** (new, machine-tested at every computed group, ~260
+6. **Conjecture A** (new, machine-tested at every computed group, 263
    groups): for every finite abelian G, either d±(G) = ⌊log₂|G|⌋ or some
    proper direct-sum splitting attains d±(G) = d±(A)+d±(B). The noncyclic
    "atoms" below 100 are exactly C₃⊕C₃ₘ (m = 2,4,5,8,9) and C₇⊕C₇.
