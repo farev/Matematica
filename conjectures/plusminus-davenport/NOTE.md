@@ -360,10 +360,15 @@ below is *possibly new* with that (secondary)-strength caveat. Highlights
 either d±(G) = ⌊log₂|G|⌋, or there is a proper direct-sum decomposition
 G = A ⊕ B with d±(G) = d±(A) + d±(B).
 
-Verified at every group computed in this session. Equivalently: the
-"superadditive atoms" — groups exceeding every split — are exactly the
-pigeonhole-tight groups. Conjecture A would reduce the computation of d± to
-identifying which groups are pigeonhole-tight.
+Verified mechanically at all 261 groups computed in this session
+(`conjecture_check.py` over the three data tables; also zero violations of
+component-removal monotonicity). Equivalently: the "superadditive atoms" —
+groups exceeding every split — are exactly the pigeonhole-tight groups. The
+noncyclic atoms in the computed range: C₃⊕C₆, C₃⊕C₁₂, C₃⊕C₁₅, C₇⊕C₇,
+C₃⊕C₂₄, C₃⊕C₂₇ below order 100 (none in 101–135), then C₇⊕C₂₁, C₅⊕C₃₀,
+C₃⊕C₅₁, C₁₃⊕C₁₃, C₃⊕C₅₇ among the beyond-135 cells. Conjecture A would
+reduce the computation of d± to identifying which groups are
+pigeonhole-tight.
 
 **Conjecture B — REFUTED the same day, by this session's own sweep.** The
 midday form, "d±(C₃⊕C₃ₙ) = ⌊log₂ 9n⌋ (pigeonhole) for all n ≥ 2",
