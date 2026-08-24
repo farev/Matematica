@@ -219,7 +219,10 @@ and each is then killed by the balanced quad x₁+x₄−x₂−x₃ = 0 (on the
 this is 1+4−2−3 = 0 in 𝔽₅, the same arithmetic that ends the parallel
 case). What is missing is a hand derivation of that two-survivor
 classification. We did not find a short argument for it, nor for
-t₁ = 5, 6 (constraint families as in `verify_strata.py`:
+t₁ = 5, 6 — in stratum (1,5) the balanced 2+2− sums alone annihilate all
+2 800 difference-and-triple survivors (ablation profile
+19 375 → 2 800 → 0, the 4+1− family never needed), with no two-survivor
+collapse to exploit (constraint families as in `verify_strata.py`:
 differences; triple sums; balanced 2+2− sums; 4+1− sums; for t₁ = 6 also
 3+3− sums and the full sum). Exhaustive enumeration finds no admissible
 configuration in any of them (66, 12, 1 kernel sets respectively; 0
@@ -241,6 +244,14 @@ machine census 135) × (any of the 25 outside sign classes) — as it must:
 by Lemma S a maximum kernel set saturates H, while a *single* outside element
 never participates in a signed zero-sum (π ≠ 0), so every such extension is
 ±-zsf. The absence of the stratum |S∩H| = 5 re-confirms d±(C₅⊕C₅) = 4.
+
+A byproduct for the neighbor cell C₇⊕C₇ (CERTIFIED): its census of maximum
+±-zsf 5-sets has exactly 1 008 members (implementations A and B agree), and
+they form a **single GL(2,7)-orbit** (the orbit of
+{(0,1), (1,0), (1,2), (1,4), (3,1)} has size 1 008 = |GL(2,7)|/2, checked by
+direct orbit enumeration) — a complete inverse theorem for that cell: up to
+linear equivalence there is exactly one maximum ±-zero-sum-free
+configuration in C₇⊕C₇.
 
 ## 5. The full table, |G| ≤ 100
 
