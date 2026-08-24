@@ -57,3 +57,40 @@
 {"m": 9, "eps": 1, "parity": "odd", "complete": true, "solutions": [], "solution_sets": [], "nodes": 8, "t1_closures": 0, "t2_closures": 8, "t2_walked": 6, "t2_sieved": 0, "t2_kernel": 0, "t2_width_sum": 57, "t2_width_max": 24, "divisor_nodes": 0, "hard_nodes": [], "bpsw_factors": [], "deepest": 7, "walltime_s": 0.011, "engine_sha": "16ee33db8855c986+cf6fd9c778a00f2f"}
 {"m": 10, "eps": 1, "parity": "odd", "complete": true, "solutions": [], "solution_sets": [], "nodes": 73, "t1_closures": 0, "t2_closures": 52, "t2_walked": 49, "t2_sieved": 0, "t2_kernel": 0, "t2_width_sum": 1974, "t2_width_max": 960, "divisor_nodes": 0, "hard_nodes": [], "bpsw_factors": [], "deepest": 8, "walltime_s": 0.012, "engine_sha": "16ee33db8855c986+cf6fd9c778a00f2f"}
 {"m": 11, "eps": 1, "parity": "odd", "complete": true, "solutions": [], "solution_sets": [], "nodes": 1111, "t1_closures": 0, "t2_closures": 924, "t2_walked": 887, "t2_sieved": 0, "t2_kernel": 6, "t2_width_sum": 1016502, "t2_width_max": 101416, "divisor_nodes": 0, "hard_nodes": [], "bpsw_factors": [], "deepest": 9, "walltime_s": 0.052, "engine_sha": "16ee33db8855c986+cf6fd9c778a00f2f"}
+{"m": 12, "eps": 1, "parity": "odd", "complete": true, "solutions": [], "solution_sets": [], "nodes": 242828, "t1_closures": 0, "t2_closures": 240534, "t2_walked": 161761, "t2_sieved": 0, "t2_kernel": 78462, "t2_width_sum": 28131218255, "t2_width_max": 2000490683, "divisor_nodes": 0, "hard_nodes": [], "bpsw_factors": [], "deepest": 10, "walltime_s": 115.227, "engine_sha": "16ee33db8855c986+cf6fd9c778a00f2f"}
+=== odd ppn <=12 done rc=0 2026-08-24T00:26:18Z
+{"m": 1, "eps": -1, "parity": "all", "complete": true, "solutions": [], "solution_sets": [], "nodes": 1, "t1_closures": 1, "t2_closures": 0, "t2_walked": 0, "t2_sieved": 0, "t2_kernel": 0, "t2_width_sum": 0, "t2_width_max": 0, "divisor_nodes": 0, "hard_nodes": [], "bpsw_factors": [], "deepest": 0, "walltime_s": 0.0, "engine_sha": "16ee33db8855c986+cf6fd9c778a00f2f"}
+{"m": 2, "eps": -1, "parity": "all", "complete": true, "solutions": [], "solution_sets": [], "nodes": 1, "t1_closures": 0, "t2_closures": 1, "t2_walked": 0, "t2_sieved": 0, "t2_kernel": 0, "t2_width_sum": 0, "t2_width_max": 0, "divisor_nodes": 0, "hard_nodes": [], "bpsw_factors": [], "deepest": 0, "walltime_s": 0.0, "engine_sha": "16ee33db8855c986+cf6fd9c778a00f2f"}
+{"m": 3, "eps": -1, "parity": "all", "complete": true, "solutions": [30], "solution_sets": [[2, 3, 5]], "nodes": 3, "t1_closures": 0, "t2_closures": 2, "t2_walked": 1, "t2_sieved": 0, "t2_kernel": 0, "t2_width_sum": 2, "t2_width_max": 2, "divisor_nodes": 0, "hard_nodes": [], "bpsw_factors": [], "deepest": 1, "walltime_s": 0.0, "engine_sha": "16ee33db8855c986+cf6fd9c778a00f2f"}
+{"m": 4, "eps": -1, "parity": "all", "complete": true, "solutions": [858, 1722], "solution_sets": [[2, 3, 7, 41], [2, 3, 11, 13]], "nodes": 8, "t1_closures": 0, "t2_closures": 4, "t2_walked": 2, "t2_sieved": 0, "t2_kernel": 0, "t2_width_sum": 9, "t2_width_max": 7, "divisor_nodes": 0, "hard_nodes": [], "bpsw_factors": [], "deepest": 2, "walltime_s": 0.0, "engine_sha": "16ee33db8855c986+cf6fd9c778a00f2f"}
+{"m": 5, "eps": -1, "parity": "all", "complete": true, "solutions": [66198], "solution_sets": [[2, 3, 11, 17, 59]], "nodes": 18, "t1_closures": 0, "t2_closures": 8, "t2_walked": 5, "t2_sieved": 0, "t2_kernel": 0, "t2_width_sum": 76, "t2_width_max": 43, "divisor_nodes": 0, "hard_nodes": [], "bpsw_factors": [], "deepest": 3, "walltime_s": 0.0, "engine_sha": "16ee33db8855c986+cf6fd9c778a00f2f"}
+{"m": 6, "eps": -1, "parity": "all", "complete": true, "solutions": [2214408306, 24423128562], "solution_sets": [[2, 3, 7, 43, 3041, 4447], [2, 3, 11, 23, 31, 47057]], "nodes": 64, "t1_closures": 0, "t2_closures": 37, "t2_walked": 36, "t2_sieved": 0, "t2_kernel": 0, "t2_width_sum": 3824, "t2_width_max": 1807, "divisor_nodes": 0, "hard_nodes": [], "bpsw_factors": [], "deepest": 4, "walltime_s": 0.0, "engine_sha": "16ee33db8855c986+cf6fd9c778a00f2f"}
+{"m": 7, "eps": -1, "parity": "all", "complete": true, "solutions": [432749205173838, 14737133470010574, 550843391309130318], "solution_sets": [[2, 3, 7, 59, 163, 1381, 775807], [2, 3, 7, 71, 103, 61559, 29133437], [2, 3, 7, 71, 103, 67213, 713863]], "nodes": 1449, "t1_closures": 0, "t2_closures": 1277, "t2_walked": 1235, "t2_sieved": 0, "t2_kernel": 25, "t2_width_sum": 3913378, "t2_width_max": 654135, "divisor_nodes": 0, "hard_nodes": [], "bpsw_factors": [], "deepest": 5, "walltime_s": 0.11, "engine_sha": "16ee33db8855c986+cf6fd9c778a00f2f"}
+# progress 200/831968 units, nodes=200 t=3s
+# progress 400/831968 units, nodes=400 t=3s
+# progress 600/831968 units, nodes=600 t=3s
+# progress 800/831968 units, nodes=800 t=4s
+# progress 1000/831968 units, nodes=1000 t=4s
+# progress 1200/831968 units, nodes=1200 t=4s
+# progress 1400/831968 units, nodes=1400 t=4s
+# progress 1600/831968 units, nodes=1600 t=4s
+# progress 1800/831968 units, nodes=1800 t=4s
+# progress 2000/831968 units, nodes=2000 t=4s
+# progress 2200/831968 units, nodes=2200 t=4s
+# progress 2400/831968 units, nodes=2400 t=4s
+# progress 2600/831968 units, nodes=2600 t=4s
+# progress 2800/831968 units, nodes=2800 t=4s
+# progress 3000/831968 units, nodes=3000 t=4s
+# progress 3200/831968 units, nodes=3200 t=4s
+# progress 3400/831968 units, nodes=3400 t=4s
+# progress 3600/831968 units, nodes=3600 t=4s
+# progress 3800/831968 units, nodes=3800 t=4s
+# progress 4000/831968 units, nodes=4000 t=4s
+# progress 4200/831968 units, nodes=4200 t=4s
+# progress 4400/831968 units, nodes=4400 t=4s
+# progress 4600/831968 units, nodes=4600 t=4s
+# progress 4800/831968 units, nodes=4800 t=4s
+# progress 5000/831968 units, nodes=5000 t=4s
+# progress 5200/831968 units, nodes=5200 t=4s
+# progress 5400/831968 units, nodes=5400 t=4s
+# progress 5600/831968 units, nodes=5600 t=4s
