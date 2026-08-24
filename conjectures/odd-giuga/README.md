@@ -19,80 +19,97 @@ like a fault line a certified 4-core branch-and-bound could move.
 
 | # | Result | Label |
 |---|---|---|
-| 1 | Every odd Giuga number has at least **FINAL_G** prime factors (recorded bound: 14, secondary) — exhaustion of `Σ 1/p_i − 1/n = 1` over sets of `m ≤ MG` distinct odd primes, all empty, + parity (Lemma 5) | **CERTIFIED** (runs) + **PROVED** (lemmas) |
-| 2 | Every odd primary pseudoperfect number — equivalently every all-prime (possibly improper) Znám solution in odd primes — has at least **FINAL_P** prime factors; first explicit odd bound beyond the `≤ 8` consequence of Butske–Jaje–Mayernik's census (secondary) | **CERTIFIED** + **PROVED** |
-| 3 | Positive controls: the engine reproduces, from scratch, exactly the published censuses — all 10 Giuga numbers with ≤ 8 prime factors and all 8 PPNs with ≤ 8 prime factors (OEIS A007850 / A054377, secondary) — the first reproduction with open code and committed run records | **CERTIFIED** |
-| 4 | Lemma layer: classification of both families as the two signs of `Σ 1/p_i + ε/n = 1`; **an odd solution has an even number of prime factors** (possibly folklore); only the integer class `T = 1` exists below 1412 odd factors; engine-soundness lemmas (windows, closure, one-sided primality, wheel filter) | **PROVED** |
-| 5 | The classical constants reproduced exactly by independent computation: `≥ 9` factors for an odd Giuga number, `≥ 59` factors for `sum − prod ≥ 2` | **PROVED** (exact sums) |
-
-`FINAL_G`, `FINAL_P`, `MG` filled at close of session from `results/`.
+| 1 | **Every odd Giuga number has at least 14 prime factors** — exhaustion of `Σ 1/pᵢ − 1/n = 1` over all sets of `m ≤ 12` distinct odd primes (empty; `m = 13` excluded by the parity lemma), equalling the recorded bound (secondary) with, to our knowledge, the first open, certified, reproducible derivation | **CERTIFIED** runs + **PROVED** lemmas |
+| 2 | **Every odd primary pseudoperfect number — equivalently every all-prime (improper-allowed) Znám solution in odd primes — has at least 14 prime factors**; the strongest recorded statement located is the ≥ 9 consequence of Butske–Jaje–Mayernik's census (secondary), so this appears to be a new bound | **CERTIFIED** + **PROVED** |
+| 3 | Control censuses reproduced from scratch, exactly: **all 12 published Giuga numbers have ≤ 8 prime factors and are the complete census there** (m=8: 3 solutions, 831,968 nodes, 512 s) and **the 8 published PPNs are the complete census for ≤ 8 factors** (m=8: 1 solution, 510 s) — the first reproduction of BBBG 1996 / BJM 2000 with open code and committed certificates; independent from-definition verifier passes 21/21 and 8/8 solution sets | **CERTIFIED** |
+| 4 | Lemma layer: both families are the two signs of `Σ 1/pᵢ + ε/n = 1` below 1412 odd factors; **odd solutions have an even number of prime factors** (possibly folklore); engine-soundness lemmas (windows, `(Dq−P)(Dr−P) = P²+εD` closure with `gcd(u,D)=1`, one-sided primality, wheel filter) | **PROVED** |
+| 5 | Classical constants reproduced by exact computation: ≥ 9 factors for odd members (both signs), ≥ 59 factors for `sum − prod ≥ 2`; the parity-refined floor is ≥ 10 | **PROVED** (exact sums) |
+| 6 | The `m = 13` wall quantified: the odd `m = 13` tree contains `t = 3` nodes of deficit `~10⁻⁹` whose closure cost is `~10¹⁵` kernel candidates (observed live node recorded in NOTE §3.1) vs `2.8×10¹⁰` for all of `m ≤ 12` — direct exhaustion is ~5 orders past a 4-core session, which also bears on what the 1996 "14" can have been | analysis (NOTE §3.1) |
+| 7 | 9-factor Giuga census (`m = 9`, all primes — first beyond BBBG's 8; no 9-factor Giuga number is known): run in progress at session close of 2026-08-23; see `results/giuga9_census.jsonl` | pending |
 
 ## Scripts
 
 | file | what it does | cost | headline output |
 |---|---|---|---|
-| `search.py` | exact BnB over prime sets solving `Σ 1/p_i + ε/n = 1`; gmpy2 integers, C kernel (`kernel.c`) for the two-primes-left scan, per-unit resume, JSONL run records | controls: seconds; odd m=12: 1.5 min; odd m=14: hours | the exhaustions |
-| `kernel.c` | u128 scan of the closure window: keeps `q` with `(Dq−P) \| P²+εD`; wheel filter over primes ≤ 61 | — | — |
-| `engine2.py` | clean-room cross-check: stdlib Fractions + sympy, independently derived (looser) windows, no kernel, no divisor route | odd m ≤ 11: 2 s; even m ≤ 6: instant | independent agreement |
-| `verify_solution.py` | from-definition verifier of every solution in a results file (Fraction identity + per-prime divisibility + primality) | instant | control-list verification |
-| `lemmas.py` | exact rational constants for the NOTE lemmas (1412, 59, 26, 9, and the `S_odd(m) < 2 − 3^{−m}` sweep) | ~2 min | lemma constants |
+| `search.py` | exact BnB over prime sets solving `Σ 1/pᵢ + ε/n = 1`; gmpy2 integers, C kernel (`kernel.c`) for two-primes-left scans, FLINT divisor route, per-unit resume, JSONL records | odd m=12: 117 s; even m=8 census: 512 s | the exhaustions and censuses |
+| `kernel.c` | u128 scan of the closure window: keeps `q` with `(Dq−P) \| P²+εD`; wheel filter over primes ≤ 61; valid for `P + 2D + 2 < 2⁶⁴` | — | — |
+| `engine2.py` | clean-room cross-check: stdlib Fractions + sympy, independently derived looser windows, no kernel, no divisor route | odd m ≤ 11: 2 s | independent agreement everywhere it reaches |
+| `verify_solution.py` | from-definition verifier of every solution in a results file (Fraction identity + per-prime divisibility + primality) | instant | 29/29 across control files |
+| `lemmas.py` | exact rational constants for the NOTE lemmas (1412, 59, 26, 9, and the `S_odd(m) < 2 − 3⁻ᵐ` sweep) | ~2 min | lemma constants |
+| `run_official.sh` | the frozen-engine official run set, resumable, appending to `results/` | hours end-to-end | — |
 
 ## Reproduction
 
 ```bash
 cd conjectures/odd-giuga
+python3 -m pip install gmpy2 sympy numpy python-flint
 gcc -O2 -shared -fPIC -o kernel.so kernel.c
-python3 search.py --eps -1 --parity all --m 1 --mmax 8 --jobs 4 --out results/control_giuga.jsonl
-python3 search.py --eps  1 --parity all --m 1 --mmax 8 --jobs 4 --out results/control_ppn.jsonl
-python3 search.py --eps -1 --parity odd --m 1 --mmax 14 --jobs 4 --split-depth 7 \
-    --resume results/resume_odd_giuga.jsonl --out results/odd_giuga.jsonl
-python3 search.py --eps  1 --parity odd --m 1 --mmax 14 --jobs 4 --split-depth 7 \
-    --resume results/resume_odd_ppn.jsonl --out results/odd_ppn.jsonl
-python3 verify_solution.py results/control_giuga.jsonl results/control_ppn.jsonl
-python3 engine2.py -1 odd 3 11   # independent engine, overlapping range
+./run_official.sh          # or the individual commands inside it
+python3 verify_solution.py results/control_giuga_official.jsonl results/control_ppn_official.jsonl
+python3 engine2.py -1 odd 3 11    # independent engine, overlap range
 python3 lemmas.py
 ```
 
 Environment: 4 cores / 15 GB (cloud sandbox), Python 3.11.15, gmpy2 2.3.1,
-sympy 1.14.0, numpy 2.4.6, gcc -O2. Wall times in the run records.
+sympy 1.14.0, numpy 2.4.6, python-flint 0.9.0, gcc -O2. Wall times, node
+counts and engine hashes are in every run record. Engine changes during
+the session were each gated by a fixed battery (the ≤ 7-factor censuses
+on both signs and the odd `m = 12` fingerprint — 240,534 closures, summed
+window width 28,131,218,255 — reproduced identically by five independent
+traversals across engine versions).
 
 ## Data and certificates
 
 | file | produced by | what it is |
 |---|---|---|
-| `results/control_giuga.jsonl`, `results/control_ppn.jsonl` | `search.py` | control run records: solutions (= the published lists), node counts, closure statistics, engine hashes, complete flags |
-| `results/odd_giuga.jsonl`, `results/odd_ppn.jsonl` | `search.py` | frontier run records: the exhaustions behind results 1–2 |
-| `results/resume_*.jsonl` | `search.py` | per-unit completion ledger of the long runs (the certificate that every subtree of the split was exhausted, with per-unit statistics) |
-| `results/e2_*.jsonl` | `engine2.py` | independent-engine records on the overlap range |
+| `results/odd_giuga_official.jsonl`, `results/odd_ppn_official.jsonl` | `search.py` | the Theorem A/B exhaustion records, `m = 1..12`, complete flags, closure statistics, engine hashes |
+| `results/control_giuga_official.jsonl`, `results/control_ppn_official.jsonl` | `search.py` | the census records with the published solutions found (12 and 8 numbers) |
+| `results/resume_odd_*.jsonl` | `search.py` | per-unit exhaustion ledgers of the odd ladders |
+| `results/e2_odd_giuga.jsonl`, `results/e2_odd_ppn.jsonl` | `engine2.py` | independent-engine emptiness records, odd `m ≤ 11` |
+| `results/giuga9_census.jsonl` | `search.py` | the 9-factor census record (see result 7) |
+| `results/official_driver.log` | `run_official.sh` | the full driver transcript with phase timestamps |
+
+Fat per-unit ledgers of the control/census runs (hundreds of MB) are
+regenerable and excluded from git per the repository's ~10 MB policy;
+the official run records above are the committed certificates.
 
 ## Known defects and open threads
 
-- The engine's primality is GMP probable-prime (trial division +
-  Miller–Rabin). This is one-sided in the safe direction everywhere except
-  divisor-route factorizations, where factors ≥ 2^64 would rest on
-  BPSW+MR; the runs report any such factor (`bpsw_factors`) and the
-  frontier runs report none. See NOTE Lemma 12.
-- `m = 16` (the next even rung) is ~2 orders of magnitude beyond `m = 14`;
-  needs a cluster or a genuinely better bound at `t ≥ 3`.
-- The literature comparison (BBBG 1996, BMS 2013) is (secondary)
-  throughout: the sandbox has no access to the papers; only the recorded
-  bounds are compared against, and this session's bounds stand on their
-  own certificates.
+- Primality inside the engine is GMP probable-prime: one-sided in the
+  safe direction everywhere except inside divisor-route factorizations,
+  where factors are re-verified and any factor ≥ 2⁶⁴ would be disclosed
+  per run (`bpsw_factors`); every official run reports none. NOTE
+  Lemma 12.
+- `m = 13` odd (and `m = 14`, the rung that would beat the recorded
+  bound) are ~5 and ~7 orders of magnitude beyond a 4-core session by
+  the measured tree shape; NOTE §4 lists what could change that.
+- All literature comparisons are (secondary): the sandbox has no access
+  to the papers, only to search-snippet excerpts; the bounds here stand
+  on this session's own certificates.
+- The odd `m ≥ 10` trees for the two signs coincide node-for-node
+  (`ε` shifts every window bound by less than the integer floor there);
+  they differ at `m ≤ 9`, and the controls distinguish the signs
+  decisively. Observed, explained in NOTE, and harmless — but worth
+  knowing before comparing fingerprints.
 
 ## Prior work
 
-- G. Giuga (1950): the primality conjecture. BBBG, "Giuga's conjecture on
-  primality", Amer. Math. Monthly 103 (1996): counterexamples are
-  Giuga+Carmichael, > 13800 digits; recorded source of the odd-Giuga
-  ≥ 14 and the `sum − prod ≥ 2` ⇒ ≥ 59 bounds (secondary).
-- Borwein–Maitland–Skerritt (Integers 2013): conjecture counterexample has
-  ≥ 4771 prime factors, > 10^19907 (secondary); companion code repository
-  is an empty placeholder (checked 2026-08-23).
+- G. Giuga (1950): the primality conjecture. Borwein–Borwein–Borwein–
+  Girgensohn, "Giuga's conjecture on primality", Amer. Math. Monthly 103
+  (1996): counterexamples are Giuga+Carmichael with > 13800 digits;
+  recorded source of the odd ≥ 14 and the `sum − prod ≥ 2` ⇒ ≥ 59
+  bounds (secondary), and of the even `m ≤ 8` Giuga census reproduced
+  here.
+- Borwein–Maitland–Skerritt (Integers 2013): conjecture counterexamples
+  have ≥ 4771 prime factors, > 10^19907 (secondary); companion code
+  repository confirmed to be an empty placeholder (2026-08-23).
 - Butske–Jaje–Mayernik (Math. Comp. 2000): complete census of
-  `1/N + Σ 1/p = 1` (PPN/Znám) for ≤ 8 prime factors (secondary).
+  `1/N + Σ 1/p = 1` for ≤ 8 prime factors (secondary), reproduced here.
 - Wang (arXiv:2605.21518, Apr 2026): first 9-factor PPN; Alekseyev
-  (Aug 2026): no further A054377 term below 10^24 (secondary; the two new
-  PPNs were re-verified exactly in this session's environment).
-- OEIS A007850 (Giuga), A054377 (PPN), A075441 (Znám solution counts)
-  (secondary — OEIS unreachable from this sandbox; values from search
-  snippets, then reproduced independently by the engine).
+  (Aug 2026): no further A054377 term below 10^24 (secondary; both new
+  PPNs were re-verified exactly during the survey). The PPN `m = 9`
+  stratum is deliberately left to those authors; the Giuga `m = 9`
+  stratum (result 7) is untouched territory.
+- OEIS A007850 (Giuga), A054377 (PPN), A075441 (Znám counts) —
+  (secondary; unreachable from this sandbox, values triangulated from
+  search snippets and then reproduced independently by the engine).
