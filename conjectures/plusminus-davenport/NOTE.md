@@ -347,12 +347,18 @@ below is *possibly new* with that (secondary)-strength caveat. Highlights
   the hour (§8) and joining the short list of lower-attained cells.
 * The other order-101–135 gap cells: d±(C₃⊕C₆⊕C₆) = d±(C₃⊕C₃⊕C₁₂) = 6
   (both order 108, both = pigeonhole and split-attained simultaneously).
+* **d±(C₃⊕C₃⊕C₂₁) = 7** (order 189; bracket [6,7]; four-shard exhaustive
+  search, 115 898 933 nodes) — a genuinely open cell decided at the
+  pigeonhole bound, and another atom (no split exceeds 6).
 * Further values in `data/` (see README table): the C₃⊕C₃ₙ family
   (n = 17, 19 searched; n = 21 forced by split), C₅⊕C₃₀, C₁₃⊕C₁₃
   (54.45M-node sharded exhaustion), and the batch of order-189–243 cells
   whose values Lemma C over the computed table already forces
   (C₃⊕C₆₃, C₇⊕C₂₈, C₁₄⊕C₁₄, C₁₅⊕C₁₅, C₃⊕C₃⊕C₂₇ — predictions
-  pre-registered in WRITEUP.md before the confirming runs).
+  pre-registered in WRITEUP.md before the confirming runs). The last
+  genuinely open queued cell, C₉⊕C₃⊕C₃⊕C₃ (order 243, bracket [6,7]),
+  is recorded in `data/` with whatever the session's remaining compute
+  decided; see the CSV for its final status.
 
 ## 8. Conjectures from the data
 
@@ -366,7 +372,7 @@ component-removal monotonicity). Equivalently: the "superadditive atoms" —
 groups exceeding every split — are exactly the pigeonhole-tight groups. The
 noncyclic atoms in the computed range: C₃⊕C₆, C₃⊕C₁₂, C₃⊕C₁₅, C₇⊕C₇,
 C₃⊕C₂₄, C₃⊕C₂₇ below order 100 (none in 101–135), then C₇⊕C₂₁, C₅⊕C₃₀,
-C₃⊕C₅₁, C₁₃⊕C₁₃, C₃⊕C₅₇ among the beyond-135 cells. Conjecture A would
+C₃⊕C₅₁, C₁₃⊕C₁₃, C₃⊕C₅₇, C₃⊕C₃⊕C₂₁ among the beyond-135 cells. Conjecture A would
 reduce the computation of d± to identifying which groups are
 pigeonhole-tight.
 
