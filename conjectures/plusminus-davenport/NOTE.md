@@ -355,10 +355,13 @@ below is *possibly new* with that (secondary)-strength caveat. Highlights
   (54.45M-node sharded exhaustion), and the batch of order-189–243 cells
   whose values Lemma C over the computed table already forces
   (C₃⊕C₆₃, C₇⊕C₂₈, C₁₄⊕C₁₄, C₁₅⊕C₁₅, C₃⊕C₃⊕C₂₇ — predictions
-  pre-registered in WRITEUP.md before the confirming runs). The last
-  genuinely open queued cell, C₉⊕C₃⊕C₃⊕C₃ (order 243, bracket [6,7]),
-  is recorded in `data/` with whatever the session's remaining compute
-  decided; see the CSV for its final status.
+  pre-registered in WRITEUP.md before the confirming runs).
+* **d±(C₉⊕C₃⊕C₃⊕C₃) = 7** (order 243; bracket [6,7]; the session's largest
+  search — four-shard exhaustive, 736 636 601 nodes) — the other genuinely
+  open queued cell, also decided at the pigeonhole bound, and another atom.
+  The contrast with its order-81 subgroup is sharp: C₉⊕C₃⊕C₃ sits at the
+  *concatenation* bound (5 < 6), yet one more C₃ factor makes the group
+  pigeonhole-tight.
 
 ## 8. Conjectures from the data
 
@@ -372,7 +375,8 @@ component-removal monotonicity). Equivalently: the "superadditive atoms" —
 groups exceeding every split — are exactly the pigeonhole-tight groups. The
 noncyclic atoms in the computed range: C₃⊕C₆, C₃⊕C₁₂, C₃⊕C₁₅, C₇⊕C₇,
 C₃⊕C₂₄, C₃⊕C₂₇ below order 100 (none in 101–135), then C₇⊕C₂₁, C₅⊕C₃₀,
-C₃⊕C₅₁, C₁₃⊕C₁₃, C₃⊕C₅₇, C₃⊕C₃⊕C₂₁ among the beyond-135 cells. Conjecture A would
+C₃⊕C₅₁, C₁₃⊕C₁₃, C₃⊕C₅₇, C₃⊕C₃⊕C₂₁, C₉⊕C₃⊕C₃⊕C₃ among the beyond-135
+cells (13 noncyclic atoms across 263 computed groups). Conjecture A would
 reduce the computation of d± to identifying which groups are
 pigeonhole-tight.
 

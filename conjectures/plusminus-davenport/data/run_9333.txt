@@ -1,0 +1,4 @@
+shard=3/4 moduli=9,3,3,3 N=243 nclasses=121 dpm=7 nodes=171811967 capped=0 stopped=0 witness=(1,0,0,2);(1,0,1,0);(1,0,1,1);(1,0,1,2);(1,1,0,0);(1,2,0,0);(4,1,1,0)
+shard=2/4 moduli=9,3,3,3 N=243 nclasses=121 dpm=7 nodes=180582184 capped=0 stopped=0 witness=(1,0,0,1);(1,0,0,2);(1,0,1,0);(1,0,2,1);(1,1,0,0);(1,2,1,0);(4,1,0,1)
+shard=1/4 moduli=9,3,3,3 N=243 nclasses=121 dpm=7 nodes=189687437 capped=0 stopped=0 witness=(1,0,0,0);(1,0,0,1);(1,0,0,2);(1,0,1,0);(1,1,0,0);(1,2,2,1);(4,1,2,0)
+shard=0/4 moduli=9,3,3,3 N=243 nclasses=121 dpm=7 nodes=194555016 capped=0 stopped=0 witness=(1,0,1,0);(1,0,1,1);(1,0,1,2);(1,0,2,0);(1,1,0,0);(1,2,1,1);(4,1,2,0)
