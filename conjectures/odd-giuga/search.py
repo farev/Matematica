@@ -535,7 +535,7 @@ def run_m(m, eps, parity, jobs, budget, split_depth, resume=None):
     t0 = time.time()
     stats = Stats()
     complete = True
-    if jobs <= 1 or m <= split_depth + 2:
+    if jobs <= 1 or m <= min(split_depth + 2, 7):
         try:
             recurse(mpz(1), mpz(0), mpz(1), m, eps, parity_odd, (),
                     stats, budget)
