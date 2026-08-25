@@ -340,3 +340,4 @@ Z_178  N=178  mu=7  FORCED (concat == log2 bound)
 Z_179  N=179  mu=7  FORCED (concat == log2 bound)
 Z_180  N=180  mu=7  FORCED (concat == log2 bound)
 Z_2xZ_90  N=180  mu=7  FORCED (concat == log2 bound)
+Z_3xZ_60  N=180  mu=7  t=7  ATTAINED  extremal=2780096
