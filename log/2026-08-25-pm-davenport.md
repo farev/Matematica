@@ -12,10 +12,15 @@ families.
 **Result.** CERTIFIED — **`D±(C₅ ⊕ C₁₅) = 6`** (the lower end of the
 published bracket {6,7}: no dissociated 6-set exists; three independent
 engines, including a full brute force over all 2,324,784 six-subsets of
-±-classes, agree, and all three reproduce the identical census of 85,155
-extremal 5-sets) and **`D±(C₇ ⊕ C₂₁) = 8`** (attains the pigeonhole upper
+±-classes, agree, and four independent computations reproduce the
+identical census of 85,155 extremal 5-sets, every one re-verified by
+direct enumeration), **`D±(C₇ ⊕ C₂₁) = 8`** (attains the pigeonhole upper
 bound: a verified 7-element dissociated witness exists; the upper bound is
-a proved lemma, no search needed). Plus a CERTIFIED census of `μ(G)` for
+a proved lemma, no search needed — and the extremal set is **unique up to
+automorphism**: all 2,016 extremal sets are checksum sets forming a single
+Aut-orbit), and **`D±(C₃ ⊕ C₄₅) = 7`** (the first case reported outside
+MOS's `C₃⊕C₃ₙ` side conditions — single-snippet evidence tier — decided
+at the concatenation value, census 3,391,470). Plus a CERTIFIED census of `μ(G)` for
 **all** abelian groups of order ≤ 192 and thirteen larger targeted groups
 (C₇⊕C₇ₙ, C₅⊕C₅ₙ, C₃⊕C₃ₙ families, C₇³, C₅²⊕C₁₅, C₁₃²), reproducing every
 literature control (cyclic formula, the three published exceptional values

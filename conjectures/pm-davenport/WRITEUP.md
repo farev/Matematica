@@ -98,6 +98,26 @@ breakability-today × certifiability. Full scoring in the log.
   cores) roughly doubled several wall-times. Runtimes in NOTE.md marked
   accordingly.
 
+## Pre-registered predictions (written before the runs finished)
+
+Recorded mid-session, before the corresponding computations returned,
+so that hits and misses are both auditable:
+
+1. **`C₅⊕C₃₀` (n = 6) and `C₅⊕C₆₀` (n = 12): ATTAINED** (μ = 7, 8).
+   Reasoning: they sit at the same fractional log-position as the
+   deficient `C₅⊕C₁₅` (150/128 = 300/256 = 75/64 = 1.172), but acquire a
+   `C₂` factor usable as a parity checksum — precedent: `C₃⊕C₆ ≅
+   C₂⊕C₃²` attains while `C₃²` is deficient.
+2. **`C₃⊕C₉₀ ≅ C₂⊕C₃⊕C₉⊕C₅`: ATTAINED** (same repair pattern over the
+   newly-found deficient `C₃⊕C₄₅ ≅ C₃⊕C₉⊕C₅`).
+3. **`C₇⊕C₂₈ ≅ C₄⊕C₇²`: ATTAINED** (μ = 7; mod-4 checksum room over
+   `C₇²`, whose `ν₃ = 7` already showed enough slack).
+4. **`C₁₃²`: uncertain, leaning ATTAINED** (homocyclic precedents `C₅²`,
+   `C₇²` attained their gap-1 brackets; but the packing ratio 169/128 is
+   tighter than either).
+5. **`C₇⊕C₄₉`, `C₇³`, `C₅²⊕C₁₅`: no prediction** — genuinely open
+   feeling; `C₇³` has the first width-2 bracket in range ({6,7,8}).
+
 ## Verification discipline
 
 Every claimed value is either (i) witness-carried (verified by the

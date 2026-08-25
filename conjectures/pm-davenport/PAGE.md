@@ -42,9 +42,17 @@ independent exhaustive searches (one a full brute force over all
 5. **CERTIFIED** — family values beyond order 192: ⟨FINAL: C₃⊕C₃ₙ
    through n = 32, C₅⊕C₅ₙ at n = 11, 12, C₇⊕C₂₈, C₁₃², and (if
    finished) C₇⊕C₄₂, C₇⊕C₄₉, C₇³, C₅²⊕C₁₅⟩.
-6. ⟨IF CONFIRMED BY orbit_analysis: **CERTIFIED** — the 2,016 extremal
-   sets of `C₇⊕C₂₁` form a single orbit of the automorphism group — the
-   attaining configuration is unique up to symmetry.⟩
+6. **CERTIFIED** — structure: the 2,016 extremal sets of `C₇⊕C₂₁` are
+   all checksum sets and form a **single orbit** of the automorphism
+   group (order 4,032, acting with the only possible kernel) — the
+   attaining configuration is unique up to symmetry; the deficient
+   `C₅⊕C₁₅`, by contrast, scatters its 85,155 extremal sets across 193
+   orbits, the most symmetric being exactly the concatenation
+   construction (orbit size 15, stabilizer 64).
+7. **CERTIFIED** — `D±(C₃ ⊕ C₄₅) = 7` (again the concatenation value):
+   the first case reported outside the side conditions of MOS's
+   `C₃⊕C₃ₙ` theorem (single-snippet evidence — weakest openness tier of
+   the three; see caveats), census 3,391,470.
 
 ## 3. Figure specs
 

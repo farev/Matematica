@@ -96,6 +96,16 @@ absolute value ≤ `2^s − 1` (the top power dominates the rest), and
 `2^{⌊log₂ dᵢ⌋} − 1 < dᵢ`; so any `{−1,0,1}`-relation on `⋃ᵢ Bᵢ` has zero
 coefficient block in every coordinate. ∎
 
+**Lemma 3′ (superadditivity).** For any direct sum of finite abelian
+groups, `μ(G₁ ⊕ G₂) ≥ μ(G₁) + μ(G₂)`.
+
+*Proof.* Take dissociated `Sᵢ ⊆ Gᵢ` of maximum size and embed them in
+the two summands. A `{−1,0,1}`-relation on `S₁ ∪ S₂` projects to a
+relation on each `Sᵢ` because the sum is direct; both are trivial. ∎
+(This subsumes the lower bound of Lemma 3 and can beat it: for
+`C₃² ⊕ C₁₅` the invariant-factor concatenation gives 5, but the split
+`C₃ ⊕ (C₃ ⊕ C₁₅)` gives `1 + 5 = 6`, which is sharp.)
+
 **Lemma 4 (elementary 2- and 3-groups).** `μ(C_p^r) = r` for `p ∈ {2,3}`.
 
 *Proof.* For `p = 3`: `{−1, 0, 1}` is all of `F₃`, so dissociated =
@@ -166,6 +176,15 @@ agree on the full census: 2,016 extremal 7-sets, 16,528,741 DFS nodes
 normalization every witness found is a checksum set (Lemma 5): its
 `C₃`-coordinates are all nonzero. Hence `ν₃(C₇²) = 7` while
 `μ(C₇²) = 5`.
+
+**Theorem 8′ (CERTIFIED).** `μ(C₃ ⊕ C₄₅) = 6`, i.e.
+**`D±(C₃ ⊕ C₄₅) = 7`** — again the concatenation value, refuting the
+pigeonhole value 8; the extremal census has 3,391,470 six-sets. Evidence
+tier for openness: **weaker than Theorem 7's** — one snippet synthesis
+reports that MOS's `C₃ ⊕ C₃ₙ` theorem carries side conditions whose
+"first value of n not covered is 15", i.e. exactly this group; that
+reading rests on a single search result (secondary) and must be checked
+against the paper before any claim of priority.
 
 **Theorem 9 (CERTIFIED; census).** For every finite abelian group with
 `|G| ≤ 192` — 336 groups — `μ(G)` equals `t(G) = ⌊log₂|G|⌋` **except**
@@ -250,12 +269,18 @@ any critical path; deterministic, no seeds.
 
 ## 6. Conjectures from the data
 
-**Conjecture A (attainment is the norm).** For every ε > 0 the
-proportion of abelian groups of order ≤ N with `μ(G) = t(G)` tends to 1;
-more concretely, every deficient group has a quotient or subgroup among
-`{C₃², C₅⊕C₁₅, …}` ⟨PENDING: formulate precisely from the final census —
-candidate form: deficiency occurs only when the odd part of `G` has
-3-rank ≥ 2, or `G ∈ {C₅⊕C₁₅, …}`⟩.
+**Conjecture A (split dichotomy).** For every finite abelian `G`,
+either `μ(G) = t(G) = ⌊log₂|G|⌋` (attainment) or
+`μ(G) = max { μ(G₁) + μ(G₂) : G = G₁ ⊕ G₂ a proper direct
+decomposition }` (split-sharpness). Since every direct decomposition of
+a finite abelian group comes from partitioning its primary cyclic
+factors (Krull–Schmidt), this is checkable from the census:
+`dichotomy_check.py` verifies it for **every** group in the ≤ 192 census
+⟨PENDING: final run output; the seven deficient groups known so far all
+satisfy it, `C₃²⊕C₁₅` — where μ = 6 lies strictly between the
+invariant-factor concatenation bound 5 and t = 7 — only via the
+non-invariant split `C₃ ⊕ (C₃⊕C₁₅)`⟩. Informally: below full
+pigeonhole packing, no mechanism beats gluing optimal pieces.
 
 **Conjecture B (families).** `D±(C₃ ⊕ C₃ₙ) = ⌊log₂ 9n⌋ + 1` for all
 `n ≥ 2` ⟨PENDING: confirm against the n ≤ 32 data⟩; `D±(C₅ ⊕ C₅ₙ) =
