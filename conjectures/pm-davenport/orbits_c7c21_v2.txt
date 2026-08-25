@@ -1,0 +1,7 @@
+G = Z_3 + Z_7^2, |G| = 147, classes = 73
+extremal dissociated 7-sets: 2016
+profile census (k1 = #elements with nonzero Z_3 part):
+  k1 = 7: 2016 sets
+|GL(2,7)| = 2016; acting with {+-1} x GL(2,7) (order 4032)
+orbits: 1
+  orbit size 2016, representative [(1, 0, 1), (1, 0, 3), (1, 1, 0), (1, 1, 1), (1, 2, 4), (1, 3, 0), (1, 5, 5)]

@@ -1,0 +1,4 @@
+G = Z_13 Z_13  |G| = 169  classes = 84
+d_pm = 7  D_pm = 8  n_extremal = 257712  nodes = 54451677
+witness: (0,1) (0,2) (1,0) (1,4) (1,8) (3,3) (6,6)
+elapsed 1289s for 13 13
