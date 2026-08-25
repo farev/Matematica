@@ -210,10 +210,14 @@ a sample of their non-exceptional values. Note our census finds `C₃⁴`
 to MOS — the three-item exceptions list we quote is a snippet and may be
 truncated (§8).
 
-**Theorem 10 (CERTIFIED; beyond order 192).** ⟨PENDING: table of the
-targeted larger groups — `C₇⊕C₂₈`, `C₇⊕C₃₅`, `C₇⊕C₄₂`, `C₇⊕C₄₉`,
-`C₅⊕C₅₅`, `C₅⊕C₆₀`, `C₃⊕C₈₇`, `C₃⊕C₉₀`, `C₃⊕C₉₃`, `C₃⊕C₉₆`, `C₁₃²`,
-`C₁₁⊕C₃₃`, `C₇³`, `C₅²⊕C₁₅` — with values, attainment, and witnesses.⟩
+**Theorem 10 (CERTIFIED; beyond order 192).** Targeted larger groups
+(gap-1/2 cases; gap-0 groups are omitted as forced by Lemma 3 — in
+particular `μ(C₇⊕C₃₅) = 7` and `μ(C₁₁⊕C₃₃) = 8` are PROVED, no search):
+
+| G | \|G\| | bracket [split, log₂] | μ | verdict |
+|---|---|---|---|---|
+| `C₁₃²` | 169 | [6, 7] | **7** | attained; `D± = 8`; 257,712 extremal 7-sets (≈ 20 Aut-orbits — no Theorem 11 rigidity); 54,451,677 nodes, 1,289 s contended |
+| ⟨PENDING: `C₇⊕C₂₈`, `C₇⊕C₄₂`, `C₇⊕C₄₉`, `C₅⊕C₅₅`, `C₅⊕C₆₀`, `C₃⊕C₈₇`, `C₃⊕C₉₀`, `C₃⊕C₉₃`, `C₃⊕C₉₆`, `C₇³` (gap 2, bracket {6,7,8}), `C₅²⊕C₁₅` — runs in flight at session close; no value claimed until each finishes⟩ | | | | |
 
 ## 4. Structure of the extremal sets
 
@@ -230,7 +234,10 @@ representative
 `{(1;0,1), (1;0,3), (1;1,0), (1;1,1), (1;2,4), (1;3,0), (1;5,5)}`
 (coordinates `(C₃; C₇, C₇)`). Computed by `orbit_analysis.py 7 7`, whose
 census DFS (written independently of engines A/B, in CRT coordinates)
-re-derives the count 2,016.
+re-derives the count 2,016; the entire census + orbit computation was run
+twice (`orbits_c7c21.txt`, `orbits_c7c21_v2.txt`) with identical output,
+and all 2,016 sets pass the direct verifier
+(`certs/c3p7p7_extremal_7sets.txt`).
 
 **C₅⊕C₁₅ profile census.** The orbit script's independent DFS in the
 `C₃ ⊕ C₅²` presentation re-derives the extremal count 85,155 — a

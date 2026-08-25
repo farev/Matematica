@@ -1,0 +1,4 @@
+G = Z_7 Z_28  |G| = 196  classes = 98
+d_pm = 7  D_pm = 8  n_extremal = 10782828  nodes = 206727715
+witness: (0,1) (0,2) (0,4) (1,0) (1,8) (1,16) (3,4)
+elapsed 2850s for 7 28
