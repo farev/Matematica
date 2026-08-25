@@ -118,6 +118,20 @@ so that hits and misses are both auditable:
 5. **`C₇⊕C₄₉`, `C₇³`, `C₅²⊕C₁₅`: no prediction** — genuinely open
    feeling; `C₇³` has the first width-2 bracket in range ({6,7,8}).
 
+**Outcomes** (updated as runs landed): #1 first half — `C₅⊕C₃₀`
+**ATTAINED** (μ = 7, only 1,680 extremal sets), hit. #3 — `C₇⊕C₂₈`
+**ATTAINED** (μ = 7, 10.8 M extremal), hit. #4 — `C₁₃²` **ATTAINED**
+(μ = 7, 257,712 extremal), hit for the lean. Others pending at
+writeup time; see NOTE §3.
+
+A by-product observation worth keeping: among attained groups the
+extremal census shrinks as the packing ratio `2^{t+1}/|G|` tightens —
+`C₇⊕C₂₁` (ratio 1.74… i.e. `2⁸/147`) has a single orbit, `C₅⊕C₃₀` has
+1,680 sets, while loosely packed attained groups have millions —
+whereas the deficient groups all carry enormous extremal censuses
+(85,155 up to 3.4 M). Rigidity concentrates exactly at the attainment
+boundary.
+
 ## Verification discipline
 
 Every claimed value is either (i) witness-carried (verified by the

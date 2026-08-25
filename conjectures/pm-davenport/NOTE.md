@@ -255,6 +255,14 @@ precisely the Lemma 3 concatenation construction
 `{(0;0,1), (0;0,2), (0;1,0), (0;2,0), (1;0,0)}`. Rigidity at
 attainment (one orbit), abundance at deficiency (193 orbits).
 
+The pattern persists across the census: extremal counts of *attained*
+groups shrink as the packing ratio `2^{t(G)+1}/|G|` tightens toward 2
+(`C₇⊕C₂₁`: one orbit; `C₅⊕C₃₀`, ratio 256/150: 1,680 sets;
+loosely-packed attained groups: 10⁵–10⁷ sets), while every *deficient*
+group carries an enormous census (85,155 up to 3.4 M sets, at sizes
+their pigeonhole bound cannot reach). Rigidity concentrates at the
+attainment boundary.
+
 ## 5. Reproduction
 
 ```bash
