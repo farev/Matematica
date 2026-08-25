@@ -271,3 +271,4 @@ Z_4xZ_36  N=144  mu=7  FORCED (concat == log2 bound)
 Z_2xZ_2xZ_36  N=144  mu=7  FORCED (concat == log2 bound)
 Z_2xZ_2xZ_2xZ_18  N=144  mu=7  FORCED (concat == log2 bound)
 Z_3xZ_48  N=144  mu=7  t=7  ATTAINED  extremal=37128
+Z_6xZ_24  N=144  mu=7  t=7  ATTAINED  extremal=191144
