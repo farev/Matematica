@@ -320,3 +320,6 @@ Z_168  N=168  mu=7  FORCED (concat == log2 bound)
 Z_2xZ_84  N=168  mu=7  FORCED (concat == log2 bound)
 Z_2xZ_2xZ_42  N=168  mu=7  FORCED (concat == log2 bound)
 Z_169  N=169  mu=7  FORCED (concat == log2 bound)
+Z_13xZ_13  N=169  mu=7  t=7  ATTAINED  extremal=257712
+Z_170  N=170  mu=7  FORCED (concat == log2 bound)
+Z_171  N=171  mu=7  FORCED (concat == log2 bound)
