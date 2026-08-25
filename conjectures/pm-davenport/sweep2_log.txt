@@ -308,3 +308,15 @@ Z_161  N=161  mu=7  FORCED (concat == log2 bound)
 Z_162  N=162  mu=7  FORCED (concat == log2 bound)
 Z_3xZ_54  N=162  mu=7  t=7  ATTAINED  extremal=450306
 Z_9xZ_18  N=162  mu=7  FORCED (concat == log2 bound)
+Z_3xZ_3xZ_18  N=162  mu=7  t=7  ATTAINED  extremal=123768
+Z_3xZ_3xZ_3xZ_6  N=162  mu=6  t=7  DEFICIENT by 1  extremal=6654960
+Z_163  N=163  mu=7  FORCED (concat == log2 bound)
+Z_164  N=164  mu=7  FORCED (concat == log2 bound)
+Z_2xZ_82  N=164  mu=7  FORCED (concat == log2 bound)
+Z_165  N=165  mu=7  FORCED (concat == log2 bound)
+Z_166  N=166  mu=7  FORCED (concat == log2 bound)
+Z_167  N=167  mu=7  FORCED (concat == log2 bound)
+Z_168  N=168  mu=7  FORCED (concat == log2 bound)
+Z_2xZ_84  N=168  mu=7  FORCED (concat == log2 bound)
+Z_2xZ_2xZ_42  N=168  mu=7  FORCED (concat == log2 bound)
+Z_169  N=169  mu=7  FORCED (concat == log2 bound)
