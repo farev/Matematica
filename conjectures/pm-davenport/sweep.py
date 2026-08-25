@@ -115,6 +115,20 @@ def main():
         for pp in abelian_groups(N, small):
             inv = invariant_factors(pp)
             ppo = sorted(p ** e for p, e in pp)
+            t = flog2(N)
+            concat = sum(flog2(d) for d in inv)
+            if concat == t:
+                # gap 0: value forced by the Lemma 3 bracket (PROVED);
+                # skip the exhaustive run.
+                rows.append({
+                    "invariant_factors": "x".join(map(str, inv)),
+                    "N": N, "t_log2N": t, "concat_lb": concat,
+                    "mu": t, "attained": 1, "deficiency": 0,
+                    "n_extremal": "", "nodes": "", "witness": "FORCED(gap0)",
+                })
+                print(f"Z_{'xZ_'.join(map(str, inv))}  N={N}  mu={t}  "
+                      f"FORCED (concat == log2 bound)")
+                continue
             mu, nex, nodes, wit = run_engine(engine, inv)
             if ppo != inv:
                 mu2, nex2, nodes2, _ = run_engine(engine, ppo)

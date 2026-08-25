@@ -198,14 +198,35 @@ targeted larger groups — `C₇⊕C₂₈`, `C₇⊕C₃₅`, `C₇⊕C₄₂`,
 
 ## 4. Structure of the extremal sets
 
-⟨PENDING: orbit analysis output. Pre-registered observation: the C₇⊕C₂₁
-census size 2,016 equals |GL(2,7)|; since global negation acts trivially
-on class-rep sets, the effective automorphism group
-({±1} × GL(2,7))/⟨−1⟩ has order 4,032/2 = 2,016, so the census is
-consistent with a single, simply transitive orbit — to be confirmed by
-`orbit_analysis.py`. Similarly μ-extremal census of C₇² is 1,008 =
-|GL(2,7)|/2. The C₅⊕C₁₅ profile census (k₁ distribution over the 85,155
-sets) and orbit decomposition to be reported here.⟩
+**Theorem 11 (CERTIFIED; uniqueness for C₇⊕C₂₁).** Under
+`C₇ ⊕ C₂₁ ≅ C₃ ⊕ C₇²`, all 2,016 maximum dissociated 7-sets have every
+element with nonzero `C₃`-coordinate (after Lemma 1(b) normalization) —
+i.e. **every** maximum dissociated set is a checksum set in the sense of
+Lemma 5 — and they form a **single orbit** under
+`Aut(G) = {±1} × GL(2,7)` (order 4,032; global negation acts trivially
+on class-rep sets, and 2,016 = 4,032/2, so the action on extremal sets
+is as free as possible). The maximum dissociated subset of `C₇ ⊕ C₂₁`
+is therefore **unique up to automorphism**, with canonical
+representative
+`{(1;0,1), (1;0,3), (1;1,0), (1;1,1), (1;2,4), (1;3,0), (1;5,5)}`
+(coordinates `(C₃; C₇, C₇)`). Computed by `orbit_analysis.py 7 7`, whose
+census DFS (written independently of engines A/B, in CRT coordinates)
+re-derives the count 2,016.
+
+**C₅⊕C₁₅ profile census.** The orbit script's independent DFS in the
+`C₃ ⊕ C₅²` presentation re-derives the extremal count 85,155 — a
+*fourth* independent computation. Profiles (k₁ = number of elements with
+nonzero `C₃`-part): k₁ = 1: 3,375; 2: 13,500; 3: 29,040; 4: 27,960;
+5: 11,280. No extremal 5-set lies entirely in `{0} × C₅²` (consistent with
+`μ(C₅²) = 4`); every profile `k₁ ∈ {1,…,5}` occurs, including 11,280
+pure checksum sets (so `ν₃(C₅²) = 5`, contrasting `ν₃(C₇²) = 7`) — the
+deficient group shows none of the rigidity of Theorem 11. **Aut-orbit
+decomposition: 193 orbits** (167 free of size 480, 17 of size 240, 7 of
+120, 1 of 60, 1 of 15; sizes sum to 85,155 exactly). The unique smallest
+orbit — the most symmetric extremal set, stabilizer of order 64 — is
+precisely the Lemma 3 concatenation construction
+`{(0;0,1), (0;0,2), (0;1,0), (0;2,0), (1;0,0)}`. Rigidity at
+attainment (one orbit), abundance at deficiency (193 orbits).
 
 ## 5. Reproduction
 
