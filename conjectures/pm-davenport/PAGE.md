@@ -27,11 +27,19 @@ independent exhaustive searches (one a full brute force over all
    whose proof is one line (2⁸ = 256 > 147); 2,016 extremal 7-sets,
    engine node counts agreeing at 16,528,741.
 3. **CERTIFIED** — census of `μ(G)` (maximum dissociated subset =
-   `D±(G) − 1`) for **every** abelian group of order ≤ 192: attainment
-   of `⌊log₂|G|⌋` is the rule; the deficient groups in range are
-   ⟨FINAL LIST + COUNT from sweep.csv⟩ — including the three
-   exceptional values published by MOS, reproduced exactly (C₃² → 3,
-   C₃³ → 4, C₃²⊕C₉ → 6).
+   `D±(G) − 1`) for **every** abelian group of order ≤ 192 — 371
+   groups (333 forced by the proved bracket, 38 exhaustively searched,
+   31 dual-presentation isomorphism checks passed): attainment of
+   `⌊log₂|G|⌋` is the rule; the deficient groups are exactly **eight**
+   (`C₃², C₃³, C₃⁴, C₃²⊕C₉, C₅⊕C₁₅, C₃⊕C₄₅, C₃²⊕C₁₅, C₃³⊕C₆`), all of
+   order `2^a3^b5^c`, all split-sharp, deficiency ≤ 2 — including the
+   three exceptional values published by MOS, reproduced exactly
+   (C₃² → 3, C₃³ → 4, C₃²⊕C₉ → 6). The **split dichotomy** (every
+   group either attains the pigeonhole bound or equals its best
+   direct-sum split) holds with zero violations across the census,
+   and the families `C₃⊕C₃ₙ (n ≤ 28)`, `C₅⊕C₅ₙ (n ≤ 10)`,
+   `C₇⊕C₇ₙ (n ≤ 5)` are completely determined, with exception sets
+   {1, 15}, {3}, {} respectively.
 4. **PROVED** — a checksum construction lemma: `μ(C_m ⊕ H) ≥ ν_m(H)`,
    where `ν_m(H)` allows internal relations of sign-weight ≢ 0 mod m;
    it explains every bound-attaining witness found (`ν₃(C₇²) = 7` vs
@@ -39,9 +47,12 @@ independent exhaustive searches (one a full brute force over all
    Adhikari–Grynkiewicz–Sun bracket, `μ(C_p^r) = r` for p ∈ {2,3}, and
    a graded counting bound that eliminates all but four CRT profiles of
    any hypothetical `C₅⊕C₁₅` 6-set.
-5. **CERTIFIED** — family values beyond order 192: ⟨FINAL: C₃⊕C₃ₙ
-   through n = 32, C₅⊕C₅ₙ at n = 11, 12, C₇⊕C₂₈, C₁₃², and (if
-   finished) C₇⊕C₄₂, C₇⊕C₄₉, C₇³, C₅²⊕C₁₅⟩.
+5. **CERTIFIED** — beyond order 192: `D±(C₁₃²) = 8` (attained;
+   257,712 extremal sets) and `D±(C₇⊕C₂₈) = 8` (attained;
+   pre-registered prediction); `C₇⊕C₃₅` and `C₁₁⊕C₃₃` PROVED forced
+   (7, 8). Still running at session close, no value claimed:
+   `C₃⊕C₈₇…C₉₆`, `C₅⊕C₅₅/C₆₀`, `C₇⊕C₄₂/C₄₉`, `C₇³` (first width-2
+   bracket), `C₅²⊕C₁₅`.
 6. **CERTIFIED** — structure: the 2,016 extremal sets of `C₇⊕C₂₁` are
    all checksum sets and form a **single orbit** of the automorphism
    group (order 4,032, acting with the only possible kernel) — the
@@ -100,8 +111,12 @@ independent exhaustive searches (one a full brute force over all
   (our census adds C₃⁴ → 5, which is classical).
 - Runtimes were recorded under CPU oversubscription; they are upper
   bounds.
-- ⟨IF ANY heavy runs did not finish: list them as "running at session
-  close, value not claimed".⟩
+- Runs still in flight at session close (no value claimed anywhere):
+  `C₃⊕C₈₇`, `C₃⊕C₉₀`, `C₃⊕C₉₃`, `C₃⊕C₉₆`, `C₅⊕C₅₅`, `C₅⊕C₆₀`,
+  `C₇⊕C₄₂`, `C₇⊕C₄₉`, `C₇³`, `C₅²⊕C₁₅`. If their results have been
+  committed by the time the page is built (check
+  `conjectures/pm-davenport/heavies*.txt` and README), fold them in;
+  otherwise the page says "in progress".
 
 ## 5. Existing page
 

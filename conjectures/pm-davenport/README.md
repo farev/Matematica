@@ -14,10 +14,11 @@ group: `C₅ ⊕ C₁₅`, "either 6 or 7".
 | result | label |
 |---|---|
 | `D±(C₅ ⊕ C₁₅) = 6` — the last open group of order ≤ 100, decided at the *lower* end of the bracket; no dissociated 6-set exists (2,324,784 subsets exhausted; three independent engines; identical census of 85,155 extremal 5-sets) | **CERTIFIED** |
-| `D±(C₇ ⊕ C₂₁) = 8` — attains the pigeonhole bound; verified 7-element witness; upper bound is a proved lemma (no search) | **CERTIFIED** |
-| `μ(G)` for **every** abelian group of order ≤ 192; deficient groups in range: `C₃², C₃³, C₃⁴, C₃²⊕C₉, C₅⊕C₁₅` ⟨plus any found in 101–192 — see NOTE §3⟩ | **CERTIFIED** |
-| Bracket lemmas, `μ(C_p^r) = r` for `p ∈ {2,3}`, checksum construction `μ(C_m⊕H) ≥ ν_m(H)`, graded counting bound (NOTE §2) | **PROVED** |
-| Family values beyond order 192 (`C₃⊕C₃ₙ`, `C₅⊕C₅ₙ`, `C₇⊕C₇ₙ`, `C₁₃²`, `C₇³`, `C₅²⊕C₁₅`) | **CERTIFIED** (see NOTE §3, some runs pending) |
+| `D±(C₇ ⊕ C₂₁) = 8` — attains the pigeonhole bound; verified 7-element witness; upper bound is a proved lemma (no search); the extremal set is **unique up to automorphism** (all 2,016 extremal sets = one Aut-orbit of checksum sets) | **CERTIFIED** |
+| `D±(C₃ ⊕ C₄₅) = 7` — the first case reported outside MOS's `C₃⊕C₃ₙ` side conditions (single-snippet evidence tier); census 3,391,470 | **CERTIFIED** |
+| `μ(G)` for **every** abelian group of order ≤ 192 (371 groups; 333 forced by the proved bracket, 38 searched, 31 double-presentation checks passed). Deficient groups: exactly eight — `C₃², C₃³, C₃⁴, C₃²⊕C₉, C₅⊕C₁₅, C₃⊕C₄₅, C₃²⊕C₁₅, C₃³⊕C₆` — every one split-sharp; split dichotomy (Conjecture A) holds with 0 violations. Families completely determined: `C₃⊕C₃ₙ (n ≤ 28`, exceptions {1, 15}`)`, `C₅⊕C₅ₙ (n ≤ 10`, exception {3}`)`, `C₇⊕C₇ₙ (n ≤ 5`, none`)`; plus `C₁₃²` and `C₇⊕C₂₈` = 8 | **CERTIFIED** |
+| Superadditivity + bracket lemmas, `μ(C_p^r) = r` for `p ∈ {2,3}`, checksum construction `μ(C_m⊕H) ≥ ν_m(H)`, graded counting bound (NOTE §2) | **PROVED** |
+| `C₃⊕C₈₇…C₉₆`, `C₅⊕C₅₅/C₆₀`, `C₇⊕C₄₂/C₄₉`, `C₇³`, `C₅²⊕C₁₅` | in flight at session close — **no value claimed** |
 
 **Caveat (novelty).** All literature statements are (secondary) —
 WebSearch snippets, 2026-08-25; primary sources were unreachable from the

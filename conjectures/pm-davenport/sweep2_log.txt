@@ -355,3 +355,29 @@ Z_188  N=188  mu=7  FORCED (concat == log2 bound)
 Z_2xZ_94  N=188  mu=7  FORCED (concat == log2 bound)
 Z_189  N=189  mu=7  FORCED (concat == log2 bound)
 Z_3xZ_63  N=189  mu=7  t=7  ATTAINED  extremal=3032262
+Z_3xZ_3xZ_21  N=189  mu=7  t=7  ATTAINED  extremal=1010880
+Z_190  N=190  mu=7  FORCED (concat == log2 bound)
+Z_191  N=191  mu=7  FORCED (concat == log2 bound)
+Z_192  N=192  mu=7  FORCED (concat == log2 bound)
+Z_2xZ_96  N=192  mu=7  FORCED (concat == log2 bound)
+Z_4xZ_48  N=192  mu=7  FORCED (concat == log2 bound)
+Z_2xZ_2xZ_48  N=192  mu=7  FORCED (concat == log2 bound)
+Z_8xZ_24  N=192  mu=7  FORCED (concat == log2 bound)
+Z_2xZ_4xZ_24  N=192  mu=7  FORCED (concat == log2 bound)
+Z_2xZ_2xZ_2xZ_24  N=192  mu=7  FORCED (concat == log2 bound)
+Z_4xZ_4xZ_12  N=192  mu=7  FORCED (concat == log2 bound)
+Z_2xZ_2xZ_4xZ_12  N=192  mu=7  FORCED (concat == log2 bound)
+Z_2xZ_2xZ_2xZ_2xZ_12  N=192  mu=7  FORCED (concat == log2 bound)
+Z_2xZ_2xZ_2xZ_2xZ_2xZ_6  N=192  mu=7  FORCED (concat == log2 bound)
+
+wrote sweep.csv with 371 groups
+deficient groups: 8
+  3x3  N=9  mu=2  t=3  def=1
+  3x3x3  N=27  mu=3  t=4  def=1
+  5x15  N=75  mu=5  t=6  def=1
+  3x3x9  N=81  mu=5  t=6  def=1
+  3x3x3x3  N=81  mu=4  t=6  def=2
+  3x45  N=135  mu=6  t=7  def=1
+  3x3x15  N=135  mu=6  t=7  def=1
+  3x3x3x6  N=162  mu=6  t=7  def=1
+SWEEPDONE

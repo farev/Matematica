@@ -1,0 +1,76 @@
+
+## family C_3 + C_3n
+| n | group | N | concat | log2 bound | mu | verdict |
+|---|---|---|---|---|---|---|
+| 1 | C_3+C_3 | 9 | 2 | 3 | 2 | DEFICIENT by 1 |
+| 2 | C_3+C_6 | 18 | 3 | 4 | 4 | attained |
+| 3 | C_3+C_9 | 27 | 4 | 4 | 4 | attained (forced) |
+| 4 | C_3+C_12 | 36 | 4 | 5 | 5 | attained |
+| 5 | C_3+C_15 | 45 | 4 | 5 | 5 | attained |
+| 6 | C_3+C_18 | 54 | 5 | 5 | 5 | attained (forced) |
+| 7 | C_3+C_21 | 63 | 5 | 5 | 5 | attained (forced) |
+| 8 | C_3+C_24 | 72 | 5 | 6 | 6 | attained |
+| 9 | C_3+C_27 | 81 | 5 | 6 | 6 | attained |
+| 10 | C_3+C_30 | 90 | 5 | 6 | 6 | attained |
+| 11 | C_3+C_33 | 99 | 6 | 6 | 6 | attained (forced) |
+| 12 | C_3+C_36 | 108 | 6 | 6 | 6 | attained (forced) |
+| 13 | C_3+C_39 | 117 | 6 | 6 | 6 | attained (forced) |
+| 14 | C_3+C_42 | 126 | 6 | 6 | 6 | attained (forced) |
+| 15 | C_3+C_45 | 135 | 6 | 7 | 6 | DEFICIENT by 1 |
+| 16 | C_3+C_48 | 144 | 6 | 7 | 7 | attained |
+| 17 | C_3+C_51 | 153 | 6 | 7 | 7 | attained |
+| 18 | C_3+C_54 | 162 | 6 | 7 | 7 | attained |
+| 19 | C_3+C_57 | 171 | 6 | 7 | 7 | attained |
+| 20 | C_3+C_60 | 180 | 6 | 7 | 7 | attained |
+| 21 | C_3+C_63 | 189 | 6 | 7 | 7 | attained |
+| 22 | C_3+C_66 | 198 | 7 | 7 | ? | PENDING |
+| 23 | C_3+C_69 | 207 | 7 | 7 | ? | PENDING |
+| 24 | C_3+C_72 | 216 | 7 | 7 | ? | PENDING |
+| 25 | C_3+C_75 | 225 | 7 | 7 | ? | PENDING |
+| 26 | C_3+C_78 | 234 | 7 | 7 | ? | PENDING |
+| 27 | C_3+C_81 | 243 | 7 | 7 | ? | PENDING |
+| 28 | C_3+C_84 | 252 | 7 | 7 | ? | PENDING |
+| 29 | C_3+C_87 | 261 | 7 | 8 | ? | PENDING |
+| 30 | C_3+C_90 | 270 | 7 | 8 | ? | PENDING |
+| 31 | C_3+C_93 | 279 | 7 | 8 | ? | PENDING |
+| 32 | C_3+C_96 | 288 | 7 | 8 | ? | PENDING |
+| 33 | C_3+C_99 | 297 | 7 | 8 | ? | PENDING |
+
+## family C_5 + C_5n
+| n | group | N | concat | log2 bound | mu | verdict |
+|---|---|---|---|---|---|---|
+| 1 | C_5+C_5 | 25 | 4 | 4 | 4 | attained (forced) |
+| 2 | C_5+C_10 | 50 | 5 | 5 | 5 | attained (forced) |
+| 3 | C_5+C_15 | 75 | 5 | 6 | 5 | DEFICIENT by 1 |
+| 4 | C_5+C_20 | 100 | 6 | 6 | 6 | attained (forced) |
+| 5 | C_5+C_25 | 125 | 6 | 6 | 6 | attained (forced) |
+| 6 | C_5+C_30 | 150 | 6 | 7 | 7 | attained |
+| 7 | C_5+C_35 | 175 | 7 | 7 | 7 | attained (forced) |
+| 8 | C_5+C_40 | 200 | 7 | 7 | ? | PENDING |
+| 9 | C_5+C_45 | 225 | 7 | 7 | ? | PENDING |
+| 10 | C_5+C_50 | 250 | 7 | 7 | ? | PENDING |
+| 11 | C_5+C_55 | 275 | 7 | 8 | ? | PENDING |
+| 12 | C_5+C_60 | 300 | 7 | 8 | ? | PENDING |
+| 13 | C_5+C_65 | 325 | 8 | 8 | ? | PENDING |
+
+## family C_7 + C_7n
+| n | group | N | concat | log2 bound | mu | verdict |
+|---|---|---|---|---|---|---|
+| 1 | C_7+C_7 | 49 | 4 | 5 | 5 | attained |
+| 2 | C_7+C_14 | 98 | 5 | 6 | 6 | attained |
+| 3 | C_7+C_21 | 147 | 6 | 7 | 7 | attained |
+| 4 | C_7+C_28 | 196 | 6 | 7 | 7 | attained |
+| 5 | C_7+C_35 | 245 | 7 | 7 | ? | PENDING |
+| 6 | C_7+C_42 | 294 | 7 | 8 | ? | PENDING |
+| 7 | C_7+C_49 | 343 | 7 | 8 | ? | PENDING |
+| 8 | C_7+C_56 | 392 | 7 | 8 | ? | PENDING |
+
+## homocyclic C_p^2
+| p | N | concat | log2 bound | mu | verdict |
+|---|---|---|---|---|---|
+| 2 | 4 | 2 | 2 | 2 | attained (forced) |
+| 3 | 9 | 2 | 3 | 2 | DEFICIENT by 1 |
+| 5 | 25 | 4 | 4 | 4 | attained (forced) |
+| 7 | 49 | 4 | 5 | 5 | attained |
+| 11 | 121 | 6 | 6 | 6 | attained (forced) |
+| 13 | 169 | 6 | 7 | 7 | attained |

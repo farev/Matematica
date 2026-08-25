@@ -16,12 +16,17 @@ search run in three independent implementations, two of which enumerate
 the identical census of 85,155 maximum dissociated 5-subsets and the third
 of which re-derives that census by unpruned brute force. We also determine
 **`D±(C₇ ⊕ C₂₁) = 8`** — this group *attains* the pigeonhole upper bound
-`⌊log₂|G|⌋ + 1` while `C₅ ⊕ C₁₅` does not — and compute `μ(G)` for every
-abelian group of order ≤ 192 and for thirteen larger groups in the
-families `C₃⊕C₃ₙ`, `C₅⊕C₅ₙ`, `C₇⊕C₇ₙ`, plus `C₇³`, `C₅²⊕C₁₅`, `C₁₃²`.
-Attainment of the pigeonhole bound is the norm; the deficient groups in
-range form a short, structured list. All extremal witnesses found for
-gap-groups arise from a *checksum* mechanism which we isolate as a proved
+`⌊log₂|G|⌋ + 1` while `C₅ ⊕ C₁₅` does not, and its maximum dissociated
+set is **unique up to automorphism** — and **`D±(C₃ ⊕ C₄₅) = 7`**, the
+first case reported outside the side conditions of MOS's `C₃⊕C₃ₙ`
+theorem. We further compute `μ(G)` for **every abelian group of order
+≤ 192** (371 groups; exactly 8 are deficient) and for `C₁₃²` and
+`C₇⊕C₂₈` beyond, which — with the values forced by the bracket —
+completely determines the families `C₃⊕C₃ₙ (n ≤ 28)`, `C₅⊕C₅ₙ (n ≤ 10)`,
+`C₇⊕C₇ₙ (n ≤ 5)`. Attainment of the pigeonhole bound is the norm; every
+deficient group in range equals its best direct-sum split (a dichotomy we
+verify census-wide and conjecture in general). The bound-attaining
+witnesses arise from a *checksum* mechanism which we isolate as a proved
 construction lemma. AI assistance disclosure: this session was run with
 substantial AI assistance (Claude); all proofs below are elementary and
 self-contained.
@@ -187,18 +192,35 @@ reading rests on a single search result (secondary) and must be checked
 against the paper before any claim of priority.
 
 **Theorem 9 (CERTIFIED; census).** For every finite abelian group with
-`|G| ≤ 192` — 336 groups — `μ(G)` equals `t(G) = ⌊log₂|G|⌋` **except**
-for the deficient groups listed below; the concatenation lower bound of
-Lemma 3 is met with equality in every deficient case in range.
+`|G| ≤ 192` — **371 groups** — `μ(G)` equals `t(G) = ⌊log₂|G|⌋`
+**except** for exactly the **eight** deficient groups below. Gap-0
+groups (invariant-factor concatenation = `t`, 333 of the 371) are
+squeezed by Lemma 3 — their value is PROVED, no search; each of the 38
+gap ≥ 1 groups was decided by exhaustive DFS, run in both the
+invariant-factor and primary-decomposition presentations whenever the
+two differ (31 groups) with `(μ, extremal-census, node-count)` asserted
+identical — an isomorphism-invariance check on the engine, passed all
+31 times.
 
-| deficient `G` | `\|G\|` | `μ(G)` | `t(G)` | deficiency | `D±(G)` | extremal sets |
-|---|---|---|---|---|---|---|
-| `C₃²` | 9 | 2 | 3 | 1 | 3 | 6 |
-| `C₃³` | 27 | 3 | 4 | 1 | 4 | 234 |
-| `C₅ ⊕ C₁₅` | 75 | 5 | 6 | 1 | **6** | 85,155 |
-| `C₃² ⊕ C₉` | 81 | 5 | 6 | 1 | 6 | 103,518 |
-| `C₃⁴` | 81 | 4 | 6 | 2 | 5 | 63,180 |
-| ⟨PENDING: any further deficient groups in 101–192⟩ | | | | | | |
+| deficient `G` | `\|G\|` | `μ(G)` | `t(G)` | def. | `D±(G)` | extremal sets | best split |
+|---|---|---|---|---|---|---|---|
+| `C₃²` | 9 | 2 | 3 | 1 | 3 | 6 | `C₃⊕C₃` = 1+1 |
+| `C₃³` | 27 | 3 | 4 | 1 | 4 | 234 | `C₃⊕C₃²` = 1+2 |
+| `C₅ ⊕ C₁₅` | 75 | 5 | 6 | 1 | **6** | 85,155 | `C₅⊕C₁₅` = 2+3 |
+| `C₃² ⊕ C₉` | 81 | 5 | 6 | 1 | 6 | 103,518 | `C₃⊕(C₃⊕C₉)` = 1+4 |
+| `C₃⁴` | 81 | 4 | 6 | 2 | 5 | 63,180 | `C₃⊕C₃³` = 1+3 |
+| `C₃ ⊕ C₄₅` | 135 | 6 | 7 | 1 | **7** | 3,391,470 | `C₃⊕C₄₅` = 1+5 |
+| `C₃² ⊕ C₁₅` | 135 | 6 | 7 | 1 | 7 | 2,186,496 | `C₃⊕(C₃⊕C₁₅)` = 1+5 |
+| `C₃³ ⊕ C₆` | 162 | 6 | 7 | 1 | 7 | 6,654,960 | `C₃⊕(C₃²⊕C₆)` = 1+5 |
+
+Every deficient group is **split-sharp**: `μ` equals the best proper
+direct-sum split (last column; for `C₃²⊕C₁₅` and `C₃³⊕C₆` the naive
+invariant-factor concatenation is strictly worse than the best split).
+All eight have order `2^a 3^b 5^c` with `b ≥ 1`; deficiency never
+exceeds 2 in range. `dichotomy_check.py` over the full census: 371
+groups — 95 attained-only, 268 attained-and-split-sharp, 8
+split-sharp-only (the table above), **0 violations of Conjecture A**,
+0 violations of superadditivity.
 
 Controls reproduced by the same engines (see `controls.py`,
 `controls_output.txt`): the cyclic formula `μ(C_n) = ⌊log₂ n⌋` for all
@@ -218,7 +240,8 @@ particular `μ(C₇⊕C₃₅) = 7` and `μ(C₁₁⊕C₃₃) = 8` are PROVED, 
 |---|---|---|---|---|
 | `C₁₃²` | 169 | [6, 7] | **7** | attained; `D± = 8`; 257,712 extremal 7-sets (≈ 20 Aut-orbits — no Theorem 11 rigidity); 54,451,677 nodes, 1,289 s contended |
 | `C₇⊕C₂₈` | 196 | [6, 7] | **7** | attained (pre-registered prediction, WRITEUP §pre-reg); `D± = 8`; 10,782,828 extremal, 206,727,715 nodes, 2,850 s contended |
-| ⟨PENDING: `C₇⊕C₂₈`, `C₇⊕C₄₂`, `C₇⊕C₄₉`, `C₅⊕C₅₅`, `C₅⊕C₆₀`, `C₃⊕C₈₇`, `C₃⊕C₉₀`, `C₃⊕C₉₃`, `C₃⊕C₉₆`, `C₇³` (gap 2, bracket {6,7,8}), `C₅²⊕C₁₅` — runs in flight at session close; no value claimed until each finishes⟩ | | | | |
+| `C₇⊕C₃₅`, `C₁₁⊕C₃₃` | 245, 363 | gap 0 | **7, 8** | PROVED by the Lemma 3 squeeze — no search (the exhaustive runs were deliberately skipped/killed as redundant) |
+| `C₃⊕C₈₇`, `C₃⊕C₉₀`, `C₃⊕C₉₃`, `C₃⊕C₉₆`, `C₅⊕C₅₅`, `C₅⊕C₆₀`, `C₇⊕C₄₂`, `C₇⊕C₄₉`, `C₇³` (gap 2, bracket {6,7,8}), `C₅²⊕C₁₅` (gap 1) | 261–375 | — | — | **in flight at session close — no value claimed**; these decide the first open members of each family (Conjecture B) |
 
 ## 4. Structure of the extremal sets
 
@@ -291,17 +314,33 @@ either `μ(G) = t(G) = ⌊log₂|G|⌋` (attainment) or
 decomposition }` (split-sharpness). Since every direct decomposition of
 a finite abelian group comes from partitioning its primary cyclic
 factors (Krull–Schmidt), this is checkable from the census:
-`dichotomy_check.py` verifies it for **every** group in the ≤ 192 census
-⟨PENDING: final run output; the seven deficient groups known so far all
-satisfy it, `C₃²⊕C₁₅` — where μ = 6 lies strictly between the
-invariant-factor concatenation bound 5 and t = 7 — only via the
-non-invariant split `C₃ ⊕ (C₃⊕C₁₅)`⟩. Informally: below full
-pigeonhole packing, no mechanism beats gluing optimal pieces.
+`dichotomy_check.py` **verifies it for every one of the 371 groups in
+the ≤ 192 census** (95 attained-only, 268 both, 8 split-sharp-only, 0
+violations); note `C₃²⊕C₁₅` and `C₃³⊕C₆` satisfy it only via
+non-invariant splits (`C₃ ⊕ (C₃⊕C₁₅)`, `C₃ ⊕ (C₃²⊕C₆)`), where μ lies
+strictly between the invariant-factor concatenation bound and `t`.
+Informally: below full pigeonhole packing, no mechanism beats gluing
+optimal pieces.
 
-**Conjecture B (families).** `D±(C₃ ⊕ C₃ₙ) = ⌊log₂ 9n⌋ + 1` for all
-`n ≥ 2` ⟨PENDING: confirm against the n ≤ 32 data⟩; `D±(C₅ ⊕ C₅ₙ) =
-⌊log₂ 25n⌋ + 1` for all `n ≥ 4` with the single exception n = 3;
-`D±(C₇ ⊕ C₇ₙ) = ⌊log₂ 49n⌋ + 1` for all `n ≥ 1` in the computed range.
+**Conjecture B (families).** Combining the computed bits with the
+Lemma 3 forced values, the three families are now **completely
+determined** on initial segments (`family_tables.txt`):
+
+* `D±(C₃ ⊕ C₃ₙ) = ⌊log₂ 9n⌋ + 1` for all `2 ≤ n ≤ 28` — and it FAILS
+  at exactly `n = 1` (value 3) and `n = 15` (value 7, Theorem 8′)
+  in that range. First open member: `n = 29`.
+* `D±(C₅ ⊕ C₅ₙ) = ⌊log₂ 25n⌋ + 1` for all `1 ≤ n ≤ 10` **except
+  exactly `n = 3`** (Theorem 7). First open member: `n = 11`.
+* `D±(C₇ ⊕ C₇ₙ) = ⌊log₂ 49n⌋ + 1` for all `1 ≤ n ≤ 5`, no exceptions.
+  First open member: `n = 6`.
+
+We conjecture each pattern continues: the log-formula holds for all
+larger `n` in each family with **no further exceptions** for `C₅⊕C₅ₙ`
+and `C₇⊕C₇ₙ`, and with exceptions in `C₃⊕C₃ₙ` confined to odd `n` at tight packing
+(the two known exceptions sit closest to the pigeonhole wall:
+`|G|/2^t` = 9/8 and 135/128). The runs for `n = 29..32` (C₃), `n = 11, 12` (C₅),
+`n = 6, 7` (C₇) were still in flight at session close and will decide
+the first open members.
 
 ## 7. Open questions
 
@@ -331,7 +370,9 @@ of novelty. Specific pre-publication checks required:
    {6,7} (three independent snippet syntheses agree on this reading);
    (b) their exceptions list (our census says it must include `C₃⁴ → 5`);
    (c) their `C₃ ⊕ C₃ₙ` side conditions — one snippet says the first `n`
-   not covered is 15, i.e. `C₃ ⊕ C₄₅` ⟨PENDING: our value for it⟩;
+   not covered is 15, i.e. `C₃ ⊕ C₄₅`, which we decide (`D± = 7`,
+   Theorem 8′); this reading rests on a single snippet, the weakest
+   evidence tier here;
    (d) whether Lemma 5 (checksum) appears there as their lower-bound
    technique — their abstract says the paper's contributions are "mainly
    lower bounds", so **Lemma 5 may well be known**; we claim only the

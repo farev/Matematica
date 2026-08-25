@@ -21,11 +21,18 @@ automorphism**: all 2,016 extremal sets are checksum sets forming a single
 Aut-orbit), and **`D±(C₃ ⊕ C₄₅) = 7`** (the first case reported outside
 MOS's `C₃⊕C₃ₙ` side conditions — single-snippet evidence tier — decided
 at the concatenation value, census 3,391,470). Plus a CERTIFIED census of `μ(G)` for
-**all** abelian groups of order ≤ 192 and thirteen larger targeted groups
-(C₇⊕C₇ₙ, C₅⊕C₅ₙ, C₃⊕C₃ₙ families, C₇³, C₅²⊕C₁₅, C₁₃²), reproducing every
-literature control (cyclic formula, the three published exceptional values
-C₃² → 3, C₃³ → 4, C₃²⊕C₉ → 6, and every non-exceptional order ≤ 100 value
-implied by MOS's theorem). Plus PROVED elementary lemmas: the
+**all 371** abelian groups of order ≤ 192 (333 values forced by the proved
+bracket, 38 decided by exhaustive search, 31 dual-presentation
+isomorphism checks passed): exactly **eight deficient groups** — C₃², C₃³,
+C₃⁴, C₃²⊕C₉, C₅⊕C₁₅, C₃⊕C₄₅, C₃²⊕C₁₅, C₃³⊕C₆ — every one equal to its
+best direct-sum split, and the **split dichotomy** (attain ⌊log₂|G|⌋ or
+equal the best split) verified with zero violations census-wide. With
+forced values, the families are completely determined: C₃⊕C₃ₙ (n ≤ 28,
+exceptions {1, 15}), C₅⊕C₅ₙ (n ≤ 10, exception {3}), C₇⊕C₇ₙ (n ≤ 5,
+none); beyond, C₁₃² = C₇⊕C₂₈ = 8 (both attained, both pre-registered
+correctly). Every literature control reproduced (cyclic formula, the
+three published exceptional values C₃² → 3, C₃³ → 4, C₃²⊕C₉ → 6, and the
+non-exceptional order ≤ 100 samples implied by MOS's theorem). Plus PROVED elementary lemmas: the
 dissociated ⟺ subset-sum-injective reduction, DFS-correctness, both sides
 of the Adhikari–Grynkiewicz–Sun bracket (self-contained proofs), a
 checksum construction lemma `μ(C_m ⊕ H) ≥ ν_m(H)` explaining every
@@ -159,16 +166,20 @@ a referee can re-run, `D±(C₇⊕C₂₁)` likewise; anything beyond that
 
 ## Next
 
+- **Collect the in-flight runs** (`C₃⊕C₈₇…C₉₆`, `C₅⊕C₅₅/C₆₀`,
+  `C₇⊕C₄₂/C₄₉`, `C₇³` — the first width-2 bracket — and `C₅²⊕C₁₅`);
+  they decide the first open member of each family and Conjecture B's
+  next test. If the sandbox died with them, re-run from
+  `heavies3.txt`'s queue (engine + commands committed).
 - Read arXiv:1308.3316 (and 2506.14279, 2404.17258, the 2017 survey) the
   moment egress allows; verify the "one exception ≤ 100" reading, their
   C₃⊕C₃ₙ side conditions, and whether the checksum lemma is their Lemma
   already; then decide whether NOTE.md's novelty claims stand.
-- The deficiency-characterization question: the census's deficient list is
-  small and 3-heavy; find the invariant that separates C₃⊕C₅²
-  (deficient) from C₃⊕C₇² (attaining). ν₃(C₅²) = 5 vs ν₃(C₇²) = 7 is the
-  computational answer; a formula for ν₃(C_p²) is the open thread.
-- `μ(C₇³)` and `μ(C₅²⊕C₁₅)` (gap-2 and nested cases) — runs queued this
-  session; if unfinished, they are the next session's first certificate.
+- Prove or refute the **split dichotomy** (Conjecture A) — the census
+  gives it 371-for-371; a proof would determine μ recursively for all
+  groups below the attainment threshold. The deficiency-characterization
+  question reduces to it plus: when is the pigeonhole bound attained?
+  (ν₃(C₅²) = 5 vs ν₃(C₇²) = 7 is where the two families split.)
 - OEIS: the census produces the sequence `μ(G)` over group orders (max
   over groups of that order, and per-group); check against/contribute to
   OEIS once reachable.

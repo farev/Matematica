@@ -1,0 +1,6 @@
+groups checked: 371
+  attained only:     95
+  split-sharp only:  8
+  both:              268
+  NEITHER (dichotomy violations): 0
+superadditivity violations (must be 0): 0

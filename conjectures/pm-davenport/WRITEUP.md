@@ -132,6 +132,18 @@ whereas the deficient groups all carry enormous extremal censuses
 (85,155 up to 3.4 M). Rigidity concentrates exactly at the attainment
 boundary.
 
+## How the census ended
+
+The last computed group was the census's best cliffhanger: `C₃²⊕C₂₁ ≅
+C₃³⊕C₇`, 3-rank 3 like the deficient `C₃³⊕C₆` but with `C₇` in place of
+`C₆` — and it **attained** (μ = 7, census 1,010,880): the richer
+checksum capacity of `C₇` succeeds where `C₆`'s failed. Final tally:
+371 groups, 8 deficient, split dichotomy 371-for-371, superadditivity
+violations zero. The forced-value optimization (added mid-session after
+the sweep was caught spending half an hour proving what Lemma 3 already
+proved about `C₂⁷`) is what made the full ≤ 192 range finish at all;
+the first sweep attempt was killed at N = 112.
+
 ## Verification discipline
 
 Every claimed value is either (i) witness-carried (verified by the
