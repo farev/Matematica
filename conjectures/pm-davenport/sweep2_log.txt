@@ -354,3 +354,4 @@ Z_187  N=187  mu=7  FORCED (concat == log2 bound)
 Z_188  N=188  mu=7  FORCED (concat == log2 bound)
 Z_2xZ_94  N=188  mu=7  FORCED (concat == log2 bound)
 Z_189  N=189  mu=7  FORCED (concat == log2 bound)
+Z_3xZ_63  N=189  mu=7  t=7  ATTAINED  extremal=3032262
