@@ -217,6 +217,7 @@ particular `μ(C₇⊕C₃₅) = 7` and `μ(C₁₁⊕C₃₃) = 8` are PROVED, 
 | G | \|G\| | bracket [split, log₂] | μ | verdict |
 |---|---|---|---|---|
 | `C₁₃²` | 169 | [6, 7] | **7** | attained; `D± = 8`; 257,712 extremal 7-sets (≈ 20 Aut-orbits — no Theorem 11 rigidity); 54,451,677 nodes, 1,289 s contended |
+| `C₇⊕C₂₈` | 196 | [6, 7] | **7** | attained (pre-registered prediction, WRITEUP §pre-reg); `D± = 8`; 10,782,828 extremal, 206,727,715 nodes, 2,850 s contended |
 | ⟨PENDING: `C₇⊕C₂₈`, `C₇⊕C₄₂`, `C₇⊕C₄₉`, `C₅⊕C₅₅`, `C₅⊕C₆₀`, `C₃⊕C₈₇`, `C₃⊕C₉₀`, `C₃⊕C₉₃`, `C₃⊕C₉₆`, `C₇³` (gap 2, bracket {6,7,8}), `C₅²⊕C₁₅` — runs in flight at session close; no value claimed until each finishes⟩ | | | | |
 
 ## 4. Structure of the extremal sets
