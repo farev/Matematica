@@ -274,3 +274,12 @@ Z_3xZ_48  N=144  mu=7  t=7  ATTAINED  extremal=37128
 Z_6xZ_24  N=144  mu=7  t=7  ATTAINED  extremal=191144
 Z_12xZ_12  N=144  mu=7  t=7  ATTAINED  extremal=355788
 Z_2xZ_6xZ_12  N=144  mu=7  t=7  ATTAINED  extremal=1093348
+Z_2xZ_2xZ_6xZ_6  N=144  mu=7  t=7  ATTAINED  extremal=5806080
+Z_145  N=145  mu=7  FORCED (concat == log2 bound)
+Z_146  N=146  mu=7  FORCED (concat == log2 bound)
+Z_147  N=147  mu=7  FORCED (concat == log2 bound)
+Z_7xZ_21  N=147  mu=7  t=7  ATTAINED  extremal=2016
+Z_148  N=148  mu=7  FORCED (concat == log2 bound)
+Z_2xZ_74  N=148  mu=7  FORCED (concat == log2 bound)
+Z_149  N=149  mu=7  FORCED (concat == log2 bound)
+Z_150  N=150  mu=7  FORCED (concat == log2 bound)
