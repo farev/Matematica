@@ -3,14 +3,16 @@
 **Statement.** Is every diamond-free claw-free cubic graph strongly
 6-edge-colorable — equivalently (per the problem's own gloss), is
 χ′ₛ(T(G)) = 6 for every cubic graph G, where T is truncation (replace
-each vertex by a triangle)? Posed by F. Kardoš, *Open problems of the
-33rd Workshop on Cycles and Colourings*, arXiv:2511.02892 (Nov 2025)
-(secondary). Known before this session: χ′ₛ ∈ {6,7} for connected
-claw-free cubic ≠ prism, tight examples all containing diamonds
-(Lin–Lin (secondary)); truncated prisms are 6 (Han–Cui (secondary)).
+each vertex by a triangle)? Posed by F. Kardoš, §4 of *Open problems
+of the 33rd Workshop on Cycles and Colourings*, arXiv:2511.02892v1
+(4 Nov 2025), quoted verbatim from the original. Known before this
+session: χ′ₛ ≤ 7 for connected claw-free subcubic ≠ prism, tight
+(Lin–Lin); truncated prisms are 6 (Han–Cui). Citation audit in NOTE §7.
 
-**Status:** active — the diamond-free phrasing is **refuted**; the
-characterization conjecture and the simple-quotient reading are open.
+**Status:** active — the diamond-free phrasing is **refuted**, but only
+in the *bridged* part of the class; the 2-edge-connected reading, the
+characterization conjecture and the simple-quotient reading are open
+(and all three are supported by the census).
 **Sessions:** [2026-08-26](../../log/2026-08-26-strong-truncations.md)
 
 ## Results (2026-08-26)
@@ -25,15 +27,21 @@ characterization conjecture and the simple-quotient reading are open.
 | G₁₈ is the unique smallest (prism χ′ₛ = 9 aside); counterexamples exist at every DFCF-admissible order ≥ 18 (chain family, certified k ≤ 8, ≥ 7 proved for all k) | PROVED + CERTIFIED | NOTE §3, `data/family_results.txt` |
 | Census of **all 36,093** truncations of cubic multigraphs of order ≤ 16: χ′ₛ = 6 for 29,787 (witness verified from the definition per instance, plus a conflict 6-clique ⇒ exactly 6); χ′ₛ = 7 for 6,305 = 1, 4, 19, 102, 682, 5497 by order (UNSAT@6 by two independent engines, verified 7-coloring each); **7 ⟺ balloon exactly** (sole balloon-free failure: triple edge → prism, χ′ₛ = 9) | CERTIFIED | `data/census*.txt`, `data/chi7_*.txt` |
 | Intended reading verified: T(G) strongly 6-edge-colorable for **all 556,471 simple** connected cubic G on ≤ 20 vertices (T ≤ 60 vertices); 509,950 order-20 witnesses re-verified from the definition, 539 engine-capped instances SAT-resolved | CERTIFIED | `data/simpleq_*`, `data/simpleq20_*` |
-| Order 18 (lighter protocol): all **287,459 balloon-free** quotients have 6-colorable truncations (286,805 verified witnesses + 654 caps SAT-resolved); the 52,957 balloon quotients are ≥ 7 by the Balloon Lemma with a 500-sample independently UNSAT-confirmed — Conjecture C's open half verified for all 317,246 balloon-free quotients ≤ 18 (triple edge aside) | CERTIFIED (balloon side: PROVED ≥ 7; = 7 via Lin–Lin (secondary)) | `data/free18_*`, `data/balloon18_*` |
+| Order 18 (lighter protocol): all **287,459 balloon-free** quotients have 6-colorable truncations (286,805 verified witnesses + 654 caps SAT-resolved); the 52,957 balloon quotients are ≥ 7 by the Balloon Lemma with a 500-sample independently UNSAT-confirmed — Conjecture C's open half verified for all 317,246 balloon-free quotients ≤ 18 (triple edge aside) | CERTIFIED (balloon side: PROVED ≥ 7; = 7 via Lin–Lin) | `data/free18_*`, `data/balloon18_*` |
+| **Proposition 6**: a balloon's stem is always a bridge, so every counterexample here is bridged (G₁₈ has exactly one bridge); the 2-edge-connected reading of Problem 4.1 is untouched by the refutation | PROVED | NOTE §3 |
+| Bridge cross-check over the whole census: **all 6,305** χ′ₛ = 7 quotients are bridged; **all 26,867 bridgeless** quotients of order ≤ 16 other than the triple edge have χ′ₛ(T(H)) = 6 — Problem 4.1 restricted to 2-edge-connected graphs is verified, not refuted, in this range | CERTIFIED | `bridge_census.py`, `data/bridge_census.txt` |
 | Conjecture C: for H ≠ triple edge, χ′ₛ(T(H)) = 6 ⟺ H balloon-free (open half: balloon-free ⇒ 6); GF(2) sufficient condition recorded | conjecture + PROVED partial | NOTE §4–6 |
 | Wire calculus: general bridge-interface lemma; transfer relations of the three 2-terminal pieces — diamond (color kept, pairs disjoint), dumbbell (color changed, pair kept), balloon (empty); composing through a diamond = exactly {S_a ≠ S_b}, so diamond insertion into a bridge never destroys 6-colorability (a first hand claim of "universal joint" was refuted by the machine check and corrected) | PROVED (finite enumeration, closed forms verified) | NOTE §5b, `data/diamond_wire.txt`, `data/boundary_states.txt` |
-| Claw-free census **with diamonds**, orders 4–20 (1,1,1,1,3,3,5,11,15 graphs): χ′ₛ = 7 exactly for 0,–,0,1,0,3,1,5,5 of them (prism "–": χ′ₛ = 9); the 10-vertex one (diamond + two triangles) is the unique smallest claw-free cubic graph with χ′ₛ = 7 (novelty vs Lin–Lin's examples unchecked (secondary)); all 15 sevens carry verified 7-colorings + B-confirmed UNSAT@6 | CERTIFIED | `data/clawfree_*.txt`, `data/clawfree_chi7.txt` |
+| Claw-free census **with diamonds**, orders 4–20 (1,1,1,1,3,3,5,11,15 graphs): χ′ₛ = 7 exactly for 0,–,0,1,0,3,1,5,5 of them (prism "–": χ′ₛ = 9); the 10-vertex one (diamond + two triangles) is the unique smallest claw-free cubic graph with χ′ₛ = 7 (not checked against Lin–Lin's tight examples, whose list was not read); all 15 sevens carry verified 7-colorings + B-confirmed UNSAT@6 | CERTIFIED | `data/clawfree_*.txt`, `data/clawfree_chi7.txt` |
 
-Openness and novelty are asserted at **search-snippet confidence only**
-(sandbox egress-blocked from arXiv/OEIS/erdosproblems/MO): every
-citation here is (secondary), and the primary sources must be read
-before any public claim. See NOTE §7.
+**Citation status.** The research session ran egress-blocked and could
+cite only search snippets. In the 2026-08-26 local publish pass every
+citation was read in the original: Kardoš's Problem 4.1 (statement and
+gloss quoted verbatim), Lin–Lin's abstract, and Oum's Proposition 1 (the
+actual source of the structure fact, which retires the
+"folklore-adjacent" flag on Lemma 0). Han–Cui and Lv–Li–Zhang are cited
+through Kardoš's own text, not read. A full-access novelty search on
+2026-08-26 found no published resolution of Problem 4.1. See NOTE §7.
 
 ## Scripts
 
@@ -51,6 +59,7 @@ before any public claim. See NOTE §7.
 | `boundary.py` | boundary-state calculus: balloon states (zero), dumbbell relation (180), chain-family closure | 30 s |
 | `make_family.py` | chain-family quotients C_k | instant |
 | `classify.py` | tabulates verdict × balloon over census files; flags any off-diagonal instance | |
+| `bridge_census.py` | tabulates verdict × 2-edge-connectivity of the quotient; flags any bridgeless χ′ₛ = 7 instance (added in the 2026-08-26 publish pass) | seconds |
 
 Reproduce (from inside this directory; `./build_nauty.sh` first):
 
@@ -73,20 +82,26 @@ python3 boundary.py                                    # balloon = 0 states
 | `data/chi7_upto14.txt`, `data/chi7_16.txt` | verified 7-colorings for all 6,305 χ′ₛ = 7 instances |
 | `data/family_results.txt` | chain family C₀..C₈ verdicts |
 | `data/boundary_states.txt` | balloon/dumbbell state enumeration output |
+| `data/bridge_census.txt` | verdict × bridged tabulation over all census records |
 | `data/simpleq_{04..16}.txt`, `data/simpleq_18.txt.gz` | simple-quotient runs, orders 4–18, full records |
 | `data/simpleq20_counts.txt`, `data/simpleq20_verify.txt`, `data/simpleq20_caps_resolved.txt`, `data/simpleq20_sample2000.txt` | order 20: engine counts, in-session verification record of all 509,950 witnesses, the 539 SAT-resolved caps, and a 2000-record verified sample. The full 205 MB record file is not committed (repo size rule); regenerate with `./geng -qc -d3 -D3 20 \| python3 g6_to_T.py \| ./strong6 -cap 5000000 -nochi` (~35 min on 4 cores) |
 
 Engine anchors: C₅ = 5, C₆ = 3, C₇ = 4, K₃,₃ = 9, Petersen = 5,
-prism = 9 (published values (secondary)) all reproduced. Generator
+prism = 9 (published values) all reproduced. Generator
 cross-check: geng/multig counts match A002851 / A000421 at every order
 used (A000421 read from the oeisdata git mirror, primary text).
 
 ## Known defects and open threads
 
-- All literature is (secondary): the sandbox cannot reach arXiv/OEIS
-  proper. Read Kardoš, Lin–Lin, Han–Cui in the original and re-run the
-  novelty search before any public claim; then consider a short arXiv
-  note and/or writing Kardoš.
+- ~~All literature is (secondary)~~ — **cleared 2026-08-26**: Kardoš,
+  Lin–Lin (abstract) and Oum read in the original, novelty search re-run
+  with full access. Han–Cui and Lv–Li–Zhang are still attributed through
+  Kardoš's text rather than read; read them before a preprint.
+- Before any claim beyond the site page: decide whether G₁₈, the Balloon
+  Lemma and Proposition 6 warrant a short arXiv note (the C&C list is
+  the natural venue), and whether to write Kardoš. The honest framing is
+  "the class-level phrasing is false for bridged graphs; the bridgeless
+  and simple-quotient readings survive".
 - Conjecture C's open half (balloon-free ⇒ 6). Tools in place: dumbbell
   transfer relation, GF(2) sufficient condition (NOTE §6).
 - The order-18 run uses the lighter protocol above (balloon side by

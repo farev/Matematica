@@ -8,8 +8,8 @@ computational claim ships code and certificates.
 ## Abstract
 
 Kardoš asked (Problem 4.1 of the open problems of the 33rd Workshop on
-Cycles and Colourings, arXiv:2511.02892, Nov 2025 — read here in
-search-snippet form only, marked (secondary)): *is every diamond-free
+Cycles and Colourings, arXiv:2511.02892v1, 4 Nov 2025, §4 — quoted from
+the original; see §7 for the citation audit): *is every diamond-free
 claw-free cubic graph strongly 6-edge-colorable — equivalently, is
 χ′ₛ(T(G)) = 6 for every cubic graph G?* We show the two phrasings come
 apart, and resolve the first one in the negative. Diamond-free claw-free
@@ -21,9 +21,17 @@ contains a balloon, T(H) admits no strong 6-edge-coloring (Theorem 3, a
 ten-line palette argument in a dart reformulation proved in Lemma 1).
 This yields, for every admissible order 18 + 6k, diamond-free claw-free
 cubic graphs with strong chromatic index 7; the smallest, G₁₈ = T(H₆),
-has 18 vertices and is unique at that order. All previously published
-examples attaining the tight bound 7 of Lin–Lin contain diamonds
-(secondary), so diamonds are not needed for tightness. In the other
+has 18 vertices and is unique at that order. Every such counterexample
+is necessarily **bridged** (Proposition 6: a balloon's stem is a bridge),
+so the refutation is confined to the bridged part of the class; the
+2-edge-connected reading of the problem — the setting of Oum's structure
+theorem, which is where the "well-known fact" behind the question comes
+from — is instead *supported* here: all 26,867 bridgeless quotients of
+order ≤ 16 other than the triple edge give strongly 6-edge-colorable
+truncations. All previously
+published examples attaining the tight bound 7 of Lin–Lin contain
+diamonds (per Kardoš's own description of them, §7), so diamonds are
+not needed for tightness. In the other
 direction, a double-verified census of all 36,093 truncations of cubic
 multigraphs of order ≤ 16 finds χ′ₛ(T(H)) = 6 **exactly** when H has no
 balloon and is not the triple edge (whose truncation is the prism,
@@ -32,7 +40,7 @@ onward through all 287,459 balloon-free quotients of order 18; and the
 intended reading of the problem survives strongly: every truncation of a
 **simple** connected cubic graph on ≤ 20 vertices (556,471 graphs, T on
 up to 60 vertices) is strongly 6-edge-colorable, extending the
-truncated-prism family of Han–Cui (secondary).
+truncated-prism family of Han–Cui.
 
 ## 0. Definitions
 
@@ -54,9 +62,14 @@ A **diamond** is K₄ minus an edge; a **claw** is K₁,₃; both as induced
 subgraphs. "DFCF" abbreviates connected, cubic, claw-free, diamond-free,
 simple.
 
-**Lemma 0 (structure; folklore-adjacent).** The DFCF graphs are exactly
-K₄ and the truncations T(H) of connected cubic loopless multigraphs H,
-and H is determined by T(H) up to isomorphism.
+**Lemma 0 (structure).** The DFCF graphs are exactly K₄ and the
+truncations T(H) of connected cubic loopless multigraphs H, and H is
+determined by T(H) up to isomorphism. (For 2-edge-connected G this is
+the diamond-free case of Oum's Proposition 1, whose proof gives the same
+triangle-contraction argument; see §7. The statement here drops
+2-edge-connectivity to plain connectivity — which is what the
+counterexample needs, since by Proposition 6 it is bridged — and adds
+uniqueness of H.)
 
 *Proof.* For cubic G and a vertex u with N(u) = {a,b,c}, let inner(u) be
 the number of edges among {a,b,c}. Claw-free ⟺ inner ≥ 1 everywhere.
@@ -236,15 +249,17 @@ at 0) with their stems joined by the bridge 05. Let **G₁₈ = T(H₆)**
    χ′ₛ ≥ 7; DFCF graphs exist only on orders 4 and multiples of 6, so
    counterexamples exist at *every* order ≥ 18 admitting any DFCF graph
    beyond order 4. χ′ₛ(T(C_k)) = 7 exactly is certified for k ≤ 8, and
-   holds for all k by the bound χ′ₛ ≤ 7 of Lin–Lin (secondary).
+   holds for all k by the bound χ′ₛ ≤ 7 of Lin–Lin (§7; their abstract
+   read in the original).
 
 *Proof.* (1) Family membership is Lemma 0 (or the definition-level check
 in `verify_census.py`); χ′ₛ ≥ 7 is Theorem 3 (H₆ has a balloon);
 χ′ₛ ≤ 7 by explicit verified 7-coloring (`certs/G18_7col.txt`). The
 independent certificate: UNSAT at 6 colors of the definition-level CNF,
 DRUP proof checked by `tools/satcert/rup_check` (`certs/G18.cnf`,
-`certs/G18.drup`). Lin–Lin's tight examples containing diamonds is
-(secondary). (2) Census below: all quotients of orders 2–4 and the five
+`certs/G18.drup`). That Lin–Lin's tight examples all contain diamonds is
+Kardoš's description of them in the primary text (§7), not read in
+Lin–Lin. (2) Census below: all quotients of orders 2–4 and the five
 other order-6 quotients are decided 6-colorable with definition-checked
 witnesses; K₄ is 6-colorable; DFCF graphs on other orders < 18 do not
 exist (Lemma 0 + parity). Uniqueness at 18: of the six order-6
@@ -253,7 +268,30 @@ quotients, only H₆ contains a balloon, and the other five carry verified
 vertices confirms exactly six DFCF graphs with exactly this one
 exception. (3) Theorem 3 for the lower bound; certificates for k ≤ 8 in
 `data/family_results.txt`; the general upper bound is Lin–Lin's theorem,
-which we cite (secondary) and do not re-prove. ∎
+which we cite and do not re-prove. ∎
+
+**Proposition 6 (every balloon counterexample has a bridge).** If a
+connected cubic loopless multigraph H contains a balloon u ‖ v with
+common third neighbour w and stem s at w, then s is a bridge of H, and
+the link edge of s is a bridge of T(H). Consequently every graph the
+Balloon Lemma rules out is a *bridged* diamond-free claw-free cubic
+graph; in particular G₁₈ has exactly one bridge and is not
+2-edge-connected.
+
+*Proof.* u and v already have degree 3 inside {u,v,w} (two parallel
+instances plus one edge to w), so no further edge meets them, and s
+cannot be a loop at w. Hence s is the only edge of H leaving
+{u,v,w}, i.e. a bridge, and n(H) ≥ 4. Blowing vertices into triangles
+neither creates nor destroys bridges among link edges (triangle edges
+lie on triangles), so the link edge of s is a bridge of T(H). ∎
+
+This matters for how Problem 4.1 should be read. Oum's structure
+theorem (§7), the source of the "well-known fact" Kardoš quotes, is
+stated for **2-edge-connected** claw-free cubic graphs, and much of the
+cubic-graph literature carries a bridgeless hypothesis by default. By
+Proposition 6 the refutation lives entirely in the bridged part of the
+class; the 2-edge-connected case is untouched by it, and the census
+below says that case looks true.
 
 ## 4. The census
 
@@ -294,7 +332,15 @@ C₅ = 5, C₆ = 3, C₇ = 4, K₃,₃ = 9, Petersen = 5, prism = 9 reproduced
 | 16 | 31856 | 26359 | 5497 | 0 |
 
 Every χ′ₛ = 7 instance contains a balloon; every balloon instance has
-χ′ₛ = 7; the unique balloon-free non-6 quotient is the triple edge.
+χ′ₛ = 7; the unique balloon-free non-6 quotient is the triple edge. A
+cross-check added in the 2026-08-26 publish pass
+(`bridge_census.py`) tabulates verdict against 2-edge-connectivity of
+the quotient: **all 6,305 quotients with χ′ₛ(T(H)) = 7 are bridged**,
+the sole bridgeless failure being the triple edge (prism, χ′ₛ = 9), and
+all 26,867 bridgeless quotients of order ≤ 16 other than the triple
+edge have χ′ₛ(T(H)) = 6 — as Proposition 6 predicts. So Problem 4.1
+restricted to 2-edge-connected graphs is **verified, not refuted**, for
+every quotient of order ≤ 16.
 Totals: 36,093 quotients of order ≤ 16; 6,305 truncations with
 χ′ₛ = 7, every one containing a balloon and carrying a verified
 7-coloring; zero balloon-free failures besides the triple edge; zero
@@ -308,17 +354,24 @@ definition, and the 654 instances it capped were decided SAT by Engine
 B (witnesses checked in-engine). The balloon side has χ′ₛ ≥ 7 by
 Theorem 3 (proved — no computation needed), a 500-instance random
 sample was independently confirmed UNSAT at 6 by Engine B (500/500),
-and χ′ₛ = 7 exactly then follows from Lin–Lin's bound (secondary);
+and χ′ₛ = 7 exactly then follows from Lin–Lin's bound (§7);
 unlike orders ≤ 16, no per-instance 7-colorings were computed here.
 Conjecture C's open direction ("balloon-free ⇒ 6") thus stands
 verified for all 317,246 balloon-free quotients of order ≤ 18 other
 than the triple edge.
 
+**Corollary (bridgeless form).** If Conjecture C holds, every
+2-edge-connected diamond-free claw-free cubic graph other than the
+prism is strongly 6-edge-colorable: by Proposition 6 a balloon forces a
+bridge, so a bridgeless quotient is balloon-free. In other words the
+bridgeless reading of Problem 4.1 would be **true**, and the refutation
+below is exactly a bridge phenomenon.
+
 **Conjecture C (characterization).** For a connected cubic loopless
 multigraph H other than the triple edge:
 χ′ₛ(T(H)) = 6 ⟺ H contains no balloon; otherwise χ′ₛ(T(H)) = 7.
 (The forward implication "balloon ⇒ 7" is Theorem 3 plus Lin–Lin's
-upper bound (secondary); open is "balloon-free ⇒ 6".)
+upper bound (§7); open is "balloon-free ⇒ 6".)
 
 ## 5. Truncations of simple cubic graphs (the intended reading)
 
@@ -365,8 +418,9 @@ claw-free cubic graphs are rare — by order 4, 6, …, 16 there are
 indices, decided by the same double-engine protocol: everything is 6
 except the prism (9) and: one graph on 10 vertices (χ′ₛ = 7: a diamond
 plus two triangles — by this census the **unique smallest claw-free
-cubic graph of strong chromatic index 7**, novelty unchecked against
-Lin–Lin's examples (secondary)), all three graphs on 14 vertices,
+cubic graph of strong chromatic index 7**, novelty not checked against
+Lin–Lin's tight examples, whose list was not read), all three graphs on
+14 vertices,
 one of the five on 16, five of the eleven on 18, and five of the
 fifteen on 20 (χ′ₛ = 7 each, verified 7-colorings; every UNSAT@6
 confirmed by engine B). The by-order table of (all, χ′ₛ = 7):
@@ -389,32 +443,70 @@ converse remains open); we record it as the natural attack line.
 
 ## 7. Prior work and openness
 
-* Problem 4.1: F. Kardoš, in *Open problems of the 33rd Workshop on
-  Cycles and Colourings* (arXiv:2511.02892, Nov 2025) (secondary:
-  statement reconstructed from search snippets; arXiv egress-blocked in
-  this sandbox).
-* χ′ₛ ≤ 7 for connected claw-free subcubic ≠ prism, tight, with all
-  tight examples containing diamonds: Y. Lin, W. Lin, *The tight bound
-  for the strong chromatic indices of claw-free subcubic graphs*,
-  arXiv:2207.10264, Graphs Combin. 2023 (secondary).
-* Truncated prisms strongly 6-edge-colorable: M. Han, Q. Cui, *A note
-  on strong edge-coloring of claw-free cubic graphs*, J. Appl. Math.
-  Comput. 69 (2023) 2503–2508 (secondary).
-* Earlier bound ≤ 8 and the question answered by Lin–Lin: Lv, Li, Zhang
-  (secondary).
-* Searches on 2026-08-26 for any resolution of Problem 4.1 or any
-  diamond-free tight example found none; the openness of Problem 4.1 as
-  of today is asserted at search-snippet confidence.
-* The structure statement (Lemma 0) is folklore-adjacent: packing-
-  coloring papers on DFCF cubic graphs use the truncation picture
-  routinely (e.g. arXiv:2607.25198 (secondary)); we could not check
-  whether the exact multigraph bijection with the K₄ exception is
-  stated anywhere. Possible overlap is flagged.
+**Citation status.** Every citation below was read in the original on
+2026-08-26 during the local publish pass, replacing the search-snippet
+attributions the (egress-blocked) research session had to rely on.
+Where a statement is attributed through Kardoš's write-up rather than
+read in the cited paper itself, this is said explicitly.
+
+* **Problem 4.1** — F. Kardoš, §4 of *Open problems of the 33rd
+  Workshop on Cycles and Colourings*, ed. A. Onderko, arXiv:2511.02892v1
+  [math.CO], 4 Nov 2025 (workshop held Nový Smokovec, Slovakia,
+  31 Aug – 5 Sep 2025). **Read in the original.** Verbatim: *“Is it true
+  that every diamond-free claw-free cubic graph is strongly
+  6-edge-colorable? In other words, is it true that χ′ₛ(T(G)) = 6 for
+  every cubic graph G?”*, preceded by *“It is a well-known fact that
+  diamond-free claw-free cubic graphs can be obtained from cubic graphs
+  by the operation of truncation – replacing each vertex by a
+  triangle.”* The two sentences are the two phrasings this note
+  separates: the class-level phrasing is refuted here (Theorem 5), while
+  the T(G) phrasing with G simple survives §5. The gap is exactly the
+  “well-known fact”: by Lemma 0 the class is the truncations of cubic
+  loopless **multigraphs** (plus K₄), a strictly larger family than the
+  truncations of simple cubic graphs, and G₁₈ lives in the difference.
+* **χ′ₛ ≤ 7 for claw-free subcubic ≠ triangular prism, tight** —
+  Y. Lin, W. Lin, *The tight bound for the strong chromatic indices of
+  claw-free subcubic graphs*, Graphs Combin. **39** (2023), no. 3, 58;
+  arXiv:2207.10264. Abstract read in the original: bound 7, prism
+  excepted, infinitely many tight examples, linear-time algorithm. That
+  *all* their tight examples contain diamonds is Kardoš's
+  characterization of them in the primary text above, not a statement
+  read in Lin–Lin itself.
+* **Truncated prisms are strongly 6-edge-colorable** — Z. Han, Q. Cui,
+  *A note on strong edge-coloring of claw-free cubic graphs*, J. Appl.
+  Math. Comput. **69** (2023), no. 3, 2503–2508. Attribution and
+  bibliographic details from Kardoš's primary text; the paper itself was
+  not read.
+* **Earlier bound ≤ 8** — J. B. Lv, J. Li, X. Zhang, *On strong
+  edge-coloring of claw-free subcubic graphs*, Graphs Combin. **38**
+  (2022), no. 3, 63. Attribution from Kardoš's primary text.
+* **Openness.** Searched again on 2026-08-26 with full access: no
+  published resolution of Problem 4.1 and no diamond-free tight example
+  found. Problem 4.1 is open as of that date to the best of a literature
+  search; no exhaustive database sweep was performed.
+* **Structure (Lemma 0)** — S. Oum, *Perfect matchings in claw-free
+  cubic graphs*, Electron. J. Combin. **18** (2011), no. 1, #P62,
+  Proposition 1. **Read in the original** (2026-08-26): *“A graph G is
+  2-edge-connected claw-free cubic if and only if either (i) G is
+  isomorphic to K₄, (ii) G is a ring of diamonds, or (iii) G can be
+  built from a 2-edge-connected cubic multigraph H by replacing some
+  edges of H with strings of diamonds and replacing each vertex of H
+  with a triangle.”* Specialising (iii) to the diamond-free case gives
+  Lemma 0 for 2-edge-connected G, and Oum's proof of that case is the
+  same triangle-contraction argument used here (*“If G has no diamonds,
+  then every vertex of G is in exactly one triangle and therefore V(G)
+  can be partitioned into disjoint triangles. By contracting each
+  triangle, we obtain a 2-edge-connected cubic multigraph H.”*). Lemma 0
+  as stated here is the connected (bridges allowed) version plus
+  uniqueness of H; that extension is what the counterexample needs, and
+  it is not claimed as new beyond Oum. Oum remarks the proposition also
+  follows from Chudnovsky–Seymour's quasi-line structure theorem.
+  The packing-coloring literature on DFCF cubic graphs uses the same
+  picture (e.g. arXiv:2607.25198, which cites Oum's Proposition 1).
 * We found no prior appearance of the balloon obstruction or of any
-  χ′ₛ = 7 diamond-free claw-free cubic graph; given the sandbox's
-  restricted literature access this is asserted at search-snippet
-  confidence and should be re-checked from a machine with full access
-  before any public claim.
+  χ′ₛ = 7 diamond-free claw-free cubic graph, on the research session's
+  snippet-level search and again on the 2026-08-26 full-access re-check.
+  This is a literature-search claim, not a proof of novelty.
 
 ## 8. Open questions
 
