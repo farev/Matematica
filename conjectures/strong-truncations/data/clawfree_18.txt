@@ -1,0 +1,11 @@
+R 1 18 27 NOT6 9 chi=-1 | Q??CA?_C?WWO_oWODC?WOCK?SO?
+R 2 18 27 NOT6 22573 chi=-1 | Q??CA?_C?WPOo_WOAI?`_HG?KG?
+R 3 18 27 6 3915 3 4 4 3 1 2 3 4 5 4 0 5 1 0 5 2 1 3 0 2 4 1 2 5 5 0 3 | Q??CA?_C?W@`a_oOKG?c_CK?c_?
+R 4 18 27 6 607 3 0 4 1 5 2 1 1 0 0 2 4 3 0 4 5 3 4 5 4 1 2 3 5 2 5 0 | Q??CA?_cAOC_c_EC@HAI?@H?a_?
+R 5 18 27 6 256 1 1 1 0 3 2 0 1 0 2 4 5 2 3 5 1 4 5 2 3 5 4 0 5 0 4 3 | Q??CA?_cAOA_KCa_@`?IGOW?a_?
+R 6 18 27 6 1657 1 5 1 0 3 3 0 1 5 2 4 5 2 5 3 1 4 2 1 2 0 4 3 0 0 4 5 | Q??CA?_cAOA_KCa_@HAI?@H?a_?
+R 7 18 27 6 293 1 3 1 0 3 1 0 1 5 4 2 5 2 4 5 2 4 0 4 3 5 3 0 2 2 3 5 | Q??CA?_cAOA_EC_oGg@OO@H?a_?
+R 8 18 27 6 21 1 2 1 0 3 3 0 1 2 4 2 5 1 4 5 1 5 0 3 4 0 2 3 4 2 5 0 | Q??CA?_cAOA_ECAQGg@GG_g?a_?
+R 9 18 27 NOT6 21620 chi=-1 | Q??CA?_cAOA_DC@`PO@OOOW?`_?
+R 10 18 27 NOT6 131957 chi=-1 | Q??CA?__a_@_a_GKEC?aOPO?KC?
+R 11 18 27 NOT6 7 chi=-1 | Q??CA?___oA_o_OSCK@P?BA?SC?

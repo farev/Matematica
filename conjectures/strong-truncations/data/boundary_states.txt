@@ -1,0 +1,10 @@
+all conceivable states: 60
+Sigma_B (balloon): 0 states
+states a balloon can NOT produce: 60
+   orbit rep (c=0, S={3, 4}) size 60
+R_D (dumbbell): 180 labelled pairs
+
+chain family balloon + D^k + balloon:
+  k=0: reachable states 0 -> NOT 6-colorable
+  k=1: reachable states 0 -> NOT 6-colorable
+  reachable-set repeats earlier value: eventually periodic; verdicts above cover all k >= 0 by periodicity from the repeat point.

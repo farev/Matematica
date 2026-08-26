@@ -1,0 +1,2 @@
+diamond relation = color-preserving disjoint pairs: 180 labelled pairs (verified)
+composition through a diamond == { Sx != Sy } exactly: True

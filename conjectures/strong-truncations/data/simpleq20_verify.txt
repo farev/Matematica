@@ -1,0 +1,3 @@
+verify_census.py data/simpleq_20.txt (in-session run, 2026-08-26):
+verified: 509950 witnesses OK (chi_s = 6 certified both sides), 0 NOT6, 539 CAP, 0 FAILED
+(539 CAP instances decided SAT by engine B: data/simpleq20_caps_resolved.txt)
