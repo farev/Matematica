@@ -27,7 +27,8 @@ examples attaining the tight bound 7 of Lin–Lin contain diamonds
 direction, a double-verified census of all 36,093 truncations of cubic
 multigraphs of order ≤ 16 finds χ′ₛ(T(H)) = 6 **exactly** when H has no
 balloon and is not the triple edge (whose truncation is the prism,
-χ′ₛ = 9), prompting a complete characterization conjecture; and the
+χ′ₛ = 9), prompting a complete characterization conjecture — verified
+onward through all 287,459 balloon-free quotients of order 18; and the
 intended reading of the problem survives strongly: every truncation of a
 **simple** connected cubic graph on ≤ 20 vertices (556,471 graphs, T on
 up to 60 vertices) is strongly 6-edge-colorable, extending the
@@ -298,6 +299,20 @@ Totals: 36,093 quotients of order ≤ 16; 6,305 truncations with
 χ′ₛ = 7, every one containing a balloon and carrying a verified
 7-coloring; zero balloon-free failures besides the triple edge; zero
 balloon-carrying successes.
+
+**Order 18 (appended in-session, lighter protocol).** The 340,416
+order-18 quotients split as 287,459 balloon-free + 52,957 balloon.
+Every balloon-free one has a strongly 6-edge-colorable truncation:
+Engine A decided 286,805 with witnesses re-verified from the
+definition, and the 654 instances it capped were decided SAT by Engine
+B (witnesses checked in-engine). The balloon side has χ′ₛ ≥ 7 by
+Theorem 3 (proved — no computation needed), a 500-instance random
+sample was independently confirmed UNSAT at 6 by Engine B (500/500),
+and χ′ₛ = 7 exactly then follows from Lin–Lin's bound (secondary);
+unlike orders ≤ 16, no per-instance 7-colorings were computed here.
+Conjecture C's open direction ("balloon-free ⇒ 6") thus stands
+verified for all 317,246 balloon-free quotients of order ≤ 18 other
+than the triple edge.
 
 **Conjecture C (characterization).** For a connected cubic loopless
 multigraph H other than the triple edge:

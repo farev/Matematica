@@ -97,9 +97,10 @@ cubic graphs) survives everywhere it was tested.
 * χ′ₛ = 7 (rather than ≥ 7) for the infinite family beyond k = 8 uses
   Lin–Lin's upper bound (secondary); every census instance's = 7 is
   certified independently of it.
-* The characterization "7 ⟺ balloon" is a conjecture supported to
-  order 16 (and order 18 only if that run is appended before
-  publishing); the balloon ⇒ 7 direction is proved, balloon-free ⇒ 6 is
-  open.
+* The characterization "7 ⟺ balloon" is a conjecture: balloon ⇒ 7 is
+  proved; balloon-free ⇒ 6 is open, verified computationally for all
+  317,246 balloon-free quotients of order ≤ 18 (order 18 by the lighter
+  protocol: engine-decided with verified witnesses plus SAT-resolved
+  caps; balloon side by the lemma with a 500-sample check).
 * "Unique smallest" is relative to the prism exception (χ′ₛ = 9),
   which is classical (secondary).

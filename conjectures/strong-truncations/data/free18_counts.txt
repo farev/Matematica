@@ -1,0 +1,4 @@
+strong6: 95820 graphs, 95609 colorable(6), 0 not, 211 capped
+strong6: 95820 graphs, 95606 colorable(6), 0 not, 214 capped
+strong6: 95819 graphs, 95590 colorable(6), 0 not, 229 capped
+balloon-free 287459, balloon 52957

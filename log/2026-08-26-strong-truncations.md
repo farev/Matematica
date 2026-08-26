@@ -37,7 +37,12 @@ claw-free phrasing is **no**.
   3608, 31856 quotients with 0, 0, 1, 4, 19, 102, 682, 5497 having
   χ′ₛ = 7. **Exact empirical characterization: χ′ₛ(T(H)) = 7 ⟺ H
   contains a balloon** (the sole balloon-free exception being the triple
-  edge, whose truncation is the prism, χ′ₛ = 9).
+  edge, whose truncation is the prism, χ′ₛ = 9). Order 18 appended
+  under a lighter protocol: all 287,459 balloon-free quotients have
+  6-colorable truncations (654 engine caps SAT-resolved; witnesses
+  verified), the 52,957 balloon quotients are ≥ 7 by the lemma with a
+  500-sample UNSAT-confirmed — the conjecture's open half verified for
+  all 317,246 balloon-free quotients ≤ 18.
 - **PROVED (wire calculus) + CERTIFIED (claw-free census).** A general
   bridge-interface lemma reduces any 2-terminal piece of a cubic graph
   to a 60-state transfer relation; the three basic pieces are a

@@ -25,6 +25,7 @@ characterization conjecture and the simple-quotient reading are open.
 | G₁₈ is the unique smallest (prism χ′ₛ = 9 aside); counterexamples exist at every DFCF-admissible order ≥ 18 (chain family, certified k ≤ 8, ≥ 7 proved for all k) | PROVED + CERTIFIED | NOTE §3, `data/family_results.txt` |
 | Census of **all 36,093** truncations of cubic multigraphs of order ≤ 16: χ′ₛ = 6 for 29,787 (witness verified from the definition per instance, plus a conflict 6-clique ⇒ exactly 6); χ′ₛ = 7 for 6,305 = 1, 4, 19, 102, 682, 5497 by order (UNSAT@6 by two independent engines, verified 7-coloring each); **7 ⟺ balloon exactly** (sole balloon-free failure: triple edge → prism, χ′ₛ = 9) | CERTIFIED | `data/census*.txt`, `data/chi7_*.txt` |
 | Intended reading verified: T(G) strongly 6-edge-colorable for **all 556,471 simple** connected cubic G on ≤ 20 vertices (T ≤ 60 vertices); 509,950 order-20 witnesses re-verified from the definition, 539 engine-capped instances SAT-resolved | CERTIFIED | `data/simpleq_*`, `data/simpleq20_*` |
+| Order 18 (lighter protocol): all **287,459 balloon-free** quotients have 6-colorable truncations (286,805 verified witnesses + 654 caps SAT-resolved); the 52,957 balloon quotients are ≥ 7 by the Balloon Lemma with a 500-sample independently UNSAT-confirmed — Conjecture C's open half verified for all 317,246 balloon-free quotients ≤ 18 (triple edge aside) | CERTIFIED (balloon side: PROVED ≥ 7; = 7 via Lin–Lin (secondary)) | `data/free18_*`, `data/balloon18_*` |
 | Conjecture C: for H ≠ triple edge, χ′ₛ(T(H)) = 6 ⟺ H balloon-free (open half: balloon-free ⇒ 6); GF(2) sufficient condition recorded | conjecture + PROVED partial | NOTE §4–6 |
 | Wire calculus: general bridge-interface lemma; transfer relations of the three 2-terminal pieces — diamond (color kept, pairs disjoint), dumbbell (color changed, pair kept), balloon (empty); composing through a diamond = exactly {S_a ≠ S_b}, so diamond insertion into a bridge never destroys 6-colorability (a first hand claim of "universal joint" was refuted by the machine check and corrected) | PROVED (finite enumeration, closed forms verified) | NOTE §5b, `data/diamond_wire.txt`, `data/boundary_states.txt` |
 | Claw-free census **with diamonds**, orders 4–20 (1,1,1,1,3,3,5,11,15 graphs): χ′ₛ = 7 exactly for 0,–,0,1,0,3,1,5,5 of them (prism "–": χ′ₛ = 9); the 10-vertex one (diamond + two triangles) is the unique smallest claw-free cubic graph with χ′ₛ = 7 (novelty vs Lin–Lin's examples unchecked (secondary)); all 15 sevens carry verified 7-colorings + B-confirmed UNSAT@6 | CERTIFIED | `data/clawfree_*.txt`, `data/clawfree_chi7.txt` |
@@ -88,8 +89,13 @@ used (A000421 read from the oeisdata git mirror, primary text).
   note and/or writing Kardoš.
 - Conjecture C's open half (balloon-free ⇒ 6). Tools in place: dumbbell
   transfer relation, GF(2) sufficient condition (NOTE §6).
-- Order-18 multigraph census was still running at session close (not
-  claimed here; see the log).
+- The order-18 run uses the lighter protocol above (balloon side by
+  theorem + sample, no per-instance 7-colorings); the full 287k-record
+  witness file is not committed (size rule) — counts, caps resolutions,
+  verification record and a verified 2000-record sample are, and the
+  run regenerates with `./geng -c -d1 -D3 -q 18 | ./multig -r3 -T -q |
+  python3 split_balloon.py balloon18.txt | ./strong6 -cap 5000000
+  -nochi` (~50 min on 3 cores).
 - The with-diamonds half of the claw-free class (which need 7 —
   Lin–Lin's characterization question) is a one-command pipeline
   extension, not run today.

@@ -1,0 +1,1 @@
+verified: 286805 witnesses OK (chi_s = 6 certified both sides), 0 NOT6, 654 CAP, 0 FAILED
