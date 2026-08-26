@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/home/user/Matematica/conjectures/strong-truncations/verify_census.py", line 197, in <module>
+    main()
+  File "/home/user/Matematica/conjectures/strong-truncations/verify_census.py", line 161, in main
+    n, edges = build_truncation(raw)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/Matematica/conjectures/strong-truncations/verify_census.py", line 28, in build_truncation
+    vals = [int(x) for x in toks[2:]]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/Matematica/conjectures/strong-truncations/verify_census.py", line 28, in <listcomp>
+    vals = [int(x) for x in toks[2:]]
+            ^^^^^^
+ValueError: invalid literal for int() with base 10: '[B-confirmed]'
