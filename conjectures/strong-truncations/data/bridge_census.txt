@@ -4,6 +4,16 @@ verdict  bridged   count
    7      False     1
    7      True      6305
 
+order   total   6/bridgeless   6/bridged   7/bridged   7/bridgeless
+    2       1              0           0           0              1
+    4       2              2           0           0              0
+    6       6              5           0           1              0
+    8      20             16           0           4              0
+   10      91             66           6          19              0
+   12     509            365          42         102              0
+   14    3608           2602         324         682              0
+   16   31856          23811        2548        5497              0
+
 BRIDGELESS chi'_s=7 QUOTIENTS FOUND:
   data/census02.txt R 1 6 9 NOT6 0 chi=9 | 2 1  0 1 3
  (1 total)

@@ -13,6 +13,7 @@ session: χ′ₛ ≤ 7 for connected claw-free subcubic ≠ prism, tight
 in the *bridged* part of the class; the 2-edge-connected reading, the
 characterization conjecture and the simple-quotient reading are open
 (and all three are supported by the census).
+**Page:** <https://fabianarevalo.com/strong-truncations>
 **Sessions:** [2026-08-26](../../log/2026-08-26-strong-truncations.md)
 
 ## Results (2026-08-26)

@@ -39,7 +39,7 @@ def bridges(nv, edges):
                     if low[u] > disc[p]: out.append(pe)
     return out
 
-tab = Counter(); bad = []
+tab = Counter(); bad = []; per = {}
 for fn in sys.argv[1:]:
     for line in open(fn):
         if not line.startswith("R "): continue
@@ -50,10 +50,17 @@ for fn in sys.argv[1:]:
         br = len(bridges(nv, edges)) > 0
         v = "7" if verdict.startswith("NOT") else "6"
         tab[(v, br)] += 1
+        per.setdefault(nv, Counter())[(v, br)] += 1
         if v == "7" and not br: bad.append((fn, line.rstrip()[:120]))
 print("verdict  bridged   count")
 for (v, br), n in sorted(tab.items()):
     print("   %s      %-5s     %d" % (v, br, n))
+print()
+print("order   total   6/bridgeless   6/bridged   7/bridged   7/bridgeless")
+for nv in sorted(per):
+    c = per[nv]; t = sum(c.values())
+    print("%5d %7d %14d %11d %11d %14d" % (
+        nv, t, c[("6", False)], c[("6", True)], c[("7", True)], c[("7", False)]))
 if bad:
     print("\nBRIDGELESS chi'_s=7 QUOTIENTS FOUND:")
     for fn, l in bad[:20]: print(" ", fn, l)
