@@ -38,6 +38,19 @@ claw-free phrasing is **no**.
   χ′ₛ = 7. **Exact empirical characterization: χ′ₛ(T(H)) = 7 ⟺ H
   contains a balloon** (the sole balloon-free exception being the triple
   edge, whose truncation is the prism, χ′ₛ = 9).
+- **PROVED (wire calculus) + CERTIFIED (claw-free census).** A general
+  bridge-interface lemma reduces any 2-terminal piece of a cubic graph
+  to a 60-state transfer relation; the three basic pieces are a
+  trichotomy — diamond: color preserved / pairs disjoint; dumbbell:
+  color changed / pair preserved; balloon: empty (the obstruction).
+  Composing through a diamond gives exactly {S_a ≠ S_b}, so inserting a
+  diamond into a bridge never destroys strong 6-colorability (first
+  hand derivation over-claimed "universal joint"; the machine check
+  refuted it and the closed form was corrected — see WRITEUP). Census
+  of the whole claw-free class (diamonds allowed), orders 4–20:
+  1,1,1,1,3,3,5,11,15 graphs, of which 0,–,0,1,0,3,1,5,5 have
+  χ′ₛ = 7 (prism: 9); the 10-vertex instance is the unique smallest
+  claw-free cubic graph with χ′ₛ = 7 (novelty vs Lin–Lin unchecked).
 - **CERTIFIED (the intended reading survives).** Every truncation of a
   connected **simple** cubic graph on ≤ 20 vertices — 556,471 quotients,
   T on up to 60 vertices — is strongly 6-edge-colorable

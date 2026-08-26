@@ -112,17 +112,19 @@ triangle edge X ⊂ Δ_u and a link edge of instance g at u: if u_g ∉ X
 then X and the link share no vertex, but u_g is adjacent to both ends of
 X, so they conflict; if u_g ∈ X they share it: conflict either way. So
 every triangle edge at u conflicts with every link at u. (iii) Two link
-edges: their endpoints u_e, v_e, x_f, y_f are joined by a triangle edge
-iff the instances share an endpoint in H; otherwise every connecting
-path has length ≥ 2. So links conflict iff their H-edges share a vertex.
-(iv) A triangle edge X ⊂ Δ_u and a triangle edge Y ⊂ Δ_v, u ≠ v: a
-connecting edge must be a link u_e v_e with u_e ∈ X, v_e ∈ Y; such an
-instance e = uv exists iff X is not the edge opposite u_e or… precisely,
-X and Y conflict iff there is an edge instance e = uv with u_e ∈ X and
-v_e ∈ Y. Triangle edges at non-adjacent vertices never conflict, and a
-triangle edge conflicts with no link at another vertex: the link's ends
-w_g, z_g have all their neighbours inside Δ_w, Δ_z and on their own
-links.
+edges, of instances e = uv and f = xy: if e and f share an H-endpoint,
+say u = x, then u_e and u_f are adjacent inside Δ_u, so the links
+conflict. If they share none, each endpoint of e's link has as
+neighbours only its two triangle mates and the far end of its own link,
+none of which is an endpoint of f's link: no conflict. So links
+conflict iff their H-edges share a vertex. (iv) Triangle edges X ⊆ Δ_u
+and Y ⊆ Δ_v with u ≠ v: the only edges of T(H) between Δ_u and Δ_v are
+the links of instances e = uv, joining u_e to v_e; hence X and Y
+conflict iff some instance e = uv has u_e ∈ X and v_e ∈ Y — in
+particular, never when u, v are non-adjacent. Finally, a triangle edge
+X ⊆ Δ_u never conflicts with the link of an instance g = wz not
+incident to u: the link's endpoints w_g, z_g have all their neighbours
+inside Δ_w, Δ_z and on the link itself, none of them in Δ_u.
 
 Now translate. Constraints inside (i)+(ii)+(iii) at a fixed u say
 exactly that the six edges around Δ_u — three triangle edges, three
@@ -174,8 +176,9 @@ P ∖ {t_v(e₁)} are disjoint — impossible inside a 3-set.
 *Step 2: the doubled edge freezes everything.* Write
 {0,…,5} = {a,b,x,y} ⊔ {p,q}. Then P̄(u) = {y,p,q} and P̄(v) = {x,p,q}.
 The (edge) constraint for e₁ makes P̄(u)∖{t_u(e₁)} and P̄(v)∖{t_v(e₁)}
-disjoint; since p and q lie in both palettes' complements, each must be
-deleted on at least one side: {t_u(e₁), t_v(e₁)} = {p,q}. The same for
+disjoint; since p and q lie in both complements, each must be removed
+on at least one side, so {p,q} ⊆ {t_u(e₁), t_v(e₁)} — a set of size at
+most two, whence {t_u(e₁), t_v(e₁)} = {p,q}. The same for
 e₂ gives {t_u(e₂), t_v(e₂)} = {p,q}. As t_u is injective,
 {t_u(e₁), t_u(e₂)} = {p,q}, and therefore t_u(f) = y, the remaining
 element of P̄(u); symmetrically t_v(g) = x.
@@ -248,7 +251,7 @@ quotients, only H₆ contains a balloon, and the other five carry verified
 6-colorings; the geng-side enumeration of all 41,301 cubic graphs on 18
 vertices confirms exactly six DFCF graphs with exactly this one
 exception. (3) Theorem 3 for the lower bound; certificates for k ≤ 8 in
-`data/family.txt` runs; the general upper bound is Lin–Lin's theorem,
+`data/family_results.txt`; the general upper bound is Lin–Lin's theorem,
 which we cite (secondary) and do not re-prove. ∎
 
 ## 4. The census
@@ -313,6 +316,47 @@ checked inside the engine). This extends the truncated-prism family of
 Han–Cui (secondary: J. Appl. Math. Comput. 69 (2023) 2503–2508) to all
 simple quotients of order ≤ 20 and is, to our knowledge, the first
 systematic verification of the intended reading of Problem 4.1.
+
+## 5b. Beyond diamond-free: wires, and the claw-free census
+
+The interface calculus extends beyond truncations. In *any* cubic
+graph, two edges conflict only when they are within distance one, so
+for a bridge s = a·b the two sides interact only through
+(c(s), pair of colors of the other two edges at a) and symmetrically at
+b, with the junction rule "pairs disjoint" — the general form of
+Lemma 2 (same one-paragraph proof). Three two-terminal pieces then act
+as "wires" with machine-enumerated transfer relations
+(`boundary.py`, `diamond_wire.py`):
+
+| piece | relation between its two boundary states | count |
+|---|---|---|
+| **diamond** (K₄ − e inserted in an edge) | color preserved, pairs disjoint | 180 |
+| **dumbbell** (doubled edge, two stems) | color changed, pair preserved | 180 |
+| **balloon** (doubled edge, stems tied) | none — no valid internal state | 0 |
+
+Composing the diamond's relation with the junction rule on both sides
+gives exactly { (c,S_a) ~ (c,S_b) : S_a ≠ S_b } — strictly *weaker*
+than the bare-edge junction rule S_a ∩ S_b = ∅. Hence inserting a
+diamond into a bridge of a cubic graph never destroys strong
+6-colorability (it relaxes the constraint), though it is not a
+universal joint: equal pairs remain forbidden. (A first hand-derivation
+claimed the full relation; the machine check refuted it — the case
+S_a = S_b leaves one color where two are needed. Recorded per the
+discipline of checking every closed form.)
+
+Census of the whole claw-free class (diamonds allowed): connected
+claw-free cubic graphs are rare — by order 4, 6, …, 16 there are
+1 (K₄), 1 (prism), 1, 1, 3, 3, 5 of them. Their strong chromatic
+indices, decided by the same double-engine protocol: everything is 6
+except the prism (9) and: one graph on 10 vertices (χ′ₛ = 7: a diamond
+plus two triangles — by this census the **unique smallest claw-free
+cubic graph of strong chromatic index 7**, novelty unchecked against
+Lin–Lin's examples (secondary)), all three graphs on 14 vertices,
+one of the five on 16, five of the eleven on 18, and five of the
+fifteen on 20 (χ′ₛ = 7 each, verified 7-colorings; every UNSAT@6
+confirmed by engine B). The by-order table of (all, χ′ₛ = 7):
+(1,0), (1,–), (1,0), (1,1), (3,0), (3,3), (5,1), (11,5), (15,5) for
+orders 4–20, the prism being the one graph counted "–" (χ′ₛ = 9).
 
 ## 6. Toward the converse: a sufficient condition
 

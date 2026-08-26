@@ -1,0 +1,1 @@
+R 1 10 15 NOT6 9 chi=-1 | ICQRD_iR?

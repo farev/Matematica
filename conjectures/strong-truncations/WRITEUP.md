@@ -63,6 +63,20 @@ on the (secondary) literature bound, and the intended reading of the
 problem (simple quotients) verified for all 556,471 simple cubic graphs
 on ≤ 20 vertices — the first systematic check beyond Han–Cui's prisms.
 
+The afternoon extension to the with-diamond class produced the day's
+best correction-by-machine: the diamond piece's transfer relation came
+out color-preserving with disjoint pairs (the mirror image of the
+dumbbell's color-changing pair-preserving relation, with the balloon as
+the empty third member of the trichotomy), and a quick hand argument
+"proved" that composing through a diamond imposes nothing beyond stem
+color equality. The verification script refuted the claim: when the
+two outer pairs are equal, the diamond's internal pairs have only one
+color left where two are needed, so the composed relation is exactly
+"pairs distinct", strictly between "nothing" and the bare edge's
+"pairs disjoint". The corrected closed form is asserted in
+`diamond_wire.py` and the wrong first derivation is recorded here on
+purpose.
+
 Failures worth recording: the first bulk run wasted nine minutes on
 inline exact-χ′ₛ escalation and node-cap thrashing (fixed by a
 decide-then-resolve pipeline); a sed negative control that silently
