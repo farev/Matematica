@@ -46,6 +46,7 @@ Reviewed at his request; full report in
 | All four of his nonexistence legs re-derived by complete searches with independent code and no symmetry reduction: (32,20,4,[32]) via C8→C16→C32 (2,985,984 refinements, 0), (36,29,4) in [2,18] and [3,12] via full quotient systems (0 each), and in [6,6] via 16,964,640 marginal-consistent vectors (0), solver-free; every §5–§7 count of his note (9,528 / 56 / 12 / 248,832 / 144 / 420 / 106,353 / 9) reproduced exactly | CERTIFIED | `masselot-review/check_targets.py`, `out/targets_report.json` |
 | **The C18 quotient system of (36,29,4) is empty**, so no SDS(36,29,4) exists in C36 or C2×C18: the abelian order-36 classification no longer needs the database's unreplicated cyclic exhaust | CERTIFIED (complete enumeration; projection lemma PROVED in NOTE §5.1) | `masselot-review/out/targets_run_log.txt` |
 | Gordon's paper and He–Chen–Ge read in full (session 1 had them secondary-only): neither states the T1/T2 transfers, so the session-1 rediscovery caveat is lifted; Lemma 1 = Gordon's Lemma 1.1 + He–Chen–Ge Lemma 2.2 | resolved caveat | NOTE §2 remarks (updated) |
+| His v1.1 revision (paper dated 2026-08-21, checked 2026-08-25) verified: the six constructions printed in its Appendix A match the pinned witness files exactly; the new C18 stage counts reconcile (his 19,152 = the norm ≤ 33 slice of the full 23,184 parity-matching refinements; 7,560 at norm 33; 0 solutions); his adapted C6×C6 rerun reproduces 36 pairs / 16,964,640 / 0; review attribution and AI-boundary description accurate, pinned commit resolves | CERTIFIED | `masselot-review/check_v11_revision.py`, `out/v11_revision_checks.txt` |
 
 ## Scripts
 
@@ -63,6 +64,7 @@ Reviewed at his request; full report in
 | `masselot-review/verify_witnesses.py` | re-verify Masselot's 16 witnesses with `sdslib` | 2 s |
 | `masselot-review/validate_pipeline.py` | known-answer controls for the review's search machinery (must all PASS) | 10 s |
 | `masselot-review/check_targets.py` | complete independent re-derivation of his four nonexistence legs + the C18 observation | 55 s |
+| `masselot-review/check_v11_revision.py <pdf>` | v1.1 revision checks: Appendix A constructions vs pinned witnesses, C18 stage counts with norm histogram | 30 s |
 
 Reproduce (from inside this directory):
 

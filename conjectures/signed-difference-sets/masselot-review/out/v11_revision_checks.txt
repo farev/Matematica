@@ -1,0 +1,13 @@
+[1] C18 refinement stage over all 9x2 marginal pairs:
+    marginal-compatible refinements: 23184 (DP recount: 23184; paper: 19,152)
+    with squared norm 33:            7560 (paper: 7,560)
+    full C18 system solutions:       0 (paper: 0)
+[2] Appendix A constructions vs pinned v1.0 witness files:
+    C2 x C16: printed P (16) == file P: True; printed N (4) == file N: True
+    C4 x C8: printed P (16) == file P: True; printed N (4) == file N: True
+    C2^2 x C8: printed P (16) == file P: True; printed N (4) == file N: True
+    C2 x C4^2: printed P (16) == file P: True; printed N (4) == file N: True
+    C2^3 x C4: printed P (16) == file P: True; printed N (4) == file N: True
+    C2^5: printed P (16) == file P: True; printed N (4) == file N: True
+
+revision checks: ALL PASS
