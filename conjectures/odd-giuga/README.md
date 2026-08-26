@@ -13,7 +13,7 @@ like a fault line a certified 4-core branch-and-bound could move.
 
 **Status:** active
 **Sessions:** 2026-08-23
-**Write-up page:** none yet
+**Write-up page:** <https://fabianarevalo.com/odd-giuga>
 
 ## Results (labels per repo convention)
 
