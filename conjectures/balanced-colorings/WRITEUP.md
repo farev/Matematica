@@ -118,10 +118,21 @@ work.
   one redundant kissat run before the launch pattern was fixed to one
   tracked task per solver.
 
+## Endgame (added at close)
+
+Every long run ended `UNKNOWN`: K₂₆ broken+cardinality at its 3-hour
+limit; K₁₇ (the *proved* r = 4 case) at 3 hours default-mode and 70
+minutes UNSAT-mode; the E* probes at every rung above the verified
+lower bounds (266/267/269 on 26 vertices, 106/108 on 17). Final
+brackets: E*(17,5) ∈ [104, 107], E*(26,6) ∈ [265, 269], upper ends by
+the hand Turán-uniqueness argument. The verdict ladder is consistent:
+BreakID-broken instances fall at K₁₀ in seconds and stall by K₁₇ — the
+counting core outgrows static symmetry breaking somewhere between 135
+and 544 variables.
+
 ## Where this leaves the problem
 
-K₂₆'s verdict is open at session end unless the running jobs land (see
-README for their outcome). The session's permanent yield: the
+K₂₆'s verdict is open at session end. The session's permanent yield: the
 T(5) ≥ 25 certified witness and construction lemmas; the E* programme
 with three certified values and the sharp-barrier finding; the two
 exclusion theorems (no code-family extension — DRUP-certified; no

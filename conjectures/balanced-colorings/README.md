@@ -41,8 +41,8 @@ noted; 4-core sandbox):
 |---|---|---|
 | K₁₀ r=3 (broken) | — | **UNSAT 3.1 s** (ErGy r=3 reproduced) |
 | K₁₇ r=4 (broken) | 10 min | unknown |
-| K₁₇ r=4 (broken+card), default and `--unsat` modes | ~3 h / 70 min | unknown (see below) |
-| K₂₆ r=5 (broken+card) | 3 h | unknown (see below) |
+| K₁₇ r=4 (broken+card), default and `--unsat` modes | 3 h / 70 min | **unknown** — even the proved r=4 theorem resists at this scale |
+| K₂₆ r=5 (broken+card) | 3 h | **unknown** — the open case is beyond a 4-core day by direct SAT |
 | E*(17,5) ≥ 106 / 108 (broken+card) | 20 min each | unknown → bracket [104, 107] (107 by Turán uniqueness: the unique 108-edge K₅-free graph on 17 vertices is T₄(17), whose 5-part is an I₅) |
 | E*(26,6) ≥ 266 / 267 / 269 (broken+card) | 60–90 min each | unknown → bracket [265, 269] (269 likewise via T₅(26)) |
 
