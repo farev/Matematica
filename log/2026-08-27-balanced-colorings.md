@@ -24,11 +24,71 @@ construction verified exactly and machine certificates reproducing the
 r = 3, 4 theorems. Partial credit: certified exclusion of structured witness
 classes at K₂₆ and proved counting lemmas constraining any witness.
 
-**Result.** (to be completed)
+**Result.** PROVED + CERTIFIED (K₂₆ itself undecided at close — long runs
+still going, see Next).
 
-**What failed.** (to be completed)
+- **PROVED + CERTIFIED (construction).** T(r) ≥ r² for prime powers:
+  colour K_{r²} on AG(2,r) by parallel classes with two merged; every
+  (r+1)-set contains two points collinear in *every* direction
+  (pigeonhole over the r lines of each class). K₂₅'s balanced
+  5-colouring verified from the definition over all 177,100 6-subsets
+  (K₉: 126, K₁₆: 4,368 likewise); equivalently the Reed–Solomon
+  [5,2,4]₅ code. So r = 5 concentrates entirely on K₂₆.
+- **PROVED (Fact A).** Balanced ⇒ no monochromatic K_{r+1} ⇒ at
+  K_{r²+1} every colour class is an (r+1,r+1)-Ramsey graph (ω, α ≤ r)
+  and every complement is K_{r+1}-free with χ ≥ r+1. Kills all
+  partition-structured witnesses in two lines (the session's first
+  proof used the Singleton bound via a codes⟺structured-colourings
+  equivalence, kept in NOTE §2 for the construction framework); frames
+  r = 2's C₅ as exactly the escape conjectured impossible for r ≥ 3.
+- **CERTIFIED (sharp counting barrier).** With E*(N,s) = max edges with
+  no K_s, no I_s: existence at K_{r²+1} forces E*(r²+1, r+1) ≥
+  (r−1)/r·C(r²+1,2). Computed: **E*(10,4) = 31** vs threshold 30 — the
+  proved r = 3 case is missed by ONE edge (UNSAT at 32 in 4.6 s);
+  E*(17,5) ≥ 104 vs 102; **E*(26,6) ≥ 265** vs 260 (all witnesses
+  definition-verified and committed). At r = 2 the threshold is tight
+  and realized (C₅). The pure-counting and exact-rigidity routes to
+  r = 5 are dead; the conjecture lives in the joint structure.
+- **CERTIFIED (exclusions at K₂₆).** (i) The affine family (50 free
+  pairs) does not extend to K₂₆: UNSAT with a 1,160-line DRUP proof
+  checked by `tools/satcert/rup_check`; q = 2 positive control finds
+  the 2 known K₄→K₅ extensions. (ii) No vertex-regular witness:
+  invariant classes must have exactly 65 edges (2a+b = 5, PROVED),
+  unsolvable over Z₂₆; over D₁₃ all 3,198 admissible classes fail
+  α ≤ 5 (exhaustive, controlled). The r = 2 counterexample is a
+  circulant; at r = 5 that door is provably shut.
+- **CERTIFIED (modulo BreakID) + NUMERICAL (hardness).** The direct CNF
+  is pigeonhole-hard: K₁₀ (135 vars!) defeats CaDiCaL, Glucose, kissat
+  and RoundingSat unaided; with BreakID symmetry breaking K₁₀ is UNSAT
+  in 3.1 s — the Erdős–Gyárfás r = 3 theorem machine-reproduced. K₁₇
+  and K₂₆ (broken + Lemma-1 cardinality totalizers) outlasted the
+  session's windows.
 
-**Next.** (to be completed)
+**What failed.** The Singleton-bound proof of structured-sector
+emptiness (superseded by Fact A's two-liner, same afternoon). The
+pure-counting kill (E* < threshold) — refuted at r = 3, 4, 5 by the
+machine within minutes of formulation; its sharpness is the salvage.
+The rigidity kill (E*(26,6) = 260) — refuted by a 261-edge witness.
+RoundingSat without symmetry breaking — timed out even at K₁₀.
+Second-order pair counting — reduces to twice the single-class bound,
+no gain (recorded in WRITEUP so it isn't retried). Two
+process-management mishaps (self-matching pkill; an orphaned solver
+launch) cost ~15 minutes. The first circulant sweep printed half the
+true edge count (α/ω filtering unaffected); caught against a hand
+count, fixed, re-run.
+
+**Next.** (1) The K₂₆ decision: the symmetry-broken + cardinality
+instance needs verified symmetry breaking at scale (VeriPB-style),
+cube-and-conquer, or an interaction lemma over the near-E* catalogue —
+the running kissat windows may yet land (results to be appended to the
+conjecture README when they stop). (2) Pin E*(26,6) (bracket [265, 269])
+and E*(17,5) ([104, 108]) exactly — new certified extremal numbers
+either way. (3) From an unblocked machine: read ErGy99 and
+Füredi–Ramamurthi 2002 — the construction and the codes⟺MOLS remark may
+be theirs; every (secondary) mark must be resolved before any external
+claim. (4) The E*-catalogue route: if near-extremal (6,6)-graphs on 26
+vertices are few, Proposition-4-style rigidity may survive in weakened
+form (classes ∈ [56, 60] once E* is pinned).
 
 ## Connectivity check
 
