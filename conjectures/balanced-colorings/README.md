@@ -33,9 +33,18 @@ E* running.
 | No Z₂₆-circulant witness (profile arithmetic 2a+b=5) and **no D₁₃-invariant witness** (0 of 3,198 admissible 65-edge classes has α ≤ 5, exhaustive) — no vertex-regular witness, in contrast to r = 2 whose witness is C₅ | PROVED (arithmetic) + CERTIFIED (exhaustion) | NOTE §5, `dihedral.py` |
 | Direct CNF is CDCL-hard already at K₁₀ (135 vars): CaDiCaL/Glucose/kissat/RoundingSat all fail unaided; BreakID cures K₁₀ but not K₁₇/K₂₆ within session windows | NUMERICAL (hardness observation) | NOTE §6, WRITEUP |
 
-The K₂₆ decision itself is **open**; long kissat runs on the
-symmetry-broken, cardinality-strengthened instance were still running at
-session close (see WRITEUP endgame note).
+The K₂₆ decision itself is **open**. Session-close solver campaign (all
+kissat 4.0.4 on BreakID-broken instances, cardinality totalizers where
+noted; 4-core sandbox):
+
+| instance | window | outcome |
+|---|---|---|
+| K₁₀ r=3 (broken) | — | **UNSAT 3.1 s** (ErGy r=3 reproduced) |
+| K₁₇ r=4 (broken) | 10 min | unknown |
+| K₁₇ r=4 (broken+card), default and `--unsat` modes | ~3 h / 70 min | unknown (see below) |
+| K₂₆ r=5 (broken+card) | 3 h | unknown (see below) |
+| E*(17,5) ≥ 106 / 108 (broken+card) | 20 min each | unknown → bracket [104, 107] (107 by Turán uniqueness: the unique 108-edge K₅-free graph on 17 vertices is T₄(17), whose 5-part is an I₅) |
+| E*(26,6) ≥ 266 / 267 / 269 (broken+card) | 60–90 min each | unknown → bracket [265, 269] (269 likewise via T₅(26)) |
 
 ## Scripts
 
