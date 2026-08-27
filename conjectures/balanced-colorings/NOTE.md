@@ -98,7 +98,14 @@ no I₆.
 ## §4. The extremal programme: E*(N, s) and the counting barrier
 
 Define **E*(N, s)** = maximum edges of a graph on N vertices with no K_s
-and no independent set of size s. In a balanced r-colouring of K_{r²+1}
+and no independent set of size s. **Notation/novelty flag:** this is
+E(s, s, N) in the standard notation of Radziszowski's *Small Ramsey
+Numbers* survey (DS1; latest revision 2026-04-24 (secondary)), where
+minimal/maximal Ramsey-graph edge counts e(s,t,n)/E(s,t,n) are studied
+quantities; whether E(4,4,10), E(5,5,17) or E(6,6,26) are already
+tabulated there could not be checked from this sandbox (every mirror of
+DS1 is egress-blocked) — treat the values below as possibly known until
+DS1 is read. In a balanced r-colouring of K_{r²+1}
 (s = r+1, N = r²+1), every H_c is such a graph, so
 C(N,2) = Σ_c |G_c| ≥ r·(C(N,2) − E*(N, r+1)), i.e.
 
@@ -111,24 +118,27 @@ independent code; UNSAT by CaDiCaL):
 
 | quantity | value | status |
 |---|---|---|
+| E*(5,3) | = 5 (C₅; classical) | anchor: at r = 2 the threshold 5 is met with equality and realized by the unique witness (both classes C₅) |
 | E*(10,4) | **= 31** | CERTIFIED (SAT witness at 31; UNSAT at 32 in 4.6 s) |
-| E*(17,5) | ≥ 104 | CERTIFIED lower bound (ladder in progress) |
-| E*(26,6) | ≥ 260 | CERTIFIED lower bound (261 probe in progress) |
+| E*(17,5) | ≥ 104 | CERTIFIED lower bound (≤ 108 = ex(17;K₅) trivially) |
+| E*(26,6) | ≥ **265** | CERTIFIED lower bound (≤ 269: a 270-edge K₆-free graph is T₅(26), whose 6-part is an I₆) |
 | max circulant on Z₂₆, no K₆/I₆ | 221 edges (S = {1,2,3,4,6,7,8,9,13}) | CERTIFIED (exhaustive over all 2¹³ connection sets) |
 
-So the **counting barrier is sharp**: the per-class bound misses the
-proved r = 3 case by exactly one edge (31 vs 30), misses r = 4 (104 ≥
-102), and at r = 5 the threshold sits exactly at the achieved lower bound
-(260). Consequently:
+So the **counting barrier is sharp but never decides**: the per-class
+bound misses the proved r = 3 case by exactly one edge (31 vs 30),
+misses r = 4 (≥ 104 vs 102), and at r = 5 clears the threshold by ≥ 5
+(265 vs 260). Two once-hoped kills died the same day, in order:
 
-**Proposition 4 (conditional rigidity).** If E*(26,6) = 260, then in any
-balanced 5-colouring of K₂₆ every colour class has exactly 65 edges and
-every complement H_c is an extremal 260-edge (6,6)-graph. *Proof.* The
-threshold inequality is tight: Σ|G_c| = 325 = 5·(325−260) forces
-|G_c| = 325 − |H_c| = 65 for all c. ∎
-
-(The 260-edge witness found here has degree range 17–21 and a connected
-65-edge complement; committed with a definition-level verification.)
+**Proposition 4 (rigidity — refuted as stated).** *If* E*(26,6) were
+exactly 260, every colour class of a K₂₆ witness would have exactly 65
+edges with every complement extremal (Σ|G_c| = 325 = 5·(325−260) forces
+equality throughout). The machine refuted the premise within the hour:
+E*(26,6) ≥ 261, then ≥ 265 (witnesses committed, definition-verified).
+What survives: |G_c| ∈ [325 − E*(26,6), 105] for every class, i.e.
+classes of 56–60 edges minimum once E* is pinned — still far above the
+naive Turán floor 55, by the α-constraint that disqualifies the Turán
+graph itself. The r = 2 anchor shows the rigidity scenario is not
+vacuous: there it holds and produces the counterexample.
 
 ## §5. Exclusion results at K₂₆ (all this session)
 

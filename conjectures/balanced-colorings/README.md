@@ -86,9 +86,12 @@ python3 encoder.py dimacs-only 10 3 --dimacs /tmp/K10.cnf        # then:
   predicates (satisfiability-preserving by construction, but not
   DRUP-derivable from the base formula). A fully certified chain needs
   VeriPB-logged breaking or hand-proved WLOG constraints.
-- Exact E*(17,5) and E*(26,6) are unfinished (lower bounds 104, 261;
+- Exact E*(17,5) and E*(26,6) are unfinished (lower bounds 104, 265;
   upper bounds open — UNSAT probes are expensive for the same hardness
-  reasons as the main instance).
+  reasons as the main instance). E*(N,s) = E(s,s,N) in Radziszowski's
+  DS1 notation; whether these values are tabulated there is UNCHECKED
+  (all DS1 mirrors egress-blocked from this sandbox) — treat as possibly
+  known until the survey is read.
 - The main K₂₆ decision: next tools in order — verified symmetry
   breaking at scale, cube-and-conquer over colour-degree or K₆-pattern
   cubes on the broken+cardinality formula, or an interaction lemma over

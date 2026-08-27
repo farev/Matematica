@@ -109,6 +109,12 @@ are certifiably closed (CERTIFIED). K₂₆ itself remains undecided.
   verdict.
 - The hardness observation (item 6) is NUMERICAL: wall-clock behaviour
   of four solvers on this machine, not a lower-bound theorem.
+- The E* quantities are E(s,s,n) — maximal Ramsey-graph edge counts — in
+  the standard notation of Radziszowski's *Small Ramsey Numbers* survey
+  (DS1, rev. 2026-04-24 (secondary)); whether these three specific
+  values are already tabulated there could not be checked (all DS1
+  mirrors egress-blocked). The page must present them as "computed
+  here, possibly known" until DS1 is read locally.
 
 ## 5. Existing page
 
