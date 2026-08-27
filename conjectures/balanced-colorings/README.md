@@ -27,7 +27,7 @@ E* running.
 | Erdős–Gyárfás r = 3 theorem (K₁₀ has no balanced 3-colouring) machine-reproduced: BreakID SBPs + kissat, UNSAT 3.1 s (SBPs trusted, not DRUP-derived — see NOTE §6) | CERTIFIED (modulo BreakID) | NOTE §6 |
 | E*(10,4) = 31 (max edges, K₄- and I₄-free, 10 vertices) — the r = 3 counting threshold is 30: **the per-class counting barrier misses by exactly one edge** | CERTIFIED | `ramsey_max.py`, `data/ramsey_10_4_ge31.txt` |
 | E*(17,5) ≥ 104 (threshold 102: barrier confirmed at r = 4) | CERTIFIED | `data/ramsey_17_5_ge104.txt` |
-| E*(26,6) ≥ 261 (threshold 260: barrier sharp at r = 5; kills the pure-counting and exact-rigidity routes) | CERTIFIED | `data/ramsey_26_6_ge261.txt` |
+| E*(26,6) ≥ 265 (threshold 260: barrier sharp at r = 5; kills the pure-counting and exact-rigidity routes) | CERTIFIED | `data/ramsey_26_6_ge265.txt` |
 | Max circulant on Z₂₆ with no K₆/I₆: 221 edges (exhaustive over 2¹³ connection sets) | CERTIFIED | `circulant.py` |
 | The AG(2,5) family (5 direction colours + 50 free pairs) does not extend to a balanced K₂₆: UNSAT, DRUP proof checked by `tools/satcert/rup_check`; q = 2 positive control finds the 2 known K₅ extensions | CERTIFIED | `extend_code.py`, `certs/extend_code_unsat.drup` |
 | No Z₂₆-circulant witness (profile arithmetic 2a+b=5) and **no D₁₃-invariant witness** (0 of 3,198 admissible 65-edge classes has α ≤ 5, exhaustive) — no vertex-regular witness, in contrast to r = 2 whose witness is C₅ | PROVED (arithmetic) + CERTIFIED (exhaustion) | NOTE §5, `dihedral.py` |
@@ -78,7 +78,7 @@ python3 encoder.py dimacs-only 10 3 --dimacs /tmp/K10.cnf        # then:
 | file | what it is |
 |---|---|
 | `data/K25_balanced_5col.txt` (+ K9, K16) | affine witnesses, definition-verified |
-| `data/ramsey_10_4_ge31.txt`, `..._17_5_ge104.txt`, `..._26_6_ge260.txt`, `..._26_6_ge261.txt` | E* lower-bound graphs, definition-verified |
+| `data/ramsey_10_4_ge31.txt`, `..._17_5_ge104.txt`, `..._26_6_ge260.txt`, `..._26_6_ge261.txt`, `..._26_6_ge265.txt` | E* lower-bound graphs, definition-verified |
 | `certs/extend_code.cnf.gz`, `certs/extend_code_unsat.drup` | the non-extension certificate (rup_check: VERIFIED, 1,160 lines) |
 | `data/K5_balanced_2col_sat.txt`, `data/K9_balanced_3col_sat.txt` | SAT-side control witnesses |
 
