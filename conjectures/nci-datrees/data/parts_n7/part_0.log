@@ -1,0 +1,5 @@
+RESULT k=5 n=7 posets=63 lattices=53 winning=53 llwinning=53 separating=0 nonwinning=0
+LLSTATES hist(<=10,<=100,<=1000,<=8192,more)=36,17,0,0,0 maxll=63
+WORSTLL &D?????
+STATES hist(<=10,<=100,<=1000,<=8192,more)=0,0,0,0,0 maxfull=0
+WORST 

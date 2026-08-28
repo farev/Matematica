@@ -28,6 +28,14 @@
  *   2. full pair closure (exact decision; exhaustion == NOT WINNING)
  * Any NOT WINNING lattice is printed immediately (candidate counterexample).
  *
+ * Additionally decides LEFT-LINEAR winnability (every right child a leaf,
+ * arXiv:2608.19414): states reachable from {leaves, emptyset} under
+ * A -> A|L (disjoint) and A -> A^L (L subset A) with L a LEAF (right
+ * operand).  A left-linear win implies a general win, so the general
+ * decision only runs when the left-linear BFS fails; a lattice that is
+ * winnable but not left-linear-winnable is printed as SEPARATING — an
+ * explicit witness that left-linear da-trees are strictly weaker.
+ *
  * Exact integer/bitmask arithmetic throughout; no floating point.
  */
 #include <stdio.h>
@@ -55,12 +63,18 @@ static uint32_t seenep[1<<MAXW];
 static uint32_t epoch = 0;
 static int      idxof[1<<MAXW];
 
+/* left-linear BFS workspace */
+static uint32_t llq[MAXSTATES];
+static uint32_t llep[1<<MAXW];
+static uint32_t llepoch = 0;
+
 /* stats */
-static long long nposet=0, nlat=0, nwin=0, nstage0=0, nstage1=0, nstage2=0,
-                 nnonwin=0;
+static long long nposet=0, nlat=0, nwin=0, nllwin=0, nsep=0, nstage0=0,
+                 nstage1=0, nstage2=0, nnonwin=0;
 static long long hist[5];       /* states used: <=10,<=100,<=1000,<=8192,more */
-static int maxstates1=0, maxstates2=0;
-static char worstline[128];
+static long long llhist[5];
+static int maxstates1=0, maxstates2=0, maxll=0;
+static char worstline[128], worstllline[128];
 
 static inline int seen_get(uint32_t m){ return seenep[m]==epoch; }
 static inline void seen_set(uint32_t m){ seenep[m]=epoch; }
@@ -136,6 +150,35 @@ static int analyze(void){
     return 1;
 }
 
+/* left-linear decision: BFS over A op LEAF; returns 1 iff LL-winnable */
+static int decide_ll(uint32_t target, int *used){
+    int i,j;
+    llepoch++;
+    int ns=0;
+    for(i=0;i<nleaves;i++){
+        uint32_t L=leaves[i];
+        if(L==target){ *used=1; return 1; }
+        if(llep[L]!=llepoch){ llep[L]=llepoch; llq[ns++]=L; }
+    }
+    if(llep[0]!=llepoch){ llep[0]=llepoch; llq[ns++]=0; }
+    for(i=0;i<ns;i++){
+        uint32_t A=llq[i];
+        for(j=0;j<nleaves;j++){
+            uint32_t L=leaves[j], C;
+            uint32_t al=A&L;
+            if(al==0) C=A|L;            /* A + L (disjoint union) */
+            else if(al==L) C=A^L;       /* A - L (guarded difference) */
+            else continue;
+            if(llep[C]!=llepoch){
+                llep[C]=llepoch; llq[ns++]=C;
+                if(C==target){ *used=ns; return 1; }
+            }
+        }
+    }
+    *used=ns;
+    return 0;
+}
+
 /* returns 1 win, 0 not winning; fills *used with states explored */
 static int decide(uint32_t target, int *used, int *stage){
     int i,j;
@@ -201,32 +244,46 @@ int main(int argc, char **argv){
         int n = parse_d6(line,cov);
         if(n!=K){ fprintf(stderr,"parse error: %s",line); return 3; }
         if(!analyze()) continue;
-        int used=0, stage=0;
-        int win = decide(target,&used,&stage);
-        if(win){
-            nwin++;
-            if(stage==0) nstage0++; else if(stage==1) nstage1++; else nstage2++;
-        } else {
-            nnonwin++;
-            /* candidate counterexample — print immediately, keep going */
-            int len=strlen(line); if(line[len-1]=='\n') line[len-1]=0;
-            printf("NONWINNING %s\n",line); fflush(stdout);
-        }
-        if(used>maxstates2){ maxstates2=used;
+        int llused=0;
+        int llwin = decide_ll(target,&llused);
+        if(llused>maxll){ maxll=llused;
             int len=strlen(line); if(len>120) len=120;
-            memcpy(worstline,line,len); worstline[len]=0;
-            char *nl=strchr(worstline,'\n'); if(nl)*nl=0; }
-        hist[ used<=10?0 : used<=100?1 : used<=1000?2 : used<=8192?3 : 4 ]++;
+            memcpy(worstllline,line,len); worstllline[len]=0;
+            char *nl=strchr(worstllline,'\n'); if(nl)*nl=0; }
+        llhist[ llused<=10?0 : llused<=100?1 : llused<=1000?2 : llused<=8192?3 : 4 ]++;
+        int used=0, stage=0;
+        if(llwin){
+            /* a left-linear tree is a da-tree, so the lattice is winning */
+            nllwin++; nwin++; nstage0++; /* stage counters unused on this path */
+        } else {
+            int win = decide(target,&used,&stage);
+            if(win){
+                nwin++; nsep++;
+                int len=strlen(line); if(line[len-1]=='\n') line[len-1]=0;
+                printf("SEPARATING %s\n",line); fflush(stdout);
+            } else {
+                nnonwin++;
+                /* candidate counterexample — print immediately, keep going */
+                int len=strlen(line); if(line[len-1]=='\n') line[len-1]=0;
+                printf("NONWINNING %s\n",line); fflush(stdout);
+            }
+            if(used>maxstates2){ maxstates2=used;
+                int len=strlen(line); if(len>120) len=120;
+                memcpy(worstline,line,len); worstline[len]=0;
+                char *nl=strchr(worstline,'\n'); if(nl)*nl=0; }
+            hist[ used<=10?0 : used<=100?1 : used<=1000?2 : used<=8192?3 : 4 ]++;
+        }
         if(stats_every && nposet%stats_every==0)
             fprintf(stderr,"[progress] posets=%lld lattices=%lld win=%lld\n",
                     nposet,nlat,nwin);
     }
-    printf("RESULT k=%d n=%d posets=%lld lattices=%lld winning=%lld nonwinning=%lld\n",
-           K,K+2,nposet,nlat,nwin,nnonwin);
-    printf("STAGES fastpath=%lld leafclosure=%lld fullclosure=%lld\n",
-           nstage0,nstage1,nstage2);
-    printf("STATES hist(<=10,<=100,<=1000,<=8192,more)=%lld,%lld,%lld,%lld,%lld maxleaf=%d maxfull=%d\n",
-           hist[0],hist[1],hist[2],hist[3],hist[4],maxstates1,maxstates2);
+    printf("RESULT k=%d n=%d posets=%lld lattices=%lld winning=%lld llwinning=%lld separating=%lld nonwinning=%lld\n",
+           K,K+2,nposet,nlat,nwin,nllwin,nsep,nnonwin);
+    printf("LLSTATES hist(<=10,<=100,<=1000,<=8192,more)=%lld,%lld,%lld,%lld,%lld maxll=%d\n",
+           llhist[0],llhist[1],llhist[2],llhist[3],llhist[4],maxll);
+    printf("WORSTLL %s\n",worstllline);
+    printf("STATES hist(<=10,<=100,<=1000,<=8192,more)=%lld,%lld,%lld,%lld,%lld maxfull=%d\n",
+           hist[0],hist[1],hist[2],hist[3],hist[4],maxstates2);
     printf("WORST %s\n",worstline);
     return nnonwin?1:0;
 }

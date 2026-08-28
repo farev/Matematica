@@ -1,0 +1,5 @@
+RESULT k=12 n=14 posets=135162071 lattices=2184461 winning=2184461 llwinning=2184461 separating=0 nonwinning=0
+LLSTATES hist(<=10,<=100,<=1000,<=8192,more)=829491,1045011,305914,4045,0 maxll=7720
+WORSTLL &KBwAA@C?c???????????B????
+STATES hist(<=10,<=100,<=1000,<=8192,more)=0,0,0,0,0 maxfull=0
+WORST 

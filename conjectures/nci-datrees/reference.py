@@ -145,11 +145,39 @@ def decide(leaves, target):
         i += 1
     return target in seen, len(states)
 
+def decide_ll(leaves, target):
+    """Left-linear winnability: BFS from {leaves, 0} under A|L (disjoint) and
+    A^L (L subset of A), leaf always the right operand.  Independent of the C
+    engine's implementation."""
+    if target in leaves:
+        return True
+    seen = set(leaves)
+    seen.add(0)
+    q = list(seen)
+    i = 0
+    while i < len(q):
+        A = q[i]
+        i += 1
+        for L in leaves:
+            al = A & L
+            if al == 0:
+                C = A | L
+            elif al == L:
+                C = A ^ L
+            else:
+                continue
+            if C not in seen:
+                if C == target:
+                    return True
+                seen.add(C)
+                q.append(C)
+    return False
+
 def run(k, expect_posets=None, expect_lattices=None, stats=False):
     proc = subprocess.Popen(['nauty-genposetg', str(k), 't', 'q'],
                             stdout=subprocess.PIPE, stderr=subprocess.DEVNULL,
                             text=True)
-    nposet = nlat = nwin = 0
+    nposet = nlat = nwin = nllwin = 0
     closure_sizes = Counter()
     worst = (0, None)
     for line in proc.stdout:
@@ -163,6 +191,12 @@ def run(k, expect_posets=None, expect_lattices=None, stats=False):
             continue
         nlat += 1
         win, ns = decide(L['leaves'], L['target'])
+        llwin = decide_ll(L['leaves'], L['target'])
+        if llwin:
+            nllwin += 1
+            assert win, f"LL-win without general win (impossible): {line}"
+        elif win:
+            print(f"SEPARATING LATTICE n={k+2}: {line}")
         if win:
             nwin += 1
         else:
@@ -172,7 +206,7 @@ def run(k, expect_posets=None, expect_lattices=None, stats=False):
             if ns > worst[0]:
                 worst = (ns, line)
     proc.wait()
-    out = f"k={k} n={k+2}: posets={nposet} lattices={nlat} winning={nwin}"
+    out = f"k={k} n={k+2}: posets={nposet} lattices={nlat} winning={nwin} llwinning={nllwin}"
     if expect_posets is not None:
         out += f" [posets {'OK' if nposet==expect_posets else 'MISMATCH exp '+str(expect_posets)}]"
     if expect_lattices is not None:
