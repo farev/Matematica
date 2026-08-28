@@ -8,3 +8,4 @@ PYREF k=13 slice: posets=123283 lattices=1727 winning=1727 llwinning=1727
 ## C engine:
 RESULT k=13 n=15 posets=2841817 lattices=6150 winning=6150 llwinning=6150 separating=0 nonwinning=0
 ## Python reference:
+PYREF k=13 slice2: posets=2841817 lattices=6150 winning=6150 llwinning=6150
