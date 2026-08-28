@@ -14,7 +14,8 @@ reduction machinery around it.
 **Status:** active — K₂₆ undecided; construction side settled (T(5) ≥ 25),
 structured and vertex-regular witness routes excluded, extremal programme
 E* running.
-**Sessions:** 2026-08-27
+**Page:** <https://fabianarevalo.com/balanced-colorings>
+**Sessions:** [2026-08-27](../../log/2026-08-27-balanced-colorings.md)
 
 ## Results
 
