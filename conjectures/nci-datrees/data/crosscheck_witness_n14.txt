@@ -1,0 +1,34 @@
+# Witness spot-checks on the per-part worst-case lattices (max LL-BFS states), n=14 census
+# generated 2026-08-28 by: verify_witness.py '<digraph6>' for each WORSTLL line in data/parts_n14/*.log
+## data/parts_n14/part_0.log : &K????????????????????????
+lattice n=14  mu=[-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 11, 1]
+WINNING, tree verified: (((((S0 - Sbot) + S1) + (S2 - Sbot)) + ((S3 - Sbot) + (S4 - Sbot))) + ((((S5 - Sbot) + (S6 - Sbot)) + (S7 - Sbot)) + (((S8 - Sbot) + (S9 - Sbot)) + ((S10 - Sbot) + (S11 - Sbot)))))
+LL sequence verified (23 steps): S0 -S12 +S1 -S12 +S2 -S12 +S3 -S12 +S4 -S12 +S5 -S12 +S6 -S12 +S7 -S12 +S8 -S12 +S9 -S12 +S10 -S12 +S11
+## data/parts_n14/part_1.log : &KBwAA@C?c???????????B????
+lattice n=14  mu=[4, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, -1, -2, 1]
+WINNING, tree verified: (((((S4 - S0) + S2) - S1) + ((S6 - S0) + (S7 - S0))) + ((((S4 - S0) + S5) - ((S2 - Sbot) + (S4 - Sbot))) + (((S10 - S2) - (S3 - Sbot)) + ((S8 - Sbot) + (S11 - S9)))))
+LL sequence verified (17 steps): S4 -S0 +S5 -S0 +S6 -S0 +S7 -S0 +S8 -S1 +S12 -S2 +S12 -S3 +S10 -S9 +S11
+## data/parts_n14/part_2.log : &KK?B????????o???K???B????
+lattice n=14  mu=[1, 1, -1, -1, -1, 1, -1, 1, -1, 1, -1, -1, 1, 1]
+WINNING, tree verified: ((((S2 - S0) + S1) + ((S4 - S1) + (S6 - S1))) + (((S3 - Sbot) + (S8 - S5)) + ((S10 - S7) + (S11 - S9))))
+LL sequence verified (13 steps): S2 -S0 +S3 -S12 +S4 -S1 +S6 -S5 +S8 -S7 +S10 -S9 +S11
+## data/parts_n14/part_3.log : &K??K???B????o???K???B????
+lattice n=14  mu=[-1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, -1, 1, 1]
+WINNING, tree verified: ((((S0 - Sbot) + S1) + ((S2 - S1) + (S4 - S1))) + (((S6 - S3) + (S8 - S5)) + ((S10 - S7) + (S11 - S9))))
+LL sequence verified (13 steps): S0 -S12 +S2 -S1 +S4 -S3 +S6 -S5 +S8 -S7 +S10 -S9 +S11
+## data/parts_n14/part_4.log : &KCAB?E????{?B????????????
+lattice n=14  mu=[1, 1, 1, -1, 3, 1, -1, -1, -1, -1, -1, -1, -1, 1]
+WINNING, tree verified: ((((S3 - S0) + S10) + ((S6 - S1) - (S2 - Sbot))) + (((S7 - S4) + (S8 - S4)) + ((S9 - S4) + (S11 - S5))))
+LL sequence verified (15 steps): S3 -S0 +S10 -S1 +S12 -S2 +S6 -S4 +S7 -S4 +S8 -S4 +S9 -S5 +S11
+## data/parts_n14/part_5.log : &K?aB_AO@O?????K?B????????
+lattice n=14  mu=[1, 2, 1, 1, -1, -1, 1, 1, -1, -1, -1, -1, -2, 1]
+WINNING, tree verified: ((((S8 - S0) + S10) + ((S4 - S1) - (S2 - Sbot))) + (((S5 - S1) - (S3 - Sbot)) + ((S9 - S6) + (S11 - S7))))
+LL sequence verified (15 steps): S4 -S1 +S5 -S1 +S8 -S0 +S12 -S2 +S12 -S3 +S10 -S6 +S9 -S7 +S11
+## data/parts_n14/part_6.log : &KAG?o@_BO?????K?B????????
+lattice n=14  mu=[1, 1, 1, 2, -1, -1, 1, 1, -1, -1, -1, -1, -2, 1]
+WINNING, tree verified: ((((S4 - S0) + S8) + ((S10 - S1) - (S3 - Sbot))) + (((S5 - S2) - (S3 - Sbot)) + ((S9 - S6) + (S11 - S7))))
+LL sequence verified (15 steps): S4 -S0 +S8 -S1 +S12 -S2 +S12 -S3 +S5 -S3 +S10 -S6 +S9 -S7 +S11
+## data/parts_n14/part_7.log : &KCA@_F??????[?B??????????
+lattice n=14  mu=[1, 1, 2, -1, -1, 2, 1, -1, -1, -1, -1, -1, -1, 1]
+WINNING, tree verified: ((((S3 - S0) + S10) + ((S7 - S1) - (S2 - Sbot))) + (((S4 - S2) + (S8 - S5)) + ((S9 - S5) + (S11 - S6))))
+LL sequence verified (15 steps): S3 -S0 +S10 -S1 +S12 -S2 +S4 -S2 +S7 -S5 +S8 -S5 +S9 -S6 +S11

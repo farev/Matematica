@@ -156,6 +156,81 @@ def check_tree(tree, N, BOT, TOP, leq):
     assert root == target, "root state is not P minus top"
     return True
 
+
+def find_ll_sequence(N, BOT, TOP, leq):
+    """BFS for a winning left-linear tree: returns list of ('start'|'+'|'-', v)
+    steps (v a leaf vertex or None for the empty start), or None."""
+    mu = mobius(N, TOP, leq)
+    target = frozenset(x for x in range(N) if x != TOP)
+    leaf_sets = {}
+    for v in range(N):
+        if v != TOP and mu[v] != 0:
+            leaf_sets.setdefault(down(N, TOP, leq, v), v)
+    parent = {}
+    order = []
+    for S, v in leaf_sets.items():
+        parent[S] = ('start', v, None)
+        order.append(S)
+    parent[frozenset()] = ('start', None, None)
+    order.append(frozenset())
+    i = 0
+    while i < len(order) and target not in parent:
+        A = order[i]
+        i += 1
+        for S, v in leaf_sets.items():
+            if not (A & S):
+                C = A | S
+                op = '+'
+            elif S <= A:
+                C = A - S
+                op = '-'
+            else:
+                continue
+            if C not in parent:
+                parent[C] = (op, v, A)
+                order.append(C)
+                if C == target:
+                    break
+    if target not in parent:
+        return None
+    steps = []
+    S = target
+    while True:
+        op, v, prev = parent[S]
+        steps.append((op, v))
+        if op == 'start':
+            break
+        S = prev
+    steps.reverse()
+    return steps
+
+def check_ll_sequence(steps, N, BOT, TOP, leq):
+    """Mechanical left-linear check: replay the spine per Definition 3.1.
+    Every right operand is a leaf (by construction of the steps format);
+    verify guards, leaf legality, and the final state."""
+    mu = mobius(N, TOP, leq)
+    op0, v0 = steps[0]
+    assert op0 == 'start'
+    if v0 is None:
+        X = frozenset()
+    else:
+        assert v0 != TOP and mu[v0] != 0, "illegal start leaf"
+        X = down(N, TOP, leq, v0)
+    for (op, v) in steps[1:]:
+        assert v is not None and v != TOP and mu[v] != 0, "illegal leaf"
+        S = down(N, TOP, leq, v)
+        if op == '+':
+            assert not (X & S), "+ operands not disjoint"
+            X = X | S
+        elif op == '-':
+            assert S <= X, "- right operand not a subset"
+            X = X - S
+        else:
+            raise AssertionError("bad op")
+    target = frozenset(x for x in range(N) if x != TOP)
+    assert X == target, "final state is not P minus top"
+    return True
+
 def pretty(tree, names):
     if tree[0] == 'empty':
         return '0'
@@ -172,11 +247,17 @@ def run_line(line, verbose=True):
         print(f"NOT WINNING: {line}")
         return False
     check_tree(tree, N, BOT, TOP, leq)
+    steps = find_ll_sequence(N, BOT, TOP, leq)
+    llmsg = "not LL-winnable (SEPARATING?)"
+    if steps is not None:
+        check_ll_sequence(steps, N, BOT, TOP, leq)
+        llmsg = "LL sequence verified (" + str(len(steps)) + " steps): " +             " ".join((op if op != 'start' else '') + ('S'+str(v) if v is not None else '0') for op, v in steps)
     if verbose:
         names = {i: str(i) for i in range(N)}
         names[BOT] = 'bot'
         print(f"lattice n={N}  mu={[mu[v] for v in range(N)]}")
         print(f"WINNING, tree verified: {pretty(tree, names)}")
+        print(llmsg)
     return True
 
 if __name__ == '__main__':

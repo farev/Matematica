@@ -16,7 +16,7 @@ on the size of the smallest counterexample. The smallest counterexample
 size certified by [3] is p³+2p² + 2 for a prime p ≥ 10⁵, about 1.0001·10¹⁵.
 We give the first lower bound: **every lattice with at most 15 elements
 admits a winning dot-algebra tree** — in fact a winning *left-linear* one
-(CERTIFIED: exhaustive computation over all 171,508,976 lattices with 3 to
+(CERTIFIED: exhaustive computation over all 171,432,955 lattices with 3 to
 15 elements, streamed from `nauty-genposetg` with generation counts matching
 OEIS A000112 and A006966 at every size, dual independent implementations,
 and machine-verified explicit trees for controls). Hence the minimal
@@ -132,7 +132,7 @@ left-linear da-tree. Consequently:
 
 Label: CERTIFIED — exhaustive, exact integer/bitmask arithmetic, no
 floating point, deterministic, reproducible by `./run_census.sh n`; the
-verification layer is described below. Scope: 171,508,976 lattices
+verification layer is described below. Scope: 171,432,955 lattices
 (3 ≤ n ≤ 15); nothing is claimed beyond n = 15.
 
 | n | posets on n−2 (A000112 ✓) | lattices (A006966 ✓) | winning | left-linear winning |
