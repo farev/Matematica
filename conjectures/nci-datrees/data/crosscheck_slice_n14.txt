@@ -2,3 +2,4 @@
 ## C engine:
 RESULT k=12 n=14 posets=1201420 lattices=41149 winning=41149 llwinning=41149 separating=0 nonwinning=0
 ## Python reference:
+PYREF k=12 slice: posets=1201420 lattices=41149 winning=41149 llwinning=41149
