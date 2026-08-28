@@ -11,11 +11,51 @@ winnability for every lattice with ≤ 14 elements (stretch: 15), by streaming
 interior posets from `nauty-genposetg` and deciding each lattice by an exact
 closure computation.
 
-**Result.** (filled at session close — see below)
+**Result.** **CERTIFIED.** Every lattice with at most 15 elements admits a
+winning **left-linear** da-tree: all 171,432,955 lattices with 3 ≤ n ≤ 15
+elements decided (streamed as 34,978,238,589 posets; generation counts equal
+OEIS A000112(n−2) and lattice counts equal A006966(n) at every size), zero
+non-winning, zero left-linear/general separations. Consequences: the minimal
+counterexample to the NCI conjecture (arXiv:2608.27416 §9 OP1) has ≥ 16
+elements; the minimal left-linear counterexample (arXiv:2608.19414 §9 OP1)
+has ≥ 16 elements — the first lower bounds recorded for either question,
+against upper bound ≈ 1.00011·10¹⁵; no lattice with ≤ 15 elements separates
+left-linear from general da-trees; and (modulo [1]'s equivalences, checked
+at statement level) any counterexample set family has > 15 distinct
+subfamily intersections. Verification: dual independent implementations
+agreeing on all four counters (full to n = 12, slices at n = 14, 15), the
+refutation paper's own Figure 3.1 lattice as an end-to-end control (µ values
+match the paper; explicit tree and 7-step left-linear sequence both
+machine-verified), and 24/24 per-part worst-case lattices at n = 14, 15
+re-verified by the independent implementation. Runtime: n ≤ 14 in ~7 min;
+n = 15 in 133 min wall / 8.2 CPU-h on 4 cores. New conjecture directory
+`conjectures/nci-datrees/`; PAGE.md handoff written.
 
-**What failed.** (filled at session close)
+**What failed.** (i) First n = 14 launch: `genposetg -m x 8` — the split
+option is bare `m x y`, not a dash flag; all parts silently empty; caught by
+the OEIS count check in minutes. (ii) The driver's single-part path emitted
+nothing for n ≤ 7 (genposetg refuses splitting below 6 vertices) — caught
+the same way; and an attempt to patch the driver through a quoted heredoc
+broke on quoting and changed nothing. (iii) The witness verifier's first
+randomized test "failed" on random posets — which are usually not lattices;
+bad test input, not a bug. (iv) Cumulative totals were mis-added by hand in
+three places (171,508,976 for 171,432,955 etc.); recomputed by script from
+the b-files before any push carried them. (v) The Python general-tree
+witness search timed out on n = 15 worst-case lattices (quadratic pair
+loop); re-ordered LL-first, which is linear and the stronger claim anyway.
+(vi) Environment: 4 cores, not the 32 the scheduled prompt assumes; no
+numpy/pysat/nauty/poppler until installed; pysat's CaDiCaL exposes no
+proofs (Glucose42 does — not needed today).
 
-**Next.** (filled at session close)
+**Next.** The poset route is the bottleneck (0.45% lattice yield at
+n = 15; n = 16 would need 1.34·10¹² posets, ~40× today's big run). A
+canonical-construction-path generator of *lattices* directly (the
+literature's route to A006966(19–20) (secondary: Heitzig–Reinhold,
+Jipsen–Lawless)) would put n = 16–18 in reach of the same decision engine
+and either move the floor or find the first explicit counterexample /
+left-linear separation — the engine already prints either the moment it
+appears. Wilhelm's §9 OP2 (how many µ = 0 leaves must a weakened tree use)
+is measurable in range with a one-line leaf-set change.
 
 ---
 

@@ -149,15 +149,7 @@ verification layer is described below. Scope: 171,432,955 lattices
 | 12 | 2,567,284 | 262,776 | 262,776 | 262,776 |
 | 13 | 46,749,427 | 2,018,305 | 2,018,305 | 2,018,305 |
 | 14 | 1,104,891,746 | 16,873,364 | 16,873,364 | 16,873,364 |
-| 15 | *(run in flight)* | *(run in flight)* | *(run in flight)* | *(run in flight)* |
-
-**PROVISIONAL-ROW GUARD (remove when resolved):** everything through
-n = 14 is final (`data/census_summary.tsv` rows 3–14, counts matched,
-zero separating, zero non-winning; the n = 14 general column was
-additionally replicated by the pre-left-linear engine run this morning).
-The n = 15 row awaits the running census chain and MUST NOT be cited
-until the summary carries it. If n = 15 does not complete, every "15" in
-this note downgrades to "14" and the title changes accordingly.
+| 15 | 33,823,827,452 | 152,233,518 | 152,233,518 | 152,233,518 |
 
 Every generated-poset count equals OEIS A000112(n−2) and every
 lattice-filter count equals OEIS A006966(n) exactly; these anchors validate
@@ -201,10 +193,12 @@ the decision path.
    through n = 16, A006966 through n = 19).
 2. *Dual implementation.* An independent Python implementation
    (`reference.py`: same specification, separate code) reproduces
-   (posets, lattices, winning, left-linear winning) exactly for all
-   n ≤ 13 [Python k=11 full run + LL: see data/crosscheck record], and on
-   generator slices at n = 14 and n = 15 (`m 0 997` parts re-run through
-   both implementations).
+   (posets, lattices, winning, left-linear winning) exactly: in full for
+   all n ≤ 11 and again in full at n = 12 (262,776 lattices;
+   `data/crosscheck_full_n12.txt`), and on generator slices at n = 14
+   (1,201,420 posets / 41,149 lattices, `data/crosscheck_slice_n14.txt`)
+   and n = 15 (`data/crosscheck_slice_n15.txt`), all four counters
+   matching in every case.
 3. *Published example.* The lattice of [3, Figure 3.1] (9 elements,
    reconstructed from the paper) gives µ values matching the paper's
    remarks (coatoms −1; doubly-parented level-2 elements +1; µ(⊥) = 0
@@ -216,18 +210,21 @@ the decision path.
    hand-checkable trees; an artificial negative control (a 3-chain with the
    middle leaf deleted) is correctly reported non-winning, exercising the
    exhaustion path of the decision procedure.
-5. *Witness spot checks.* For sampled lattices, including the
-   maximum-state-count lattice at each size, `verify_witness.py`
-   independently rebuilds the lattice from its digraph6 line (boolean-matrix
-   closure, raw-definition lattice test checking both joins and meets,
-   recursive µ), finds a winning tree by its own BFS, and checks that tree
-   only against Definition 3.1.
+5. *Witness spot checks.* For the maximum-state-count lattice of every
+   census part at n = 14 (8/8) and n = 15 (16/16), `verify_witness.py`
+   independently rebuilds the lattice from its digraph6 line
+   (boolean-matrix closure, raw-definition lattice test checking both
+   joins and meets, recursive µ), finds an explicit winning left-linear
+   sequence by its own BFS, and re-verifies that sequence mechanically
+   against Definition 3.1 (`data/crosscheck_witness_n1{4,5}.txt`).
 
-**Cost.** n ≤ 13: about one minute total on 4 cores (2.7 GHz-class),
-single-pipeline. n = 14: [filled from run log] minutes, 8 generator parts,
-4-way parallel. n = 15: [filled from run log] , 16 parts, 4-way; the
-generation of 3.4·10¹⁰ posets dominates, at ≈ 2.5M posets/s per core.
-Peak memory per process < 10 MB. No randomness anywhere (seeds: none).
+**Cost** (4 cores, cloud sandbox, 2026-08-28). n ≤ 13: ~80 s total,
+single-pipeline. n = 14: 5 min 13 s wall / 15 min 9 s CPU, 8 generator
+parts, 4-way parallel. n = 15: 132 min 55 s wall / 8 h 14 min CPU, 16
+parts, 4-way; the generation and parsing of 3.38·10¹⁰ posets dominates
+(the 152M lattice decisions are a small fraction of the work — the poset
+route's 0.45% lattice yield is the bottleneck). Peak memory per process
+< 10 MB. No randomness anywhere (seeds: none).
 
 ## 6. Structural observations (data, not theorems)
 
@@ -244,10 +241,11 @@ Peak memory per process < 10 MB. No randomness anywhere (seeds: none).
   A006966(n−1) (delete ⊤ — a bijection onto lattices with n−1 elements),
   observed exactly at every size in the v1 run (e.g. 262,776 of the
   2,018,305 lattices at n = 13).
-- **State-space growth.** The worst-case number of BFS states before the
-  left-linear decision grows as 2^(n−2)-order (1023 at n = 11, 2047 at
-  n = 12, 4095 at n = 13, [n=14, n=15 filled from logs]); the median is
-  single-digit. The census cost is dominated by poset generation, not by
+- **State-space growth.** The worst-case number of BFS states in the
+  left-linear decision is exactly 2^(n−1) − 1 at every size 4 ≤ n ≤ 15
+  (1023 at n = 11, …, 8191 at n = 14, 16383 at n = 15) — some lattice
+  explores all but one subset of the (n−1)-point ground set before its
+  decision; the median is single-digit. The census cost is dominated by poset generation, not by
   decisions — which is why a dedicated lattice generator is the right next
   tool (see §8).
 

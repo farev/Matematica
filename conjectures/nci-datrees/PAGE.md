@@ -1,10 +1,5 @@
 # PAGE.md — handoff for the site build (new page: fabianarevalo.com/nci-datrees)
 
-**FINALIZATION GUARD:** the n = 15 census leg is [PENDING — see
-data/census_summary.tsv; if its row 15 is absent, replace every "15" below
-by "14", every "16" by "15", and "171,432,955" by "19,199,437"]. Do not
-build the page while this guard paragraph is present.
-
 ## 1. Headline claim (one sentence)
 
 **CERTIFIED** — Every one of the 171,432,955 lattices with at most 15

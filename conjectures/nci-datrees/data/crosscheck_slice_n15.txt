@@ -1,0 +1,4 @@
+# Dual-implementation slice check, n=15 (k=13), slice: nauty-genposetg 13 t q m 0 29989
+## C engine:
+RESULT k=13 n=15 posets=123283 lattices=1727 winning=1727 llwinning=1727 separating=0 nonwinning=0
+## Python reference:

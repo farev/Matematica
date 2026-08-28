@@ -242,22 +242,28 @@ def run_line(line, verbose=True):
     k, E = parse_digraph6(line)
     N, BOT, TOP, leq = build_lattice(k, E)
     assert is_lattice(N, leq), "input is not a lattice"
+    # LL-first: the left-linear check is linear in states x leaves, and an
+    # LL win implies a general win.  The quadratic general-tree search runs
+    # only when LL fails (it would then either exhibit a separation witness
+    # or confirm a non-winning lattice).
+    mu = mobius(N, TOP, leq)
+    steps = find_ll_sequence(N, BOT, TOP, leq)
+    if steps is not None:
+        check_ll_sequence(steps, N, BOT, TOP, leq)
+        if verbose:
+            print(f"lattice n={N}  mu={[mu[v] for v in range(N)]}")
+            print("WINNING (left-linear). LL sequence verified (" + str(len(steps)) + " steps): " +
+                  " ".join((op if op != 'start' else '') + ('S'+str(v) if v is not None else '0') for op, v in steps))
+        return True
     tree, mu, target = find_tree(N, BOT, TOP, leq)
     if tree is None:
         print(f"NOT WINNING: {line}")
         return False
     check_tree(tree, N, BOT, TOP, leq)
-    steps = find_ll_sequence(N, BOT, TOP, leq)
-    llmsg = "not LL-winnable (SEPARATING?)"
-    if steps is not None:
-        check_ll_sequence(steps, N, BOT, TOP, leq)
-        llmsg = "LL sequence verified (" + str(len(steps)) + " steps): " +             " ".join((op if op != 'start' else '') + ('S'+str(v) if v is not None else '0') for op, v in steps)
-    if verbose:
-        names = {i: str(i) for i in range(N)}
-        names[BOT] = 'bot'
-        print(f"lattice n={N}  mu={[mu[v] for v in range(N)]}")
-        print(f"WINNING, tree verified: {pretty(tree, names)}")
-        print(llmsg)
+    names = {i: str(i) for i in range(N)}
+    names[BOT] = 'bot'
+    print(f"lattice n={N}: SEPARATING — winnable but not left-linear-winnable")
+    print(f"tree verified: {pretty(tree, names)}")
     return True
 
 if __name__ == '__main__':

@@ -31,7 +31,7 @@ certificate.
 
 | file | what it does | cost | headline output |
 |---|---|---|---|
-| `lattscan.c` | streams digraph6 posets, filters lattices, decides left-linear then (if needed) general winnability, prints any SEPARATING / NONWINNING lattice immediately | n≤13: seconds–minutes; n=14: ~10 min (8 parts, 4 cores); n=15: ~2 h (16 parts) | `RESULT … winning=… llwinning=…` |
+| `lattscan.c` | streams digraph6 posets, filters lattices, decides left-linear then (if needed) general winnability, prints any SEPARATING / NONWINNING lattice immediately | n≤13: ~80 s; n=14: 5.2 min (8 parts, 4 cores); n=15: 133 min / 8.2 CPU-h (16 parts) | `RESULT … winning=… llwinning=…` |
 | `run_census.sh N [PARTS] [CONC]` | full census at size N: generation, scan, aggregation, OEIS count check, summary row | as above | `data/census_summary.tsv` row |
 | `reference.py` | independent Python implementation (parser, filter, µ, both deciders); OEIS-anchored self-test `python3 reference.py 9` | k≤9: seconds; k=11: ~1 h | dual-implementation agreement |
 | `verify_witness.py '<digraph6>'` | independent lattice rebuild + winning-tree extraction + mechanical Definition-3.1 check | ms per lattice | verified explicit trees |
@@ -53,9 +53,6 @@ Requires Debian `nauty` (for `nauty-genposetg`), gcc, Python 3.
 
 ## Known defects and open threads
 
-- The n = 15 census leg and the n = 14 left-linear rerun are the session's
-  long runs; if the summary TSV lacks a row, the corresponding claim is not
-  made (see the provisional-row guard in NOTE §4 until resolved).
 - Corollary B leans on [1]'s isomorphism-invariance and canonical-realization
   results, checked at statement level only (their proofs not re-verified
   here).
