@@ -148,15 +148,16 @@ verification layer is described below. Scope: 171,508,976 lattices
 | 11 | 183,231 | 37,622 | 37,622 | 37,622 |
 | 12 | 2,567,284 | 262,776 | 262,776 | 262,776 |
 | 13 | 46,749,427 | 2,018,305 | 2,018,305 | 2,018,305 |
-| 14 | 1,104,891,746 | 16,873,364 | 16,873,364 | *(LL rerun in flight)* |
+| 14 | 1,104,891,746 | 16,873,364 | 16,873,364 | 16,873,364 |
 | 15 | *(run in flight)* | *(run in flight)* | *(run in flight)* | *(run in flight)* |
 
-**PROVISIONAL-ROW GUARD (remove when resolved):** the n = 14 general
-column is final (v1 run, all counts matched, all winning); the n = 14
-left-linear column and the entire n = 15 row await the running census
-chain and MUST NOT be cited until `data/census_summary.tsv` carries them.
-If n = 15 does not complete, every "15" in this note downgrades to "14"
-and the title changes accordingly.
+**PROVISIONAL-ROW GUARD (remove when resolved):** everything through
+n = 14 is final (`data/census_summary.tsv` rows 3–14, counts matched,
+zero separating, zero non-winning; the n = 14 general column was
+additionally replicated by the pre-left-linear engine run this morning).
+The n = 15 row awaits the running census chain and MUST NOT be cited
+until the summary carries it. If n = 15 does not complete, every "15" in
+this note downgrades to "14" and the title changes accordingly.
 
 Every generated-poset count equals OEIS A000112(n−2) and every
 lattice-filter count equals OEIS A006966(n) exactly; these anchors validate
