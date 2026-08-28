@@ -84,7 +84,8 @@ published a bound on a question posed yesterday; the machinery needed
   — days at this generator's rate. The honest ceiling today is n = 15.
   The right tool for n ≥ 16 is a canonical-construction-path generator of
   lattices directly (the literature's own route to A006966(19)); noted as
-  the sharpest next step rather than attempted at 23:00.
+  the sharpest next step rather than attempted in this session's last
+  hours.
 
 ## Judgement calls a referee should see
 
