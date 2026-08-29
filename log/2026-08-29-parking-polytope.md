@@ -23,11 +23,61 @@ over Stanley's facet description, testing Howroyd's e.g.f. beyond its
 terms. Partial credit: proved reformulation lemmas, certified terms, and
 an exact verdict on the e.g.f. at n ≥ 9.
 
-**Result.** (to be filled at close)
+**Result.** PROVED + CERTIFIED — the target theorem landed in full, plus
+an Ehrhart theorem not planned at selection.
 
-**What failed.** (to be filled at close)
+- **PROVED (Theorem A).** a(n) = number of loop-graphs on [n] with n
+  edges, every component unicyclic; e.g.f.
+  exp(−½log(1−T) + T/2 − T²/4). This proves **both** standing A333331
+  conjectures (Howroyd Jan 2024, Wiseman Mar 2024) and **answers the
+  open enumeration question of Selig, Electron. J. Combin. 31(3) (2024)
+  §6** (|StoRec_n|, recurrent states of the stochastic sandpile on
+  K_n^0), including its asymptotics half: a(n) ~ C n^{n−1/4},
+  C = e^{1/4}√(2π)/(2^{1/4}Γ(1/4)) ≈ 0.746492. Proof chain: Stanley's
+  facet description (via Amanbayeva–Wang, read in full) → polymatroid of
+  edge-incidence ∂ → Hall/partial orientations → lift to Σ Δ_{{0,i,j}} →
+  Postnikov Thm 11.3 with y = (0,1,…,1), every raising factorial = 1 →
+  draconian sequences = "sparse multiforests" (multiplicity-≤2
+  multigraphs, components tree/unicyclic; the identification is Lemma 4,
+  the coned counterpart of Postnikov's forests example) → labeled
+  dissymmetry (trees + edge-doubled trees = loop-rooted trees) →
+  Wiseman's objects.
+- **PROVED (Theorem B).** Ehrhart polynomial of P_n:
+  i(P_n,t) = Σ_{sparse multiforests} t^s (t(t+1)/2)^d, closed e.g.f.
+  (1−τ)^{−1/2} exp((2−t)τ/2t − τ²/4t), τ = T(tx) — answers
+  Amanbayeva–Wang §6(b). The sum-form specializes Liu–Thawinrak
+  (arXiv:2512.14199, Dec 2025) Cor 7.6, found mid-session in the novelty
+  check and credited; the index-set identification and closed form are
+  new.
+- **CERTIFIED.** a(1)–a(40) (`a_values.txt`) — the first independent
+  computation of any term past a(8); all 8 published terms reproduced;
+  Howroyd's e.g.f. matched exactly to n = 40 (its previous support: 8
+  fitted terms). Twelve-check verification battery, all exact
+  arithmetic, incl. u(8) = a(8) over 30.2M subsets in C, exact rational
+  hull membership at n = 3,4, and Ehrhart reciprocity (interior counts
+  0, 0, 5, 96 at n = 2..5).
 
-**Next.** (to be filled at close)
+**What failed.** Two reformulation guesses killed by arithmetic in
+minutes (Tutte evaluation: T(K_3;3,1) = 13 ≠ 17; a zonotope guess: 7 ≠ 3
+at n = 2) — recorded in WRITEUP so they are not retried. The planned
+burning-bijection route was superseded by the Postnikov route before it
+produced anything (survives as an open question: a bijective Theorem A
+via Selig's stochastic burning algorithm). A scout-level summary of
+Liu–Thawinrak ("no lattice points content") was wrong and would have
+produced an over-claim in Theorem B; caught by reading the PDF in full
+before writing claims — no over-claim was ever committed. WebFetch is
+403-blocked on oeis/erdosproblems/MathOverflow (curl works); some arXiv
+/html/ versions 404 (PDF + pdftotext throughout).
+
+**Next.** Upstream reporting from the local machine: OEIS A333331 edit
+(conjectures → theorems, terms to n = 40, A368951 cross-reference), notes
+to Selig (his §6 question), Howroyd/Wiseman, and possibly a short arXiv
+note (math.CO) — NOTE.md is written to be its skeleton. Mathematical
+threads (NOTE §9): bijective refinement via the stochastic burning
+algorithm; the complete-bipartite analogue (Selig–Zhu WALCOM 2025 — the
+same draconian machinery over K_{a,b} + cone should identify bipartite
+sparse multiforests; a natural future session); AW §6(a) h-vector;
+sign-reversing involution for interior points.
 
 ## Connectivity check
 
