@@ -14,3 +14,4 @@ RESULT p=37 t=14 reps=105453584 hard=0 t3=0 t4=0 adjud=0 fail=0 maxnodes=0 time=
 RESULT p=37 t=15 reps=154664004 hard=0 t3=0 t4=0 adjud=0 fail=0 maxnodes=0 time=166.86s
 RESULT p=37 t=16 reps=202997670 hard=0 t3=0 t4=0 adjud=0 fail=0 maxnodes=0 time=297.80s
 RESULT p=37 t=17 reps=238819350 hard=0 t3=0 t4=0 adjud=0 fail=0 maxnodes=0 time=487.94s
+RESULT p=37 t=18 reps=252088496 hard=0 t3=0 t4=0 adjud=0 fail=0 maxnodes=0 time=639.92s

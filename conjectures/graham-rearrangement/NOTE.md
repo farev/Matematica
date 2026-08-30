@@ -15,13 +15,12 @@ combination of four ineffective asymptotic results, and is proved for
 size p−1, p−2, p−3. The largest published per-prime verification was the
 uncertified 2016 random search of ADMS through cyclic order 25.
 
-This session closes every prime p ≤ 37 by certified exhaustive
-computation: all 1,954,471,973 dilation orbits of nonempty subsets
-(70,066,181,009 subsets), every one receiving an explicit witness
-ordering, with orbit counts matching an independent Burnside computation
-on all 173 (p,t) cells, zero failures. The smallest prime at which the
-conjecture is not fully decided (by proof or certified computation) is
-now 41. Separately, the zero-sum size-(p−3) layer — which the
+This session closes every prime p ≤ 31 by certified exhaustive
+computation — 45,590,075 dilation orbits (1,346,704,310 subsets), every
+one receiving an explicit witness ordering, orbit counts matching an
+independent Burnside computation on all 138 (p,t) cells, zero failures —
+with the p = 37 sweep (1,908,881,898 further orbits) running at the time
+of writing; §2 states which claims await its completion. Separately, the zero-sum size-(p−3) layer — which the
 Hicks–Ollis–Schmitt construction provably cannot reach, and which the
 published record treats inconsistently — is certified for every prime
 7 ≤ p ≤ 61.
@@ -40,14 +39,20 @@ valid ordering.
 
 ## 2. Results
 
-**R1 (CERTIFIED).** For every prime p ≤ 37 and every t with 2 ≤ t ≤ p−1,
+**R1 (CERTIFIED).** For every prime p ≤ 31 and every t with 2 ≤ t ≤ p−1,
 every subset A ⊆ F_p ∖ {0} with |A| = t admits a valid ordering.
-Verified exhaustively at orbit level: 1,954,471,973 canonical
-dilation-orbit representatives decided (45,590,075 across p ≤ 31;
-1,908,881,898 at p = 37), covering 70,066,181,009 subsets. Every
+Verified exhaustively at orbit level: 45,590,075 canonical dilation-orbit
+representatives decided, covering 1,346,704,310 subsets. Every
 representative received an explicit witness ordering; no set failed; the
 per-cell representative counts equal the independent Burnside counts
-exactly on all 173 cells. (Sizes t ≤ 1 are trivial.)
+exactly on all 138 cells. (Sizes t ≤ 1 are trivial.)
+
+**R1′ (in flight at the time of this commit).** The identical sweep at
+p = 37 (t = 2..36; 1,908,881,898 orbits, 68,719,476,699 subsets
+expected). Its completed table, Burnside check and any deviation from R1's
+pattern land in data/results_p37.txt and an addendum here; if it completes
+with zero failures, the R1 statement extends to p ≤ 37 and the smallest
+undecided prime becomes 41.
 
 **R2 (CERTIFIED).** For every prime 7 ≤ p ≤ 61, the zero-sum sets of size
 p−3 — precisely the sets Z_p ∖ {0, x, −x} — admit valid orderings.
@@ -68,8 +73,8 @@ single dilation orbit, represented by {2,…,p−2}. ∎ (dilation by x⁻¹ map
 and p = 31, exactly one subset per prime resisted both the shuffle tier
 (64 random orderings) and the local-search tier: the full set
 F_p ∖ {0} itself — the t = p−1 case that Graham proved in 1971. Every
-other orbit fell to 64 shuffles or to swap local search. At p = 37 the
-same statement holds [checked against the completed run log].
+other orbit fell to 64 shuffles or to swap local search. (The p = 37
+tally is part of the in-flight run's addendum.)
 
 **O2 (observation / small proved remark).** No ordering of
 Z_p ∖ {0, 1, −1} is a run of a geometric progression: a length-(p−3) run

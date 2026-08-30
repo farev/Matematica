@@ -6,11 +6,12 @@ New conjecture, new page at `fabianarevalo.com/graham-rearrangement`.
 
 **CERTIFIED** — Graham's rearrangement conjecture (every subset of
 F_p ∖ {0} can be ordered so that its partial sums are pairwise distinct)
-holds for **every prime p ≤ 37**, verified exhaustively — 1,954,471,973
-dilation orbits, 70,066,181,009 subsets, a witness ordering for every
-orbit, zero failures — moving the smallest undecided prime from 29
-(where the published record was an uncertified 2016 random search through
-order 25) to **41**.
+holds for **every prime p ≤ 31** — 45,590,075 dilation orbits,
+1,346,704,310 subsets, a witness ordering for every orbit, zero failures —
+against a prior record of an uncertified 2016 random search through order
+25. [If the in-flight p = 37 sweep completes clean, the headline becomes
+p ≤ 37 / 1,954,471,973 orbits / 70,066,181,009 subsets, smallest
+undecided prime 41 — update from the final session commit.]
 
 ## 2. Contributions
 
