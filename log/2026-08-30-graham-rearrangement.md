@@ -67,8 +67,11 @@ prime; the HOS19 construction provably cannot reach it (their removed
 pairs {d, r+1} need d < r, zero-sum forces d = r) and CDORF22's
 one-sentence claim to it rests on fixed-k polynomial calculations that
 cannot apply at k = p−3 — **certified for every prime 7 ≤ p ≤ 61** with
-independently re-verified witnesses. (3) Deterministic engine + clean-room
-verifier + 65k committed sampled witnesses; the only tier-3-hard sets in
+independently re-verified witnesses. (3) Bonus slice at the new frontier:
+**p = 41 closed for all t ≥ 28** (227,999,052 orbits, 9.12·10⁹ subsets,
+Burnside-exact, zero failures, 2.6 h), narrowing 41's open window to
+13 ≤ t ≤ 27 on the refereed record. (4) Deterministic engine + clean-room
+verifier + 72k committed sampled witnesses; the only tier-3-hard sets in
 all of p ≤ 31 were F₂₉^* and F₃₁^* themselves — while at p = 37 hardness
 spreads to the whole near-full band: 124 tier-3 orbits, all at t ≥ 32 =
 p−5, with the resistant fraction rising from 2% (t = 32) through 35%
@@ -93,10 +96,10 @@ can never miss the antipodal pair {1, −1}. Also: two engine generations
 swap-based local search on the collision count is what makes the whole
 computation cost seconds. Details in WRITEUP.md.
 
-**Next.** (1) p = 41 is the new frontier: ~5.4·10¹¹ subsets ≈ 27G orbits,
-roughly 20× today's p = 37 cost — feasible with a week of background cores
-or one algorithmic notch (meet-in-the-middle canonicality, or trusting
-CDFV26's t ≤ 20 to cut the window to t = 21..37). (2) The zero-sum p−3
+**Next.** (1) Finish p = 41: after today's t ≥ 28 slice the remaining
+window is t = 13..27, ~27.3G orbits ≈ 15× today's p = 37 cost — a week of
+background cores, or one algorithmic notch (meet-in-the-middle
+canonicality; or CDFV26's t ≤ 20 cuts it to t = 21..27, ~9.6G orbits). (2) The zero-sum p−3
 layer as a theorem: the lex-min witnesses' ascending-prefix structure
 suggests trying HOS19's graceful-permutation machinery with a "twizzled"
 tail; a proof would close the CDORF22/Kr24 discrepancy for all p. (3)

@@ -19,6 +19,9 @@ open prime by prime below that).
   one dilation orbit per prime; unreachable by the HOS19 construction and
   inconsistently treated in print — see NOTE §5) holds for every prime
   **7 ≤ p ≤ 61**.
+- **CERTIFIED** — at the new frontier prime **p = 41**, all sizes
+  **t ≥ 28** (227,999,052 orbits / 9,119,901,052 subsets, Burnside-exact,
+  zero failures), narrowing 41's open window to 13 ≤ t ≤ 27.
 - **PROVED** (elementary lemmas): dilation-invariance of admissibility;
   single-orbit structure of the zero-sum p−3 layer.
 
@@ -56,7 +59,8 @@ committed run; sampler seed 777). Witness files log every 1000th orbit
 | file | contents |
 |---|---|
 | `data/results_p*.txt` | per-layer counts, hardness tiers, max DFS nodes, wall times |
-| `data/witness_sample_p*.txt` | ~65k sampled witness orderings (independently re-verified) |
+| `data/results_p41_t28plus.txt`, `data/witness_sample_p41_t28plus.txt` | the p = 41 dense slice (t = 28..40) |
+| `data/witness_sample_p*.txt` | ~72k sampled witness orderings (independently re-verified) |
 | `data/grayzone_witnesses.txt` | zero-sum p−3 witnesses, 7 ≤ p ≤ 61 |
 | `data/lexmin_pminus3.txt` | lexicographically minimal witnesses for the same layer, p ≤ 31 |
 

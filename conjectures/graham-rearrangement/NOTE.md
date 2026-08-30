@@ -55,6 +55,13 @@ p−3 — precisely the sets Z_p ∖ {0, x, −x} — admit valid orderings.
 (One dilation orbit per prime, Lemma L2; witness for the representative
 {2,…,p−2} committed and independently re-verified for each p.)
 
+**R3 (CERTIFIED).** At p = 41, every subset A ⊆ F_p ∖ {0} with
+|A| ≥ 28 admits a valid ordering: the layers t = 28..40 were swept in
+full (227,999,052 orbits, 9,119,901,052 subsets, Burnside-exact on all 13
+cells, zero failures, 2.6 h). With R2's gray-zone orbit this leaves
+13 ≤ t ≤ 27 open at p = 41 on the refereed record (21 ≤ t ≤ 27 if the
+CDFV26 preprint is admitted).
+
 **L1 (PROVED, elementary).** If c ∈ F_p^* and (a₁,…,a_t) is a valid
 ordering of A, then (ca₁,…,ca_t) is a valid ordering of cA. Hence
 admissibility is a dilation-orbit invariant, and it suffices to decide one
@@ -73,9 +80,14 @@ case Graham proved in 1971. At p = 37 the resistant population is 124
 orbits of 1.9 billion, all in the band t ≥ 32 = p−5, with the resistant
 fraction rising with t: 36/1641 at t = 32, 70/199 at t = 33, 16/18 at
 t = 34 (the layer containing the zero-sum gray-zone orbit), and 1/1 at
-t = 35 and 36. All fell to tier-3 bounded randomized DFS (max 2.55×10⁷
-nodes); the sampled tier statistics elsewhere are 67–79% tier 1, the
-rest tier 2.
+t = 35 and 36 — all falling to tier-3 bounded randomized DFS (max
+2.55×10⁷ nodes). The p = 41 slice extends the picture: the band begins
+at t = 34 = p−7 (404/95,988), rises through 2640/16,451 (t = 35),
+1299/2290 (t = 36), 219/247 (t = 37) to every orbit at t ≥ 38, max
+1.79×10⁸ DFS nodes, still nothing beyond tier 3. The resistant band
+widens slowly with p (only t = p−1 at 29 and 31; from t = p−5 at 37;
+from t = p−7 at 41) while staying a vanishing fraction of all orbits; sampled tier statistics elsewhere
+are 67–79% tier 1, the rest tier 2.
 
 **O2 (observation / small proved remark).** No ordering of
 Z_p ∖ {0, 1, −1} is a run of a geometric progression: a length-(p−3) run
@@ -129,7 +141,7 @@ are intact and were re-verified post-run.
 ## 4. Data and reproduction
 
 See README.md for the script table and commands. Committed artifacts:
-per-layer result lines for every prime (data/results_p*.txt), ~65k
+per-layer result lines for every prime (data/results_p*.txt), ~72k
 sampled witnesses (every 1000th orbit for p ≤ 31, every 100000th at
 p = 37, plus every tier-3+ set), the gray-zone witnesses for p ≤ 61, and
 the lex-min witnesses used in the construction hunt. Everything else is
@@ -193,9 +205,10 @@ functions of (p, t, subset rank, seed).
 
 ## 6. Open questions
 
-1. **p = 41**: ~27.4G orbits (5.5·10¹¹ subsets) — one notch beyond this
-   session's engine (≈ 20× the p = 37 cost); reachable with either a
-   week of background compute or meet-in-the-middle canonicality.
+1. **Finish p = 41**: after R3 the remaining window is t = 13..27
+   (~27.3G orbits, 1.09·10¹² subsets) — ≈ 15× the p = 37 cost;
+   reachable with a week of background compute or meet-in-the-middle
+   canonicality. (t = 21..27 only, ~9.6G orbits, if CDFV26 is admitted.)
 2. **A uniform construction for the zero-sum p−3 layer** (all p, not
    p ≤ 61): three natural families are dead (§WRITEUP); the lex-min
    witnesses (data/lexmin_pminus3.txt) suggest an ascending prefix with a

@@ -39,7 +39,10 @@ order 25) to **41**.
    primitive root, but the shift breaks partial-sum injectivity (first
    collision at p = 11), and an unshifted run can never miss the
    antipodal pair {1, −1}.
-5. Search anatomy: 64 random shuffles or a swap local search decide
+5. **CERTIFIED.** At the new frontier prime p = 41, the dense half is
+   also closed: all sizes t ≥ 28 (227,999,052 orbits, 9,119,901,052
+   subsets, 2.6 h), narrowing 41's open window to 13 ≤ t ≤ 27.
+6. Search anatomy: 64 random shuffles or a swap local search decide
    everything except a thin near-full band. At p = 29 and 31 exactly one
    subset per prime resists — the full set F_p ∖ {0} itself, Graham's
    original 1971 case. At p = 37 the resistant band is t ≥ p−5: 124
@@ -77,7 +80,7 @@ order 25) to **41**.
 - Bode–Harborth 2005 (t = p−2) is cited **(secondary)** — paywalled;
   statement as quoted by ADMS16/HOS19.
 - The certificate model: decisions are deterministic given the committed
-  seed; ~65k sampled witnesses plus every tier-3 set are committed and
+  seed; ~72k sampled witnesses plus every tier-3 set are committed and
   independently re-verified; the remaining witnesses are reproducible
   bit-for-bit but not stored (70 billion orderings would be terabytes).
   The claim's strength is exhaustion + Burnside-exact counts +

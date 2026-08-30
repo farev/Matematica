@@ -1,0 +1,13 @@
+RESULT p=41 t=28 reps=139672312 hard=0 t3=0 t4=0 adjud=0 fail=0 maxnodes=0 time=3787.71s
+RESULT p=41 t=29 reps=57795036 hard=0 t3=0 t4=0 adjud=0 fail=0 maxnodes=0 time=2378.50s
+RESULT p=41 t=30 reps=21191904 hard=0 t3=0 t4=0 adjud=0 fail=0 maxnodes=0 time=1398.57s
+RESULT p=41 t=31 reps=6835972 hard=0 t3=0 t4=0 adjud=0 fail=0 maxnodes=0 time=818.23s
+RESULT p=41 t=32 reps=1922741 hard=0 t3=0 t4=0 adjud=0 fail=0 maxnodes=0 time=479.06s
+RESULT p=41 t=33 reps=466089 hard=0 t3=0 t4=0 adjud=0 fail=0 maxnodes=0 time=258.43s
+RESULT p=41 t=34 reps=95988 hard=404 t3=404 t4=0 adjud=0 fail=0 maxnodes=25500042 time=135.80s
+RESULT p=41 t=35 reps=16451 hard=2640 t3=2640 t4=0 adjud=0 fail=0 maxnodes=102300699 time=119.14s
+RESULT p=41 t=36 reps=2290 hard=1299 t3=1299 t4=0 adjud=0 fail=0 maxnodes=179112740 time=60.62s
+RESULT p=41 t=37 reps=247 hard=219 t3=219 t4=0 adjud=0 fail=0 maxnodes=12700292 time=5.52s
+RESULT p=41 t=38 reps=20 hard=20 t3=20 t4=0 adjud=0 fail=0 maxnodes=700974 time=0.30s
+RESULT p=41 t=39 reps=1 hard=1 t3=1 t4=0 adjud=0 fail=0 maxnodes=118771 time=0.04s
+RESULT p=41 t=40 reps=1 hard=1 t3=1 t4=0 adjud=0 fail=0 maxnodes=703097 time=0.12s
