@@ -67,6 +67,13 @@ fraction rising from 36/1641 (t = 32) through 70/199 (t = 33) and 16/18
 (t = 34) to 1/1 at t = 35 and 36, max 2.55×10⁷ DFS nodes — a clean
 empirical picture of where the conjecture is search-hard.
 
+**The p = 41 bonus slice.** With the engine idle after p = 37, the dense
+half of the new frontier prime was affordable: t = 28..40 in full
+(227,999,052 orbits, 9.12·10⁹ subsets, ≈ 2.6 h, Burnside-exact on all 13
+cells, zero failures). The resistant band there starts at t = p−7 —
+4,585 tier-3 orbits, max 1.79×10⁸ DFS nodes, still nothing beyond
+tier 3 — so p = 41's open window is now 13 ≤ t ≤ 27.
+
 **Operational defect, recorded.** A cleanup glob (`rm data/err_p*.txt`)
 ran after the p = 37 job had opened its stderr redirect and unlinked the
 live file, so the run's stderr banner channel was lost. No information
