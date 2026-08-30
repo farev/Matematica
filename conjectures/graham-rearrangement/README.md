@@ -56,7 +56,7 @@ committed run; sampler seed 777). Witness files log every 1000th orbit
 | file | contents |
 |---|---|
 | `data/results_p*.txt` | per-layer counts, hardness tiers, max DFS nodes, wall times |
-| `data/witness_sample_p*.txt` | ~47k sampled witness orderings (independently re-verified) |
+| `data/witness_sample_p*.txt` | ~65k sampled witness orderings (independently re-verified) |
 | `data/grayzone_witnesses.txt` | zero-sum p−3 witnesses, 7 ≤ p ≤ 61 |
 | `data/lexmin_pminus3.txt` | lexicographically minimal witnesses for the same layer, p ≤ 31 |
 
@@ -65,5 +65,8 @@ committed run; sampler seed 777). Witness files log every 1000th orbit
 - Sets that are logged both by sampling (rank ≡ 0 mod wsample) and as
   tier-3 hard appear twice in the witness files (harmless; the verifier
   handles duplicates).
+- The p = 37 run's stderr log was unlinked mid-run by a cleanup glob
+  (see WRITEUP.md); the authoritative channels — stdout fail counters
+  and witness-file records — are intact and were re-verified post-run.
 - `check_witnesses.py sample` is pure Python and slow on dense layers;
   keep N modest.

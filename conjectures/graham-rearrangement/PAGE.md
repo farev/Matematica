@@ -6,12 +6,11 @@ New conjecture, new page at `fabianarevalo.com/graham-rearrangement`.
 
 **CERTIFIED** — Graham's rearrangement conjecture (every subset of
 F_p ∖ {0} can be ordered so that its partial sums are pairwise distinct)
-holds for **every prime p ≤ 31** — 45,590,075 dilation orbits,
-1,346,704,310 subsets, a witness ordering for every orbit, zero failures —
-against a prior record of an uncertified 2016 random search through order
-25. [If the in-flight p = 37 sweep completes clean, the headline becomes
-p ≤ 37 / 1,954,471,973 orbits / 70,066,181,009 subsets, smallest
-undecided prime 41 — update from the final session commit.]
+holds for **every prime p ≤ 37**, verified exhaustively — 1,954,471,973
+dilation orbits, 70,066,181,009 subsets, a witness ordering for every
+orbit, zero failures — moving the smallest undecided prime from 29
+(where the published record was an uncertified 2016 random search through
+order 25) to **41**.
 
 ## 2. Contributions
 
@@ -41,9 +40,11 @@ undecided prime 41 — update from the final session commit.]
    collision at p = 11), and an unshifted run can never miss the
    antipodal pair {1, −1}.
 5. Search anatomy: 64 random shuffles or a swap local search decide
-   everything except exactly one subset per prime — the full set
-   F_p ∖ {0} itself, Graham's original 1971 case, the unique tier-3
-   instance at p = 29, 31 and 37.
+   everything except a thin near-full band. At p = 29 and 31 exactly one
+   subset per prime resists — the full set F_p ∖ {0} itself, Graham's
+   original 1971 case. At p = 37 the resistant band is t ≥ p−5: 124
+   orbits of 1.9 billion, fraction rising from 2% at t = 32 to 100% at
+   t ≥ 35, all falling to bounded randomized DFS.
 
 ## 3. Figure specs
 
@@ -62,8 +63,9 @@ undecided prime 41 — update from the final session commit.]
 3. **Who resists the search.** Data: `data/results_p29.txt`,
    `data/results_p31.txt`, `data/results_p37.txt` (hard/t3 columns) plus
    the two logged tier-3 witnesses in `data/witness_sample_p29/31.txt`.
-   Reader's sentence: "The only set that ever resisted the cheap search
-   is F_p^* itself — the one case Graham proved by hand in 1971."
+   Reader's sentence: "The cheap search fails only in the near-full
+   band — and the fraction that resists rises to 100% as the set
+   approaches F_p^* itself, the one case Graham proved by hand in 1971."
    (If a third figure is too many, fold this into the page prose.)
 
 ## 4. Caveats the page must carry
@@ -75,7 +77,7 @@ undecided prime 41 — update from the final session commit.]
 - Bode–Harborth 2005 (t = p−2) is cited **(secondary)** — paywalled;
   statement as quoted by ADMS16/HOS19.
 - The certificate model: decisions are deterministic given the committed
-  seed; ~47k sampled witnesses plus every tier-3 set are committed and
+  seed; ~65k sampled witnesses plus every tier-3 set are committed and
   independently re-verified; the remaining witnesses are reproducible
   bit-for-bit but not stored (70 billion orderings would be terabytes).
   The claim's strength is exhaustion + Burnside-exact counts +

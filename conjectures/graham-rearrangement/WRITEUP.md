@@ -55,12 +55,26 @@ stuck-forever to **0.16 s, zero sets past tier 2**. Controls: the `-z` mode
 the witness scan validates every returned ordering before it is reported.
 
 **The runs.** Full range t = 2..p−1 for every prime 3 ≤ p ≤ 31 (13 s for
-p = 29, 58 s for p = 31, 4 threads, seed 12345), then p = 37 (t = 2..36).
+p = 29, 58 s for p = 31, 4 threads, seed 12345), then p = 37 (t = 2..36,
+5473 s ≈ 91 min; the peak layer t = 18 alone holds 252,088,496 orbits).
 Every one of the per-(p,t) orbit counts equals the independent Burnside
 computation exactly, every orbit produced a witness, zero failures, zero
 adjudications. The only two sets in all of p ≤ 31 that needed tier 3 are
 the full sets F₂₉^* and F₃₁^* themselves — Graham's original t = p−1 case
-really is the hardest instance in practice.
+really is the hardest instance in practice. At p = 37 that hardness
+spreads into the near-full band t ≥ p−5: 124 tier-3 orbits, resistant
+fraction rising from 36/1641 (t = 32) through 70/199 (t = 33) and 16/18
+(t = 34) to 1/1 at t = 35 and 36, max 2.55×10⁷ DFS nodes — a clean
+empirical picture of where the conjecture is search-hard.
+
+**Operational defect, recorded.** A cleanup glob (`rm data/err_p*.txt`)
+ran after the p = 37 job had opened its stderr redirect and unlinked the
+live file, so the run's stderr banner channel was lost. No information
+was lost with it: counterexamples are recorded in two other places (the
+per-layer `fail` counters on stdout, all zero, and the witness file,
+which logs every tier-3+ set and would carry a NO-VALID-ORDERING marker;
+it carries none, re-verified line by line post-run). Lesson: never glob
+a directory that a live run writes into.
 
 **The verifier caught a real divergence.** `check_witnesses.py` is a
 clean-room re-implementation; its sampling mode canonicalized orbits by

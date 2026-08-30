@@ -56,11 +56,11 @@ beats it on breakability and on citation surface (five active papers
 
 **Result.** **CERTIFIED.** (1) Graham's rearrangement conjecture holds for
 *every* subset of F_p ∖ {0}, all sizes t = 2..p−1, for **every prime
-p ≤ 31** — 45,590,075 dilation orbits decided (1,346,704,310 subsets), a
-witness ordering found for every orbit, zero failures; the p = 37 sweep
-(1,908,881,898 orbits expected) is in flight and its completion note below
-records the outcome. Per-(p,t) orbit counts match an independent Burnside
-computation exactly on all 173 cells. Prior record: uncertified n ≤ 25
+p ≤ 37** — 1,954,471,973 dilation orbits decided (45,590,075 for p ≤ 31 in
+72 s; 1,908,881,898 for p = 37 in 91 min), covering 70,066,181,009
+subsets, a witness ordering found for every orbit, zero failures, zero
+complete-DFS adjudications. Per-(p,t) orbit counts match an independent
+Burnside computation exactly on all 173 cells. Prior record: uncertified n ≤ 25
 (2016). The smallest prime at which the conjecture is not fully decided is
 now **41**. (2) The zero-sum size-(p−3) layer — one dilation orbit per
 prime; the HOS19 construction provably cannot reach it (their removed
@@ -69,8 +69,16 @@ one-sentence claim to it rests on fixed-k polynomial calculations that
 cannot apply at k = p−3 — **certified for every prime 7 ≤ p ≤ 61** with
 independently re-verified witnesses. (3) Deterministic engine + clean-room
 verifier + 46k committed sampled witnesses; the only tier-3-hard sets in
-all of p ≤ 31 were F₂₉^* and F₃₁^* themselves.
-*(p = 37 completion note: appended below when the sweep finishes.)*
+all of p ≤ 31 were F₂₉^* and F₃₁^* themselves — while at p = 37 hardness
+spreads to the whole near-full band: 124 tier-3 orbits, all at t ≥ 32 =
+p−5, with the resistant fraction rising from 2% (t = 32) through 35%
+(t = 33) and 16/18 (t = 34) to every orbit at t ≥ 35; max DFS 2.55×10⁷
+nodes, nothing ever reached tier 4 or 5. One operational defect, caught
+and recorded: the p = 37 run's stderr file was accidentally unlinked
+mid-run by a cleanup glob; the authoritative channels (per-layer fail
+counters on stdout and the witness-file records, which log every
+counterexample candidate) are intact and clean — witness file re-verified
+line by line after the run.
 
 **What failed.** The hoped-for PROVED bonus — an explicit uniform ordering
 of Z_p ∖ {0, ±1} closing the zero-sum p−3 layer for *all* p — died three
