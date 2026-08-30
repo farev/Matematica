@@ -1,0 +1,11 @@
+RESULT p=13 t=2 reps=6 hard=0 t3=0 t4=0 adjud=0 fail=0 maxnodes=0 time=0.00s
+RESULT p=13 t=3 reps=19 hard=0 t3=0 t4=0 adjud=0 fail=0 maxnodes=0 time=0.00s
+RESULT p=13 t=4 reps=43 hard=0 t3=0 t4=0 adjud=0 fail=0 maxnodes=0 time=0.00s
+RESULT p=13 t=5 reps=66 hard=0 t3=0 t4=0 adjud=0 fail=0 maxnodes=0 time=0.00s
+RESULT p=13 t=6 reps=80 hard=0 t3=0 t4=0 adjud=0 fail=0 maxnodes=0 time=0.00s
+RESULT p=13 t=7 reps=66 hard=0 t3=0 t4=0 adjud=0 fail=0 maxnodes=0 time=0.00s
+RESULT p=13 t=8 reps=43 hard=0 t3=0 t4=0 adjud=0 fail=0 maxnodes=0 time=0.00s
+RESULT p=13 t=9 reps=19 hard=0 t3=0 t4=0 adjud=0 fail=0 maxnodes=0 time=0.00s
+RESULT p=13 t=10 reps=6 hard=0 t3=0 t4=0 adjud=0 fail=0 maxnodes=0 time=0.00s
+RESULT p=13 t=11 reps=1 hard=0 t3=0 t4=0 adjud=0 fail=0 maxnodes=0 time=0.00s
+RESULT p=13 t=12 reps=1 hard=0 t3=0 t4=0 adjud=0 fail=0 maxnodes=0 time=0.00s
