@@ -67,14 +67,48 @@ def canonical(A, p):
     return True
 
 
-def decide_independent(A, p, rng, shuffle_tries=2000):
-    """Own search: shuffles, then exhaustive DFS ordered by value."""
+def decide_independent(A, p, rng, shuffle_tries=500, repair_restarts=40,
+                       repair_moves=20000):
+    """Own search: shuffles, then insertion-move repair (a different move
+    type from the engine's swap local search), then exhaustive DFS ordered
+    by value.  All still independent code from verify_grc.c."""
     A = list(A)
     t = len(A)
     for _ in range(shuffle_tries):
         rng.shuffle(A)
         if is_valid_ordering(A, p):
             return list(A)
+
+    def cost(order):
+        sums = partial_sums(order, p)
+        return len(sums) - len(set(sums))
+
+    for _ in range(repair_restarts):
+        order = A[:]
+        rng.shuffle(order)
+        c = cost(order)
+        stalled = 0
+        for _ in range(repair_moves):
+            if c == 0:
+                return order
+            i = rng.randrange(t)
+            j = rng.randrange(t)
+            if i == j:
+                continue
+            x = order.pop(i)
+            order.insert(j, x)
+            nc = cost(order)
+            if nc < c or (nc == c and rng.random() < 0.5):
+                c = nc
+                stalled = 0
+            else:
+                order.pop(j)
+                order.insert(i, x)
+                stalled += 1
+            if stalled > 3000:
+                break
+        if c == 0 and is_valid_ordering(order, p):
+            return order
     A.sort()
     order, used, seen = [], [False] * t, set()
 

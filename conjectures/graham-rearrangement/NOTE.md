@@ -119,11 +119,15 @@ reached T4 or T5.
 - *Negative control*: in `-z` mode (partial sums additionally forbidden to
   be 0) the engine's complete DFS correctly refutes {x, −x} — a zero-sum
   pair has no sequencing — exercising the exhaustive path.
-- *Independent verifier* (`check_witnesses.py`, clean-room): re-checks
-  every committed witness from the definition, re-checks canonicality,
-  re-decides random samples with its own enumeration and search (60 sets
-  per layer at p = 29, 31: zero failures), and carries self-tests with
-  planted invalid witnesses.
+- *Independent verifier* (`check_witnesses.py`, clean-room: own
+  canonicalization, shuffles, insertion-move repair, value-ordered DFS —
+  no code or move types shared with the engine): re-checks every
+  committed witness from the definition, re-checks canonicality, and
+  re-decided random samples across the full previously-open windows —
+  every layer 13 ≤ t ≤ p−3 at p = 29 (25/layer, seed 778), p = 31
+  (25/layer, seed 779) and p = 37 (15/layer, seed 781), plus 60/layer at
+  p = 29, t ≤ 19 (seed 777) — zero failures anywhere. Self-tests with
+  planted invalid witnesses included.
 - *Determinism*: every per-set decision is a pure function of
   (p, t, subset rank, seed). A full p = 29 rerun (under heavy CPU
   contention) reproduced the result lines identically and the

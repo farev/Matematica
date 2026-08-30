@@ -76,7 +76,7 @@ order 25) to **41**.
 - The t ≤ 20 proof (Costa–Della Fiore–Fontana–Vena, arXiv:2603.20961) is
   an **unrefereed 2026 preprint**; today's computation is independent of
   it (every size re-decided from scratch) and confirms its range at the
-  seven primes 17 … 37.
+  six primes 17, 19, 23, 29, 31, 37.
 - Bode–Harborth 2005 (t = p−2) is cited **(secondary)** — paywalled;
   statement as quoted by ADMS16/HOS19.
 - The certificate model: decisions are deterministic given the committed

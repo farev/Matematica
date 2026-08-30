@@ -47,7 +47,7 @@ gcc -O3 -march=native -o verify_grc verify_grc.c -lpthread
 python3 summarize.py                                  # Burnside check, all cells
 python3 check_witnesses.py selftest
 python3 check_witnesses.py hard data/witness_sample_p29.txt
-python3 check_witnesses.py sample 29 13 26 60 777
+python3 check_witnesses.py sample 29 13 26 25 778
 ```
 
 All engine decisions are deterministic given the seed (12345 for every

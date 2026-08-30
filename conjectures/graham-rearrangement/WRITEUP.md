@@ -137,5 +137,11 @@ python3 check_witnesses.py hard data/witness_sample_p29.txt
 python3 check_witnesses.py sample 29 13 26 60 777
 ```
 
-Seeds: engine 12345 (all runs; decisions are deterministic given it),
-sampler 777. Wall times in data/results_p*.txt; machine as above.
+Seeds: engine 12345 (all runs; decisions are deterministic given it);
+independent-sampler seeds 777 (p = 29, t ≤ 19, 60/layer, first pass),
+778/779/781 (full windows at 29/31/37 — every layer 13 ≤ t ≤ p−3 —
+25/25/15 per layer, zero failures). Wall times in data/results_p*.txt;
+machine as above. The first sampler pass used a DFS-only fallback and
+crawled on dense layers; the shipped verifier adds an insertion-move
+repair loop (deliberately a different move type from the engine's swaps)
+which decides dense layers in seconds.
