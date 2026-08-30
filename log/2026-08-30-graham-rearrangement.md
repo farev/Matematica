@@ -68,7 +68,7 @@ pairs {d, r+1} need d < r, zero-sum forces d = r) and CDORF22's
 one-sentence claim to it rests on fixed-k polynomial calculations that
 cannot apply at k = p−3 — **certified for every prime 7 ≤ p ≤ 61** with
 independently re-verified witnesses. (3) Deterministic engine + clean-room
-verifier + 46k committed sampled witnesses; the only tier-3-hard sets in
+verifier + 65k committed sampled witnesses; the only tier-3-hard sets in
 all of p ≤ 31 were F₂₉^* and F₃₁^* themselves — while at p = 37 hardness
 spreads to the whole near-full band: 124 tier-3 orbits, all at t ≥ 32 =
 p−5, with the resistant fraction rising from 2% (t = 32) through 35%

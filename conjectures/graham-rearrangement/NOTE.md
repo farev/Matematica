@@ -129,7 +129,7 @@ are intact and were re-verified post-run.
 ## 4. Data and reproduction
 
 See README.md for the script table and commands. Committed artifacts:
-per-layer result lines for every prime (data/results_p*.txt), ~47k
+per-layer result lines for every prime (data/results_p*.txt), ~65k
 sampled witnesses (every 1000th orbit for p ≤ 31, every 100000th at
 p = 37, plus every tier-3+ set), the gray-zone witnesses for p ≤ 61, and
 the lex-min witnesses used in the construction hunt. Everything else is
@@ -201,6 +201,8 @@ functions of (p, t, subset rank, seed).
    witnesses (data/lexmin_pminus3.txt) suggest an ascending prefix with a
    twizzled tail à la HOS19. A proof would close the CDORF22/Kr24
    discrepancy permanently.
-3. **Where is the search hardness?** O1 says the *full set* is the unique
-   locally-hard instance at each prime in range. Is F_p^* asymptotically
-   the extremal set for number of valid orderings relative to t!?
+3. **Where is the search hardness?** O1 shows resistance confined to the
+   near-full band t ≥ p−5, with the resistant fraction rising to 100% as
+   t → p−1 and the band populating as p grows. Is F_p^* asymptotically
+   extremal for the number of valid orderings relative to t!, and does
+   the hard band stay at width O(1)?
