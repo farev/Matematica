@@ -1,10 +1,9 @@
 # PAGE.md — handoff for the projective-chromatic write-up page
 
 New page (no existing page for this conjecture). Built from session 1
-(2026-09-01). **Check `data/ord5_status.md` and the final session commit
-before building: the two order-5 UNSAT runs were still live at first
-push, and their outcome upgrades or trims claims below** (each spot
-marked ⏳).
+(2026-09-01). The order-5 legs landed in-session (both UNSAT); residual
+pendings are marked ⏳ and resolved in `data/ord5_status.md` — check it
+before building.
 
 ## 1. Headline
 
@@ -15,9 +14,11 @@ the multicolor Ramsey bound to R(3;5) ≥ 257): any 5-coloring of PG(7,2)
 with no monochromatic line — if one exists at all — can have essentially
 no symmetry: no collineation of order 3, 7, 31 or 127 (proved, a
 Mersenne-prime obstruction valid for every n and k), none of order 17
-and no field Frobenius (certified, DRUP-checked), ⏳ and none of order 5
-if both pending runs land UNSAT, which would make every witness's
-automorphism group a 2-group.
+and no field Frobenius (certified, DRUP-checked), and none of order 5 (certified via a two-line color-WLOG
+lemma; the [C,I] leg's DRUP proof is verified by the repo's own checker)
+— so **every witness's automorphism group is a 2-group** (Theorem 1;
+⏳ the [C,C] proof's independent check was still running at close,
+provisos in NOTE §4).
 
 ## 2. Contributions
 
@@ -31,12 +32,15 @@ automorphism group a 2-group.
    repo's independent from-the-definition checker
    (`certs/ord17.{cnf,drup}`). Same for the Frobenius x ↦ x² of F₂₅₆
    (35 cells, 5,227-line DRUP, verified; `certs/frob.{cnf,drup}`).
-3. ⏳ **Order 5** (two conjugacy classes, [C,C] 51 cells / [C,I] 63
-   cells, instances audited byte-identical by an independent rebuild —
-   `audit_contraction.py`): status at page-build time decides whether
-   the page says "every witness has a 2-group stabilizer" (both UNSAT)
-   or "pending" (still running) or reports an invariant witness (SAT
-   would decide χ₂(8) = 5 outright).
+3. **CERTIFIED (modulo a two-line color-WLOG lemma).** Order 5, both
+   conjugacy classes ([C,C] 51 cells / [C,I] 63 cells; instances
+   audited byte-identical by an independent rebuild): **UNSAT** — the
+   [C,I] leg by Glucose42 in 5.5 s with a 307,292-line DRUP proof
+   verified by the repo's own `rup_check` (shipped, 4.6 MB gzipped) and
+   independently by kissat + drat-trim; the [C,C] leg by kissat 4.0.4
+   in ~40 min (812 MB DRAT logged, sha256 recorded; ⏳ drat-trim check
+   running at close). **Theorem 1 follows: every witness's automorphism
+   group is a 2-group.**
 4. **CERTIFIED.** PG(6,2) — one level down — *does* admit an
    order-5-invariant proper 5-coloring: explicit witness, class sizes
    [21,21,25,27,33], re-verified from the definition
@@ -94,10 +98,11 @@ automorphism group a 2-group.
   instance, trivially re-runnable); a 50-witness subsample is
   DRUP-certified end-to-end (50/50 verified), and the
   order-17/Frobenius exclusions ship DRUP certificates in `certs/`.
-- ⏳ kissat proofs for the order-5 instances are DRAT and may contain
-  RAT steps the repo's strict RUP checker rejects; if so the page must
-  say "checked by drat-trim" (different trust base) or "solver verdict
-  only", whichever is true at build time.
+- The [C,C] kissat proof is binary DRAT (RAT lemmas); its checker of
+  record is drat-trim — a different trust base than the repo's own
+  `rup_check`, which did verify the [C,I] DRUP. ⏳ If the [C,C]
+  drat-trim run had not finished by the last commit, the page says
+  "solver verdict, proof logged, check running" for that leg.
 - The color-symmetry-broken variants (`*_cbrk`) rely on a hand-proved
   WLOG (value precedence under the S₅ color action); any claim built on
   them is "CERTIFIED modulo a trivial hand lemma" and must say so.

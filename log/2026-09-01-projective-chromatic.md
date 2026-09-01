@@ -26,13 +26,19 @@ new structural theorem about it, mixed PROVED + CERTIFIED:
   131-line DRUP proof, verified by `tools/satcert/rup_check`), nor under
   the Frobenius x ↦ x² of F₂₅₆ (35 orbit cells, UNSAT, 5,227-line DRUP,
   verified).
-- **CERTIFIED (pending at session close: see README for final status).**
-  The two conjugacy classes of order-5 elements ([C,C] and [C,I] with C
-  the companion matrix of x⁴+x³+x²+x+1) — the only remaining odd prime
-  order by Lemma B + Cauchy — were still running in kissat at writing
-  time. If both land UNSAT: **the automorphism group of any proper
-  5-coloring of PG(7,2) is a 2-group**, i.e. a χ₂(8) = 5 witness, if one
-  exists, has essentially no odd symmetry.
+- **CERTIFIED (landed in-session after color-WLOG breaking).** Both
+  conjugacy classes of order-5 elements ([C,C] and [C,I], C the
+  companion matrix of x⁴+x³+x²+x+1) — the only remaining odd prime
+  order by Lemma B + Cauchy — are **UNSAT**: [C,I] by Glucose42 in
+  5.5 s with a 307,292-line pure-DRUP proof verified by the repo's own
+  `rup_check` (shipped), independently confirmed by kissat + drat-trim;
+  [C,C] by kissat in ~40 min (812 MB DRAT, independent check still
+  running at close). **Theorem 1: the automorphism group of any proper
+  5-coloring of PG(7,2) is a 2-group** — a χ₂(8) = 5 witness, if one
+  exists, has essentially no odd symmetry. Provisos: the two-line
+  color-WLOG lemma (proved in NOTE §4) and the pending [C,C] proof
+  check; the unbroken instances (no breaking) were left running to
+  remove even that lemma.
 - **CERTIFIED (contrast).** At n = 7 an order-5-invariant proper
   5-coloring *does* exist (witness shipped and re-verified from the
   definition, class sizes [21,21,25,27,33]) — and its symmetric family is
