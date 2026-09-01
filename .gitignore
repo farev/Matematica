@@ -67,3 +67,7 @@ conjectures/odd-giuga/kernel.so
 # odd-giuga: fat regenerable resume ledgers (100MB+); official run records ARE committed
 conjectures/odd-giuga/results/resume_control_*.jsonl
 conjectures/odd-giuga/results/resume_giuga9.jsonl
+
+# live solver artifacts (proofs shipped deliberately in certs/ only)
+conjectures/projective-chromatic/*.proof
+conjectures/projective-chromatic/combined.out

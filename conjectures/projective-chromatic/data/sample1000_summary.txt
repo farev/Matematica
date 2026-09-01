@@ -1,0 +1,21 @@
+[0] no-extend  sizes=[21, 23, 24, 26, 33]  distinct_fps=1
+[1] no-extend  sizes=[22, 22, 25, 26, 32]  distinct_fps=2
+[3] no-extend  sizes=[24, 24, 25, 26, 28]  distinct_fps=4
+[7] no-extend  sizes=[22, 25, 26, 27, 27]  distinct_fps=8
+[15] no-extend  sizes=[23, 24, 26, 27, 27]  distinct_fps=16
+[31] no-extend  sizes=[23, 23, 24, 27, 30]  distinct_fps=32
+[...]
+[255] no-extend  sizes=[25, 25, 25, 26, 26]  distinct_fps=256
+[511] no-extend  sizes=[21, 22, 26, 29, 29]  distinct_fps=512
+
+done: 1000 samples, 0 extended, 999 distinct fingerprints
+  count=2 sizes=[20, 22, 23, 29, 33]
+  count=1 sizes=[21, 23, 24, 26, 33]
+  count=1 sizes=[22, 22, 25, 26, 32]
+  count=1 sizes=[22, 24, 25, 25, 31]
+  count=1 sizes=[24, 24, 25, 26, 28]
+  count=1 sizes=[21, 23, 24, 28, 31]
+  count=1 sizes=[23, 23, 24, 26, 31]
+  count=1 sizes=[23, 24, 26, 27, 27]
+  count=1 sizes=[22, 25, 26, 27, 27]
+  count=1 sizes=[22, 23, 25, 28, 29]
