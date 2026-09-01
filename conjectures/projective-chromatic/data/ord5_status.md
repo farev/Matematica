@@ -15,9 +15,14 @@ Order-5 certification, final status (2026-09-01):
   ~90 min — removes the color-lemma proviso for the [C,I] leg as a
   solver verdict (6.7 GB binary DRAT, sha256 45643fc3…, too large to
   verify in-session or commit; regenerate: kissat ord5_CI.cnf proof).
-- Unbroken ord5_CC.cnf: still running at session close (not needed for
-  Theorem 1; its UNSAT would likewise remove the proviso for [C,C]).
-- combined_ord5_ext.cnf: still running at session close.
+- Unbroken ord5_CC.cnf: terminated undecided after ~3 h (proof past
+  3.4 GB). Not needed for Theorem 1; its UNSAT would remove the
+  color-lemma proviso for [C,C]. Open thread.
+- combined_ord5_ext.cnf ("does any witness have an order-5-symmetric
+  hyperplane shadow?"): terminated undecided after ~2.5 h (proof past
+  5.9 GB). Open thread — cube-and-conquer candidate; UNSAT would be a
+  new certified structural exclusion strictly stronger than the sampled
+  non-extensions.
 
 Theorem 1 stands: every proper 5-coloring of PG(7,2) has a 2-group
 stabilizer, modulo only the color-WLOG hand lemma.

@@ -108,6 +108,12 @@ the daily log.
   hard pending instances.
 - Two kissat + two local-search engines + a sampling run on 4 cores:
   oversubscription slowed the decisive runs mid-session before triage.
+- Glucose42 with in-memory proof logging on the [C,C] instance died
+  silently (likely memory) — the drat-trim-verified kissat proof stands
+  for that leg; a repo-native DRUP for [C,C] is an open nicety.
+- The unbroken order-5 [C,C] run and the combined
+  order-5-hyperplane-shadow instance outlasted the session (3.4 GB and
+  5.9 GB of proof at termination) and are recorded as open threads.
 
 ## Cost ledger
 
