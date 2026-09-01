@@ -1,0 +1,17 @@
+RESULT p=19 t=2 reps=9 hard=0 t3=0 t4=0 adjud=0 fail=0 maxnodes=0 time=0.00s
+RESULT p=19 t=3 reps=46 hard=0 t3=0 t4=0 adjud=0 fail=0 maxnodes=0 time=0.00s
+RESULT p=19 t=4 reps=172 hard=0 t3=0 t4=0 adjud=0 fail=0 maxnodes=0 time=0.00s
+RESULT p=19 t=5 reps=476 hard=0 t3=0 t4=0 adjud=0 fail=0 maxnodes=0 time=0.00s
+RESULT p=19 t=6 reps=1038 hard=0 t3=0 t4=0 adjud=0 fail=0 maxnodes=0 time=0.00s
+RESULT p=19 t=7 reps=1768 hard=0 t3=0 t4=0 adjud=0 fail=0 maxnodes=0 time=0.00s
+RESULT p=19 t=8 reps=2438 hard=0 t3=0 t4=0 adjud=0 fail=0 maxnodes=0 time=0.00s
+RESULT p=19 t=9 reps=2704 hard=0 t3=0 t4=0 adjud=0 fail=0 maxnodes=0 time=0.00s
+RESULT p=19 t=10 reps=2438 hard=0 t3=0 t4=0 adjud=0 fail=0 maxnodes=0 time=0.00s
+RESULT p=19 t=11 reps=1768 hard=0 t3=0 t4=0 adjud=0 fail=0 maxnodes=0 time=0.00s
+RESULT p=19 t=12 reps=1038 hard=0 t3=0 t4=0 adjud=0 fail=0 maxnodes=0 time=0.00s
+RESULT p=19 t=13 reps=476 hard=0 t3=0 t4=0 adjud=0 fail=0 maxnodes=0 time=0.00s
+RESULT p=19 t=14 reps=172 hard=0 t3=0 t4=0 adjud=0 fail=0 maxnodes=0 time=0.00s
+RESULT p=19 t=15 reps=46 hard=0 t3=0 t4=0 adjud=0 fail=0 maxnodes=0 time=0.00s
+RESULT p=19 t=16 reps=9 hard=0 t3=0 t4=0 adjud=0 fail=0 maxnodes=0 time=0.00s
+RESULT p=19 t=17 reps=1 hard=0 t3=0 t4=0 adjud=0 fail=0 maxnodes=0 time=0.00s
+RESULT p=19 t=18 reps=1 hard=0 t3=0 t4=0 adjud=0 fail=0 maxnodes=0 time=0.00s

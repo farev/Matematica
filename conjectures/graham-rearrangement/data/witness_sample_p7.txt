@@ -1,0 +1,5 @@
+p=7 t=2 rank=0 tier=1 A=1,2 wit=2,1
+p=7 t=3 rank=0 tier=1 A=1,2,3 wit=3,1,2
+p=7 t=4 rank=0 tier=1 A=1,2,3,4 wit=2,3,1,4
+p=7 t=5 rank=0 tier=1 A=1,2,3,4,5 wit=4,5,1,3,2
+p=7 t=6 rank=0 tier=1 A=1,2,3,4,5,6 wit=5,3,1,2,6,4

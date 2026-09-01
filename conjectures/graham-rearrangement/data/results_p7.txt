@@ -1,0 +1,5 @@
+RESULT p=7 t=2 reps=3 hard=0 t3=0 t4=0 adjud=0 fail=0 maxnodes=0 time=0.00s
+RESULT p=7 t=3 reps=4 hard=0 t3=0 t4=0 adjud=0 fail=0 maxnodes=0 time=0.00s
+RESULT p=7 t=4 reps=3 hard=0 t3=0 t4=0 adjud=0 fail=0 maxnodes=0 time=0.00s
+RESULT p=7 t=5 reps=1 hard=0 t3=0 t4=0 adjud=0 fail=0 maxnodes=0 time=0.00s
+RESULT p=7 t=6 reps=1 hard=0 t3=0 t4=0 adjud=0 fail=0 maxnodes=0 time=0.00s
