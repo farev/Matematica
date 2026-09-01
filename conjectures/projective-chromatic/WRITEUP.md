@@ -49,7 +49,7 @@ the daily log.
    finds them in a second — a striking rigidity signature. Adding
    breakout clause-weighting (bump weights of currently-monochromatic
    lines at local minima) cracked n = 7 instantly (~5·10³ flips per
-   witness). The same engine at n = 8: > 10¹⁰ flips, two seeds, nothing.
+   witness). The same engine at n = 8: ≈ 5×10⁹ flips (estimated), two seeds, nothing.
    This asymmetry is the strongest numerical evidence of the day for
    χ₂(8) = 6.
 5. **The hyperplane pivot.** Lemma A (every class meets every
@@ -79,7 +79,16 @@ the daily log.
    theorem (stabilizers are 2-groups) is stated conditionally on those
    two runs in the NOTE, and `data/ord5_status.md` carries the final
    word.
-7. **The contrast.** The same order-5 question at n = 7 is SAT: an
+7. **Endgame (written after the fact; §6 above is as-lived).** Color-
+   precedence breaking (a two-line WLOG lemma over the S₅ color action)
+   collapsed both order-5 instances: [C,C] UNSAT in ~40 min (kissat;
+   812 MB DRAT, drat-trim-verified in 36 min), [C,I] UNSAT in 5.5 s
+   (Glucose42; pure DRUP verified by the repo's own rup_check) and
+   independently in ~7 min (kissat + drat-trim). The unbroken [C,I]
+   instance then landed UNSAT directly (~90 min, 6.7 GB proof, hash
+   recorded), removing the color lemma for that leg. Theorem 1 went
+   from conditional to fully machine-verified within the session.
+8. **The contrast.** The same order-5 question at n = 7 is SAT: an
    explicit order-5-invariant 5-coloring of PG(6,2) (verified proper +
    invariant), with ≥ 10⁵ raw invariant siblings. And it does not
    extend to n = 8 either. So the n = 8 wall is not "5-fold symmetry is
@@ -119,8 +128,8 @@ the daily log.
 
 4 cores / 15 GB sandbox. Controls + sweeps + sampling ≈ 40 core-minutes
 total. Local search ≈ 6 core-hours across engines (seeds 777, 90001,
-90002 recorded). The two order-5 kissat runs: > 1.5 core-hours each at
-close, unfinished. Everything exact-arithmetic end to end; no floats
+90002 recorded). The order-5 campaign: ~5 core-hours
+across broken/unbroken instances and both verifications. Everything exact-arithmetic end to end; no floats
 anywhere in the critical path (the only floating point in the session is
 the Hoffman *reporting* — the bound itself is computed as an exact
 fraction).
