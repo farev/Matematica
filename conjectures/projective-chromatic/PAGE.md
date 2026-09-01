@@ -90,9 +90,10 @@ automorphism group a 2-group.
 - R(3;4) ≤ 62 and 162 ≤ R(3;5) ≤ 307 are quoted from
   Bishnoi–Cames van Batenburg–Ravi §6.1 **(secondary)** — not re-derived
   from Radziszowski's survey here.
-- The 1,000 non-extensions are Cadical verdicts without kept proofs
-  (each is a 640-var instance, trivially re-runnable); only the
-  order-17/Frobenius exclusions ship DRUP certificates today.
+- The 1,000 non-extensions are Cadical verdicts (each a 640-var
+  instance, trivially re-runnable); a 50-witness subsample is
+  DRUP-certified end-to-end (50/50 verified), and the
+  order-17/Frobenius exclusions ship DRUP certificates in `certs/`.
 - ⏳ kissat proofs for the order-5 instances are DRAT and may contain
   RAT steps the repo's strict RUP checker rejects; if so the page must
   say "checked by drat-trim" (different trust base) or "solver verdict

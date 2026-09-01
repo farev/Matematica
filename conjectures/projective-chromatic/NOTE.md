@@ -198,7 +198,8 @@ candidate W thus yields a 640-variable extension SAT instance.
   class-size-and-line-type fingerprint, and **0 extend** (every
   extension instance UNSAT per Cadical). The order-5-invariant witness
   of §5 does not extend either. Caveats: solver sampling is not
-  uniform; the non-extensions are solver verdicts without kept proofs.
+  uniform; the non-extensions are solver verdicts, with a 50-witness
+  subsample DRUP-certified end-to-end (`ext_certify.py`, 50/50 verified).
 - Capacity is not the obstruction: the Cayley graphs' eigenvalues are
   exact integers (Walsh–Hadamard over ℤ), and the Hoffman ratio bound
   gives per-witness capacity sums Σ_c α-bound ≈ 265–274 against the 128

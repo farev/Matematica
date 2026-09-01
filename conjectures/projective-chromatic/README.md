@@ -41,6 +41,7 @@ n = 2..7 and pose as **Problem 1**: *determine whether χ₂(8) = 5 or 6*.
 | `alpha_fourier.py` | exact Walsh–Hadamard spectra + Hoffman bounds per class | ~10 s/witness |
 | `lift_n7_ord5.py` | solves + lifts + verifies the order-5-invariant n=7 witness | seconds |
 | `mincon.c` | min-conflicts/breakout local search (`gcc -O3 -o mincon mincon.c; ./mincon 8 5 SEED 1 3600 5`) | as budgeted |
+| `ext_certify.py` | replays the sampling stream and DRUP-verifies each non-extension (50/50 verified) | ~4 min |
 | `audit_contraction.py` | independent rebuild of all four certification instances (cycle-walk orbits, exact linear-algebra class checks) — clause sets must match byte-for-byte | seconds |
 | `gen_combined.py` | emits `combined_ord5_ext.cnf`: does any witness restrict on a hyperplane to an order-5-invariant coloring? (UNSAT ⇒ no witness has a symmetric hyperplane shadow) | instant |
 
@@ -65,8 +66,9 @@ python-sat (Cadical195/Glucose42); seeds are in the scripts/outputs.
 - σ² and σ⁴ (Frobenius powers, 2-elements) and the GL(8,2) involution
   classes are undecided — the sweep certifies odd symmetry only.
 - The 1,000-witness extension experiment is solver-biased sampling, not
-  uniform; its non-extension UNSATs are solver verdicts (no DRUP logs
-  kept). Certifying a subsample is cheap if ever needed.
+  uniform; its non-extension UNSATs are solver verdicts. A 50-witness
+  subsample is DRUP-certified end-to-end (`ext_certify.py`: 50/50
+  verified, seed0 = 20000); the rest are re-derivable in milliseconds.
 - kissat proofs for the order-5 instances are DRAT and may contain RAT
   steps `rup_check` rejects; `drat-trim` is the fallback checker
   (documented in NOTE §5).
