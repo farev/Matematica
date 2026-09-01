@@ -9,6 +9,8 @@ n = 2..7 and pose as **Problem 1**: *determine whether χ₂(8) = 5 or 6*.
 χ₂(8) = 5 would give the multicolor Ramsey bound R(3;5) ≥ 257 (known:
 162 ≤ R(3;5) ≤ 307, as cited in their §6.1).
 
+**Page:** <https://fabianarevalo.com/projective-chromatic>
+
 **Status.** Open; χ₂(8) ∈ {5, 6}. This session (2026-09-01): **Theorem 1 —
 every proper 5-coloring of PG(7,2), if one exists, has a 2-group
 automorphism group** (provisos in NOTE §4), in sharp contrast to n = 7.
@@ -22,7 +24,7 @@ automorphism group** (provisos in NOTE §4), in sharp contrast to n = 7.
 | No 5-coloring of PG(7,2) is invariant under any order-5 element (both classes UNSAT after sound color-WLOG breaking: [C,I] by Glucose in 5.5 s with a **rup_check-verified DRUP** shipped here, independently confirmed by kissat + drat-trim; [C,C] by kissat ~40 min, 812 MB DRAT **verified by drat-trim in 2,174 s**, hash + regeneration shipped) ⟹ **Theorem 1: every witness's automorphism group is a 2-group** | CERTIFIED (modulo the two-line color-WLOG lemma, NOTE §4) | `certs/ord5_*_cbrk.cnf`, `certs/ord5_CI_cbrk.drup.gz`, NOTE §4 |
 | PG(6,2) *does* admit an order-5-invariant 5-coloring, class sizes [21,21,25,27,33]; the invariant family is large (≥ 10⁵ raw cell-colorings) | CERTIFIED (witness re-verified from definition) | `data/witness_n7_ord5.txt` |
 | No 5-coloring of PG(7,2) invariant under any of 24 block-diagonal Singer/twisted/swap subgroups (20 DEAD: an orbit contains a line; order-5-related cases are the pending ones above) nor under multiplicative subgroups of orders 3, 15, 17, 51, 85, 255 (DEAD: e.g. F₄*-cosets are lines) | CERTIFIED (DEAD cells exact; UNSAT cells solver-decided, order-17/Frobenius DRUP-verified) | `ansatz.py`, `matrix_ansatz.py` |
-| 1,000 randomized χ₂(7) witnesses: 1,000 distinct fingerprints, none extends over a hyperplane to a χ₂(8) witness; the order-5-symmetric witness does not extend either | NUMERICAL (each non-extension is a solver-decided UNSAT; sampling is solver-biased) | `sample_extend.py`, `data/sample1000_summary.txt` |
+| 1,000 randomized χ₂(7) witnesses: 999 distinct fingerprints (one fingerprint occurs twice), none extends over a hyperplane to a χ₂(8) witness; the order-5-symmetric witness does not extend either | NUMERICAL (each non-extension is a solver-decided UNSAT; sampling is solver-biased) | `sample_extend.py`, `data/sample1000_summary.txt` |
 | Extension bottleneck is packing, not capacity: per-class Hoffman bounds (exact integer spectra) sum to ≈ 265–274 vs 128 needed | NUMERICAL | `alpha_fourier.py` |
 | Published table χ₂(2..7) = 2,3,3,4,5,5 reproduced end-to-end (SAT witnesses re-verified; small UNSATs solver-decided; (6,4)/(7,4) from R(3;4) ≤ 62 as in the paper) | control | `satdec.py` |
 | Local search: min-conflicts stalls at 1 mono line even at n = 7; breakout weighting cracks n = 7 in ~5×10³ flips but n = 8 yields nothing in ≈ 5×10⁹ flips (estimated; counters lost at retirement) | NUMERICAL | `mincon.c` |

@@ -13,6 +13,7 @@ which smelled like a polymatroid, hence like Postnikov's draconian
 machinery — and the conjectured answer was already known to 8 terms.
 
 **Status:** active (theorem proved; upstream reporting pending)
+**Page:** <https://fabianarevalo.com/parking-polytope>
 **Sessions:** 2026-08-29
 
 ## Results

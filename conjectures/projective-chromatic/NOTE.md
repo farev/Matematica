@@ -226,7 +226,7 @@ candidate W thus yields a 640-variable extension SAT instance.
 
 - Sampling W by randomized CDCL (kissat --sat, varying seeds, composed
   with uniform random GL(7,2) relabelings; every sample re-verified):
-  **1,000 samples, 1,000 pairwise distinct** under a
+  **1,000 samples, 999 pairwise distinct** under a
   class-size-and-line-type fingerprint, and **0 extend** (every
   extension instance UNSAT per Cadical). The order-5-invariant witness
   of §5 does not extend either. Caveats: solver sampling is not

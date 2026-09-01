@@ -6,6 +6,8 @@ whose partial sums are pairwise distinct mod p.
 DECIDABLE (proved for all sufficiently large p by four ineffective results;
 open prime by prime below that).
 
+**Page:** <https://fabianarevalo.com/graham-rearrangement>
+
 **Status here.** Session 1 (2026-08-30), claims labelled:
 
 - **CERTIFIED** — holds for *every* subset of F_p ∖ {0}, every size, for

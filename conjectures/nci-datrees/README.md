@@ -12,6 +12,7 @@ with ≤ 15 elements is reachable by streaming posets from `nauty-genposetg`,
 and winnability per lattice is an exact bounded bitmask closure.
 
 **Status:** active
+**Page:** <https://fabianarevalo.com/nci-datrees>
 **Sessions:** 2026-08-28
 
 ## Results

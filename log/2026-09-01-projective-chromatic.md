@@ -59,7 +59,7 @@ new structural theorem about it, mixed PROVED + CERTIFIED:
   UNSAT; ditto ~20 block-diagonal Singer/twisted/swap families (all DEAD:
   transitive block action puts a punctured subspace inside one cell).
 - **NUMERICAL.** (i) 1,000 χ₂(7) witnesses sampled by randomized CDCL:
-  1,000 distinct structural fingerprints (the witness space is enormous
+  999 distinct structural fingerprints (the witness space is enormous
   and unstructured), and **none extends** over a fixed hyperplane to a
   χ₂(8) = 5 witness (each non-extension is an individually solver-decided
   UNSAT of a 640-var instance); the order-5-symmetric witness does not

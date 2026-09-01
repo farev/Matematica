@@ -58,7 +58,7 @@ the daily log.
    try to extend over the affine half. Built a randomized-CDCL sampler
    (random GL(7,2) relabelings + kissat seeds), a structural
    fingerprint, and the 640-var extension SAT. Result: 1,000 samples,
-   1,000 distinct fingerprints (the witness space is enormous;
+   999 distinct fingerprints (the witness space is enormous;
    enumeration is hopeless), 0 extensions. A capacity analysis via
    exact Walsh–Hadamard spectra and Hoffman bounds shows capacity ≈ 2×
    requirement — so the obstruction lives at the packing level, which
