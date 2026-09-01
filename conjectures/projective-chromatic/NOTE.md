@@ -22,9 +22,11 @@ GL(8,2) are 5 and 17; we set up exact orbit-contracted SAT instances
 for every conjugacy class of such subgroups (one class for 17, two for
 5) and certify: no order-17-invariant witness (UNSAT, 131-line DRUP
 proof, independently checked), and no Frobenius-invariant witness. The
-order-5 instances are harder; their status is recorded in
-`data/ord5_status.md`. If both are unsatisfiable, **every proper
-5-coloring of PG(7,2) has a 2-group stabilizer**. (3) In contrast,
+order-5 instances are harder; both fell after color-symmetry breaking
+(a two-line WLOG lemma): no order-5-invariant witness of either class,
+the [C,I] proof verified by drat-trim, the [C,C] proof logged (812 MB)
+with verification running at close. Hence — modulo those provisos —
+**every proper 5-coloring of PG(7,2) has a 2-group stabilizer**. (3) In contrast,
 PG(6,2) admits an order-5-invariant proper 5-coloring (explicit witness,
 verified). (4) Every witness restricts, on each of the 255 hyperplanes,
 to a proper 5-coloring of PG(6,2) using all five colors (Lemma A);
@@ -140,14 +142,39 @@ classes of order-5 *subgroups*. Realization: F₂⁸ = F₁₆ ⊕ F₁₆ with
 ζ₅ ∈ F₁₆* of order 5: [C,C] = (a,b) ↦ (ζ₅a, ζ₅b) (51 cells),
 [C,I] = (a,b) ↦ (ζ₅a, b) (63 cells). These are the two instances
 `ord5_CC.cnf` (255 vars), `ord5_CI.cnf` (315 vars). They are much
-harder than the order-17 cell (Cadical exhausts a 2·10⁶-conflict budget;
-kissat runs were still open at session close — final status in
-`data/ord5_status.md`; kissat proofs are DRAT and may need `drat-trim`
-rather than `rup_check`).
+harder than the order-17 cell: Cadical exhausts a 2·10⁶-conflict budget
+and unbroken kissat runs went > 2 h without terminating. Both fell after
+adding *color-precedence symmetry breaking*, sound by:
 
-**Theorem 1 (conditional at writing time).** If `ord5_CC.cnf` and
-`ord5_CI.cnf` are unsatisfiable, then the stabilizer in GL(8,2) of any
-proper 5-coloring of PG(7,2) is a 2-group.
+**Color-WLOG lemma.** Every proper cell-coloring has a color-permuted
+representative in which cell 0 has color 0 and, whenever a cell i has
+color γ ≥ 1, some cell j < i has color γ−1. (Relabel colors by order of
+first appearance along the cell sequence: first appearances are then
+increasing and the used colors are an initial segment.) Hence adding the
+corresponding clauses (`*_cbrk.cnf`; 205/253 extra clauses) preserves
+satisfiability, and UNSAT of the broken instance gives UNSAT of the
+original. ∎
+
+**Results.** `ord5_CC_cbrk.cnf`: **UNSAT** (kissat 4.0.4, ~40 min,
+812 MB DRAT proof; sha256 3140a05a…, regenerate with
+`kissat ord5_CC_cbrk.cnf proof` — independent verification by drat-trim
+was still running at session close, status in `data/ord5_status.md`).
+`ord5_CI_cbrk.cnf`: **UNSAT** twice independently — Glucose42 in 5.5 s
+with a 307,292-line *pure DRUP* proof **verified by the repo's own
+`rup_check`** (shipped as `certs/ord5_CI_cbrk.drup.gz`), and kissat in
+~7 min with a binary DRAT proof (1,221 RAT lemmas) verified by
+drat-trim in 6.2 s. The unbroken instances were left running;
+their UNSATs would remove the color-lemma proviso and are not needed for
+Theorem 1. So: **no order-5-invariant proper 5-coloring of PG(7,2)
+exists, in either conjugacy class** (CERTIFIED modulo the color-WLOG
+lemma; the [C,I] leg carries a rup_check-verified DRUP certificate,
+the [C,C] leg a logged kissat proof with verification pending).
+
+**Theorem 1.** The stabilizer in GL(8,2) of any proper 5-coloring of
+PG(7,2) is a 2-group. (Provisos: the order-5 legs rest on the certified
+UNSATs of the color-broken instances — sound by the Color-WLOG lemma —
+with the [C,C] proof's independent check still running at session
+close; every other leg is fully proved or DRUP-verified.)
 
 *Proof.* If an odd prime p divides the stabilizer order, Cauchy gives
 φ of order p ∈ {3,5,7,17,31,127} (Corollary §3). Mersenne p:

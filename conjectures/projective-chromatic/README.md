@@ -9,8 +9,9 @@ n = 2..7 and pose as **Problem 1**: *determine whether χ₂(8) = 5 or 6*.
 χ₂(8) = 5 would give the multicolor Ramsey bound R(3;5) ≥ 257 (known:
 162 ≤ R(3;5) ≤ 307, as cited in their §6.1).
 
-**Status.** Open; χ₂(8) ∈ {5, 6}. This session (2026-09-01): every proper
-5-coloring of PG(7,2), if one exists, has severely restricted symmetry.
+**Status.** Open; χ₂(8) ∈ {5, 6}. This session (2026-09-01): **Theorem 1 —
+every proper 5-coloring of PG(7,2), if one exists, has a 2-group
+automorphism group** (provisos in NOTE §4), in sharp contrast to n = 7.
 
 | result | label | where |
 |---|---|---|
@@ -18,7 +19,7 @@ n = 2..7 and pose as **Problem 1**: *determine whether χ₂(8) = 5 or 6*.
 | Every class of a 5-coloring of PG(7,2) meets every hyperplane; every hyperplane restriction is a 5-coloring of PG(6,2) using all 5 colors; no class fits in an affine hyperplane | PROVED | NOTE Lemma A |
 | No 5-coloring of PG(7,2) is invariant under any order-17 element (all order-17 subgroups are conjugate; contracted instance UNSAT) | CERTIFIED (DRUP verified) | `certs/ord17.{cnf,drup}` |
 | No 5-coloring of PG(7,2) is invariant under the Frobenius x ↦ x² of F₂₅₆ | CERTIFIED (DRUP verified) | `certs/frob.{cnf,drup}` |
-| Order-5 elements (two conjugacy classes [C,C], [C,I]) — the only odd prime order left by Lemma B; **UNSAT would make every witness's automorphism group a 2-group** | RUNNING at session close — see `data/ord5_status.md` | `gen_order5.py` |
+| No 5-coloring of PG(7,2) is invariant under any order-5 element (both classes UNSAT after sound color-WLOG breaking: [C,I] by Glucose in 5.5 s with a **rup_check-verified DRUP** shipped here, independently confirmed by kissat + drat-trim; [C,C] by kissat ~40 min, 812 MB proof logged, check running) ⟹ **Theorem 1: every witness's automorphism group is a 2-group** | CERTIFIED (modulo color-WLOG lemma; [C,C] proof check pending) | `certs/ord5_*_cbrk.cnf`, `certs/ord5_CI_cbrk.drup.gz`, NOTE §4 |
 | PG(6,2) *does* admit an order-5-invariant 5-coloring, class sizes [21,21,25,27,33]; the invariant family is large (≥ 10⁵ raw cell-colorings) | CERTIFIED (witness re-verified from definition) | `data/witness_n7_ord5.txt` |
 | No 5-coloring of PG(7,2) invariant under any of 24 block-diagonal Singer/twisted/swap subgroups (20 DEAD: an orbit contains a line; order-5-related cases are the pending ones above) nor under multiplicative subgroups of orders 3, 15, 17, 51, 85, 255 (DEAD: e.g. F₄*-cosets are lines) | CERTIFIED (DEAD cells exact; UNSAT cells solver-decided, order-17/Frobenius DRUP-verified) | `ansatz.py`, `matrix_ansatz.py` |
 | 1,000 randomized χ₂(7) witnesses: 1,000 distinct fingerprints, none extends over a hyperplane to a χ₂(8) witness; the order-5-symmetric witness does not extend either | NUMERICAL (each non-extension is a solver-decided UNSAT; sampling is solver-biased) | `sample_extend.py`, `data/sample1000_summary.txt` |
@@ -60,18 +61,20 @@ python-sat (Cadical195/Glucose42); seeds are in the scripts/outputs.
 
 ## Known defects / open ends
 
-- The order-5 UNSAT runs ([C,C] 255 vars, [C,I] 315 vars) had not
-  terminated at session close; `data/ord5_status.md` carries the final
-  word. Until both land, the 2-group theorem is conditional.
+- The [C,C] 812 MB DRAT proof's drat-trim verification was still running
+  at session close (`data/ord5_status.md` has the final word); the [C,I]
+  leg is verified. The unbroken (no color-breaking) instances were also
+  still running; they would remove the color-lemma proviso.
 - σ² and σ⁴ (Frobenius powers, 2-elements) and the GL(8,2) involution
   classes are undecided — the sweep certifies odd symmetry only.
 - The 1,000-witness extension experiment is solver-biased sampling, not
   uniform; its non-extension UNSATs are solver verdicts. A 50-witness
   subsample is DRUP-certified end-to-end (`ext_certify.py`: 50/50
   verified, seed0 = 20000); the rest are re-derivable in milliseconds.
-- kissat proofs for the order-5 instances are DRAT and may contain RAT
-  steps `rup_check` rejects; `drat-trim` is the fallback checker
-  (documented in NOTE §5).
+- kissat's order-5 proofs are binary DRAT with RAT lemmas (1,221 in the
+  [C,I] core): outside `rup_check`'s pure-RUP fragment, so the checker of
+  record for them is `drat-trim` (marijnheule/drat-trim) — a different
+  trust base than the repo's own checker, stated explicitly.
 
 Write-up page: to be linked from the top-level README once published
 (`PAGE.md` is the handoff).
