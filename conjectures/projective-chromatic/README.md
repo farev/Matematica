@@ -24,7 +24,7 @@ n = 2..7 and pose as **Problem 1**: *determine whether χ₂(8) = 5 or 6*.
 | 1,000 randomized χ₂(7) witnesses: 1,000 distinct fingerprints, none extends over a hyperplane to a χ₂(8) witness; the order-5-symmetric witness does not extend either | NUMERICAL (each non-extension is a solver-decided UNSAT; sampling is solver-biased) | `sample_extend.py`, `data/sample1000_summary.txt` |
 | Extension bottleneck is packing, not capacity: per-class Hoffman bounds (exact integer spectra) sum to ≈ 265–274 vs 128 needed | NUMERICAL | `alpha_fourier.py` |
 | Published table χ₂(2..7) = 2,3,3,4,5,5 reproduced end-to-end (SAT witnesses re-verified; small UNSATs solver-decided; (6,4)/(7,4) from R(3;4) ≤ 62 as in the paper) | control | `satdec.py` |
-| Local search: min-conflicts stalls at 1 mono line even at n = 7; breakout weighting cracks n = 7 in ~5×10³ flips but n = 8 yields nothing in > 10¹⁰ flips | NUMERICAL | `mincon.c` |
+| Local search: min-conflicts stalls at 1 mono line even at n = 7; breakout weighting cracks n = 7 in ~5×10³ flips but n = 8 yields nothing in ≈ 5×10⁹ flips (estimated; counters lost at retirement) | NUMERICAL | `mincon.c` |
 
 ## Scripts
 
@@ -41,6 +41,8 @@ n = 2..7 and pose as **Problem 1**: *determine whether χ₂(8) = 5 or 6*.
 | `alpha_fourier.py` | exact Walsh–Hadamard spectra + Hoffman bounds per class | ~10 s/witness |
 | `lift_n7_ord5.py` | solves + lifts + verifies the order-5-invariant n=7 witness | seconds |
 | `mincon.c` | min-conflicts/breakout local search (`gcc -O3 -o mincon mincon.c; ./mincon 8 5 SEED 1 3600 5`) | as budgeted |
+| `audit_contraction.py` | independent rebuild of all four certification instances (cycle-walk orbits, exact linear-algebra class checks) — clause sets must match byte-for-byte | seconds |
+| `gen_combined.py` | emits `combined_ord5_ext.cnf`: does any witness restrict on a hyperplane to an order-5-invariant coloring? (UNSAT ⇒ no witness has a symmetric hyperplane shadow) | instant |
 
 Reproduce the certified exclusions (from inside this directory):
 

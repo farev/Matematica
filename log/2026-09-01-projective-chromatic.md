@@ -64,7 +64,8 @@ new structural theorem about it, mixed PROVED + CERTIFIED:
   always fails. (iii) Local search: plain min-conflicts stalls at 1
   monochromatic line even at n = 7 (where witnesses exist); with breakout
   weighting n = 7 falls in ~5×10³ flips, while n = 8 has produced
-  nothing in > 10¹⁰ flips across two engines — consistent with χ₂(8) = 6.
+  nothing in ≈ 5×10⁹ flips across two engines (estimated from measured
+  rate; exact counters lost when the engines were retired) — consistent with χ₂(8) = 6.
 - **Controls.** The published table χ₂(n) = 2,3,3,4,5,5 (n = 2..7)
   reproduced end-to-end: SAT witnesses re-verified from the definition at
   every n, UNSAT decisions at (n,k) = (3,2),(4,2),(5,3) solver-decided;

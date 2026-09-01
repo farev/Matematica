@@ -209,8 +209,10 @@ candidate W thus yields a 640-variable extension SAT instance.
   instance plateaus (best 35 monochromatic lines over 73 annealing
   restarts; min-conflicts stalls at 1 even at n = 7 where witnesses
   exist); with breakout clause-weighting, n = 7 witnesses arrive in
-  ~5·10³ flips, while n = 8 produced none in > 10¹⁰ weighted flips
-  across two independently seeded engines. Consistent with — far from
+  ~5·10³ flips, while n = 8 produced none in ≈ 5×10⁹ weighted flips across two
+  independently seeded engines (order-of-magnitude estimate from the
+  measured flip rate ≈ 0.2–0.7 M/s; the engines were retired early to
+  free cores and their exact counters were not flushed). Consistent with — far from
   proof of — χ₂(8) = 6.
 
 ## 7. Controls
