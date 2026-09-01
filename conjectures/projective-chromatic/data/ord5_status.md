@@ -11,8 +11,12 @@ Order-5 certification, final status (2026-09-01):
   certs/ord5_CI_cbrk.drup.gz), and kissat ~7 min, DRAT VERIFIED by
   drat-trim (6.2 s).
 - Soundness of the breaking: color-WLOG lemma, proved in NOTE section 4.
-- Unbroken ord5_CC.cnf / ord5_CI.cnf: still running at session close
-  (not needed for Theorem 1; would remove the color-lemma proviso).
+- Unbroken ord5_CI.cnf (no symmetry breaking): **UNSAT**, kissat 4.0.4,
+  ~90 min — removes the color-lemma proviso for the [C,I] leg as a
+  solver verdict (6.7 GB binary DRAT, sha256 45643fc3…, too large to
+  verify in-session or commit; regenerate: kissat ord5_CI.cnf proof).
+- Unbroken ord5_CC.cnf: still running at session close (not needed for
+  Theorem 1; its UNSAT would likewise remove the proviso for [C,C]).
 - combined_ord5_ext.cnf: still running at session close.
 
 Theorem 1 stands: every proper 5-coloring of PG(7,2) has a 2-group

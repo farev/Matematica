@@ -164,8 +164,11 @@ regeneration command `kissat ord5_CC_cbrk.cnf proof`).
 with a 307,292-line *pure DRUP* proof **verified by the repo's own
 `rup_check`** (shipped as `certs/ord5_CI_cbrk.drup.gz`), and kissat in
 ~7 min with a binary DRAT proof (1,221 RAT lemmas) verified by
-drat-trim in 6.2 s. The unbroken instances were left running;
-their UNSATs would remove the color-lemma proviso and are not needed for
+drat-trim in 6.2 s. The unbroken [C,I] instance also finished:
+**UNSAT** directly, with no symmetry breaking (kissat, ~90 min, 6.7 GB
+proof — solver verdict only, hash recorded in `data/ord5_status.md`),
+independently confirming that leg without the color lemma. The unbroken
+[C,C] instance was still running at close; neither is needed for
 Theorem 1. So: **no order-5-invariant proper 5-coloring of PG(7,2)
 exists, in either conjugacy class** (CERTIFIED modulo the color-WLOG
 lemma; the [C,I] leg carries a rup_check-verified DRUP certificate and
