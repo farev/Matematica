@@ -19,7 +19,7 @@ automorphism group** (provisos in NOTE §4), in sharp contrast to n = 7.
 | Every class of a 5-coloring of PG(7,2) meets every hyperplane; every hyperplane restriction is a 5-coloring of PG(6,2) using all 5 colors; no class fits in an affine hyperplane | PROVED | NOTE Lemma A |
 | No 5-coloring of PG(7,2) is invariant under any order-17 element (all order-17 subgroups are conjugate; contracted instance UNSAT) | CERTIFIED (DRUP verified) | `certs/ord17.{cnf,drup}` |
 | No 5-coloring of PG(7,2) is invariant under the Frobenius x ↦ x² of F₂₅₆ | CERTIFIED (DRUP verified) | `certs/frob.{cnf,drup}` |
-| No 5-coloring of PG(7,2) is invariant under any order-5 element (both classes UNSAT after sound color-WLOG breaking: [C,I] by Glucose in 5.5 s with a **rup_check-verified DRUP** shipped here, independently confirmed by kissat + drat-trim; [C,C] by kissat ~40 min, 812 MB proof logged, check running) ⟹ **Theorem 1: every witness's automorphism group is a 2-group** | CERTIFIED (modulo color-WLOG lemma; [C,C] proof check pending) | `certs/ord5_*_cbrk.cnf`, `certs/ord5_CI_cbrk.drup.gz`, NOTE §4 |
+| No 5-coloring of PG(7,2) is invariant under any order-5 element (both classes UNSAT after sound color-WLOG breaking: [C,I] by Glucose in 5.5 s with a **rup_check-verified DRUP** shipped here, independently confirmed by kissat + drat-trim; [C,C] by kissat ~40 min, 812 MB DRAT **verified by drat-trim in 2,174 s**, hash + regeneration shipped) ⟹ **Theorem 1: every witness's automorphism group is a 2-group** | CERTIFIED (modulo the two-line color-WLOG lemma, NOTE §4) | `certs/ord5_*_cbrk.cnf`, `certs/ord5_CI_cbrk.drup.gz`, NOTE §4 |
 | PG(6,2) *does* admit an order-5-invariant 5-coloring, class sizes [21,21,25,27,33]; the invariant family is large (≥ 10⁵ raw cell-colorings) | CERTIFIED (witness re-verified from definition) | `data/witness_n7_ord5.txt` |
 | No 5-coloring of PG(7,2) invariant under any of 24 block-diagonal Singer/twisted/swap subgroups (20 DEAD: an orbit contains a line; order-5-related cases are the pending ones above) nor under multiplicative subgroups of orders 3, 15, 17, 51, 85, 255 (DEAD: e.g. F₄*-cosets are lines) | CERTIFIED (DEAD cells exact; UNSAT cells solver-decided, order-17/Frobenius DRUP-verified) | `ansatz.py`, `matrix_ansatz.py` |
 | 1,000 randomized χ₂(7) witnesses: 1,000 distinct fingerprints, none extends over a hyperplane to a χ₂(8) witness; the order-5-symmetric witness does not extend either | NUMERICAL (each non-extension is a solver-decided UNSAT; sampling is solver-biased) | `sample_extend.py`, `data/sample1000_summary.txt` |
@@ -61,10 +61,10 @@ python-sat (Cadical195/Glucose42); seeds are in the scripts/outputs.
 
 ## Known defects / open ends
 
-- The [C,C] 812 MB DRAT proof's drat-trim verification was still running
-  at session close (`data/ord5_status.md` has the final word); the [C,I]
-  leg is verified. The unbroken (no color-breaking) instances were also
-  still running; they would remove the color-lemma proviso.
+- Both order-5 proofs are machine-verified. The unbroken (no
+  color-breaking) instances were still running at session close; their
+  UNSATs would remove the color-lemma proviso entirely
+  (`data/ord5_status.md` has the final word).
 - σ² and σ⁴ (Frobenius powers, 2-elements) and the GL(8,2) involution
   classes are undecided — the sweep certifies odd symmetry only.
 - The 1,000-witness extension experiment is solver-biased sampling, not

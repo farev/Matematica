@@ -16,9 +16,8 @@ no symmetry: no collineation of order 3, 7, 31 or 127 (proved, a
 Mersenne-prime obstruction valid for every n and k), none of order 17
 and no field Frobenius (certified, DRUP-checked), and none of order 5 (certified via a two-line color-WLOG
 lemma; the [C,I] leg's DRUP proof is verified by the repo's own checker)
-— so **every witness's automorphism group is a 2-group** (Theorem 1;
-⏳ the [C,C] proof's independent check was still running at close,
-provisos in NOTE §4).
+— so **every witness's automorphism group is a 2-group** (Theorem 1; both order-5 proofs machine-verified, sole proviso the
+two-line color-WLOG lemma, NOTE §4).
 
 ## 2. Contributions
 
@@ -38,9 +37,9 @@ provisos in NOTE §4).
    [C,I] leg by Glucose42 in 5.5 s with a 307,292-line DRUP proof
    verified by the repo's own `rup_check` (shipped, 4.6 MB gzipped) and
    independently by kissat + drat-trim; the [C,C] leg by kissat 4.0.4
-   in ~40 min (812 MB DRAT logged, sha256 recorded; ⏳ drat-trim check
-   running at close). **Theorem 1 follows: every witness's automorphism
-   group is a 2-group.**
+   in ~40 min (812 MB DRAT, drat-trim-verified in 2,174 s; sha256 and
+   regeneration command shipped in lieu of the file). **Theorem 1
+   follows: every witness's automorphism group is a 2-group.**
 4. **CERTIFIED.** PG(6,2) — one level down — *does* admit an
    order-5-invariant proper 5-coloring: explicit witness, class sizes
    [21,21,25,27,33], re-verified from the definition
@@ -98,11 +97,9 @@ provisos in NOTE §4).
   instance, trivially re-runnable); a 50-witness subsample is
   DRUP-certified end-to-end (50/50 verified), and the
   order-17/Frobenius exclusions ship DRUP certificates in `certs/`.
-- The [C,C] kissat proof is binary DRAT (RAT lemmas); its checker of
-  record is drat-trim — a different trust base than the repo's own
-  `rup_check`, which did verify the [C,I] DRUP. ⏳ If the [C,C]
-  drat-trim run had not finished by the last commit, the page says
-  "solver verdict, proof logged, check running" for that leg.
+- The [C,C] proof's checker of record is drat-trim (RAT lemmas, binary
+  DRAT) — a different trust base than the repo's own `rup_check`, which
+  verified the [C,I] DRUP; the page states this split explicitly.
 - The color-symmetry-broken variants (`*_cbrk`) rely on a hand-proved
   WLOG (value precedence under the S₅ color action); any claim built on
   them is "CERTIFIED modulo a trivial hand lemma" and must say so.

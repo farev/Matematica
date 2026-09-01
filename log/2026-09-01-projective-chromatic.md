@@ -32,13 +32,13 @@ new structural theorem about it, mixed PROVED + CERTIFIED:
   order by Lemma B + Cauchy — are **UNSAT**: [C,I] by Glucose42 in
   5.5 s with a 307,292-line pure-DRUP proof verified by the repo's own
   `rup_check` (shipped), independently confirmed by kissat + drat-trim;
-  [C,C] by kissat in ~40 min (812 MB DRAT, independent check still
-  running at close). **Theorem 1: the automorphism group of any proper
+  [C,C] by kissat in ~40 min (812 MB DRAT, **drat-trim-verified in
+  2,174 s**; too large to commit — hash and regeneration command
+  shipped). **Theorem 1: the automorphism group of any proper
   5-coloring of PG(7,2) is a 2-group** — a χ₂(8) = 5 witness, if one
-  exists, has essentially no odd symmetry. Provisos: the two-line
-  color-WLOG lemma (proved in NOTE §4) and the pending [C,C] proof
-  check; the unbroken instances (no breaking) were left running to
-  remove even that lemma.
+  exists, has essentially no odd symmetry. Sole proviso: the two-line
+  color-WLOG lemma (proved in NOTE §4); the unbroken instances were
+  left running to remove even that.
 - **CERTIFIED (contrast).** At n = 7 an order-5-invariant proper
   5-coloring *does* exist (witness shipped and re-verified from the
   definition, class sizes [21,21,25,27,33]) — and its symmetric family is

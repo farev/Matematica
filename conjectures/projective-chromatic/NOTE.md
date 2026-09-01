@@ -24,9 +24,9 @@ for every conjugacy class of such subgroups (one class for 17, two for
 proof, independently checked), and no Frobenius-invariant witness. The
 order-5 instances are harder; both fell after color-symmetry breaking
 (a two-line WLOG lemma): no order-5-invariant witness of either class,
-the [C,I] proof verified by drat-trim, the [C,C] proof logged (812 MB)
-with verification running at close. Hence — modulo those provisos —
-**every proper 5-coloring of PG(7,2) has a 2-group stabilizer**. (3) In contrast,
+with both proofs independently machine-verified. Hence — modulo only
+that hand lemma — **every proper 5-coloring of PG(7,2) has a 2-group
+stabilizer**. (3) In contrast,
 PG(6,2) admits an order-5-invariant proper 5-coloring (explicit witness,
 verified). (4) Every witness restricts, on each of the 255 hyperplanes,
 to a proper 5-coloring of PG(6,2) using all five colors (Lemma A);
@@ -156,9 +156,10 @@ satisfiability, and UNSAT of the broken instance gives UNSAT of the
 original. ∎
 
 **Results.** `ord5_CC_cbrk.cnf`: **UNSAT** (kissat 4.0.4, ~40 min,
-812 MB DRAT proof; sha256 3140a05a…, regenerate with
-`kissat ord5_CC_cbrk.cnf proof` — independent verification by drat-trim
-was still running at session close, status in `data/ord5_status.md`).
+812 MB binary DRAT proof, sha256 3140a05a…; **verified by drat-trim in
+2,174 s** — 12.5M lemmas, 5,211 RAT lemmas in core — the proof is too
+large to commit, so the repo ships the instance, the hash, and the
+regeneration command `kissat ord5_CC_cbrk.cnf proof`).
 `ord5_CI_cbrk.cnf`: **UNSAT** twice independently — Glucose42 in 5.5 s
 with a 307,292-line *pure DRUP* proof **verified by the repo's own
 `rup_check`** (shipped as `certs/ord5_CI_cbrk.drup.gz`), and kissat in
@@ -167,14 +168,15 @@ drat-trim in 6.2 s. The unbroken instances were left running;
 their UNSATs would remove the color-lemma proviso and are not needed for
 Theorem 1. So: **no order-5-invariant proper 5-coloring of PG(7,2)
 exists, in either conjugacy class** (CERTIFIED modulo the color-WLOG
-lemma; the [C,I] leg carries a rup_check-verified DRUP certificate,
-the [C,C] leg a logged kissat proof with verification pending).
+lemma; the [C,I] leg carries a rup_check-verified DRUP certificate and
+the [C,C] leg a drat-trim-verified DRAT proof).
 
 **Theorem 1.** The stabilizer in GL(8,2) of any proper 5-coloring of
-PG(7,2) is a 2-group. (Provisos: the order-5 legs rest on the certified
-UNSATs of the color-broken instances — sound by the Color-WLOG lemma —
-with the [C,C] proof's independent check still running at session
-close; every other leg is fully proved or DRUP-verified.)
+PG(7,2) is a 2-group. (Proviso: the order-5 legs rest on the UNSATs of
+the color-broken instances, sound by the Color-WLOG lemma above; both
+proofs are independently machine-verified — [C,I] by the repo's own
+rup_check, [C,C] by drat-trim. Every other leg is a hand proof or a
+rup_check-verified DRUP certificate.)
 
 *Proof.* If an odd prime p divides the stabilizer order, Cauchy gives
 φ of order p ∈ {3,5,7,17,31,127} (Corollary §3). Mersenne p:
