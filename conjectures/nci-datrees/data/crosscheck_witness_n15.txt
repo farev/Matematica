@@ -1,0 +1,50 @@
+# Witness spot-checks on the per-part worst-case lattices (max LL-BFS states), n=15 census
+# generated 2026-08-28 by: verify_witness.py '<digraph6>' for each WORSTLL line in data/parts_n15/*.log
+## data/parts_n15/part_0.log : &L?????????????????????????????
+lattice n=15  mu=[-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 12, 1]
+WINNING (left-linear). LL sequence verified (25 steps): S0 -S13 +S1 -S13 +S2 -S13 +S3 -S13 +S4 -S13 +S5 -S13 +S6 -S13 +S7 -S13 +S8 -S13 +S9 -S13 +S10 -S13 +S11 -S13 +S12
+## data/parts_n15/part_1.log : &LACB?@O???B??W????????[???????
+lattice n=15  mu=[1, 1, 1, -1, 1, 1, -1, -1, -1, 2, -1, -1, -1, -1, 1]
+WINNING (left-linear). LL sequence verified (15 steps): S3 -S1 +S6 -S0 +S13 -S2 +S8 -S5 +S10 -S4 +S7 -S9 +S11 -S9 +S12
+## data/parts_n15/part_10.log : &LB{@?_O_CO??????????????E?????
+lattice n=15  mu=[5, 1, 1, 1, -1, -1, -1, -1, -1, -1, 1, -1, -1, -2, 1]
+WINNING (left-linear). LL sequence verified (19 steps): S4 -S0 +S5 -S0 +S6 -S0 +S7 -S0 +S8 -S0 +S9 -S1 +S13 -S2 +S13 -S3 +S11 -S10 +S12
+## data/parts_n15/part_11.log : &L@@?o?E?A_@G???M??o???????????
+lattice n=15  mu=[1, 1, 1, 1, 1, -1, 2, 1, -1, -1, -1, -1, -1, -3, 1]
+WINNING (left-linear). LL sequence verified (17 steps): S5 -S0 +S11 -S1 +S13 -S2 +S8 -S3 +S13 -S4 +S13 -S6 +S9 -S6 +S10 -S7 +S12
+## data/parts_n15/part_12.log : &L???o?E??o?E??????????????????
+lattice n=15  mu=[-1, 1, 1, 1, 1, -1, -1, -1, -1, -1, -1, -1, -1, 4, 1]
+WINNING (left-linear). LL sequence verified (17 steps): S0 -S13 +S5 -S1 +S6 -S13 +S7 -S2 +S8 -S13 +S9 -S3 +S10 -S13 +S11 -S4 +S12
+## data/parts_n15/part_13.log : &LC@@_@_???Bw?B????????????????
+lattice n=15  mu=[1, 1, 1, -1, 4, 1, -1, -1, -1, -1, -1, -1, -1, -1, 1]
+WINNING (left-linear). LL sequence verified (17 steps): S3 -S0 +S11 -S1 +S13 -S2 +S6 -S4 +S7 -S4 +S8 -S4 +S9 -S4 +S10 -S5 +S12
+## data/parts_n15/part_14.log : &LB_@A?S?E????????E????[???????
+lattice n=15  mu=[2, 1, 1, 1, -1, -1, -1, 1, -1, 2, -1, -1, -1, -2, 1]
+WINNING (left-linear). LL sequence verified (17 steps): S4 -S0 +S5 -S0 +S6 -S1 +S13 -S2 +S13 -S3 +S8 -S7 +S10 -S9 +S11 -S9 +S12
+## data/parts_n15/part_15.log : &LB?@O@W???@_?K?@_?????????????
+lattice n=15  mu=[1, 1, 2, -1, 1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1]
+WINNING (left-linear). LL sequence verified (15 steps): S3 -S2 +S7 -S0 +S9 -S1 +S13 -S2 +S11 -S4 +S8 -S5 +S10 -S6 +S12
+## data/parts_n15/part_2.log : &L@c?g?K?@O?c?????@_@G?????????
+lattice n=15  mu=[2, 1, 1, 1, 1, -1, -1, 1, 1, -1, -1, -1, -1, -3, 1]
+WINNING (left-linear). LL sequence verified (17 steps): S5 -S0 +S6 -S0 +S9 -S1 +S13 -S2 +S13 -S3 +S10 -S4 +S13 -S7 +S11 -S8 +S12
+## data/parts_n15/part_3.log : &LK?@_???????@_???E????[???????
+lattice n=15  mu=[1, 1, -1, -1, -1, 1, -1, 1, -1, 2, -1, -1, -1, 1, 1]
+WINNING (left-linear). LL sequence verified (15 steps): S2 -S0 +S3 -S13 +S4 -S1 +S6 -S5 +S8 -S7 +S10 -S9 +S11 -S9 +S12
+## data/parts_n15/part_4.log : &L??E????W???@_???E????[???????
+lattice n=15  mu=[-1, 1, -1, 1, -1, 1, -1, 1, -1, 2, -1, -1, -1, 1, 1]
+WINNING (left-linear). LL sequence verified (15 steps): S0 -S13 +S2 -S1 +S4 -S3 +S6 -S5 +S8 -S7 +S10 -S9 +S11 -S9 +S12
+## data/parts_n15/part_5.log : &L@w?`?H?A_?o??????????[???????
+lattice n=15  mu=[3, 1, 1, 1, 1, -1, -1, -1, -1, 2, -1, -1, -1, -3, 1]
+WINNING (left-linear). LL sequence verified (19 steps): S5 -S0 +S6 -S0 +S7 -S0 +S8 -S1 +S13 -S2 +S13 -S3 +S13 -S4 +S10 -S9 +S11 -S9 +S12
+## data/parts_n15/part_6.log : &LE??o?E????????????@_???E?????
+lattice n=15  mu=[1, 1, 1, -1, -1, -1, -1, -1, 1, -1, 1, -1, -1, 2, 1]
+WINNING (left-linear). LL sequence verified (15 steps): S3 -S0 +S4 -S13 +S5 -S1 +S6 -S13 +S7 -S2 +S9 -S8 +S11 -S10 +S12
+## data/parts_n15/part_7.log : &L??E????W???@_???F??????E?????
+lattice n=15  mu=[-1, 1, -1, 1, -1, 1, -1, 2, -1, -1, 1, -1, -1, 1, 1]
+WINNING (left-linear). LL sequence verified (15 steps): S0 -S13 +S2 -S1 +S4 -S3 +S6 -S5 +S8 -S7 +S9 -S7 +S11 -S10 +S12
+## data/parts_n15/part_8.log : &LAO?__OGS????{?@_?????????????
+lattice n=15  mu=[1, 1, 1, 1, -1, 3, 1, -1, -1, -1, -1, -1, -1, -2, 1]
+WINNING (left-linear). LL sequence verified (17 steps): S4 -S0 +S7 -S1 +S13 -S2 +S13 -S3 +S11 -S6 +S12 -S5 +S8 -S5 +S9 -S5 +S10
+## data/parts_n15/part_9.log : &LAC?K?S?\????????B??W?????????
+lattice n=15  mu=[1, 1, 1, 3, -1, -1, -1, 1, 1, -1, -1, -1, -1, -2, 1]
+WINNING (left-linear). LL sequence verified (17 steps): S4 -S0 +S9 -S1 +S13 -S2 +S13 -S3 +S5 -S3 +S6 -S3 +S11 -S7 +S10 -S8 +S12

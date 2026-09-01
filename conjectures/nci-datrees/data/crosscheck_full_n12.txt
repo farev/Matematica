@@ -1,0 +1,4 @@
+# Full dual-implementation check at n=12 (k=10), v2 engine vs Python reference, both with LL
+PYREF full k=10: posets=2567284 lattices=262776 winning=262776 llwinning=262776 time=149s
+## C engine (from census_summary.tsv):
+12	2567284	262776	262776	262776	0	0	2047	0	OK	OK

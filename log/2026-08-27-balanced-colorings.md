@@ -82,7 +82,10 @@ instance needs verified symmetry breaking at scale (VeriPB-style),
 cube-and-conquer, or an interaction lemma over the near-E* catalogue —
 the running kissat windows may yet land (results to be appended to the
 conjecture README when they stop). (2) Pin E*(26,6) (bracket [265, 269])
-and E*(17,5) ([104, 108]) exactly — new certified extremal numbers
+and E*(17,5) ([104, 108] — *correction 2026-08-28: the session's final
+reasoned bracket is [104, 107], by Turán uniqueness of T₄(17); see the
+conjecture README, which is authoritative*) exactly — new certified
+extremal numbers
 either way. (3) From an unblocked machine: read ErGy99 and
 Füredi–Ramamurthi 2002 — the construction and the codes⟺MOLS remark may
 be theirs; every (secondary) mark must be resolved before any external

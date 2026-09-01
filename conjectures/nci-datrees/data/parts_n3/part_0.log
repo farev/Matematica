@@ -1,0 +1,5 @@
+RESULT k=1 n=3 posets=1 lattices=1 winning=1 llwinning=1 separating=0 nonwinning=0
+LLSTATES hist(<=10,<=100,<=1000,<=8192,more)=1,0,0,0,0 maxll=1
+WORSTLL &@?
+STATES hist(<=10,<=100,<=1000,<=8192,more)=0,0,0,0,0 maxfull=0
+WORST 

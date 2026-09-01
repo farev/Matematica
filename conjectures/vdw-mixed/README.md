@@ -16,7 +16,7 @@ monotonicity pins the value), and opens a certified campaign on `w(2;5,8)`.
 
 **Write-up page:** [fabianarevalo.com/vdw-mixed](https://fabianarevalo.com/vdw-mixed)
 
-## Status (2026-08-16, session 1 — in progress)
+## Status (session 1 was 2026-08-16; table corrected 2026-08-28)
 
 | cell | published (secondary) | this repo | certificate |
 |---|---|---|---|
@@ -27,8 +27,8 @@ monotonicity pins the value), and opens a certified campaign on `w(2;5,8)`.
 | w(2;4,6) | 73 | **73 CERTIFIED** | witness + RUP-verified UNSAT (also closed by the validated cube-and-conquer driver, 64/64 leaves) |
 | w(2;5,5) | 178 | **178 CERTIFIED** | witness + RUP-verified UNSAT (1.56M-line proof) |
 | w(2;4,7) | 109 | **109 CERTIFIED** | witness + RUP-verified UNSAT (18.4M-line proof; sha256 + verdict in MANIFEST, file re-derivable) |
-| w(2;5,6) | 206 | both legs in flight | pending |
-| w(2;5,7) | 260 | planned (stretch) | pending |
+| w(2;5,6) | 206 | ~~both legs in flight~~ runs died with the 2026-08-16 session container; no artifacts landed (the only (5,6) artifact is `data/seed_5_6_n205_prodp44_cost12.txt`, a cost-12 seed, **not** a witness) | none — `certs/MANIFEST.csv` has no (5,6) row |
+| w(2;5,7) | 260 | ~~planned (stretch)~~ never started | none |
 | w(2;5,8) | — (open) | **> 295 CERTIFIED** (exactly-74-periodic witness at n=295, both verifiers; escalation running) | witness committed |
 
 ## Scripts
