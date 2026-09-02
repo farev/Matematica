@@ -29,7 +29,7 @@ unrelated to Blanc's. What remains open at `n = 18` is the Kobon number for arra
 about that.
 
 **Result (§7).** All 561 cubes are UNSAT (5.0 core-hours, median 18 s, hardest 585 s);
-156 of the 561 DRAT proofs were `drat-trim`-verified before the session ended, the rest
+478 of the 561 DRAT proofs were `drat-trim`-verified before the session ended, the rest
 are hashed and regenerable. The pipeline's controls (§8) reproduce every value of BBL's
 table for `n ≤ 16`. §9 records an audit of the upper-bound column of OEIS A006066.
 
@@ -265,8 +265,8 @@ straight-line arrangement, `a^s_3(18) = 93`.
 
 *Certificate.* All 561 cubes are UNSAT (kissat 4.0.4, one core each; 5.0
 core-hours in total, median 18 s, hardest cube #503 at 585 s);
-156 of the DRAT proofs were checked by `drat-trim` before the session ended
-(2.1 core-hours; the remaining 405 proofs are kept as gzip files
+478 of the DRAT proofs were checked by `drat-trim` before the session ended
+(5.8 core-hours; the remaining 83 proofs are kept as gzip files
 whose SHA-256 and sizes are listed with every cube in `data/cubes_T2.csv`, and are
 regenerable by `cubes.py`). Encodings, cubes and checker are in this directory; the
 `n = 12, t = 38` and `n = 14, t = 54` controls (budget 6, not tight) and the plain
