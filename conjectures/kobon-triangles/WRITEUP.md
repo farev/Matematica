@@ -72,8 +72,41 @@ leaf files that reached 10 GB each and were growing 1 GB per 20 s; with 4.9 GB f
 cube proofs were minutes from failing. Its writer processes were killed, the files
 deleted, and a 200 MB cap sent to the agent.
 
-**[PENDING: cube completion, verification totals, hardest cubes, the lemma-free variant
-if time allowed, and the pivot agent's report.]**
+**12:42. The prior-work hit.** Parpalak–Utkin's bibliography cites J. Blanc, "The best
+polynomial bounds for the number of triangles in a simple arrangement of n pseudo-lines"
+(Geombinatorics 2011, arXiv:0801.2845, January 2008). I had not looked for a follow-up to
+BBL because the OEIS entry, edited the day before, still showed 94 as the upper bound at
+`n = 18`. Blanc's Theorem 1 gives `n(n − 5/2)/3 = 93` for `n ≡ 0 (mod 6)`, and his
+Theorem 3 says the bound is reached for every `n ≤ 30` except 11 and 12. So the entry I
+was attacking had been closed for eighteen years; the OEIS bound is a different bound
+(for a different problem — see below). Rule 3 of CLAUDE.md applies: the campaign continues
+as an independent machine-checked confirmation and is labelled a rediscovery everywhere.
+The lesson for the log: *search the citing literature of the paper whose open entry you
+adopt, not just the paper.* Ten minutes on Parpalak–Utkin's reference list would have
+found it before the encoder was written.
+
+**12:45–12:55. What is actually open.** The Kobon problem allows concurrent triples and
+parallels; the recorded optima for `n = 8, 12, 14` beat the simple-arrangement maxima by
+one, and the `n = 14` record (Maiorana, August 2026) explicitly uses triple points. The
+even-`n` bounds of BBL and Blanc are proved for simple arrangements only; the only bound
+stated for general configurations is Clément–Bader's unpublished 2007 draft
+(`(n+1)(n−3)/3`: 55 at `n = 14`, 95 at `n = 18`), and Maiorana's OEIS comment "since 54
+equals the known upper bound … the value is exact" cites the simple bound. This is
+recorded as an audit finding (NOTE §9), flagged rather than settled.
+
+**12:55–13:15. A search model with triple points.** Perturbing each triple point into a
+small triangle shows that a triple-point arrangement is a simple one with a set of
+vertex-disjoint triangular faces collapsed; a quadrilateral sharing an edge with a
+collapsed triangle becomes a triangle. Encoded on top of the v2 core (pentagon/hexagon
+promotions omitted, so search-only). Positive control: `n = 8`, target 15 — SAT in 13 s,
+two collapsed triangles, four promoted quadrilaterals, independent recount 15. First
+attempt at `n = 14` was OOM-killed at 9.8 GB: pysat's `atleast` builds a totalizer of size
+`N·(N − k)`; the modulo totalizer (2 M clauses) fixed it. Searches at `n = 12` (target 39,
+above the recorded 38), `n = 14` (target 55) and `n = 18` (target 94) were then launched
+with the CPU left over from the cube campaign.
+
+**[PENDING: cube completion, verification totals, hardest cubes, search outcomes, and the
+pivot agent's report.]**
 
 ## What failed
 

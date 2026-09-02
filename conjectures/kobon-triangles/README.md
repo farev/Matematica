@@ -19,7 +19,8 @@ Page: *(none yet — see PAGE.md if present)*.
 
 | Claim | Label | Where |
 |---|---|---|
-| **[PENDING]** | | |
+| **Rediscovery, marked as such.** `a^s_3(18) = 93`: no simple arrangement of 18 pseudolines (hence no 18 lines in general position) has 94 triangular faces — the "93–94" entry of BBL Theorem 1.4 — decided by 561 dihedral-orbit cubes with `drat-trim`-checked DRAT proofs **[numbers pending]**. Found mid-session to be a theorem of Blanc (2008/2011, Theorem 1 + Theorem 3), by a different method. | CERTIFIED (confirmation of known) | NOTE §7, `data/cubes_T2.csv` |
+| Audit: OEIS A006066's upper bounds for even `n` (94 at 18, 54 at 14) are simple-arrangement theorems applied to a problem whose records use triple points; the general bound in the cited literature is Clément–Bader's 95 / 55 | flagged (secondary sources checked) | NOTE §9 |
 | The signotope model, the segment reformulation, the equality-case structure (T1, T2) at `n = 18`, and the order-`4n` symmetry group (NOTE §§2–5) | PROVED | `NOTE.md` |
 | Encodings reproduce every value of BBL Theorem 1.4 for `n ≤ 16` (SAT at the value, decoded and re-counted; UNSAT one above for `n = 8, 10, 11, 12`) and A006245 for `n ≤ 7` | CERTIFIED | `data/ctrl*.log`, `data/lemma_even.log` |
 
