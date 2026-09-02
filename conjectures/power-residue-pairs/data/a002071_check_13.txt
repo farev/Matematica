@@ -1,0 +1,5 @@
+primes<= 41 (+[]) L=100000000000: 2349223 smooth numbers, 869 consecutive pairs, 4.2s -> pairs_P41_L100000000000.txt
+
+real	0m5.252s
+user	0m2.745s
+sys	0m1.269s
