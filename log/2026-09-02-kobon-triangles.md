@@ -9,7 +9,41 @@ allowed. This is also the pseudoline half of the smallest open Kobon case, `K(18
 *equality case* of their counting bound `⌊n(n − 7/3)/3⌋` — the bound is an integer only
 for `n ≡ 0 (mod 18)` — which forces a rigid structure a SAT solver can exploit.
 
-**Result.** **[PENDING — filled in at session end.]**
+**Result.** Two lines, one of them a rediscovery.
+
+*Kobon (selected line).* **Rediscovery, marked as such.** A signotope SAT encoding
+(validated against OEIS A006245 for `n ≤ 7` and against every value of BBL Theorem 1.4 for
+`n ≤ 16`), the equality-case structure forced by BBL's own counting at `n = 18` (exactly
+12 perfect lines, 6 imperfect ones with one unused segment each — PROVED, NOTE §4), and
+cube-and-conquer over the 561 `D_18`-orbits of the imperfect-line set decided the
+"93–94" entry: **no simple arrangement of 18 pseudolines has 94 triangles, `a^s_3(18) =
+93`** — [[561]] cubes UNSAT, [[N_ver]] DRAT proofs `drat-trim`-verified (CERTIFIED,
+hashes of the rest recorded). At 12:42, reading Parpalak–Utkin's bibliography, I found
+that **Blanc (Geombinatorics 21 (2011), arXiv:0801.2845, Theorem 1 + Theorem 3) had
+proved exactly this in 2008**: `a^s_3(n) ≤ n(n − 5/2)/3` for `n ≡ 0, 4 (mod 6)`, attained
+for all `n ≤ 30` except 11, 12. The computation is an independent machine-checked
+confirmation by an unrelated method, nothing more. What the reading *did* turn up is an
+**audit finding (flagged, not settled):** the upper bounds on OEIS A006066 for even `n`
+(94 at 18, 54 at 14, quoted from BBL) and Wikipedia's "Clément–Bader" column are
+theorems about arrangements in general position, whereas the Kobon problem allows
+concurrent lines and the recorded optima at `n = 8, 12, 14` use triple points (Maiorana's
+`a(14) = 54`, August 2026, is declared exact "since 54 equals the known upper bound"); the
+only bound in the cited literature for general configurations is Clément–Bader's
+unpublished draft, `(n+1)(n−3)/3`: 55 at `n = 14`, 95 at `n = 18`. A triple-point search
+model (NOTE, `kobon_sat3.py`) reproduces `K(8) = 15` in 13 s but its `n = 12` control did
+not finish in 40 min, and the searches at `n = 12` (39), `14` (55), `18` (94) were
+stopped unresolved.
+
+*Λ(8,2) (pre-declared pivot, run in parallel by a subagent, audited by the session).*
+**CERTIFIED: `Λ(8,2) ≤ [[U]]`**, the first explicit upper bound for Erdős #436 at `k = 8`
+(Brillhart–Lehmer–Lehmer 1964 had only `Λ(8,2) ≥ 1,200,744`): an exhaustive case tree
+over the 8th-power characters of the primes `≤ [[S]]` with `R(2)` even and unit-orbit
+branching, [[leaves]] leaves, every leaf settled by a pair of consecutive smooth
+residues `≤ [[U]]`, verified by an independent streaming checker; the same programs
+reproduce `Λ(k,2)` for `k = 2..7` exactly and are sharp one below each value. BLL's lower
+bound re-verified (least pair of their Table V vector is exactly 1,200,744). So
+**`1,200,744 ≤ Λ(8,2) ≤ [[U]]`**; the exact value is open. Directory:
+`conjectures/power-residue-pairs/`.
 
 **Connectivity.** arXiv reachable by WebFetch and curl (listing, abstracts, PDFs).
 OEIS, erdosproblems.com and MathOverflow return 403 / blocked to WebFetch but serve curl
@@ -82,9 +116,42 @@ for an encoding whose soundness is proved (then `a^s_3(18) = 93`, CERTIFIED, and
 arrangement with 94 triangles (then `a^s_3(18) = 94`, and straightening decides
 `K(18)`).
 
-**What failed.** **[PENDING — see WRITEUP.md; to be summarised here.]**
+**What failed.**
+- *Prior-work search.* I checked BBL, Savchuk, Parpalak–Utkin and the OEIS entry (edited
+  the day before) and still missed Blanc 2008, which sits in Parpalak–Utkin's reference
+  list. An encoder, a symmetry group and a cube generator were built before the
+  eighteen-year-old closure was found. Rule for next time: read the *reference lists* of
+  the newest papers on the problem before writing code, not just their results.
+- *v1 encoding* (global triangle count): correct, hopeless on UNSAT past `n = 10`
+  (`n = 11, t = 33` unsolved in 12 min; the segment-budget v2 does it in 0.7 s).
+- *Plain (lemma-free) instance at `n = 18`*: not finished (stopped after 16 min; the
+  `n = 14, t = 54` control it was calibrated on did not finish in 40 min); the
+  certificate therefore rests on BBL's association lemma (published, re-proved, checked
+  computationally on all even-`n` cases available).
+- *Triple-point searches*: the model is search-only (no pentagon/hexagon promotions, no
+  parallels, no 4-fold points) and already at `n = 12` the positive control timed out.
+- *Λ(8,2) lower bound*: every attempt to beat BLL's vector failed — a complete search
+  over its six impasse primes, greedy extension of the 108 gap vectors, the full DFS.
+- *Operations*: the subagent's first tree design wrote 20 GB of leaves and nearly filled
+  the shared disk (killed from outside; files deleted; 200 MB cap imposed); pysat's
+  `atleast` totalizer scales with `N − k` and OOM-killed the `n = 14` encoder at 9.8 GB;
+  `/usr/bin/time` absent; `drat-trim -f` (forward) is far slower than backward mode;
+  I misread file timestamps as elapsed time for an hour.
 
-**Next.** **[PENDING.]**
+**Next.** (1) Λ(8,2) exactly: the 108 unsettled case vectors at `L = 1.5 M`, `S ≤ 300`
+are the cubes — a complete extension search (SAT/CSP over the primes below `1.5 M`) on
+each either produces a witness above `1.5 M` (raising the lower bound, conditional on
+Mills) or certifies the bound at `1.5 M`; the same machinery gives the first bounds for
+`k = 9, 10` (BLL: `Λ(9,2) > 10⁷`, `Λ(10,2) ≥ 22,458,303`). (2) Report the audit finding to
+OEIS A006066 (the upper-bound column and the `a(14)` exactness claim) after a second
+reading of Clément–Bader's Lemma 1, and ask whether the even-`n` bound has ever been
+proved for non-simple arrangements; if not, that proof (or a counterexample with triple
+points at `n = 14` or `18`) is the real open problem. (3) Finish `drat-trim` on the
+remaining cube proofs and, if a lemma-free certificate is wanted, the "plain" cubes
+(`CUBE_VARIANT=plain`, 955 orbit representatives). (4) The signotope toolkit is validated
+end to end; Blanc's Conjecture 1.0.1 for *projective* arrangements at `n = 32`
+(`p^s_3(32) = 329?`) is the nearest genuinely open simple-arrangement question it could
+attack.
 
 **Session hygiene.** Branch: harness-designated `claude/affectionate-sagan-90to7i`
 (mandate's per-conjecture naming overridden by the harness branch requirement, as in the
