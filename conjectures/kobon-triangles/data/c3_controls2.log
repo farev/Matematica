@@ -1,0 +1,3 @@
+v3 n=12 t=38: TIMEOUT 2400.1s vars=66835 clauses=789508
+v3 n=14 t=54: UNKNOWN 385.0s vars=140089 clauses=2204353
+ed (~35 min); 14@55 unresolved (~40 min); 18@94 unresolved (~33 min, niced)

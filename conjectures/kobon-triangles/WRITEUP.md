@@ -111,10 +111,10 @@ independently, regenerated the controls, and tightened the bound with the 62-pri
 list to `1,508,324` (`conjectures/power-residue-pairs/`). That became the session's real
 result; this directory's is the confirmation of a known theorem plus the audit.
 
-**14:00–14:40.** The cube campaign finished: {{cubes}} cubes UNSAT in {{solve_hours}}
-core-hours (median {{median}} s; hardest #{{hardest}} at {{hardest_s}} s — the spread-out
-6-subsets are the hard ones), {{verified}} proofs `drat-trim`-verified by session end
-({{verify_hours}} core-hours; the remaining {{unverified}} kept as gzip with hashes). The
+**14:00–14:40.** The cube campaign finished: 561 cubes UNSAT in 5.0
+core-hours (median 18 s; hardest #503 at 585 s — the spread-out
+6-subsets are the hard ones), 156 proofs `drat-trim`-verified by session end
+(2.1 core-hours; the remaining 405 kept as gzip with hashes). The
 triple-point searches were stopped unresolved (the `n = 12` control had timed out).
 
 ## What failed

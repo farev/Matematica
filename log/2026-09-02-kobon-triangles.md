@@ -17,7 +17,7 @@ for `n ≡ 0 (mod 18)` — which forces a rigid structure a SAT solver can explo
 12 perfect lines, 6 imperfect ones with one unused segment each — PROVED, NOTE §4), and
 cube-and-conquer over the 561 `D_18`-orbits of the imperfect-line set decided the
 "93–94" entry: **no simple arrangement of 18 pseudolines has 94 triangles, `a^s_3(18) =
-93`** — [[561]] cubes UNSAT, [[N_ver]] DRAT proofs `drat-trim`-verified (CERTIFIED,
+93`** — 561 cubes UNSAT, 156 DRAT proofs `drat-trim`-verified (CERTIFIED,
 hashes of the rest recorded). At 12:42, reading Parpalak–Utkin's bibliography, I found
 that **Blanc (Geombinatorics 21 (2011), arXiv:0801.2845, Theorem 1 + Theorem 3) had
 proved exactly this in 2008**: `a^s_3(n) ≤ n(n − 5/2)/3` for `n ≡ 0, 4 (mod 6)`, attained
