@@ -19,7 +19,7 @@ Page: *(none yet — see PAGE.md if present)*.
 
 | Claim | Label | Where |
 |---|---|---|
-| **Rediscovery, marked as such.** `a^s_3(18) = 93`: no simple arrangement of 18 pseudolines (hence no 18 lines in general position) has 94 triangular faces — the "93–94" entry of BBL Theorem 1.4 — decided by 561 dihedral-orbit cubes, all UNSAT (5.0 core-hours), 478 DRAT proofs `drat-trim`-checked before session end, the rest hashed and regenerable. Found mid-session to be a theorem of Blanc (2008/2011, Theorem 1 + Theorem 3), by a different method. | CERTIFIED (confirmation of known) | NOTE §7, `data/cubes_T2.csv`, `data/cubes_T2_summary.md` |
+| **Rediscovery, marked as such.** `a^s_3(18) = 93`: no simple arrangement of 18 pseudolines (hence no 18 lines in general position) has 94 triangular faces — the "93–94" entry of BBL Theorem 1.4 — decided by 561 dihedral-orbit cubes, all UNSAT (5.0 core-hours), all 561 DRAT proofs `drat-trim`-checked (8.2 core-hours; hashes in the CSV). Found mid-session to be a theorem of Blanc (2008/2011, Theorem 1 + Theorem 3), by a different method. | CERTIFIED (confirmation of known) | NOTE §7, `data/cubes_T2.csv`, `data/cubes_T2_summary.md` |
 | Audit: OEIS A006066's upper bounds for even `n` (94 at 18, 54 at 14) are simple-arrangement theorems applied to a problem whose records use triple points; the general bound in the cited literature is Clément–Bader's 95 / 55 | flagged (secondary sources checked) | NOTE §9 |
 | The signotope model, the segment reformulation, the equality-case structure (T1, T2) at `n = 18`, and the order-`4n` symmetry group (NOTE §§2–5) | PROVED | `NOTE.md` |
 | Encodings reproduce every value of BBL Theorem 1.4 for `n ≤ 16` (SAT at the value, decoded and re-counted; UNSAT one above for `n = 8, 10, 11, 12`) and A006245 for `n ≤ 7` | CERTIFIED | `data/ctrl*.log`, `data/lemma_even.log` |
@@ -60,7 +60,7 @@ python3 verify_finished.py cubes
 | `data/cubes_T2.csv`, `data/cubes_T2_summary.md` | `summarize_cubes.py` | per-cube: imperfect-line set, orbit size, solver result and time, `drat-trim` status, proof size and SHA-256 |
 | `data/cubes_index.txt`, `data/cubes_run_*.out`, `data/cubes_verified.log` | `cubes.py`, `verify_finished.py` | the 561 orbit representatives, solver logs of every worker, verification log |
 | `data/c3_n8_t15.model.txt`, `data/c3_controls2.log` | `kobon_sat3.py` | the decoded triple-point model for `K(8) = 15` and the search outcomes |
-| DRAT proofs (2.8 GB uncompressed, not committed) | `cubes.py` | regenerable per cube in seconds to minutes; hashes in the CSV |
+| DRAT proofs (27.75 GB uncompressed in total, deleted after verification, not committed) | `cubes.py` | regenerable per cube in seconds to minutes; size and SHA-256 of each in the CSV |
 
 ## Known defects and open threads
 

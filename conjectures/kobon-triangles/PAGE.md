@@ -16,8 +16,8 @@ triple points, so on the cited literature `54 ≤ K(14) ≤ 55` and `93 ≤ K(18
 ## 2. Contributions (numbered, labelled, with the numbers)
 
 1. **CERTIFIED.** `a^s_3(18) = 93` for simple Euclidean pseudoline arrangements: all
-   561 cubes UNSAT, 478 of 561 DRAT proofs verified by `drat-trim`
-   (5.0 core-hours solving, 5.8 verifying; SHA-256 of every proof in
+   561 cubes UNSAT, 561 of 561 DRAT proofs verified by `drat-trim`
+   (5.0 core-hours solving, 8.2 verifying; SHA-256 of every proof in
    `data/cubes_T2.csv`). Upper bound: rediscovery of Blanc 2008 (Geombinatorics 2011),
    Theorem 1 / Theorem 3; lower bound: Bader's 93-triangle straight-line arrangement
    (OEIS A006066).

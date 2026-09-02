@@ -113,8 +113,8 @@ result; this directory's is the confirmation of a known theorem plus the audit.
 
 **14:00–14:40.** The cube campaign finished: 561 cubes UNSAT in 5.0
 core-hours (median 18 s; hardest #503 at 585 s — the spread-out
-6-subsets are the hard ones), 478 proofs `drat-trim`-verified by session end
-(5.8 core-hours; the remaining 83 kept as gzip with hashes). The
+6-subsets are the hard ones), all 561 proofs `drat-trim`-verified by 15:41 UTC
+(8.2 core-hours on four cores; 27.75 GB of proofs, hashed and deleted). The
 triple-point searches were stopped unresolved (the `n = 12` control had timed out).
 
 ## What failed
