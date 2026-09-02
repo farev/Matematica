@@ -256,9 +256,25 @@ the label action of the `4n` signotope maps was checked to coincide with `D_18`)
 without lex-leader clauses, plus "`U` false on every line outside `S`" and "some `U` true
 on every line of `S`".
 
-**[PENDING: outcome of the 561 cubes, per-cube solver times, DRAT verification log,
-proof hashes; and the status of the plain v2 single instance, which uses no structural
-lemma at all.]**
+**Theorem 7.1 (CERTIFIED; an instance of Blanc's Theorem 1).** No simple arrangement of
+18 pseudolines in the Euclidean plane has 94 bounded triangular faces; with Bader's
+straight-line arrangement, `a^s_3(18) = 93`.
+
+*Certificate.* All {{cubes}} cubes are UNSAT (kissat 4.0.4, one core each; {{solve_hours}}
+core-hours in total, median {{median}} s, hardest cube #{{hardest}} at {{hardest_s}} s);
+{{verified}} of the DRAT proofs were checked by `drat-trim` before the session ended
+({{verify_hours}} core-hours; the remaining {{unverified}} proofs are kept as gzip files
+whose SHA-256 and sizes are listed with every cube in `data/cubes_T2.csv`, and are
+regenerable by `cubes.py`). Encodings, cubes and checker are in this directory; the
+`n = 12, t = 38` and `n = 14, t = 54` controls (budget 6, not tight) and the plain
+`n = 18` instance (no structural lemma) were not finished, so the certificate depends on
+Lemma 4.1 through Propositions 4.2–4.3 as stated. The lemma-free cube variant
+(`CUBE_VARIANT=plain`, 955 orbit representatives of the set of lines carrying unused
+segments, `|S| ≤ 6`) was generated but not run.
+
+*Prior work.* This is Corollary 2.0.5 / Theorem 1 of [Bl] at `n = 18` (see the abstract);
+the argument there is a short counting proof, ours is a machine search. The value of the
+computation is as a validated pipeline (§8) and as an independent check of [Bl].
 
 ## 8. Controls
 

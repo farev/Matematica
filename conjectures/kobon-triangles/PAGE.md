@@ -36,8 +36,10 @@ triple points, so on the cited literature `54 ≤ K(14) ≤ 55` and `93 ≤ K(18
    95 at `n = 18`.
 5. **NUMERICAL / search.** A triple-point search model (collapse vertex-disjoint triangular
    faces of a simple arrangement; quadrilaterals with one collapsed neighbour become
-   triangles) reproduces `K(8) = 15` in 13 s; results of its runs at `n = 12` (target 39),
-   `n = 14` (target 55) and `n = 18` (target 94): [[fill in]].
+   triangles) reproduces `K(8) = 15` in 13 s and finds `n = 8, t = 16` UNSAT in 196 s
+   (within the model); its `n = 12, t = 38` positive control timed out at 40 min, and the
+   searches at `n = 12` (39), `n = 14` (55), `n = 18` (94) were stopped unresolved after
+   35–40 min. No construction is claimed.
 
 ## 3. Figure specs
 
@@ -69,7 +71,7 @@ triple points, so on the cited literature `54 ≤ K(14) ≤ 55` and `93 ≤ K(18
 * Secondary/unread: Zarzuelo Urdiales 2026 (even lower bounds), Rabung–Jordan-type
   material is irrelevant here; Clément–Bader is an unpublished 2007 draft.
 * Stretchability is irrelevant to the negative result but essential to any positive
-  triple-point construction; none is claimed unless `[[fill in]]` says so.
+  triple-point construction; none is claimed.
 
 ## 5. Existing page
 
