@@ -1,0 +1,5 @@
+v2 n= 8 t= 15 budget=3: UNSAT         0.2s vars=4279 clauses=12729 
+v2 n=10 t= 26 budget=2: UNSAT         1.8s vars=8915 clauses=27346 
+v2 n=11 t= 33 budget=0: UNSAT         0.7s vars=11636 clauses=37054 
+v2 n=12 t= 38 budget=6: UNSAT       392.3s vars=20146 clauses=59803 
+v2 n=14 t= 54 budget=6: UNKNOWN     463.1s vars=36373 clauses=109508 

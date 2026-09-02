@@ -1,0 +1,7 @@
+v2 n= 9 t= 21 budget=0: SAT           0.1s vars=5684 clauses=17809 adjacency-triangles=21 sweep-triangular-faces=21
+v2 n=11 t= 32 budget=3: SAT           2.5s vars=13112 clauses=40000 adjacency-triangles=32 sweep-triangular-faces=32
+v2 n=12 t= 37 budget=9: SAT           1.7s vars=22081 clauses=63667 adjacency-triangles=37 sweep-triangular-faces=37
+v2 n=13 t= 47 budget=2: SAT           1.9s vars=23918 clauses=74901 adjacency-triangles=47 sweep-triangular-faces=47
+v2 n=14 t= 53 budget=9: SAT         149.9s vars=39604 clauses=115964 adjacency-triangles=53 sweep-triangular-faces=53
+v2 n=15 t= 65 budget=0: SAT          21.4s vars=39469 clauses=127963 adjacency-triangles=65 sweep-triangular-faces=65
+v2 n=16 t= 72 budget=8: SAT         236.3s vars=64744 clauses=193721 adjacency-triangles=72 sweep-triangular-faces=72
