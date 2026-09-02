@@ -93,14 +93,18 @@ applies.
 
 ## 4. Controls
 
-| `k` | `Λ(k,2)` [BLL, LLM] | tree at `L = Λ` | tree at `L = Λ − 1` |
+| `k` | `Λ(k,2)` [BLL, LLM] | tree at `L = Λ` (checked) | tree at `L = Λ − 1` (unsettled leaves) |
 |---|---|---|---|
-| 2 | 9 | 5 leaves, no gap | — |
-| 3 | 77 | 18 leaves, no gap | 8 gaps |
-| 4 | 1224 | 232 leaves, no gap | gaps |
-| 5 | 7888 | 5,882 leaves, no gap (LLM: 4,568 cases) | 63 gaps |
-| 6 | 202124 | 19,075 leaves, no gap (`S ≤ 300`) | gaps |
-| 7 | 1649375 | 1,379,438 leaves, no gap (`S = {p ≤ 113} ∪ {491}`, 2 s; BLL: ≈1.18 M cases plus hand cases for 113 and 491) | 12,046 gaps |
+| 2 | 9 | 4 leaves, no gap | 1 |
+| 3 | 77 | 18 leaves, no gap | 1,536 (`S ≤ 113`; 8 with the subagent's smaller pair list) |
+| 4 | 1224 | 232 leaves, no gap | 1,235,808 |
+| 5 | 7888 | 5,882 leaves, no gap (LLM: 4,568 cases) | 63 |
+| 6 | 202124 | 19,075 leaves, no gap (`S < 300`; subagent's run) | gaps (subagent's run) |
+| 7 | 1649375 | 1,379,438 leaves, no gap (`S = {p ≤ 113} ∪ {491}`, 2 s; BLL: ≈1.18 M cases plus hand cases for 113 and 491) | 587 (12,046 with the window depth capped at 12) |
+
+(Rows `k = 2, 3, 4, 5, 7` regenerated and checked in this session's audit, `data/audit.log`;
+the gap counts at `L = Λ − 1` depend on the pair list and window policy, only their
+positivity matters.)
 
 BLL's Table II vectors, sieved exactly, give least pairs 7888, 202124, 1649375. The `k =
 7` window profile (leaves peaking at window 10–11) matches BLL's Table III. A complete

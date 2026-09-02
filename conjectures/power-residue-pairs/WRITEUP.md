@@ -40,7 +40,12 @@ anything about `k = 8`, then attempt the lower bound.
   `data/audit.log`): all three pairs files factorise correctly (12,946 / 13,442 / 78,834
   pairs, 0 bad); the `k = 8`, `S ≤ 113`, `L = 1.8 M` certificate re-verifies in 1 m 52 s
   with `U = 1,794,897` (SHA-256 `820efd1c…`); `k = 7` regenerated: 1,379,438 leaves, no gap,
-  `U = 1,649,375` and 587 gaps at `L = 1,649,374`; `k = 5`: 5,882 leaves, no gap at 7888.
+  `U = 1,649,375` and 587 gaps at `L = 1,649,374`; `k = 5`: 5,882 leaves, no gap at 7888
+  and 63 gaps at 7887; `k = 4`: 232 leaves at 1224 (checked), 1,235,808 gaps at 1223;
+  `k = 3`: 18 leaves at 77 (checked), 1,536 gaps at 76; `k = 2`: 4 leaves at 9 (checked),
+  1 gap at 8. (The `k = 5, L = 7887` and `k = 6` regenerations with the 62-prime pair list
+  were stopped after six minutes — at `L = Λ − 1` the tree must admit every prime before
+  declaring a gap — and rerun with the 30-prime list.)
 * Tightened the bound myself with the larger prime set `S ≤ 300` (the subagent had used
   it only for gap counts): dry runs at `L = 1.6 M, 1.55 M, 1.5125 M, 1.51 M` have no gap,
   `L = 1.508 M` and `1.505 M` have 108; the certificate at `L = 1,508,324` (3,499,913
