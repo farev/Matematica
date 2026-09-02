@@ -105,8 +105,17 @@ attempt at `n = 14` was OOM-killed at 9.8 GB: pysat's `atleast` builds a totaliz
 above the recorded 38), `n = 14` (target 55) and `n = 18` (target 94) were then launched
 with the CPU left over from the cube campaign.
 
-**[PENDING: cube completion, verification totals, hardest cubes, search outcomes, and the
-pivot agent's report.]**
+**13:40.** The pivot agent reported: `Λ(8,2) ≤ 1,794,897` with a checked certificate and
+exact reproduction of `k = 2..7`. I audited its checker, verified the pairs files
+independently, regenerated the controls, and tightened the bound with the 62-prime pair
+list to `1,508,324` (`conjectures/power-residue-pairs/`). That became the session's real
+result; this directory's is the confirmation of a known theorem plus the audit.
+
+**14:00–14:40.** The cube campaign finished: {{cubes}} cubes UNSAT in {{solve_hours}}
+core-hours (median {{median}} s; hardest #{{hardest}} at {{hardest_s}} s — the spread-out
+6-subsets are the hard ones), {{verified}} proofs `drat-trim`-verified by session end
+({{verify_hours}} core-hours; the remaining {{unverified}} kept as gzip with hashes). The
+triple-point searches were stopped unresolved (the `n = 12` control had timed out).
 
 ## What failed
 
