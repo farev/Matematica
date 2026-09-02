@@ -138,6 +138,8 @@ def run(k0, k1, solver='kissat', proofs=False, reverse=False):
         print(line, flush=True)
         log.write(line + '\n')
         log.flush()
+        if proofs and status == 'UNSAT' and os.path.exists(proof):
+            subprocess.run(['gzip', '-1', '-f', proof])     # disk: verifier gunzips on demand
         with open(done, 'w') as f:
             f.write(line + '\n')
 

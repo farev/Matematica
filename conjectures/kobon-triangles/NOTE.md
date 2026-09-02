@@ -18,6 +18,16 @@ argument that a 94-triangle arrangement of 18 pseudolines would have exactly twe
 resulting instance by cube-and-conquer over the 561 dihedral orbits of the six-line set,
 every cube carrying a DRAT proof checked by `drat-trim`.
 
+**Prior work, found mid-session (rule 3).** The entry is *not* open. Blanc (arXiv:0801.2845,
+Geombinatorics 21 (2011) 5–17), Theorem 1, proves `a_3(A) ≤ n(n − 5/2)/3` for
+`n ≡ 0, 4 (mod 6)`, which is 93 at `n = 18`, and his Theorem 3 states that this bound is
+reached for every `n ≤ 30` except `n = 11, 12`. So `a^s_3(18) = 93` has been a theorem
+since 2008 and the computation reported here is an **independent, machine-checked
+rediscovery** of one instance of it, by a method (signotope SAT + equality-case cubes)
+unrelated to Blanc's. What remains open at `n = 18` is the Kobon number for arrangements
+*with* concurrent triples or parallels; see §9 for what the literature actually proves
+about that.
+
 **[RESULT PENDING — filled in at the end of the session; see §7.]**
 
 ## 1. The problem
@@ -271,22 +281,53 @@ t = 94` (budget 6 each) but are *not* tight — at `n = 12` the counting only gi
 `6 ≤ m ≤ 12` — which is why the plain instance grows hard while the tight cubes at
 `n = 18` are fast.
 
-## 9. What is and is not shown
+## 9. What is and is not shown; an audit of the upper-bound column
 
 * The result concerns simple arrangements of pseudolines; it transfers to straight lines
   in general position but not to arrangements with concurrent triples or parallels, which
-  the Kobon problem allows and which realise `K(14) = 54 > a^s_3(14)` (Maiorana). Deciding
-  `K(18) ∈ {93, 94}` (or 95, since the general upper bound of Clément–Bader is
-  `(n+1)(n−3)/3 = 95` (secondary)) needs a model of non-simple arrangements.
+  the Kobon problem allows.
+* **Blanc's theorem closes the simple case.** Theorem 1 of [Bl] gives, for even `n`,
+  `a^s_3(n) ≤ n(n − 5/2)/3` (`n ≡ 0, 4 mod 6`) and `(n(n − 5/2) − 2)/3` (`n ≡ 2 mod 6`),
+  and Theorem 3 gives the exact values for all `n ≤ 30`. His Conjecture 1.0.1 (bounds
+  reached for all `n ≥ 21`) was open at `n = 31, 32, 37, 38, …` in 2008; the straight-line
+  constructions now on OEIS A006066 — Wood (`n = 31`, 299), Zarzuelo (`n = 32`, 314),
+  Parpalak–Utkin (`n = 37`, 431, simple by their Theorem 5.1) — meet his affine bound at
+  31, 32, 37 *if* they are in general position (not checked here); at `n = 38` the
+  recorded `K(38) ≥ 450` exceeds Blanc's simple bound `(38·35.5 − 2)/3 = 449`, so that
+  arrangement must have multiple points or parallels.
+* **The general-position assumption is essential and is being dropped silently.** Simple
+  arrangements are beaten by non-simple ones at `n = 8` (`K = 15 > 14`), `n = 12`
+  (`38 > 37`) and `n = 14` (`54 > 53`, Maiorana 2026, triple points). The proofs of the
+  even-`n` bounds of [BBL] and [Bl] use simplicity (BBL: "As the arrangement is simple, a
+  segment cannot be associated to more than two pseudo-lines"; the alternation of
+  triangles along a perfect line also fails at a triple point, where two consecutive
+  triangles can lie on the same side). The only bound we found *stated* for general
+  configurations is the Clément–Bader draft (OEIS-cached, dated 2007-12-21; its
+  Proposition 1 and Lemma 1 account for segments lost at multiple points): `(n+1)(n−3)/3`
+  for `n ≡ 0, 2 (mod 6)`, i.e. **95** at `n = 18` and **55** at `n = 14` (their Table I
+  lists exactly these). Yet OEIS A006066's upper-bound column gives 94 at `n = 18` and 54
+  at `n = 14` — these are [BBL]'s simple-arrangement values `⌊n(n − 7/3)/3⌋` (the entry's
+  formula section says so) — and Wikipedia's table labels the same numbers
+  "Clément–Bader". Consequently the OEIS statement that `a(14) = 54` is exact "since 54
+  equals the known upper bound" rests on applying a simple-arrangement theorem to
+  arrangements with triple points; on the cited literature alone, `54 ≤ K(14) ≤ 55` and
+  `93 ≤ K(18) ≤ 95`. We have not found a proof of the even-`n` bound for non-simple
+  arrangements, and we have not tried to produce one; this is flagged, not settled.
 * Cited facts checked against the primary source today: [BBL] (arXiv:0706.0723, Theorems
-  1.1, 1.4, §§4–5), [FW] (statement of the bijection), Savchuk 2025 (Table 1, Appendix C),
-  OEIS A006066 and A006245. Secondary: Clément–Bader 2007 (unpublished draft, not read).
+  1.1, 1.4, §§4–5), [Bl] (arXiv:0801.2845, Theorems 1–3, Corollary 2.0.5, §5), [FW]
+  (statement of the bijection), Savchuk 2025 (Table 1, Appendix C), Parpalak–Utkin 2026
+  (Theorem 5.1), Clément–Bader 2007 (OEIS-cached draft, abstract, Prop. 1, Lemmas 1–2,
+  Table I), OEIS A006066 and A006245.
 
 ## References
 
 * [BBL] N. Bartholdi, J. Blanc, S. Loisel, *On simple arrangements of lines and
   pseudo-lines in P² and R² with the maximum number of triangles*, Contemp. Math. 453
   (2008) 105–116; arXiv:0706.0723.
+* [Bl] J. Blanc, *The best polynomial bounds for the number of triangles in a simple
+  arrangement of n pseudo-lines*, Geombinatorics 21 (2011) 5–17; arXiv:0801.2845.
+* [CB] G. Clément, J. Bader, *Tighter upper bound for the number of Kobon triangles*,
+  draft, 2007-12-21 (cached at OEIS A006066).
 * [FW] S. Felsner, H. Weil, *Sweeps, arrangements and signotopes*, Discrete Appl. Math.
   109 (2001) 67–94.
 * P. Savchuk, *Constructing optimal Kobon triangle arrangements via table encoding, SAT
