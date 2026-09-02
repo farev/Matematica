@@ -35,14 +35,14 @@ not finish in 40 min, and the searches at `n = 12` (39), `14` (55), `18` (94) we
 stopped unresolved.
 
 *Λ(8,2) (pre-declared pivot, run in parallel by a subagent, audited by the session).*
-**CERTIFIED: `Λ(8,2) ≤ [[U]]`**, the first explicit upper bound for Erdős #436 at `k = 8`
+**CERTIFIED: `Λ(8,2) ≤ 1,508,324`**, the first explicit upper bound for Erdős #436 at `k = 8`
 (Brillhart–Lehmer–Lehmer 1964 had only `Λ(8,2) ≥ 1,200,744`): an exhaustive case tree
-over the 8th-power characters of the primes `≤ [[S]]` with `R(2)` even and unit-orbit
-branching, [[leaves]] leaves, every leaf settled by a pair of consecutive smooth
-residues `≤ [[U]]`, verified by an independent streaming checker; the same programs
+over the 8th-power characters of the primes `≤ 293` with `R(2)` even and unit-orbit
+branching, 3,499,913 leaves, every leaf settled by a pair of consecutive smooth
+residues `≤ 1,508,324`, verified by an independent streaming checker; the same programs
 reproduce `Λ(k,2)` for `k = 2..7` exactly and are sharp one below each value. BLL's lower
 bound re-verified (least pair of their Table V vector is exactly 1,200,744). So
-**`1,200,744 ≤ Λ(8,2) ≤ [[U]]`**; the exact value is open. Directory:
+**`1,200,744 ≤ Λ(8,2) ≤ 1,508,324`**; the exact value is open. Directory:
 `conjectures/power-residue-pairs/`.
 
 **Connectivity.** arXiv reachable by WebFetch and curl (listing, abstracts, PDFs).

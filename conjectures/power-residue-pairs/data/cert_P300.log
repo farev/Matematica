@@ -1,0 +1,14 @@
+=== certificate k=8 S<=300 L=1508324 13:49:10
+k=8 L=1508324: nodes=3999920 leaves=3499913 unsettled=0 maxdepth=61 max_settling_n=1508324
+largest settling values (n:count): 1508324:244 1505624:12 1502199:6 1499875:42 1498574:130 1492050:3 1490840:4 1489410:3 1484374:9 1477300:3
+20970402 cert_k8_P300_L1508324.gz
+k=8 L=1508324 even=[2] fixed={}: 3499913 leaves; tree exhaustive; unsettled=0; all settled leaves verified; U = max settling n = 1508324
+largest settling values: [(1508324, 244), (1505624, 12), (1502199, 6), (1499875, 42), (1498574, 130), (1492050, 3), (1490840, 4), (1489410, 3)]
+
+real	2m0.176s
+user	1m7.923s
+sys	0m0.260s
+9c6ddb3d0f3d62097bcac873cb5109f149849ad1d9f4a2d72ea56ba54623eb8b  cert_k8_P300_L1508324.gz
+=== one below: L=1508323 (dry)
+k=8 L=1508323: nodes=4023112 leaves=3520206 unsettled=108 maxdepth=62 max_settling_n=1505624
+=== done 13:51:44

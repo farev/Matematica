@@ -11,13 +11,14 @@ Let `Λ(k,2)` be the limit superior over primes `p` of the least `r` such that `
 determined `Λ(k,2)` for `k ≤ 7` by a machine case analysis and gave only `Λ(8,2) ≥
 1,200,744`. We complete the case analysis for `k = 8`, obtaining
 
-> **Theorem.** `1,200,744 ≤ Λ(8,2) ≤ 1,794,897`.
+> **Theorem.** `1,200,744 ≤ Λ(8,2) ≤ 1,508,324`.
 
 The upper bound is unconditional and certified: an exhaustive decision tree over the
-8th-power characters of the primes `≤ 113`, with the parity constraint on 2 and one
-child per orbit of the unit group, has 3,270,936 leaves, each settled by a pair of
-consecutive 113-smooth 8th-power residues below `1,794,897`; an independent checker
-verifies exhaustiveness and every leaf. The lower bound is BLL's, re-verified. The exact
+8th-power characters of the primes `< 300`, with the parity constraint on 2 and one
+child per orbit of the unit group, has 3,499,913 leaves, each settled by a pair of
+consecutive 293-smooth 8th-power residues `(n, n+1)` with `n ≤ 1,508,324`; an
+independent checker verifies exhaustiveness and every leaf. (A first certificate with
+the primes `≤ 113` gives `1,794,897`.) The lower bound is BLL's, re-verified. The exact
 value remains open.
 
 ## 1. Setting
@@ -124,12 +125,26 @@ The certificate at `L = 1,800,000` (`cert_k8_P113_L1800000.gz`, 19.5 MB, SHA-256
 leaves settling at the extreme values: `1,794,897` (1 leaf), `1,788,864` (34),
 `1,784,250` (27), `1,776,888` (195), `1,771,560` (1,851).
 
-With `S = {p ≤ 300}`: 108 unsettled leaves at `L = 1,500,000`; at `L = 1,200,744` there
-are 18,432 unsettled leaves and 362 leaves settle exactly at BLL's pair. **[Sweep of
-`S ≤ 300` at `L = 1.6–1.7 M` pending at the time of writing; if any of these has no
-gap the bound improves accordingly.]**
+With `S = {p < 300}` (62 primes, pairs from `data/pairs_P300_L10000000.txt`, 78,834
+pairs to `10⁷`, all audited) the tree settles earlier — the extra primes admit more
+trial pairs:
 
-Hence **`Λ(8,2) ≤ 1,794,897`** (CERTIFIED).
+| `L` | leaves | unsettled | `U` |
+|---|---|---|---|
+| 1,200,744 | 4,651,994 | 18,432 (362 leaves settle exactly at BLL's pair) | — |
+| 1,300,000 | 4,189,196 | 11,128 | — |
+| 1,500,000 | 3,520,857 | 108 | — |
+| 1,505,000 / 1,508,000 / 1,508,323 | ≈3.52 M | 108 each | — |
+| **1,508,324** | **3,499,913** | **0** | **1,508,324** (244 leaves) |
+| 1,510,000 … 1,700,000 | 3.50 M … 3.34 M | 0 | 1,508,324 … 1,697,311 |
+
+The certificate at `L = 1,508,324` (`cert_k8_P300_L1508324.gz`, 20.97 MB, SHA-256
+`9c6ddb3d…`, `data/k8_cert_sha256.txt`) passes `check_tree2.py` in 2 m 0 s. The settling
+pair of its 244 extreme leaves is `1508324 = 2²·47·71·113`, `1508325 = 3·5²·7·13²·17`.
+The 108 case vectors unsettled at `L = 1,508,323` are all settled by this one pair.
+
+Hence **`Λ(8,2) ≤ 1,508,324`** (CERTIFIED). The number is what the primes below 300
+give; whether a still larger prime set would settle the 108 vectors earlier is not known.
 
 ## 6. The lower bound and attempts to raise it
 

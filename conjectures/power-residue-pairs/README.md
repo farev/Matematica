@@ -22,12 +22,12 @@ Page: *(none yet — see PAGE.md)*.
 
 | Claim | Label | Where |
 |---|---|---|
-| **`Λ(8,2) ≤ 1,794,897`** — the first explicit upper bound: an exhaustive case tree over the 8th-power characters of the 30 primes `≤ 113` (with `R(2)` even; one child per orbit of the unit group `(Z/8)^*`) has 3,270,936 leaves, every leaf settled by a pair `(n, n+1)` of consecutive 113-smooth 8th-power residues with `n ≤ 1,794,897`; certificate checked by an independent streaming checker (1 m 52 s) | CERTIFIED (unconditional) | `NOTE.md` §3–5, `data/k8_cert.log` |
+| **`Λ(8,2) ≤ 1,508,324`** — the first explicit upper bound: an exhaustive case tree over the 8th-power characters of the 62 primes `< 300` (with `R(2)` even; one child per orbit of the unit group `(Z/8)^*`) has 3,499,913 leaves, every leaf settled by a pair `(n, n+1)` of consecutive 293-smooth 8th-power residues with `n ≤ 1,508,324`; certificate checked by an independent streaming checker (2 m 0 s); a first certificate with the primes `≤ 113` gives `1,794,897` (3,270,936 leaves, 1 m 52 s) | CERTIFIED (unconditional) | `NOTE.md` §3–5, `data/cert_P300.log`, `data/k8_cert.log` |
 | BLL's lower bound `Λ(8,2) ≥ 1,200,744` re-verified: their Table V case vector has least pair exactly `1200744 = 2³·3⁴·17·109`, `1200745 = 5·7²·13²·29` (exact sieve over all `n < 1,200,744`) | CERTIFIED (realisability of the vector via Mills 1963, as invoked by BLL; (secondary)) | `data/tableII_k8.txt`, `verify_witness.py` |
 | Controls: the same programs reproduce `Λ(k,2)` for `k = 2..7` exactly (tree at `L = Λ` has no unsettled leaf; at `L = Λ − 1` it has gaps: 8, 63, 12,046 for `k = 3, 5, 7`), BLL Table II vectors re-verified, and the consecutive-smooth-pair counts match OEIS A002071 (869 pairs for the first 13 primes) | CERTIFIED | `data/a002071_check_*.txt`, `NOTE.md` §4 |
 | Attempts to raise the lower bound: BLL's vector cannot be repaired by re-choosing the six primes at its impasse (complete search, no solution below 1.3 M); greedy extension of the 108 unsettled vectors at `L = 1.5 M`, `S ≤ 300` stalls at `≤ 1,088,867` | NUMERICAL (negative) | `NOTE.md` §6 |
 
-So `1,200,744 ≤ Λ(8,2) ≤ 1,794,897`; the exact value is not determined.
+So `1,200,744 ≤ Λ(8,2) ≤ 1,508,324`; the exact value is not determined.
 
 See [`NOTE.md`](NOTE.md) for statements and proofs, [`WRITEUP.md`](WRITEUP.md) for the
 session narrative including what failed.
@@ -50,8 +50,10 @@ Run from inside this directory:
 cd conjectures/power-residue-pairs
 gcc -O2 -o tree2 tree2.c
 python3 smoothpairs.py 113 10000000 data/pairs_P113_L10000000.txt      # or use the committed file
-./tree2 8 data/pairs_P113_L10000000.txt 1800000 cert_k8_P113_L1800000.gz --even 2
-python3 check_tree2.py 8 data/pairs_P113_L10000000.txt cert_k8_P113_L1800000.gz
+./tree2 8 data/pairs_P300_L10000000.txt 1508324 cert_k8_P300_L1508324.gz --even 2   # ~1 min
+python3 check_tree2.py 8 data/pairs_P300_L10000000.txt cert_k8_P300_L1508324.gz       # ~2 min
+./tree2 8 data/pairs_P113_L10000000.txt 1800000 cert_k8_P113_L1800000.gz --even 2     # the first certificate
+python3 audit_pairs.py data/pairs_P300_L10000000.txt
 ./tree2 7 data/pairs_P113_L10000000_x491.txt 1649375 cert_k7.gz && python3 check_tree2.py 7 data/pairs_P113_L10000000_x491.txt cert_k7.gz
 ```
 
@@ -60,7 +62,9 @@ python3 check_tree2.py 8 data/pairs_P113_L10000000.txt cert_k8_P113_L1800000.gz
 | file | produced by | what it is |
 |---|---|---|
 | `data/pairs_P113_L10000000.txt`, `..._x491.txt` | `smoothpairs.py` | consecutive 113-smooth pairs to 10⁷ (with 491 for the `k = 7` control); every line audited |
-| `cert_k8_P113_L1800000.gz` (19.5 MB, **not committed** — above the repository's size threshold; regenerate in ~1 min with the command above) | `tree2` | the `k = 8` certificate: 3,270,936 leaves; SHA-256 recorded in `data/k8_cert_sha256.txt` |
+| `cert_k8_P300_L1508324.gz` (20.97 MB) and `cert_k8_P113_L1800000.gz` (19.5 MB), **not committed** — above the repository's size threshold; regenerate in ~1 min each with the commands above | `tree2` | the `k = 8` certificates: 3,499,913 and 3,270,936 leaves; SHA-256 of both in `data/k8_cert_sha256.txt` |
+| `data/pairs_P300_L10000000.txt` | `smoothpairs.py` | consecutive 293-smooth pairs to 10⁷ (78,834), every line audited |
+| `data/sweepP300_*.log`, `data/cert_P300.log`, `data/audit.log` | this session | the `L`-sweep with `S < 300`, the certificate run and check, the audit |
 | `data/k8_cert.log`, `data/check_k8.log` | `tree2`, `check_tree2.py` | run and check logs (`L = 10⁷` variant: 2,528,327 leaves, `U = 9,927,575`) |
 | `data/tableII_k8.txt` | `verify_witness.py` | BLL Table V vector and its least pair |
 | `data/gaps_k8_P300_L1500000.txt` | `tree2 --dry` | the 108 unsettled case vectors at `L = 1.5 M`, `S ≤ 300` — the sharpest open thread |
@@ -73,10 +77,11 @@ python3 check_tree2.py 8 data/pairs_P113_L10000000.txt cert_k8_P113_L1800000.gz
 - The lower bound's realisability rests on Mills' theorem (Canad. J. Math. 15, 1963) as
   invoked by BLL; the subagent read Mills' paper, this session did not (text layer
   unusable) — marked (secondary).
-- The bound `1,794,897` is what `S ≤ 113` gives at `L = 1.8 M`; `S ≤ 300` leaves 108 gaps
-  at `1.5 M`. Deciding those 108 vectors (a complete extension search, or a tree with
-  `S ≤ 1000` on each) would either lower the certified bound below `1.5 M` or raise the
-  lower bound past it. The exact value is the open question.
+- The bound `1,508,324` is what the primes `< 300` give; the 108 case vectors unsettled
+  at `L = 1,508,323` are all settled by the single pair `(1508324, 1508325)`. Deciding those
+  108 vectors with a larger prime set (a complete extension search, or a tree with
+  `S ≤ 1000` on each) would either lower the certified bound further or, via a realisable
+  full assignment, raise the lower bound past `1.2 M`. The exact value is the open question.
 
 ## Prior work
 

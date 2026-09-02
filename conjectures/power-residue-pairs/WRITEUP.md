@@ -36,8 +36,15 @@ anything about `k = 8`, then attempt the lower bound.
 * Added `audit_pairs.py`: every factorisation in the pairs files re-multiplied and every
   base tested for primality.
 * Re-ran the checker on the `k = 8` certificate and regenerated the `k = 2..7`
-  certificates (with `L = Λ` and `L = Λ − 1`) from scratch. **[Results: see `audit.log`
-  summary in the daily log; to be pasted here at session end.]**
+  certificates (with `L = Λ` and `L = Λ − 1`) from scratch. Results (13:43–13:55 UTC,
+  `data/audit.log`): all three pairs files factorise correctly (12,946 / 13,442 / 78,834
+  pairs, 0 bad); the `k = 8`, `S ≤ 113`, `L = 1.8 M` certificate re-verifies in 1 m 52 s
+  with `U = 1,794,897` (SHA-256 `820efd1c…`); `k = 7` regenerated: 1,379,438 leaves, no gap,
+  `U = 1,649,375` and 587 gaps at `L = 1,649,374`; `k = 5`: 5,882 leaves, no gap at 7888.
+* Tightened the bound myself with the larger prime set `S ≤ 300` (the subagent had used
+  it only for gap counts): dry runs at `L = 1.6 M, 1.55 M, 1.5125 M, 1.51 M` have no gap,
+  `L = 1.508 M` and `1.505 M` have 108; the certificate at `L = 1,508,324` (3,499,913
+  leaves, 244 of them settling exactly at `1,508,324`) passes the checker in 2 m 0 s (SHA-256 `9c6ddb3d…`); the dry run one below, `L = 1,508,323`, has unsettled leaves.
 * Checked BLL64's text for the statement `Λ(8) ≥ 1200744` and the factorisations of the
   pair.
 
