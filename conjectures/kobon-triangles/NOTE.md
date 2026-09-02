@@ -250,7 +250,9 @@ By (T1) the set `S` of imperfect lines of a 94-triangle arrangement is a 6-subse
 `[18]`; by Proposition 5.1 we may replace the arrangement by its image under the group
 element that sends `S` to the lexicographically least member of its `D_18`-orbit, and by a
 further flip assume `σ(123) = −` (the flip fixes all labels). There are 561 orbits
-(covering all `C(18,6) = 18,564` subsets; `cubes.py gen`). Cube `S` is the tight instance
+(covering all `C(18,6) = 18,564` subsets; `cubes.py gen` enumerates them by canonical
+forms, and Burnside's lemma for `D_18` on 6-subsets of the 18-cycle gives 561 independently;
+the label action of the `4n` signotope maps was checked to coincide with `D_18`). Cube `S` is the tight instance
 without lex-leader clauses, plus "`U` false on every line outside `S`" and "some `U` true
 on every line of `S`".
 
