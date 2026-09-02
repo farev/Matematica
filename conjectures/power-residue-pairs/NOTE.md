@@ -163,9 +163,11 @@ minutes.
 
 ## 7. What is and is not shown
 
-* Proved: `Λ(8,2) ≤ 1,794,897`, certified, unconditional. Not proved: the exact value.
-  BLL64 conjectured nothing explicit for `k = 8`; the gap `[1,200,744, 1,794,897]` is where
-  a further session should work (the 108 gap vectors of §5 are the natural cubes).
+* Proved: `Λ(8,2) ≤ 1,508,324`, certified, unconditional. Not proved: the exact value.
+  BLL64 conjectured nothing explicit for `k = 8`; the gap `[1,200,744, 1,508,324]` is where
+  a further session should work (the 108 case vectors unsettled just below `1,508,324`
+  are the natural cubes: a realisable full extension of one of them with no pair below
+  `1,200,744` would raise the lower bound; a larger prime set may settle them earlier).
 * Sources checked today: [BLL] (text; the `1200744` statement and Table V vector),
   erdosproblems.com/436 (page), OEIS A002071. Secondary: Mills 1963 (subagent), Hildebrand
   1991 (not read), Rabung–Jordan 1970 (subagent).
