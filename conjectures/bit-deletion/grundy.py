@@ -14,7 +14,8 @@ length (t = max{t : z_1,...,z_t all odd}).  Then
 
 Everything here is exact integer arithmetic.
 """
-import sys, time
+import sys
+import time
 from collections import Counter
 
 
@@ -75,9 +76,9 @@ def check_induction_step(maxlen):
     u of length <= maxlen (the theorem proves it for every length)."""
     bad = 0
     total = 0
-    for ell in range(0, maxlen + 1):
+    for ell in range(maxlen + 1):
         for x in range(1 << ell):
-            u = format(x, '0%db' % ell) if ell else ''
+            u = format(x, f'0{ell}b') if ell else ''
             opts = set()
             for i in range(ell):
                 opts.add(formula_u(u[:i] + u[i + 1:]))
@@ -104,7 +105,7 @@ def check_lemmas(maxlen):
     tot = Counter()
     for ell in range(1, maxlen + 1):
         for x in range(1 << ell):
-            u = format(x, '0%db' % ell)
+            u = format(x, f'0{ell}b')
             if '1' not in u:
                 continue
             z1 = u.index('1')
@@ -135,8 +136,8 @@ if __name__ == '__main__':
     G = grundy_table(N)
     t1 = time.time()
     mism = [n for n in range(N) if G[n] != closed_form(n)]
-    print("definition vs closed form for 0 <= n < 2^%d: %d mismatches (%.1fs DP, %.1fs check)"
-          % (K, len(mism), t1 - t0, time.time() - t1))
+    print(f"definition vs closed form for 0 <= n < 2^{K}: {len(mism)} mismatches "
+          f"({t1 - t0:.1f}s DP, {time.time() - t1:.1f}s check)")
     print("max G:", max(G), " G(4n)=G(n) violations:",
           sum(1 for n in range(1, N // 4) if G[4 * n] != G[n]))
     print("first 40 values:", list(G[:40]))
@@ -145,8 +146,10 @@ if __name__ == '__main__':
     for L in range(1, K + 1):
         c = Counter(G[1 << (L - 1): 1 << L])
         hi = c.get(2, 0) + c.get(3, 0)
-        print("  L=%2d bits: %s  high-valued count %d = 2^(L-3)? %s"
-              % (L, dict(sorted(c.items())), hi, hi == (1 << (L - 3) if L >= 3 else None)))
+        expect = (1 << (L - 3)) if L >= 3 else None
+        print(f"  L={L:2d} bits: {dict(sorted(c.items()))}  high-valued count {hi} = 2^(L-3)? {hi == expect}")
     tot, bad = check_induction_step(min(K, 18))
-    print("induction-step check over all u with |u| <= %d: %d strings, %d mismatches" % (min(K, 18), tot, bad))
-    print("lemma check (E1',E2,O1) over |u| <= %d: cases %s, failures %s" % (min(K, 18), *check_lemmas(min(K, 18))))
+    kk = min(K, 18)
+    print(f"induction-step check over all u with |u| <= {kk}: {tot} strings, {bad} mismatches")
+    cases, failures = check_lemmas(kk)
+    print(f"lemma check (E1',E2,O1) over |u| <= {kk}: cases {cases}, failures {failures}")

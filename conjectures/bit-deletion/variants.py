@@ -14,6 +14,7 @@ Usage: python3 variants.py [K_misere]      (default 20; ~1-2 min)
 Run from inside conjectures/bit-deletion/ (imports grundy.py).
 """
 import sys
+
 from grundy import closed_form
 
 
@@ -34,7 +35,7 @@ def misere_check(K):
         W[n] = win
     bad = sum(1 for n in range(1, N) if (W[n] == 0) != (closed_form(n) == 1))
     counts = []
-    for k in range(0, (K - 1) // 2 + 1):
+    for k in range((K - 1) // 2 + 1):
         lim = 1 << (2 * k + 1)
         if lim <= N:
             counts.append((lim, sum(1 for n in range(1, lim) if W[n] == 0), 4 ** k))
@@ -79,10 +80,10 @@ def base_check(b, K):
 if __name__ == '__main__':
     K = int(sys.argv[1]) if len(sys.argv) > 1 else 20
     bad, counts = misere_check(K)
-    print("misere: n < 2^%d, disagreements with 'P <=> G = 1': %d" % (K, bad))
+    print(f"misere: n < 2^{K}, disagreements with 'P <=> G = 1': {bad}")
     for lim, c, expect in counts:
-        print("   misere P-positions below %d: %d (expected 4^k = %d)" % (lim, c, expect))
+        print(f"   misere P-positions below {lim}: {c} (expected 4^k = {expect})")
     for b, KK in [(3, 13), (4, 10), (5, 9), (10, 6)]:
         N, mx, bad = base_check(b, KK)
-        print("base %2d: n < %d, max Grundy value %d, mismatches vs binary zero-pattern formula: %d"
-              % (b, N, mx, bad))
+        print(f"base {b:2d}: n < {N}, max Grundy value {mx}, "
+              f"mismatches vs binary zero-pattern formula: {bad}")
