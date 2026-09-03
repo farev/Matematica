@@ -103,10 +103,11 @@ happens inside `v`, so it suffices to find a deletion `v_i` of `v` with
 - If `z_2` is even and `v = 0^{z_2}` (i.e. `m = 1`): delete the one of `u`;
   the result is `0^{z_1+z_2}` with `z_1 + z_2` odd, so `h = 1` directly.
 - If `z_2` is even and `v = 0^{z_2} 1 w`: delete the last character of `u`
-  (it lies in `v`). Whether that character is a zero of the last block, the
-  last one (when `w` is empty, the result is `0^{z_2}`), or the last one
-  followed by nothing, the first block of the resulting `v_i` is still
-  `0^{z_2}`, of even length, so `h(v_i) = 0`.
+  (it lies in `v`). If `w` is empty, that character is the one following
+  the block, and the deletion turns `v` into `0^{z_2}`, which has `h = 0`.
+  Otherwise the deleted character lies in `w`, so `v_i = 0^{z_2} 1 w'` with
+  `w'` equal to `w` minus its last character; the first block of `v_i`
+  still has even length `z_2`, so `h(v_i) = 0` by (1).
 
 The final statement is `h(0^{z−1}) = [z − 1 odd] = 0`. ∎
 
@@ -231,8 +232,9 @@ pattern of zero versus nonzero digits matters: the map `μ` replacing every
 nonzero digit by `1` sends the options of `n` exactly onto the options of
 `μ(n)`, so `G_b(n) = G(μ(n))` by induction, and Theorems 1–2 apply verbatim
 with "zero-blocks" read in base `b`. This reduction is also part of the
-Project Euler 961 folklore (secondary). Verified directly for bases
-3, 4, 5, 10 (`scratch` runs recorded in `WRITEUP.md`).
+Project Euler 961 folklore (secondary). Verified directly from the base-b
+definitions for bases 3, 4, 5, 10 up to `3^13, 4^10, 5^9, 10^6`
+(`variants.py`: 0 mismatches, maximum value 3 in each base).
 
 **Remark 4 (sums).** By the Sprague–Grundy theorem, a disjunctive sum of
 Bit Deletion positions `n_1, …, n_r` is a P-position iff

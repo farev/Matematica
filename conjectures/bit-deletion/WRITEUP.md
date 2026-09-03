@@ -49,10 +49,12 @@ was in hand; the invariant took about as long to see.
   n < 2^32, comparing both the normal-play closed form and the misère rule:
   0 mismatches, no value above 3, and exactly `2^{L−3}` high values at each
   bit-length. 177 s on 4 threads, 4 GB RAM. Deterministic; no seeds.
-- Base-b sanity runs (scratch, not shipped): the base-3, 4, 5 and 10 games
-  computed directly from their definitions to 3^13, 4^10, 5^9, 10^6 agree
-  with the binary formula applied to the zero/nonzero pattern — 0
-  mismatches in each base.
+- `variants.py`: the misère outcomes computed from the definition for
+  n < 2^20 agree with "P ⟺ G = 1" with 0 disagreements, with exactly `4^k`
+  misère P-positions below `2^{2k+1}` at every checkpoint; and the base-3,
+  4, 5 and 10 games computed directly from their definitions to 3^13, 4^10,
+  5^9, 10^6 agree with the binary formula applied to the zero/nonzero
+  pattern — 0 mismatches in each base (~1 min).
 
 ## What the literature check found, and when
 

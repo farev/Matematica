@@ -36,6 +36,7 @@ for the session narrative including what failed.
 |---|---|---|---|
 | `grundy.py` | pure-Python reference: Grundy values from the definition, the closed form, the induction-step and lemma checks | `python3 grundy.py 20`: ~7 s | 0 mismatches below 2^20; 0 induction-step/lemma failures for |u| ≤ 18 |
 | `grundy_check.c` | OpenMP exhaustive check of Theorem 1 (normal play) and Theorem 2 (misère) from the definition, level by bit-length | `./grundy_check 32`: 177 s, 4 threads, 4 GB RAM | 0 mismatches for all n < 2^32 |
+| `variants.py` | misère outcomes from the definition vs "P ⟺ G = 1" (n < 2^20, with the `4^k` counts), and base-3/4/5/10 digit deletion from the definition vs the binary zero-pattern formula | `python3 variants.py 20`: ~1 min | 0 disagreements in every check |
 
 Run from inside this directory:
 
