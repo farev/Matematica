@@ -284,7 +284,11 @@ bound was a(17) ≤ 72 (Pratt 2014, OEIS, (secondary)).
 by Kamenetsky in the OEIS A250000 link file `a250000_3.txt` (15 Oct
 2019, attributing the value to Ainley 1977; fetched 2026-09-03) passes
 the from-definition checker: 42 white, 42 black, no attacking pair
-(`witnesses/witness_n17_m42_kamenetsky.txt`).
+(`witnesses/witness_n17_m42_kamenetsky.txt`). Independently, the SYM16
+engine found a 42 + 42 placement of its own (`./bnb_sym 17 42`:
+678,816,342 nodes, 116 s, canonical row/column sets S = 255, T = 7199),
+also checker-verified (`witnesses/witness_n17_m42.txt`); it is a
+different placement from Kamenetsky's.
 
 **Corollary.** a(17) = 42, confirming Ainley's 1977 value and
 ⌊7·17²/48⌋ = 42.

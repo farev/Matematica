@@ -18,9 +18,10 @@ a(16) = 37 and a(17) = 42, both first determined in this repository.
    time), run record `results/n17_m43_bnb_sym_chunk*.txt` and
    `results/n17_m43_run.log`. The recorded bracket had been [42, 72] since
    2014 (Pratt, OEIS; secondary).
-2. **CERTIFIED** — a(17) ≥ 42: the 42 + 42 placement from the OEIS A250000
-   link file (Kamenetsky 2019, attributing the value to Ainley 1977) passes
-   the from-definition checker; `witnesses/witness_n17_m42_kamenetsky.txt`.
+2. **CERTIFIED** — a(17) ≥ 42: two checker-verified 42 + 42 placements —
+   one found by the engine itself in 116 s (`witnesses/witness_n17_m42.txt`)
+   and the one from the OEIS A250000 link file (Kamenetsky 2019, attributing
+   the value to Ainley 1977; `witnesses/witness_n17_m42_kamenetsky.txt`).
 3. Hence **a(17) = 42**, confirming Ainley's 1977 value and ⌊7n²/48⌋ at
    n = 17.
 4. Growth data for the page's "cost per rung" story: boundary refutation
@@ -46,16 +47,14 @@ a(16) = 37 and a(17) = 42, both first determined in this repository.
   replication is ≈ 9× the work, 4–5 h, not yet run). The verdict rests on
   the engine's validation record (Lemma 6′; 16/16 agreement with the plain
   engine on the ladder and at n = 16).
-- The 42-witness comes from the OEIS link file (secondary provenance) but
-  is verified from the definition here, so the lower bound does not depend
-  on that provenance.
+- The lower bound rests on the engine's own witness (found independently,
+  checker-verified); the Kamenetsky/Ainley placement is a second verified
+  witness, its provenance secondary.
 - Pratt's bracket [42, 72] and Ainley's 1977 table are cited as secondary
   (OEIS A250000 comments, fetched 2026-09-03); OEIS A250000 itself still
   lists only a(1..15).
-- If the capped engine witness search recorded in
-  `log/2026-09-03-peaceable-queens.md` found a 42-placement of its own, the
-  page may say the witness was also found independently; otherwise it
-  must not.
+- Use the engine's witness (`witnesses/witness_n17_m42.txt`) for Figure A,
+  since it carries no provenance caveat.
 
 ## 5. What changed since the page was written
 

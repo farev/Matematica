@@ -23,7 +23,7 @@ single-engine exhaustion — see caveats).**
 | 3 | Full ladder a(1..15) = 0,0,1,2,4,5,7,9,12,14,17,21,24,28,32 re-derived from scratch: exhaustive refutations at a(n)+1, checker-verified witnesses at a(n); first reproducible artifacts for a(14), a(15) (provenance caveat in NOTE §1) | **CERTIFIED** |
 | 4 | a(16) ≤ 41 en route (m = 42 exhausted: 607M nodes, 174 s) — recorded bracket had been [37, 64] | **CERTIFIED** |
 | 5 | Two-engine node-count equality; 40/40 SAT cross-validation (n ≤ 8, all m); DRUP-certified anchors n ≤ 7; sym-vs-plain 16/16 on ladder boundaries | validation record |
-| 6 | **a(17) = 42** (session 2, 2026-09-03): exhaustive refutation of 43+43 by the SYM16 engine (21,454,699,264 nodes, 1712 s wall on 4 workers, 16 chunks, all UNSAT — `results/n17_m43_*`; recorded bracket had been [42, 72] since 2014) + the Ainley/Kamenetsky 42+42 placement re-verified by the from-definition checker (`witnesses/witness_n17_m42_kamenetsky.txt`). Single-engine exhaustion: the plain-engine replication done at n = 16 was not run at n = 17 (caveat below) | **CERTIFIED** |
+| 6 | **a(17) = 42** (session 2, 2026-09-03): exhaustive refutation of 43+43 by the SYM16 engine (21,454,699,264 nodes, 1712 s wall on 4 workers, 16 chunks, all UNSAT — `results/n17_m43_*`; recorded bracket had been [42, 72] since 2014) + two checker-verified 42+42 witnesses: one found by the engine itself (`./bnb_sym 17 42`, 678,816,342 nodes, 116 s; `witnesses/witness_n17_m42.txt`) and the Ainley/Kamenetsky placement from the OEIS link file (`witnesses/witness_n17_m42_kamenetsky.txt`). Single-engine exhaustion: the plain-engine replication done at n = 16 was not run at n = 17 (caveat below) | **CERTIFIED** |
 
 ## Scripts
 
@@ -63,11 +63,12 @@ placements; `results/` the run records with node counts and times.
   an open thread. The SYM16 verdict rests on Lemma 6′ and the validation
   battery of NOTE §4 (16/16 agreement with the plain engine on the ladder
   and at n = 16).
-- The n = 17 lower-bound witness is the placement published in the OEIS
-  A250000 link file (Kamenetsky 2019, attributing the value to Ainley
-  1977) — provenance secondary, but the placement itself is verified from
-  the definition by `check_peaceable`, so the bound a(17) ≥ 42 is
-  CERTIFIED regardless.
+- The n = 17 lower bound has two witnesses: the engine's own
+  (`witnesses/witness_n17_m42.txt`, found in 116 s) and the placement
+  published in the OEIS A250000 link file (Kamenetsky 2019, attributing
+  the value to Ainley 1977; provenance secondary). Both are verified from
+  the definition by `check_peaceable`, so a(17) ≥ 42 does not depend on
+  any external source.
 
 - All literature citations are **(secondary)** — the sandbox could not
   fetch any primary source (see the connectivity section of the daily
