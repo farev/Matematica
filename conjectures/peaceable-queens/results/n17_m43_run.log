@@ -1,0 +1,6 @@
+n17_m43_bnb_sym: 0/16 chunks already done; running 16 on 4 workers
+chunk 0: UNSAT nodes=72403798 time=67.98s [70s elapsed]
+chunk 2: UNSAT nodes=810048076 time=284.08s [302s elapsed]
+chunk 4: UNSAT nodes=584938742 time=217.99s [306s elapsed]
+chunk 1: UNSAT nodes=901295946 time=309.84s [328s elapsed]
+chunk 3: UNSAT nodes=1244087168 time=374.71s [400s elapsed]
