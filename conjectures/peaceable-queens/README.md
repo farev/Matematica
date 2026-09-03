@@ -5,10 +5,11 @@ queens fit on an n × n board with no queen attacking a queen of the
 opposite color (attacks are not blocked; no line — row, column or
 diagonal — may carry both colors). Before this session, known exactly
 only for n ≤ 15 (secondary: OEIS A250000; arXiv:2406.06974), with the
-n = 16 bracket recorded as [37, 64] since 2014. **This session:
-a(16) = 37 (CERTIFIED).**
+n = 16 bracket recorded as [37, 64] since 2014. **Session 1 (2026-08-17):
+a(16) = 37 (CERTIFIED). Session 2 (2026-09-03): a(17) = 42 (CERTIFIED,
+single-engine exhaustion — see caveats).**
 
-**Status.** Active, 1 session (2026-08-17). See
+**Status.** Active, 2 sessions (2026-08-17, 2026-09-03). See
 [`NOTE.md`](NOTE.md) for theorems and proofs,
 [`WRITEUP.md`](WRITEUP.md) for the session narrative.
 **Write-up page:** [fabianarevalo.com/peaceable-queens](https://fabianarevalo.com/peaceable-queens)
@@ -22,6 +23,7 @@ a(16) = 37 (CERTIFIED).**
 | 3 | Full ladder a(1..15) = 0,0,1,2,4,5,7,9,12,14,17,21,24,28,32 re-derived from scratch: exhaustive refutations at a(n)+1, checker-verified witnesses at a(n); first reproducible artifacts for a(14), a(15) (provenance caveat in NOTE §1) | **CERTIFIED** |
 | 4 | a(16) ≤ 41 en route (m = 42 exhausted: 607M nodes, 174 s) — recorded bracket had been [37, 64] | **CERTIFIED** |
 | 5 | Two-engine node-count equality; 40/40 SAT cross-validation (n ≤ 8, all m); DRUP-certified anchors n ≤ 7; sym-vs-plain 16/16 on ladder boundaries | validation record |
+| 6 | **a(17) = 42** (session 2, 2026-09-03): exhaustive refutation of 43+43 by the SYM16 engine (21,454,699,264 nodes, 1712 s wall on 4 workers, 16 chunks, all UNSAT — `results/n17_m43_*`; recorded bracket had been [42, 72] since 2014) + the Ainley/Kamenetsky 42+42 placement re-verified by the from-definition checker (`witnesses/witness_n17_m42_kamenetsky.txt`). Single-engine exhaustion: the plain-engine replication done at n = 16 was not run at n = 17 (caveat below) | **CERTIFIED** |
 
 ## Scripts
 
@@ -42,6 +44,9 @@ gcc -O2 -march=native -o bnb bnb.c && gcc -O2 -o check_peaceable check_peaceable
 ./bnb 15 33                                    # UNSAT: a(15) <= 32
 ./bnb 15 32 | tail -n +2 | ./check_peaceable   # witness: a(15) >= 32
 python3 drive.py 16 42                         # parallel n=16 bound run
+gcc -O2 -march=native -DSYM16 -o bnb_sym bnb.c
+python3 run_chunked.py 17 43 16 4 ./bnb_sym    # a(17) <= 42: 16 resumable chunks, ~29 min on 4 cores
+./check_peaceable < <(grep -v '^#' witnesses/witness_n17_m42_kamenetsky.txt)   # a(17) >= 42
 ```
 
 Run everything from inside this directory. `certs/` holds the DRUP
@@ -50,6 +55,19 @@ anchor certificates (CNF + proof + witness, SHA-256 in
 placements; `results/` the run records with node counts and times.
 
 ## Known defects / caveats
+
+- **n = 17 is a single-engine exhaustion.** a(16) was refuted twice (SYM16
+  and the plain engine, independent canonical forms, node ratio ≈ 8.95).
+  At n = 17 only the SYM16 run was done; the plain-engine replication is
+  projected at ≈ 9× the nodes (≈ 1.9·10¹¹, ~4–5 h on 4 cores) and remains
+  an open thread. The SYM16 verdict rests on Lemma 6′ and the validation
+  battery of NOTE §4 (16/16 agreement with the plain engine on the ladder
+  and at n = 16).
+- The n = 17 lower-bound witness is the placement published in the OEIS
+  A250000 link file (Kamenetsky 2019, attributing the value to Ainley
+  1977) — provenance secondary, but the placement itself is verified from
+  the definition by `check_peaceable`, so the bound a(17) ≥ 42 is
+  CERTIFIED regardless.
 
 - All literature citations are **(secondary)** — the sandbox could not
   fetch any primary source (see the connectivity section of the daily

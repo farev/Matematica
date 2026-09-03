@@ -72,3 +72,4 @@ conjectures/odd-giuga/results/resume_giuga9.jsonl
 conjectures/projective-chromatic/*.proof
 conjectures/projective-chromatic/combined.out
 conjectures/bit-deletion/grundy_check
+conjectures/peaceable-queens/*_local

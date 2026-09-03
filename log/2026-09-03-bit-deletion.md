@@ -132,15 +132,15 @@ a **secondary target** in the background (see below) rather than instead.
   The literature agent's discovery that the P/N rule is Project Euler
   folklore arrived after the proof and cut the novelty of the outcome-class
   corollary; it is marked as a rediscovery throughout.
-- *Secondary target, peaceable-queens a(17).* Launched at the end of the
-  session on the freed cores (`run_chunked.py 17 43 16 4 ./bnb_sym`,
-  resumable chunks in `conjectures/peaceable-queens/results/`); status at
-  session close is recorded in `log/2026-09-03-peaceable-queens.md` if the
-  run produced anything, otherwise here: see the "Next" item.
+- *Secondary target, peaceable-queens a(17).* Launched on the freed cores
+  after the main result (`run_chunked.py 17 43 16 4 ./bnb_sym`) and
+  **completed within the session: a(17) = 42, CERTIFIED** (all 16 chunks
+  UNSAT, 21,454,699,264 nodes, 1712 s on 4 workers; 42-witness verified) —
+  recorded in `log/2026-09-03-peaceable-queens.md` with its single-engine
+  caveat.
 
-**Next.** (1) Peaceable queens a(17): finish the m = 43 chunks (resumable),
-verify Kamenetsky/Ainley's 42-queen placement with `check_peaceable`, and
-if UNSAT lands, a(17) = 42 is a new A250000 term. (2) Bit Deletion variants
+**Next.** (1) Peaceable queens: the plain-engine replication of the n = 17
+refutation (~4–5 h) and then a(18). (2) Bit Deletion variants
 with genuinely new structure: two deletions per move, deletion of a run of
 equal digits, the partizan trit game (Project Euler 963) — the block-parity
 invariant does not obviously survive any of them. (3) A398490's evenness
