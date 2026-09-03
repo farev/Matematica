@@ -37,9 +37,10 @@ write-up. Outcome: the **SYM16 engine found one in 116 s** (678,816,342
 nodes, S = 255, T = 7199), a placement different from Kamenetsky's, and
 `check_peaceable` accepts it (`witnesses/witness_n17_m42.txt`) — so
 a(17) ≥ 42 now stands on the repository's own search, with the literature
-placement as a second verified witness. The plain engine's single-core
-search was still running at the time of writing (its result file, if it
-finished inside the cap, sits in `results/n17_m42_sat_plain.txt`).
+placement as a second verified witness. The plain engine reproduced the
+same placement (same canonical sets S = 255, T = 7199) in 212 s and
+1,357,765,356 nodes (`results/n17_m42_sat_plain.txt`), as the two engines
+did at n = 16.
 
 **What failed.** Nothing in the run. The honest shortfall is the missing
 second-engine replication, a time budget decision.

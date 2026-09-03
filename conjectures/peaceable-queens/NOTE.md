@@ -288,7 +288,9 @@ the from-definition checker: 42 white, 42 black, no attacking pair
 engine found a 42 + 42 placement of its own (`./bnb_sym 17 42`:
 678,816,342 nodes, 116 s, canonical row/column sets S = 255, T = 7199),
 also checker-verified (`witnesses/witness_n17_m42.txt`); it is a
-different placement from Kamenetsky's.
+different placement from Kamenetsky's. The plain engine reproduces the
+same placement (same S, T) in 1,357,765,356 nodes, 212 s
+(`results/n17_m42_sat_plain.txt`).
 
 **Corollary.** a(17) = 42, confirming Ainley's 1977 value and
 ⌊7·17²/48⌋ = 42.
