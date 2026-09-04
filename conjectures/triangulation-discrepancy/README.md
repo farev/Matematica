@@ -59,7 +59,7 @@ Python 3.11 for `brute.py`; C99 otherwise; no other dependencies.
 | `results_census_13_17.txt` | `census.sh` | the exact discrepancy histograms and generated counts for 13 ≤ n ≤ 17 (counts equal OEIS A000109) |
 | `data/n13_disc3.txt`, `data/n15_disc3.txt`, `data/n16_disc4.txt`, `data/n17_disc3.txt` | `disc -d 3` | every triangulation of orders 13, 15, 16, 17 attaining the refined bound (adjacency lists in rotation order, one per line: 4, 89, 14, 2,652 graphs) |
 | `results_struct_m2.txt`, `results_struct_m3.txt`, `results_struct_m3_flip.txt`, `results_struct_m3_safe.txt` | `struct_enum` | the enumeration summaries for n = 17 (control) and n = 23 (three runs: discrepancy only; with the single-flip statistic; with the safe-flip statistic) |
-| `results_struct_m4.txt` | `hstruct 4 h` | the n = 29 enumeration summaries by h (h = 3 is the only case not covered by Theorem 3) |
+| `results_struct_m4.txt` | `hstruct 4 3` (four plantri `res/mod` parts) | the n = 29 enumeration summary for h = 3, the only case not covered by Theorem 3 (confirmation runs for h ≤ 2 were started and abandoned to free the cores; those cases are proved) |
 | `results_hexpants.txt`, `data/hexpants_400_solutions.txt` | `hexpants.py 400` | 400 pants triangulations realising the flip-blocked configuration at n = 35, each with its exact discrepancy (all 1) |
 
 ## Known defects and open threads
