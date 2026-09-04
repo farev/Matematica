@@ -170,6 +170,14 @@ background at 11:54 UTC rather than instead — the same division as on 09-03.
 with every finite part exact and reproducible; achieved means a written proof for
 n ≥ N₀ and an exact certificate on [496, N₀).
 
+**Attempt statement, second problem (taken up at 12:10 UTC).** Decide whether every plane
+triangulation on n = 17 vertices satisfies disc(T) ≤ 3 = n − 2⌈(n+2)/3⌉ (the smallest
+untested order of Basti–Cremaschi's open residue class), and push the residue class as
+far as the day allows: achieved means a CERTIFIED verdict at n = 17 (a counterexample
+would refute the natural extension of their Theorem 2.2; agreement extends their census
+from 9,150 to 129.7 million triangulations), and, if the structure of their proof's
+failure can be exploited, a PROVED statement covering more than one order.
+
 **What failed.**
 - *First analytic bound* (central-binomial squared with the crude split of the
   maximisation): < 1 only from n ≈ 5000; replaced by the exact maximiser of
