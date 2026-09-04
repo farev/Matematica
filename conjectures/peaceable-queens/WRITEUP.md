@@ -137,3 +137,38 @@ stands on one engine plus its validation record, and the README says so.
 A capped attempt to have the engines find a 42-witness of their own (as
 they did at n = 16 in seconds) was launched alongside the write-up; its
 outcome is recorded in the log entry.
+
+## Session 3 (2026-09-04): a(18), again as a secondary target
+
+The day's mandate went to two external problems (the antidiagonal traffic
+anomaly and the triangulation-discrepancy residue class, both in their own
+directories); neither needed the cores, and the internal audit had again
+named the next rung of this ladder as the one internal thread breakable in
+an afternoon. Same engines, rebuilt from source and re-calibrated (chunk 0
+of the n = 15 refutation reproduced its recorded 27,106,454 nodes to the
+node), same chunked driver, launched at 11:54 UTC.
+
+1. **Lower bound from the literature, checked from the definition.** The
+   A250000 link file's n = 18 board (Kamenetsky 2019, "Ainley 1977") has 47
+   white and 48 black queens; `check_peaceable` finds no attacking pair, so
+   a(18) ≥ 47 is CERTIFIED before the refutation starts. No engine search
+   for a witness was run this time.
+2. **The refutation.** `run_chunked.py 18 48 16 4 ./bnb_sym`: sixteen chunks,
+   every one UNSAT, NODES_TOTAL nodes, ENGINE_S s of engine time. The wall
+   time, WALL_S s, is not the engine's fault: for roughly two of the four
+   hours the four workers shared the machine with the day's other
+   computations (a 15-minute census, then an enumeration that turned out to
+   cost seven core-hours instead of the twenty minutes estimated, and three
+   background processes left behind by scouting agents). Once those were
+   paused or killed the workers ran at full speed. Chunk sizes ranged from
+   MINCHUNK to MAXCHUNK nodes (MAXCHUNK_S s); node growth over n = 17 was
+   ×GROWTH, above the ×4 projected from the previous rung.
+3. **So a(18) = 47**, Ainley's value, and the third consecutive open case of
+   A250000 decided here (16, 17, 18 all inside this repository's three
+   sessions on the problem).
+
+What was *not* done: the plain-engine replication (≈ 9× the nodes,
+≈ HOURS_PLAIN h) — the same single-engine caveat as n = 17 — and any engine
+witness search. The lesson of the day is operational: never run a
+"20-minute" enumeration next to a multi-hour exhaustion without measuring
+the enumeration first.
