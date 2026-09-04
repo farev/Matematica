@@ -63,9 +63,11 @@ Python 3.11 for `brute.py`; C99 otherwise; no other dependencies.
 - The refined bound for the whole residue class n ≡ 5 (mod 6) is **not** proved: the
   case of three or more big-class vertices of degree ≥ 5 (NOTE Theorem 2 (iii)–(vi),
   possible only for n ≥ 29) is open. Lemma 8's Euler count gives σ ≤ 3h − 3 + (2/3)|N|
-  there, which three disjoint links of length 5–6 can satisfy; what is missing is an
-  argument that some single flip (Lemma 7) survives the blocking by high-degree vertices
-  when every vertex lies on one of their links.
+  there, which three disjoint links of length 5–6 can satisfy. Worse, the configuration
+  in which every single flip is blocked does occur (n = 35, three periodic hexagonal
+  links covering everything; `hexpants.py` constructs such triangulations by SAT) — and
+  those triangulations have discrepancy 1, so the missing ingredient is a colouring
+  construction beyond Lemma 7, not a sharper count.
 - The n = 23 certification rests on the structure theorem (Lemmas 1–5 only) and on
   plantri generating *all* 2-connected plane graphs with the given parameters (its
   documented behaviour for `-p -c2`); it is not a brute-force census, and has been

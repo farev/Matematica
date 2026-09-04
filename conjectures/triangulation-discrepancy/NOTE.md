@@ -295,10 +295,47 @@ T, and computes disc(T) exactly. Controls: at m = 1 the same program finds the o
 family (32 candidate configurations, all of discrepancy 1) and at m = 2 it finds 2,051
 fully-mixed candidates, all of discrepancy 1, consistent with Theorem 4.
 
+**A second parametrisation, and n = 29.** By Lemma 5 a counterexample T with h
+high-degree big-class vertices H and D = V₁ − H yields the triangulation T′ = T − D on
+3m+3+h vertices, in which H is an independent set of vertices of degree in [5, 2m+2] with
+Σ(deg − 3) ≤ 2m−1, G = T′ − H, and the faces of G are the h links of H together with the
+faces of T′ not incident to H (the D-triangles and the empty triangles). `hstruct.c`
+enumerates candidates from plantri's triangulations on 3m+3+h vertices in this way (all
+independent h-sets with the degree constraints, then colourings and empty sets as before).
+Cross-check at m = 3: by h = 0, 1, 2 it finds 488,648 / 412,239 / 101,434 fully mixed
+configurations (the two parametrisations count configurations with different
+multiplicities, so the totals 1,002,321 and 948,057 need not agree), all of discrepancy 1,
+all admitting a single flip, all with a vertex off the high-degree links having two
+degree-3 neighbours — the situation of Lemma 8, as the proof predicts. At n = 29 (m = 4)
+Theorem 3 leaves only h = 3, i.e. T′ a triangulation on 18 vertices (A000109(18) =
+1,000,148,231) with three pairwise non-adjacent vertices of degrees (5,5,5) or (5,5,6);
+the run is reported in §5b.
+
+## 5b. n = 29
+
+M4_STATEMENT
+
 ## 6. What remains
 
+**The first configuration beyond Theorem 3 exists, and is harmless.** Condition (vi) of
+Theorem 2 can hold: if every vertex of W lies on the link of a high-degree vertex, and each
+such link is a hexagon coloured periodically 2,3,4,2,3,4, then every vertex of every link
+is of mixed type with a second edge of each of its two types elsewhere on the link, so no
+single flip in the sense of Lemma 7 survives. The smallest instance has m = 5 (n = 35),
+h = 3, three pairwise disjoint hexagonal links covering the 18 vertices of W (this uses the
+whole degree budget Σ(deg − 3) = 9 = 2m−1), 14 stellated triangles and 6 empty triangles
+partitioning W. Whether such a T exists is a small exact-cover problem on the 216 rainbow
+triples of W; `hexpants.py` (pysat/CaDiCaL) finds solutions — after discarding models
+whose vertex links are not single paths, the survivors are triangulations of the pair of
+pants, hence planar — and computes disc(T) exactly for each. HEXPANTS_RESULT So the
+obstruction is an artefact of the flip family: these triangulations admit polychromatic
+colourings that no single flip produces, and the proof for h ≥ 3 must use a richer
+construction (NUMERICAL as a statement about the configuration in general; CERTIFIED for
+the instances computed).
+
 The bound for the whole residue class would follow from a proof that condition (vi) of
-Theorem 2 is impossible under (i)–(v) for h ≥ 3. Lemma 8's count gives
+Theorem 2 is impossible under (i)–(v) for h ≥ 3 — which the example above shows is false as
+stated — or, more realistically, from a colouring construction beyond Lemma 7. Lemma 8's count gives
 σ ≤ 3h − 3 + (2/3)|N| for a configuration in which every vertex off the high-degree links
 has at most one degree-3 neighbour; for h = 3 this is not yet a contradiction (three
 pairwise disjoint links of length 5 or 6 satisfy it), and for large h the set N can be all

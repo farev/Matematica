@@ -1,0 +1,2 @@
+m=3 n=23: graphs read 109507132; passing face filter by h: 7595 307423 1533634 0; equitable colourings 11678; candidates (empty sets covering) 998162; fully mixed 948057; without any single flip (Lemma 7) 0; without a safe flip (occ>=2, no H-neighbour) 0; max disc seen 1; bound U=5
+wall=293 s

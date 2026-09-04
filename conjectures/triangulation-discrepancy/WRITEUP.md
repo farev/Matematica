@@ -92,6 +92,20 @@ vertices. For h = 3 the same count allows three disjoint links of length 5 or 6,
 large h the links may cover every vertex, so the general case needs the blocking
 analysis proper.
 
+**Probing the wall.** With h ≤ 2 closed, the first configuration the lemmas cannot touch
+was written down explicitly: n = 35, three disjoint hexagonal links coloured 2,3,4,2,3,4
+covering all 18 other vertices, which kills every single flip. Rather than theorise, a
+SAT model (216 rainbow triples, exact-cover-style cardinality constraints, a
+planarity-free formulation whose surviving solutions are automatically triangulations of
+the pair of pants) produced such triangulations within seconds — and every one of them
+has discrepancy 1. So the wall is a property of the flip family, not of the
+triangulations: the eventual proof for h ≥ 3 needs a genuinely different colouring
+construction, and the hexagon-pants family is the test case to design it on. Meanwhile
+the n = 29 case (h = 3, three high-degree vertices) was attacked computationally through
+a second parametrisation (`hstruct.c`: triangulations on 18 vertices with three
+non-adjacent vertices of degree 5 or 6, from plantri's 1,000,148,231 triangulations),
+validated against the first at n = 17 and n = 23.
+
 **Slips and corrections.** The census driver's first version used `/usr/bin/env time`,
 absent here, so its first run produced empty logs ("bad header") — caught within a minute
 and rerun with shell timing. The chart of which plantri flags select quadrangulations
