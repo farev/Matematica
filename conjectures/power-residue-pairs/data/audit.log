@@ -1,0 +1,33 @@
+=== audit start Wed Sep  2 13:43:31 UTC 2026
+pairs_P113_L10000000.txt: 12946 pairs checked, 0 bad, largest prime 113, largest n 9996374
+pairs_P113_L10000000_x491.txt: 13442 pairs checked, 0 bad, largest prime 491, largest n 9996374
+pairs_P300_L10000000.txt: 78834 pairs checked, 0 bad, largest prime 293, largest n 9999899
+=== k=8 L=1800000 certificate re-check
+k=8 L=1800000 even=[2] fixed={}: 3270936 leaves; tree exhaustive; unsettled=0; all settled leaves verified; U = max settling n = 1794897
+largest settling values: [(1794897, 1), (1788864, 34), (1784250, 27), (1776888, 195), (1775283, 1), (1774916, 1), (1774223, 132), (1771560, 1851)]
+
+real	1m51.905s
+user	1m0.602s
+sys	0m0.130s
+820efd1c4da9802bfbca0966ede43a354783b9eb06c4babb29c0be32aa4d1ce5  cert_k8_P113_L1800000.gz
+=== k=7 regenerate at L=1649375 and 1649374
+k=7 L=1649375: nodes=1609345 leaves=1379438 unsettled=0 maxdepth=31 max_settling_n=1649375
+largest settling values (n:count): 1649375:26 1649200:1 1643355:3 1634104:1 1629432:7 1625624:1060 1620528:2 1608574:4 1600312:66 1594175:680
+k=7 L=1649375 even=[] fixed={}: 1379438 leaves; tree exhaustive; unsettled=0; all settled leaves verified; U = max settling n = 1649375
+largest settling values: [(1649375, 26), (1649200, 1), (1643355, 3), (1634104, 1), (1629432, 7), (1625624, 1060), (1620528, 2), (1608574, 4)]
+k=7 L=1649374: nodes=1614595 leaves=1383938 unsettled=587 maxdepth=31 max_settling_n=1649200
+=== k=5 at 7888 / 7887, k=6 at 202124 / 202123 (P300 pairs), k=4 at 1224/1223, k=3 at 77/76, k=2 at 9/8
+k=5 L=7888: nodes=7353 leaves=5882 unsettled=0 maxdepth=26 max_settling_n=7888
+k=6 L=202124: nodes=22891 leaves=19075 unsettled=0 maxdepth=59 max_settling_n=202124
+=== (audit script stopped at k=5 L=7887 with S<300 after 6 min; remaining small controls run with S<=113 pairs) 13:53:42
+k=5 L=7887: leaves=6606 unsettled=63 maxdepth=30 max_settling_n=7865
+k=4 L=1224: leaves=232 unsettled=0 maxdepth=13 max_settling_n=1224
+k=4 L=1223: leaves=2940118 unsettled=1235808 maxdepth=30 max_settling_n=1196
+k=3 L=77: leaves=18 unsettled=0 maxdepth=6 max_settling_n=77
+k=3 L=76: leaves=3092 unsettled=1536 maxdepth=19 max_settling_n=76
+k=2 L=9: leaves=4 unsettled=0 maxdepth=3 max_settling_n=9
+k=2 L=8: leaves=5 unsettled=1 maxdepth=4 max_settling_n=6
+k=4 L=1224 even=[] fixed={}: 232 leaves; tree exhaustive; unsettled=0; all settled leaves verified; U = max settling n = 1224
+k=3 L=77 even=[] fixed={}: 18 leaves; tree exhaustive; unsettled=0; all settled leaves verified; U = max settling n = 77
+k=2 L=9 even=[] fixed={}: 4 leaves; tree exhaustive; unsettled=0; all settled leaves verified; U = max settling n = 9
+=== audit end 13:54:12

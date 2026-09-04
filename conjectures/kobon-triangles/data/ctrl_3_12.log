@@ -1,0 +1,19 @@
+n= 3 t=  1: SAT      (SAT expected) OK     0.0s  vars=5 clauses=5 adjacency-triangles=1 sweep-triangular-faces=1
+n= 3 t=  2: UNSAT    (UNSAT expected) OK     0.0s  vars=6 clauses=6 
+n= 4 t=  2: SAT      (SAT expected) OK     0.0s  vars=36 clauses=84 adjacency-triangles=2 sweep-triangular-faces=2
+n= 4 t=  3: UNSAT    (UNSAT expected) OK     0.0s  vars=36 clauses=84 
+n= 5 t=  5: SAT      (SAT expected) OK     0.0s  vars=102 clauses=325 adjacency-triangles=5 sweep-triangular-faces=5
+n= 5 t=  6: UNSAT    (UNSAT expected) OK     0.0s  vars=102 clauses=325 
+n= 6 t=  7: SAT      (SAT expected) OK     0.0s  vars=228 clauses=940 adjacency-triangles=7 sweep-triangular-faces=7
+n= 6 t=  8: UNSAT    (UNSAT expected) OK     0.0s  vars=228 clauses=940 
+n= 7 t= 11: SAT      (SAT expected) OK     0.0s  vars=423 clauses=2204 adjacency-triangles=11 sweep-triangular-faces=11
+n= 7 t= 12: UNSAT    (UNSAT expected) OK     0.1s  vars=423 clauses=2204 
+n= 8 t= 14: SAT      (SAT expected) OK     0.0s  vars=688 clauses=4518 adjacency-triangles=14 sweep-triangular-faces=14
+n= 8 t= 15: UNSAT    (UNSAT expected) OK     0.9s  vars=688 clauses=4518 
+n= 9 t= 21: SAT      (SAT expected) OK     2.9s  vars=1043 clauses=8553 adjacency-triangles=21 sweep-triangular-faces=21
+n= 9 t= 22: UNSAT    (UNSAT expected) OK     5.8s  vars=1043 clauses=8553 
+n=10 t= 25: SAT      (SAT expected) OK     3.4s  vars=1512 clauses=15294 adjacency-triangles=25 sweep-triangular-faces=25
+n=10 t= 26: UNSAT    (UNSAT expected) OK    92.1s  vars=1512 clauses=15294 
+n=11 t= 32: SAT      (SAT expected) OK     7.2s  vars=2133 clauses=26053 adjacency-triangles=32 sweep-triangular-faces=32
+n=11 t= 33: UNSAT    (UNSAT expected) OK   841.1s  vars=2133 clauses=26053 
+n=12 t= 37: SAT      (SAT expected) OK    22.1s  vars=2904 clauses=42556 adjacency-triangles=37 sweep-triangular-faces=37

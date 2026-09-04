@@ -1,0 +1,6 @@
+k=8 L=10000000 even=[2] fixed={}: 2528327 leaves; tree exhaustive; unsettled=0; all settled leaves verified; U = max settling n = 9927575
+largest settling values: [(9927575, 2), (9814169, 1), (9611875, 1), (9541986, 1), (9458085, 113), (9222499, 83), (9217824, 16), (9174815, 100)]
+
+real	1m5.460s
+user	0m46.178s
+sys	0m0.072s

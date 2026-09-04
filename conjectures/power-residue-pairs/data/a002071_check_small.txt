@@ -1,0 +1,9 @@
+primes<= 2 (+[]) L=20000000: 25 smooth numbers, 1 consecutive pairs, 0.0s -> pairs_P2_L20000000.txt
+primes<= 3 (+[]) L=20000000: 206 smooth numbers, 4 consecutive pairs, 0.0s -> pairs_P3_L20000000.txt
+primes<= 5 (+[]) L=20000000: 861 smooth numbers, 10 consecutive pairs, 0.0s -> pairs_P5_L20000000.txt
+primes<= 7 (+[]) L=20000000: 2492 smooth numbers, 23 consecutive pairs, 0.0s -> pairs_P7_L20000000.txt
+primes<= 11 (+[]) L=20000000: 5369 smooth numbers, 40 consecutive pairs, 0.0s -> pairs_P11_L20000000.txt
+primes<= 13 (+[]) L=20000000: 10083 smooth numbers, 68 consecutive pairs, 0.0s -> pairs_P13_L20000000.txt
+primes<= 17 (+[]) L=20000000: 16626 smooth numbers, 108 consecutive pairs, 0.0s -> pairs_P17_L20000000.txt
+primes<= 19 (+[]) L=20000000: 25548 smooth numbers, 167 consecutive pairs, 0.0s -> pairs_P19_L20000000.txt
+primes<= 23 (+[]) L=20000000: 36555 smooth numbers, 241 consecutive pairs, 0.0s -> pairs_P23_L20000000.txt
