@@ -342,6 +342,17 @@ independent transversal of the empty triangles would also work (all degree-3 and
 high-degree vertices then go blue, giving classes 3m+3−k and 3m+2+k), but here the six
 empty triangles partition W, so no transversal has fewer than m+1 vertices.
 
+*The general target, for a future proof.* Colour W with k blue vertices so that (i) every
+empty triangle is bichromatic and (ii) no high-degree link carries both a red–red and a
+blue–blue edge; then every degree-3 vertex is forced (blue if its triangle has ≥ 2 red
+vertices, red if ≥ 2 blue) and every high-degree vertex is forced or free. Writing a₂ for
+the number of degree-3 triangles with ≥ 2 blue vertices and h_R for the number of
+high-degree vertices coloured red, the red class has 3m+3−k+a₂+h_R vertices, and the
+bound holds exactly when k − m ≤ a₂ + h_R ≤ k + m − 1. Lemma 7 is the case k = 2m+1 of
+this (blue = (F − u) ∪ B), and the hexagon example realises k = m+1, a₂ = 4, h_R = 1. A
+proof for h ≥ 3 would exhibit a transversal-like blue set with the right number of
+"doubly blue" degree-3 triangles; the family of §6 is the natural test bed.
+
 The bound for the whole residue class would follow from a proof that condition (vi) of
 Theorem 2 is impossible under (i)–(v) for h ≥ 3 — which the example above shows is false as
 stated — or, more realistically, from a colouring construction beyond Lemma 7. Lemma 8's count gives
