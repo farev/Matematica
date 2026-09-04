@@ -1,21 +1,25 @@
 # PAGE handoff — triangulation-discrepancy (new page)
 
 1. **Headline claim.** Basti–Cremaschi's refined discrepancy bound disc(T) ≤ n − 2⌈(n+2)/3⌉
-   for plane triangulations, open for n ≡ 5 (mod 6), holds at the next two open orders
-   n = 17 (all 129,664,753 triangulations, full census) and n = 23 (every configuration
-   allowed by the structure theorem, 948,057 of them, has discrepancy 1), and is
-   PROVED whenever the balanced four-colouring's big class has no vertex of degree ≥ 5;
-   a structure theorem (PROVED) pins down what a counterexample would have to look like.
+   for plane triangulations, open for n ≡ 5 (mod 6), is **PROVED** for the first three
+   orders of that class, n = 11, 17 and 23, and for every n in the class whenever the
+   balanced four-colouring's big class has at most two vertices of degree ≥ 5; a
+   counterexample would need n ≥ 29 and a precisely described shape (structure theorem,
+   PROVED). Two independent computations confirm the theorem where it is new: the full
+   census at n = 17 (129,664,753 triangulations) and a structural enumeration at n = 23
+   (948,057 candidate configurations, all of discrepancy 1) — CERTIFIED.
 
 2. **Contributions.**
-   1. PROVED — a counterexample on n = 6m+5 vertices must have a 4-colouring with classes
-      (3m+2, m+1, m+1, m+1), a fully mixed big class with ≥ 2m+3 vertices of degree 3,
-      1 to m−1 vertices of degree ≥ 5, none of degree 4; every other vertex on a face
-      avoiding the big class; no vertex with more than 2m+1 degree-3 big-class neighbours;
-      and every single flip blocked (NOTE Theorem 2).
-   2. PROVED — disc(T) ≤ 2m−1 when the big class has only degree-3 vertices, i.e. for every
-      stellation of an equitably 3-coloured Eulerian triangulation on 3m+3 vertices at
-      3m+2 faces (NOTE Theorem 3).
+   1. PROVED — the refined bound for all triangulations on 11, 17 and 23 vertices, and for
+      every n ≡ 5 (mod 6) when the big class of the balanced 4-colouring has at most two
+      vertices of degree ≥ 5 (NOTE Theorem 3: two recolouring lemmas, a dominant-vertex
+      lemma, a single-flip lemma, and an Euler-formula count on the subgraph induced by
+      the high-degree links).
+   2. PROVED — a counterexample on n = 6m+5 vertices must have m ≥ 4 and a 4-colouring
+      with classes (3m+2, m+1, m+1, m+1), a fully mixed big class with ≥ 2m+3 vertices of
+      degree 3, 3 to m−1 vertices of degree ≥ 5, none of degree 4; every other vertex on a
+      face avoiding the big class; no vertex with more than 2m+1 degree-3 big-class
+      neighbours; and every single flip blocked (NOTE Theorem 2).
    3. CERTIFIED — disc(T) ≤ 3 for all 129,664,753 triangulations on 17 vertices; 2,652
       attain it (certificates committed). 15 min on one core.
    4. CERTIFIED — n = 23: disc(T) ≤ 5 = U(23) for every triangulation on 23 vertices; the
@@ -45,8 +49,9 @@
      at n = 17 and 23 nothing that looks like this fails."
 
 4. **Caveats the page must carry.**
-   - The residue class is NOT settled: the theorem covers the degree-3 case; the general
-     case is open, with the obstruction described precisely.
+   - The residue class is NOT settled for n ≥ 29: the theorem covers at most two
+     high-degree vertices in the big class; the general case is open, with the
+     obstruction described precisely.
    - The n = 23 result is a certification through the structure theorem, not a census;
      it relies on plantri generating all 2-connected plane graphs with the stated
      parameters and on Lemmas 1–5.

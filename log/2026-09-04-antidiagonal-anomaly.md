@@ -36,19 +36,24 @@ n ≈ 420; odd n near x* = 7.5, n ≈ 480). New directory `conjectures/antidiago
 **Second external result (afternoon): triangulation-discrepancy.** Basti–Cremaschi
 (arXiv:2608.21585, 21 Aug 2026) prove disc(T) ≤ n − 2⌈(n+2)/3⌉ for plane triangulations
 with n ≢ 5 (mod 6) and leave the class n ≡ 5 (mod 6) open (checked at n = 11 only).
-**PROVED** — a structure theorem for a counterexample on n = 6m+5 vertices: it carries a
-4-colouring with classes (3m+2, m+1, m+1, m+1) whose big class is fully mixed (every
-link shows all three colour pairs, so no degree 4), has ≥ 2m+3 vertices of degree 3 and
-1..m−1 of degree ≥ 5, every other vertex lies on a face avoiding the big class, no
-vertex has more than 2m+1 degree-3 neighbours in it, and every "single flip" is blocked;
-and the bound itself when the big class has no vertex of degree ≥ 5 (stellations of
-equitably 3-coloured Eulerian triangulations). **CERTIFIED** — disc ≤ U(n) for all
-129,664,753 triangulations on 17 vertices (full census, 15 min, 2,652 extremal, exact
-distributions for 13 ≤ n ≤ 17 extending the paper's table) and for all ≈ 6·10¹⁰ on
-23 vertices, via the structure theorem: 109,507,132 two-connected plane graphs on 12
-vertices from plantri, 948,057 surviving configurations, all of discrepancy 1 (277 s).
-The general residue class stays open; the obstruction (a high-degree big-class vertex
-blocking every flip) is described exactly. New directory
+**PROVED** — the refined bound for every triangulation on n = 11, 17 and 23 vertices
+(the first three orders of the open class), and for every n ≡ 5 (mod 6) whenever the
+balanced 4-colouring's big class has at most two vertices of degree ≥ 5; the route is a
+structure theorem for a counterexample on n = 6m+5 vertices — it carries a 4-colouring
+with classes (3m+2, m+1, m+1, m+1) whose big class is fully mixed (every link shows all
+three colour pairs, so no degree 4), has ≥ 2m+3 vertices of degree 3 and 3..m−1 of
+degree ≥ 5, every other vertex lies on a face avoiding the big class, no vertex has more
+than 2m+1 degree-3 neighbours in it, and every "single flip" is blocked — closed for
+h ≤ 2 high-degree vertices by an Euler-formula count on the subgraph induced by their
+links (Lemma 8), so a counterexample needs n ≥ 29. **CERTIFIED**, as independent
+confirmations at the two new orders — disc ≤ U(n) for all 129,664,753 triangulations on
+17 vertices (full census, 15 min, 2,652 extremal, exact distributions for 13 ≤ n ≤ 17
+extending the paper's table) and for all ≈ 6·10¹⁰ on 23 vertices, via the structure
+theorem: 109,507,132 two-connected plane graphs on 12 vertices from plantri, 948,057
+surviving configurations, all of discrepancy 1 and every one admitting a single flip
+(277 s / 365 s). The general residue class stays open for n ≥ 29; the obstruction (three
+or more high-degree big-class vertices whose links cover the flips) is described
+exactly. New directory
 `conjectures/triangulation-discrepancy/` (README, NOTE, WRITEUP, PAGE.md, code, data);
 index row added.
 

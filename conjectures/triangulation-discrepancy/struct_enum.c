@@ -162,6 +162,64 @@ static int disc_T(void) {
 static int triFaces[MAXF], nTri, occupied[MAXF], needEmpty;
 static int coverCnt[MAXW];
 
+
+/* ---- Lemma 7 test: does some single flip (F, S, u) satisfy the hypotheses? ---- */
+static long long stat_noflip;
+static int single_flip_exists(void) {
+    /* occupied faces: index by face; D = occupied triangles, H = occupied non-triangles */
+    for (int F = 0; F < 3; F++) for (int S = 0; S < 3; S++) {
+        if (S == F) continue;
+        int B = 3 - F - S;
+        for (int u = 0; u < nW; u++) {
+            if (col3[u] != F) continue;
+            int occ = 0, p = 0, q = 0, blocked = 0;
+            for (int f = 0; f < nfG && !blocked; f++) {
+                if (!occupied[f]) continue;
+                int L = faceLen[f];
+                if (L == 3) {
+                    for (int k = 0; k < 3; k++) if (faceV[f][k] == u) occ++;
+                    continue;
+                }
+                /* H-face: position of u on the cycle */
+                int pos = -1;
+                for (int k = 0; k < L; k++) if (faceV[f][k] == u) pos = k;
+                int adjS = 0, fbElsewhere = 0, fbAny = 0;
+                if (pos >= 0) {
+                    int pc = col3[faceV[f][(pos + L - 1) % L]], nc = col3[faceV[f][(pos + 1) % L]];
+                    if (pc == S || nc == S) adjS = 1;
+                }
+                for (int k = 0; k < L; k++) {
+                    int a = faceV[f][k], b = faceV[f][(k + 1) % L];
+                    int ca = col3[a], cb = col3[b];
+                    if ((ca == F && cb == B) || (ca == B && cb == F)) {
+                        fbAny = 1;
+                        if (a != u && b != u) fbElsewhere = 1;
+                    }
+                }
+                if (pos >= 0 && adjS) { q++; if (fbElsewhere) blocked = 1; }
+                if (fbAny && !fbElsewhere) p++;   /* every F-B edge incident to u (u is on the face) */
+            }
+            if (blocked) continue;
+            if (occ + p >= 2 && occ + q <= 2 * m + 1) return 1;
+        }
+    }
+    return 0;
+}
+
+
+static long long stat_nosafe;
+static int safe_flip_exists(void) {
+    for (int u = 0; u < nW; u++) {
+        int occ = 0, onH = 0;
+        for (int f = 0; f < nfG; f++) {
+            if (!occupied[f]) continue;
+            for (int k = 0; k < faceLen[f]; k++) if (faceV[f][k] == u) { if (faceLen[f] == 3) occ++; else onH = 1; }
+        }
+        if (!onH && occ >= 2 && occ <= 2 * m + 1) return 1;
+    }
+    return 0;
+}
+
 static void print_T_ascii(int d) {
     printf("COUNTEREXAMPLE? disc=%d n=%d m=%d ; G colouring:", d, n, m);
     for (int v = 0; v < nW; v++) printf(" %d", col3[v]);
@@ -183,6 +241,9 @@ static void process_candidate(void) {
         if (!(has[0] && has[1] && has[2])) return;
     }
     stat_fullymixed++;
+    int flip = single_flip_exists();
+    if (!safe_flip_exists()) stat_nosafe++;
+    if (!flip) { stat_noflip++; if (verbose || stat_noflip <= 3) { printf("NO-FLIP candidate #%lld:", stat_noflip); for (int v = 0; v < nW; v++) printf(" %d", col3[v]); printf(" ; occupied:"); for (int f = 0; f < nfG; f++) if (occupied[f]) { printf(" ("); for (int k = 0; k < faceLen[f]; k++) printf("%d%s", faceV[f][k], k + 1 < faceLen[f] ? "," : ""); printf(")"); } printf(" ; G adj:"); for (int v = 0; v < nW; v++) { printf(" |"); for (int i = 0; i < degW[v]; i++) printf(" %d", adjW[v][i]); } printf("\n"); } }
     build_T(occupied);
     int d = disc_T();
     if (d > maxdisc_seen) maxdisc_seen = d;
@@ -256,7 +317,7 @@ int main(int argc, char **argv) {
         classCnt[0] = classCnt[1] = classCnt[2] = 0;
         colour_rec(0, -1);
     }
-    fprintf(stderr, "m=%d n=%d: graphs read %lld; passing face filter by h: %lld %lld %lld %lld; equitable colourings %lld; candidates (empty sets covering) %lld; fully mixed %lld; max disc seen %d; bound U=%d\n",
-            m, 6 * m + 5, stat_graphs, stat_h[0], stat_h[1], stat_h[2], stat_h[3], stat_col, stat_cand, stat_fullymixed, maxdisc_seen, 2 * m - 1);
+    fprintf(stderr, "m=%d n=%d: graphs read %lld; passing face filter by h: %lld %lld %lld %lld; equitable colourings %lld; candidates (empty sets covering) %lld; fully mixed %lld; without any single flip (Lemma 7) %lld; without a safe flip (occ>=2, no H-neighbour) %lld; max disc seen %d; bound U=%d\n",
+            m, 6 * m + 5, stat_graphs, stat_h[0], stat_h[1], stat_h[2], stat_h[3], stat_col, stat_cand, stat_fullymixed, stat_noflip, stat_nosafe, maxdisc_seen, 2 * m - 1);
     return 0;
 }

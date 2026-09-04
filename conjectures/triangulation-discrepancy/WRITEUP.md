@@ -75,6 +75,23 @@ So the refined bound holds at n = 23, an order whose 60 billion triangulations n
 could visit, and the structured candidates are in fact the *easiest* triangulations, not
 the hardest — which is itself a hint about where a proof should look.
 
+**The count that closed h ≤ 2.** While the n = 23 enumeration ran a second time with a
+new statistic (does every candidate admit a Lemma 7 flip? — it does, 0 exceptions at
+n = 17 and n = 23), the question became *why*. The answer for one or two high-degree
+vertices is a counting argument that had been sitting in plain view: if every vertex off
+the high-degree links has at most one degree-3 neighbour, then at least |N| − h − 1
+degree-3 vertices have all three neighbours on the links N and occupy triangular faces of
+G[N]; Euler's formula on G[N], the fact that every N-vertex must also lie on an *empty*
+triangle (Lemma 3 again), and a boundary-length bookkeeping give
+σ ≤ 3h − 3 + (2/3)|N| for the total link length σ ≥ max(|N|, 5h) — impossible for
+h ≤ 2. So a vertex off the links with two degree-3 neighbours exists, and it is a flip
+nobody can block. That upgrades the n = 17 and n = 23 results from CERTIFIED to PROVED
+(a counterexample at 6m+5 has at most m−1 high-degree vertices), leaves the computations
+as independent confirmations, and moves the frontier to n = 29 with three high-degree
+vertices. For h = 3 the same count allows three disjoint links of length 5 or 6, and for
+large h the links may cover every vertex, so the general case needs the blocking
+analysis proper.
+
 **Slips and corrections.** The census driver's first version used `/usr/bin/env time`,
 absent here, so its first run produced empty logs ("bad header") — caught within a minute
 and rerun with shell timing. The chart of which plantri flags select quadrangulations

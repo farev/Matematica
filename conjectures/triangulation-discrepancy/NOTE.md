@@ -13,15 +13,18 @@ residue class n ≡ 5 (mod 6) — where U(6m+5) = 2m−1 against the universal 2
 open", and verify U(11) = 1 by exhaustive computation. We prove a structure theorem for a
 hypothetical counterexample (Theorem 2): it must carry a proper 4-colouring with class
 sizes (3m+2, m+1, m+1, m+1) whose big class V₁ is *fully mixed* (every link shows all
-three colour pairs), contains at least 2m+3 vertices of degree 3 and between 1 and m−1
+three colour pairs), contains at least 2m+3 vertices of degree 3 and between 3 and m−1
 vertices of degree ≥ 5 (none of degree 4), and such that every other vertex lies on a face
-avoiding V₁. When the big class has no vertex of degree ≥ 5 the bound is **proved**
-(Theorem 3). The structure theorem turns the next open orders into finite checks that
-brute force cannot reach: all 129,664,753 triangulations on 17 vertices (full census;
-disc ≤ 3 = U(17), and exactly 2,652 of them attain it) and all triangulations on 23
-vertices (≈ 6·10¹⁰ of them, unreachable directly) via an enumeration of the 109 million
-2-connected plane graphs that can serve as T − V₁ — **CERTIFIED**, see §5 for the
-outcome. We also extend the authors' exact discrepancy table from n ≤ 12 to n ≤ 17.
+avoiding V₁. When the big class has at most two vertices of degree ≥ 5 the bound is
+**proved** (Theorem 3, by a single recolouring plus an Euler-formula count); since a
+counterexample on 6m+5 vertices has at most m−1 such vertices, **the refined bound holds
+for n = 11, 17 and 23**, the first three orders of the open class, and any counterexample
+has n ≥ 29. Independently of the proof, the structure theorem turns those orders into
+finite checks that brute force cannot reach, and we ran them: all 129,664,753
+triangulations on 17 vertices (full census; disc ≤ 3 = U(17), exactly 2,652 attain it) and
+all triangulations on 23 vertices (≈ 6·10¹⁰, unreachable directly) via an enumeration of
+the 109 million 2-connected plane graphs that can serve as T − V₁ — **CERTIFIED**, §5. We
+also extend the authors' exact discrepancy table from n ≤ 12 to n ≤ 17.
 
 ## 0. Setting and notation
 
@@ -168,31 +171,79 @@ So k can be any integer in [occ(u) + q(u), occ(u) + p(u)], using |D| + |H| = 3m+
 classes have sizes blue = (2m+1) + k and red = (m+2) + (3m+2 − k), both ≥ 2m+3 exactly
 when 2 ≤ k ≤ 2m+1; the hypotheses provide such a k. ∎
 
-**Theorem 3 (no high-degree vertex in the big class).** If T has a proper 4-colouring
-with class sizes (3m+2, m+1, m+1, m+1) in which every vertex of the big class has degree 3,
-then disc(T) ≤ 2m−1.
+**Lemma 8 (an outside vertex with two degree-3 neighbours).** Suppose neither Lemma 2
+nor Lemma 3 applies and 1 ≤ h := |H| ≤ 2. Let N = ⋃_{v∈H} V(C_v) ⊆ W be the set of
+W-vertices lying on the link of a high-degree vertex. Then some u ∈ W − N has occ(u) ≥ 2.
 
-*Proof.* If Lemma 2 or Lemma 3 applies we are done; otherwise Lemma 6 gives
-occ(u) ≤ 2m+1 for all u. Here H = ∅, so for u ∈ V₂ the hypotheses of Lemma 7 read
-2 ≤ occ(u) ≤ 2m+1, and Σ_{u∈V₂} occ(u) = |D| = 3m+2 > 2(m+1) shows that some u ∈ V₂
-has occ(u) ≥ 3. ∎
+*Proof.* Suppose instead that every u ∈ W − N has occ(u) ≤ 1.
 
-Equivalently: every triangulation obtained from an Eulerian triangulation on 3m+3
-vertices with colour classes of size m+1 by inserting a degree-3 vertex into 3m+2 of its
-faces satisfies the refined bound. (In that situation G = T − V₁ has 3(3m+3) − 6 edges,
-i.e. is a triangulation, and is 3-colourable, hence Eulerian.)
+(1) *Inner D-vertices.* For each class F, the vertices of F − N have occ ≤ 1, so distinct
+D-vertices whose F-neighbour lies outside N have distinct such neighbours: at most |F − N|
+of them. Hence at most |W − N| = 3m+3−|N| vertices of D have a neighbour outside N, and at
+least |D| − (3m+3−|N|) = |N| − h − 1 have all three neighbours in N. Call them *inner*;
+each occupies a triangular face of G whose three vertices lie in N, and distinct inner
+vertices occupy distinct faces. Let τ_D ≥ |N| − h − 1 be the number of these faces.
 
-**Theorem 2 (structure of a counterexample).** If n = 6m+5 and disc(T) ≥ 2m+1, then T has
-a proper 4-colouring with class sizes (3m+2, m+1, m+1, m+1) such that, with V₁ the big
-class: (i) every link C_v, v ∈ V₁, shows all three colour pairs, so deg v ∈ {3} ∪ [5, 2m+2];
-(ii) Σ_{v∈V₁}(deg v − 3) ≤ 2m−1, so at least 2m+3 vertices of V₁ have degree 3 and at most
-m−1 have degree ≥ 5; (iii) at least one vertex of V₁ has degree ≥ 5; (iv) every vertex of
-W = V(T) − V₁ lies on a face disjoint from V₁, and there are between m+1 and 3m such
-faces; (v) every u ∈ W is adjacent to at most 2m+1 degree-3 vertices of V₁; (vi) for every
-choice of classes (F, S) and every u ∈ F the hypotheses of Lemma 7 fail.
+(2) *The plane graph G″ = G[N].* Its faces are of three kinds: the h faces bounded by the
+links C_v (each contains only its vertex v of T); the faces containing no vertex of W − N
+and not of the first kind — such a face contains no vertex or edge of G (an edge of G with
+both ends in N is in G″, one with an end outside N would put that end inside the face), so
+it is a face of G, i.e. a triangle: τ_D of them are the inner D-faces and ε_N of them are
+empty triangles with all vertices in N; and ρ ≥ 0 faces containing at least one vertex of
+W − N, with total boundary-walk length Λ ≥ 3ρ. Let c ≥ 1 be the number of components of
+G″ and σ = Σ_{v∈H} deg v = Σ_v |C_v| ≥ |N|. Euler's formula and the count of edge sides
+give
+
+    h + τ_D + ε_N + ρ = E(G″) − |N| + 1 + c,    2E(G″) = σ + 3τ_D + 3ε_N + Λ,
+
+whence τ_D + ε_N = 2h + 2ρ + 2|N| − 2 − 2c − σ − Λ.
+
+(3) *Covering.* By Lemma 3 every vertex of N lies on an empty triangle of T. Such a
+triangle either has all three vertices in N — one of the ε_N faces, covering at most three
+vertices of N — or contains a vertex of W − N, in which case it lies inside a face of the
+third kind and its vertices of N lie on that face's boundary walk. Hence |N| ≤ 3ε_N + Λ.
+
+(4) *Conclusion.* From (2) and (3),
+τ_D ≤ 2h + 2ρ + 2|N| − 2 − 2c − σ − Λ − (|N| − Λ)/3 ≤ 2h − 4 − σ + (5/3)|N|,
+using Λ ≥ 3ρ and c ≥ 1. With (1) this gives σ ≤ 3h − 3 + (2/3)|N|. For h = 1, N = V(C_v)
+and σ = |N|, so |N| ≤ (2/3)|N|, absurd. For h = 2, σ ≥ |N| and σ ≥ 5·2 = 10 (Lemma 4):
+if |N| ≥ 10 then σ ≥ |N| > 3 + (2/3)|N|; if |N| ≤ 9 then σ ≥ 10 > 3 + 6 ≥ 3 + (2/3)|N|.
+Either way the inequality fails. ∎
+
+**Theorem 3 (at most two high-degree vertices in the big class).** If T has a proper
+4-colouring with class sizes (3m+2, m+1, m+1, m+1) in which at most two vertices of the
+big class have degree ≥ 5, then disc(T) ≤ 2m−1. In particular, since a counterexample
+has at most m−1 such vertices (Lemma 4), **the refined bound holds for every
+triangulation on n = 11, 17 and 23 vertices**, the first three orders of the open class.
+
+*Proof.* If Lemma 2 or Lemma 3 applies we are done; otherwise every vertex of V₁ has
+degree 3 or ≥ 5 and h ≤ 2, and Lemma 6 gives occ(u) ≤ 2m+1 for every u ∈ W. If h = 0,
+Σ_{u∈V₂} occ(u) = |D| = 3m+2 > 2(m+1) shows that some u ∈ V₂ has occ(u) ≥ 3; with H = ∅
+the hypotheses of Lemma 7 (any S) reduce to 2 ≤ occ(u) ≤ 2m+1. If h ∈ {1, 2}, Lemma 8
+provides u ∈ W − N with occ(u) ≥ 2; as u lies on no link of a vertex of H it blocks none
+of them and p(u) = q(u) = 0, so Lemma 7 applies with any S. For n ∈ {11, 17, 23} we have
+m ≤ 3, so any counterexample would have h ≤ m − 1 ≤ 2, contradicting the first
+statement together with the Corollary of Lemma 1. ∎
+
+For h = 0 the statement reads: every triangulation obtained from an Eulerian
+triangulation on 3m+3 vertices with colour classes of size m+1 by inserting a degree-3
+vertex into 3m+2 of its faces satisfies the refined bound (there G = T − V₁ has
+3(3m+3) − 6 edges, i.e. is a triangulation, and is 3-colourable, hence Eulerian).
+
+**Theorem 2 (structure of a counterexample).** If n = 6m+5 and disc(T) ≥ 2m+1, then
+m ≥ 4 and T has a proper 4-colouring with class sizes (3m+2, m+1, m+1, m+1) such that,
+with V₁ the big class: (i) every link C_v, v ∈ V₁, shows all three colour pairs, so
+deg v ∈ {3} ∪ [5, 2m+2]; (ii) Σ_{v∈V₁}(deg v − 3) ≤ 2m−1, so at least 2m+3 vertices of V₁
+have degree 3 and at most m−1 have degree ≥ 5; (iii) at least three vertices of V₁ have
+degree ≥ 5; (iv) every vertex of W = V(T) − V₁ lies on a face disjoint from V₁, and there
+are between m+1 and 3m such faces; (v) every u ∈ W is adjacent to at most 2m+1 degree-3
+vertices of V₁; (vi) for every choice of classes (F, S) and every u ∈ F the hypotheses of
+Lemma 7 fail — in particular every u ∈ W with occ(u) ≥ 2 lies on the link of some vertex
+of degree ≥ 5.
 
 *Proof.* Corollary of Lemma 1 for the colouring; (i) Lemma 2; (ii) Lemma 4; (iii)
-Theorem 3; (iv) Lemmas 3 and 4; (v) Lemma 6; (vi) Lemma 7. ∎
+Theorem 3, and then m − 1 ≥ 3; (iv) Lemmas 3 and 4; (v) Lemma 6; (vi) Lemma 7 (a vertex
+u with occ(u) ≥ 2 on no high-degree link would satisfy it with p = q = 0). ∎
 
 ## 5. Exact computations
 
@@ -247,14 +298,20 @@ fully-mixed candidates, all of discrepancy 1, consistent with Theorem 4.
 ## 6. What remains
 
 The bound for the whole residue class would follow from a proof that condition (vi) of
-Theorem 2 is impossible under (i)–(v). Theorem 3 does this when H = ∅; with H ≠ ∅ the
-obstruction is a vertex of H "blocking" every candidate u (its link has u next to an
-S-vertex and an F–B edge elsewhere). Facts established but not needed above, recorded for
-a future attempt: every Kempe (i,j)-component with i, j ∈ {2,3,4} of a counterexample's
-colouring is balanced, and for each i ∈ {2,3,4} the (1,i)-subgraph has exactly one
-component with more 1's than i's (otherwise a Kempe swap produces a colouring to which
-Lemma 1 applies); and for each F and S, every u ∈ F with occ(u) ≥ 2 lies on the link of
-some v ∈ H next to an S-vertex (the single flip with X = {u} would otherwise work).
+Theorem 2 is impossible under (i)–(v) for h ≥ 3. Lemma 8's count gives
+σ ≤ 3h − 3 + (2/3)|N| for a configuration in which every vertex off the high-degree links
+has at most one degree-3 neighbour; for h = 3 this is not yet a contradiction (three
+pairwise disjoint links of length 5 or 6 satisfy it), and for large h the set N can be all
+of W, so the "outside vertex" route must be replaced by an analysis of the blocking in
+Lemma 7 (a vertex of H blocks u when its link has u next to an S-vertex and an F–B edge
+elsewhere). Facts established but not needed above, recorded for a future attempt: every
+Kempe (i,j)-component with i, j ∈ {2,3,4} of a counterexample's colouring is balanced, and
+for each i ∈ {2,3,4} the (1,i)-subgraph has exactly one component with more 1's than i's
+(otherwise a Kempe swap produces a colouring to which Lemma 1 applies). The computations
+of §5 found, at n = 17 and n = 23, that every configuration satisfying (i), (ii), (iv)
+admits a single flip in the sense of Lemma 7 (0 exceptions among 2,051 and 948,057), and
+every one of them even has a vertex off all high-degree links with two degree-3
+neighbours (the situation of Lemma 8).
 
 ## 7. Reproducibility
 

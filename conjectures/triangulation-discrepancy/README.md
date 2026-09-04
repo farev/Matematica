@@ -11,17 +11,17 @@ at exactly one class-size vector of the four-colouring, and that configuration i
 
 Write-up page: <https://fabianarevalo.com/triangulation-discrepancy> (pending; see `PAGE.md`).
 
-**Status:** active
+**Status:** active (proved for n ≤ 23 and for ≤ 2 high-degree vertices; the general class open)
 **Sessions:** 2026-09-04
 
 ## Results
 
 | Claim | Label | Where |
 |---|---|---|
-| Structure theorem: a triangulation on n = 6m+5 vertices with disc(T) ≥ 2m+1 has a proper 4-colouring with class sizes (3m+2, m+1, m+1, m+1) whose big class is *fully mixed* (every link shows all three colour pairs), has ≥ 2m+3 vertices of degree 3, between 1 and m−1 of degree ≥ 5 and none of degree 4, total degree excess ≤ 2m−1; every other vertex lies on a face avoiding the big class; no vertex has more than 2m+1 degree-3 neighbours in the big class; and every "single flip" fails | PROVED | NOTE §1–§4, Theorem 2 |
-| If the big class of such a colouring has no vertex of degree ≥ 5 — equivalently T is an Eulerian triangulation on 3m+3 vertices with equal colour classes, stellated at 3m+2 faces — then disc(T) ≤ 2m−1 | PROVED | NOTE Theorem 3 |
-| **disc(T) ≤ 3 = U(17) for all 129,664,753 triangulations on 17 vertices** (the second order of the open class); exactly 2,652 attain it | CERTIFIED | NOTE Theorem 4; `data/n17_disc3.txt` |
-| **disc(T) ≤ 5 = U(23) for every triangulation on 23 vertices** (the third open order, ≈ 6·10¹⁰ triangulations, unreachable by census): by the structure theorem a counterexample would come from one of 109,507,132 two-connected plane graphs on 12 vertices; the 948,057 configurations passing the necessary conditions all have discrepancy 1 (277 s) | CERTIFIED | NOTE Theorem 5; `struct_enum.c`, `results_struct_m3.txt` |
+| **The refined bound disc(T) ≤ n − 2⌈(n+2)/3⌉ holds for every triangulation on n = 11, 17 and 23 vertices** — the first three orders of the open residue class — and, for every n ≡ 5 (mod 6), whenever the balanced 4-colouring's big class has at most two vertices of degree ≥ 5; a counterexample needs n ≥ 29 | PROVED | NOTE Theorem 3 (Lemmas 1–8) |
+| Structure theorem: a triangulation on n = 6m+5 vertices with disc(T) ≥ 2m+1 has a proper 4-colouring with class sizes (3m+2, m+1, m+1, m+1) whose big class is *fully mixed* (every link shows all three colour pairs), has ≥ 2m+3 vertices of degree 3, between 3 and m−1 of degree ≥ 5 and none of degree 4, total degree excess ≤ 2m−1; every other vertex lies on a face avoiding the big class; no vertex has more than 2m+1 degree-3 neighbours in the big class; and every "single flip" (Lemma 7) fails | PROVED | NOTE §1–§4, Theorem 2 |
+| **disc(T) ≤ 3 = U(17) for all 129,664,753 triangulations on 17 vertices**, by exhaustive census (independent confirmation of Theorem 3 at n = 17); exactly 2,652 attain it | CERTIFIED | NOTE Theorem 4; `data/n17_disc3.txt` |
+| **disc(T) ≤ 5 = U(23) for every triangulation on 23 vertices** by the structural enumeration (independent confirmation of Theorem 3 at n = 23, ≈ 6·10¹⁰ triangulations, unreachable by census): 109,507,132 two-connected plane graphs on 12 vertices from plantri, 948,057 configurations passing the necessary conditions, all of discrepancy 1, every one admitting a single flip (277 s / 365 s) | CERTIFIED | NOTE Theorem 5; `struct_enum.c`, `results_struct_m3.txt`, `results_struct_m3_flip.txt` |
 | Exact discrepancy distribution for all triangulations with 13 ≤ n ≤ 17 (the published table stopped at n = 12): the refined bound is attained at every order (4, 422, 89, 14, 2,652 extremal triangulations) | CERTIFIED | NOTE Theorem 4; `results_census_13_17.txt`, `data/` |
 | The published Table 2 (4 ≤ n ≤ 12) reproduced exactly by two independent implementations | CERTIFIED | `disc.c`, `brute.py` |
 
@@ -61,9 +61,11 @@ Python 3.11 for `brute.py`; C99 otherwise; no other dependencies.
 ## Known defects and open threads
 
 - The refined bound for the whole residue class n ≡ 5 (mod 6) is **not** proved: the
-  case of a big-class vertex of degree ≥ 5 (NOTE Theorem 2 (iii)–(vi)) is open. What is
-  missing is an argument that some single flip (Lemma 7) survives the blocking by
-  high-degree vertices, or a different construction for that configuration.
+  case of three or more big-class vertices of degree ≥ 5 (NOTE Theorem 2 (iii)–(vi),
+  possible only for n ≥ 29) is open. Lemma 8's Euler count gives σ ≤ 3h − 3 + (2/3)|N|
+  there, which three disjoint links of length 5–6 can satisfy; what is missing is an
+  argument that some single flip (Lemma 7) survives the blocking by high-degree vertices
+  when every vertex lies on one of their links.
 - The n = 23 certification rests on the structure theorem (Lemmas 1–5 only) and on
   plantri generating *all* 2-connected plane graphs with the given parameters (its
   documented behaviour for `-p -c2`); it is not a brute-force census, and has been
