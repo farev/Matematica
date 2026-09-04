@@ -268,8 +268,8 @@ triangulations with 13 ≤ n ≤ 17 is
 
 In particular **every triangulation on 17 vertices satisfies disc(T) ≤ 3 = U(17)** (the
 second order of the open residue class), and the refined bound is attained at every
-order 13 ≤ n ≤ 17. CERTIFIED (12 min for n = 17 on one core, the four residue-class parts
-of plantri's `res/mod` splitting; the 2,652 extremal triangulations are stored as
+order 13 ≤ n ≤ 17. CERTIFIED (15 min for n = 17 on one core, the four residue-class parts
+of plantri's `res/mod` splitting, 258 + 247 + 193 + 208 s; the 2,652 extremal triangulations are stored as
 certificates in `data/n17_disc3.txt`, the 4 + 89 + 14 extremal ones of orders 13, 15, 16
 in `data/n13_disc3.txt`, `data/n15_disc3.txt`, `data/n16_disc4.txt`).
 
@@ -367,8 +367,11 @@ neighbours (the situation of Lemma 8).
 - `struct_enum.c` — the structural enumeration of §5; `plantri -p -c2 -e25:30 -f8 12 |
   ./struct_enum 3`.
 - `census.sh` — the n = 14..17 census driver (n = 17 in four `res/mod` parts).
-- Runtimes (one core, shared with other jobs): n ≤ 16 in 2.3 min total; n = 17 in
-  4 × ~4.2 min; the n = 23 enumeration in 277 s.
+- `hstruct.c` — the second parametrisation (§5, §5b); `plantri 18 k/4 | ./hstruct 4 3`.
+- `hexpants.py` — the SAT construction of §6 (needs `python-sat`); `python3 hexpants.py 400`.
+- Runtimes (one core each, shared with other jobs): n ≤ 16 in 2.3 min total; n = 17 in
+  4 × ~4 min; the n = 23 enumeration in 277 s (365 s with the flip statistic); `hstruct`
+  at m = 3 in 11 s for all h; `hexpants.py 400` in about 3 min.
 
 ## References
 
