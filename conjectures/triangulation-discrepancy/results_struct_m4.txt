@@ -1,0 +1,8 @@
+m=4 h=3 n=29: T' read 244448771; independent H-sets with the degree constraints 1038419683; passing face filter 1038419683; equitable colourings 3202937; candidates 15804069; fully mixed 15180261; without single flip 0; without safe flip 18402; max disc 1; bound U=7
+wall=4158 s
+m=4 h=3 n=29: T' read 244311056; independent H-sets with the degree constraints 1036191962; passing face filter 1036191962; equitable colourings 3203257; candidates 15630989; fully mixed 15001975; without single flip 0; without safe flip 17910; max disc 1; bound U=7
+wall=8049 s
+m=4 h=3 n=29: T' read 244313162; independent H-sets with the degree constraints 1037858706; passing face filter 1037858706; equitable colourings 3211324; candidates 15628890; fully mixed 14997252; without single flip 0; without safe flip 18232; max disc 1; bound U=7
+wall=7989 s
+m=4 h=3 n=29: T' read 244453968; independent H-sets with the degree constraints 1039013068; passing face filter 1039013068; equitable colourings 3211268; candidates 15524224; fully mixed 14890514; without single flip 0; without safe flip 18165; max disc 1; bound U=7
+wall=7987 s

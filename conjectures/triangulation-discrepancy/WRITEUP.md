@@ -103,7 +103,7 @@ triangulations: the eventual proof for h ≥ 3 needs a genuinely different colou
 construction, and the hexagon-pants family is the test case to design it on. Meanwhile
 the n = 29 case (h = 3, three high-degree vertices) was attacked computationally through
 a second parametrisation (`hstruct.c`: triangulations on 18 vertices with three
-non-adjacent vertices of degree 5 or 6, from plantri's 1,000,148,231 triangulations),
+non-adjacent vertices of degree 5 or 6, from plantri's 977,526,957 triangulations),
 validated against the first at n = 17 and n = 23.
 
 **Slips and corrections.** The census driver's first version used `/usr/bin/env time`,

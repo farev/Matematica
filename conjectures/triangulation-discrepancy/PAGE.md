@@ -3,8 +3,9 @@
 1. **Headline claim.** Basti–Cremaschi's refined discrepancy bound disc(T) ≤ n − 2⌈(n+2)/3⌉
    for plane triangulations, open for n ≡ 5 (mod 6), is **PROVED** for the first three
    orders of that class, n = 11, 17 and 23, and for every n in the class whenever the
-   balanced four-colouring's big class has at most two vertices of degree ≥ 5; a
-   counterexample would need n ≥ 29 and a precisely described shape (structure theorem,
+   balanced four-colouring's big class has at most two vertices of degree ≥ 5; it is
+   **CERTIFIED** at the fourth order n = 29 through the structure theorem; a
+   counterexample would need n ≥ 35 and a precisely described shape (structure theorem,
    PROVED). Two independent computations confirm the theorem where it is new: the full
    census at n = 17 (129,664,753 triangulations) and a structural enumeration at n = 23
    (948,057 candidate configurations, all of discrepancy 1) — CERTIFIED.
@@ -34,7 +35,11 @@
       the proof cannot handle (n = 35, three periodic hexagonal links, every single flip
       blocked) exists: 400 such triangulations built by SAT, all of discrepancy 1 against
       the bound 9. The obstruction is in the method, not in the triangulations.
-   8. CERTIFIED — n = 29 (see `results_struct_m4.txt`): M4_PAGE
+   8. CERTIFIED — n = 29, the fourth open order (≈ 4·10¹² triangulations): the only case
+      the proof leaves open there (three high-degree big-class vertices) reduces to
+      plantri's 977,526,957 triangulations on 18 vertices; 60,070,002 candidate
+      configurations, all of discrepancy 1 against the bound 7 (NOTE Theorem 6). So the
+      refined bound holds for every n ≡ 5 (mod 6) up to 29: proved to 23, certified at 29.
 
 3. **Figure specs.**
    - *Figure 1 — the two bounds and the data.* Data: `results_census_13_17.txt` plus

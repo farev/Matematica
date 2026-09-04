@@ -308,12 +308,30 @@ multiplicities, so the totals 1,002,321 and 948,057 need not agree), all of disc
 all admitting a single flip, all with a vertex off the high-degree links having two
 degree-3 neighbours — the situation of Lemma 8, as the proof predicts. At n = 29 (m = 4)
 Theorem 3 leaves only h = 3, i.e. T′ a triangulation on 18 vertices (A000109(18) =
-1,000,148,231) with three pairwise non-adjacent vertices of degrees (5,5,5) or (5,5,6);
+977,526,957) with three pairwise non-adjacent vertices of degrees (5,5,5) or (5,5,6);
 the run is reported in §5b.
 
 ## 5b. n = 29
 
-M4_STATEMENT
+**Theorem 6 (n = 29).** Every triangulation on 29 vertices satisfies disc(T) ≤ 7 = U(29).
+CERTIFIED: by Theorem 3 a counterexample would have exactly three big-class vertices of
+degree ≥ 5, so T′ = T − D is one of the 977,526,957 triangulations on 18 vertices with
+three pairwise non-adjacent vertices of degrees (5,5,5) or (5,5,6) (Lemma 4: Σ(deg − 3) ≤ 7).
+`hstruct 4 3` processed all of them in four plantri `res/mod` parts (T′ read: 244,448,771 +
+244,311,056 + 244,313,162 + 244,453,968 = 977,526,957): 4,151,483,419 admissible
+independent triples, all passing the face filter, 12,828,786 equitable 3-colourings,
+62,588,172 choices of empty triangles covering every vertex, 60,070,002 of them with every
+link fully mixed — and **every one of the resulting 29-vertex triangulations has
+disc(T) = 1**. Moreover every one of them admits a single flip in the sense of Lemma 7
+(0 exceptions), although 72,709 of them have no vertex off the three links with two
+degree-3 neighbours — so at n = 29 the situation of Lemma 8 does fail, and Lemma 7's
+flips (with the blocking analysis) are what carry the day. Wall time per part
+4,158 / 8,049 / 7,989 / 7,987 s on a shared machine (the last three were paused for
+an hour to give the cores to another run); summaries in `results_struct_m4.txt`.
+
+Together with Theorem 3: the refined bound holds for every n ≡ 5 (mod 6) with n ≤ 29,
+proved for n ≤ 23 and certified at n = 29; a counterexample needs n ≥ 35 and at least
+three high-degree big-class vertices.
 
 ## 6. What remains
 
