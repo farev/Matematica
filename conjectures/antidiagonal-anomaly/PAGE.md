@@ -1,6 +1,6 @@
 # PAGE handoff — antidiagonal-anomaly (new page)
 
-1. **Headline claim.** The conjecture of Gil–Liang–Odetola–Weiner (arXiv:2609.01562, §7)
+1. **Headline claim.** Conjecture 7.4 of Gil–Liang–Odetola–Weiner (arXiv:2609.01562)
    is true: for every n ≥ 496, an obstruction on the antidiagonal of the n×n path grid
    never moves the point of maximal traffic from (1,1) to the boundary point (1,0).
    **PROVED** (analytic for n ≥ 3000; exact integer computation for 496 ≤ n ≤ 2999 with a

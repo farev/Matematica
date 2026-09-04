@@ -21,7 +21,7 @@ Write-up page: <https://fabianarevalo.com/antidiagonal-anomaly> (pending; see `P
 |---|---|---|
 | ρ(n) < 0.9939 for every n ≥ 3000 and every obstruction (a, n−a), via Robbins–Stirling bounds (analytic; the final numeric step certified in rational arithmetic) | PROVED | NOTE §3, Theorem A; `check_bound.py` |
 | ρ(n) < 1 for every 496 ≤ n ≤ 2999 (exact integer arithmetic, certificate shipped; the largest value is ρ(497) = 0.99995528…) | CERTIFIED | NOTE §4; `verify_anomaly.py`, `certificate_3_3000.csv` |
-| **The conjecture of [GLOW, §7]: the antidiagonal anomaly never occurs for n ≥ 496** (Theorem A + the finite check) | PROVED (computer-assisted on 496 ≤ n ≤ 2999) | NOTE §4, Theorem A′ |
+| **[GLOW, Conjecture 7.4] (stated as ρ(n) ≤ 1, proved in the strict form): the antidiagonal anomaly never occurs for n ≥ 496** (Theorem A + the finite check; the authors had verified n ≤ 495) | PROVED (computer-assisted on 496 ≤ n ≤ 2999) | NOTE §4, Theorem A′ |
 | The criterion is the integer inequality a(n−2a+1)·C(n,a)² > (n−1)·C(2n−2,n−1), i.e. the obstruction deficit exceeds the Catalan number Cat(n−1) | PROVED | NOTE §1, Lemma 1 |
 | ρ(n) → c₀ = √(8/π)·e^{−1/2} = 0.967882…, and ρ(n) = c₀(1 + 1/√(2n) + O(1/n)) | PROVED | NOTE §5, Theorem B |
 | R_n(a) is log-concave in a; explicit ratio; the maximiser is within 1 of n/2 − (√(2n+1) − 1)/4 for 3 ≤ n ≤ 3000 | PROVED (log-concavity) / CERTIFIED (maximiser location) | NOTE §6, Proposition C; `certificate_3_3000.csv` |

@@ -9,8 +9,8 @@ monotone lattice paths from (0,0) to (n,n) that avoid a forbidden point B and as
 point A carries the most B-avoiding traffic. They prove that for n ≥ 9 the maximum is
 attained at one of ten near-corner points whatever B is, observe that an obstruction
 B = (a, n−a) on the antidiagonal moves the maximum from (1,1) to the boundary point (1,0)
-for every 8 ≤ n ≤ 375 and sporadically up to n = 495, and conjecture (their §7) that this
-"anomaly" never reappears for n ≥ 496. We prove the conjecture. Their criterion is the
+for every 8 ≤ n ≤ 375 and sporadically up to n = 495, and conjecture (their Conjecture
+7.4) that this "anomaly" never reappears for n ≥ 496. We prove the conjecture. Their criterion is the
 integer inequality a(n−2a+1)·C(n,a)² > (n−1)·C(2n−2,n−1) (Lemma 1); a Robbins–Stirling
 bound shows that the ratio ρ(n) = max_a R_n(a) is below 0.994 for every n ≥ 3000
 (Theorem A), and exact integer arithmetic settles 496 ≤ n ≤ 2999 (Theorem A′, certificate
@@ -37,8 +37,9 @@ attained at one of the ten points (1,0), (0,1), (1,1), (2,1), (1,2) and their im
     R_n(a) = G(n,a)/D(n),   G(n,a) = ((n−2a+1)/(n−a))·C(n,a)·C(n−2,a−1),   D(n) = C(2n−2,n−1)/n,
 
 and they set ρ(n) = max_{1 ≤ a < n/2} R_n(a). The *anomaly* at n is the event ρ(n) > 1.
-(Their data: ρ(n) > 1 for 8 ≤ n ≤ 375 and for some n ≤ 495. We reproduce this exactly in
-§4 and list the sporadic n.)
+Their data ("we verified the criterion for all n up to 495"): ρ(n) > 1 for 8 ≤ n ≤ 375
+and for some n ≤ 495; we reproduce this exactly in §4 and list the sporadic n. Their
+**Conjecture 7.4** reads "ρ(n) ≤ 1 for all n ≥ 496"; we prove the strict inequality.
 
 Throughout, x := n/2 − a, so 0 ≤ x ≤ n/2 − 1 when 1 ≤ a ≤ n/2, and 2x + 1 = n − 2a + 1.
 
@@ -134,9 +135,9 @@ the upper bound of Lemma 4 squared, and Lemma 5 (lower bound, m = n−1),
 Since a ≤ n/2 we have n/(n−a) ≤ 2, and 1/(6n) + 1/(6(n−1)) < 1/(3(n−1)). By Lemma 6,
 φ_n(x) ≤ φ_n(x*) ≤ √(n/2)·e^{−1/2}·(1 − 1/√(2n))^{−1}·e^{1/√(2n)}. Hence
 
-    R_n(a) < (4/√π)·√(n/2)·e^{−1/2} · √(n/(n−1))/√n ... 
+    R_n(a) < (4/√π)·√(n/2)·e^{−1/2}/√(n−1) · (1 − 1/√(2n))^{−1} · exp( 1/√(2n) + 1/(3(n−1)) ) = U(n),
 
-more carefully, (4/√π)·√(n/2)·e^{−1/2}/√(n−1) = c₀·√(n/(n−1)), which gives R_n(a) < U(n).
+because (4/√π)·√(n/2) = √(8/π)·√n, so (4/√π)·√(n/2)·e^{−1/2}/√(n−1) = c₀·√(n/(n−1)).
 Each of the factors √(n/(n−1)), (1 − 1/√(2n))^{−1} and exp(1/√(2n) + 1/(3(n−1))) is
 decreasing in n, so U(n) ≤ U(3000) for n ≥ 3000. Numerically, with rational bounds only
 (script `check_bound.py`, exact rational arithmetic; the bound e^y ≤ 1/(1−y) for
@@ -152,7 +153,7 @@ Therefore R_n(a) < 0.9939 < 1 for all n ≥ 3000 and all admissible a. ∎
 
 ## 4. The conjecture
 
-**Theorem A′ (Conjecture of [GLOW, §7]).** ρ(n) < 1 for every n ≥ 496. Consequently,
+**Theorem A′ ([GLOW, Conjecture 7.4], in strict form).** ρ(n) < 1 for every n ≥ 496. Consequently,
 for every n ≥ 496 and every obstruction B = (a, n−a) on the antidiagonal, the boundary
 point (1,0) carries strictly less traffic than (1,1): the antidiagonal anomaly never
 reappears.
@@ -197,8 +198,9 @@ n/(n−a) = 2/(1 + 2x/n).
 
 (ii) *Location of the maximiser.* F_n′(x) = 2/(2x+1) − 8x/n − 2/(n+2x). At x* the first
 two terms cancel (Lemma 6), so F_n′(x*) = −2/(n+2x*) ∈ (−2/n, 0), while
-F_n″ ≤ −8/n gives F_n′(x*−1) ≥ F_n′(x*) + 8/n > 0. Hence the maximiser x̂ of F_n lies in
-(x*−1, x*), and by concavity F_n(x̂) ≤ F_n(x*) + F_n′(x*)(x̂ − x*) ≤ F_n(x*) + 2/n.
+F_n″ ≤ −8/n + 4/n² ≤ −7/n (n ≥ 4) gives F_n′(x*−1) ≥ F_n′(x*) + 7/n > 0. Hence the
+maximiser x̂ of F_n lies in (x*−1, x*), and by concavity
+F_n(x̂) ≤ F_n(x*) + F_n′(x*)(x̂ − x*) ≤ F_n(x*) + 2/n.
 
 (iii) *Upper bound.* From (3.1), (ii):
 ρ(n) < (4/√π)·e^{F_n(x*)}/√(n−1)·e^{2/n + 1/(3(n−1))}, and
@@ -215,15 +217,18 @@ bound of Lemma 5 give, exactly as in (3.1),
 
     R_n(a_n) > (4/√π)·e^{F_n(x_n)}/√(n−1) · exp( −8x_n⁴/(3n³(1−t²)) − 1/(6a_n) − 1/(6(n−a_n)) ),
 
-t = 2x_n/n. For n ≥ 3000, x_n ≤ x* + 1/2 ≤ √(n/2), so 8x_n⁴/(3n³(1−t²)) ≤ 4/(3n) and
-1/(6a_n) + 1/(6(n−a_n)) ≤ 1/(2n); all three corrections are O(1/n). By (i),
-F_n(x_n) ≥ F_n(x*) − ½·sup|F_n″|·(x_n − x*)² ≥ F_n(x*) − (1/8)(1/x*² + 8/n) (on
-x ≥ x* − 1/2 one has (2x+1)² ≥ 4x*², and 4/(n+2x)² > 0 only helps), and
-1/x*² ≤ 8.3/n for n ≥ 3000 (x*² ≥ (n/8)(1 − √(2/n))). So F_n(x_n) ≥ F_n(x*) − 2.1/n, and
+t = 2x_n/n. For n ≥ 3000, x_n ≤ x* + 1/2 ≤ √(n/2), so t² ≤ 2/n, 8x_n⁴/(3n³(1−t²)) ≤ 4/(3n),
+and (as a_n ≥ n/2 − √(n/2) ≥ n/4) 1/(6a_n) + 1/(6(n−a_n)) ≤ 1/n; all three corrections
+are O(1/n). By Taylor's formula with the concavity of (i),
+F_n(x_n) ≥ F_n(x*) − |F_n′(x*)|·|x_n − x*| − ½·sup|F_n″|·(x_n − x*)²
+        ≥ F_n(x*) − 1/n − (1/8)(1/x*² + 8/n),
+where on x ≥ x* − 1/2 one has (2x+1)² ≥ 4x*², so |F_n″| ≤ 4/(2x+1)² + 8/n ≤ 1/x*² + 8/n,
+and 1/x*² ≤ 8.3/n for n ≥ 3000 (x*² ≥ (n/8)(1 − √(2/n))). So F_n(x_n) ≥ F_n(x*) − 3.1/n, and
 ρ(n) ≥ R_n(a_n) ≥ c₀(1 + 1/√(2n) + O(1/n)) by the same expansion as in (iii). ∎
 
-Numerically, ρ(n)/c₀ − 1 − 1/√(2n) is −0.00043 at n = 3000 and −0.00017 at n = 10000
-(exact ratios from `verify_anomaly.py`), consistent with the O(1/n) term.
+Numerically, n·(ρ(n)/c₀ − 1 − 1/√(2n)) is 0.707 at n = 3000, 0.705 at n = 10000 and
+0.557 at n = 30000 (exact ratios: ρ(3000) = 0.980606160, ρ(10000) = 0.974795079,
+ρ(30000) = 0.971852232), consistent with an O(1/n) remainder of size about 0.6/n.
 
 ## 6. The maximiser and the sporadic pattern
 
