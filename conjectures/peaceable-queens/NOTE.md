@@ -270,13 +270,50 @@ determination of a(16), the smallest open case of A250000. It confirms
 the value conjectured from Ainley's construction and extends the
 exact-value table of Clinch–Drescher–Huynh–Saffidine (secondary).
 
+## 6b. Results at n = 17 (session 2, 2026-09-03)
+
+**Theorem E (CERTIFIED).** a(17) ≤ 42: exhaustive refutation of army
+size 43 by the SYM16 engine — 21,454,699,264 nodes, 1712 s wall on
+4 workers (6,086 s of engine time; largest chunk 2.56·10⁹ nodes, 588 s),
+16 resumable chunks, every chunk UNSAT
+(`results/n17_m43_bnb_sym_chunk*.txt`; driver log
+`results/n17_m43_run.log`). The best previously recorded finite upper
+bound was a(17) ≤ 72 (Pratt 2014, OEIS, (secondary)).
+
+**Theorem F (CERTIFIED).** a(17) ≥ 42: the 42 + 42 placement published
+by Kamenetsky in the OEIS A250000 link file `a250000_3.txt` (15 Oct
+2019, attributing the value to Ainley 1977; fetched 2026-09-03) passes
+the from-definition checker: 42 white, 42 black, no attacking pair
+(`witnesses/witness_n17_m42_kamenetsky.txt`). Independently, the SYM16
+engine found a 42 + 42 placement of its own (`./bnb_sym 17 42`:
+678,816,342 nodes, 116 s, canonical row/column sets S = 255, T = 7199),
+also checker-verified (`witnesses/witness_n17_m42.txt`); it is a
+different placement from Kamenetsky's. The plain engine reproduces the
+same placement (same S, T) in 1,357,765,356 nodes, 212 s
+(`results/n17_m42_sat_plain.txt`).
+
+**Corollary.** a(17) = 42, confirming Ainley's 1977 value and
+⌊7·17²/48⌋ = 42.
+
+*Growth and caveat.* The boundary refutation cost ×4.26 in nodes over
+n = 16 (5.03·10⁹ → 2.15·10¹⁰) and ×3.7 in wall time (462 s → 1712 s),
+inside the ×3–5 per rung seen on the ladder; the sub-optimum hardening
+feared at n = 15 did not appear. Unlike n = 16, the exhaustion was run on
+**one engine only**: the plain-engine replication (independent canonical
+form) is projected at ≈ 9× the SYM16 node count — about 1.9·10¹¹ nodes,
+4–5 h on this hardware — and was not attempted in the session. Theorem E
+therefore rests on Lemma 6′ and the §4 validation battery (plain/SYM16
+agreement on every ladder boundary and on both n = 16 instances), not on
+a second independent exhaustion.
+
 ## 7. Open questions
 
-1. a(17): Pratt's recorded bracket is [42, 72] (secondary). The
-   boundary refutation (m = 43) is projected at roughly 5–8× the
-   n = 16 cost from the observed growth — about an hour of this
-   session's hardware, longer if the sub-optimum hardening seen at
-   n = 15 recurs. Within reach of the next session.
+1. ~~a(17)~~ Done in session 2 (§6b): a(17) = 42. Next rung: a(18),
+   recorded bracket [47, ?] (Ainley's 47 = ⌊7·18²/48⌋; secondary). At the
+   observed ×4 per rung the m = 48 refutation is ≈ 8.6·10¹⁰ nodes, about
+   two hours on 4 cores. Also pending: the plain-engine replication of
+   the n = 17 refutation (≈ 4–5 h), to restore the two-engine standard
+   of n = 16.
 2. The B&B's family-sum bound (Lemma 5) treats the two diagonal
    families independently. A joint bound (e.g. LP over both families)
    would cut deeper near the optimum; can it be kept exact and cheap?

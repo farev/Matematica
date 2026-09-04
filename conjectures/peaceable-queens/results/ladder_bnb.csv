@@ -24,3 +24,4 @@ n,m,verdict,nodes,seconds,workers,source
 15,33,UNSAT,1476498420,156,4,results/n15_m33.txt
 16,42,UNSAT,607406702,174,4,results/n16_m42.txt
 16,38,UNSAT,5032610558,462,4,results/n16_m38.txt
+17,43,UNSAT,21454699264,1712,4,results/n17_m43_run.log

@@ -104,3 +104,36 @@ DRUP-anchored, but a first determination deserves it.
   unaffected).
 - The first `check_peaceable.c` had 16 MB of stack arrays and
   segfaulted before reading input (caught by its own negative control).
+
+## Session 2 (2026-09-03): a(17), as a secondary target
+
+The day's mandate went to an external problem (the Bit Deletion game,
+`conjectures/bit-deletion/`, solved by lunchtime); the internal-thread
+audit had named a(17) the one internal thread breakable on 4 cores in an
+afternoon, so it was launched on the freed cores rather than left for a
+third session. No new code: the SYM16 engine and the chunked driver from
+session 1, rebuilt from source.
+
+1. **Lower bound first, from the literature, then from the definition.**
+   OEIS A250000 still ends at a(15) (fetched today; a(16) = 37 from session
+   1 is not yet in the entry). Kamenetsky's link file of best known
+   placements gives a 42 + 42 board for n = 17 (attributed to Ainley
+   1977); `check_peaceable` accepts it — 42 white, 42 black, zero attacking
+   pairs. That is a(17) ≥ 42, CERTIFIED, whatever the provenance.
+2. **The refutation.** `run_chunked.py 17 43 16 4 ./bnb_sym`: sixteen
+   chunks, four at a time, every one UNSAT; 21,454,699,264 nodes in 1712 s
+   wall (28.5 min). Chunk sizes ranged from 7.2·10⁷ nodes (68 s) to
+   2.56·10⁹ (588 s); the chunk files are the run record. Node growth over
+   the n = 16 boundary: ×4.26 — the ladder's ×3–5 per rung held, and the
+   "sub-optimum hardening" that session 1 feared did not bite.
+3. **So a(17) = 42**, Ainley's value, and the second consecutive open case
+   of A250000 decided here.
+
+What was *not* done, and why it matters: session 1 backed a(16) with a
+second full exhaustion on the plain engine (different canonical form,
+45·10⁹ nodes, an hour). At n = 17 that replication is ≈ 9× the SYM16
+count — 4–5 h — and the session did not have it. The verdict therefore
+stands on one engine plus its validation record, and the README says so.
+A capped attempt to have the engines find a 42-witness of their own (as
+they did at n = 16 in seconds) was launched alongside the write-up; its
+outcome is recorded in the log entry.

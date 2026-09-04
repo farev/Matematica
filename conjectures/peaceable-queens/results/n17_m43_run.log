@@ -1,0 +1,18 @@
+n17_m43_bnb_sym: 0/16 chunks already done; running 16 on 4 workers
+chunk 0: UNSAT nodes=72403798 time=67.98s [70s elapsed]
+chunk 2: UNSAT nodes=810048076 time=284.08s [302s elapsed]
+chunk 4: UNSAT nodes=584938742 time=217.99s [306s elapsed]
+chunk 1: UNSAT nodes=901295946 time=309.84s [328s elapsed]
+chunk 3: UNSAT nodes=1244087168 time=374.71s [400s elapsed]
+chunk 8: UNSAT nodes=402458364 time=162.46s [568s elapsed]
+chunk 6: UNSAT nodes=1293757944 time=406.17s [726s elapsed]
+chunk 5: UNSAT nodes=1309826682 time=411.55s [728s elapsed]
+chunk 7: UNSAT nodes=1973278560 time=488.32s [828s elapsed]
+chunk 9: UNSAT nodes=1296060018 time=414.76s [990s elapsed]
+chunk 10: UNSAT nodes=1274094456 time=393.81s [1122s elapsed]
+chunk 12: UNSAT nodes=1147031826 time=351.20s [1182s elapsed]
+chunk 11: UNSAT nodes=2092192830 time=524.24s [1258s elapsed]
+chunk 13: UNSAT nodes=2229618906 time=577.28s [1572s elapsed]
+chunk 15: UNSAT nodes=2564854512 time=513.20s [1696s elapsed]
+chunk 14: UNSAT nodes=2258751436 time=587.99s [1712s elapsed]
+RESULT n=17 m=43: UNSAT total_nodes=21454699264 chunks=16 wall=1712s
