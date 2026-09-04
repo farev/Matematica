@@ -30,6 +30,11 @@
       authors' Table 2 (n ≤ 12): 4, 422, 89, 14, 2,652 extremal triangulations; the
       refined bound is attained at every order.
    6. CERTIFIED — the published Table 2 reproduced by two independent implementations.
+   7. CERTIFIED (instances) / NUMERICAL (as a general statement) — the first configuration
+      the proof cannot handle (n = 35, three periodic hexagonal links, every single flip
+      blocked) exists: 400 such triangulations built by SAT, all of discrepancy 1 against
+      the bound 9. The obstruction is in the method, not in the triangulations.
+   8. CERTIFIED — n = 29 (see `results_struct_m4.txt`): M4_PAGE
 
 3. **Figure specs.**
    - *Figure 1 — the two bounds and the data.* Data: `results_census_13_17.txt` plus

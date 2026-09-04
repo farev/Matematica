@@ -327,11 +327,20 @@ whole degree budget Σ(deg − 3) = 9 = 2m−1), 14 stellated triangles and 6 em
 partitioning W. Whether such a T exists is a small exact-cover problem on the 216 rainbow
 triples of W; `hexpants.py` (pysat/CaDiCaL) finds solutions — after discarding models
 whose vertex links are not single paths, the survivors are triangulations of the pair of
-pants, hence planar — and computes disc(T) exactly for each. HEXPANTS_RESULT So the
+pants, hence planar — and computes disc(T) exactly for each. Of the first 1,063 SAT
+models, 400 are valid pants triangulations, and **every one of the 400 resulting
+35-vertex triangulations has disc(T) = 1**, against the bound U(35) = 9
+(`results_hexpants.txt`; the 400 are a sample of the solution set, not all of it). So the
 obstruction is an artefact of the flip family: these triangulations admit polychromatic
 colourings that no single flip produces, and the proof for h ≥ 3 must use a richer
 construction (NUMERICAL as a statement about the configuration in general; CERTIFIED for
-the instances computed).
+the instances computed). The optimal colourings found are not class-based at all: in the
+first solution the three hexagons are coloured R,R,R,R,R,B / R,R,R,B,R,B / R,B,R,B,R,B
+(12 red among the 18 vertices of W), the high-degree vertices B, B, R and ten of the
+fourteen degree-3 vertices blue. A W-colouring with ≤ m blue vertices forming an
+independent transversal of the empty triangles would also work (all degree-3 and
+high-degree vertices then go blue, giving classes 3m+3−k and 3m+2+k), but here the six
+empty triangles partition W, so no transversal has fewer than m+1 vertices.
 
 The bound for the whole residue class would follow from a proof that condition (vi) of
 Theorem 2 is impossible under (i)–(v) for h ≥ 3 — which the example above shows is false as

@@ -36,6 +36,8 @@ for the session narrative including what failed.
 | `brute.py` | independent brute force over all 2^{n−1} red sets (the paper's method) | n ≤ 11 in a minute | agrees with `disc.c` |
 | `struct_enum.c m` | the structural enumeration of NOTE §5: reads 2-connected plane graphs on 3m+3 vertices from plantri, applies the structure theorem's filters, enumerates equitable 3-colourings and empty-face sets, rebuilds T and computes disc(T); prints any counterexample | m = 2: seconds; m = 3: 277 s on one core | NOTE Theorem 5 |
 | `census.sh` | the n = 14..17 census driver (n = 17 in four `res/mod` parts) | 15 min, one core | `results_census_13_17.txt` |
+| `hstruct.c m h` | the second parametrisation of NOTE §5: reads plantri triangulations T′ on 3m+3+h vertices, picks the independent h-sets of high-degree vertices allowed by Lemma 4, removes them and proceeds as `struct_enum`; also reports whether each candidate admits a single flip (Lemma 7) and a "safe" flip (Lemma 8) | m = 3: 11 s for h = 0,1,2 together; m = 4, h = 3: see `results_struct_m4.txt` | NOTE §5, §5b |
+| `hexpants.py [k]` | SAT model (pysat/CaDiCaL) for the first flip-blocked configuration, n = 35 with three periodic hexagonal links; validates each model as a pants triangulation and computes disc(T) exactly for up to k solutions | 400 solutions in ~3 min | `results_hexpants.txt` |
 
 Build (plantri 5.5 from <https://users.cecs.anu.edu.au/~bdm/plantri/>, placed in `./plantri55/`):
 
@@ -56,7 +58,9 @@ Python 3.11 for `brute.py`; C99 otherwise; no other dependencies.
 |---|---|---|
 | `results_census_13_17.txt` | `census.sh` | the exact discrepancy histograms and generated counts for 13 ≤ n ≤ 17 (counts equal OEIS A000109) |
 | `data/n13_disc3.txt`, `data/n15_disc3.txt`, `data/n16_disc4.txt`, `data/n17_disc3.txt` | `disc -d 3` | every triangulation of orders 13, 15, 16, 17 attaining the refined bound (adjacency lists in rotation order, one per line: 4, 89, 14, 2,652 graphs) |
-| `results_struct_m2.txt`, `results_struct_m3.txt` | `struct_enum` | the enumeration summaries for n = 17 (control) and n = 23 |
+| `results_struct_m2.txt`, `results_struct_m3.txt`, `results_struct_m3_flip.txt`, `results_struct_m3_safe.txt` | `struct_enum` | the enumeration summaries for n = 17 (control) and n = 23 (three runs: discrepancy only; with the single-flip statistic; with the safe-flip statistic) |
+| `results_struct_m4.txt` | `hstruct 4 h` | the n = 29 enumeration summaries by h (h = 3 is the only case not covered by Theorem 3) |
+| `results_hexpants.txt`, `data/hexpants_400_solutions.txt` | `hexpants.py 400` | 400 pants triangulations realising the flip-blocked configuration at n = 35, each with its exact discrepancy (all 1) |
 
 ## Known defects and open threads
 

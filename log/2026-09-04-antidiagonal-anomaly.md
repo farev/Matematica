@@ -53,7 +53,12 @@ theorem: 109,507,132 two-connected plane graphs on 12 vertices from plantri, 948
 surviving configurations, all of discrepancy 1 and every one admitting a single flip
 (277 s / 365 s). The general residue class stays open for n ≥ 29; the obstruction (three
 or more high-degree big-class vertices whose links cover the flips) is described
-exactly. New directory
+exactly, and its first instance — n = 35, three periodic hexagonal links — was
+constructed by SAT (400 pants triangulations, `hexpants.py`) and found harmless: all have
+discrepancy 1 against the bound 9, so the missing ingredient is a colouring construction
+beyond the single flip, not a sharper count. n = 29 (h = 3 only, by Theorem 3) was
+attacked by a second enumeration over plantri's 10⁹ triangulations on 18 vertices —
+outcome in `results_struct_m4.txt` and below. New directory
 `conjectures/triangulation-discrepancy/` (README, NOTE, WRITEUP, PAGE.md, code, data);
 index row added.
 
