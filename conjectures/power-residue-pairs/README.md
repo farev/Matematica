@@ -13,6 +13,8 @@ day's computation on modern hardware. It was carried out today by a subagent wor
 written specification and audited independently (pairs-file factorisations, certificate
 re-check, regeneration of the `k ≤ 7` controls).
 
+**Write-up page:** [fabianarevalo.com/power-residue-pairs](https://fabianarevalo.com/power-residue-pairs)
+
 Page: *(none yet — see PAGE.md)*.
 
 **Status:** active

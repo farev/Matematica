@@ -9,7 +9,7 @@ because the only structure a deletion can see is the pattern of zeros, and
 the values at each bit-length split exactly 3 : 1 — a sign of a finite
 rule hiding in the block structure.
 
-**Write-up page:** pending (`PAGE.md` handoff in this directory).
+**Write-up page:** [fabianarevalo.com/bit-deletion](https://fabianarevalo.com/bit-deletion)
 
 **Status:** closed — the Sprague–Grundy function is determined completely.
 **Sessions:** 2026-09-03

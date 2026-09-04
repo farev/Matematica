@@ -10,7 +10,7 @@ their own counting argument, which forces a rigid structure (twelve perfect line
 lines with one unused segment each) that a SAT solver can exploit through
 cube-and-conquer over dihedral orbits.
 
-Page: *(none yet — see PAGE.md if present)*.
+**Write-up page:** [fabianarevalo.com/kobon-triangles](https://fabianarevalo.com/kobon-triangles)
 
 **Status:** active
 **Sessions:** 2026-09-02
