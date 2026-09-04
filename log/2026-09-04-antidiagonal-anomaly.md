@@ -203,8 +203,10 @@ failure can be exploited, a PROVED statement covering more than one order.
   argument should be soft; it was not found today.
 - *Operations*: a census driver relying on `/usr/bin/env time` (absent) produced empty
   logs on its first run; a stray invocation of the same driver inside the repository
-  directory created junk files (deleted); two background jobs left by a scouting agent
-  competed with the a(18) run for an hour before being noticed and killed.
+  directory created junk files (deleted); three background jobs left by scouting agents
+  (a SAT run, a subset-sum search, and an anonymous `python3 -` probe that ran for 80
+  minutes at two-thirds of a core) competed with the a(18) run before being noticed and
+  killed — the scout prompts should have said "leave no process running".
 
 **Next.** (1) The residue class n ≡ 5 (mod 6) in full: prove that some single flip
 survives the blocking by high-degree big-class vertices (NOTE §6 of
