@@ -216,7 +216,12 @@ the sporadic set into a theorem describing it exactly. (3) Cordella's Question 6
 (max vᵢ < 3q for near-tight sextuples) as a proof target, since an effective Lemma 2.4
 would make his Theorem 6.1 unconditional. (4) Erdős #817 exact values g₃(7), g₃(8) and
 an OEIS entry (scout C's certified g₃(1..6) are in the session scratchpad only and
-should be recomputed before use).
+should be recomputed before use). (5) Jain–Kravitz (arXiv:2411.12684) Theorem 1.3's
+"finite calculation we have not attempted": scout D's exact computation (|A|, |B| ≤ 30,
+agreeing with the MO 512117 poster's range ≤ 600) says S₁(4) ∩ (1/4, 1/2] is
+{1/4 + 1/(8s+12) : s ≥ 1, s ≠ 2}, i.e. the value 2/7 is missing from the published
+description — a concrete, citable correction if the thresholds in their §2.5, §4.1–4.2
+can be made explicit; unverified by the session, scratchpad only.
 
 **Session hygiene.** Branch: harness-designated `claude/affectionate-sagan-drm6st`
 (the mandate's per-conjecture branch name overridden by the harness requirement, as in
