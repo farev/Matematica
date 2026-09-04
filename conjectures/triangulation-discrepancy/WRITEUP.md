@@ -104,7 +104,16 @@ construction, and the hexagon-pants family is the test case to design it on. Mea
 the n = 29 case (h = 3, three high-degree vertices) was attacked computationally through
 a second parametrisation (`hstruct.c`: triangulations on 18 vertices with three
 non-adjacent vertices of degree 5 or 6, from plantri's 977,526,957 triangulations),
-validated against the first at n = 17 and n = 23.
+validated against the first at n = 17 and n = 23. That run was the day's one serious
+misjudgement of cost: estimated at "about 20 minutes", it needed some seven core-hours
+(the independent-triple enumeration inside each triangulation dominates), and for an
+hour it starved the peaceable-queens engine before being paused and resumed at the tail.
+Its outcome — all four parts summing exactly to A000109(18), 60,070,002 fully-mixed
+candidates, all of discrepancy 1, every one admitting a single flip although 72,709 have
+no "safe" flip — certifies n = 29 and shows that Lemma 7's blocking analysis, not Lemma 8's
+count, is what a general proof has to extend. (An earlier draft of the note quoted
+A000109(18) from a scout's report as 1,000,148,231; the true value 977,526,957 was
+confirmed against OEIS when the parts were summed.)
 
 **Slips and corrections.** The census driver's first version used `/usr/bin/env time`,
 absent here, so its first run produced empty logs ("bad header") — caught within a minute

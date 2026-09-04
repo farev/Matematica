@@ -56,12 +56,12 @@
      an independent set of (n−1)/2 vertices (mostly degree 3) sitting in the faces of a
      3-coloured plane graph on (n+1)/2 vertices, every outer vertex touching an
      unoccupied triangle. Sentence: "Any counterexample would have to look like this, and
-     at n = 17 and 23 nothing that looks like this fails."
+     at n = 17, 23 and 29 nothing that looks like this fails."
 
 4. **Caveats the page must carry.**
-   - The residue class is NOT settled for n ≥ 29: the theorem covers at most two
-     high-degree vertices in the big class; the general case is open, with the
-     obstruction described precisely.
+   - The residue class is NOT settled for n ≥ 35: the theorem covers at most two
+     high-degree vertices in the big class, n = 29 is a certification (not a proof), and
+     the general case is open, with the obstruction described precisely.
    - The n = 23 result is a certification through the structure theorem, not a census;
      it relies on plantri generating all 2-connected plane graphs with the stated
      parameters and on Lemmas 1–5.
