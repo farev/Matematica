@@ -1,0 +1,1 @@
+m=2 n=17: graphs read 14141; passing face filter by h: 50 691 0 0; equitable colourings 17; candidates (empty sets covering) 2057; fully mixed 2051; max disc seen 1; bound U=3
