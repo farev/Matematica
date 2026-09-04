@@ -2,3 +2,4 @@ n18_m48_bnb_sym: 0/16 chunks already done; running 16 on 4 workers
 chunk 0: UNSAT nodes=455221604 time=340.94s [1123s elapsed]
 chunk 4: UNSAT nodes=3407930598 time=1172.36s [7926s elapsed]
 chunk 2: UNSAT nodes=4696028058 time=1534.10s [7940s elapsed]
+chunk 1: UNSAT nodes=5243927184 time=1702.10s [8092s elapsed]
