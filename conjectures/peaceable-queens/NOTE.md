@@ -309,9 +309,9 @@ a second independent exhaustion.
 ## 6c. Results at n = 18 (session 3, 2026-09-04)
 
 **Theorem G (CERTIFIED).** a(18) ≤ 47: exhaustive refutation of army
-size 48 by the SYM16 engine — NODES_TOTAL nodes, WALL_S s wall on
-4 workers (ENGINE_S s of engine time; largest chunk MAXCHUNK nodes,
-MAXCHUNK_S s; smallest MINCHUNK nodes), 16 resumable chunks, every chunk
+size 48 by the SYM16 engine — 119,110,352,726 nodes, 15,431 s wall on
+4 workers (32,695 s of engine time; largest chunk 14,077,925,460 nodes,
+2,838 s (slowest chunk 3,150 s); smallest 455,221,604 nodes), 16 resumable chunks, every chunk
 UNSAT (`results/n18_m48_bnb_sym_chunk*.txt`; driver log
 `results/n18_m48_run.log`). The best previously recorded finite upper
 bound was a(18) ≤ 81 (Pratt 2014, OEIS, (secondary)).
@@ -326,14 +326,14 @@ deleting any black queen leaves a 47 + 47 placement.
 **Corollary.** a(18) = 47, confirming Ainley's 1977 value and
 ⌊7·18²/48⌋ = 47.
 
-*Growth and caveats.* The boundary refutation cost ×GROWTH in nodes over
-n = 17 (2.15·10¹⁰ → NODES_SCI), above the ×4 projected from the n = 16 → 17
-step but inside the ladder's range; the wall time (WALL_S s against 1712 s
+*Growth and caveats.* The boundary refutation cost ×5.55 in nodes over
+n = 17 (2.15·10¹⁰ → 1.19·10¹¹), above the ×4 projected from the n = 16 → 17
+step but inside the ladder's range; the wall time (15,431 s against 1712 s
 at n = 17) is not comparable because the cores were shared with other jobs
-of the session for about two of the four hours (engine time ENGINE_S s is
+of the session for about two of the four hours (engine time 32,695 s is
 the honest figure). As at n = 17 the exhaustion was run on **one engine
 only**: the plain-engine replication is projected at ≈ 9× the SYM16 node
-count (≈ NODES_PLAIN nodes, ≈ HOURS_PLAIN h on this hardware) and was not
+count (≈ 1.1·10¹² nodes, ≈ 25 h on this hardware) and was not
 attempted; Theorem G rests on Lemma 6′ and the §4 validation battery. No
 engine search for a 47-witness was run this time: the lower bound is the
 checker-verified literature placement alone.
@@ -343,9 +343,9 @@ checker-verified literature placement alone.
 1. ~~a(17)~~ Done in session 2 (§6b): a(17) = 42. ~~a(18)~~ Done in
    session 3 (§6c): a(18) = 47. Next rung: a(19), recorded bracket
    [52, ?] (Ainley's 52 = ⌊7·19²/48⌋; secondary). At ×4–5 per rung the
-   m = 53 refutation is ≈ NEXT_NODES nodes, NEXT_HOURS h on 4 dedicated
+   m = 53 refutation is ≈ 5.4–6.6·10¹¹ nodes, 13–16 h on 4 dedicated
    cores. Also pending: the plain-engine replications of the n = 17 and
-   n = 18 refutations (≈ 4–5 h and ≈ HOURS_PLAIN h), to restore the
+   n = 18 refutations (≈ 4–5 h and ≈ 25 h), to restore the
    two-engine standard of n = 16.
 2. The B&B's family-sum bound (Lemma 5) treats the two diagonal
    families independently. A joint bound (e.g. LP over both families)

@@ -13,18 +13,18 @@ node.
 
 **Result.** **CERTIFIED — a(18) = 47.** (i) Upper bound: exhaustive
 refutation of army size 48 by the SYM16 engine rebuilt from source: 16
-resumable chunks, every chunk UNSAT, NODES_TOTAL nodes, ENGINE_S s of engine
-time (≈ ENGINE_H core-hours), WALL_S s wall on 4 workers that were shared
-with other jobs for about two hours (chunk sizes MINCHUNK to MAXCHUNK nodes;
+resumable chunks, every chunk UNSAT, 119,110,352,726 nodes, 32,695 s of engine
+time (≈ 9.1 core-hours), 15,431 s wall on 4 workers that were shared
+with other jobs for about two hours (chunk sizes 455,221,604 to 14,077,925,460 nodes;
 records `results/n18_m48_bnb_sym_chunk*.txt`, committed one by one as they
 completed). (ii) Lower bound: Kamenetsky's 47 + 48 placement from the
 A250000 link file passes `check_peaceable`
 (`witnesses/witness_n18_m47_kamenetsky.txt`). Node growth over n = 17:
-×GROWTH. Documents updated: README (row 7, reproduction, caveats), NOTE §6c
+×5.55. Documents updated: README (row 7, reproduction, caveats), NOTE §6c
 and §7, WRITEUP session-3 section, PAGE.md (page update), index row.
 
 **Caveat, stated as a defect.** Single-engine exhaustion (as at n = 17): the
-plain-engine replication (≈ 9× the nodes, ≈ NODES_PLAIN, ≈ HOURS_PLAIN h)
+plain-engine replication (≈ 9× the nodes, ≈ 1.1·10¹², ≈ 25 h)
 was not run. No engine-found witness this time: the lower bound is the
 checker-verified literature placement only.
 
@@ -37,6 +37,6 @@ not wall time, is the figure to compare across rungs.
 
 **Next.** (1) Plain-engine replications of n = 17 and n = 18 to restore the
 two-engine standard. (2) a(19): Ainley's 52; the m = 53 refutation at ×4–5
-per rung is ≈ NEXT_NODES nodes, ≈ NEXT_HOURS h on 4 dedicated cores — a
+per rung is ≈ 5.4–6.6·10¹¹ nodes, ≈ 13–16 h on 4 dedicated cores — a
 full session, launched first thing. (3) Submit a(16..18) to OEIS A250000
 with the witnesses and chunk records — a decision for the local session.
