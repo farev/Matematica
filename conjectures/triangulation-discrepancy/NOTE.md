@@ -38,10 +38,10 @@ For v ∈ V₁ the *link* C_v is the cycle of neighbours of v in rotation order.
 triangles; a face is *V₁-free* if it contains no vertex of V₁.
 
 [BC] = Basti–Cremaschi, arXiv:2608.21585 (read in full). [KYY] = Kawarabayashi, Yoneda,
-Yoneda, *The balanced four-color theorem*, arXiv:2607.13025: every planar graph with n ≥ 3
-vertices has a proper 4-colouring in which each colour is used on fewer than n/2 vertices
-(statement taken from the abstract; [BC] cite it as Corollary 17 — secondary for the
-numbering).
+Yoneda, *The balanced four-color theorem*, arXiv:2607.13025, Corollary 17 (checked in
+the HTML version on 2026-09-04): for k ≥ 4, every planar graph with n ≥ 3 vertices admits
+a k-colouring in which each colour is used on at most ⌈(n−2)/(k−2)⌉ vertices; for k = 4
+and n = 6m+5 this is 3m+2, i.e. fewer than n/2, and the bound is attained by K_{1,1,n−2}.
 
 ## 1. The class vector
 

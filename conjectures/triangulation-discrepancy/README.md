@@ -77,7 +77,7 @@ Python 3.11 for `brute.py`; C99 otherwise; no other dependencies.
   documented behaviour for `-p -c2`); it is not a brute-force census, and has been
   cross-checked only through the n = 11 and n = 17 controls.
 - The balanced four-colour theorem of Kawarabayashi–Yoneda–Yoneda is used as stated in
-  its arXiv abstract (the paper itself was not read); [BC] cite it as Corollary 17.
+  its Corollary 17 (checked in the arXiv HTML version); its proof was not re-derived.
 - Single-engine computations: `disc.c` is cross-validated against a Python brute force
   only for n ≤ 11; the n ≥ 12 distributions come from one implementation.
 - Next orders: n = 29 needs 2-connected plane graphs on 15 vertices with 32–39 edges —
@@ -94,5 +94,5 @@ Python 3.11 for `brute.py`; C99 otherwise; no other dependencies.
 - A. Arevalo Loyola, A. Biniaz, P. Bose, T. Shermer, SWAT 2026: the (3n−16)/7 bound and
   the 2+2 merging lemma (secondary, via [BC]).
 - K. Kawarabayashi, H. Yoneda, M. Yoneda, arXiv:2607.13025 (Jul 2026): the balanced
-  four-colour theorem (abstract read).
+  four-colour theorem (Corollary 17 checked in the HTML version).
 - No other work on the residue class n ≡ 5 (mod 6) was found (arXiv search, 2026-09-04).

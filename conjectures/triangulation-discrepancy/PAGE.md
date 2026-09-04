@@ -60,7 +60,8 @@
    - The n = 23 result is a certification through the structure theorem, not a census;
      it relies on plantri generating all 2-connected plane graphs with the stated
      parameters and on Lemmas 1–5.
-   - The balanced four-colour theorem is used as stated in its arXiv abstract (secondary).
+   - The balanced four-colour theorem (Kawarabayashi–Yoneda–Yoneda, Corollary 17, checked
+     in the arXiv HTML version) is used as a black box.
    - The n ≥ 12 census values come from a single implementation (cross-validated with a
      brute force for n ≤ 11 and against the paper's table for n ≤ 12).
    - Asayama–Matsumoto and Arevalo Loyola et al. are cited via [BC] (secondary).
