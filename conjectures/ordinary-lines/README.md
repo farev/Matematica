@@ -84,8 +84,9 @@ are regenerated deterministically by the scripts. No random seeds are involved.
 - The claim for pseudolines rests on two cited theorems not re-read today (Melchior for
   pseudolines; the topological representation theorem) — both marked (secondary).
 - The sub-7 shapes of Corollary 5.3 were not machine-checked; they are excluded by
-  Kelly–Moser (secondary). The n = 13 and n = 14 refutation controls did not finish in the
-  session (single-5-line cubes).
+  Kelly–Moser (secondary). The n = 13 refutation control (one 5-point line, t₃ = 21) hit a
+  3 600 s cap with a 3.9 GB proof and no verdict; the n = 14 control was stopped at session
+  end. Single-5-line cubes need their own split.
 - Kissat's DRAT output was checked by drat-trim only; the repository's own `rup_check` was
   not used (Kissat emits RAT steps).
 

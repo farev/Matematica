@@ -163,7 +163,9 @@ placement in full, the meeting placement in 86 of its 131 sub-classes.
   points carry (3, 3, 3, 2, 2, 2) mixed lines — about 25 CPU-hours. Stopped at 13:58 UTC
   and the result written up as partial.
 - *Calibration at n = 13, 14* (single-5-line cubes, no array to split on): the n = 13,
-  m = 5 cube ran > 45 min with a 2.7 GB proof and was still unfinished at write-up.
+  m = 5 cube hit its 3 600 s cap with a 3.9 GB proof and no verdict; the n = 14, m = 6
+  cubes were started and stopped at session end. The refutation-side calibration stands
+  for n ≤ 12 only.
 - *Operations*: three shell commands killed themselves through `pkill -f` / `pgrep -f`
   patterns matching their own command line (relaunches cost ~15 min; use `[x]` bracket
   patterns or PIDs); `sh` has no `time` builtin; one type-mode driver crashed on a format

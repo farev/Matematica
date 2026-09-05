@@ -338,10 +338,12 @@ The cube method reproduces the refutation side of the known ladder (`certify.py`
 n = 11, m = 5: no admissible distribution at all, so t₂ ≥ 5 resp. 6 follows from Lemmas
 5.1–5.2 alone; n = 12, m = 5: one cube, UNSAT in 18.5 s. Positive controls: n = 9, m = 6 SAT
 (in 4 of 6 cubes, 0.1 s), n = 10, m = 5 SAT (0.1 s), n = 11, m = 6 SAT (0.4 s). The n = 13,
-m = 5 cube (one 5-point line, t₃ = 21) is a single-line structure with no array to split on; Kissat ran on it for more than 45
-minutes (proof past 2.8 GB) and it had not finished when this note was written, nor was
-the n = 14, m = 6 control (three cubes) reached. The refutation side of the calibration
-therefore stands for n ≤ 12; n = 13, 14 are recorded as unfinished, not as failures.
+m = 5 cube (one 5-point line, t₃ = 21) is a single-line structure with no array to split on; Kissat hit the 3 600 s cap on it with
+a 3.9 GB proof and no verdict (`solve_s: 3600.0, result: TIMEOUT` in the scratch ledger),
+and the n = 14, m = 6 control (three cubes) was started and stopped at the end of the
+session. The refutation side of the calibration therefore stands for n ≤ 12; n = 13, 14
+are recorded as unfinished, not as failures — they are exactly the single-5-line structure
+that also blocks the t₂ = 8 cube {5} at n = 15 (§9.2).
 
 ## 9. Open questions
 
