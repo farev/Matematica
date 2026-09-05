@@ -107,8 +107,11 @@ def latin_square_classes(k):
     return list(classes.values())
 
 
-def build_subcube(cube, m, star_rows, latin=None):
-    """returns (encoder, description).  star_rows: tuple of row bitmasks over the column list."""
+def build_subcube(cube, m, star_rows, latin=None, exact_total=None):
+    """returns (encoder, description).  star_rows: tuple of row bitmasks over the column list.
+    exact_total: if an integer, make the ordinary indicators exact (O_ij <-> ij ordinary) and
+    impose exactly that many ordinary lines (sound in the two-5-line cubes when m = 7, where
+    Melchior + counting force t_2 = 7 exactly)."""
     L1, L2 = CUBES[cube]['L1'], CUBES[cube]['L2']
     shared = set(L1) & set(L2)
     rows = [a for a in L1 if a not in shared]
@@ -116,6 +119,14 @@ def build_subcube(cube, m, star_rows, latin=None):
     F = [p for p in range(N) if p not in L1 and p not in L2]
     enc = OrdLinesEncoder(N, m, big_lines=[L1, L2], exact_big=True)
     cnf = enc.cnf
+    if exact_total is not None:
+        from pysat.card import CardEnc, EncType
+        for (i, j), o in enc.O.items():
+            for k in range(N):
+                if k not in (i, j):
+                    cnf.append([-o, -enc.z(i, j, k)])
+        e = CardEnc.equals(lits=list(enc.O.values()), bound=exact_total, vpool=enc.pool, encoding=EncType.seqcounter)
+        cnf.extend(e.clauses)
     cells = [(a, b) for a in rows for b in cols]  # row-major reading order
     star = {}
     for i, a in enumerate(rows):
@@ -128,9 +139,12 @@ def build_subcube(cube, m, star_rows, latin=None):
         else:
             cnf.append([enc.z(a, b, f) for f in F])
     if latin is not None:
-        # fix phi completely: latin[i][j] = index into F
+        # fix phi completely: latin[i][j] = index into F, or None for a star cell
         for i, a in enumerate(rows):
             for j, b in enumerate(cols):
+                if latin[i][j] is None:
+                    assert star[(a, b)]
+                    continue
                 f = F[latin[i][j]]
                 cnf.append([enc.z(a, b, f)])
     else:
