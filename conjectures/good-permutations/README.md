@@ -9,8 +9,8 @@ session because the thread's 2-adic lemma suggested the search space is not 63! 
 2^57 automorphisms of a binary tree — small enough to exhaust if the reduction could be
 made rigorous.
 
-**Write-up page:** none yet — this was the session's hedge line; see the ordinary-lines
-PAGE.md for the day's page.
+**Write-up page:** *(pending — see PAGE.md; this was the session's hedge line, run by a
+subagent alongside the ordinary-lines attack)*
 
 **Status:** active
 **Sessions:** 2026-09-05 (run by a subagent alongside the ordinary-lines session)
