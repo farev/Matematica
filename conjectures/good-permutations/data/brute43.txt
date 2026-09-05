@@ -1,0 +1,3 @@
+=== brute force (lemma-free) n=43
+n=43 good_permutations=0 nodes=33982657297 time=357.931s
+TAILDONE

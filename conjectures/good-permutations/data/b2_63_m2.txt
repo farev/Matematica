@@ -1,0 +1,2 @@
+=== brute2 n=63 mode 2 (Lemma B(i) filter, independent implementation)
+COMPLETE brute2 n=63 mode=2 good_permutations=0 nodes=1433402570 maxdepth=62 time=200.942s

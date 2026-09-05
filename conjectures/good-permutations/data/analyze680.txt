@@ -1,0 +1,7 @@
+survivors of odd L<=13: 680
+survivors with NO killing length >=15 (would be good perms): 0
+distribution of the SMALLEST killing length: [(15, 16), (19, 16), (29, 128), (31, 520)]
+how many survivors each length kills: [(15, 16), (17, 16), (19, 16), (21, 16), (27, 16), (29, 144), (31, 680), (33, 680), (35, 128), (37, 4), (47, 16), (49, 16)]
+number of killing lengths per survivor: [(2, 520), (4, 128), (6, 28), (7, 4)]
+greedy hitting set of lengths (length, #killed): [(31, 680)]
+ANALYZEDONE
