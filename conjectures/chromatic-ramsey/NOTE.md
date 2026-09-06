@@ -101,10 +101,13 @@ edge of colour a between V_P and V_Q has a ∉ P, a ∈ Q, so its labels are
 u_a ∈ {±1} and 0; likewise for colour b. Triangle-freeness of colour c: three
 vertices of one block cannot pairwise differ at c (two values). Two vertices
 u,u' ∈ V_P and one v ∈ V_Q: the edge uu' has a colour outside P, so c ∉ P and
-c ≠ b; if c = a then u_a = v_b = u'_a, whereas uu' of colour a requires
-u_a ≠ u'_a. Three vertices in distinct blocks P,Q,R: every cross colour lies in
-the symmetric difference of the two palettes, and no c lies in P△Q, Q△R and
-P△R simultaneously (c ∈ P△Q and c ∈ P△R force [c∈Q] = [c∈R]). The
+c ≠ b; hence c = a, so u_a = v_b = u'_a, whereas uu' of colour a requires
+u_a ≠ u'_a. Two vertices v,v' ∈ V_Q and one u ∈ V_P: now c ∉ Q, so c ≠ a and
+c = b; uv and uv' of colour b give u_a ≠ v_b and u_a ≠ v'_b, hence v_b = v'_b
+(the labels are binary), whereas vv' of colour b requires v_b ≠ v'_b. Three
+vertices in distinct blocks P,Q,R: every cross colour lies in the symmetric
+difference of the two palettes, and no c lies in P△Q, Q△R and P△R
+simultaneously (c ∈ P△Q and c ∈ P△R force [c∈Q] = [c∈R]). The
 asymptotics: C(k,t)2^{k−t}/3^k is the probability that a Binomial(k,1/3)
 variable equals t; the k+1 values sum to 1, so the maximum is at least
 1/(k+1), and by the local limit theorem it is (1+o(1))/√(2πk·(1/3)(2/3)) =
@@ -112,8 +115,10 @@ variable equals t; the k+1 values sum to 1, so the maximum is at least
 
 The construction was also checked mechanically (`antichain.py` +
 `verify_colouring.c`, which enumerates all C(n,3) triples and checks every
-label) for every (k,t) with k ≤ 8 that is listed in the README, up to K_1792
-with 8 colours.
+label) for (k,t) = (2,1), (3,1), (4,1), (4,2), (5,1), (5,2), (6,2), (6,3),
+(7,2), (7,3), (8,3), up to K_1792 with 8 colours. Theorem 3.1 is the case
+r = 2, s = 1 of Theorem 4.2 below with 𝒫 the family of all t-subsets (any two
+distinct t-subsets satisfy |P∖Q| ≥ 1) and F(2,k−t) = 2^{k−t}.
 
 **Remark 3.2 (an LYM barrier; PROVED).** Call a *palette construction* any
 colouring built from blocks V_P = {±1}^{[k]∖P} indexed by a family 𝒫 of

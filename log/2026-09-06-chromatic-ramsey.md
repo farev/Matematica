@@ -16,7 +16,38 @@ set. What counted as success: exact values of F(3,3), F(3,4), certified
 bounds for the next cells, and — the stretch goal — a construction proving
 F(3,k) ≥ (3^k+1)/2 for all k (which would show lim F(3,k)/3^k ≥ 1/2).
 
-**Result.** RESULTS_PLACEHOLDER
+**Result.** **PROVED.** F(3,k) ≥ C(k,t)·2^{k−t} for every t ≤ k, hence
+F(3,k) ≥ 3^k/(k+1) and F(3,k) ≥ (1+o(1))·3^k·3/(2√(πk)): the exponential
+growth rate of F(3,k) is exactly 3, the trivial upper bound, where the best
+rate on record for three-colourable classes was 2^{3/2} (Morris's exposition
+of the OpenAI palette recursion, Theorem 2.1 there). The construction takes
+blocks indexed by the t-subsets P of the colour set, a binary cube {±1}^{[k]∖P}
+in each block coloured by first difference, and colours a cross edge by
+a = min(Q∖P) if u_a = v_b and by b = min(P∖Q) otherwise — the OpenAI
+"two-sided coordinate cover" is trivial for binary labels (f = id, g = −id),
+which is why every t-subset can serve as a palette with no Ramsey-type loss.
+Verified mechanically to K_1792 with 8 colours. More generally
+F(j,k) ≥ j^k/(2k+2)^{d_j} for every fixed j (NOTE Corollary 4.4: palettes with
+pairwise |P∖Q| ≥ s from power-sum residue classes, saturated maps of dimension
+s; self-contained for j ≤ 4 via an explicit (3,2)-gadget found by SAT, the
+j = 3 → 4 step checked on K_56 and K_98; j ≥ 5 cites the OpenAI/Alon et al.
+lemma), so lim F(j,k)^{1/k} = j for all j. These settle the exponential rate
+but not Sawin's constant: the loss is polynomial. **CERTIFIED:** the first
+exact values, F(3,3) = 14 (three witnesses; UNSAT at 15 with an 8,366-line
+DRUP proof checked by `tools/satcert/rup_check`), F(4,3) = 16 (witness;
+≤ 16 by r_3(3) = 17), PENDING_LOG_F34 and the bounds F(3,5) ≥ 122 (two
+witnesses), PENDING_LOG_F36 F(4,4) ≥ 44 (circulant), all witnesses checked
+from the definition by independent code; no circulant witness for
+F(4,4) ≥ 45 and no circulant triangle-free 4-colouring of K_46, K_50, K_51.
+Wiesner's conjecture is exact at (3,3) PENDING_LOG_F34B, a strict lower bound
+at (4,3) (15 < 16), and its j = 3 value (3^k+1)/2 is realised for k ≤ 5 by
+the even-weight set E_k (ternary words with an even number of 2's), which
+the SAT-found extremal sets resemble exactly in their line/plane/layer
+profile — but E_3 is one of 37 inequivalent extremal 14-sets. **PROVED
+(barrier):** antichain palette constructions cannot exceed
+max_t C(k,t)2^{k−t} (LYM), so density 1/2 needs the nested palettes E_k has.
+New directory `conjectures/chromatic-ramsey/` (README, NOTE, WRITEUP,
+PAGE.md, code, witnesses, certificate); index row added.
 
 **Connectivity.** arxiv.org reachable via the standard fetcher (listing
 pages, abstracts; PDFs fetched and extracted locally with pymupdf).
@@ -104,11 +135,50 @@ Wiesner's conjecture, the 2026 OpenAI lower bound on r_3(k) that
 motivated it, and Radziszowski's dynamic survey, versus A250000. Ties go
 to the new problem; the external candidate won on (a).
 
-**What failed.** FAILED_PLACEHOLDER
+**What failed.**
+- *The theorem I actually wanted* — a valid colouring of E_k for all k
+  (Wiesner's j = 3 conjecture, lim F(3,k)/3^k ≥ 1/2). Six rule shapes fail
+  and are recorded in the WRITEUP: first-difference with deflection
+  (monochromatic 202, 212, 022), pattern-invariant rules (provably none exist
+  for k ≥ 2 — the pairs {220·,000·} and {220·,100·} have the same pattern),
+  bipartite colour classes (cap 2^k), untwisted and twisted layer towers
+  (UNSAT without a twist at k = 3, lifts exist with a twisted O-layer, no
+  uniform twist found), sixty-four sign-based inductive rules (all dead by
+  k = 3), and cyclotomy (quartic residues mod 41 have 4-chromatic classes).
+  The Z_2 × Z_k-symmetric colourings exist only for odd k (0000, 1111, 2222 is
+  a shift-fixed triangle when k is even), which killed the hope of a uniform
+  symmetric family.
+- *Plain SAT refutation of F(3,4) ≥ 42*: CaDiCaL with the implied line /
+  plane / cube cardinality bounds ran 50 min without a verdict; the
+  cube-and-conquer split over the 37 extremal-14-set orbits PENDING_LOG_CUBE.
+- *F(4,4) ≥ 45 by SAT* (256 types, 4.2 M clauses): 25 min, no verdict; only
+  the circulant 44 stands. Circulants reach at most 44 (Z_45 UNSAT, Z_46 UNSAT
+  even without the chromatic condition).
+- *The slate's other candidates* were not attacked; nothing else failed.
 
-**Side observation (CERTIFIED, log only).** SIDE_PLACEHOLDER
+**Side observation (CERTIFIED, log only).** OEIS A398259 (Bernáth, 24 Jul
+2026; Van Eck-like sequence keyed on the digit sum of the previous term)
+conjectures that its 26 zeros below 10^6 (A398307) are all the zeros. The
+OEIS survey agent found a counterexample and an independent C implementation
+written from the entry's definition (`tools/oeis-checks/a398259.c`)
+confirms it: the program reproduces all 26 listed zeros and the published
+checkpoints a(10^4) = 9365, a(10^5) = 99353, a(10^6) = 999847, and finds
+a(700000441) = 699999999, whose digit sum 78 never occurred as a term
+before, so **a(700000442) = 0** — a 27th zero (34 s to N = 7.1·10^8). The
+agent's own run reports 251 further zeros below 2·10^9, all keyed on 78
+(not independently reproduced here). Both conjectures of the entry (the zero
+list, and lim a(n)/n = 1) should be re-examined by the author; recorded here
+so a local session can forward it.
 
-**Next.** NEXT_PLACEHOLDER
+**Next.** (1) Colour E_k for all k: the nested cross pairs are the whole
+difficulty (Remark 3.2); a candidate route is an inductive hypothesis on
+the pair (E_k, O_k) that also constrains the cross colouring of E_k×O_k,
+found by SAT for k ≤ 4 and then read off. (2) F(3,5) ∈ {122,123}: a
+cube-and-conquer over the extremal 41-set orbits (enumerate them first, as
+for k = 3). (3) F(4,4): try Cayley colourings on the non-abelian groups of
+order 45–51 and the E-like sets in [4]^4; Wiesner's 51 would beat Chung's
+r_3(4) ≥ 51. (4) Report F(3,3) = 14, F(3,4) = 41 and the rate theorem to
+Sawin's question — a decision for the local session per repo policy.
 
 **Session hygiene.** Branch: harness-designated `claude/affectionate-sagan-sp4ict`
 (the mandate's per-conjecture branch name overridden by the harness
