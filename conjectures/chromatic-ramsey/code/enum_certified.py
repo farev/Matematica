@@ -5,9 +5,13 @@ final call returns UNSAT, the DRUP proof refutes (base CNF + all blocking clause
 that the listed sets are ALL the colourable n-sets.  Writes <prefix>.cnf (base + blocking
 clauses), <prefix>.drup, <prefix>_sets.json.  Check with:  rup_check <prefix>.cnf <prefix>.drup
 usage: enum_certified.py j k n prefix"""
-import sys, itertools, time, json
-from pysat.solvers import Solver
+import itertools
+import json
+import sys
+import time
+
 from pysat.card import CardEnc, EncType
+from pysat.solvers import Solver
 
 j, k, n, prefix = int(sys.argv[1]), int(sys.argv[2]), int(sys.argv[3]), sys.argv[4]
 types = list(itertools.product(range(j), repeat=k)); T = len(types); tid = {t: i for i, t in enumerate(types)}
@@ -46,6 +50,6 @@ with open(prefix + ".cnf", "w") as f:
     f.write(f"p cnf {nv} {len(allcl)}\n")
     for c in allcl: f.write(' '.join(map(str, c)) + ' 0\n')
 with open(prefix + ".drup", "w") as f:
-    for l in proof: f.write(l + '\n')
+    f.writelines(l + '\n' for l in proof)
 json.dump(sets, open(prefix + "_sets.json", "w"))
 print("wrote", prefix + ".cnf", prefix + ".drup", prefix + "_sets.json")

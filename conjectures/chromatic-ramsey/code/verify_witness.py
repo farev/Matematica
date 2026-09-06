@@ -5,7 +5,9 @@ and c is the colour (a coordinate).  Checks, without any solver: (1) every liste
 coordinate where the two types differ; (2) every pair of the vertex set appears exactly once;
 (3) no monochromatic triangle.  Prints n, k, j (max value + 1) — the certificate of F(j,k) >= n.
 usage: verify_witness.py witness.txt"""
-import sys, re, itertools
+import itertools
+import re
+import sys
 
 col = {}; V = set()
 for line in open(sys.argv[1]):

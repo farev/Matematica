@@ -1,6 +1,11 @@
+#!/usr/bin/env python3
 # memory-lean variant of fixed_sat.py for E_6 (365 vertices): clauses streamed into the solver
-import sys, time, itertools
+import itertools
+import sys
+import time
+
 from pysat.solvers import Solver
+
 k = int(sys.argv[1]); parity = int(sys.argv[2])
 V = [v for v in itertools.product(range(3), repeat=k) if v.count(2) % 2 == parity]
 n = len(V); E = {}; nv = 0

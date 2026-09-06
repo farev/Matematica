@@ -4,7 +4,10 @@ with the search).  Input: JSON {n,k,j,classes:{c:[d,...]},colourings:{c:[a_v]}}.
 Checks: (1) the classes partition {1..floor(n/2)}; (2) every pair {v,w} of Z_n gets the colour of
 its difference class; (3) brute force over all triples: no monochromatic triangle; (4) for every
 class c the map v -> a_v is a proper vertex j-colouring of the class's graph."""
-import sys, json, itertools
+import itertools
+import json
+import sys
+
 w = json.load(open(sys.argv[1]))
 n, k, j = w["n"], w["k"], w["j"]
 classes = {int(c): set(v) for c, v in w["classes"].items()}

@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
-"""The antichain construction for F(3,K):
+r"""The antichain construction for F(3,K):
 vertices = pairs (P, u) with P a t-subset of [K] and u in {+1,-1}^{[K]\P};
 inside a block: colour = least coordinate c not in P with u_c != u'_c;
 between blocks P != Q: a = min(Q\P), b = min(P\Q); colour a if u_a == v_b else b.
 Emits the colouring as a dense matrix for the C verifier (verify_colouring.c) and checks
 the 3-labelling lambda_c(P,u) = u_c if c not in P else 0 is proper.
 usage: antichain.py K t out.bin"""
-import sys, itertools, struct
+import itertools
+import struct
+import sys
 
 K, t = int(sys.argv[1]), int(sys.argv[2]); out = sys.argv[3]
 blocks = list(itertools.combinations(range(K), t))

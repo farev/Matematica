@@ -9,9 +9,13 @@ remaining 54 types with a valid colouring.  All cases UNSAT => F(3,4) <= 41.
 Phase 1 (this script): enumerate the representatives; phase 2: solve every cube with CaDiCaL;
 phase 3: re-solve every cube with Glucose 4 + DRUP and write cnf/drup pairs for rup_check.
 usage: cube42.py reps.json  [--prove]"""
-import sys, json, itertools, time
-from pysat.solvers import Solver
+import itertools
+import json
+import sys
+import time
+
 from pysat.card import CardEnc, EncType
+from pysat.solvers import Solver
 
 repfile = sys.argv[1]; prove = '--prove' in sys.argv
 reps = json.load(open(repfile))
@@ -74,12 +78,12 @@ for i, R in enumerate(reps):
         cl = base + [[a] for a in assumptions]
         with open(f"cube42_{i}.cnf", "w") as f:
             f.write(f"p cnf {nv} {len(cl)}\n")
-            for c in cl: f.write(' '.join(map(str, c)) + ' 0\n')
+            f.writelines(' '.join(map(str, c)) + ' 0\n' for c in cl)
         with Solver(name='glucose4', bootstrap_with=cl, with_proof=True) as sol:
             r = sol.solve()
             if not r:
                 with open(f"cube42_{i}.drup", "w") as f:
-                    for l in sol.get_proof(): f.write(l + '\n')
+                    f.writelines(l + '\n' for l in sol.get_proof())
         print(f"cube {i}: {'SAT' if r else 'UNSAT'} {time.time()-t0:.1f}s (glucose, proof written)", flush=True)
     results.append(r)
 print("any SAT?", any(results), "| all UNSAT:", not any(results))

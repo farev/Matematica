@@ -3,9 +3,12 @@
 blocking clauses on the selection variables), canonicalise under the group S_j wr S_k
 (value permutations per coordinate + coordinate permutations), and report the orbits.
 usage: enum_extremal.py j k n [maxsols]"""
-import sys, itertools, time
-from pysat.solvers import Solver
+import itertools
+import sys
+import time
+
 from pysat.card import CardEnc, EncType
+from pysat.solvers import Solver
 
 j, k, n = int(sys.argv[1]), int(sys.argv[2]), int(sys.argv[3])
 maxsols = int(sys.argv[4]) if len(sys.argv) > 4 else 10**6

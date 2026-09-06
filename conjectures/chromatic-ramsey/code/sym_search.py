@@ -2,7 +2,9 @@
 """Which elements g of (Z_2)^k x S_k (value swaps 0<->1 per coordinate, coordinate permutations)
 admit a g-invariant valid colouring of E_k?  Then try to grow invariant subgroups greedily.
 usage: sym_search.py k"""
-import sys, itertools
+import itertools
+import sys
+
 from fixed_sat import solve
 
 k = int(sys.argv[1])

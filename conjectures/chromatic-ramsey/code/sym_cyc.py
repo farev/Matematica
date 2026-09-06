@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """Colour E_k invariant under s (global 0<->1 swap) and rho (cyclic coordinate shift, rotating
 colours). Print the colouring by orbits of pairs.  usage: sym_cyc.py k [extra: 'noswap'|'norho']"""
-import sys, itertools, collections
+import itertools
+import sys
+
 from fixed_sat import solve
 
 k = int(sys.argv[1]); flags = sys.argv[2:]
@@ -41,5 +43,4 @@ for orb in orbits:
     cs = sorted(set(col[p] for p in orb))
     print(f"  orbit size {len(orb):2d}: rep {fmt(x)}-{fmt(y)} colour {col[(x,y)]}  D={[c for c in range(k) if x[c]!=y[c]]}")
 with open(f"col_sym_k{k}.txt", "w") as f:
-    for (a, b), c in sorted(col.items()):
-        f.write(f"{fmt(a)} {fmt(b)} {c}\n")
+    f.writelines(f"{fmt(a)} {fmt(b)} {c}\n" for (a, b), c in sorted(col.items()))

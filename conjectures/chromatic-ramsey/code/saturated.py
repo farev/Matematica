@@ -1,5 +1,10 @@
-import sys, itertools, time
+#!/usr/bin/env python3
+import itertools
+import sys
+import time
+
 from pysat.solvers import Solver
+
 H, s = int(sys.argv[1]), int(sys.argv[2])
 pts = list(itertools.product(range(H), repeat=s))
 nv = 0; F = {}; G = {}

@@ -2,8 +2,12 @@
 """Tower search: colour E_k / O_k (even / odd number of 2's in [3]^k) so that the three layers
 by the LAST coordinate restrict to prescribed colourings of E_{k-1} / O_{k-1}.
 Writes col_tower_{E|O}_k{k}.txt. Prints statistics of the cross colourings."""
-import sys, itertools, time, collections
+import itertools
+import sys
+import time
+
 from pysat.solvers import Solver
+
 
 def parse(fn):
     col = {}

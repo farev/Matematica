@@ -23,14 +23,15 @@ OpenAI/Morris palette recursion; and, for every fixed j, F(j,k) ≥ j^k/poly(k)
    The j = 3 → 4 step uses an explicit 9-entry "saturated map" gadget found by
    SAT; checked on K_56 (6 colours) and K_98 (7 and 8 colours).
 3. **CERTIFIED** — first exact values beyond F(2,k) = 2^k: F(3,3) = 14 (DRUP
-   proof checked by the repository's own checker), F(4,3) = 16, F(3,4) = 41
-   PENDING_F34; bounds F(3,5) ≥ 122, F(3,6) PENDING_F36, F(4,4) ≥ 44 (circulant
-   witnesses with explicit proper colourings, all verified from the
-   definition).
+   proof checked by the repository's own checker), F(3,4) = 41 (cube-and-
+   conquer over the certified census of the 33,831 extremal 14-sets; 37
+   DRUP-checked refutations), F(4,3) = 16; bounds F(3,5) ≥ 122, F(3,6) ≥ 365,
+   F(4,4) ≥ 44 (witnesses with explicit proper colourings, all verified from
+   the definition).
 4. **CERTIFIED** — Wiesner's conjecture F(j,k) ≥ Σ_{i≤j} S(k+1,i) is exact at
-   (3,3) (14) PENDING_F34, a strict lower bound at (4,3) (15 < 16), and its
-   j = 3 value (3^k+1)/2 is realised for k ≤ 5 by the set E_k of ternary words
-   with an even number of 2's; E_3 is one of 37 inequivalent extremal 14-sets.
+   (3,3) and (3,4), a strict lower bound at (4,3) (15 < 16), and its j = 3
+   value (3^k+1)/2 is realised for k ≤ 6 by the set E_k of ternary words with
+   an even number of 2's; E_3 is one of 37 inequivalent extremal 14-sets.
 5. **PROVED** — an LYM barrier: antichain palette constructions cannot exceed
    max_t C(k,t)2^{k−t}; density 1/2 needs nested palettes (E_k has them). Every
    local colouring rule tried for E_k fails (documented), so Wiesner's j = 3
@@ -41,13 +42,14 @@ OpenAI/Morris palette recursion; and, for every fixed j, F(j,k) ≥ j^k/poly(k)
 
 ## 3. Figure specs
 
-- **Figure 1 — the ratio F(3,k)/3^k.** Data: the certified values/bounds
-  2/3, 5/9, 14/27, 41/81 PENDING_F34, ≥ 122/243, PENDING_F36 (from
-  `README.md` results table), the Theorem 3.1 curve max_t C(k,t)2^{k−t}/3^k
-  for k = 1..12 (compute from the formula), and the line 1/2. Sentence: "The
-  known values sit on Wiesner's (3^k+1)/2 and decrease toward 1/2, while the
-  proved construction (the lower curve) decays like 1/√k — the gap between the
-  two is exactly what is open."
+- **Figure 1 — the ratio F(3,k)/3^k.** Data: the exact values 2/3, 5/9,
+  14/27, 41/81 (k = 1..4) and the lower bounds 122/243, 365/729 (k = 5, 6),
+  from the `README.md` results table; the Theorem 3.1 curve
+  max_t C(k,t)2^{k−t}/3^k for k = 1..12 (compute from the formula: 2/3, 4/9,
+  12/27, 32/81, 80/243, 240/729, …), and the line 1/2. Sentence: "The known
+  values sit on Wiesner's (3^k+1)/2 and decrease toward 1/2, while the proved
+  construction (the lower curve) decays like 1/√k — the gap between the two
+  is exactly what is open."
 - **Figure 2 — the antichain construction for k = 3, t = 1.** Data: `code/antichain.py 3 1`
   (12 vertices in three blocks of 4; block P = {c} is the square {±1}^2 on the
   other two coordinates). Draw the three blocks, the binary-cube colouring
@@ -88,10 +90,11 @@ OpenAI/Morris palette recursion; and, for every fixed j, F(j,k) ≥ j^k/poly(k)
   Radziszowski 2004) are cited through Radziszowski's dynamic survey
   (secondary); Kalbfleisch–Stanton's uniqueness of the K_16 colourings
   likewise.
-- The F(3,3) ≤ 14 and PENDING_F34_CERT refutations are certified (DRUP checked
-  by `tools/satcert/rup_check.c`); the circulant non-existence statements and
-  the extremal-set census are exhaustive SAT/enumeration verdicts without
-  proof logs.
+- The F(3,3) ≤ 14 and F(3,4) ≤ 41 refutations and the completeness of the
+  14-set census are certified (DRUP checked by `tools/satcert/rup_check.c`);
+  the two large proof collections (109 MB and 380 MB) are not in the
+  repository — hashes are, and the scripts regenerate them; the circulant
+  non-existence statements are SAT verdicts without proof logs.
 - Wiesner's conjecture is exact in all cells computed for j = 3 but not at
   (4,3); the page must not present it as a theorem or as "verified".
 - F(3,5) ∈ {122, 123} and F(4,4) ∈ [44, 61] are open; "no circulant witness"

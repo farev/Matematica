@@ -12,7 +12,9 @@ Given colourings colA of A = "same-parity" set and colB of B = "other-parity" se
          if x_c == 0 (so z_c != 0): old c iff e == t4 * z_c ;   otherwise new.
 usage: induct.py kmax   (tries all parameter combinations, reports which survive to kmax)
 """
-import sys, itertools
+import itertools
+import sys
+
 
 def pick_rules():
     def sc(x, z): return [c for c in range(len(x)) if (x[c] == 0) != (z[c] == 0)]
@@ -61,7 +63,7 @@ def lift(colA, A, colB, B, k, t1, t2, t3, t4, pick):
 
 def valid(col, V):
     idx = {v: i for i, v in enumerate(V)}
-    n = len(V); k = len(V[0])
+    n = len(V)
     M = [[-1] * n for _ in range(n)]
     for (u, v), c in col.items():
         assert u[c] != v[c], ("bad colour", u, v, c)

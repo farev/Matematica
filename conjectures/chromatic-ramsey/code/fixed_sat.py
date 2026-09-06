@@ -4,8 +4,12 @@ no monochromatic triangle. Optional symmetry constraints.
 usage: fixed_sat.py k parity [k5_mode]
   parity 0: V = {x : #2's even}, parity 1: odd.
 """
-import sys, time, itertools
+import itertools
+import sys
+import time
+
 from pysat.solvers import Solver
+
 
 def solve(V, k, syms=(), name='cadical153', verbose=True):
     idx = {v: i for i, v in enumerate(V)}
@@ -33,7 +37,7 @@ def solve(V, k, syms=(), name='cadical153', verbose=True):
                         clauses.append([-x, -y, -z])
     # symmetry: for g = (pi, sigmas): col(g x, g y) = pi(col(x,y))
     for (pi, sig) in syms:
-        def g(v):
+        def g(v, pi=pi, sig=sig):
             w = [None] * k
             for i in range(k):
                 w[pi[i]] = sig[i][v[i]]
@@ -70,6 +74,5 @@ if __name__ == '__main__':
     col = solve(V, k)
     if col is not None:
         with open(f"col_even{parity}_k{k}.txt", "w") as f:
-            for (a, b), c in sorted(col.items()):
-                f.write(f"{''.join(map(str,a))} {''.join(map(str,b))} {c}\n")
+            f.writelines(f"{''.join(map(str,a))} {''.join(map(str,b))} {c}\n" for (a, b), c in sorted(col.items()))
         print("witness written, verified")

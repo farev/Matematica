@@ -3,9 +3,12 @@
 every d-dimensional axis-parallel subcube contains at most B[d] selected types, where B[d] is a
 known upper bound on F(j,d) (B[1]=2 always).  Writes DIMACS if requested.
 usage: fjk_sat2.py j k n [--cnf file] [--nosolve]"""
-import sys, time, itertools
-from pysat.solvers import Solver
+import itertools
+import sys
+import time
+
 from pysat.card import CardEnc, EncType
+from pysat.solvers import Solver
 
 KNOWN = {  # (j,d): upper bound on F(j,d)
     (3, 1): 2, (3, 2): 5, (3, 3): 14,
@@ -68,7 +71,7 @@ def main():
     if cnf:
         with open(cnf, 'w') as f:
             f.write(f"p cnf {nv} {len(clauses)}\n")
-            for c in clauses: f.write(' '.join(map(str, c)) + ' 0\n')
+            f.writelines(' '.join(map(str, c)) + ' 0\n' for c in clauses)
         print("wrote", cnf, flush=True)
     if not solve: return
     t0 = time.time()

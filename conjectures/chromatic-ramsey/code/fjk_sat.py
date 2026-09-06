@@ -7,9 +7,13 @@ colour c in which their c-th coordinates differ; no monochromatic triangle.
 
 usage: fjk_sat.py j k n [solver]
 """
-import sys, time, itertools
-from pysat.solvers import Solver
+import itertools
+import sys
+import time
+
 from pysat.card import CardEnc, EncType
+from pysat.solvers import Solver
+
 
 def build(j, k, n, symbreak=True):
     types = list(itertools.product(range(j), repeat=k))

@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
-"""Mechanical check of the palette-block induction step r -> r+1 (Theorem B):
+r"""Mechanical check of the palette-block induction step r -> r+1 (Theorem B):
 base = a K'-colouring of a vertex set with every class triangle-free and properly r-labelled
 (here the E_3 colouring, r = 3, K' = 3, labels = coordinates); palettes = t-subsets of [K] with
 pairwise |P \ Q| >= s; each block carries a copy of the base on the colours outside P; cross
 edges use saturated maps f, g: [r]^s -> [r]^s.  Output verified by verify_colouring.c.
 usage: blockconstruct.py K t s base_colouring.txt out.bin"""
-import sys, itertools, struct
+import itertools
+import struct
+import sys
 
 K, t, s = int(sys.argv[1]), int(sys.argv[2]), int(sys.argv[3]); basefile, out = sys.argv[4], sys.argv[5]
 # base colouring: lines "x y c" with x,y strings over {0,1,2}; labels = coordinates

@@ -2,8 +2,10 @@
 """Twisted tower: layers by last coordinate. Layer 0 = colE, layer 1 = g.colE, layer 2 = h.colO
 for automorphisms g, h in (Z_2)^{k-1} x S_{k-1}.  Report which (g,h) admit a lift, for E_k and O_k.
 usage: tower2.py k  (uses col_even0_k{k-1}.txt and col_even1_k{k-1}.txt as the base colourings)"""
-import sys, itertools, time
-from tower import parse, vertex_set, solve_with_fixed
+import itertools
+import sys
+
+from tower import parse, solve_with_fixed, vertex_set
 
 k = int(sys.argv[1]); d = k - 1
 colE = parse(f"col_even0_k{d}.txt"); colO = parse(f"col_even1_k{d}.txt")
@@ -35,7 +37,8 @@ for parity, name in ((0, 'E'), (1, 'O')):
             for (x, y), c in same.items(): fixed[(x + (0,), y + (0,))] = c
             for (x, y), c in transport(same, g).items(): fixed[(x + (1,), y + (1,))] = c
             for (x, y), c in transport(other, h).items(): fixed[(x + (2,), y + (2,))] = c
-            import io, contextlib
+            import contextlib
+            import io
             buf = io.StringIO()
             with contextlib.redirect_stdout(buf):
                 col = solve_with_fixed(V, k, fixed)

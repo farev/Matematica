@@ -2,7 +2,10 @@
 """Circulant search: k-colour K_n on Z_n by difference class so that every class is
 triangle-free (symmetric sum-free difference set) and vertex j-colourable.
 usage: circ_sat.py n k j [out.json]   — writes the full witness (classes + proper colourings)."""
-import sys, time, json
+import json
+import sys
+import time
+
 from pysat.solvers import Solver
 
 n, k, j = int(sys.argv[1]), int(sys.argv[2]), int(sys.argv[3])

@@ -100,9 +100,25 @@ sha256: `1425bf4c…812b` (cnf), `f6fc7b2f…523b` (drup); full hashes in
 
 F(3,4) ≤ 41: the plain SAT run (n = 42, 81 types, with the implied line /
 plane / cube cardinality bounds added) did not finish in 50 minutes of
-CaDiCaL, nor in PENDING_GLUCOSE of proof-logged Glucose. A cube-and-conquer
+CaDiCaL, nor in 73 minutes of proof-logged Glucose. A cube-and-conquer
 split on the layer x_4 = 0 (which must be one of the 37 extremal 14-set
-orbits, up to a symmetry of the first three coordinates) PENDING_CUBE_RESULT.
+orbits, up to a symmetry of the first three coordinates) refuted all 37 cubes
+in 228 s of CaDiCaL, and the proof-logged Glucose rerun produced 37 DRUP
+proofs (167 s; 0.3–37 MB each, 380 MB in total), every one of which
+`rup_check` verified (about 15 minutes on four cores; log and hashes in
+`certs/`). The census that the split rests on was itself
+re-derived with proof logging: the final UNSAT of the blocking-clause
+enumeration (37,097 clauses) has a 1,529,304-line DRUP proof (109 MB),
+verified in 3 min 59 s, and an independent recount of the 33,831 sets gives
+the same 37 orbits (sizes 27, 216, 324, 432, 432, thirteen of 648, eighteen
+of 1296; the orbit of size 27 is E_3). The large proof files are not
+committed (hashes in `certs/SHA256SUMS_large.txt`; the scripts regenerate
+them).
+
+F(3,6) ≥ 365: the circulant search on Z_365 with six classes timed out at
+50 minutes without a verdict, but the direct SAT on E_6 (365 vertices,
+10.9 M clauses streamed into CaDiCaL, 45 s to build) returned a colouring
+after 238 s, verified over all 8,038,030 triples in 5 s.
 
 Circulant witnesses are verified by `verify_circulant.py` from the JSON
 files, which carry the explicit proper colourings.
@@ -112,8 +128,9 @@ files, which carry the explicit proper colourings.
 - A valid colouring of E_k for all k (Wiesner's j = 3 conjecture) — the
   question this session most wanted to answer — remains open; the note records
   every rule shape that fails.
-- F(3,5) ∈ {122,123} was not attempted (243 types; the n = 42 UNSAT already
-  needed cube-and-conquer).
+- F(3,5) ∈ {122,123} was not attempted beyond a circulant check (no
+  circulant witness for 123; 243 types, and the n = 42 UNSAT already needed
+  cube-and-conquer over a certified census).
 - F(4,4): the plain SAT for n = 45 (256 types, 4.2 M clauses) ran 25 minutes
   without a verdict; only the circulant 44 is certified.
 
@@ -128,6 +145,9 @@ never occurs as a term below it). Recorded in the daily log.
 ### Hardware and time
 
 4 cores, 15 GB, Python 3.11.15, python-sat 1.9.dev15 (CaDiCaL 1.5.3, Glucose
-4), gcc 13.3. All searches are seconds except the enumeration (8 min), the
-n = 42 refutation (PENDING_CUBE_TIME) and the K_365 circulant search
-(PENDING_F36_TIME).
+4), gcc 13.3. All searches are seconds except the enumerations (8 min
+CaDiCaL; 68 s Glucose plus 4 min of proof checking), the n = 42 refutation
+(228 s CaDiCaL, 167 s Glucose, about 15 min of parallel proof checking), the
+E_6 colouring (283 s), and the three runs that produced nothing in their
+time limit (plain n = 42: 50 + 73 min; F(4,4) ≥ 45: 25 min; circulant
+K_365: 50 min).

@@ -1,9 +1,22 @@
-import sys, collections, itertools
+#!/usr/bin/env python3
+"""Layer / colour-degree / line / plane profile of a type witness (either "(0, 1, 2) (0, 2, 1) c"
+or compact "012 021 c" lines).  usage: inspect_witness.py witness.txt k"""
+import collections
+import itertools
+import re
+import sys
+
 fn=sys.argv[1]; k=int(sys.argv[2])
 verts=set(); col={}
 for l in open(fn):
-    parts=l.strip().rsplit(' ',1); c=int(parts[1]); a,b=parts[0].split(') (')
-    a=eval(a+')'); b=eval('('+b); verts.add(a); verts.add(b); col[(a,b)]=c
+    nums = re.findall(r'\d+', l)
+    if not nums: continue
+    c = int(nums[-1]); digits = nums[:-1]
+    if len(digits) == 2:
+        a = tuple(map(int, digits[0])); b = tuple(map(int, digits[1]))
+    else:
+        a = tuple(map(int, digits[:k])); b = tuple(map(int, digits[k:]))
+    verts.add(a); verts.add(b); col[(a,b)]=c
 vs=sorted(verts); print('vertices',len(vs))
 for c in range(k):
     layers=collections.Counter(v[c] for v in vs); print(' coordinate',c,'layer sizes',dict(sorted(layers.items())))

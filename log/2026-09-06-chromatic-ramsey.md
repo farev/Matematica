@@ -34,14 +34,20 @@ j = 3 → 4 step checked on K_56 and K_98; j ≥ 5 cites the OpenAI/Alon et al.
 lemma), so lim F(j,k)^{1/k} = j for all j. These settle the exponential rate
 but not Sawin's constant: the loss is polynomial. **CERTIFIED:** the first
 exact values, F(3,3) = 14 (three witnesses; UNSAT at 15 with an 8,366-line
-DRUP proof checked by `tools/satcert/rup_check`), F(4,3) = 16 (witness;
-≤ 16 by r_3(3) = 17), PENDING_LOG_F34 and the bounds F(3,5) ≥ 122 (two
-witnesses), PENDING_LOG_F36 F(4,4) ≥ 44 (circulant), all witnesses checked
-from the definition by independent code; no circulant witness for
-F(4,4) ≥ 45 and no circulant triangle-free 4-colouring of K_46, K_50, K_51.
-Wiesner's conjecture is exact at (3,3) PENDING_LOG_F34B, a strict lower bound
-at (4,3) (15 < 16), and its j = 3 value (3^k+1)/2 is realised for k ≤ 5 by
-the even-weight set E_k (ternary words with an even number of 2's), which
+DRUP proof checked by `tools/satcert/rup_check`), F(3,4) = 41 (witnesses;
+the 42-point refutation by cube-and-conquer: the layer x₄ = 0 must be one
+of the 33,831 colourable 14-sets of [3]³ — a census whose completeness
+carries a 1,529,304-line DRUP proof, verified — i.e. one of 37 orbit
+representatives, and all 37 cubes are UNSAT with rup_check-verified DRUP
+proofs, 228 s CaDiCaL / 167 s Glucose), F(4,3) = 16 (witness; ≤ 16 by
+r_3(3) = 17), and the bounds F(3,5) ≥ 122 (two witnesses), F(3,6) ≥ 365
+(E_6 coloured by SAT in 238 s, verified over 8,038,030 triples), F(4,4) ≥ 44
+(circulant), all witnesses checked from the definition by independent code;
+no circulant witness for F(4,4) ≥ 45, none for F(3,5) ≥ 123, and no
+circulant triangle-free 4-colouring of K_46, K_50, K_51. Wiesner's
+conjecture is exact at (3,3) and (3,4), a strict lower bound at (4,3)
+(15 < 16), and its j = 3 value (3^k+1)/2 is realised for k ≤ 6 by the
+even-weight set E_k (ternary words with an even number of 2's), which
 the SAT-found extremal sets resemble exactly in their line/plane/layer
 profile — but E_3 is one of 37 inequivalent extremal 14-sets. **PROVED
 (barrier):** antichain palette constructions cannot exceed
@@ -149,8 +155,13 @@ to the new problem; the external candidate won on (a).
   a shift-fixed triangle when k is even), which killed the hope of a uniform
   symmetric family.
 - *Plain SAT refutation of F(3,4) ≥ 42*: CaDiCaL with the implied line /
-  plane / cube cardinality bounds ran 50 min without a verdict; the
-  cube-and-conquer split over the 37 extremal-14-set orbits PENDING_LOG_CUBE.
+  plane / cube cardinality bounds ran 50 min without a verdict, proof-logged
+  Glucose 73 min; the cube-and-conquer split over the 37 extremal-14-set
+  orbits did it in under 4 minutes per solver. The 380 MB of cube proofs and
+  the 109 MB census proof are verified but too large to commit (hashes and
+  regeneration scripts shipped) — a local session should archive them.
+- *Circulant K_365 with six classes*: 50 min without a verdict; the
+  vertex-set SAT on E_6 succeeded instead.
 - *F(4,4) ≥ 45 by SAT* (256 types, 4.2 M clauses): 25 min, no verdict; only
   the circulant 44 stands. Circulants reach at most 44 (Z_45 UNSAT, Z_46 UNSAT
   even without the chromatic condition).
@@ -184,7 +195,7 @@ Sawin's question — a decision for the local session per repo policy.
 (the mandate's per-conjecture branch name overridden by the harness
 requirement, as in previous sessions). The `conjecture-research` skill
 named in CLAUDE.md is not installed here; CLAUDE.md followed directly.
-Hardware: 4 cores, 15 GB; Python 3.11.15; gcc 13.3; python-sat 1.8
+Hardware: 4 cores, 15 GB; Python 3.11.15; gcc 13.3; python-sat 1.9.dev15
 (CaDiCaL 1.5.3 for search, Glucose 4 with DRUP logging for the certified
 UNSAT boundaries, proofs checked by `tools/satcert/rup_check.c`). No
 seeds; everything exact.
