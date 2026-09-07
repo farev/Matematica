@@ -272,7 +272,7 @@ entries ρ(n) and a_n are exact (CERTIFIED).
 3. *Can the bound n ≥ 9 be improved?* Not addressed here (it concerns their ten-point
    theorem, not the anomaly).
 
-Open: an explicit description of the *exact* set of anomalous n (all n ≤ 375 plus the 56
+Open: an explicit description of the *exact* set of anomalous n (all n ≤ 375 plus the 82
 listed values) from the cubic of Proposition C(a) and Theorem B's expansion with explicit
 constants; a lower bound on ρ(n) of the form c₀(1 + 1/√(2n) − C/n) with a numerical C
 would make the transition analysis fully rigorous rather than explanatory.

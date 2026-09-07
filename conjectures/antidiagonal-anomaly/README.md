@@ -10,7 +10,7 @@ they conjecture it never happens again for n ≥ 496. The criterion is an explic
 ρ(n) of binomial coefficients exceeding 1, so the conjecture is a concrete inequality —
 provable by Stirling-type bounds for large n and checkable exactly below that.
 
-Write-up page: <https://fabianarevalo.com/antidiagonal-anomaly> (pending; see `PAGE.md`).
+Write-up page: <https://fabianarevalo.com/antidiagonal-anomaly> (published 2026-09-07).
 
 **Status:** closed (the conjecture is settled; two refinements listed as open threads)
 **Sessions:** 2026-09-04
