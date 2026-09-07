@@ -23,11 +23,11 @@
       and the permutation is determined by 2^m − m − 1 bits), and every block
       of even length is then automatically fine; goodness is a condition on
       odd block lengths only.
-   4. CERTIFIED — exact counts of good permutations for every n ≤ 31:
-      1, 2, 2, 2, 0, 2, 4, 8, 0, 2, 0, 4, 0, 2, 0, 4, 0, 2, 0, 4, 0, 2, 0, 4, 0, 2
-      (n = 1..26), 0 at 27, 29 (theorem), 4 at 31; at 7 and 31 the good
-      permutations are exactly W(p) and its three images under reversal and
-      complement. Not in OEIS.
+   4. CERTIFIED — exact counts of good permutations for every n ≤ 34 by the
+      plain engine (no lemma): 1, 2, 2, 2, 0, 2, 4, 8, 0, 2, 0, 4, 0, 2, 0, 4,
+      0, 2, 0, 4, 0, 2, 0, 4, 0, 2, 0, 4, 0, 2, 4, 4, 0, 2; at 7 and 31 the
+      good permutations are exactly W(p) and its three images under reversal
+      and complement. Not in OEIS. (Even n: 2 or 4, except 8 at n = 8.)
    5. Observation (CERTIFIED counts) — the obstruction at composite Mersenne
       numbers is not divisibility of n: at n = 15 the minimal excluding sets
       of odd block lengths are {3,5,7}, {3,5,9}, {3,7,11}, {3,9,11}.

@@ -195,6 +195,30 @@ the top bits, unlike the short odd lengths, which are local. A proof of
 nonexistence for composite Mersenne numbers would have to use exactly this
 interaction; today's session only identified it.
 
+## 4b. What the short lengths force (observations, n = 63)
+
+Classifying the residue patterns σ_k (positions 1..2^k mod 2^k) of the
+relaxation survivors at n = 63 with a_1 < 32 (`results/n63_survivors_*.txt`):
+
+| constraints imposed | survivors | σ_2 | σ_3 | σ_4 | σ_5 |
+|---|---|---|---|---|---|
+| structure + {3,5,7} | 2114 | W(3)-family (= {id, −id}) | id 1579, −id 521, W(7)-family 14 | id 1542, −id 514, other 58 | other |
+| structure + {3,5,…,29} | 260 | {id, −id} | id 195, −id 65 | id 195, −id 65 | near-identity with 16-flips |
+| + length 31 | 0 | | | | |
+
+Here "id" is r ↦ r, "−id" is r ↦ −r (mod 2^k), and "W(2^k−1)-family" means
+the residue pattern of W(2^k−1) or of one of its three images; note W is
+self-similar (W(31) mod 16 is W(15), W(63) mod 32 is W(31)). So the short
+odd lengths force the low-order structure of any candidate into three
+self-similar families — identity-like, negated-identity-like, W-like — and
+at n = 63 the W-like branch dies by length 15 (no survivor of {3,…,29} is
+W-like mod 8) while the ±identity branches die only at the resonant length
+31. This is the shape a proof would take: (a) short lengths force the
+family, (b) the resonant length 2^{m−1} − 1 kills the ±identity families
+through the top-bit walk of §4a, (c) the W-family fails at a prefix whose
+length divides n (Theorem 4 handles W itself; its near relatives need the
+argument of (b)). None of (a)–(c) is proved here beyond n = 63.
+
 ## 5. Computations (labels per the repository convention)
 
 All exact integer arithmetic; no floating point anywhere; one core of a
