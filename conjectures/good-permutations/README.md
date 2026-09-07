@@ -24,7 +24,7 @@ pattern at composite p suggested a clean theorem.
 | 1 | **No good permutation of {1, …, 63} exists.** Exhaustive search over the structure of Lemma 2 (2^57 candidates), three independently organised engines: A and B enumerate the same tree and report the identical node count 1,433,402,570 (344 s / 128 s single-core); engine C (three-region order, tail and middle blocks checked early) reports 0 in 7,091,512 nodes, 1.65 s. First undecided case of Weiss's question settled in the conjecture's favour; with W(127) good (Thm 4), the answer is "iff Mersenne prime" for all odd n ≤ 127 | **CERTIFIED** | `results/n63_mode1_run1.txt`, `results/n63_bits_run1.txt`, `results/n63_mid_run1.txt`; NOTE §5 |
 | 2 | W(p) is good **iff p is prime**: for p = 2^m − 1 the only bad blocks are the prefixes of odd length L with L \| p (prefix sum ≡ −p mod L); blocks avoiding position 1 and even-length prefixes are never bad | **PROVED** | NOTE §3, Thm 4 |
 | 3 | Structure of good permutations of 2^m − 1: a_t mod 2^k depends only on t mod 2^k through a bijection fixing 0 (Lemma 2; the counting step made explicit, giving a_{2^{m−1}} = 2^{m−1}), and then every even-length block is automatically fine (Lemma 3), so goodness is a condition on odd block lengths alone | **PROVED** | NOTE §2 |
-| 4 | Exact counts by the plain engine (no lemma used; = brute force for n ≤ 14): good permutations of [n] number 1, 2, 2, 2, 0, 2, 4, 8, 0, 2, 0, 4, 0, 2, 0, 4, 0, 2, 0, 4, 0, 2, 0, 4, 0, 2, 0, 4, 0, 2, 4, 4, 0, 2 for n = 1..34 (odd n: 0 except 3, 7, 31, as the Corollary predicts; even n: 4 when 4 \| n, 2 when n ≡ 2 mod 4, with n = 8 the lone exception at 8); at n = 7 and 31 the good permutations are exactly W(p) and its three images under reversal and complement; the structural engines agree at every Mersenne n ≤ 31 | **CERTIFIED** | `results/counts_mode0_*.txt`, `results/n31_mode0.txt`, NOTE §5 |
+| 4 | Exact counts by the plain engine (no lemma used; = brute force for n ≤ 14): good permutations of [n] number 1, 2, 2, 2, 0, 2, 4, 8, 0, 2, 0, 4, 0, 2, 0, 4, 0, 2, 0, 4, 0, 2, 0, 4, 0, 2, 0, 4, 0, 2, 4, 4, 0, 2, 0, 4, 0, 2 for n = 1..38 (odd n: 0 except 3, 7, 31, as the Corollary predicts; even n: 4 when 4 \| n, 2 when n ≡ 2 mod 4, with n = 8 the lone exception at 8); at n = 7 and 31 the good permutations are exactly W(p) and its three images under reversal and complement; the structural engines agree at every Mersenne n ≤ 31 | **CERTIFIED** | `results/counts_mode0_*.txt`, `results/n31_mode0.txt`, NOTE §5 |
 | 5 | W(p) verified good from the definition for p = 7, 31, 127, 8191, 131071, 524287 and bad for 15, 63, 255, 511, 1023, 2047, 4095, in each composite case first at the prefix whose length is the least prime factor | **CERTIFIED** | `results/construction_large.txt`; `check_good construction p` |
 | 6 | Relaxation probe: with the structure imposed, the minimal sets of odd block lengths that exclude everything at n = 15 are {3,5,7}, {3,5,9}, {3,7,11}, {3,9,11} (lengths not dividing 15 are needed); survivors of short-length relaxations at n = 15, 31 are W-type or "near-identity" (a_t ≡ t mod 2^k) permutations | **CERTIFIED** (the counts) / observation | `goodperm_subset`, NOTE §4 |
 | 7 | 2, 1, 4, 3, …, n, n−1 is good for every even n (block sums are L·mid ± 1 or half-integral multiples) | **PROVED** (folklore, stated in the thread) | NOTE §1 |
@@ -45,6 +45,7 @@ for the session narrative including what failed.
 | `check_good.c` | independent from-definition checker (also `construction p` lines) | O(n²) | GOOD / BAD with the first bad block |
 | `goodperm_small.py` | brute-force counts n ≤ 14 (positive control for engine A mode 0) | 4 min | the 14 counts |
 | `construction_test.py` | Python check of W(p) at Mersenne numbers ≤ 8191, first five bad blocks | seconds | the failure pattern |
+| `idfamily.py` | Theorem 5 companion: brute-force check that the identity-like family is good iff its bit string satisfies (I1)+(I2) (q = 4, 8, 16) and a DFS count at q = 32 | 2 min | 2, 0, 0 good; 0 strings at q = 32 |
 
 Run from inside this directory:
 
@@ -64,16 +65,17 @@ python3 goodperm_cpsat.py 31 300 1 1                                   # CP-SAT 
 | `results/n63_bits_run1.txt` | `goodperm_bits 63 100` | Result 1, engine B: count 0, identical node count |
 | `results/n63_mid_run1.txt` | `goodperm_mid 63 0 10` | Result 1, engine C: count 0, 7,091,512 nodes |
 | `results/n127_mid_run1.txt` | `goodperm_mid 127 0 10` | engine C at n = 127 (uniqueness of W(127) up to symmetry) |
-| `results/n63_cpsat_run1.txt` | `goodperm_cpsat.py 63` | method D verdict and solver statistics |
+| `results/n63_cpsat_run1.txt`, `..._note.txt` | `goodperm_cpsat.py 63` | method D: no verdict in 25 min (stopped); timing note |
 | `results/n31_mode0.txt` | `goodperm 31 0 100` | the four good permutations of [31], plain engine |
 | `results/counts_mode0_1_14.txt` | `goodperm n 0` | counts n = 1..14 (match brute force) |
 | `results/counts_mode0_15_26.txt`, `..._27_34.txt`, `..._35_38.txt` | `goodperm n 0 4` | counts n = 15..38 (both parities) |
 | `results/construction_large.txt` | `check_good` | W(131071), W(524287) verified good |
 | `results/n63_prefix_lengths.txt`, `results/n31_prefix_lengths.txt`, `results/n63_survivors_*.txt` | `goodperm_mid n 1 0 L1,L2,…` | relaxation ladders and survivor lists (NOTE §4a–4b) |
 
-The "certificate" for Result 1 is reproducibility: two engines with
-different data structures and candidate generation, identical exhaustive
-node counts, six and two minutes to rerun. There is no compact witness for
+The "certificate" for Result 1 is reproducibility: three engines with
+different data structures, candidate generation and search order (A and B
+with identical exhaustive node counts, C with a 200× smaller tree), six
+minutes, two minutes and two seconds to rerun. There is no compact witness for
 "no permutation exists" beyond rerunning; the structure lemma the search
 relies on is proved in NOTE §2 and the plain engine (no lemma) agrees with
 the structural engines at every n ≤ 31.
