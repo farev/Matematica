@@ -72,6 +72,21 @@ odd block (`goodperm_cpsat.py`), enumerates exactly the four solutions at
 n = 31 in 17 s and proves n = 15 infeasible in 0.2 s; its n = 63 verdict is
 also in the README.
 
+## Engine C: the pairing pays for itself
+
+Engines A and B check only blocks that end at the newest position, so the
+partner half of the permutation (positions q+1..n, forced by a_{t+q} =
+a_t ⊕ q) is never tested until the end. Assigning positions in the order
+1, q−1, 2, q−2, … makes three intervals of known values grow at once — the
+head, a middle interval around a_q = q fed from both sides, and the tail —
+and every odd block inside them can be tested at once. That is
+`goodperm_mid.c`; it reproduces the counts at 7, 15, 31 with 21×, 4×, 11×
+fewer nodes, and settles n = 63 in 1.65 s and 7,091,512 nodes (200× fewer
+than A/B). Its growth per doubling is ×21, ×64, ×267, so n = 127 became
+worth trying (run record in the README) while 255 (of order 10^13 nodes) did
+not. The same engine took an optional list of block lengths, which made the
+relaxation ladders at 63 a matter of seconds.
+
 ## What the relaxation probe says about a proof
 
 With the residue structure imposed, at n = 15 the odd lengths {3, 7, 11}
@@ -79,9 +94,17 @@ already exclude every candidate, and the minimal excluding sets are
 {3,5,7}, {3,5,9}, {3,7,11}, {3,9,11}. Two of the lengths in each set do not
 divide 15, so the obstruction is not "a divisor of n forces a bad block";
 it is an interaction between the binary structure and short odd windows.
-The n = 63 probe is recorded in the README. I did not find a proof of
-nonexistence for composite Mersenne numbers today; the note states the
-question precisely.
+At n = 63 the picture changed: the short lengths {3,5,7} that kill 15 leave
+2,114 candidates (with a_1 < 32), all odd lengths up to 29 leave 260, and
+the length 31 = q − 1 kills every one of them; at n = 31 the ladder reaches
+the true count exactly when 15 = q − 1 enters. So the decisive constraint
+is the "resonant" length 2^{m−1} − 1, and NOTE §4a works out why: such a
+block misses exactly one residue class mod q, and q ≡ 1 modulo its length,
+so its sum is congruent to (number of top bits set in the block) − (the
+missing residue). Written out, the length-(q−1) conditions say that a
+±1-step walk built from the top bits must avoid the residue permutation
+pointwise. I did not find a proof of nonexistence for composite Mersenne
+numbers today; the note states the mechanism and the question precisely.
 
 ## What failed / was not done
 
