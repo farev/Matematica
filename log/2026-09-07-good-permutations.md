@@ -178,10 +178,15 @@ engines, checker, CP-SAT model, run records); index row added.
 refutation (`run_chunked.py 18 48 16 4 ./bnb_sym`, 16 chunks on four niced
 workers) was launched at 11:55 UTC after the literature witness
 (Ainley/Kamenetsky, 47 white + 48 black queens) passed `check_peaceable`;
-chunk 0 was UNSAT at 455,221,604 nodes (346 s engine time); the remaining
-chunks were still running when this entry was written — completed chunk
-records are committed as they land, and a(18) is claimed only if all 16
-are UNSAT (see `conjectures/peaceable-queens/results/n18_m48_*`). (2)
+**all 16 chunks UNSAT — a(18) = 47, CERTIFIED** (single-engine, as at
+n = 17): 119,110,352,726 nodes, 32,544 s of engine CPU time (chunks
+4.6·10⁸ to 1.41·10¹⁰ nodes), 13,470 s wall at nice 19 underneath the
+good-permutations searches; every completed chunk was committed as it
+landed (15:41 UTC for the last). Node growth over n = 17: ×5.55. The
+third consecutive open case of A250000 decided, each equal to ⌊7n²/48⌋;
+peaceable-queens README/NOTE §6c/WRITEUP session 3/PAGE.md and the index
+row updated. Caveat as before: no plain-engine replication (≈ 80
+core-hours at n = 18). (2)
 Garcia's two open f(6) orientation instances (arXiv:2609.04686 §5), probed
 by a 60-minute subagent (`conjectures/erdos-gyarfas/f6_orientations/`):
 exhaustive enumeration of the girth-14 connection sets of AGL(1,29) and
@@ -244,7 +249,9 @@ as an answer on MO 514690 and submit the count sequence to OEIS — decisions
 for the local session per repository policy. (4) Erdős–Gyárfás f(6): the
 three undecided AGL orientation instances want a proper cube-and-conquer
 run with DRAT proofs; the 12,180 route is a single 812-vertex graph.
-(5) peaceable-queens a(19) if a(18) landed.
+(5) peaceable-queens a(19): ≈ 6.5·10¹¹ nodes at ×5.5 per rung — a
+dedicated multi-session run, and the plain-engine replications of n = 17
+and 18 are still owed.
 
 **Session hygiene.** Branch: harness-designated `claude/affectionate-sagan-w2uu1s`
 (the mandate's per-conjecture branch name overridden by the harness

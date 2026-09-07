@@ -7,9 +7,11 @@ diagonal — may carry both colors). Before this session, known exactly
 only for n ≤ 15 (secondary: OEIS A250000; arXiv:2406.06974), with the
 n = 16 bracket recorded as [37, 64] since 2014. **Session 1 (2026-08-17):
 a(16) = 37 (CERTIFIED). Session 2 (2026-09-03): a(17) = 42 (CERTIFIED,
+single-engine exhaustion — see caveats). Session 3 (2026-09-07, as a
+background hedge of the good-permutations day): a(18) = 47 (CERTIFIED,
 single-engine exhaustion — see caveats).**
 
-**Status.** Active, 2 sessions (2026-08-17, 2026-09-03). See
+**Status.** Active, 3 sessions (2026-08-17, 2026-09-03, 2026-09-07). See
 [`NOTE.md`](NOTE.md) for theorems and proofs,
 [`WRITEUP.md`](WRITEUP.md) for the session narrative.
 **Write-up page:** [fabianarevalo.com/peaceable-queens](https://fabianarevalo.com/peaceable-queens)
@@ -24,6 +26,7 @@ single-engine exhaustion — see caveats).**
 | 4 | a(16) ≤ 41 en route (m = 42 exhausted: 607M nodes, 174 s) — recorded bracket had been [37, 64] | **CERTIFIED** |
 | 5 | Two-engine node-count equality; 40/40 SAT cross-validation (n ≤ 8, all m); DRUP-certified anchors n ≤ 7; sym-vs-plain 16/16 on ladder boundaries | validation record |
 | 6 | **a(17) = 42** (session 2, 2026-09-03): exhaustive refutation of 43+43 by the SYM16 engine (21,454,699,264 nodes, 1712 s wall on 4 workers, 16 chunks, all UNSAT — `results/n17_m43_*`; recorded bracket had been [42, 72] since 2014) + two checker-verified 42+42 witnesses: one found by the engine itself (`./bnb_sym 17 42`, 678,816,342 nodes, 116 s; `witnesses/witness_n17_m42.txt`) and the Ainley/Kamenetsky placement from the OEIS link file (`witnesses/witness_n17_m42_kamenetsky.txt`). Single-engine exhaustion: the plain-engine replication done at n = 16 was not run at n = 17 (caveat below) | **CERTIFIED** |
+| 7 | **a(18) = 47** (session 3, 2026-09-07): exhaustive refutation of 48+48 by the SYM16 engine — `run_chunked.py 18 48 16 4 ./bnb_sym`, 16 resumable chunks, all UNSAT, **119,110,352,726 nodes**, 32,544 s of engine CPU time (chunks 4.6·10⁸ to 1.41·10¹⁰ nodes), 13,470 s wall on four workers niced below the day's main searches (`results/n18_m48_bnb_sym_chunk*.txt`, `results/n18_m48_run.log`; recorded bracket had been [47, 81] since 2014) + the Ainley/Kamenetsky placement from the OEIS link file, checker-verified with **47 white and 48 black** queens (`witnesses/witness_n18_m47_kamenetsky.txt`). Node growth over n = 17: ×5.55. Single-engine exhaustion, as at n = 17 (caveat below) | **CERTIFIED** |
 
 ## Scripts
 
@@ -47,6 +50,8 @@ python3 drive.py 16 42                         # parallel n=16 bound run
 gcc -O2 -march=native -DSYM16 -o bnb_sym bnb.c
 python3 run_chunked.py 17 43 16 4 ./bnb_sym    # a(17) <= 42: 16 resumable chunks, ~29 min on 4 cores
 ./check_peaceable < <(grep -v '^#' witnesses/witness_n17_m42_kamenetsky.txt)   # a(17) >= 42
+python3 run_chunked.py 18 48 16 4 ./bnb_sym    # a(18) <= 47: 16 chunks, ~9 core-hours (≈ 2.5 h on 4 dedicated cores)
+./check_peaceable < <(grep -v '^#' witnesses/witness_n18_m47_kamenetsky.txt)   # a(18) >= 47
 ```
 
 Run everything from inside this directory. `certs/` holds the DRUP
@@ -56,13 +61,20 @@ placements; `results/` the run records with node counts and times.
 
 ## Known defects / caveats
 
-- **n = 17 is a single-engine exhaustion.** a(16) was refuted twice (SYM16
-  and the plain engine, independent canonical forms, node ratio ≈ 8.95).
-  At n = 17 only the SYM16 run was done; the plain-engine replication is
-  projected at ≈ 9× the nodes (≈ 1.9·10¹¹, ~4–5 h on 4 cores) and remains
-  an open thread. The SYM16 verdict rests on Lemma 6′ and the validation
-  battery of NOTE §4 (16/16 agreement with the plain engine on the ladder
-  and at n = 16).
+- **n = 17 and n = 18 are single-engine exhaustions.** a(16) was refuted
+  twice (SYM16 and the plain engine, independent canonical forms, node
+  ratio ≈ 8.95). At n = 17 and n = 18 only the SYM16 runs were done; the
+  plain-engine replications are projected at ≈ 9× the nodes (≈ 1.9·10¹¹
+  nodes, ~4–5 h on 4 cores at n = 17; ≈ 1.1·10¹² nodes, ~80 core-hours at
+  n = 18) and remain open threads. Both verdicts rest on Lemma 6′ and the
+  validation battery of NOTE §4 (16/16 agreement with the plain engine on
+  the ladder and at n = 16).
+- The n = 18 lower bound is the placement published in the OEIS A250000
+  link file (Kamenetsky 2019, attributing the value to Ainley 1977;
+  provenance secondary), verified from the definition by `check_peaceable`
+  — it carries 47 white and 48 black queens, so a(18) ≥ 47 does not depend
+  on any external source; no engine-found 47 + 47 witness was sought
+  (the cores were busy).
 - The n = 17 lower bound has two witnesses: the engine's own
   (`witnesses/witness_n17_m42.txt`, found in 116 s) and the placement
   published in the OEIS A250000 link file (Kamenetsky 2019, attributing

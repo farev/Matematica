@@ -306,14 +306,48 @@ therefore rests on Lemma 6′ and the §4 validation battery (plain/SYM16
 agreement on every ladder boundary and on both n = 16 instances), not on
 a second independent exhaustion.
 
+## 6c. Results at n = 18 (session 3, 2026-09-07)
+
+**Theorem G (CERTIFIED).** a(18) ≤ 47: exhaustive refutation of army
+size 48 by the SYM16 engine — 119,110,352,726 nodes, 32,544 s of engine
+CPU time in 16 resumable chunks (smallest 455,221,604 nodes / 346 s,
+largest 14,077,925,460 nodes / 2875 s), every chunk UNSAT
+(`results/n18_m48_bnb_sym_chunk*.txt`; driver log
+`results/n18_m48_run.log`). Wall time was 13,470 s on four workers that
+ran at nice 19 underneath the day's main searches, so it is not comparable
+with the n = 17 wall time; on four dedicated cores the run is ≈ 2.5 h.
+The best previously recorded finite upper bound was a(18) ≤ 81 (Pratt
+2014, OEIS, (secondary)).
+
+**Theorem H (CERTIFIED).** a(18) ≥ 47: the placement published by
+Kamenetsky in the OEIS A250000 link file `a250000_3.txt` (attributing the
+value to Ainley 1977; fetched 2026-09-07) passes the from-definition
+checker with 47 white and 48 black queens and no attacking pair
+(`witnesses/witness_n18_m47_kamenetsky.txt`); dropping any black queen
+gives a 47 + 47 placement.
+
+**Corollary.** a(18) = 47, confirming Ainley's 1977 value and
+⌊7·18²/48⌋ = 47: the third consecutive open case of A250000 decided
+here.
+
+*Growth and caveat.* Nodes grew ×5.55 over n = 17 (2.15·10¹⁰ →
+1.19·10¹¹) and engine CPU time ×5.35 (6,086 s → 32,544 s), slightly
+above the ×3–5 per rung of the ladder. As at n = 17 the exhaustion was run
+on **one engine only**; the plain-engine replication is projected at
+≈ 1.1·10¹² nodes (≈ 80 core-hours) and was not attempted. Theorem G
+therefore rests on Lemma 6′ and the §4 validation battery, not on a second
+independent exhaustion. No engine-found 47 + 47 witness was sought.
+
 ## 7. Open questions
 
-1. ~~a(17)~~ Done in session 2 (§6b): a(17) = 42. Next rung: a(18),
-   recorded bracket [47, ?] (Ainley's 47 = ⌊7·18²/48⌋; secondary). At the
-   observed ×4 per rung the m = 48 refutation is ≈ 8.6·10¹⁰ nodes, about
-   two hours on 4 cores. Also pending: the plain-engine replication of
-   the n = 17 refutation (≈ 4–5 h), to restore the two-engine standard
-   of n = 16.
+1. ~~a(17)~~ Done in session 2 (§6b): a(17) = 42. ~~a(18)~~ Done in
+   session 3 (§6c): a(18) = 47. Next rung: a(19), recorded bracket
+   [52, ?] (Ainley's 52 = ⌊7·19²/48⌋; secondary). At ×5.5 per rung the
+   m = 53 refutation is ≈ 6.5·10¹¹ nodes, about 50 core-hours — a
+   dedicated multi-session run or a stronger bound (question 2). Also
+   pending: the plain-engine replications of the n = 17 (≈ 4–5 h) and
+   n = 18 (≈ 80 core-hours) refutations, to restore the two-engine
+   standard of n = 16.
 2. The B&B's family-sum bound (Lemma 5) treats the two diagonal
    families independently. A joint bound (e.g. LP over both families)
    would cut deeper near the optimum; can it be kept exact and cheap?

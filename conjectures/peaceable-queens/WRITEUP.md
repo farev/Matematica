@@ -137,3 +137,34 @@ stands on one engine plus its validation record, and the README says so.
 A capped attempt to have the engines find a 42-witness of their own (as
 they did at n = 16 in seconds) was launched alongside the write-up; its
 outcome is recorded in the log entry.
+
+## Session 3 (2026-09-07): a(18), as a background hedge
+
+The day's mandate went to an external problem again (good permutations
+and Mersenne primes, `conjectures/good-permutations/`); the internal
+audit had named a(18) the one internal thread that a few hours on this
+machine could break, so the m = 48 refutation was launched at 11:55 UTC on
+four workers at nice 19 — deliberately underneath the main session's
+searches — after the literature witness had been verified. No new code:
+the SYM16 engine rebuilt from source, the chunked driver unchanged.
+
+1. **Lower bound first.** Kamenetsky's link file gives an 18 × 18 board
+   headed `a(18)>=47`; `check_peaceable` accepts it with 47 white and
+   48 black queens and no attacking pair. So a(18) ≥ 47, CERTIFIED, and
+   Ainley's placement is in fact a 47 + 48 one.
+2. **The refutation.** Sixteen chunks, four at a time, every one UNSAT:
+   119,110,352,726 nodes, 32,544 s of engine CPU time (chunk sizes from
+   4.6·10⁸ to 1.41·10¹⁰ nodes), 13,470 s of wall time — 3.7 hours, most of
+   it spent yielding to the good-permutations engines that had priority.
+   Each completed chunk was committed as it landed, so the run was
+   resumable at every point. Node growth over n = 17: ×5.55, a little
+   above the ladder's ×3–5.
+3. **So a(18) = 47**, Ainley's value, the third consecutive open case of
+   A250000 decided here — and the third rung in a row where the
+   47 = ⌊7n²/48⌋ construction is exactly optimal.
+
+Not done, as at n = 17: the plain-engine replication (now ≈ 80
+core-hours) — the single-engine caveat deepens by one rung and the README
+says so. Not sought: an engine-found 47 + 47 witness (the cores were
+busy; the literature placement, verified from the definition, suffices for
+the lower bound).
