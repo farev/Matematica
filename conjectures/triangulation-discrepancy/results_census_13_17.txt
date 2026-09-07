@@ -1,0 +1,33 @@
+n=13 graphs=49566 faces/graph=22 maxnodes=228
+  disc=1: 49562
+  disc=3: 4
+n=14 graphs=339722 faces/graph=24 maxnodes=651
+  disc=0: 339300
+  disc=2: 422
+n=15 graphs=2406841 faces/graph=26 maxnodes=622
+  disc=1: 2406752
+  disc=3: 89
+n=16 graphs=17490241 faces/graph=28 maxnodes=1447
+  disc=0: 17481631
+  disc=2: 8596
+  disc=4: 14
+n=17 graphs=32422663 faces/graph=30 maxnodes=1545
+  disc=1: 32421979
+  disc=3: 684
+n=17 graphs=32380871 faces/graph=30 maxnodes=1727
+  disc=1: 32380202
+  disc=3: 669
+n=17 graphs=32401571 faces/graph=30 maxnodes=1504
+  disc=1: 32400924
+  disc=3: 647
+n=17 graphs=32459648 faces/graph=30 maxnodes=1728
+  disc=1: 32458996
+  disc=3: 652
+--- timings ---
+n=14 wall=1 s
+n=15 wall=16 s
+n=16 wall=121 s
+n=17 part 0/4 wall=258 s
+n=17 part 1/4 wall=247 s
+n=17 part 2/4 wall=193 s
+n=17 part 3/4 wall=208 s
