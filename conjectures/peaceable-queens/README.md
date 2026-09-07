@@ -14,7 +14,7 @@ single-engine exhaustion — see caveats).**
 **Status.** Active, 3 sessions (2026-08-17, 2026-09-03, 2026-09-07). See
 [`NOTE.md`](NOTE.md) for theorems and proofs,
 [`WRITEUP.md`](WRITEUP.md) for the session narrative.
-**Write-up page:** [fabianarevalo.com/peaceable-queens](https://fabianarevalo.com/peaceable-queens)
+**Write-up page:** [fabianarevalo.com/peaceable-queens](https://fabianarevalo.com/peaceable-queens) (updated 2026-09-07 for a(18) = 47)
 
 ## Results (labels per repo convention)
 
