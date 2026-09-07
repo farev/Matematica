@@ -120,6 +120,61 @@ exactly as the 09-03 session did, with the literature witness verified first
 (47 white + 48 black queens, checker-accepted). Garcia's f(6) orientation
 instances were probed by a time-boxed subagent in parallel.
 
+**Result.** **CERTIFIED — no good permutation of {1, …, 63} exists.** Three
+independently organised engines agree: A (backtracking over positions with
+prefix-sum block tests and the residue structure of Lemma 2) and B (search
+over the bit-functions of Lemma 2, sliding per-length accumulators) enumerate
+the same tree and report the identical node count 1,433,402,570 (344 s and
+128 s, one core); C (positions 1, q−1, 2, q−2, … so that the pairing
+a_{t+q} = a_t ⊕ q makes three known intervals grow at once, with every odd
+block inside them tested immediately) reports 0 in 7,091,512 nodes and
+1.65 s. All three reproduce the plain-engine counts at every n ≤ 31 (the
+plain engine uses no lemma: 1, 2, 2, 2, 0, 2, 4, 8, 0, 2, 0, 4, 0, 2 for
+n ≤ 14, 0 at 15, 4 at 31 in 181,519,993 nodes). So Weiss's conjecture
+survives its first undecided case, and for all odd n ≤ 127 good
+permutations exist exactly at the Mersenne primes 3, 7, 31, 127.
+**PROVED:** (i) Weiss's family W(p) = 1, p−1, p, p−3, p−2, …, 2, 3 is good
+iff p is prime — blocks avoiding position 1 are never bad, even prefixes are
+never bad for Mersenne p, and the prefix of odd length L has sum ≡ −p
+(mod L) (NOTE Thm 4; the thread asserts goodness for Mersenne primes without
+proof and does not state the converse); (ii) the triangular structure
+theorem in the form used by the engines — a_t mod 2^k depends only on
+t mod 2^k through a bijection fixing 0, whence a_q = q and the pairing —
+with the counting step made explicit, and (iii) Lemma 3: under that
+structure every even-length block is automatically fine, so goodness is a
+condition on odd block lengths only. **CERTIFIED** side facts: W(p) verified
+from the definition at p = 7, 31, 127, 8191, 131071, 524287 and shown bad at
+15, 63, 255, 511, 1023, 2047, 4095, always first at the prefix whose length
+is the least prime factor; at n = 7 and 31 the good permutations are
+exactly W(p) and its three images under reversal and complement; the
+counts for all n ≤ 26 (even n: 2 or 4, with 8 at n = 8) — none of this is
+in OEIS. **Relaxation data (CERTIFIED counts, observation):** the
+obstruction at composite Mersenne numbers is not divisibility of n — at
+n = 15 the minimal excluding sets of odd lengths are {3,5,7}, {3,5,9},
+{3,7,11}, {3,9,11}; at n = 63 all odd lengths up to 29 leave 260 candidates
+(with a_1 < 32) and the length 31 = q − 1 kills every one; at n = 31 the
+ladder reaches the true count exactly when 15 = q − 1 enters. NOTE §4a
+explains why lengths 2^k − 1 are resonant (a block of that length misses
+one residue class mod 2^k, and 2^k ≡ 1 modulo the length), and writes the
+length-(q−1) conditions as a ±1-step walk in the top bits that must avoid
+the residue permutation pointwise. n = 127 (uniqueness of W(127) up to
+symmetry) — engine C run: [PENDING_127]. New directory
+`conjectures/good-permutations/` (README, NOTE, WRITEUP, PAGE.md, three
+engines, checker, CP-SAT model, run records); index row added.
+
+**Secondary results.** (1) peaceable-queens a(18): [PENDING_A18]. (2)
+Garcia's two open f(6) orientation instances (arXiv:2609.04686 §5), probed
+by a 60-minute subagent (`conjectures/erdos-gyarfas/f6_orientations/`):
+exhaustive enumeration of the girth-14 connection sets of AGL(1,29) and
+AGL(1,31) gives exactly two and four base graphs (CERTIFIED); one of the
+six admits no admissible orientation by counting alone (PROVED from
+certified cycle counts: its 62 pure-g 15-cycles force ≥ 186 t-edge choices
+while its 14-cycles allow ≤ 155), two more are forced to use no t-edge and
+are then UNSAT in seconds (two solvers, two encodings, no DRAT), every
+constant and Z_p-invariant orientation is UNSAT on all six, and the three
+remaining graphs — the only ones that could give 12,180 or 13,950 — were
+undecided after 5–20 minutes per solver, as in the paper.
+
 **Attempt statement.** Decide whether a good permutation of {1, …, 63}
 exists, by an exhaustive backtracking search that uses the residue
 structure every good permutation of a Mersenne number must satisfy
@@ -132,3 +187,52 @@ Achieved means: a checker-verified good permutation of [63] (refuting the
 "iff Mersenne prime" conjecture) or a reproducible exhaustive zero with node
 counts (CERTIFIED), plus the theorem the construction test suggested — that
 the family 1, p−1, p, … is good exactly when p is prime.
+
+**What failed.**
+- *A proof for composite Mersenne numbers.* The first guess — a proper
+  divisor d of n forces a bad block of length d — was refuted by the
+  relaxation probe within minutes: at n = 15 the lengths 7 and 11 (coprime
+  to 15) are needed, and at 63 the decisive length is 31, not 3, 7, 9 or
+  21. The second guess — the short odd lengths {3,5,7} suffice for every
+  even exponent, as they do at 15 — died at 63 (2,114 survivors). What is
+  left is the resonant-length mechanism of NOTE §4a, identified but not
+  turned into a proof.
+- *CP-SAT as a fourth method.* OR-Tools CP-SAT over the 57 bit variables
+  with 960 modular block constraints reproduces the counts at 7, 15, 31
+  (enumeration at 31: 17 s) but did not decide n = 63 in 25 minutes on two
+  workers and was stopped; the structure-aware DFS is four orders of
+  magnitude faster here. Not a route to 255.
+- *Engine-A-style relaxation probes at 63* were too slow (the single-length
+  probe {3} did not finish in 25 minutes) and were superseded by the
+  length filter in engine C, which answers each in about a second.
+- *Operations.* A `pkill -f` whose pattern matched the invoking shell's
+  own command line killed that shell (the 2026-09-01 log recorded the same
+  wound; PIDs only, again). Two background probe launches lost their
+  relative paths to the harness's working-directory reset. github.com
+  source downloads are refused by the egress policy, so kissat/cadical/
+  drat-trim were not rebuilt; nauty came from the pynauty sdist instead.
+
+**Next.** (1) n = 255: engine C's tree grows ×21, ×64, ×267 per doubling
+(20, 416, 26,540, 7,091,512 nodes), so 255 is of order 10^13 nodes — out
+of reach without a new idea; the resonant-length reformulation (NOTE §4a)
+is the candidate idea: treat the length-(2^k − 1) conditions at all levels
+k as constraints on the higher-bit sums and search the top bits last.
+(2) A proof that composite Mersenne numbers have no good permutation,
+starting with even exponents (3 | n): the survivors of the short-length
+relaxations are W-type and near-identity triangular maps, suggesting
+"force the family, then kill it". (3) Post the n = 63 result and Theorem 4
+as an answer on MO 514690 and submit the count sequence to OEIS — decisions
+for the local session per repository policy. (4) Erdős–Gyárfás f(6): the
+three undecided AGL orientation instances want a proper cube-and-conquer
+run with DRAT proofs; the 12,180 route is a single 812-vertex graph.
+(5) peaceable-queens a(19) if a(18) landed.
+
+**Session hygiene.** Branch: harness-designated `claude/affectionate-sagan-w2uu1s`
+(the mandate's per-conjecture branch name overridden by the harness
+requirement, as in previous sessions). The `conjecture-research` skill
+named in CLAUDE.md is not installed here; CLAUDE.md followed directly.
+Hardware: 4 cores, 15 GB; Python 3.11.15; gcc 12; OR-Tools 9.15;
+python-sat 1.9. No seeds; everything exact. Time: survey and selection
+11:36–12:00 UTC; the n = 63 zero was in hand at 12:12; engines B and C,
+the ladders and the documents by 12:45; long runs (127, a(18)) continued
+after that.

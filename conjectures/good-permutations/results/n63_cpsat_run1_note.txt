@@ -1,0 +1,3 @@
+# CP-SAT (OR-Tools 9.15, 2 workers) at n = 63 was stopped by hand after 25 min of wall time without a verdict
+# (the DFS engines settle n = 63 in 344 s / 128 s / 1.65 s). Recorded as a negative timing data point, not a result.
+n=63 m=6 bool_vars=57 odd_blocks=960 build=0.4s

@@ -165,9 +165,54 @@ nonexistence for composite Mersenne numbers must therefore use the
 interaction between the binary structure and short odd blocks, not just
 divisibility of n.
 
+## 4a. The resonant lengths 2^k − 1
+
+The relaxation ladders (README rows 6, 8; `results/n63_prefix_lengths.txt`,
+`results/n31_prefix_lengths.txt`) single out the block lengths 2^k − 1.
+At n = 63, imposing all odd lengths 3, 5, …, 29 leaves 260 candidates
+(with a_1 < 32) and adding L = 31 = q − 1 leaves none; at n = 31 the ladder
+reaches the true count exactly when L = 15 = q − 1 enters, and at n = 15
+every minimal excluding set contains 3 and one of 7 = q − 1, 9, 11.
+
+There is a reason these lengths are special. A block of 2^k − 1 consecutive
+positions misses exactly one class c mod 2^k, and 2^k ≡ 1 (mod 2^k − 1), so
+writing each value as a_t = (a_t mod 2^k) + 2^k h_t (h_t = the higher bits)
+gives, modulo 2^k − 1,
+
+  Σ_block a_t ≡ Σ_{r ≠ σ_k(c)} r + Σ_block h_t ≡ −σ_k(c) + Σ_block h_t,
+
+because Σ_{r=0}^{2^k−1} r = 2^{k−1}(2^k − 1) ≡ 0. For k = m − 1 the higher
+part h_t is the single top bit ε_t ∈ {0,1}, with ε_{t+q} = 1 − ε_t and
+ε_q = 1. So the length-(q−1) conditions read, for 1 ≤ s ≤ q − 1 (block
+s+1 … s+q−1, which straddles position q),
+
+  E_0 + s − ε_s − 2 F_{s−1} ≢ a_s (mod q − 1)   with F_{s−1} = Σ_{t<s} ε_t,
+  E_0 = F_{q−1},
+
+and for s = 0, q: E_0 ∉ {0, q − 1}. These tie the prefix counts of the top
+bits to the residues a_s mod q — a global linear-arithmetic constraint on
+the top bits, unlike the short odd lengths, which are local. A proof of
+nonexistence for composite Mersenne numbers would have to use exactly this
+interaction; today's session only identified it.
+
 ## 5. Computations (labels per the repository convention)
 
-(filled in from the run records — see README.md)
+All exact integer arithmetic; no floating point anywhere; one core of a
+4-core sandbox (Intel Xeon 2.8 GHz), gcc 12, -O2 -march=native.
+
+| item | statement | label | record |
+|---|---|---|---|
+| 5.1 | No good permutation of [63]. Engine A (mode 1): count 0, 1,433,402,570 nodes, 344 s. Engine B: count 0, 1,433,402,570 nodes (identical tree), 128 s. Engine C: count 0, 7,091,512 nodes, 1.65 s | CERTIFIED | `results/n63_*` |
+| 5.2 | Counts of good permutations for n = 1..26 (plain engine, no structure used): 1, 2, 2, 2, 0, 2, 4, 8, 0, 2, 0, 4, 0, 2, 0, 4, 0, 2, 0, 4, 0, 2, 0, 4, 0, 2; n = 27, 29: 0 (Corollary); n = 31: 4 (plain engine, 181,519,993 nodes, 4.7 s; structural engines agree) | CERTIFIED | `results/counts_mode0_*`, `results/n31_mode0.txt` |
+| 5.3 | The good permutations of [7] and [31] are W(p), ρW, κW, ρκW and nothing else | CERTIFIED | same |
+| 5.4 | W(p) good for p = 7, 31, 127, 8191, 131071, 524287; bad for p = 15, 63, 255, 511, 1023, 2047, 4095 with first bad block the prefix of length 3, 3, 3, 7, 3, 23, 3 | CERTIFIED | `results/construction_large.txt`, `construction_test.py` |
+| 5.5 | Relaxation data of §4 and §4a (minimal excluding sets at 15; prefix ladders at 31 and 63; Mersenne-length subsets) | CERTIFIED (counts) | `results/n15_*`, `results/n31_*`, `results/n63_*` |
+| 5.6 | n = 127: see README (engine C run record `results/n127_mid_run1.txt`) | — | — |
+| 5.7 | CP-SAT (OR-Tools 9.15) reproduces the counts at n = 7 (4), 15 (0), 31 (4, enumeration 17 s) but did not decide n = 63 in 25 min of wall time (2 workers; stopped) | negative timing note | `results/n63_cpsat_run1_note.txt` |
+
+Engine ladders (nodes): A/B — 60, 1748, 298,120, 1,433,402,570 at n = 7,
+15, 31, 63; C — 20, 416, 26,540, 7,091,512. Growth of C per doubling:
+×21, ×64, ×267.
 
 ## 6. Open questions
 
