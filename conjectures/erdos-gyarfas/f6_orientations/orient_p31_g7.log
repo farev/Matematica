@@ -1,0 +1,21 @@
+== p=31 t=(30,0) g=(7,1) ord(g)=15 n=930
+cycle counts (C enumerator, 0.1s): 3:0, 4:0, 5:0, 6:0, 7:0, 8:0, 9:0, 10:0, 11:0, 12:0, 13:0, 14:1395, 15:62, 16:5580
+14-cycles through the t-edge / g-edge / g^-1-edge at a vertex (set of values over vertices): [[18], [12], [12]]
+Lemma 5.2 check: sum_v c_min(v) = 11160  vs  9*N14 = 12555  ->  OK (necessary condition holds)
+invariant orientation [u = t-edge everywhere]: violated cycles = 1395 (worst a(C) by length: {14: 12})
+invariant orientation [u = g-edge everywhere]: violated cycles = 62 (worst a(C) by length: {15: 15})
+invariant orientation [u = g^-1-edge everywhere]: violated cycles = 62 (worst a(C) by length: {15: 15})
+[Z_p x| H_30 (index 1, 1 orbits)] orbits=1 vars=135 clauses=257 distinct cycle constraints=4: UNSAT in 0.0s
+[Z_p x| H_15 (index 2, 2 orbits)] orbits=2 vars=221 clauses=422 distinct cycle constraints=9: UNSAT in 0.0s
+[Z_p x| H_10 (index 3, 3 orbits)] orbits=3 vars=540 clauses=1059 distinct cycle constraints=25: UNSAT in 0.0s
+[Z_p x| H_6 (index 5, 5 orbits)] orbits=5 vars=806 clauses=1583 distinct cycle constraints=41: UNSAT in 0.0s
+[Z_p x| H_5 (index 6, 6 orbits)] orbits=6 vars=546 clauses=1071 distinct cycle constraints=41: UNSAT in 0.0s
+[Z_p x| H_3 (index 10, 10 orbits)] orbits=10 vars=692 clauses=1361 distinct cycle constraints=67: UNSAT in 0.0s
+[Z_p x| H_2 (index 15, 15 orbits)] orbits=15 vars=2301 clauses=4533 distinct cycle constraints=121: UNSAT in 0.0s
+[Z_p (translations only)] orbits=30 vars=1842 clauses=3651 distinct cycle constraints=197: UNSAT in 0.0s
+[H_30 = <(3,0)> (multiplicative, 31 orbits)] orbits=31 vars=2577 clauses=5062 distinct cycle constraints=235: UNSAT in 2.4s
+[H_15 = <(9,0)> (multiplicative, 62 orbits)] orbits=62 vars=4807 clauses=9436 distinct cycle constraints=471: TIMEOUT(5.0s) in 5.1s
+[H_10 = <(27,0)> (multiplicative, 93 orbits)] orbits=93 vars=7176 clauses=14097 distinct cycle constraints=706: TIMEOUT(5.0s) in 7.1s
+[H_6 = <(26,0)> (multiplicative, 155 orbits)] orbits=155 vars=11761 clauses=23103 distinct cycle constraints=1176: TIMEOUT(5.0s) in 10.1s
+[H_5 = <(16,0)> (multiplicative, 186 orbits)] orbits=186 vars=13761 clauses=27024 distinct cycle constraints=1409: TIMEOUT(5.0s) in 5.2s
+full instance written: /tmp/claude-0/-home-user-Matematica/90f87f8c-75b0-5d88-9ac6-ec4565e2dd94/scratchpad/f6probe/p31_t30_0_g7_1_full.cnf  vars=67797 clauses=133176 cycle constraints=7037

@@ -1,0 +1,29 @@
+{
+ "p": 29,
+ "t": [
+  28,
+  0
+ ],
+ "g": [
+  3,
+  1
+ ],
+ "n": 812,
+ "N14": 2030,
+ "N15": 0,
+ "N16": 5278,
+ "c_t": 26,
+ "c_g": 22,
+ "cmin_sum": 17864,
+ "sub_results": {
+  "Z_p x| H_28 (index 1, 1 orbits)": "UNSAT",
+  "Z_p x| H_14 (index 2, 2 orbits)": "UNSAT",
+  "Z_p x| H_7 (index 4, 4 orbits)": "UNSAT",
+  "Z_p x| H_4 (index 7, 7 orbits)": "UNSAT",
+  "Z_p x| H_2 (index 14, 14 orbits)": "UNSAT",
+  "Z_p (translations only)": "UNSAT",
+  "H_28 = <(2,0)> (multiplicative, 29 orbits)": "UNSAT",
+  "H_14 = <(4,0)> (multiplicative, 58 orbits)": "TIMEOUT(5.0s)",
+  "H_7 = <(16,0)> (multiplicative, 116 orbits)": "TIMEOUT(5.0s)"
+ }
+}

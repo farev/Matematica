@@ -1,0 +1,1 @@
+{"file": "/tmp/claude-0/-home-user-Matematica/90f87f8c-75b0-5d88-9ac6-ec4565e2dd94/scratchpad/f6probe/p31_t30_0_g22_1_strong.cnf", "solver": "cadical195", "status": "UNSAT", "solve_seconds": 0.2, "load_seconds": 1.5, "limit_seconds": 150.0, "stats": {"restarts": 3, "conflicts": 227, "decisions": 331, "propagations": 360208}, "nv": 253890, "nclauses": 510570}

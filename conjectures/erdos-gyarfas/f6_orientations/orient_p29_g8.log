@@ -1,0 +1,17 @@
+== p=29 t=(28,0) g=(8,1) ord(g)=28 n=812
+cycle counts (C enumerator, 0.1s): 3:0, 4:0, 5:0, 6:0, 7:0, 8:0, 9:0, 10:0, 11:0, 12:0, 13:0, 14:812, 15:0, 16:6902
+14-cycles through the t-edge / g-edge / g^-1-edge at a vertex (set of values over vertices): [[10], [9], [9]]
+Lemma 5.2 check: sum_v c_min(v) = 7308  vs  9*N14 = 7308  ->  OK (necessary condition holds)
+invariant orientation [u = t-edge everywhere]: violated cycles = 812 (worst a(C) by length: {16: 16, 14: 12})
+invariant orientation [u = g-edge everywhere]: violated cycles = 406 (worst a(C) by length: {14: 10})
+invariant orientation [u = g^-1-edge everywhere]: violated cycles = 406 (worst a(C) by length: {14: 10})
+[Z_p x| H_28 (index 1, 1 orbits)] orbits=1 vars=155 clauses=303 distinct cycle constraints=5: UNSAT in 0.0s
+[Z_p x| H_14 (index 2, 2 orbits)] orbits=2 vars=350 clauses=692 distinct cycle constraints=16: UNSAT in 0.0s
+[Z_p x| H_7 (index 4, 4 orbits)] orbits=4 vars=376 clauses=754 distinct cycle constraints=30: UNSAT in 0.0s
+[Z_p x| H_4 (index 7, 7 orbits)] orbits=7 vars=1197 clauses=2387 distinct cycle constraints=77: UNSAT in 0.0s
+[Z_p x| H_2 (index 14, 14 orbits)] orbits=14 vars=2394 clauses=4774 distinct cycle constraints=154: UNSAT in 0.0s
+[Z_p (translations only)] orbits=28 vars=1708 clauses=3472 distinct cycle constraints=252: UNSAT in 0.0s
+[H_28 = <(2,0)> (multiplicative, 29 orbits)] orbits=29 vars=1758 clauses=3581 distinct cycle constraints=273: UNSAT in 1.7s
+[H_14 = <(4,0)> (multiplicative, 58 orbits)] orbits=58 vars=3224 clauses=6584 distinct cycle constraints=552: TIMEOUT(5.0s) in 9.2s
+[H_7 = <(16,0)> (multiplicative, 116 orbits)] orbits=116 vars=5764 clauses=11818 distinct cycle constraints=1102: TIMEOUT(5.0s) in 6.3s
+full instance written: /tmp/claude-0/-home-user-Matematica/90f87f8c-75b0-5d88-9ac6-ec4565e2dd94/scratchpad/f6probe/p29_t28_0_g8_1_full.cnf  vars=38976 clauses=79982 cycle constraints=7714

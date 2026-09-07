@@ -1,0 +1,11 @@
+[12:12:23] start
+[12:12:28] finished p29g3_kissat (exit 0)
+[12:15:45] finished p29g8_cadical (exit 0)
+[12:17:47] original cadical chain killed; strengthened chain started
+[12:17:52] finished p29g8_strong_cadical (exit 0)
+[12:17:54] finished p31g22_strong_cadical (exit 0)
+[12:22:12] finished p31g7_strong_cadical (exit 0)
+[12:31:04] finished p29g3_strong_cadical (exit 0)
+[12:33:05] kissat p29g3 finished (exit 0)
+[12:36:32] finished p31g11_strong_cadical (exit 0)
+[12:38:06] finished p31g7_strong_kissat (exit 0)
