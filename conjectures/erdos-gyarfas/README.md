@@ -72,6 +72,24 @@ graph" beyond rerunning.
 
 ## Known defects and open threads
 
+- **Superseded shelf (recorded 2026-09-07):** Garcia (arXiv:2609.04686,
+  posted 4 Sep 2026; PDF read in full, Theorem 2.1 and Table 1) proves by a
+  SAT ladder with lazily blocked 8-cycles, every level n = 4..23 certified by
+  a drat-trim-checked DRAT proof (largest: n = 23, 3.1 GB, 74 min), that
+  **every graph of minimum degree ≥ 3 on ≤ 23 vertices contains a 4-cycle or
+  an 8-cycle**, so any counterexample has ≥ 24 vertices and Markström's four
+  cubic graphs are the smallest {4,8}-free min-degree-3 graphs. This
+  supersedes Theorem C1 above (n ≤ 18), which stands as correct but is no
+  longer the frontier, and it closes the n = 19/20 thread below. Garcia also
+  states that the "17" of the secondary sources (repeated in the Results row
+  above as "prior reported bound: 17") "is not supported by any primary
+  source" he could locate; the primary record before his paper was Royle's
+  search through 15 vertices reported by Markström. Same paper: Exoo's
+  450-vertex f(5) graph as specified contains a 32-cycle (the Tutte–Coxeter
+  lemma behind it is false); a repaired orientation restores f(5) ≤ 450;
+  f(6) ≤ 32,640 is the first bound for f(6); two orientation SAT instances on
+  girth-14 Cayley graphs of AGL(1,29) and AGL(1,31) that would give
+  f(6) ≤ 12,180 and ≤ 13,950 were left undecided by him.
 - **Superseded shelf (recorded 2026-08-09):** Tranquilli (arXiv:2608.02675,
   Aug 2, 2026, (secondary)) certifies that every cubic bipartite graph on
   ≤ 58 vertices contains a C4, C8 or C16, via a Levi-graph/configuration
@@ -81,8 +99,10 @@ graph" beyond rerunning.
   longer the frontier. His method stops below his own Moore-bound ceiling
   of 62; n = 60 bipartite is open. Non-bipartite cubic {4,8,16}-free in
   the 54–62 window is untouched by it.
-- n=19 (min-degree-3) needs ~2×10¹⁰ C4-free graphs, a multi-day run;
-  n=20 (~5×10¹¹) wants generation-time C8 pruning (Markström-style modified
+- ~~n=19 (min-degree-3) needs ~2×10¹⁰ C4-free graphs, a multi-day run;
+  n=20 (~5×10¹¹) wants generation-time C8 pruning~~ — closed through n = 23
+  by Garcia (above, 2026-09-07). The rest of this bullet is kept as the record
+  of the route that was planned. (Markström-style modified
   minibaum). **Cheaper route recorded 2026-08-09:** Carr (arXiv:2605.22844,
   May 2026, (secondary), proofs unread here) — in a minimal counterexample
   the deg-≥4 vertices are independent, every vertex is adjacent to a
@@ -115,4 +135,7 @@ verifiable this session); Carr (2025–26) constrains minimal counterexamples
 — now pinned to arXiv:2605.22844 (May 2026): deg-≥4 independence, universal
 degree-3 adjacency, ≥ 4/7 degree-3 fraction (secondary); Tranquilli
 (arXiv:2608.02675, Aug 2026) certifies cubic bipartite counterexamples need
-≥ 60 vertices (secondary) — see open threads.
+≥ 60 vertices (secondary) — see open threads; Garcia (arXiv:2609.04686,
+Sep 2026, read in full) certifies that every min-degree-3 graph on ≤ 23
+vertices has a 4- or 8-cycle, so counterexamples need ≥ 24 vertices — the
+current frontier, superseding Theorem C1 here.
