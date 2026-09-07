@@ -16,7 +16,7 @@
 
 #define MAXN 1023
 static int n, m_bits, nL, Ls[MAXN];
-static long long cap;
+static long long cap; static int maxprint=0;
 static int a[MAXN + 2];
 static long long pre[MAXN + 2];
 static unsigned char used[MAXN + 2];
@@ -27,7 +27,7 @@ static int capped = 0;
 
 static void rec(int t) {
     if (capped) return;
-    if (t > n) { cnt++; if (cnt >= cap) capped = 1; return; }
+    if (t > n) { cnt++; if (cnt <= maxprint) { for (int i=1;i<=n;i++) printf("%d%c", a[i], i==n?'\n':' '); } if (cnt >= cap) capped = 1; return; }
     for (int v = 1; v <= n && !capped; v++) {
         if (used[v]) continue;
         int ok = 1;
@@ -64,7 +64,7 @@ static void rec(int t) {
 int main(int argc, char **argv) {
     if (argc < 3) { fprintf(stderr, "usage: goodperm_subset n L1,L2,... [cap]\n"); return 2; }
     n = atoi(argv[1]);
-    cap = argc > 3 ? atoll(argv[3]) : 1000000;
+    cap = argc > 3 ? atoll(argv[3]) : 1000000; maxprint = argc > 4 ? atoi(argv[4]) : 0;
     int q = n + 1; m_bits = 0;
     while ((q & 1) == 0) { q >>= 1; m_bits++; }
     if (q != 1 || n > MAXN) { fprintf(stderr, "n must be 2^m-1 <= %d\n", MAXN); return 2; }
