@@ -21,7 +21,7 @@ pattern at composite p suggested a clean theorem.
 
 | # | Claim | Label | Where |
 |---|---|---|---|
-| 1 | **No good permutation of {1, …, 63} exists.** Exhaustive search over the structure of Lemma 2 (2^57 candidates), two independently organised engines: 1,433,402,570 nodes each (identical), 344 s / 128 s single-core. First undecided case of Weiss's question settled in the conjecture's favour; with W(127) good (Thm 4), the answer is "iff Mersenne prime" for all odd n ≤ 127 | **CERTIFIED** | `results/n63_mode1_run1.txt`, `results/n63_bits_run1.txt`; NOTE §5 |
+| 1 | **No good permutation of {1, …, 63} exists.** Exhaustive search over the structure of Lemma 2 (2^57 candidates), three independently organised engines: A and B enumerate the same tree and report the identical node count 1,433,402,570 (344 s / 128 s single-core); engine C (three-region order, tail and middle blocks checked early) reports 0 in 7,091,512 nodes, 1.65 s. First undecided case of Weiss's question settled in the conjecture's favour; with W(127) good (Thm 4), the answer is "iff Mersenne prime" for all odd n ≤ 127 | **CERTIFIED** | `results/n63_mode1_run1.txt`, `results/n63_bits_run1.txt`, `results/n63_mid_run1.txt`; NOTE §5 |
 | 2 | W(p) is good **iff p is prime**: for p = 2^m − 1 the only bad blocks are the prefixes of odd length L with L \| p (prefix sum ≡ −p mod L); blocks avoiding position 1 and even-length prefixes are never bad | **PROVED** | NOTE §3, Thm 4 |
 | 3 | Structure of good permutations of 2^m − 1: a_t mod 2^k depends only on t mod 2^k through a bijection fixing 0 (Lemma 2; the counting step made explicit, giving a_{2^{m−1}} = 2^{m−1}), and then every even-length block is automatically fine (Lemma 3), so goodness is a condition on odd block lengths alone | **PROVED** | NOTE §2 |
 | 4 | Exact counts: good permutations of [n] number 1, 2, 2, 2, 0, 2, 4, 8, 0, 2, 0, 4, 0, 2 for n = 1..14 (plain engine = brute force), 0 at n = 15, 4 at n = 31 (plain engine 181,519,993 nodes and structural engines agree); at n = 7 and 31 the good permutations are exactly W(p) and its three images under reversal and complement | **CERTIFIED** | `results/counts_mode0_1_14.txt`, `results/n31_mode0.txt`, NOTE §5 |
@@ -38,7 +38,8 @@ for the session narrative including what failed.
 |---|---|---|---|
 | `goodperm.c` | engine A: backtracking over positions, prefix-sum block tests; mode 0 plain (any n), mode 1 with the Lemma 2 residue structure (n = 2^m − 1) | n = 31: 4.7 s (mode 0) / 0.05 s (mode 1); n = 63 mode 1: 344 s | counts, node counts, the permutations |
 | `goodperm_bits.c` | engine B: searches the bit-functions b_k of Lemma 2 directly (bijectivity automatic), sliding per-length accumulators, odd lengths only | n = 63: 128 s | same counts and node counts as engine A |
-| `goodperm_cpsat.py` | method C: OR-Tools CP-SAT model over the same bits, one modular constraint per odd block; enumerates or decides | n = 31 enumeration 17 s | status, count, solutions re-verified |
+| `goodperm_mid.c` | engine C: assigns positions 1, q−1, 2, q−2, … (q = (n+1)/2) so that with the pairing a_{t+q} = a_t ⊕ q three known intervals grow at once and their odd blocks are tested immediately; optional complement symmetry breaking (`sym=1`: a_1 < q) | n = 63: 1.65 s; n = 127: see `results/n127_mid_run1.txt` | counts (node counts 20, 416, 26,540, 7,091,512 at n = 7, 15, 31, 63) |
+| `goodperm_cpsat.py` | method D: OR-Tools CP-SAT model over the same bits, one modular constraint per odd block; enumerates or decides | n = 31 enumeration 17 s | status, count, solutions re-verified |
 | `goodperm_subset.c` | relaxation probe: structure + block constraints for a chosen set of lengths only; counts/prints survivors | seconds at n ≤ 31 | which lengths carry the obstruction |
 | `check_good.c` | independent from-definition checker (also `construction p` lines) | O(n²) | GOOD / BAD with the first bad block |
 | `goodperm_small.py` | brute-force counts n ≤ 14 (positive control for engine A mode 0) | 4 min | the 14 counts |
@@ -60,7 +61,9 @@ python3 goodperm_cpsat.py 31 300 1 1                                   # CP-SAT 
 |---|---|---|
 | `results/n63_mode1_run1.txt` | `goodperm 63 1 100` | Result 1, engine A: count 0, node count, time |
 | `results/n63_bits_run1.txt` | `goodperm_bits 63 100` | Result 1, engine B: count 0, identical node count |
-| `results/n63_cpsat_run1.txt` | `goodperm_cpsat.py 63` | method C verdict and solver statistics |
+| `results/n63_mid_run1.txt` | `goodperm_mid 63 0 10` | Result 1, engine C: count 0, 7,091,512 nodes |
+| `results/n127_mid_run1.txt` | `goodperm_mid 127 0 10` | engine C at n = 127 (uniqueness of W(127) up to symmetry) |
+| `results/n63_cpsat_run1.txt` | `goodperm_cpsat.py 63` | method D verdict and solver statistics |
 | `results/n31_mode0.txt` | `goodperm 31 0 100` | the four good permutations of [31], plain engine |
 | `results/counts_mode0_1_14.txt` | `goodperm n 0` | counts n = 1..14 (match brute force) |
 | `results/counts_mode0_15_26.txt` | `goodperm n 0 4` | counts n = 15..26 (both parities) |
