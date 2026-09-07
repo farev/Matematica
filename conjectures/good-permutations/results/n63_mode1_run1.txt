@@ -1,0 +1,1 @@
+n=63 mode=1 count=0 nodes=1433402570 time=344.38s

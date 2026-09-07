@@ -1,0 +1,1 @@
+n=63 sym=0 count=0 nodes=7091512 time=1.65s

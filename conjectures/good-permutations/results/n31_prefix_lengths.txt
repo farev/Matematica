@@ -1,0 +1,14 @@
+k=3 n=31 sym=1 count=928 nodes=51434 time=0.01s
+k=5 n=31 sym=1 count=114 nodes=18370 time=0.00s
+k=7 n=31 sym=1 count=6 nodes=13406 time=0.00s
+k=9 n=31 sym=1 count=6 nodes=13308 time=0.00s
+k=11 n=31 sym=1 count=6 nodes=13286 time=0.00s
+k=13 n=31 sym=1 count=6 nodes=13282 time=0.00s
+k=15 n=31 sym=1 count=2 nodes=13270 time=0.00s
+k=17 n=31 sym=1 count=2 nodes=13270 time=0.00s
+k=19 n=31 sym=1 count=2 nodes=13270 time=0.00s
+k=21 n=31 sym=1 count=2 nodes=13270 time=0.00s
+k=23 n=31 sym=1 count=2 nodes=13270 time=0.00s
+k=25 n=31 sym=1 count=2 nodes=13270 time=0.00s
+k=27 n=31 sym=1 count=2 nodes=13270 time=0.00s
+k=29 n=31 sym=1 count=2 nodes=13270 time=0.00s

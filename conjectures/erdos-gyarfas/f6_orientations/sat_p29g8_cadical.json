@@ -1,0 +1,16 @@
+{
+ "file": "/tmp/claude-0/-home-user-Matematica/90f87f8c-75b0-5d88-9ac6-ec4565e2dd94/scratchpad/f6probe/p29_t28_0_g8_1_full.cnf",
+ "solver": "cadical195",
+ "status": "TIMEOUT",
+ "solve_seconds": 201.4,
+ "load_seconds": 0.3,
+ "limit_seconds": 180.0,
+ "stats": {
+  "restarts": 32903,
+  "conflicts": 1055014,
+  "decisions": 9484168,
+  "propagations": 506326302
+ },
+ "nv": 38976,
+ "nclauses": 79982
+}

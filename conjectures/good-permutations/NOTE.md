@@ -1,211 +1,311 @@
-# Good permutations and Mersenne numbers: the first composite case, n = 63
+# Good permutations of {1, …, n} and Mersenne numbers
 
-*Research note, 2026-09-05. Produced with substantial AI assistance (Claude, including a
-subagent that wrote the code and the first drafts of the proofs); every proof below was
-re-checked by hand by the session, every computation ships code and its output.*
+*Research note, session of 2026-09-07. AI-assisted (Claude); every proof
+below was checked by hand, every computation ships code and a run record.*
 
 ## Abstract
 
-Call a permutation a₁, …, aₙ of {1, …, n}, n > 1 odd, *good* if every proper consecutive
-block of length ≥ 2 has a non-integer average. A MathOverflow question (514690, P. Weiss,
-27 Aug 2026) asks whether good permutations exist exactly when n is a Mersenne prime; the
-thread proves that n must be of the form 2^m − 1 and exhibits the permutation
-1, p−1, p, p−3, p−2, …, 2, 3 for Mersenne primes p, and the asker's search covers odd
-n ≤ 41. We (i) prove that goodness for n = 2^m − 1 is equivalent to a 2-adic isometry
-condition plus the odd-length block conditions (Lemma B), which cuts the search space from
-n! to 2^{2^m−1−m}; (ii) prove that the asker's construction is good if and only if p is
-prime (Proposition C); (iii) settle the first undecided case by an exhaustive search over
-the 2^57 candidates for n = 63: **no good permutation of {1, …, 63} exists** (CERTIFIED,
-two independent implementations, 1,433,402,570 nodes each); (iv) re-derive the asker's
-search lemma-free and extend it to n = 43, with the exact counts 2, 4, 4 of good
-permutations for n = 3, 7, 31. Consequently the conjecture holds for every odd n < 255.
-The general composite case remains open; we record the structural observations (an
-exact criterion for the two block lengths 2^{m−1} ± 1 that kill every near-solution at
-n = 63, and a rigidity conjecture) that a proof attempt should start from.
+Call a permutation a_1, …, a_n of {1, …, n} **good** if no proper consecutive
+block of length at least 2 has an integer average, i.e. no block sum is
+divisible by the block length. Weiss (MathOverflow 514690, 27 Aug 2026) found
+good permutations for odd n = 3, 7, 31 only (odd n ≤ 41), gave the family
+1, p−1, p, p−3, p−2, …, 2, 3 for Mersenne primes p, and asked whether good
+permutations exist for odd n if and only if n is a Mersenne prime. Bîsceanu
+(same thread) proved that odd n admits a good permutation only if
+n = 2^m − 1. We (i) re-derive that structure theorem in the sharper form
+needed for computation — every good permutation of a Mersenne number is a
+"triangular" bijection: a_t mod 2^k depends only on t mod 2^k, bijectively
+and with 0 ↦ 0, for every k < m; (ii) show that under this structure every
+block of even length is automatically fine, so goodness is a condition on
+odd block lengths alone; (iii) prove that Weiss's family is good **exactly
+when p is prime** (its prefix of odd length L sums to −p mod L; nothing else
+ever fails); and (iv) report exhaustive computations: the good permutations
+of [n] for every n ≤ 31 and for n = 63 — see §5 for the labelled results.
 
-## 1. Statement
+## 1. Definitions and the symmetry group
 
-**Definition.** For odd n > 1, a permutation a = (a₁, …, aₙ) of {1, …, n} is *good* if for
-every block a_s, …, a_{s+L−1} with 2 ≤ L ≤ n − 1 the sum is not divisible by L. (The whole
-permutation has average (n+1)/2 ∈ Z and is excluded; blocks of length 2 are included. For
-even n the permutation 2, 1, 4, 3, …, n, n−1 is good — asker's comment, verified for
-n ≤ 120 — so only odd n is of interest.)
+For a sequence a_1..a_n write P_t = a_1 + ⋯ + a_t (P_0 = 0). The block
+a_{s+1}, …, a_{s+L} (0 ≤ s, s + L ≤ n, 2 ≤ L ≤ n − 1) is *proper*; it is
+*bad* if L | P_{s+L} − P_s. A permutation is good if it has no bad block.
 
-**Question (MO 514690).** Does a good permutation of {1, …, n} exist if and only if n is a
-Mersenne prime?
+The maps ρ: a_t ↦ a_{n+1−t} (reversal) and κ: a_t ↦ n + 1 − a_t (complement)
+preserve goodness (a block of length L has its sum S replaced by S or by
+L(n+1) − S, and L | L(n+1) − S iff L | S). They generate a Klein four-group
+acting on good permutations; the action is free for n ≥ 3 (ρ fixes no
+permutation with a_1 ≠ a_n; κ fixes none since n+1−a ≠ a for n even… for
+odd n, κ fixes a permutation only if a_t = (n+1)/2 for all t, impossible;
+ρκ fixes a_t = n+1−a_{n+1−t}, which forces the middle term a_{(n+1)/2} =
+(n+1)/2 and is possible in principle — see §5 for what actually occurs).
+So for odd n ≥ 3 the number of good permutations is a multiple of 2, and
+a multiple of 4 whenever no good permutation is ρκ-symmetric.
 
-**Known from the thread (read via the Stack Exchange API on 2026-09-05).** Exist for
-n = 3, 7, 31 (the construction c(p) = 1, p−1, p, p−3, p−2, …, 2, 3); none for the other odd
-n ≤ 41 (asker's computer search, unpublished); n must be 2^m − 1 (answer by S. A. Bîsceanu
-building on a comment by te4, score 11). Primality is not addressed in the thread.
+## 2. The structure theorem
 
-## 2. The 2-adic structure
+**Lemma 1 (power-of-two blocks; Bîsceanu–te4).** Let a be a good
+permutation of [n] and 2^k < n. Then every block of 2^k consecutive terms has
+sum ≡ 2^{k−1} (mod 2^k), and a_{t+2^k} ≡ a_t (mod 2^k) whenever
+t + 2^k ≤ n.
 
-Throughout n = 2^m − 1 and we set a₀ := 0. v₂ is the 2-adic valuation.
+*Proof.* Induction on k. For k = 1 a block of two terms has odd sum since
+its average is not an integer. If every 2^k-block has sum ≡ 2^{k−1}
+(mod 2^k) and 2^{k+1} < n, a 2^{k+1}-block is the union of two 2^k-blocks,
+so its sum is ≡ 0 (mod 2^k); it is not ≡ 0 (mod 2^{k+1}) because the block
+is proper and good, hence it is ≡ 2^k (mod 2^{k+1}). For the congruence,
+subtract the sums of the blocks starting at t and at t + 1: they share
+2^k − 1 terms, so a_{t+2^k} − a_t ≡ 0 (mod 2^k). ∎
 
-**Lemma A (thread; re-checked).** Let a be good. For every k ≥ 1 with 2^k < n: (a) the sum
-of any 2^k consecutive terms is an odd multiple of 2^{k−1}; (b) a_{t+2^k} ≡ a_t (mod 2^k)
-for 1 ≤ t ≤ n − 2^k. Moreover n = 2^m − 1 for some m.
+**Lemma 2 (triangular structure).** Let n = 2^m − 1 and let a be good.
+For every 1 ≤ k ≤ m − 1 there is a bijection σ_k: Z/2^k → Z/2^k with
+σ_k(0) = 0 such that a_t ≡ σ_k(t mod 2^k) (mod 2^k) for every t. In
+particular a_{2^{m−1}} = 2^{m−1}, and for every t < 2^{m−1} the pair
+{a_t, a_{t+2^{m−1}}} is {j, j + 2^{m−1}} for some 1 ≤ j < 2^{m−1}.
 
-*Proof.* (a) k = 1: adjacent terms have odd sum. If (a) holds for k and 2^{k+1} < n, a block
-of 2^{k+1} terms is the union of two blocks of 2^k terms, each an odd multiple of 2^{k−1}, so
-the total is divisible by 2^k and, being a proper block, not by 2^{k+1}. (b) Subtracting the
-sums of the blocks starting at t and t+1 gives a_{t+2^k} − a_t as a difference of two odd
-multiples of 2^{k−1}, hence divisible by 2^k. Mersenne form: let q be the largest power of 2
-below n and s = n − q, 0 < s < q. By (b) a_{i+q} ≡ a_i (mod q) for i ≤ s. The only pairs of
-distinct elements of {1..n} congruent mod q are {j, j+q}, j ≤ s, so the s disjoint pairs
-{a_i, a_{i+q}} exhaust them, and a_{s+1}, …, a_q is a permutation of s+1, …, q, whose average
-(n+1)/2 is an integer; this block is proper, so its length q − s must be 1: n = 2q − 1. ∎
+*Proof.* By Lemma 1, a_t mod 2^k depends only on the class of t mod 2^k
+(walk from t in steps of 2^k; 2^k < n). Since 2^k | n + 1, the values
+1..n contain exactly u := (n+1)/2^k members of each nonzero residue class
+mod 2^k and u − 1 members of the class 0, and the positions 1..n contain
+exactly u members of each nonzero class mod 2^k and u − 1 of class 0. Every
+position class carries a single residue class of values, and all u (resp.
+u − 1) values of a residue class must be placed, so distinct position
+classes carry distinct residues (two classes on one residue would need
+≥ 2u − 1 > u values), i.e. σ_k is a bijection; and the class 0 of
+positions, having only u − 1 members, cannot host a nonzero residue class
+(u values), so σ_k(0) = 0. For k = m − 1: a_{2^{m−1}} ≡ 0 (mod 2^{m−1})
+and the only value in range is 2^{m−1} itself; the pairs statement is the
+case k = m − 1 of "positions t, t + 2^{m−1} carry the same residue", the
+only two values with that residue being j and j + 2^{m−1}. ∎
 
-**Lemma B (PROVED).** Let n = 2^m − 1, m ≥ 2, and a a permutation of {1..n} with a₀ = 0. Then
-a is good if and only if
+Consequently a good permutation of 2^m − 1 is determined by
+2^m − m − 1 bits: writing bit_k for the k-th binary digit,
+bit_k(a_t) = b_k(t mod 2^k) ⊕ bit_k(t) for a family of functions
+b_k: Z/2^k → {0,1} with b_k(0) = 0 (k = 1, …, m − 1; the case k = 0 is
+forced: odd positions carry odd values). The search space for n = 63 is
+therefore 2^57, for n = 255 it is 2^247.
 
- (i) v₂(a_y − a_x) = v₂(y − x) for all 0 ≤ x < y ≤ n — equivalently a_x ≡ a_y (mod 2^k) ⟺
-     x ≡ y (mod 2^k) for all k ≤ m — and
- (ii) every proper block of odd length L ≥ 3 has sum not divisible by L.
+**Corollary (Bîsceanu).** If n is odd and admits a good permutation then
+n = 2^m − 1. *Proof sketch, as in the thread:* let q be the largest power
+of 2 below n and n = q + s. By Lemma 1, a_{i+q} ≡ a_i (mod q) for i ≤ s;
+the only pairs of distinct elements of [n] congruent mod q are {j, j+q},
+j ≤ s, so the middle segment a_{s+1}, …, a_q is {s+1, …, q} in some order,
+a block of length q − s whose average is (n+1)/2, an integer. It is proper
+if q − s ≥ 2. Hence q − s = 1 and n = 2q − 1. ∎
 
-*Proof.* (⇒) (ii) is part of goodness. For (i) fix 1 ≤ k ≤ m − 1 (so 2^k < n). By Lemma A(b),
-a_t mod 2^k is a function ρ_k(t mod 2^k) of t mod 2^k for 1 ≤ t ≤ n. Among the positions
-1..n the residue class r (mod 2^k) has 2^{m−k} elements if r ≠ 0 and 2^{m−k} − 1 if r = 0;
-the same holds for the values 1..n. Since a is a bijection, #{t : a_t ≡ s} = #{v : v ≡ s}
-for every s. If ρ_k(r) = ρ_k(r′) = s with r ≠ r′ then #{t : a_t ≡ s} ≥ 2^{m−k} − 1 + 2^{m−k}
-> 2^{m−k}, impossible; so ρ_k is a bijection of Z/2^k. If ρ_k(0) = s ≠ 0 then
-#{t : a_t ≡ s} = 2^{m−k} − 1 ≠ 2^{m−k}, impossible; so ρ_k(0) = 0. Hence for x, y ∈ [1, n]:
-a_x ≡ a_y (mod 2^k) ⟺ x ≡ y (mod 2^k), and a_x ≡ 0 = a₀ ⟺ x ≡ 0 (mod 2^k). For k = m both
-congruences are equalities since all quantities lie in [0, 2^m). This is (i).
-(⇐) Let a block have even length L = 2^j u with u odd, 1 ≤ j ≤ m − 1 (L ≤ n − 1 = 2^m − 2).
-By (i) any 2^j consecutive positions are pairwise incongruent mod 2^j, so their values form
-a complete residue system mod 2^j; the block is u such systems, so its sum is
-≡ u·2^{j−1}(2^j − 1) ≡ 2^{j−1} (mod 2^j), not divisible by 2^j, hence not by L. Odd lengths
-are (ii). ∎
+**Lemma 3 (even lengths are automatic).** Let n = 2^m − 1 and let a be any
+permutation satisfying the conclusion of Lemma 2 (for all k ≤ m − 1). Then
+no proper block of even length has an integer average.
 
-*Remark.* The maps satisfying (i) are exactly the automorphisms of the complete binary tree
-of depth m on the leaves Z/2^m (branching on successive bits) that fix the leaf 0; there are
-2^{2^m−1−m} of them (m = 3: 16; m = 4: 2^{11}; m = 5: 2^{26}; m = 6: 2^{57}). In particular
-v₂(a_t) = v₂(t), and a_{2^{m−1}} = 2^{m−1}.
+*Proof.* Let L = 2^j d with j ≥ 1, d odd, L ≤ n − 1 < 2^m, so j ≤ m − 1.
+A block of L consecutive positions meets every class mod 2^j exactly d
+times, and the residues σ_j(c) over all classes c form a complete residue
+system mod 2^j, so the block sum is ≡ d · (0 + 1 + ⋯ + (2^j − 1)) =
+d · 2^{j−1}(2^j − 1) ≡ 2^{j−1} (mod 2^j) (d and 2^j − 1 odd). It is not
+divisible by 2^j, hence not by L. ∎
 
-**Lemma B′ (PROVED; candidate generation).** Let a₀ = 0, a₁, …, a_{t−1} satisfy (i) among
-themselves, t ≥ 1, K = ⌊log₂ t⌋, t′ = t − 2^K. An integer v satisfies v₂(v − a_x) = v₂(t − x)
-for all 0 ≤ x < t if and only if v ≡ a_{t′} + 2^K (mod 2^{K+1}). In [0, 2^m) there are exactly
-2^{m−1−K} such v, all nonzero.
+So, for n = 2^m − 1: **a is good iff a has the triangular structure of
+Lemma 2 and no proper block of odd length ≥ 3 has sum divisible by its
+length.** This is what the search engine enforces (`goodperm.c`, mode 1)
+and it is what makes the tree small.
 
-*Proof.* (⇒) x = t′: v₂(t − t′) = K forces v ≡ a_{t′} (mod 2^K) and v ≢ a_{t′} (mod 2^{K+1}).
-(⇐) Let x < t, x ≠ t′. If x < 2^K: v₂(t − x) = v₂(2^K + (t′ − x)) = v₂(t′ − x) =: j < K, and
-v − a_x = (v − a_{t′}) + (a_{t′} − a_x) has terms of valuation K and j, so valuation j. If
-2^K ≤ x < t, write x = x′ + 2^K with 0 ≤ x′ < t′; v₂(t − x) = v₂(t′ − x′) =: j < K, and
-v − a_x = (v − a_{t′}) + (a_{t′} − a_{x′}) + (a_{x′} − a_x) has terms of valuation K, j, K (the
-last by (i): v₂(x′ − x) = K), so valuation j. Counting: v is determined mod 2^{K+1}, leaving
-bits K+1, …, m−1 free; v ≡ 0 would need v₂(a_{t′}) = K, but v₂(a_{t′}) = v₂(t′) < K or t′ = 0. ∎
+## 3. Weiss's family
 
-Consequently a depth-first search that, at position t, tries exactly the 2^{m−1−K} values of
-Lemma B′ (and prunes with (ii) on every odd block ending at t) visits every map satisfying
-(i); the sum over t of (m − 1 − ⌊log₂ t⌋) is 2^m − 1 − m, matching the Remark. This is what
-`tree.c` does; every leaf is re-verified against all block lengths 2..n−1 before being
-counted, so the solution counts do not depend on the reasoning about even blocks.
+For odd p ≥ 3 let W(p) be the permutation 1, p−1, p, p−3, p−2, …, 2, 3:
+a_1 = 1 and, for t ≥ 2, a_t = p + 1 − t + 2·[t odd].
 
-## 3. The construction
+**Theorem 4.** W(p) is good if and only if p is prime (p ≥ 3). More
+precisely, for p = 2^m − 1 the only bad blocks of W(p) are the prefixes of
+odd length L ≥ 3 with L | p; for general odd p the same holds together with
+the even-length prefix condition below.
 
-**Proposition C (PROVED).** Let p = 2^m − 1 ≥ 3 and c(p) = (1, p−1, p, p−3, p−2, …, 2, 3),
-i.e. c₁ = 1, c_{2j} = p + 1 − 2j, c_{2j+1} = p + 2 − 2j for 1 ≤ j ≤ (p−1)/2. For a proper block
-B = [s, s+L−1] with sum S: if s ≥ 2 then L ∤ S; if s = 1 and L is even then L ∤ S; if s = 1 and
-L is odd then S ≡ −p (mod L), so L | S ⟺ L | p. Hence c(p) is good if and only if p is prime.
+*Proof.* (a) Blocks avoiding position 1. Let the block occupy positions
+s..e with s ≥ 2, L = e − s + 1, and let O be the number of odd positions in
+[s, e]. Then Σ a_t = L(p+1) − Σ t + 2O = L(p+1) − L(s+e)/2 + 2O. If L is
+even then s + e is odd and O = L/2, so Σ a_t = L(p+1) − (L/2)(s+e) + L ≡
+(L/2)·(odd) ≢ 0 (mod L). If L is odd then s + e is even, so L | L(s+e)/2,
+and O = (L ± 1)/2, so Σ a_t ≡ 2O = L ± 1 ≢ 0 (mod L). No such block is
+bad, for every odd p.
 
-*Proof.* Put N = p + 1 = 2^m. Consecutive pairs (2j, 2j+1) have c_{2j} + c_{2j+1} = 2N − 4j + 1.
-*s = 2j even, L = 2r:* S = Σ_{i=j}^{j+r−1}(2N − 4i + 1) = r(2N + 3 − 4j − 2r); the second
-factor is odd, so 2r ∤ S. *s = 2j even, L = 2r+1:* S = r(2N + 3 − 4j − 2r) + (N − 2j − 2r);
-modulo L, 2r ≡ −1 gives 2S ≡ −(2N + 4 − 4j) + (2N − 4j + 2) = −2, so S ≡ −1. *s = 2j+1 ≥ 3,
-L = 2r:* with A = 2N − 4j − 2r, S = r(A + 1) with A + 1 odd, so 2r ∤ S. *s = 2j+1 ≥ 3,
-L = 2r+1:* S = r(A + 1) + (N − 2j − 2r + 1) and 2S ≡ −(A + 1) + 2N − 4j + 4 = 2r + 3 ≡ 2
-(mod L), so S ≡ 1. *s = 1, L = 2r:* S = 1 + Σ_{i=1}^{r−1}(2N − 4i + 1) + (N − 2r) ≡ r − N
-(mod 2r); 2r | S would give N = r(2k+1), impossible for N = 2^m and r < N. *s = 1, L = 2r+1:*
-S = 1 + Σ_{i=1}^{r}(2N − 4i + 1) = 1 + r(2N − 2r − 1), and 2S ≡ 2 − 2N (mod L), so
-S ≡ 1 − N = −p (mod L). If p is composite it has an odd divisor L with 3 ≤ L ≤ p/3 ≤ p − 2 and
-the block [1, L] has integer average; if p is prime no proper block does. ∎
+(b) Prefixes. For the prefix of length L ≥ 2, with O' = ⌊(L−1)/2⌋ odd
+positions in [2, L],
+Σ_{t≤L} a_t = 1 + (L−1)(p+1) − (L(L+1)/2 − 1) + 2O'.
+If L is odd: L | L(L+1)/2 and 2O' = L − 1, so the sum is
+≡ −(p+1) + 2 + (L − 1) ≡ −p (mod L): the prefix is bad iff L | p.
+If L is even, write L = 2^j o with o odd: L(L+1)/2 ≡ L/2 (mod L) and
+2O' = L − 2, so the sum is ≡ −(p+1) − L/2 (mod L); modulo 2^j this is
+−(p+1) − 2^{j−1}o ≡ −(p+1) + 2^{j−1} (mod 2^j), which is nonzero whenever
+2^j | p + 1 — always true for p = 2^m − 1 since j ≤ m − 1 — so no even
+prefix of W(2^m − 1) is bad. (For general odd p an even prefix is bad iff
+L | p + 1 + L/2.)
 
-Numerically confirmed by `check.py --construction p` for p = 3, 7, 15, …, 2047: good exactly
-for the primes 3, 7, 31, 127; for composite p the first offending block is always [1, L] with
-L the least prime factor of p (`data/batch1.txt`).
+(c) Hence for p = 2^m − 1, W(p) is good iff no odd L with 3 ≤ L ≤ p − 1
+divides p, i.e. iff p is prime. For general odd prime p the odd prefixes
+are fine and an even prefix of length L = 2^j o is bad iff L | p+1+L/2;
+this can happen (e.g. p = 5: L = 2, sum 1 + 4 = 5? no — 5 is odd; L = 4:
+1+4+5+2 = 12, divisible by 4: W(5) = 1,4,5,2,3 is bad), which is why the
+family is only claimed for Mersenne primes. ∎
 
-## 4. Computations
+The computational check (`check_good`, `construction p`) agrees: W(p) is
+good for p = 7, 31, 127, 8191, 131071, 524287 and bad for p = 15, 63, 255,
+511, 1023, 2047, 4095, in every case first failing at the prefix whose
+length is the least prime factor of p (§5).
 
-All runs single-threaded, exact integer arithmetic, < 100 MB RAM, on the session machine
-(4 cores, 15 GB, gcc -O2).
+## 4. What remains: composite Mersenne numbers
 
-| n | program, assumptions | result | nodes | time |
-|---|---|---|---|---|
-| odd 3 … 43 | `brute.c`: plain backtracking on all permutations, **no lemma** | good permutations only for n = 3 (exactly 2), 7 (exactly 4), 31 (exactly 4); none for every other odd n ≤ 43 | n = 31: 181,519,993; 41: 14,858,098,657; 43: 33,982,657,297 | 2.2 s; 160 s; 358 s |
-| 7, 15, 31 | `tree.c` (Lemmas A, B, B′) | 4, 0, 4 — agree with brute force | 60; 1,748; 298,120 | < 0.01 s |
-| **63** | `tree.c` | **0 good permutations, search complete** | **1,433,402,570** | **20.0 s** |
-| **63** | `brute2.c` mode 2 (independent code: scans all unused values, tests (i) against every earlier position including a₀, checks *all* block lengths) | **0, complete** | 1,433,402,570 (identical, as it must be: both enumerate exactly the maps of Lemma B′) | 200.9 s |
-| 31 | `brute2.c` mode 1 (filter uses only the thread's Lemma A) | 4 | 24,620,037 | 1.8 s |
+By the Corollary and Theorem 4, Weiss's question is exactly: *does some
+composite 2^m − 1 admit a good permutation?* The smallest cases are
+63 = 3²·7, 255 = 3·5·17, 511 = 7·73, 1023 = 3·11·31, 2047 = 23·89 (the
+first with prime exponent). For n = 15 the answer is no (Weiss; reproduced
+here in both engine modes). §5 reports n = 63.
 
-The four good permutations for n = 7 and for n = 31 are the construction c(p) and its images
-under reversal and complement a_i ↦ n + 1 − a_i (`data/sols_m3.txt`, `data/sols_m5.txt`);
-all pass `lemma_check.py`. Even-length blocks never pruned anything in `tree.c -e` for
-m = 2..6, as Lemma B predicts. The counts of good permutations for n = 2..15 are
-2, 2, 2, 0, 2, 4, 8, 0, 2, 0, 4, 0, 2, 0 (`data/counts_n2_15.txt`; even n included), a
-sequence not in the OEIS as of today.
+The relaxation probe at n = 15 (`goodperm_subset`) shows the obstruction is
+not a plain divisor argument: with the triangular structure imposed, the
+odd block lengths {3, 7, 11} — two of which do not divide 15 — already
+exclude every candidate, and the minimal excluding sets are {3,5,7},
+{3,5,9}, {3,7,11}, {3,9,11}; length 3 belongs to all of them. Any proof of
+nonexistence for composite Mersenne numbers must therefore use the
+interaction between the binary structure and short odd blocks, not just
+divisibility of n.
 
-**Theorem 1 (CERTIFIED).** There is no good permutation of {1, …, 63}.
+## 4a. The resonant lengths 2^k − 1
 
-*Certificate.* Lemmas A, B, B′ (proved above) reduce existence to the 2^57 tree automorphisms
-fixing 0; `tree.c` and `brute2.c` (mode 2) exhaust them independently with identical node
-counts and find none. Outputs: `data/run63.txt`, `data/b2_63_m2.txt`.
+The relaxation ladders (README rows 6, 8; `results/n63_prefix_lengths.txt`,
+`results/n31_prefix_lengths.txt`) single out the block lengths 2^k − 1.
+At n = 63, imposing all odd lengths 3, 5, …, 29 leaves 260 candidates
+(with a_1 < 32) and adding L = 31 = q − 1 leaves none; at n = 31 the ladder
+reaches the true count exactly when L = 15 = q − 1 enters, and at n = 15
+every minimal excluding set contains 3 and one of 7 = q − 1, 9, 11.
 
-**Corollary 2.** A good permutation of {1, …, n}, n odd, exists for n ∈ {3, 7, 31, 127} and
-for no other odd n < 255. *Proof.* Lemma A restricts to n ∈ {3, 7, 15, 31, 63, 127}; 15 is
-excluded by `brute.c` (and `tree.c`), 63 by Theorem 1, and 127 admits c(127) by Proposition C. ∎
+There is a reason these lengths are special. A block of 2^k − 1 consecutive
+positions misses exactly one class c mod 2^k, and 2^k ≡ 1 (mod 2^k − 1), so
+writing each value as a_t = (a_t mod 2^k) + 2^k h_t (h_t = the higher bits)
+gives, modulo 2^k − 1,
 
-## 5. The Mersenne ladder beyond 63 (NUMERICAL)
+  Σ_block a_t ≡ Σ_{r ≠ σ_k(c)} r + Σ_block h_t ≡ −σ_k(c) + Σ_block h_t,
 
-`tree2.c` searches in a "construction-first" order. n = 127 (prime): the construction is the
-first leaf visited (and passes `check.py`); with a 300 s cap, 17,205,035,008 nodes, no second
-solution in the explored region — the count is **not** exhaustive (2^{120} candidates).
-n = 255 = 3·5·17: 900 s cap, 41,182,822,400 nodes, maximal depth 78 of 255, nothing found —
-**no information** (2^{247} candidates). The ladder was stopped there.
+because Σ_{r=0}^{2^k−1} r = 2^{k−1}(2^k − 1) ≡ 0. For k = m − 1 the higher
+part h_t is the single top bit ε_t ∈ {0,1}, with ε_{t+q} = 1 − ε_t and
+ε_q = 1. So the length-(q−1) conditions read, for 1 ≤ s ≤ q − 1 (block
+s+1 … s+q−1, which straddles position q),
 
-## 6. Structure of the failure at n = 63 (PROVED criterion, NUMERICAL observations)
+  E_0 + s − ε_s − 2 F_{s−1} ≢ a_s (mod q − 1)   with F_{s−1} = Σ_{t<s} ε_t,
+  E_0 = F_{q−1},
 
-Restricting the pruning to a set of odd lengths (`tree.c -L`) shows that there is no small
-or divisor-based obstruction: at n = 63 the lengths {3, 5, 7} leave 4228 tree automorphisms,
-the odd lengths ≤ 13 leave 680, the divisor lengths {3, 7, 9, 21} leave more than 5248
-(`data/exp63.txt`, `data/exp63b.txt`). Each of the 680 survivors of odd lengths ≤ 13 is
-killed by the two lengths 31 = q − 1 and 33 = q + 1, where q = 2^{m−1} = 32
-(`data/analyze680.txt`; smallest killing length 15, 19, 29, 31 for 16, 16, 128, 520 of them).
-For these two lengths there is an exact criterion:
+and for s = 0, q: E_0 ∉ {0, q − 1}. These tie the prefix counts of the top
+bits to the residues a_s mod q — a global linear-arithmetic constraint on
+the top bits, unlike the short odd lengths, which are local. A proof of
+nonexistence for composite Mersenne numbers would have to use exactly this
+interaction; today's session only identified it.
 
-**Lemma E (PROVED).** Let a satisfy (i) with q = 2^{m−1}, and write a_x = ρ(x mod q) + q·h_x with
-h_x ∈ {0, 1}, where ρ: Z/q → Z/q is the bijection of Lemma B (ρ(0) = 0). For a block of
-positions [t, t+q] (length q+1) let H be the number of x in it with h_x = 1. Then the block has
-integer average iff H = ρ(t) + 1. For a block [t, t+q−2] (length q−1) with H defined likewise,
-it has integer average iff H ≡ ρ((t−1) mod q) (mod q−1).
+## 4b. What the short lengths force (observations, n = 63)
 
-*Proof.* The q positions t, …, t+q−1 carry every residue mod q exactly once and t+q repeats
-the residue of t, so the sum over [t, t+q] is q(q−1)/2 + ρ(t) + qH. Modulo q+1 we have q ≡ −1,
-q(q−1)/2 = (q/2)(q−1) ≡ (−1)(−2)/2 = 1 and qH ≡ −H, so the sum is ≡ 1 + ρ(t) − H; as
-0 ≤ H ≤ q+1 and 1 ≤ ρ(t)+1 ≤ q, divisibility by q+1 forces H = ρ(t) + 1. For [t, t+q−2] the
-residues cover Z/q except (t−1) mod q, so the sum is q(q−1)/2 − ρ((t−1) mod q) + qH; modulo
-q−1, q ≡ 1, q(q−1)/2 = (q−1)(q/2) ≡ 0 and qH ≡ H, giving the criterion. ∎
+Classifying the residue patterns σ_k (positions 1..2^k mod 2^k) of the
+relaxation survivors at n = 63 with a_1 < 32 (`results/n63_survivors_*.txt`):
 
-For the good construction c(31), the length-33 criterion (with q = 16, so length 17) misses
-by exactly one at every t.
+| constraints imposed | survivors | σ_2 | σ_3 | σ_4 | σ_5 |
+|---|---|---|---|---|---|
+| structure + {3,5,7} | 2114 | W(3)-family (= {id, −id}) | id 1579, −id 521, W(7)-family 14 | id 1542, −id 514, other 58 | other |
+| structure + {3,5,…,29} | 260 | {id, −id} | id 195, −id 65 | id 195, −id 65 | near-identity with 16-flips |
+| + length 31 | 0 | | | | |
 
-**Conjecture D (NUMERICAL; rigidity).** For n = 2^m − 1 every good permutation is one of the
-four images of c(n) under reversal and complement. True for m = 2, 3, 5 (exhaustive),
-consistent with m = 4, 6 (no good permutations, and c(15), c(63) are not good). With
-Proposition C it would answer the MO question in the affirmative.
+Here "id" is r ↦ r, "−id" is r ↦ −r (mod 2^k), and "W(2^k−1)-family" means
+the residue pattern of W(2^k−1) or of one of its three images; note W is
+self-similar (W(31) mod 16 is W(15), W(63) mod 32 is W(31)). So the short
+odd lengths force the low-order structure of any candidate into three
+self-similar families — identity-like, negated-identity-like, W-like — and
+at n = 63 the W-like branch dies by length 15 (no survivor of {3,…,29} is
+W-like mod 8) while the ±identity branches die only at the resonant length
+31. This is the shape a proof would take: (a) short lengths force the
+family, (b) the resonant length 2^{m−1} − 1 kills the ±identity families
+through the top-bit walk of §4a, (c) the W-family fails at a prefix whose
+length divides n (Theorem 4 handles W itself; its near relatives need the
+argument of (b)). None of (a)–(c) is proved here beyond n = 63.
 
-## 7. What was not achieved
+## 4c. The identity-like families are empty for m ≥ 4 (Theorem 5)
 
-No proof of non-existence for composite exponents. Divisor-length arguments (blocks of length
-L | n) and local-window arguments are refuted by the data above; the reparametrisation of
-Lemma E was not pushed to a contradiction. Whether n = 255 or n = 2047 = 23·89 (composite with
-prime exponent) admits a good permutation is open; the structured search space is 2^{247} and
-2^{2036} respectively, so a proof, not a search, is needed.
+Let n = 2q − 1, q = 2^{m−1}, and call a permutation *identity-like* if
+a_t ≡ t (mod q) for every t, *negated-identity-like* if a_t ≡ −t (mod q)
+for every t. These are the two families that survive every sub-resonant
+relaxation at n = 63 (§4b), and the complement κ maps one onto the other.
 
-## References
+**Theorem 5.** For m ≥ 4 no good permutation of [2^m − 1] is identity-like
+or negated-identity-like. (For m = 3 the identity-like good permutations
+are exactly W(7) = 1 6 7 4 5 2 3 and ρκW(7) = 5 6 3 4 1 2 7.)
 
-* MathOverflow 514690, "Do only Mersenne primes have 'good' permutations?", P. Weiss,
-  2026-08-27, with the answer by S. A. Bîsceanu and the comment by te4 — read via the Stack
-  Exchange API on 2026-09-05 (`q.json`, `a.json` in the session scratchpad, not committed).
-* No further literature was found (OEIS search for the count sequence and web search, same day).
+*Reduction.* An identity-like permutation has a_q = q and, for 1 ≤ t < q,
+a_t = t + q x_t and a_{t+q} = t + q(1 − x_t) for a bit string
+x = x_1 … x_{q−1} (Lemma 2 gives the pairing; here the residue map is the
+identity). Write O_i = x_1 + ⋯ + x_i (ones among the first i bits) and
+O'_j = x_{q−j} + ⋯ + x_{q−1} (ones among the last j bits), O_0 = O'_0 = 0.
+By Lemma 3 only odd block lengths L ≥ 3 matter. Three kinds of blocks:
+
+(H) inside [1, q−1]: Σ_{u=t}^{t+L−1} a_u = Lt + L(L−1)/2 + q Σ x_u ≡
+q Σ_{window} x (mod L), divisible by L iff the window's bit sum is 0 or L,
+i.e. iff the window of x is constant.
+(T) inside [q+1, 2q−1]: the same computation with 1 − x_u gives
+≡ −q Σ_{window} x: the same condition.
+(S) containing position q, say [q−j, q+i] with i, j ≥ 0, i + j = L − 1 even,
+(i, j) ≠ (q−1, q−1) (that block is the whole permutation):
+Σ = Σ_{u=1}^{j} (q − u + q x_{q−u}) + q + Σ_{u=1}^{i} (u + q(1 − x_u))
+  = q (j + 1 + O'_j + i − O_i) + (i − j)(i + j + 1)/2,
+and (i − j)(i + j + 1)/2 = ((i − j)/2)·L ≡ 0 (mod L), so Σ ≡ q (L + O'_j − O_i)
+(mod L). As gcd(q, L) = 1 and |O'_j − O_i| ≤ max(i, j) < L, the block is bad
+iff O_i = O'_j.
+
+Hence an identity-like permutation is good iff
+  (I1) x contains neither 000 nor 111, and
+  (I2) O_i ≠ O'_j for all i, j ≥ 0 with i + j even, (i, j) ∉ {(0,0), (q−1,q−1)}.
+(`idfamily.py` confirms this equivalence by brute force over all 2^{q−1}
+strings for q = 4, 8, 16 — 2, 0, 0 good ones — and finds no string
+satisfying (I1)+(I2) for q = 32 either.)
+
+*Proof of the theorem.* Let N = q − 1 ≥ 7 (odd) and suppose x satisfies
+(I1) and (I2). Put D_i = O_i − O'_i. Then D_0 = D_N = 0, D_i ≠ 0 for
+0 < i < N by (I2) with (i, i), and D_{i+1} − D_i = x_{i+1} − x_{N−i} ∈
+{−1, 0, 1}, so D has a constant sign on 0 < i < N. Reversing x swaps O and
+O', preserves (I1) and (I2) and negates D, so we may assume D_i > 0 for
+0 < i < N. Then:
+ 1. D_1 = x_1 − x_N = 1, so x_1 = 1 and x_N = 0.
+ 2. (i, j) = (0, 2): O'_2 ≠ 0, so x_{N−1} = 1.
+ 3. D_2 = (1 + x_2) − (1 + 0) = x_2 > 0, so x_2 = 1; then (I1) forces x_3 = 0.
+ 4. (i, j) = (1, 3): O_1 = 1 ≠ O'_3 = x_{N−2} + 1, so x_{N−2} = 1.
+ 5. D_3 = O_3 − O'_3 = (1 + 1 + 0) − (1 + 1 + 0) = 0, contradicting D_3 > 0
+    (here 3 < N is used; for N = 3 the argument stops at step 4 and indeed
+    x = 110 and its reversal 011 survive, giving ρκW(7) and W(7)).
+So no x exists for N ≥ 5, in particular for q ≥ 8. The negated family
+follows by κ, which maps a_t ≡ t to a_t ≡ −t (mod q) and preserves
+goodness. ∎
+
+Only block lengths 3, 5, 7 around position q and the absence of 111 among
+the top bits were used — the same short lengths whose relaxation at n = 63
+leaves no identity-like survivor (§4b, σ_5 column). A mechanical check
+(`idfamily.py` companion run in WRITEUP) confirms that this constraint
+subset alone has no solution for every odd N from 5 to 15 and exactly two
+for N = 3.
+
+## 5. Computations (labels per the repository convention)
+
+All exact integer arithmetic; no floating point anywhere; one core of a
+4-core sandbox (Intel Xeon 2.8 GHz), gcc 12, -O2 -march=native.
+
+| item | statement | label | record |
+|---|---|---|---|
+| 5.1 | No good permutation of [63]. Engine A (mode 1): count 0, 1,433,402,570 nodes, 344 s. Engine B: count 0, 1,433,402,570 nodes (identical tree), 128 s. Engine C: count 0, 7,091,512 nodes, 1.65 s | CERTIFIED | `results/n63_*` |
+| 5.2 | Counts of good permutations for n = 1..26 (plain engine, no structure used): 1, 2, 2, 2, 0, 2, 4, 8, 0, 2, 0, 4, 0, 2, 0, 4, 0, 2, 0, 4, 0, 2, 0, 4, 0, 2; n = 27, 29: 0 (Corollary); n = 31: 4 (plain engine, 181,519,993 nodes, 4.7 s; structural engines agree) | CERTIFIED | `results/counts_mode0_*`, `results/n31_mode0.txt` |
+| 5.3 | The good permutations of [7] and [31] are W(p), ρW, κW, ρκW and nothing else | CERTIFIED | same |
+| 5.4 | W(p) good for p = 7, 31, 127, 8191, 131071, 524287; bad for p = 15, 63, 255, 511, 1023, 2047, 4095 with first bad block the prefix of length 3, 3, 3, 7, 3, 23, 3 | CERTIFIED | `results/construction_large.txt`, `construction_test.py` |
+| 5.5 | Relaxation data of §4 and §4a (minimal excluding sets at 15; prefix ladders at 31 and 63; Mersenne-length subsets) | CERTIFIED (counts) | `results/n15_*`, `results/n31_*`, `results/n63_*` |
+| 5.6 | n = 127: see README (engine C run record `results/n127_mid_run1.txt`) | — | — |
+| 5.7 | CP-SAT (OR-Tools 9.15) reproduces the counts at n = 7 (4), 15 (0), 31 (4, enumeration 17 s) but did not decide n = 63 in 25 min of wall time (2 workers; stopped) | negative timing note | `results/n63_cpsat_run1_note.txt` |
+
+Engine ladders (nodes): A/B — 60, 1748, 298,120, 1,433,402,570 at n = 7,
+15, 31, 63; C — 20, 416, 26,540, 7,091,512. Growth of C per doubling:
+×21, ×64, ×267.
+
+## 6. Open questions
+
+1. Does any composite Mersenne number admit a good permutation? The first
+   open case after this session's computation is stated in §5.
+2. Is W(p) the only good permutation of a Mersenne prime p up to the
+   symmetries ρ, κ? True for p = 7, 31 (exhaustive); n = 127 is beyond the
+   plain backtracking engine (see the node-count ladder in the README).
+3. For even n the counts are 2, 2, 2, 8, 2, 4, 2, … (n = 2, 4, 6, 8, 10,
+   12, 14): is there a structure theorem there too? (Not pursued.)

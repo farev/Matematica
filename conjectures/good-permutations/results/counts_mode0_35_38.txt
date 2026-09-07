@@ -1,0 +1,4 @@
+n=35 mode=0 count=0 nodes=1127759377 time=31.34s
+n=36 mode=0 count=4 nodes=1805788644 time=47.82s
+n=37 mode=0 count=0 nodes=2776473425 time=73.58s
+n=38 mode=0 count=2 nodes=4237384372 time=111.32s

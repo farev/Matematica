@@ -1,0 +1,14 @@
+n=1 mode=0 count=1 nodes=1 time=0.00s
+n=2 mode=0 count=2 nodes=4 time=0.00s
+n=3 mode=0 count=2 nodes=13 time=0.00s
+n=4 mode=0 count=2 nodes=36 time=0.00s
+n=5 mode=0 count=0 nodes=89 time=0.00s
+n=6 mode=0 count=2 nodes=216 time=0.00s
+n=7 mode=0 count=4 nodes=477 time=0.00s
+n=8 mode=0 count=8 nodes=1060 time=0.00s
+n=9 mode=0 count=0 nodes=2053 time=0.00s
+n=10 mode=0 count=2 nodes=4152 time=0.00s
+n=11 mode=0 count=0 nodes=8057 time=0.00s
+n=12 mode=0 count=4 nodes=15164 time=0.00s
+n=13 mode=0 count=0 nodes=26693 time=0.00s
+n=14 mode=0 count=2 nodes=47268 time=0.00s

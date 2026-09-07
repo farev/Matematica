@@ -1,0 +1,9 @@
+k=15 n=63 sym=1 count=332 nodes=3554564 time=0.91s
+k=17 n=63 sym=1 count=332 nodes=3553366 time=0.90s
+k=19 n=63 sym=1 count=324 nodes=3553204 time=0.93s
+k=21 n=63 sym=1 count=324 nodes=3553168 time=0.91s
+k=23 n=63 sym=1 count=324 nodes=3553150 time=0.92s
+k=25 n=63 sym=1 count=324 nodes=3552606 time=0.92s
+k=27 n=63 sym=1 count=324 nodes=3552190 time=0.93s
+k=29 n=63 sym=1 count=260 nodes=3546968 time=0.92s
+k=31 n=63 sym=1 count=0 nodes=3545756 time=0.94s

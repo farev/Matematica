@@ -1,0 +1,9 @@
+p=29 |G|=812 involutions=29 candidate g (mod inversion)=391 pairs=11339
+girth histogram (0 = not generating): {0: 6467, 10: 812, 12: 2436, 14: 1624}
+girth-14 pairs: 1624   scan time 11.3s
+conjugacy classes among girth-14 pairs: 2
+  all-root girth of class rep (28, 0),(3, 1): 14
+  all-root girth of class rep (28, 0),(8, 1): 14
+  class rep t=(28,0) g=(3,1) ord(g)=28 size=812
+  class rep t=(28,0) g=(8,1) ord(g)=28 size=812
+total 16.3s
