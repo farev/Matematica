@@ -167,11 +167,21 @@ prefix and suffix one-counts never equal at lengths of equal parity, and
 five blocks of length 3, 5, 7 around the middle position force a
 contradiction (reduction confirmed by brute force at q = 4, 8, 16, the
 constraint subset checked mechanically for all odd N ≤ 15). n = 127 (uniqueness of W(127) up to
-symmetry) — engine C run: [PENDING_127]. New directory
+symmetry): engine C launched at 12:26 UTC, still running at the time this
+entry was written (74 % of one core under contention); its outcome is
+recorded in `conjectures/good-permutations/results/n127_mid_run1.txt` and
+the README when it lands, and is not claimed here. New directory
 `conjectures/good-permutations/` (README, NOTE, WRITEUP, PAGE.md, three
 engines, checker, CP-SAT model, run records); index row added.
 
-**Secondary results.** (1) peaceable-queens a(18): [PENDING_A18]. (2)
+**Secondary results.** (1) peaceable-queens a(18): the m = 48 SYM16
+refutation (`run_chunked.py 18 48 16 4 ./bnb_sym`, 16 chunks on four niced
+workers) was launched at 11:55 UTC after the literature witness
+(Ainley/Kamenetsky, 47 white + 48 black queens) passed `check_peaceable`;
+chunk 0 was UNSAT at 455,221,604 nodes (346 s engine time); the remaining
+chunks were still running when this entry was written — completed chunk
+records are committed as they land, and a(18) is claimed only if all 16
+are UNSAT (see `conjectures/peaceable-queens/results/n18_m48_*`). (2)
 Garcia's two open f(6) orientation instances (arXiv:2609.04686 §5), probed
 by a 60-minute subagent (`conjectures/erdos-gyarfas/f6_orientations/`):
 exhaustive enumeration of the girth-14 connection sets of AGL(1,29) and
