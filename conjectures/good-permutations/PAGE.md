@@ -30,7 +30,14 @@
       and complement. Not in OEIS. (Even n: 2 or 4, except 8 at n = 8.)
    5. Observation (CERTIFIED counts) — the obstruction at composite Mersenne
       numbers is not divisibility of n: at n = 15 the minimal excluding sets
-      of odd block lengths are {3,5,7}, {3,5,9}, {3,7,11}, {3,9,11}.
+      of odd block lengths are {3,5,7}, {3,5,9}, {3,7,11}, {3,9,11}; at n = 63
+      all odd lengths up to 29 leave 260 candidates and the resonant length
+      31 = q − 1 kills them all.
+   6. PROVED (Theorem 5) — for m ≥ 4 no good permutation of 2^m − 1 is
+      "identity-like" (a_t ≡ ±t mod 2^{m−1} at every position): the family
+      reduces to a binary string on the top bits, and five short blocks
+      around the middle force a contradiction. These are precisely the
+      families the short block lengths leave alive at 63.
 
 3. **Figures.**
    - *The failure ladder of W(p).* Data: `construction_test.py` output /

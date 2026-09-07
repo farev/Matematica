@@ -219,6 +219,68 @@ through the top-bit walk of §4a, (c) the W-family fails at a prefix whose
 length divides n (Theorem 4 handles W itself; its near relatives need the
 argument of (b)). None of (a)–(c) is proved here beyond n = 63.
 
+## 4c. The identity-like families are empty for m ≥ 4 (Theorem 5)
+
+Let n = 2q − 1, q = 2^{m−1}, and call a permutation *identity-like* if
+a_t ≡ t (mod q) for every t, *negated-identity-like* if a_t ≡ −t (mod q)
+for every t. These are the two families that survive every sub-resonant
+relaxation at n = 63 (§4b), and the complement κ maps one onto the other.
+
+**Theorem 5.** For m ≥ 4 no good permutation of [2^m − 1] is identity-like
+or negated-identity-like. (For m = 3 the identity-like good permutations
+are exactly W(7) = 1 6 7 4 5 2 3 and ρκW(7) = 5 6 3 4 1 2 7.)
+
+*Reduction.* An identity-like permutation has a_q = q and, for 1 ≤ t < q,
+a_t = t + q x_t and a_{t+q} = t + q(1 − x_t) for a bit string
+x = x_1 … x_{q−1} (Lemma 2 gives the pairing; here the residue map is the
+identity). Write O_i = x_1 + ⋯ + x_i (ones among the first i bits) and
+O'_j = x_{q−j} + ⋯ + x_{q−1} (ones among the last j bits), O_0 = O'_0 = 0.
+By Lemma 3 only odd block lengths L ≥ 3 matter. Three kinds of blocks:
+
+(H) inside [1, q−1]: Σ_{u=t}^{t+L−1} a_u = Lt + L(L−1)/2 + q Σ x_u ≡
+q Σ_{window} x (mod L), divisible by L iff the window's bit sum is 0 or L,
+i.e. iff the window of x is constant.
+(T) inside [q+1, 2q−1]: the same computation with 1 − x_u gives
+≡ −q Σ_{window} x: the same condition.
+(S) containing position q, say [q−j, q+i] with i, j ≥ 0, i + j = L − 1 even,
+(i, j) ≠ (q−1, q−1) (that block is the whole permutation):
+Σ = Σ_{u=1}^{j} (q − u + q x_{q−u}) + q + Σ_{u=1}^{i} (u + q(1 − x_u))
+  = q (j + 1 + O'_j + i − O_i) + (i − j)(i + j + 1)/2,
+and (i − j)(i + j + 1)/2 = ((i − j)/2)·L ≡ 0 (mod L), so Σ ≡ q (L + O'_j − O_i)
+(mod L). As gcd(q, L) = 1 and |O'_j − O_i| ≤ max(i, j) < L, the block is bad
+iff O_i = O'_j.
+
+Hence an identity-like permutation is good iff
+  (I1) x contains neither 000 nor 111, and
+  (I2) O_i ≠ O'_j for all i, j ≥ 0 with i + j even, (i, j) ∉ {(0,0), (q−1,q−1)}.
+(`idfamily.py` confirms this equivalence by brute force over all 2^{q−1}
+strings for q = 4, 8, 16 — 2, 0, 0 good ones — and finds no string
+satisfying (I1)+(I2) for q = 32 either.)
+
+*Proof of the theorem.* Let N = q − 1 ≥ 7 (odd) and suppose x satisfies
+(I1) and (I2). Put D_i = O_i − O'_i. Then D_0 = D_N = 0, D_i ≠ 0 for
+0 < i < N by (I2) with (i, i), and D_{i+1} − D_i = x_{i+1} − x_{N−i} ∈
+{−1, 0, 1}, so D has a constant sign on 0 < i < N. Reversing x swaps O and
+O', preserves (I1) and (I2) and negates D, so we may assume D_i > 0 for
+0 < i < N. Then:
+ 1. D_1 = x_1 − x_N = 1, so x_1 = 1 and x_N = 0.
+ 2. (i, j) = (0, 2): O'_2 ≠ 0, so x_{N−1} = 1.
+ 3. D_2 = (1 + x_2) − (1 + 0) = x_2 > 0, so x_2 = 1; then (I1) forces x_3 = 0.
+ 4. (i, j) = (1, 3): O_1 = 1 ≠ O'_3 = x_{N−2} + 1, so x_{N−2} = 1.
+ 5. D_3 = O_3 − O'_3 = (1 + 1 + 0) − (1 + 1 + 0) = 0, contradicting D_3 > 0
+    (here 3 < N is used; for N = 3 the argument stops at step 4 and indeed
+    x = 110 and its reversal 011 survive, giving ρκW(7) and W(7)).
+So no x exists for N ≥ 5, in particular for q ≥ 8. The negated family
+follows by κ, which maps a_t ≡ t to a_t ≡ −t (mod q) and preserves
+goodness. ∎
+
+Only block lengths 3, 5, 7 around position q and the absence of 111 among
+the top bits were used — the same short lengths whose relaxation at n = 63
+leaves no identity-like survivor (§4b, σ_5 column). A mechanical check
+(`idfamily.py` companion run in WRITEUP) confirms that this constraint
+subset alone has no solution for every odd N from 5 to 15 and exactly two
+for N = 3.
+
 ## 5. Computations (labels per the repository convention)
 
 All exact integer arithmetic; no floating point anywhere; one core of a
