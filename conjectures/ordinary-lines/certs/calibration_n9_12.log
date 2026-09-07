@@ -1,0 +1,27 @@
+n=9 m=5: 1 cubes
+   cube 0 t3=7 big=[(0, 1, 2, 3, 4)]: UNSATISFIABLE 0.0s
+n=9 m=5 summary: {'UNSATISFIABLE': 1}
+n=9 m=6: 6 cubes
+   cube 0 t3=10 big=[]: SATISFIABLE 0.1s
+   cube 1 t3=8 big=[(0, 1, 2, 3)]: SATISFIABLE 0.1s
+   cube 2 t3=6 big=[(0, 1, 2, 3), (0, 4, 5, 6)]: SATISFIABLE 0.1s
+   cube 3 t3=6 big=[(0, 1, 2, 3), (4, 5, 6, 7)]: UNSATISFIABLE 0.0s
+   cube 4 t3=4 big=[(0, 1, 2, 3), (0, 4, 5, 6), (1, 4, 7, 8)]: SATISFIABLE 0.0s
+   cube 5 t3=5 big=[(0, 1, 2, 3, 4, 5)]: UNSATISFIABLE 0.0s
+n=9 m=6 summary: {'SATISFIABLE': 4, 'UNSATISFIABLE': 2}
+n=10 m=4: 0 cubes
+n=10 m=4 summary: {}
+n=10 m=5: 1 cubes
+   cube 0 t3=10 big=[(0, 1, 2, 3, 4)]: SATISFIABLE 0.1s
+n=10 m=5 summary: {'SATISFIABLE': 1}
+n=11 m=5: 0 cubes
+n=11 m=5 summary: {}
+n=11 m=6: 3 cubes
+   cube 0 t3=13 big=[(0, 1, 2, 3, 4)]: SATISFIABLE 0.4s
+   cube 1 t3=11 big=[(0, 1, 2, 3, 4), (0, 5, 6, 7)]: UNSATISFIABLE 58.6s
+   cube 2 t3=11 big=[(0, 1, 2, 3, 4), (5, 6, 7, 8)]: UNSATISFIABLE 0.1s
+n=11 m=6 summary: {'SATISFIABLE': 1, 'UNSATISFIABLE': 2}
+n=12 m=5: 1 cubes
+   cube 0 t3=17 big=[(0, 1, 2, 3, 4)]: UNSATISFIABLE 18.5s
+n=12 m=5 summary: {'UNSATISFIABLE': 1}
+n=12 m=6: 10 cubes

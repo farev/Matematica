@@ -1,0 +1,25 @@
+=== n=15 survivors of {3,5} and {3,7}
+m=4 n=15 candidates(tree automorphisms fixing 0)=2^11 RESTRICTED to lengths 3 5
+SOL: 1 6 7 4 5 2 3 8 9 14 15 12 13 10 11
+SOL: 1 10 11 4 5 14 15 8 9 2 3 12 13 6 7
+SOL: 5 6 3 4 1 2 7 8 13 14 11 12 9 10 15
+SOL: 7 6 13 12 3 2 9 8 15 14 5 4 11 10 1
+SOL: 9 10 3 4 13 14 7 8 1 2 11 12 5 6 15
+SOL: 11 10 13 12 15 14 9 8 3 2 5 4 7 6 1
+SOL: 15 6 5 12 11 2 1 8 7 14 13 4 3 10 9
+SOL: 15 10 9 12 11 14 13 8 7 2 1 4 3 6 5
+COMPLETE m=4 n=15 solutions=8 nodes=1830 maxdepth=15 time=0.000s even_prunes=0 (even blocks not used for pruning)
+nodes per depth: 1:8 2:32 3:128 4:168 5:228 6:284 7:368 8:244 9:174 10:84 11:44 12:22 13:20 14:16 15:10
+kills by length: 3:564 5:80
+m=4 n=15 candidates(tree automorphisms fixing 0)=2^11 RESTRICTED to lengths 3 7
+SOL: 1 10 3 12 13 6 15 8 9 2 11 4 5 14 7
+SOL: 7 14 5 4 11 2 9 8 15 6 13 12 3 10 1
+SOL: 9 2 11 12 5 14 7 8 1 10 3 4 13 6 15
+SOL: 15 6 13 4 3 10 1 8 7 14 5 12 11 2 9
+COMPLETE m=4 n=15 solutions=4 nodes=2002 maxdepth=15 time=0.000s even_prunes=0 (even blocks not used for pruning)
+nodes per depth: 1:8 2:32 3:128 4:168 5:228 6:312 7:424 8:288 9:200 10:106 11:56 12:22 13:16 14:8 15:6
+kills by length: 3:628 7:62
+m=4 n=15 candidates(tree automorphisms fixing 0)=2^11 RESTRICTED to lengths 3 5 7
+COMPLETE m=4 n=15 solutions=0 nodes=1748 maxdepth=14 time=0.000s even_prunes=0 (even blocks not used for pruning)
+nodes per depth: 1:8 2:32 3:128 4:168 5:228 6:284 7:368 8:236 9:164 10:70 11:32 12:12 13:12 14:4 15:2
+kills by length: 3:544 5:80 7:28
