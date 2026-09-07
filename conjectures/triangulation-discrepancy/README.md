@@ -9,7 +9,7 @@ is two below the universal bound — they write that the question "remains open"
 n = 11 checked by computer. It looked tractable because their proof fails in that class
 at exactly one class-size vector of the four-colouring, and that configuration is rigid.
 
-Write-up page: <https://fabianarevalo.com/triangulation-discrepancy> (pending; see `PAGE.md`).
+Write-up page: <https://fabianarevalo.com/triangulation-discrepancy> (published 2026-09-07).
 
 **Status:** active (proved for n ≤ 23 and for ≤ 2 high-degree vertices; the general class open)
 **Sessions:** 2026-09-04
