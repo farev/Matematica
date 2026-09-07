@@ -67,9 +67,9 @@ python3 goodperm_cpsat.py 31 300 1 1                                   # CP-SAT 
 | `results/n63_cpsat_run1.txt` | `goodperm_cpsat.py 63` | method D verdict and solver statistics |
 | `results/n31_mode0.txt` | `goodperm 31 0 100` | the four good permutations of [31], plain engine |
 | `results/counts_mode0_1_14.txt` | `goodperm n 0` | counts n = 1..14 (match brute force) |
-| `results/counts_mode0_15_26.txt` | `goodperm n 0 4` | counts n = 15..26 (both parities) |
+| `results/counts_mode0_15_26.txt`, `..._27_34.txt`, `..._35_38.txt` | `goodperm n 0 4` | counts n = 15..38 (both parities) |
 | `results/construction_large.txt` | `check_good` | W(131071), W(524287) verified good |
-| `results/n63_subsets.txt` | `goodperm_subset 63 …` | relaxation counts at n = 63 |
+| `results/n63_prefix_lengths.txt`, `results/n31_prefix_lengths.txt`, `results/n63_survivors_*.txt` | `goodperm_mid n 1 0 L1,L2,…` | relaxation ladders and survivor lists (NOTE §4a–4b) |
 
 The "certificate" for Result 1 is reproducibility: two engines with
 different data structures and candidate generation, identical exhaustive
