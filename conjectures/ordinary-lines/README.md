@@ -12,7 +12,7 @@ line-type distribution that Melchior's inequality forces. It looked tractable be
 the forced distribution for seven ordinary lines is a single rigid shape (two 5-point
 lines, twenty-six 3-point lines). Half of it was.
 
-**Write-up page:** *(pending — see PAGE.md; the result is partial and the page must say so)*
+**Write-up page:** <https://fabianarevalo.com/ordinary-lines> (published 2026-09-07; leads with the partial nature of the result)
 
 **Status:** active — the meeting case of cube A (45 sub-cases) is open
 **Sessions:** 2026-09-05
