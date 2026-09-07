@@ -11,7 +11,7 @@ distinct points of [j]^k, an edge may only take a coordinate where its
 endpoints differ, no monochromatic triangle), and because the j = 3 case of
 Wiesner's formula, (3^k+1)/2, is the size of a natural set of ternary words.
 
-Write-up page: fabianarevalo.com/chromatic-ramsey (pending; see `PAGE.md`).
+Write-up page: <https://fabianarevalo.com/chromatic-ramsey> (published 2026-09-07).
 
 **Status:** active
 **Sessions:** 2026-09-06
