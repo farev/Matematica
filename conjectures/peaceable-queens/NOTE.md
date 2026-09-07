@@ -338,6 +338,17 @@ on **one engine only**; the plain-engine replication is projected at
 therefore rests on Lemma 6′ and the §4 validation battery, not on a second
 independent exhaustion. No engine-found 47 + 47 witness was sought.
 
+*Independent replication of the same run (added at merge time,
+2026-09-07).* A separate session on 2026-09-04
+(`log/2026-09-04-peaceable-queens.md`, merged the same day as this note)
+launched the identical m = 48 refutation on different hardware and
+reported **the same verdict and the same node count in every one of the
+sixteen chunks**, totalling 119,110,352,726, with only the wall and CPU
+times differing (32,695 s of engine time there, 32,544 s here). That is a
+replication of the *run*, not a second engine: both used SYM16, so the
+single-engine caveat above stands unchanged. The chunk records committed
+here are the 2026-09-07 ones.
+
 ## 7. Open questions
 
 1. ~~a(17)~~ Done in session 2 (§6b): a(17) = 42. ~~a(18)~~ Done in

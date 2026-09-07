@@ -61,6 +61,12 @@ placements; `results/` the run records with node counts and times.
 
 ## Known defects / caveats
 
+- **n = 18 was run twice, but on the same engine.** An independent session
+  on 2026-09-04 ran the identical m = 48 refutation on other hardware and
+  reproduced the verdict and the node count of all sixteen chunks exactly
+  (119,110,352,726 in total; engine time 32,695 s there against 32,544 s
+  here). Both runs used SYM16, so this replicates the run, not the engine,
+  and the caveat below is unaffected. See NOTE §6c.
 - **n = 17 and n = 18 are single-engine exhaustions.** a(16) was refuted
   twice (SYM16 and the plain engine, independent canonical forms, node
   ratio ≈ 8.95). At n = 17 and n = 18 only the SYM16 runs were done; the

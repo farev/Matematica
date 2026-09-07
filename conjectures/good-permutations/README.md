@@ -14,8 +14,11 @@ candidates with strong local pruning, and because the construction's failure
 pattern at composite p suggested a clean theorem.
 
 **Status:** active
-**Sessions:** 2026-09-07
-**Write-up page:** pending (`PAGE.md` handoff)
+**Sessions:** 2026-09-05 (as a subagent hedge of the ordinary-lines day)
+and 2026-09-07 (as the primary target) — two sessions that attacked this
+problem independently, without either seeing the other's branch; see
+"two unreconciled write-ups" below.
+**Write-up page:** pending (`PAGE.md` handoff, blocked on that reconciliation)
 
 ## Results
 
@@ -82,6 +85,25 @@ the structural engines at every n ≤ 31.
 
 ## Known defects and open threads
 
+- **Two unreconciled write-ups.** This directory is the union of two
+  independent sessions on the same question, merged on 2026-09-07 after
+  neither branch had been landed. The live `NOTE.md`, `README.md` and
+  `WRITEUP.md` are the 2026-09-07 session's; the 2026-09-05 session's are
+  preserved verbatim as `NOTE-session-2026-09-05.md`,
+  `README-session-2026-09-05.md` and `WRITEUP-session-2026-09-05.md`, and
+  its code (`brute.c`, `brute2.c`, `tree.c`, `tree2.c`, `check.py`,
+  `lemma_check.py`) and data (`data/`) sit alongside the 2026-09-07 code
+  (`goodperm*.c`, `check_good.c`, `idfamily.py`) and data (`results/`).
+  **The two agree on the headline**: no good permutation of {1, …, 63}, by
+  four independent implementations across two machines, all reporting the
+  node count 1,433,402,570 for the structured search. They differ in lemma
+  numbering (Lemma A/B/B′, Prop. C, Lemma E versus Lemma 2/3, Thms 4/5),
+  and each carries material the other lacks — the 2026-09-05 note has
+  Lemma E (an exact criterion for block lengths 2^{m−1} ± 1) and the
+  rigidity conjecture; the 2026-09-07 note has Theorem 5 and the
+  resonant-length analysis of §4a. Merging them into one note is editorial
+  mathematical work and was deliberately not attempted by the publish
+  pass. Until it is done, no page should be built from either.
 - The exhaustive result depends on Lemma 2 (proved in NOTE §2 from the
   thread's argument, with the counting step made explicit). The plain
   engine cannot reach n = 63 (its n = 31 tree is 600× the structural one).
