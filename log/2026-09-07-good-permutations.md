@@ -157,7 +157,16 @@ ladder reaches the true count exactly when 15 = q − 1 enters. NOTE §4a
 explains why lengths 2^k − 1 are resonant (a block of that length misses
 one residue class mod 2^k, and 2^k ≡ 1 modulo the length), and writes the
 length-(q−1) conditions as a ±1-step walk in the top bits that must avoid
-the residue permutation pointwise. n = 127 (uniqueness of W(127) up to
+the residue permutation pointwise. The survivors of every sub-resonant
+relaxation at 63 are identity-like (a_t ≡ ±t mod 16, with 16-flips mod 32),
+and for the exactly identity-like families that observation became a
+theorem: **PROVED (Theorem 5)** — for m ≥ 4 no good permutation of
+2^m − 1 has a_t ≡ t (mod 2^{m−1}) for all t, nor a_t ≡ −t; the family
+reduces to a bit string x on the top bits with (I1) no 000/111 and (I2)
+prefix and suffix one-counts never equal at lengths of equal parity, and
+five blocks of length 3, 5, 7 around the middle position force a
+contradiction (reduction confirmed by brute force at q = 4, 8, 16, the
+constraint subset checked mechanically for all odd N ≤ 15). n = 127 (uniqueness of W(127) up to
 symmetry) — engine C run: [PENDING_127]. New directory
 `conjectures/good-permutations/` (README, NOTE, WRITEUP, PAGE.md, three
 engines, checker, CP-SAT model, run records); index row added.
