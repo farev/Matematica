@@ -73,8 +73,22 @@ points of the current region settle most positivity and cut-feasibility question
 without an LP. A profile showed the first version spending 95 % of its time in
 Fraction-based rank tests — replaced by integer kernel products. Its exhaustive `k = 4`
 run reproduces `m_4 = 7` and the six-element families in seconds. Two exhaustive `k = 5`
-runs (forward and reversed candidate order) were launched at 13:00 UTC with a 2.5-hour
-cap; both reached 12 within five minutes. Their final state is recorded in the README.
+runs (forward and reversed candidate order) were launched at 13:00 UTC; both reached 12
+within five minutes and were still enumerating an hour later.
+
+Engine F then added the seven-smallest normalisation (the dissociated 4-set lives among
+the 7 smallest elements, so the other three of those are chosen first and everything
+else must exceed their maximum), and engine G replaced every LP by exact extreme-ray
+arithmetic on the region of the parameter `t` — a pointed cone in at most four
+dimensions, updated by one double-description step per constraint. G reproduces F's
+`k = 4` enumeration node for node (159 nodes) in 0.4 s instead of 13.7 s, agrees with
+the LP on 3 968 random region decisions, finds the published 13-set in 5 nodes when its
+sign vectors lead the candidate order, and runs the `k = 5` enumeration twenty times
+faster than F. It is still not enough: a phase-1-only count shows 1 103 785 small-triple
+configurations (644 760 of them numeric points), and the four `k = 5` runs of G (two
+orders, two shuffles, 2 h caps) covered about 2 % each — best 12 everywhere — so one
+order needs about 30 h in Python. The `k = 5` decision is therefore left open, with the
+enumeration fully specified and a C port as the obvious next step.
 
 In parallel, a one-core annealing hedge (`code/sa/`) searched integer sets directly:
 nothing with `d ≤ 4` beyond 13 elements (the best 14-sets keep 7 dissociated 5-subsets),
@@ -92,8 +106,9 @@ element than the interval bound, verified by two independent exact programs.
 - **Engine D at `k = 5`**: correct and certified, but the sorted-order branching over
   20–26 patterns per 5-subset makes `m = 13` a 27-minute search for the *first* family.
 - **Engine E, first version**: 7 nodes per minute (Fraction rank tests); second version
-  ~150 nodes per minute; the exhaustive enumeration size at `k = 5` is not known in
-  advance. Whether it finishes inside the session is recorded in the README.
+  ~150 nodes per minute. **Engine F**: same rate — the LP calls that prove cut options
+  infeasible dominate whatever else is optimised. **Engine G**: ≈ 2 400 nodes per minute,
+  but the enumeration is ≈ 4.4 M phase-2 nodes per order; ≈ 2 % done in the session.
 - **A general theorem**: applying the signed-sum lemma to all dissociated `(k−1)`-subsets
   at once should beat the greedy `m_k ≤ (3^{k−1}+1)/2`; no argument was found.
 - **Operations**: three shell commands killed themselves through `pkill`/`pgrep`

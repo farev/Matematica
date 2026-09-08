@@ -27,7 +27,7 @@ Page: *(none yet — `PAGE.md` is the handoff)*.
 | Every element of a set with no dissociated `k`-subset is a signed sum of any dissociated `(k−1)`-subset; the 6 / 26 relation patterns of a sorted 4- / 5-subset | PROVED / CERTIFIED | NOTE §3 |
 | Sets with no dissociated 5-subset of every size `m ≤ 13` (e.g. `{1,2,3,5,6,7,8,9,10,12,13,15}`); `m = 8` with a checked certificate | CERTIFIED | `data/witnesses.txt`, `certs/D_k5_m8.json` |
 | `A₂₄ = {1,…,21,24,25,27}` has no dissociated 6-subset (`g(24) ≤ 5`, `m₆ ≥ 25`; the interval bound was 24) | CERTIFIED (two independent exact programs) | NOTE §6, `code/sa/` |
-| The `k = 5` threshold: `14 ≤ m₅ ≤ 41` (lower bound: BAKKAOUI's 13-set; upper: greedy); the exhaustive decision was **not** reached — engines E and F (four runs, two candidate orders each) had not finished when the session closed; see the run logs | open (NUMERICAL evidence only that `m₅ = 14`) | NOTE §5, `data/E_F_runs/` |
+| The `k = 5` threshold: `14 ≤ m₅ ≤ 41` (lower bound: BAKKAOUI's 13-set; upper: greedy); the exhaustive decision was **not** reached — engine G's enumeration has 1.07 M phase-1 configurations (census in `data/G_runs/`), the four 2-hour runs covered ≈ 2 % of it (best found: 12), ≈ 30 h per order would be needed in Python | open (NUMERICAL evidence only that `m₅ = 14`) | NOTE §5, `data/G_runs/` |
 
 See [`NOTE.md`](NOTE.md) for statements and proofs, [`WRITEUP.md`](WRITEUP.md)
 for the session narrative including what failed.
@@ -80,16 +80,21 @@ Requires Python 3.11+, numpy, scipy, sympy (exact simplex fallback), gcc.
 
 - The `k = 4` theorem is CERTIFIED, not PROVED: no human-readable proof was written
   (engine D's 62-node tree is the skeleton of one).
-- **`m₅` undecided.** Engine E (parameter-space enumeration) and engine F (with the
-  seven-smallest normalisation) are exact and single-engine but enumerate every valid
-  configuration as a subset, at ~150 nodes/minute in Python (LP calls dominate; an
-  exact extreme-ray test would remove them). Engine D's certified tree needs 27 minutes
-  for the first 13-set. Neither an `m = 14` family nor an exhaustive "none" was
-  obtained. The natural next step is a C port of engine F with exact ray enumeration,
-  or engine D on four cores overnight.
-- Engines E and F have no independent checker and no certificate format (their
-  soundness rests on the code and on agreement with engines A–D at `k = 4`); a
-  `k = 5` verdict from them alone would be single-engine.
+- **`m₅` undecided.** Engine G (seven-smallest normalisation, exact extreme-ray
+  arithmetic, ≈ 40 phase-2 nodes/s) is the fastest exact enumerator here, but its
+  `k = 5` enumeration has 1 103 785 phase-1 nodes (1 069 068 small-triple
+  configurations, 644 760 of them numeric points) and about four phase-2 nodes per
+  phase-1 node: ≈ 30 h per candidate order in Python. Four runs (two orders, two
+  shuffles; 2 h caps) covered ≈ 2 % each and found nothing beyond 12; engine D's
+  certified tree needs 27 minutes for the first 13-set. Neither an `m = 14` family nor
+  an exhaustive "none" was obtained. Next step: a C port of engine G (small-integer
+  arithmetic only), or four days of the Python engine split over the first small index.
+- Engines E, F and G have no independent checker and no certificate format (their
+  soundness rests on the code, on identical `k = 4` enumerations across E/F/G and
+  agreement with the certified engines A–D at `k = 4`, on 3 968 random region decisions
+  checked against the LP, and on the completeness control that finds the published
+  13-set in 5 nodes when its vectors lead); a `k = 5` verdict from them alone would be
+  single-engine.
 - `F(7..9)` (Lemma 3.2) are cited from OEIS A276661 without re-computation; only
   `F(1..6)` and `d({1..24})` were recomputed here.
 - The original sources [Er65] and [Va99, 1.22] were not consulted (secondary, via the

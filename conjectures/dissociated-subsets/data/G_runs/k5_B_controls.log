@@ -1,0 +1,9 @@
+[B] nodes=53 leaves=1 pruned_lp=45 stats={'cert_point': 34, 'cert_gordan': 140, 'fallback_simplex': 0} time=0.16s
+[B] SOLUTION witness [1, 7, 8, 16, 32, 48, 49, 56] d(witness) = 4
+[B] RESULT: there IS a set of 8 distinct positive reals with no dissociated 5-subset => g(8) <= 4
+[B] nodes=448 leaves=1 pruned_lp=424 stats={'cert_point': 50, 'cert_gordan': 519, 'fallback_simplex': 0} time=1.40s
+[B] SOLUTION witness [1, 7, 8, 16, 32, 40, 48, 49, 56] d(witness) = 4
+[B] RESULT: there IS a set of 9 distinct positive reals with no dissociated 5-subset => g(9) <= 4
+[B] nodes=16553 leaves=1 pruned_lp=14559 stats={'cert_point': 668, 'cert_gordan': 14654, 'fallback_simplex': 0} time=62.98s
+[B] SOLUTION witness [1, 2, 3, 6, 12, 13, 15, 16, 18, 19] d(witness) = 4
+[B] RESULT: there IS a set of 10 distinct positive reals with no dissociated 5-subset => g(10) <= 4

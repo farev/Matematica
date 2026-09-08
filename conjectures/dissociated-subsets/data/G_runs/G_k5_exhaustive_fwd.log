@@ -1,0 +1,27 @@
+[G] k=5: 80 sign vectors; small vectors to choose: 3; target=None reverse=False
+  new best |E| = 7  W=[[2, 3, 0, -1], [1, 0, 2, -1]]  t=None
+  new best |E| = 8  W=[[2, 3, 0, -1], [1, 0, 2, -1]]  t=None
+  new best |E| = 9  W=[[0, 1, 2, -1], [2, 2, -1, 0]]  t=None
+  new best |E| = 10  W=[[0, 1, 2, -1], [2, 2, -1, 0]]  t=None
+  new best |E| = 11  W=[[1, 0, 2, -1], [0, 2, 1, -1], [2, 2, 0, -1]]  t=[2, 3, 4, 10]
+  new best |E| = 12  W=[[1, 0, 2, -1], [0, 2, 1, -1], [2, 2, 0, -1]]  t=[2, 3, 4, 10]
+  progress: nodes=5000 p1=701 mu=4883 cuts=55720 numeric=64244 best=12 |E|=9 W=[[1, 2, -1, 0], [0, 1, 2, -1]] rays<=4 elapsed=111s
+  progress: nodes=10000 p1=1765 mu=12331 cuts=102148 numeric=139341 best=12 |E|=9 W=[[0, 1, 2, -1], [2, 2, -1, 0]] rays<=5 elapsed=237s
+  progress: nodes=15000 p1=2650 mu=18414 cuts=137856 numeric=185217 best=12 |E|=10 W=[[0, 2, -1, 0], [0, 1, 2, -1]] rays<=5 elapsed=318s
+  progress: nodes=20000 p1=4231 mu=29222 cuts=176570 numeric=236971 best=12 |E|=9 W=[[1, 0, 2, -1], [2, 2, 0, -1]] rays<=5 elapsed=409s
+  progress: nodes=25000 p1=6203 mu=42641 cuts=227879 numeric=331345 best=12 |E|=7 W=[[2, 2, 1, -1], [0, 2, 2, -1]] rays<=5 elapsed=564s
+  progress: nodes=30000 p1=7130 mu=49018 cuts=280720 numeric=393688 best=12 |E|=10 W=[[2, 2, 0, -1], [0, 1, 2, -1]] rays<=5 elapsed=675s
+  progress: nodes=35000 p1=8348 mu=57544 cuts=326486 numeric=461310 best=12 |E|=9 W=[[2, 1, 2, -1], [0, 2, 2, -1]] rays<=5 elapsed=795s
+  progress: nodes=40000 p1=8721 mu=60148 cuts=382121 numeric=526375 best=12 |E|=9 W=[[0, 2, 1, -1], [1, 2, -1, 0]] rays<=5 elapsed=913s
+  progress: nodes=45000 p1=9171 mu=63298 cuts=433411 numeric=595886 best=12 |E|=9 W=[[0, 2, 1, -1], [1, -2, -3, 2]] rays<=5 elapsed=1031s
+  progress: nodes=50000 p1=10056 mu=69493 cuts=479257 numeric=669755 best=12 |E|=9 W=[[2, 0, 2, -1], [0, 1, 2, -1]] rays<=5 elapsed=1161s
+  progress: nodes=55000 p1=10627 mu=73420 cuts=540781 numeric=734692 best=12 |E|=8 W=[[0, 2, 1, -1], [2, 1, -1, 0]] rays<=5 elapsed=1282s
+  progress: nodes=60000 p1=11700 mu=80833 cuts=586001 numeric=802768 best=12 |E|=10 W=[[2, 1, -1, 0], [2, 1, 2, -1]] rays<=5 elapsed=1405s
+  progress: nodes=65000 p1=13265 mu=91585 cuts=623027 numeric=843749 best=12 |E|=8 W=[[0, 2, -1, 0], [2, 2, 1, -1]] rays<=5 elapsed=1480s
+  progress: nodes=70000 p1=15147 mu=104297 cuts=671407 numeric=917020 best=12 |E|=10 W=[[2, 0, 2, -1], [2, 2, 1, -1]] rays<=5 elapsed=1637s
+  progress: nodes=75000 p1=17669 mu=121366 cuts=714294 numeric=1004510 best=12 |E|=7 W=[[2, 2, 1, -1], [1, 2, -1, 0]] rays<=5 elapsed=1825s
+  progress: nodes=80000 p1=19109 mu=131166 cuts=760941 numeric=1064772 best=12 |E|=9 W=[[2, 1, 2, -1], [1, -2, 1, 0]] rays<=5 elapsed=1959s
+  progress: nodes=85000 p1=20489 mu=140636 cuts=813662 numeric=1142406 best=12 |E|=8 W=[[2, 2, 2, -1], [2, -1, 0, 0]] rays<=5 elapsed=2114s
+  progress: nodes=90000 p1=21790 mu=149478 cuts=869305 numeric=1226495 best=12 |E|=9 W=[[1, 2, 2, -1], [2, -1, 0, 0]] rays<=5 elapsed=2305s
+  progress: nodes=95000 p1=23853 mu=163489 cuts=907675 numeric=1286134 best=12 |E|=7 W=[[3, -1, 0, 0], [1, -2, -2, 1]] rays<=5 elapsed=2437s
+  progress: nodes=100000 p1=24557 mu=168410 cuts=945575 numeric=1331614 best=12 |E|=9 W=[[1, 2, -1, 0], [0, 2, 1, -1]] rays<=5 elapsed=2542s

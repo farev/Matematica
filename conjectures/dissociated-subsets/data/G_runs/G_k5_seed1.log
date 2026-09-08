@@ -1,0 +1,24 @@
+[G] shuffled candidate order with seed 1
+[G] k=5: 80 sign vectors; small vectors to choose: 3; target=14 reverse=False
+  new best |E| = 7  W=[[1, 0, 2, -1]]  t=None
+  new best |E| = 8  W=[[1, 0, 2, -1], [1, -2, 1, 0]]  t=None
+  new best |E| = 9  W=[[1, 2, 2, -1]]  t=None
+  progress: nodes=5000 p1=4462 mu=30793 cuts=23360 numeric=11716 best=9 |E|=7 W=[[0, 0, 2, -1], [2, 0, 1, -1]] rays<=6 elapsed=31s
+  progress: nodes=10000 p1=9544 mu=65609 cuts=41715 numeric=21389 best=9 |E|=8 W=[[2, 1, -1, 0]] rays<=6 elapsed=59s
+  progress: nodes=15000 p1=14080 mu=96381 cuts=62762 numeric=31738 best=9 |E|=9 W=[[2, 0, -1, 0], [2, 2, -1, -1]] rays<=6 elapsed=85s
+  new best |E| = 10  W=[[0, 2, 1, -1], [2, -2, 1, 0]]  t=None
+  new best |E| = 11  W=[[0, 2, 1, -1], [2, -2, 1, 0]]  t=None
+  new best |E| = 12  W=[[2, -1, 0, 0], [2, 0, 2, -1], [2, -3, 1, 0]]  t=[1, 2, 4, 10]
+  progress: nodes=20000 p1=15393 mu=105256 cuts=114123 numeric=92415 best=12 |E|=9 W=[[1, -2, 1, 0], [0, 0, 2, -1]] rays<=6 elapsed=189s
+  progress: nodes=25000 p1=16130 mu=110415 cuts=166768 numeric=156076 best=12 |E|=9 W=[[0, 2, 1, -1], [2, 0, 2, -1]] rays<=6 elapsed=296s
+  progress: nodes=30000 p1=18543 mu=126879 cuts=216306 numeric=213768 best=12 |E|=9 W=[[0, 2, 1, -1], [0, 0, 2, -1]] rays<=6 elapsed=385s
+  progress: nodes=35000 p1=19243 mu=131779 cuts=275692 numeric=286971 best=12 |E|=9 W=[[1, 2, -1, 0], [2, 2, 2, -1]] rays<=6 elapsed=518s
+  progress: nodes=40000 p1=19811 mu=135755 cuts=330019 numeric=357271 best=12 |E|=8 W=[[0, 1, 2, -1]] rays<=6 elapsed=653s
+  progress: nodes=45000 p1=20286 mu=139052 cuts=380890 numeric=414299 best=12 |E|=10 W=[[1, 0, 2, -1], [2, 1, -2, 0]] rays<=6 elapsed=784s
+  progress: nodes=50000 p1=21188 mu=145240 cuts=417060 numeric=467088 best=12 |E|=8 W=[[2, 2, 1, -1], [1, 0, 3, -1]] rays<=6 elapsed=900s
+  progress: nodes=55000 p1=21959 mu=150609 cuts=452613 numeric=522755 best=12 |E|=10 W=[[2, 2, 0, -1], [1, 0, 2, -1]] rays<=6 elapsed=1017s
+  progress: nodes=60000 p1=22686 mu=155698 cuts=485930 numeric=578488 best=12 |E|=8 W=[[0, 2, 1, -1], [1, 2, -1, 0]] rays<=6 elapsed=1130s
+  progress: nodes=65000 p1=23283 mu=159873 cuts=524437 numeric=631416 best=12 |E|=9 W=[[1, 0, 2, -1], [0, 2, 1, -1]] rays<=6 elapsed=1238s
+  progress: nodes=70000 p1=24622 mu=169061 cuts=571115 numeric=703161 best=12 |E|=9 W=[[2, 2, 1, -1], [1, 0, -2, 1]] rays<=6 elapsed=1370s
+  progress: nodes=75000 p1=25747 mu=176936 cuts=617340 numeric=758372 best=12 |E|=8 W=[[0, 0, 2, -1], [2, 2, 1, -1]] rays<=6 elapsed=1486s
+  progress: nodes=80000 p1=26835 mu=184447 cuts=673733 numeric=845922 best=12 |E|=9 W=[[0, 2, 1, -1], [2, 2, 0, -1]] rays<=6 elapsed=1675s

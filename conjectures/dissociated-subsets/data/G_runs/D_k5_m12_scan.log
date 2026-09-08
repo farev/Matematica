@@ -1,0 +1,6 @@
+scan=4
+[D] nodes=5564 splits=9 branches=5064 leaves=1 leaves_infeasible=0 pruned_forced=97650 pruned_lp=23224 pruned_dis=490 lp_unverified=0 memo_hits=2049 time=103.51s
+[D] RESULT: there IS a set of 12 distinct positive reals with no dissociated 5-subset => g(12) <= 4
+scan=8
+[D] nodes=5404 splits=9 branches=4965 leaves=1 leaves_infeasible=0 pruned_forced=96146 pruned_lp=22364 pruned_dis=429 lp_unverified=0 memo_hits=1758 time=133.06s
+[D] RESULT: there IS a set of 12 distinct positive reals with no dissociated 5-subset => g(12) <= 4

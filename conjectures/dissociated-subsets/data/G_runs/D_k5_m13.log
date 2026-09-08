@@ -1,0 +1,5 @@
+[D] k=5 m=13: 26 patterns, 6 sub-patterns; scan=8 split_range=7
+  FOUND family dim 1 dis ((2, 4, 5, 6),) witness [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 15]
+[D] nodes=60590 splits=22 branches=55777 leaves=1 leaves_infeasible=0 pruned_forced=1088463 pruned_lp=250472 pruned_dis=4790 lp_unverified=0 memo_hits=26284 time=1639.25s
+[D] SOLUTION witness [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 15] d(witness) = 4
+[D] RESULT: there IS a set of 13 distinct positive reals with no dissociated 5-subset => g(13) <= 4

@@ -1,0 +1,3 @@
+phase-1 total: nodes 1103785 leaves (small triples x cut-configs) 1069068 cuts 1536398 time 1105s
+leaves by number of cuts: {0: 1638, 1: 37827, 2: 384843, 3: 644760}
+cumulative fraction of leaves by first small index (every 5th): [(6, 0.039), (18, 0.413), (27, 0.679), (36, 0.806), (48, 0.897), (56, 0.949), (67, 0.994), (73, 1.0)]

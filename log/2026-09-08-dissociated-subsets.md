@@ -31,9 +31,12 @@ checker (`data/checker_log.txt`). Hence `m₄ = 7` (`m₃ = 4` by hand), `g(m) =
 equality except at `n = 14, 15` where `f = 4 > 3`; the page's `f(13) ≤ 4` is
 `f(13) = 3`. (3) `k = 5`: `14 ≤ m₅ ≤ 41`; sets with no dissociated 5-subset of every
 size `m ≤ 13` found by engines C/D/E (CERTIFIED witnesses, `m = 8` with a checked
-certificate); the exhaustive decision of `m₅` was left running in engine E (two
-candidate orders, 2.5 h cap) — its final state is in the conjecture README and was
-**not** claimed at the time of writing. (4) CERTIFIED (annealing hedge, one core):
+certificate); the exhaustive decision of `m₅` was **not** reached: the fastest exact
+enumerator built today (engine G: seven-smallest normalisation + exact extreme-ray
+arithmetic, validated against the LP on 3 968 random decisions and reproducing engine
+F's `k = 4` enumeration node for node) has 1 103 785 phase-1 configurations at `k = 5`
+(census: 1 105 s) and its four 2-hour runs covered ≈ 2 % each without exceeding 12,
+i.e. ≈ 30 h per order in Python; the enumeration is fully specified for a C port. (4) CERTIFIED (annealing hedge, one core):
 `A₂₄ = {1,…,21,24,25,27}` has no dissociated 6-subset (all 134 596 six-subsets checked
 by two independent programs), so `m₆ ≥ 25`, one more than the interval bound; no
 14-set with `d ≤ 4` and no 25-set with `d ≤ 5` was found (NUMERICAL). New directory
@@ -169,8 +172,13 @@ a decision.
   None can finish `m = 14` exhaustively today.
 - *Engine E, first version*: 95 % of its time in Fraction-based rank tests, 7 nodes
   per minute; fixed with integer kernel products, the "at most three certainly-small
-  vectors" normalisation and cached sample points (≈ 150 nodes/min). The size of the
-  exhaustive enumeration at `k = 5` was not known when the runs were launched.
+  vectors" normalisation and cached sample points (≈ 150 nodes/min). *Engine F*
+  (seven-smallest normalisation): same rate, LP calls proving cut options infeasible
+  dominate. *Engine G* (exact extreme rays, no LP): 20× faster, but the `k = 5`
+  enumeration has 1.07 M phase-1 configurations and ≈ 4 phase-2 nodes each — ≈ 30 h
+  per order; 2 % done in the session, best 12 in all four runs. A completeness control
+  (the published 13-set's vectors placed first) is found in 5 nodes, so the enumeration
+  reaches 13-sets; it simply has not reached them in the plain orders.
 - *A general improvement of the greedy bound* from the signed-sum lemma applied to
   all dissociated `(k−1)`-subsets at once: not found.
 - *A hand proof of `m₄ = 7`*: not attempted beyond identifying engine D's 62-node
@@ -182,9 +190,13 @@ a decision.
 - *Hedge*: the subagent could not write its report file (harness rule); the report was
   returned in-message and reproduced in the directory's NOTE. Order 20 incomplete.
 
-**Next.** (1) `m₅`: finish engine E's exhaustive enumeration (or a C port of engine D
-on four cores); `m₅ = 14` would give `f(n) = 5` for `28 ≤ n ≤ 47` and Erdős's
-inequality for all `n ≤ 63`; a 14-set with `d ≤ 4` would move the threshold up.
+**Next.** (1) `m₅`: port engine G to C (small-integer arithmetic throughout; the
+Python enumeration needs ≈ 30 h per order) or split the Python run over the first
+small index across four cores for four days; `m₅ = 14` would give `f(n) = 5` for
+`28 ≤ n ≤ 47` and Erdős's inequality for all `n ≤ 63`; a 14-set with `d ≤ 4` would
+move the threshold up. A certificate format for G (the list of numeric points `t` and
+the symbolic families, each re-verified by an independent program) is needed before a
+verdict is more than single-engine.
 (2) A written proof of `m₄ = 7` from the 62-node tree. (3) Improve the greedy bound
 `m_k ≤ (3^{k−1}+1)/2` using all dissociated `(k−1)`-subsets. (4) Report the reduction,
 the table of `f(n)` and `A₂₄` on erdosproblems.com/963 and submit `f(n)` / `g(m)` /
@@ -200,5 +212,6 @@ previous sessions). Hardware: 4 cores, 15 GB; Python 3.11.15; numpy 2.4.6, scipy
 checked by `tools/satcert/rup_check`); gcc 12; nauty 2.8.8 from the pynauty sdist.
 No seeds in the exact work; annealing seeds recorded in `code/sa/RESULTS.md`. Time:
 survey and selection 11:36–12:00 UTC; `m₄ = 7` in hand at 12:01, certified by 12:45;
-`k = 5` engines 12:15–13:00; exhaustive `k = 5` runs launched 13:00 UTC; hedge
-11:57–12:58; documents from 12:50.
+`k = 5` engines 12:15–13:25 (E, F, G); exhaustive `k = 5` runs of G launched 13:25
+UTC and left to their 2 h caps; hedge 11:57–12:58; documents from 12:50; final
+status written 14:10 UTC.

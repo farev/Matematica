@@ -212,15 +212,19 @@ enumeration.
 
 *Status of the `k = 5` decision.* No engine finished an exhaustive `k = 5` enumeration
 within the session. Engine D needs 60 590 nodes and 27 minutes for the first 13-element
-family; engines E and F, run exhaustively in two candidate orders each for the remaining
-session time, reached configurations of size 12 within minutes (e.g. `t = (2,4,7,16)`,
-`t = (1,2,4,8)`) and had not completed their enumerations when this note was written
-(their logs are `data/E_F_runs/`). The annealing hedge found nothing beyond 13 (best
+family. Engine G's enumeration was measured: phase 1 alone (the small-triple
+configurations with their cuts) has 1 103 785 nodes and 1 069 068 leaves — 1 638 with no
+cut, 37 827 with one, 384 843 with two, 644 760 numeric points — and takes 1 105 s to
+count; the exhaustive runs (forward and reversed candidate order, 2 h caps) had explored
+23 853 and 25 545 phase-1 nodes (≈ 2 %) and 95 000 and 110 000 phase-2 nodes after
+41 minutes, with best 12 (e.g. `t = (2,3,4,10)`, `(2,3,4,8)`), and two shuffled-order
+runs (80 000 and 90 000 nodes) also stood at 12; extrapolated, one order needs ≈ 30 h of
+Python. Logs in `data/G_runs/`. The annealing hedge found nothing beyond 13 (best
 14-sets keep 7 dissociated 5-subsets). So: **`14 ≤ m₅ ≤ 41` remains the state of
 knowledge**, `f(28..31) ≥ 4` only, and Erdős's inequality at `n = 32` is undecided
 here. What is CERTIFIED at `k = 5` is the list of witnesses for `m ≤ 13` and the `m = 8`
-certificate. The README records the final state of the runs if they completed after
-this note was written.
+certificate. A C port of engine G (the arithmetic is all small integers) should bring
+the full enumeration to well under an hour.
 
 ## 6. The `k = 6` side: a 24-element set with no dissociated 6-subset
 
