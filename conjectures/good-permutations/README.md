@@ -64,7 +64,8 @@ python3 goodperm_cpsat.py 31 300 1 1                                   # CP-SAT 
 | `results/n63_mode1_run1.txt` | `goodperm 63 1 100` | Result 1, engine A: count 0, node count, time |
 | `results/n63_bits_run1.txt` | `goodperm_bits 63 100` | Result 1, engine B: count 0, identical node count |
 | `results/n63_mid_run1.txt` | `goodperm_mid 63 0 10` | Result 1, engine C: count 0, 7,091,512 nodes |
-| `results/n127_mid_run1.txt` | `goodperm_mid 127 0 10` | engine C at n = 127 (uniqueness of W(127) up to symmetry) |
+| `results/n127_mid_run1.txt` | `goodperm_mid 127 0 10` | engine C at n = 127, full run: **lost** — killed by a harness restart after ≈ 12 h of CPU without output (note inside the file) |
+| `results/n127_mid_sym1_split{0,1,2}of3.txt` | `goodperm_mid 127 1 10 - R,3` | n = 127 with a_1 < 64, split by (a_1 ≫ 1) mod 3: slice 2 **count 0** in 5,237,606,652 nodes (1976 s); slices 0 and 1 (which contain W(127) and its reversal image, found at once) still running at ≈ 9 h of CPU each when the session closed — see open threads |
 | `results/n63_cpsat_run1.txt`, `..._note.txt` | `goodperm_cpsat.py 63` | method D: no verdict in 25 min (stopped); timing note |
 | `results/n31_mode0.txt` | `goodperm 31 0 100` | the four good permutations of [31], plain engine |
 | `results/counts_mode0_1_14.txt` | `goodperm n 0` | counts n = 1..14 (match brute force) |
@@ -85,12 +86,22 @@ the structural engines at every n ≤ 31.
 - The exhaustive result depends on Lemma 2 (proved in NOTE §2 from the
   thread's argument, with the counting step made explicit). The plain
   engine cannot reach n = 63 (its n = 31 tree is 600× the structural one).
-- **Next composite Mersenne numbers.** n = 255 is 2^247 candidates; node
-  counts grew ×170 and ×4800 over the last two doublings, so 127 (the
-  uniqueness question for W(127)) is ≈ 10^13 nodes and 255 is far beyond
-  plain backtracking. CP-SAT timings at 63 are in `results/`; a decision at
-  255 needs a new idea (constraint learning over the bit variables, or a
-  theorem).
+- **n = 127 (is W(127) unique up to symmetry?) — partially covered.** With
+  a_1 < 64 (complement symmetry) and the work split by (a_1 ≫ 1) mod 3,
+  slice 2 is exhausted with count 0 (5.24·10⁹ nodes, 33 min); slices 0 and
+  1, which contain a_1 = 1 (W itself) and a_1 = 3 (its reversal image,
+  reported within two minutes), had each consumed ≈ 9 hours of CPU without
+  finishing when the session closed — the tree is very unbalanced, the
+  W-like branches being the deep ones — and the unsplit full run was lost
+  to a harness restart after ≈ 12 hours. So: no good permutation of [127]
+  has a_1 ∈ {5, 11, 17, …, 59}; the rest is open. Rerun:
+  `for r in 0 1; do ./goodperm_mid 127 1 10 - $r,3; done` (expect ≥ 9 h
+  each; a finer split, e.g. K = 12, would parallelise it).
+- **Next composite Mersenne numbers.** n = 255 is 2^247 candidates; engine
+  C's node counts grew ×21, ×64, ×267 per doubling to 63 and the 127 slices
+  show a further steep jump, so 255 is far beyond plain backtracking.
+  CP-SAT timings at 63 are in `results/`; a decision at 255 needs a new
+  idea (constraint learning over the bit variables, or a theorem).
 - **No proof for composite Mersenne numbers.** The relaxation probe rules
   out the naive "a divisor of n forces a bad block" argument; the
   survivors of short-length relaxations are W-type and near-identity

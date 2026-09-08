@@ -167,10 +167,14 @@ prefix and suffix one-counts never equal at lengths of equal parity, and
 five blocks of length 3, 5, 7 around the middle position force a
 contradiction (reduction confirmed by brute force at q = 4, 8, 16, the
 constraint subset checked mechanically for all odd N ≤ 15). n = 127 (uniqueness of W(127) up to
-symmetry): engine C launched at 12:26 UTC, still running at the time this
-entry was written (74 % of one core under contention); its outcome is
-recorded in `conjectures/good-permutations/results/n127_mid_run1.txt` and
-the README when it lands, and is not claimed here. New directory
+symmetry): not decided. The unsplit engine-C run (12:26 UTC) was killed
+by a harness restart after ≈ 12 h of CPU without output; of the three
+symmetry-reduced slices launched at 15:43 UTC (a_1 < 64, split by
+(a_1 ≫ 1) mod 3), slice 2 is CERTIFIED empty (5,237,606,652 nodes,
+33 min) while slices 0 and 1 — the ones containing W(127) and its
+reversal image — were still running at ≈ 9 h of CPU each when the entry
+was closed (00:40 UTC, 8 Sep). So no good permutation of [127] has
+a_1 ∈ {5, 11, …, 59}; uniqueness of W(127) remains open. New directory
 `conjectures/good-permutations/` (README, NOTE, WRITEUP, PAGE.md, three
 engines, checker, CP-SAT model, run records); index row added.
 
@@ -229,6 +233,10 @@ the family 1, p−1, p, … is good exactly when p is prime.
 - *Engine-A-style relaxation probes at 63* were too slow (the single-length
   probe {3} did not finish in 25 minutes) and were superseded by the
   length filter in engine C, which answers each in about a second.
+- *Long-run hygiene.* Engine C prints only at the end, so the twelve-hour
+  unsplit n = 127 run left nothing when the harness restarted the
+  container's task tracking; the nohup'd slices survived. Long runs need
+  checkpointed chunk files, as the peaceable-queens driver has.
 - *Operations.* A `pkill -f` whose pattern matched the invoking shell's
   own command line killed that shell (the 2026-09-01 log recorded the same
   wound; PIDs only, again). Two background probe launches lost their

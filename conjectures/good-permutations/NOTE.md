@@ -293,7 +293,7 @@ All exact integer arithmetic; no floating point anywhere; one core of a
 | 5.3 | The good permutations of [7] and [31] are W(p), ρW, κW, ρκW and nothing else | CERTIFIED | same |
 | 5.4 | W(p) good for p = 7, 31, 127, 8191, 131071, 524287; bad for p = 15, 63, 255, 511, 1023, 2047, 4095 with first bad block the prefix of length 3, 3, 3, 7, 3, 23, 3 | CERTIFIED | `results/construction_large.txt`, `construction_test.py` |
 | 5.5 | Relaxation data of §4 and §4a (minimal excluding sets at 15; prefix ladders at 31 and 63; Mersenne-length subsets) | CERTIFIED (counts) | `results/n15_*`, `results/n31_*`, `results/n63_*` |
-| 5.6 | n = 127: see README (engine C run record `results/n127_mid_run1.txt`) | — | — |
+| 5.6 | n = 127, a_1 < 64, slice (a_1 ≫ 1) ≡ 2 (mod 3): no good permutation (engine C, 5,237,606,652 nodes, 1976 s). Slices 0 and 1 unfinished at ≈ 9 h CPU each; the unsplit run was lost. Uniqueness of W(127) remains open | CERTIFIED (slice 2 only) | `results/n127_mid_sym1_split*of3.txt` |
 | 5.7 | CP-SAT (OR-Tools 9.15) reproduces the counts at n = 7 (4), 15 (0), 31 (4, enumeration 17 s) but did not decide n = 63 in 25 min of wall time (2 workers; stopped) | negative timing note | `results/n63_cpsat_run1_note.txt` |
 
 Engine ladders (nodes): A/B — 60, 1748, 298,120, 1,433,402,570 at n = 7,

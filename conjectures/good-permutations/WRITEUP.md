@@ -110,8 +110,15 @@ numbers today; the note states the mechanism and the question precisely.
 
 - No proof for composite Mersenne numbers in general; the divisor-based
   guess was refuted by the probe within minutes of being formed.
-- n = 127 (is W(127) unique up to symmetry?) is out of reach for the
-  backtracking engines: node counts grow ×170 and ×4800 across the last two
-  doublings, so 127 is of order 10^13 nodes. Left open.
+- n = 127 (is W(127) unique up to symmetry?) was not decided. Engine C's
+  unsplit run, started at 12:26 UTC, was killed by a harness restart after
+  about twelve hours of CPU without printing (the engine prints only at
+  the end — a design defect for long runs: it should checkpoint). The
+  three symmetry-reduced slices launched at 15:43 UTC on the idle cores
+  told a lopsided story: the slice without a_1 ∈ {1, 3} finished in 33
+  minutes with count 0, while the two slices containing W(127) and its
+  reversal image were still running after nine hours each. The W-like
+  branches are the deep ones. Left open with one third of the reduced
+  space certified empty.
 - n = 255 by exhaustive search is likewise out of reach; whether CP-SAT can
   do better is noted in the README from today's timing.
