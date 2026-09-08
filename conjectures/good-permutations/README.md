@@ -90,10 +90,11 @@ the structural engines at every n ≤ 31.
   a_1 < 64 (complement symmetry) and the work split by (a_1 ≫ 1) mod 3,
   slice 2 is exhausted with count 0 (5.24·10⁹ nodes, 33 min); slices 0 and
   1, which contain a_1 = 1 (W itself) and a_1 = 3 (its reversal image,
-  reported within two minutes), had each consumed ≈ 9 hours of CPU without
-  finishing when the session closed — the tree is very unbalanced, the
-  W-like branches being the deep ones — and the unsplit full run was lost
-  to a harness restart after ≈ 12 hours. So: no good permutation of [127]
+  reported within two minutes), had each consumed ≈ 22 hours of CPU without
+  finishing when the session finally closed (13:30 UTC, 8 Sep) — the tree
+  is very unbalanced, the W-like branches being the deep ones — and the
+  unsplit full run was lost to a harness restart after ≈ 12 hours. Slice 0
+  did print W(127) itself early, as it must. So: no good permutation of [127]
   has a_1 ∈ {5, 11, 17, …, 59}; the rest is open. Rerun:
   `for r in 0 1; do ./goodperm_mid 127 1 10 - $r,3; done` (expect ≥ 9 h
   each; a finer split, e.g. K = 12, would parallelise it).

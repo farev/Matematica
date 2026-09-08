@@ -172,8 +172,8 @@ by a harness restart after ≈ 12 h of CPU without output; of the three
 symmetry-reduced slices launched at 15:43 UTC (a_1 < 64, split by
 (a_1 ≫ 1) mod 3), slice 2 is CERTIFIED empty (5,237,606,652 nodes,
 33 min) while slices 0 and 1 — the ones containing W(127) and its
-reversal image — were still running at ≈ 9 h of CPU each when the entry
-was closed (00:40 UTC, 8 Sep). So no good permutation of [127] has
+reversal image — were still running at ≈ 22 h of CPU each when the entry
+was finally closed (13:30 UTC, 8 Sep; slice 0 had printed W(127) itself). So no good permutation of [127] has
 a_1 ∈ {5, 11, …, 59}; uniqueness of W(127) remains open. New directory
 `conjectures/good-permutations/` (README, NOTE, WRITEUP, PAGE.md, three
 engines, checker, CP-SAT model, run records); index row added.
