@@ -47,6 +47,7 @@ exactly). Arguments: `k m [max_solutions] [certificate.json] [...]`.
 | `code/dissoc_engineD.py` (engine D) | the dissociation case split (a 4-subset is dissociated or carries a relation; if dissociated, the rest are signed sums); certificates | `4 7`: 0.6 s, 62 nodes; `5 12`: 128 s | `g(7) ≥ 4`; `m = 12` witness |
 | `code/dissoc_engineE.py` (engine E) | enumeration in the 4-parameter family of a dissociated 4-set (sign vectors + ≤ 3 integer cuts, then integer arithmetic) | `4`: seconds (exhaustive); `5`: unfinished | `m₄ = 7`; `k = 5` records |
 | `code/dissoc_engineF.py` (engine F) | engine E with the seven-smallest normalisation (three small vectors first, then only vectors above the maximum of the seven) | `4`: 12 s (exhaustive); `5`: unfinished | `m₄ = 7` |
+| `code/dissoc_engineG.py` (engine G) | engine F with exact extreme-ray arithmetic instead of LPs (validated: identical `k = 4` enumeration counts, 3 968 random decisions vs LP) | `4`: 0.4 s (exhaustive); `5`: see the status row | `m₄ = 7`; `k = 5` status |
 | `code/checker.py` | independent verifier of the JSON case trees (recomputes the relation patterns, checks every branching, pruning and leaf certificate, brute-forces every witness) | seconds per certificate | `data/checker_log.txt` |
 | `code/sa/sa.c`, `dval.c`, `bruteforce_d.py` | simulated annealing over `m`-subsets of `{1..W}` minimising the number of dissociated `k`-subsets; two independent exact evaluators of `d(A)` | 8 s for `A₂₄` | `A₂₄` |
 

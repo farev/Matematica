@@ -194,7 +194,17 @@ Engine F adds the *seven-smallest normalisation*: `T` is taken inside the 7 smal
 elements `S` of `P`, the other three elements of `S` are chosen first (only 21
 five-subsets to block), and everything else must exceed `max S`, which leaves only the
 sign vectors that can exceed that maximum as candidates. Its exhaustive `k = 4` run also
-gives `m₄ = 7` (159 nodes, 12 s).
+gives `m₄ = 7` (159 nodes, 12 s). Engine G is engine F with every linear program
+replaced by exact extreme-ray arithmetic: the feasible region of `t` is a pointed
+polyhedral cone in `W^⊥`, kept as its primitive integer rays and updated by one
+double-description step per constraint (non-extreme rays removed by a rank test); a
+new strict row is compatible iff some ray is positive on it, a cut meets the open region
+iff its functional changes sign on the rays, a functional vanishes on the region iff it
+vanishes on every ray. Validation: G's exhaustive `k = 4` enumeration has exactly F's
+counts (159 nodes, 115 phase-1 nodes, 515 maximum cases, 458 cuts, 243 numeric nodes),
+and on 3 968 random region decisions (strict rows, cuts, vanishing tests; regions with
+up to 6 rays) the ray tests agree with the LP tests on every one. G is about 20× faster
+than F at `k = 5`.
 
 *Status of the `k = 5` decision.* No engine finished an exhaustive `k = 5` enumeration
 within the session. Engine D needs 60 590 nodes and 27 minutes for the first 13-element
