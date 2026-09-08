@@ -1,0 +1,14 @@
+[
+ {
+  "tag": "n6_T2_0000_EFzU",
+  "n": 6,
+  "equitable": false,
+  "symbreak": true,
+  "nclauses": 289,
+  "nvars": 60,
+  "proof": "proofs/n6_T2_0000_EFzU.drup",
+  "proof_lines": 187,
+  "seconds": 0.003,
+  "graph6": "EFz_"
+ }
+]

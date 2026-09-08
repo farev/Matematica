@@ -1,0 +1,40 @@
+n=4: total=1 E(equitable)=0 X(counterex)=0 T2=1 wall=0.0s (solve eq 0.0s, plain 0.0s)
+n=6: total=2 E(equitable)=1 X(counterex)=0 T2=1 wall=0.0s (solve eq 0.0s, plain 0.0s)
+n=8: total=5 E(equitable)=4 X(counterex)=0 T2=1 wall=0.0s (solve eq 0.0s, plain 0.0s)
+n=10: total=19 E(equitable)=9 X(counterex)=0 T2=10 wall=0.1s (solve eq 0.1s, plain 0.0s)
+n=12: total=85 E(equitable)=60 X(counterex)=0 T2=25 wall=0.4s (solve eq 0.3s, plain 0.0s)
+n=14: total=509 E(equitable)=461 X(counterex)=0 T2=48 wall=2.5s (solve eq 2.3s, plain 0.1s)
+!!! COUNTEREXAMPLE n=16: O???CB?wB@F?@o@oB_?s? plain sizes [11, 10, 10, 9]
+!!! COUNTEREXAMPLE n=16: O???CB?oR@BGM?D_@o@K? plain sizes [11, 10, 10, 9]
+!!! COUNTEREXAMPLE n=16: O???CB?gGwB_S_Q_CW@I? plain sizes [11, 10, 10, 9]
+!!! COUNTEREXAMPLE n=16: O???C@_[F?P_E_E_?w?J? plain sizes [11, 10, 10, 9]
+!!! COUNTEREXAMPLE n=16: O???C@_FAoF?w?`_?w?F? plain sizes [11, 10, 10, 9]
+!!! COUNTEREXAMPLE n=16: O???C@_cSoAgB_B_KOB@? plain sizes [11, 10, 10, 9]
+!!! COUNTEREXAMPLE n=16: O???C@_cSQAoD_R?DOB@? plain sizes [11, 10, 10, 9]
+!!! COUNTEREXAMPLE n=16: O???C@_cSQBC[?P_@o@K? plain sizes [11, 10, 10, 9]
+!!! COUNTEREXAMPLE n=16: O???C@_oJABGe?D_Co?[? plain sizes [11, 10, 10, 9]
+!!! COUNTEREXAMPLE n=16: O???C@_WN?R?EO@oAo?[? plain sizes [11, 10, 10, 9]
+!!! COUNTEREXAMPLE n=16: O???C@_cN?L?B_B_Ag?e? plain sizes [11, 10, 10, 9]
+!!! COUNTEREXAMPLE n=16: O???C@_cKaHGY?B_Ao@K? plain sizes [11, 10, 10, 9]
+!!! COUNTEREXAMPLE n=16: O???C@_SN?PGEOD_Co?[? plain sizes [11, 10, 10, 9]
+!!! COUNTEREXAMPLE n=16: O??CA?_sF?D_EGBG?w?e? plain sizes [11, 10, 10, 9]
+!!! COUNTEREXAMPLE n=16: O??CA?_sF?DCEGF??w?M? plain sizes [11, 10, 10, 9]
+!!! COUNTEREXAMPLE n=16: O??CA?oB@oE_b?OWGWCC_ plain sizes [11, 10, 10, 9]
+n=16: total=4060 E(equitable)=3817 X(counterex)=16 T2=227 wall=29.5s (solve eq 28.2s, plain 0.5s)
+!!! COUNTEREXAMPLE n=18: Q??????wF?R?U?D_?w?L?AW?`_? plain sizes [12, 12, 11, 10]
+!!! COUNTEREXAMPLE n=18: Q??????wF?R?T?E_Co?F?@W?H_? plain sizes [12, 12, 11, 10]
+!!! COUNTEREXAMPLE n=18: Q??????wE_P_W_IO@g?L?CW?Q_? plain sizes [12, 12, 11, 10]
+!!! COUNTEREXAMPLE n=18: Q????A?oB_M?aGHGB_?M??s?J?? plain sizes [12, 12, 11, 10]
+!!! COUNTEREXAMPLE n=18: Q????A?WE_[?J?E_B_?J??w?BO? plain sizes [12, 12, 11, 10]
+!!! COUNTEREXAMPLE n=18: Q????A?WB_L?F?E_OECB?@o?F?? plain sizes [12, 12, 11, 10]
+  n=18: {'total': 5000, 'E': 4325, 'X': 6, 'T2': 669} 52.2s
+!!! COUNTEREXAMPLE n=18: Q???C@?GE_X?D_D_Ca@O_AW?B_? plain sizes [12, 12, 11, 10]
+  n=18: {'total': 10000, 'E': 8927, 'X': 7, 'T2': 1066} 101.6s
+  n=18: {'total': 15000, 'E': 13688, 'X': 7, 'T2': 1305} 147.0s
+  n=18: {'total': 20000, 'E': 18327, 'X': 7, 'T2': 1666} 193.5s
+  n=18: {'total': 25000, 'E': 23110, 'X': 7, 'T2': 1883} 240.0s
+  n=18: {'total': 30000, 'E': 27993, 'X': 7, 'T2': 2000} 283.8s
+  n=18: {'total': 35000, 'E': 32916, 'X': 7, 'T2': 2077} 325.9s
+  n=18: {'total': 40000, 'E': 37909, 'X': 7, 'T2': 2084} 366.8s
+n=18: total=41301 E(equitable)=39191 X(counterex)=7 T2=2103 wall=378.4s (solve eq 360.7s, plain 7.8s)
+DONE

@@ -1,0 +1,140 @@
+[
+ {
+  "tag": "n20_r1m10_X_0000_SQQQQQQQFQLQeQUQAoAIQAWQHOQDUQDUQ_eq_symbreak",
+  "n": 20,
+  "equitable": true,
+  "symbreak": true,
+  "nclauses": 8442,
+  "nvars": 3948,
+  "proof": "proofs/n20_r1m10_X_0000_SQQQQQQQFQLQeQUQAoAIQAWQHOQDUQDUQ_eq_symbreak.drup",
+  "proof_lines": 1853,
+  "seconds": 0.081
+ },
+ {
+  "tag": "n20_r1m10_X_0000_SQQQQQQQFQLQeQUQAoAIQAWQHOQDUQDUQ_eq_nosymbreak",
+  "n": 20,
+  "equitable": true,
+  "symbreak": false,
+  "nclauses": 8438,
+  "nvars": 3948,
+  "proof": "proofs/n20_r1m10_X_0000_SQQQQQQQFQLQeQUQAoAIQAWQHOQDUQDUQ_eq_nosymbreak.drup",
+  "proof_lines": 7829,
+  "seconds": 0.391,
+  "graph6": "S???????F?[?e?U?Ao@I?@W?HO?D_?D_?"
+ },
+ {
+  "tag": "n20_r1m10_X_0001_SQQQQQQUBQJQXQMQBOQBOAoABQCAUQHUQ_eq_symbreak",
+  "n": 20,
+  "equitable": true,
+  "symbreak": true,
+  "nclauses": 8442,
+  "nvars": 3948,
+  "proof": "proofs/n20_r1m10_X_0001_SQQQQQQUBQJQXQMQBOQBOAoABQCAUQHUQ_eq_symbreak.drup",
+  "proof_lines": 2919,
+  "seconds": 0.197
+ },
+ {
+  "tag": "n20_r1m10_X_0001_SQQQQQQUBQJQXQMQBOQBOAoABQCAUQHUQ_eq_nosymbreak",
+  "n": 20,
+  "equitable": true,
+  "symbreak": false,
+  "nclauses": 8438,
+  "nvars": 3948,
+  "proof": "proofs/n20_r1m10_X_0001_SQQQQQQUBQJQXQMQBOQBOAoABQCAUQHUQ_eq_nosymbreak.drup",
+  "proof_lines": 8888,
+  "seconds": 0.607,
+  "graph6": "S??????_B?J?X?M?BO?BO@oAB?C@_?H_?"
+ },
+ {
+  "tag": "n20_r1m10_X_0002_SQQQQQQUBQJQXQMQQACEQBGQFQQDUQBUQ_eq_symbreak",
+  "n": 20,
+  "equitable": true,
+  "symbreak": true,
+  "nclauses": 8442,
+  "nvars": 3948,
+  "proof": "proofs/n20_r1m10_X_0002_SQQQQQQUBQJQXQMQQACEQBGQFQQDUQBUQ_eq_symbreak.drup",
+  "proof_lines": 3507,
+  "seconds": 0.147
+ },
+ {
+  "tag": "n20_r1m10_X_0002_SQQQQQQUBQJQXQMQQACEQBGQFQQDUQBUQ_eq_nosymbreak",
+  "n": 20,
+  "equitable": true,
+  "symbreak": false,
+  "nclauses": 8438,
+  "nvars": 3948,
+  "proof": "proofs/n20_r1m10_X_0002_SQQQQQQUBQJQXQMQQACEQBGQFQQDUQBUQ_eq_nosymbreak.drup",
+  "proof_lines": 25733,
+  "seconds": 1.578,
+  "graph6": "S??????_B?J?X?M?Q@CE?BG?F??D_?B_?"
+ },
+ {
+  "tag": "n20_r1m10_X_0003_SQQQQAQOAQQCcGFQHUAWQOoQbQQCoQAoQ_eq_symbreak",
+  "n": 20,
+  "equitable": true,
+  "symbreak": true,
+  "nclauses": 8442,
+  "nvars": 3948,
+  "proof": "proofs/n20_r1m10_X_0003_SQQQQAQOAQQCcGFQHUAWQOoQbQQCoQAoQ_eq_symbreak.drup",
+  "proof_lines": 3749,
+  "seconds": 0.178
+ },
+ {
+  "tag": "n20_r1m10_X_0003_SQQQQAQOAQQCcGFQHUAWQOoQbQQCoQAoQ_eq_nosymbreak",
+  "n": 20,
+  "equitable": true,
+  "symbreak": false,
+  "nclauses": 8438,
+  "nvars": 3948,
+  "proof": "proofs/n20_r1m10_X_0003_SQQQQAQOAQQCcGFQHUAWQOoQbQQCoQAoQ_eq_nosymbreak.drup",
+  "proof_lines": 10250,
+  "seconds": 0.606,
+  "graph6": "S????A?O@?QCcGF?H_@W?Oo?b??Co?Ao?"
+ },
+ {
+  "tag": "n20_r1m10_X_0004_SQQQQAQOAQQCcGFQHOBOQAQQCWAEQQEUQ_eq_symbreak",
+  "n": 20,
+  "equitable": true,
+  "symbreak": true,
+  "nclauses": 8442,
+  "nvars": 3948,
+  "proof": "proofs/n20_r1m10_X_0004_SQQQQAQOAQQCcGFQHOBOQAQQCWAEQQEUQ_eq_symbreak.drup",
+  "proof_lines": 12352,
+  "seconds": 0.592
+ },
+ {
+  "tag": "n20_r1m10_X_0004_SQQQQAQOAQQCcGFQHOBOQAQQCWAEQQEUQ_eq_nosymbreak",
+  "n": 20,
+  "equitable": true,
+  "symbreak": false,
+  "nclauses": 8438,
+  "nvars": 3948,
+  "proof": "proofs/n20_r1m10_X_0004_SQQQQAQOAQQCcGFQHOBOQAQQCWAEQQEUQ_eq_nosymbreak.drup",
+  "proof_lines": 12689,
+  "seconds": 0.591,
+  "graph6": "S????A?O@?QCcGF?HOBO?@Q?CW@E??E_?"
+ },
+ {
+  "tag": "n20_r1m10_X_0005_SQQQQAQOAQQCcGFQAoQYQOoAaQQAoAQoQ_eq_symbreak",
+  "n": 20,
+  "equitable": true,
+  "symbreak": true,
+  "nclauses": 8442,
+  "nvars": 3948,
+  "proof": "proofs/n20_r1m10_X_0005_SQQQQAQOAQQCcGFQAoQYQOoAaQQAoAQoQ_eq_symbreak.drup",
+  "proof_lines": 3740,
+  "seconds": 0.14
+ },
+ {
+  "tag": "n20_r1m10_X_0005_SQQQQAQOAQQCcGFQAoQYQOoAaQQAoAQoQ_eq_nosymbreak",
+  "n": 20,
+  "equitable": true,
+  "symbreak": false,
+  "nclauses": 8438,
+  "nvars": 3948,
+  "proof": "proofs/n20_r1m10_X_0005_SQQQQAQOAQQCcGFQAoQYQOoAaQQAoAQoQ_eq_nosymbreak.drup",
+  "proof_lines": 6881,
+  "seconds": 0.39,
+  "graph6": "S????A?O@?QCcGF?@o?Y?Oo@a??Ao@?o?"
+ }
+]

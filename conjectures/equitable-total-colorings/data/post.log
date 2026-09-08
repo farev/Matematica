@@ -1,0 +1,47 @@
+post.sh start Tue Sep  8 12:10:38 UTC 2026
+== cert R ==
+{'tag': 'R_equitable_symbreak', 'n': 20, 'equitable': True, 'symbreak': True, 'nclauses': 8442, 'nvars': 3948, 'proof': 'proofs/R_equitable_symbreak.drup', 'proof_lines': 1314, 'seconds': 0.067}
+{'tag': 'R_equitable_nosymbreak', 'n': 20, 'equitable': True, 'symbreak': False, 'nclauses': 8438, 'nvars': 3948, 'proof': 'proofs/R_equitable_nosymbreak.drup', 'proof_lines': 8198, 'seconds': 0.413}
+ALL PROOFS VERIFIED: 2
+== cert counterexamples n16 ==
+{'tag': 'n16_X_0015_OQQCAQoBAoEUbQOWGWCCU_eq_nosymbreak', 'n': 16, 'equitable': True, 'symbreak': False, 'nclauses': 5560, 'nvars': 2560, 'proof': 'proofs/n16_X_0015_OQQCAQoBAoEUbQOWGWCCU_eq_nosymbreak.drup', 'proof_lines': 8078, 'seconds': 0.365, 'graph6': 'O??CA?oB@oE_b?OWGWCC_'}
+ALL PROOFS VERIFIED: 32
+== cert counterexamples n18 ==
+{'tag': 'n18_X_0006_QQQQCAQGEUXQDUDUCaAOUAWQBUQ_eq_nosymbreak', 'n': 18, 'equitable': True, 'symbreak': False, 'nclauses': 7007, 'nvars': 3260, 'proof': 'proofs/n18_X_0006_QQQQCAQGEUXQDUDUCaAOUAWQBUQ_eq_nosymbreak.drup', 'proof_lines': 8580, 'seconds': 0.459, 'graph6': 'Q???C@?GE_X?D_D_Ca@O_AW?B_?'}
+ALL PROOFS VERIFIED: 14
+== brute --equitable on all counterexamples (SAT-free) == Tue Sep  8 12:10:51 UTC 2026
+Q????A?WE_[?J?E_B_?J??w?BO?	n=18	equitable-only	colorings(up to color perm)=0	configs={}	8.1s
+Q????A?WB_L?F?E_OECB?@o?F??	n=18	equitable-only	colorings(up to color perm)=0	configs={}	5.8s
+Q???C@?GE_X?D_D_Ca@O_AW?B_?	n=18	equitable-only	colorings(up to color perm)=0	configs={}	6.2s
+== brute all colorings on Type-2 graphs n<=14 (SAT-free) == Tue Sep  8 12:11:45 UTC 2026
+     86 colorings(up to color perm)=0
+== brute --first on a sample of class-E graphs (SAT-free positive control) == Tue Sep  8 12:12:02 UTC 2026
+     30 colorings(up to color perm)=1
+== cert type2 n<=16 == Tue Sep  8 12:12:04 UTC 2026
+ALL PROOFS VERIFIED: 1
+ALL PROOFS VERIFIED: 1
+ALL PROOFS VERIFIED: 1
+ALL PROOFS VERIFIED: 10
+ALL PROOFS VERIFIED: 25
+ALL PROOFS VERIFIED: 48
+ALL PROOFS VERIFIED: 227
+== cert type2 n18 == Tue Sep  8 12:12:07 UTC 2026
+ALL PROOFS VERIFIED: 2103
+== brute all colorings on n16 counterexamples (SAT-free, capped 600s) == Tue Sep  8 12:12:44 UTC 2026
+O???CB?wB@F?@o@oB_?s?	n=16	all	colorings(up to color perm)=64	configs={(11, 10, 10, 9): 64}	2.3s
+O???CB?oR@BGM?D_@o@K?	n=16	all	colorings(up to color perm)=240	configs={(11, 10, 10, 9): 240}	2.5s
+O???CB?gGwB_S_Q_CW@I?	n=16	all	colorings(up to color perm)=80	configs={(11, 10, 10, 9): 80}	2.4s
+O???C@_[F?P_E_E_?w?J?	n=16	all	colorings(up to color perm)=40	configs={(11, 10, 10, 9): 40}	2.9s
+O???C@_FAoF?w?`_?w?F?	n=16	all	colorings(up to color perm)=24	configs={(11, 10, 10, 9): 24}	2.9s
+O???C@_cSoAgB_B_KOB@?	n=16	all	colorings(up to color perm)=96	configs={(11, 10, 10, 9): 96}	1.7s
+O???C@_cSQAoD_R?DOB@?	n=16	all	colorings(up to color perm)=96	configs={(11, 10, 10, 9): 96}	1.3s
+O???C@_cSQBC[?P_@o@K?	n=16	all	colorings(up to color perm)=32	configs={(11, 10, 10, 9): 32}	1.6s
+O???C@_oJABGe?D_Co?[?	n=16	all	colorings(up to color perm)=96	configs={(11, 10, 10, 9): 96}	2.8s
+O???C@_WN?R?EO@oAo?[?	n=16	all	colorings(up to color perm)=64	configs={(11, 10, 10, 9): 64}	2.4s
+O???C@_cN?L?B_B_Ag?e?	n=16	all	colorings(up to color perm)=48	configs={(11, 10, 10, 9): 48}	3.2s
+O???C@_cKaHGY?B_Ao@K?	n=16	all	colorings(up to color perm)=28	configs={(11, 10, 10, 9): 28}	2.3s
+O???C@_SN?PGEOD_Co?[?	n=16	all	colorings(up to color perm)=116	configs={(11, 10, 10, 9): 116}	2.2s
+O??CA?_sF?D_EGBG?w?e?	n=16	all	colorings(up to color perm)=28	configs={(11, 10, 10, 9): 28}	2.1s
+O??CA?_sF?DCEGF??w?M?	n=16	all	colorings(up to color perm)=16	configs={(11, 10, 10, 9): 16}	2.0s
+O??CA?oB@oE_b?OWGWCC_	n=16	all	colorings(up to color perm)=96	configs={(11, 10, 10, 9): 96}	2.0s
+post.sh end Tue Sep  8 12:13:21 UTC 2026

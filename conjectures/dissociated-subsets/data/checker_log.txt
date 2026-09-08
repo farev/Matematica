@@ -1,0 +1,16 @@
+checker: engine A k=3 m=4: {'nodes': 2, 'leaves_infeasible': 0, 'leaves_feasible': 0, 'pruned_forced': 1, 'pruned_gordan': 0, 'gordan_computed': 16, 'gordan_failed': 1, 'exact_simplex': 0, 'witness_ok': 0}
+VERIFIED: every set of 4 distinct positive reals contains a dissociated 3-subset: g(4) >= 3
+checker: engine A k=4 m=6: {'nodes': 22, 'leaves_infeasible': 2, 'leaves_feasible': 1, 'pruned_forced': 80, 'pruned_gordan': 0, 'gordan_computed': 46, 'gordan_failed': 7, 'exact_simplex': 0, 'witness_ok': 1}
+VERIFIED: the certificate exhibits 1 counterexample set(s), e.g. [3, 6, 9, 15, 21, 24]: g(6) <= 3
+checker: engine A k=4 m=7: {'nodes': 290, 'leaves_infeasible': 0, 'leaves_feasible': 0, 'pruned_forced': 1451, 'pruned_gordan': 0, 'gordan_computed': 46, 'gordan_failed': 7, 'exact_simplex': 0, 'witness_ok': 0}
+VERIFIED: every set of 7 distinct positive reals contains a dissociated 4-subset: g(7) >= 4
+checker: engine C k=4 m=7: {'nodes': 111, 'leaves_infeasible': 0, 'leaves_feasible': 0, 'pruned_forced': 448, 'pruned_gordan': 97, 'gordan_computed': 46, 'gordan_failed': 7, 'exact_simplex': 0, 'witness_ok': 0, 'refs': 11}
+VERIFIED: every set of 7 distinct positive reals contains a dissociated 4-subset: g(7) >= 4
+checker: engine C k=4 m=8: {'nodes': 138, 'leaves_infeasible': 0, 'leaves_feasible': 0, 'pruned_forced': 589, 'pruned_gordan': 102, 'gordan_computed': 46, 'gordan_failed': 7, 'exact_simplex': 0, 'witness_ok': 0}
+VERIFIED: every set of 8 distinct positive reals contains a dissociated 4-subset: g(8) >= 4
+checker: engine D k=4 m=6: {'nodes': 5, 'leaves_infeasible': 0, 'leaves_feasible': 1, 'pruned_forced': 3, 'pruned_gordan': 2, 'gordan_computed': 46, 'gordan_failed': 7, 'exact_simplex': 0, 'witness_ok': 1, 'splits': 2}
+VERIFIED: the certificate exhibits 1 counterexample set(s), e.g. [1, 2, 3, 4, 6, 7]: g(6) <= 3
+checker: engine D k=4 m=7: {'nodes': 62, 'leaves_infeasible': 0, 'leaves_feasible': 0, 'pruned_forced': 204, 'pruned_gordan': 54, 'gordan_computed': 46, 'gordan_failed': 7, 'exact_simplex': 0, 'witness_ok': 0, 'splits': 2, 'refs': 4, 'pruned_dis': 1}
+VERIFIED: every set of 7 distinct positive reals contains a dissociated 4-subset: g(7) >= 4
+checker: engine D k=5 m=8: {'nodes': 8, 'leaves_infeasible': 0, 'leaves_feasible': 1, 'pruned_forced': 12, 'pruned_gordan': 6, 'gordan_computed': 129, 'gordan_failed': 32, 'exact_simplex': 0, 'witness_ok': 1, 'splits': 5}
+VERIFIED: the certificate exhibits 1 counterexample set(s), e.g. [1, 2, 3, 5, 6, 9, 14, 16]: g(8) <= 4

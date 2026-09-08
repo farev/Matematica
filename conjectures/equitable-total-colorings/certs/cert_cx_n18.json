@@ -1,0 +1,163 @@
+[
+ {
+  "tag": "n18_X_0000_QQQQQQQwFQRQUQDUQwQLQAWQGUQ_eq_symbreak",
+  "n": 18,
+  "equitable": true,
+  "symbreak": true,
+  "nclauses": 7011,
+  "nvars": 3260,
+  "proof": "proofs/n18_X_0000_QQQQQQQwFQRQUQDUQwQLQAWQGUQ_eq_symbreak.drup",
+  "proof_lines": 3756,
+  "seconds": 0.081
+ },
+ {
+  "tag": "n18_X_0000_QQQQQQQwFQRQUQDUQwQLQAWQGUQ_eq_nosymbreak",
+  "n": 18,
+  "equitable": true,
+  "symbreak": false,
+  "nclauses": 7007,
+  "nvars": 3260,
+  "proof": "proofs/n18_X_0000_QQQQQQQwFQRQUQDUQwQLQAWQGUQ_eq_nosymbreak.drup",
+  "proof_lines": 11645,
+  "seconds": 0.677,
+  "graph6": "Q??????wF?R?U?D_?w?L?AW?`_?"
+ },
+ {
+  "tag": "n18_X_0001_QQQQQQQwFQRQTQEUCoQFQAWQHUQ_eq_symbreak",
+  "n": 18,
+  "equitable": true,
+  "symbreak": true,
+  "nclauses": 7011,
+  "nvars": 3260,
+  "proof": "proofs/n18_X_0001_QQQQQQQwFQRQTQEUCoQFQAWQHUQ_eq_symbreak.drup",
+  "proof_lines": 1473,
+  "seconds": 0.07
+ },
+ {
+  "tag": "n18_X_0001_QQQQQQQwFQRQTQEUCoQFQAWQHUQ_eq_nosymbreak",
+  "n": 18,
+  "equitable": true,
+  "symbreak": false,
+  "nclauses": 7007,
+  "nvars": 3260,
+  "proof": "proofs/n18_X_0001_QQQQQQQwFQRQTQEUCoQFQAWQHUQ_eq_nosymbreak.drup",
+  "proof_lines": 13911,
+  "seconds": 0.844,
+  "graph6": "Q??????wF?R?T?E_Co?F?@W?H_?"
+ },
+ {
+  "tag": "n18_X_0002_QQQQQQQwEUPUWUIOAgQLQCWQQUQ_eq_symbreak",
+  "n": 18,
+  "equitable": true,
+  "symbreak": true,
+  "nclauses": 7011,
+  "nvars": 3260,
+  "proof": "proofs/n18_X_0002_QQQQQQQwEUPUWUIOAgQLQCWQQUQ_eq_symbreak.drup",
+  "proof_lines": 1776,
+  "seconds": 0.079
+ },
+ {
+  "tag": "n18_X_0002_QQQQQQQwEUPUWUIOAgQLQCWQQUQ_eq_nosymbreak",
+  "n": 18,
+  "equitable": true,
+  "symbreak": false,
+  "nclauses": 7007,
+  "nvars": 3260,
+  "proof": "proofs/n18_X_0002_QQQQQQQwEUPUWUIOAgQLQCWQQUQ_eq_nosymbreak.drup",
+  "proof_lines": 18625,
+  "seconds": 1.284,
+  "graph6": "Q??????wE_P_W_IO@g?L?CW?Q_?"
+ },
+ {
+  "tag": "n18_X_0003_QQQQQAQoBUMQaGHGBUQMQQsQJQQ_eq_symbreak",
+  "n": 18,
+  "equitable": true,
+  "symbreak": true,
+  "nclauses": 7011,
+  "nvars": 3260,
+  "proof": "proofs/n18_X_0003_QQQQQAQoBUMQaGHGBUQMQQsQJQQ_eq_symbreak.drup",
+  "proof_lines": 2392,
+  "seconds": 0.15
+ },
+ {
+  "tag": "n18_X_0003_QQQQQAQoBUMQaGHGBUQMQQsQJQQ_eq_nosymbreak",
+  "n": 18,
+  "equitable": true,
+  "symbreak": false,
+  "nclauses": 7007,
+  "nvars": 3260,
+  "proof": "proofs/n18_X_0003_QQQQQAQoBUMQaGHGBUQMQQsQJQQ_eq_nosymbreak.drup",
+  "proof_lines": 10914,
+  "seconds": 0.707,
+  "graph6": "Q????A?oB_M?aGHGB_?M??s?J??"
+ },
+ {
+  "tag": "n18_X_0004_QQQQQAQWEULQJQEUBUQJQQwQBOQ_eq_symbreak",
+  "n": 18,
+  "equitable": true,
+  "symbreak": true,
+  "nclauses": 7011,
+  "nvars": 3260,
+  "proof": "proofs/n18_X_0004_QQQQQAQWEULQJQEUBUQJQQwQBOQ_eq_symbreak.drup",
+  "proof_lines": 3348,
+  "seconds": 0.076
+ },
+ {
+  "tag": "n18_X_0004_QQQQQAQWEULQJQEUBUQJQQwQBOQ_eq_nosymbreak",
+  "n": 18,
+  "equitable": true,
+  "symbreak": false,
+  "nclauses": 7007,
+  "nvars": 3260,
+  "proof": "proofs/n18_X_0004_QQQQQAQWEULQJQEUBUQJQQwQBOQ_eq_nosymbreak.drup",
+  "proof_lines": 20091,
+  "seconds": 1.055,
+  "graph6": "Q????A?WE_[?J?E_B_?J??w?BO?"
+ },
+ {
+  "tag": "n18_X_0005_QQQQQAQWBULQFQEUOECBQAoQFQQ_eq_symbreak",
+  "n": 18,
+  "equitable": true,
+  "symbreak": true,
+  "nclauses": 7011,
+  "nvars": 3260,
+  "proof": "proofs/n18_X_0005_QQQQQAQWBULQFQEUOECBQAoQFQQ_eq_symbreak.drup",
+  "proof_lines": 3128,
+  "seconds": 0.074
+ },
+ {
+  "tag": "n18_X_0005_QQQQQAQWBULQFQEUOECBQAoQFQQ_eq_nosymbreak",
+  "n": 18,
+  "equitable": true,
+  "symbreak": false,
+  "nclauses": 7007,
+  "nvars": 3260,
+  "proof": "proofs/n18_X_0005_QQQQQAQWBULQFQEUOECBQAoQFQQ_eq_nosymbreak.drup",
+  "proof_lines": 9026,
+  "seconds": 0.524,
+  "graph6": "Q????A?WB_L?F?E_OECB?@o?F??"
+ },
+ {
+  "tag": "n18_X_0006_QQQQCAQGEUXQDUDUCaAOUAWQBUQ_eq_symbreak",
+  "n": 18,
+  "equitable": true,
+  "symbreak": true,
+  "nclauses": 7011,
+  "nvars": 3260,
+  "proof": "proofs/n18_X_0006_QQQQCAQGEUXQDUDUCaAOUAWQBUQ_eq_symbreak.drup",
+  "proof_lines": 1085,
+  "seconds": 0.049
+ },
+ {
+  "tag": "n18_X_0006_QQQQCAQGEUXQDUDUCaAOUAWQBUQ_eq_nosymbreak",
+  "n": 18,
+  "equitable": true,
+  "symbreak": false,
+  "nclauses": 7007,
+  "nvars": 3260,
+  "proof": "proofs/n18_X_0006_QQQQCAQGEUXQDUDUCaAOUAWQBUQ_eq_nosymbreak.drup",
+  "proof_lines": 8580,
+  "seconds": 0.459,
+  "graph6": "Q???C@?GE_X?D_D_Ca@O_AW?B_?"
+ }
+]

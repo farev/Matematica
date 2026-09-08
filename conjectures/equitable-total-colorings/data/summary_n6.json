@@ -1,0 +1,20 @@
+{
+ "n": 6,
+ "tag": "n6",
+ "counts": {
+  "total": 2,
+  "E": 1,
+  "X": 0,
+  "T2": 1
+ },
+ "wall_s": 0.0,
+ "t_equitable_solve_s": 0.0,
+ "t_plain_solve_s": 0.0,
+ "counterexamples": [],
+ "type2": [
+  "EFz_"
+ ],
+ "equitable_class_size_configs": {
+  "(4, 4, 4, 3)": 1
+ }
+}

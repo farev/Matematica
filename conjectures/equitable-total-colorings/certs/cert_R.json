@@ -1,0 +1,24 @@
+[
+ {
+  "tag": "R_equitable_symbreak",
+  "n": 20,
+  "equitable": true,
+  "symbreak": true,
+  "nclauses": 8442,
+  "nvars": 3948,
+  "proof": "proofs/R_equitable_symbreak.drup",
+  "proof_lines": 1314,
+  "seconds": 0.067
+ },
+ {
+  "tag": "R_equitable_nosymbreak",
+  "n": 20,
+  "equitable": true,
+  "symbreak": false,
+  "nclauses": 8438,
+  "nvars": 3948,
+  "proof": "proofs/R_equitable_nosymbreak.drup",
+  "proof_lines": 8198,
+  "seconds": 0.413
+ }
+]
