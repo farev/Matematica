@@ -278,6 +278,23 @@ if __name__ == "__main__":
     target = int(sys.argv[2]) if len(sys.argv) > 2 and sys.argv[2] != "-" else None
     reverse = len(sys.argv) > 3 and sys.argv[3] == "rev"
     G = EngineG(k=k, target=target, reverse=reverse)
+    if len(sys.argv) > 3 and sys.argv[3].startswith("seed"):
+        import random
+        rng = random.Random(int(sys.argv[3][4:]))
+        others = G.vecs[G.dim:]
+        rng.shuffle(others)
+        G.vecs = G.vecs[:G.dim] + others
+        G.V = np.array(G.vecs, dtype=np.int64)
+        d = G.dim
+        G.always_pos = []; G.always_neg = []; G.small = []
+        for v in G.vecs:
+            suf = [sum(v[i:]) for i in range(d)]
+            G.always_pos.append(all(s >= 0 for s in suf) and any(s > 0 for s in suf))
+            G.always_neg.append(all(s <= 0 for s in suf) and any(s < 0 for s in suf))
+            w = list(v); w[d - 1] -= 1
+            suf = [sum(w[i:]) for i in range(d)]
+            G.small.append(all(s <= 0 for s in suf) and any(s < 0 for s in suf))
+        print(f"[G] shuffled candidate order with seed {sys.argv[3][4:]}", flush=True)
     print(f"[G] k={k}: {G.n} sign vectors; small vectors to choose: {G.nsmall_total}; target={target} reverse={reverse}", flush=True)
     best = G.run()
     print(f"[G] best |E| = {best}; nodes={G.nodes} phase1={G.phase1_nodes} mu_cases={G.mu_cases} cuts={G.cuts} numeric={G.numeric_nodes} "
