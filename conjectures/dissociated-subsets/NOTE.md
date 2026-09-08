@@ -204,7 +204,11 @@ vanishes on every ray. Validation: G's exhaustive `k = 4` enumeration has exactl
 counts (159 nodes, 115 phase-1 nodes, 515 maximum cases, 458 cuts, 243 numeric nodes),
 and on 3 968 random region decisions (strict rows, cuts, vanishing tests; regions with
 up to 6 rays) the ray tests agree with the LP tests on every one. G is about 20× faster
-than F at `k = 5`.
+than F at `k = 5`. Completeness control: with the sign vectors of BAKKAOUI's 13-set
+(`T = {3,5,6,7}`, `1 = t₃−t₂`, `2 = t₂−t₁`, `4 = t₄−t₁`, `8 = t₁+t₂`, …) placed first
+in the candidate order, G reaches `{1,…,10,12,13,15}` at `t = (3,5,6,7)` after 5 nodes
+(0.1 s); in the plain and reversed orders the same configuration lies deep in the
+enumeration.
 
 *Status of the `k = 5` decision.* No engine finished an exhaustive `k = 5` enumeration
 within the session. Engine D needs 60 590 nodes and 27 minutes for the first 13-element
