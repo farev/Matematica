@@ -27,7 +27,7 @@ Page: *(none yet — `PAGE.md` is the handoff)*.
 | Every element of a set with no dissociated `k`-subset is a signed sum of any dissociated `(k−1)`-subset; the 6 / 26 relation patterns of a sorted 4- / 5-subset | PROVED / CERTIFIED | NOTE §3 |
 | Sets with no dissociated 5-subset of every size `m ≤ 13` (e.g. `{1,2,3,5,6,7,8,9,10,12,13,15}`); `m = 8` with a checked certificate | CERTIFIED | `data/witnesses.txt`, `certs/D_k5_m8.json` |
 | `A₂₄ = {1,…,21,24,25,27}` has no dissociated 6-subset (`g(24) ≤ 5`, `m₆ ≥ 25`; the interval bound was 24) | CERTIFIED (two independent exact programs) | NOTE §6, `code/sa/` |
-| The `k = 5` threshold `m₅` (14 ≤ m₅ ≤ 41): SEE_README_K5_STATUS | see NOTE §5 | `data/` |
+| The `k = 5` threshold: `14 ≤ m₅ ≤ 41` (lower bound: BAKKAOUI's 13-set; upper: greedy); the exhaustive decision was **not** reached — engines E and F (four runs, two candidate orders each) had not finished when the session closed; see the run logs | open (NUMERICAL evidence only that `m₅ = 14`) | NOTE §5, `data/E_F_runs/` |
 
 See [`NOTE.md`](NOTE.md) for statements and proofs, [`WRITEUP.md`](WRITEUP.md)
 for the session narrative including what failed.
@@ -45,7 +45,8 @@ exactly). Arguments: `k m [max_solutions] [certificate.json] [...]`.
 | `code/dissoc_engineB.py` (engine B) | independent implementation: row-echelon state, prefix-first branching, certified LP pruning at every node, exact simplex fallback | `4 7`: 2 s, 1099 nodes | `g(7) ≥ 4`, `g(8) ≥ 4` |
 | `code/dissoc_engineC.py` (engine C) | engine A's branching + engine B's pruning, vectorised, subspace memoisation; certificates | `4 7`: 0.6 s, 111 nodes; `5 11`: 92 s | `g(7) ≥ 4`; witnesses for `k = 5` |
 | `code/dissoc_engineD.py` (engine D) | the dissociation case split (a 4-subset is dissociated or carries a relation; if dissociated, the rest are signed sums); certificates | `4 7`: 0.6 s, 62 nodes; `5 12`: 128 s | `g(7) ≥ 4`; `m = 12` witness |
-| `code/dissoc_engineE.py` (engine E) | enumeration in the 4-parameter family of a dissociated 4-set (sign vectors + ≤ 3 integer cuts, then integer arithmetic) | `4`: seconds (exhaustive); `5`: see NOTE §5 | `m₄ = 7`; `k = 5` records |
+| `code/dissoc_engineE.py` (engine E) | enumeration in the 4-parameter family of a dissociated 4-set (sign vectors + ≤ 3 integer cuts, then integer arithmetic) | `4`: seconds (exhaustive); `5`: unfinished | `m₄ = 7`; `k = 5` records |
+| `code/dissoc_engineF.py` (engine F) | engine E with the seven-smallest normalisation (three small vectors first, then only vectors above the maximum of the seven) | `4`: 12 s (exhaustive); `5`: unfinished | `m₄ = 7` |
 | `code/checker.py` | independent verifier of the JSON case trees (recomputes the relation patterns, checks every branching, pruning and leaf certificate, brute-forces every witness) | seconds per certificate | `data/checker_log.txt` |
 | `code/sa/sa.c`, `dval.c`, `bruteforce_d.py` | simulated annealing over `m`-subsets of `{1..W}` minimising the number of dissociated `k`-subsets; two independent exact evaluators of `d(A)` | 8 s for `A₂₄` | `A₂₄` |
 
@@ -78,7 +79,16 @@ Requires Python 3.11+, numpy, scipy, sympy (exact simplex fallback), gcc.
 
 - The `k = 4` theorem is CERTIFIED, not PROVED: no human-readable proof was written
   (engine D's 62-node tree is the skeleton of one).
-- SEE_README_K5_DEFECT
+- **`m₅` undecided.** Engine E (parameter-space enumeration) and engine F (with the
+  seven-smallest normalisation) are exact and single-engine but enumerate every valid
+  configuration as a subset, at ~150 nodes/minute in Python (LP calls dominate; an
+  exact extreme-ray test would remove them). Engine D's certified tree needs 27 minutes
+  for the first 13-set. Neither an `m = 14` family nor an exhaustive "none" was
+  obtained. The natural next step is a C port of engine F with exact ray enumeration,
+  or engine D on four cores overnight.
+- Engines E and F have no independent checker and no certificate format (their
+  soundness rests on the code and on agreement with engines A–D at `k = 4`); a
+  `k = 5` verdict from them alone would be single-engine.
 - `F(7..9)` (Lemma 3.2) are cited from OEIS A276661 without re-computation; only
   `F(1..6)` and `d({1..24})` were recomputed here.
 - The original sources [Er65] and [Va99, 1.22] were not consulted (secondary, via the

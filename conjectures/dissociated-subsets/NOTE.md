@@ -190,8 +190,23 @@ numerically); it enumerates configurations in canonical order and prunes only wi
 exact certificates. Its exhaustive `k = 4` run reproduces `m_4 = 7` and all six-element
 families.
 
-*Status at the time of writing (see the README for the final state of the runs):*
-SEE_SECTION_5_STATUS
+Engine F adds the *seven-smallest normalisation*: `T` is taken inside the 7 smallest
+elements `S` of `P`, the other three elements of `S` are chosen first (only 21
+five-subsets to block), and everything else must exceed `max S`, which leaves only the
+sign vectors that can exceed that maximum as candidates. Its exhaustive `k = 4` run also
+gives `m₄ = 7` (159 nodes, 12 s).
+
+*Status of the `k = 5` decision.* No engine finished an exhaustive `k = 5` enumeration
+within the session. Engine D needs 60 590 nodes and 27 minutes for the first 13-element
+family; engines E and F, run exhaustively in two candidate orders each for the remaining
+session time, reached configurations of size 12 within minutes (e.g. `t = (2,4,7,16)`,
+`t = (1,2,4,8)`) and had not completed their enumerations when this note was written
+(their logs are `data/E_F_runs/`). The annealing hedge found nothing beyond 13 (best
+14-sets keep 7 dissociated 5-subsets). So: **`14 ≤ m₅ ≤ 41` remains the state of
+knowledge**, `f(28..31) ≥ 4` only, and Erdős's inequality at `n = 32` is undecided
+here. What is CERTIFIED at `k = 5` is the list of witnesses for `m ≤ 13` and the `m = 8`
+certificate. The README records the final state of the runs if they completed after
+this note was written.
 
 ## 6. The `k = 6` side: a 24-element set with no dissociated 6-subset
 
