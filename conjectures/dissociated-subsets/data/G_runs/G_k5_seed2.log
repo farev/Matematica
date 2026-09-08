@@ -25,3 +25,60 @@
   progress: nodes=85000 p1=8761 mu=61283 cuts=677608 numeric=779601 best=12 |E|=9 W=[[0, 0, 2, -1], [2, 1, -1, 0]] rays<=7 elapsed=1513s
   progress: nodes=90000 p1=9591 mu=67081 cuts=714611 numeric=823082 best=12 |E|=9 W=[[2, 2, -1, 0], [1, 0, -2, 1]] rays<=7 elapsed=1605s
   progress: nodes=95000 p1=10715 mu=74947 cuts=750863 numeric=881157 best=12 |E|=8 W=[[2, 1, 2, -1], [1, -2, -2, 1]] rays<=7 elapsed=1711s
+  progress: nodes=100000 p1=11640 mu=81422 cuts=790079 numeric=937089 best=12 |E|=9 W=[[0, 2, 1, -1], [1, 2, -1, 0]] rays<=7 elapsed=1811s
+  progress: nodes=105000 p1=12075 mu=84460 cuts=824497 numeric=968657 best=12 |E|=9 W=[[3, 0, -1, 0], [1, 2, -1, -1]] rays<=7 elapsed=1882s
+  progress: nodes=110000 p1=12451 mu=87092 cuts=849049 numeric=996089 best=12 |E|=9 W=[[1, 2, 0, -2], [2, 0, 0, -1]] rays<=7 elapsed=1939s
+  progress: nodes=115000 p1=12812 mu=89619 cuts=877202 numeric=1023828 best=12 |E|=8 W=[[1, 1, -2, 1]] rays<=7 elapsed=1999s
+  progress: nodes=120000 p1=13100 mu=91635 cuts=914609 numeric=1066306 best=12 |E|=7 W=[[2, 1, 1, -1], [0, 1, 2, -1]] rays<=7 elapsed=2086s
+  progress: nodes=125000 p1=13866 mu=96969 cuts=948725 numeric=1115687 best=12 |E|=8 W=[[2, 0, -1, 0], [2, 2, 1, -1]] rays<=7 elapsed=2175s
+  progress: nodes=130000 p1=14924 mu=104214 cuts=976380 numeric=1164033 best=12 |E|=8 W=[[0, 2, 0, -1], [2, -2, -1, 1]] rays<=7 elapsed=2261s
+  progress: nodes=135000 p1=16096 mu=112336 cuts=1012897 numeric=1226950 best=12 |E|=8 W=[[2, 1, 1, -1], [2, 0, -1, 0]] rays<=7 elapsed=2372s
+  progress: nodes=140000 p1=17466 mu=121847 cuts=1052056 numeric=1269993 best=12 |E|=9 W=[[2, 1, -1, 0], [1, -2, -1, 1]] rays<=7 elapsed=2453s
+  progress: nodes=145000 p1=17903 mu=124906 cuts=1080742 numeric=1299026 best=12 |E|=10 W=[[2, 1, 0, -1], [2, -1, 0, 0]] rays<=7 elapsed=2518s
+  progress: nodes=150000 p1=18491 mu=129022 cuts=1101254 numeric=1327599 best=12 |E|=8 W=[[2, 2, -1, -1], [2, -2, -1, 1]] rays<=7 elapsed=2567s
+  progress: nodes=155000 p1=19341 mu=134972 cuts=1131517 numeric=1372796 best=12 |E|=9 W=[[2, 1, -2, 1], [2, -1, 0, 0]] rays<=7 elapsed=2640s
+  progress: nodes=160000 p1=19876 mu=138717 cuts=1161315 numeric=1410592 best=12 |E|=9 W=[[2, -2, 2, -1], [2, -1, 0, 0]] rays<=7 elapsed=2708s
+  progress: nodes=165000 p1=20579 mu=143632 cuts=1197612 numeric=1454635 best=12 |E|=8 W=[[2, -1, -1, 1], [2, 1, -1, 0]] rays<=7 elapsed=2783s
+  progress: nodes=170000 p1=20837 mu=145437 cuts=1228117 numeric=1480210 best=12 |E|=8 W=[[0, 1, 2, -2], [2, 2, -1, 0]] rays<=7 elapsed=2835s
+  progress: nodes=175000 p1=21331 mu=148896 cuts=1263466 numeric=1519136 best=12 |E|=9 W=[[0, 2, 0, -1], [0, 1, -2, 1]] rays<=7 elapsed=2901s
+  progress: nodes=180000 p1=21771 mu=151976 cuts=1297532 numeric=1555423 best=12 |E|=9 W=[[2, -1, 0, 0], [2, -3, 0, 1]] rays<=7 elapsed=2962s
+  progress: nodes=185000 p1=22290 mu=155601 cuts=1336245 numeric=1594916 best=12 |E|=8 W=[[2, -1, 0, 0], [2, 1, 0, -1]] rays<=7 elapsed=3030s
+  progress: nodes=190000 p1=23686 mu=165219 cuts=1377823 numeric=1655074 best=12 |E|=10 W=[[1, 1, 1, -2], [2, -1, 0, 0]] rays<=7 elapsed=3121s
+  progress: nodes=195000 p1=24085 mu=168007 cuts=1411689 numeric=1692592 best=12 |E|=9 W=[[2, 1, -1, 0], [2, -1, 0, 0]] rays<=7 elapsed=3189s
+  progress: nodes=200000 p1=24439 mu=170483 cuts=1449763 numeric=1741902 best=12 |E|=11 W=[[2, 1, -1, 0], [2, -1, 0, 0]] rays<=7 elapsed=3275s
+  progress: nodes=205000 p1=24807 mu=173059 cuts=1486959 numeric=1784825 best=12 |E|=9 W=[[2, -1, -2, 1], [0, 2, 0, -1]] rays<=7 elapsed=3352s
+  progress: nodes=210000 p1=25059 mu=174823 cuts=1528285 numeric=1828523 best=12 |E|=10 W=[[1, 2, 0, -1], [1, -2, 1, 0]] rays<=7 elapsed=3432s
+  progress: nodes=215000 p1=26431 mu=184280 cuts=1555158 numeric=1851441 best=12 |E|=9 W=[[2, 0, -1, 0], [1, 2, -1, -1]] rays<=7 elapsed=3470s
+  progress: nodes=220000 p1=27217 mu=189658 cuts=1581781 numeric=1886003 best=12 |E|=8 W=[[2, -1, -1, 1], [1, 1, -2, 1]] rays<=7 elapsed=3528s
+  progress: nodes=225000 p1=27619 mu=192470 cuts=1622183 numeric=1933634 best=12 |E|=8 W=[[2, -1, 1, -1], [2, 0, -1, 0]] rays<=7 elapsed=3606s
+  progress: nodes=230000 p1=28013 mu=195228 cuts=1665554 numeric=1987223 best=12 |E|=9 W=[[0, 2, 1, -2], [2, -1, -2, 2]] rays<=7 elapsed=3693s
+  progress: nodes=235000 p1=28109 mu=195900 cuts=1711096 numeric=2034409 best=12 |E|=9 W=[[2, -1, 0, 0], [0, 1, 2, -1]] rays<=7 elapsed=3774s
+  progress: nodes=240000 p1=28710 mu=200072 cuts=1737623 numeric=2065948 best=12 |E|=9 W=[[0, 2, 0, -1], [2, 0, -1, 0]] rays<=7 elapsed=3828s
+  progress: nodes=245000 p1=30236 mu=210524 cuts=1758626 numeric=2105002 best=12 |E|=11 W=[[3, 1, -1, 0], [1, 2, -1, 0]] rays<=7 elapsed=3886s
+  progress: nodes=250000 p1=31333 mu=218105 cuts=1781788 numeric=2132823 best=12 |E|=9 W=[[0, 2, 0, -1], [2, -2, -1, 1]] rays<=7 elapsed=3934s
+  progress: nodes=255000 p1=31858 mu=221758 cuts=1800330 numeric=2165739 best=12 |E|=10 W=[[2, -1, 0, 0], [0, 2, 0, -1]] rays<=7 elapsed=3990s
+  progress: nodes=260000 p1=32591 mu=226728 cuts=1828536 numeric=2208682 best=12 |E|=9 W=[[2, 1, 0, -1], [0, 1, 2, -2]] rays<=7 elapsed=4064s
+  progress: nodes=265000 p1=33546 mu=233393 cuts=1869086 numeric=2259739 best=12 |E|=7 W=[[0, 2, -1, 0]] rays<=7 elapsed=4141s
+  progress: nodes=270000 p1=34815 mu=242268 cuts=1917267 numeric=2323510 best=12 |E|=9 W=[[2, 0, 1, -1], [1, 2, 1, -2]] rays<=7 elapsed=4234s
+  progress: nodes=275000 p1=35527 mu=247252 cuts=1946827 numeric=2360130 best=12 |E|=10 W=[[2, 1, 0, -1], [0, 2, 0, -1]] rays<=7 elapsed=4292s
+  progress: nodes=280000 p1=36204 mu=251977 cuts=1991939 numeric=2411107 best=12 |E|=7 W=[[1, 2, 0, -1], [0, 3, 2, -3]] rays<=7 elapsed=4377s
+  progress: nodes=285000 p1=37448 mu=260482 cuts=2036809 numeric=2490831 best=12 |E|=8 W=[[1, 0, 2, -2], [1, 2, 1, -2]] rays<=7 elapsed=4499s
+  progress: nodes=290000 p1=38712 mu=269211 cuts=2076167 numeric=2560258 best=12 |E|=8 W=[[1, 2, 2, -2], [0, 0, 2, -1]] rays<=7 elapsed=4604s
+  progress: nodes=295000 p1=39831 mu=277037 cuts=2107482 numeric=2601158 best=12 |E|=8 W=[[2, -1, 0, 0], [3, 1, -2, 0]] rays<=7 elapsed=4674s
+  progress: nodes=300000 p1=40829 mu=284016 cuts=2154367 numeric=2651306 best=12 |E|=8 W=[[2, 1, -1, 0], [1, -2, 0, 1]] rays<=7 elapsed=4759s
+  progress: nodes=305000 p1=41761 mu=290526 cuts=2189734 numeric=2694906 best=12 |E|=9 W=[[1, 0, -2, 1], [1, -2, -1, 1]] rays<=7 elapsed=4829s
+  progress: nodes=310000 p1=42634 mu=296526 cuts=2221911 numeric=2737031 best=12 |E|=8 W=[[1, -2, 1, 0]] rays<=7 elapsed=4895s
+  progress: nodes=315000 p1=43014 mu=299129 cuts=2260669 numeric=2774163 best=12 |E|=10 W=[[2, -1, 0, 0], [1, 2, 0, -1]] rays<=7 elapsed=4966s
+  progress: nodes=320000 p1=43273 mu=300923 cuts=2301781 numeric=2815287 best=12 |E|=8 W=[[0, 2, 2, -1], [2, -1, 0, 0]] rays<=7 elapsed=5041s
+  progress: nodes=325000 p1=43898 mu=305233 cuts=2334758 numeric=2858457 best=12 |E|=9 W=[[2, -1, 0, 0], [1, -1, 2, -1]] rays<=7 elapsed=5115s
+  progress: nodes=330000 p1=44430 mu=308957 cuts=2371738 numeric=2910914 best=12 |E|=8 W=[[2, 0, 2, -1], [2, -1, 0, 0]] rays<=7 elapsed=5204s
+  progress: nodes=335000 p1=45315 mu=314977 cuts=2399560 numeric=2944448 best=12 |E|=9 W=[[1, -1, -2, 2], [1, 2, 0, -1]] rays<=7 elapsed=5263s
+  progress: nodes=340000 p1=46223 mu=321333 cuts=2440311 numeric=3002918 best=12 |E|=10 W=[[2, 1, -2, 1], [0, 2, -1, 0]] rays<=7 elapsed=5353s
+  progress: nodes=345000 p1=46796 mu=325337 cuts=2485658 numeric=3057799 best=12 |E|=10 W=[[0, 1, -2, 1], [2, -2, 2, -1]] rays<=7 elapsed=5444s
+  progress: nodes=350000 p1=47494 mu=330209 cuts=2532250 numeric=3109464 best=12 |E|=9 W=[[2, -1, 0, 0], [0, 1, -2, 1]] rays<=7 elapsed=5534s
+  progress: nodes=355000 p1=47747 mu=331968 cuts=2572352 numeric=3151800 best=12 |E|=9 W=[[1, -2, 2, -1], [2, -1, 0, 0]] rays<=7 elapsed=5608s
+  progress: nodes=360000 p1=48505 mu=336671 cuts=2617620 numeric=3203220 best=12 |E|=8 W=[[0, 2, -1, 0], [2, 2, 1, -1]] rays<=7 elapsed=5690s
+  progress: nodes=365000 p1=49695 mu=344903 cuts=2634093 numeric=3223760 best=12 |E|=10 W=[[2, 1, -1, 0], [1, -2, 0, 1]] rays<=7 elapsed=5727s
+  progress: nodes=370000 p1=51191 mu=355221 cuts=2651627 numeric=3246652 best=12 |E|=7 W=[[1, 2, 0, -2], [1, -2, 1, 0]] rays<=7 elapsed=5767s
+  progress: nodes=375000 p1=51804 mu=359433 cuts=2688626 numeric=3302773 best=12 |E|=8 W=[[0, 2, 0, -1], [3, 1, -2, 0]] rays<=7 elapsed=5889s
+exit 124

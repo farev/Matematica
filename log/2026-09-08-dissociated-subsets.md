@@ -35,8 +35,9 @@ certificate); the exhaustive decision of `m₅` was **not** reached: the fastest
 enumerator built today (engine G: seven-smallest normalisation + exact extreme-ray
 arithmetic, validated against the LP on 3 968 random decisions and reproducing engine
 F's `k = 4` enumeration node for node) has 1 103 785 phase-1 configurations at `k = 5`
-(census: 1 105 s) and its four 2-hour runs covered ≈ 2 % each without exceeding 12,
-i.e. ≈ 30 h per order in Python; the enumeration is fully specified for a C port. (4) CERTIFIED (annealing hedge, one core):
+(census: 1 105 s) and its four 2-hour runs reached their caps at 5–7 % each (58 110 to
+74 653 phase-1 nodes, 260 000 to 375 000 phase-2 nodes) without exceeding 12, i.e.
+≈ 30 h per order in Python; the enumeration is fully specified for a C port. (4) CERTIFIED (annealing hedge, one core):
 `A₂₄ = {1,…,21,24,25,27}` has no dissociated 6-subset (all 134 596 six-subsets checked
 by two independent programs), so `m₆ ≥ 25`, one more than the interval bound; no
 14-set with `d ≤ 4` and no 25-set with `d ≤ 5` was found (NUMERICAL). New directory
@@ -176,7 +177,7 @@ a decision.
   (seven-smallest normalisation): same rate, LP calls proving cut options infeasible
   dominate. *Engine G* (exact extreme rays, no LP): 20× faster, but the `k = 5`
   enumeration has 1.07 M phase-1 configurations and ≈ 4 phase-2 nodes each — ≈ 30 h
-  per order; 2 % done in the session, best 12 in all four runs. A completeness control
+  per order; 5–7 % done per run at the 2 h caps, best 12 in all four runs. A completeness control
   (the published 13-set's vectors placed first) is found in 5 nodes, so the enumeration
   reaches 13-sets; it simply has not reached them in the plain orders.
 - *A general improvement of the greedy bound* from the signed-sum lemma applied to

@@ -215,11 +215,12 @@ within the session. Engine D needs 60 590 nodes and 27 minutes for the first 13-
 family. Engine G's enumeration was measured: phase 1 alone (the small-triple
 configurations with their cuts) has 1 103 785 nodes and 1 069 068 leaves — 1 638 with no
 cut, 37 827 with one, 384 843 with two, 644 760 numeric points — and takes 1 105 s to
-count; the exhaustive runs (forward and reversed candidate order, 2 h caps) had explored
-23 853 and 25 545 phase-1 nodes (≈ 2 %) and 95 000 and 110 000 phase-2 nodes after
-41 minutes, with best 12 (e.g. `t = (2,3,4,10)`, `(2,3,4,8)`), and two shuffled-order
-runs (80 000 and 90 000 nodes) also stood at 12; extrapolated, one order needs ≈ 30 h of
-Python. Logs in `data/G_runs/`. The annealing hedge found nothing beyond 13 (best
+count; the exhaustive runs (forward and reversed candidate order) reached their 2 h caps
+after 58 110 and 74 653 phase-1 nodes (5.3 % and 6.8 %), 280 000 and 315 000 phase-2
+nodes and 3.8 M and 4.3 M numeric nodes, with best 12 (e.g. `t = (2,3,4,10)`,
+`(2,3,4,8)`); two shuffled-order runs (260 000 and 375 000 phase-2 nodes at their caps)
+also ended at 12. Extrapolated, one order needs ≈ 30 h of Python. Logs in
+`data/G_runs/`. The annealing hedge found nothing beyond 13 (best
 14-sets keep 7 dissociated 5-subsets). So: **`14 ≤ m₅ ≤ 41` remains the state of
 knowledge**, `f(28..31) ≥ 4` only, and Erdős's inequality at `n = 32` is undecided
 here. What is CERTIFIED at `k = 5` is the list of witnesses for `m ≤ 13` and the `m = 8`

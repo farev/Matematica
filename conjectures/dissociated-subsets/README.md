@@ -27,7 +27,7 @@ Page: *(none yet — `PAGE.md` is the handoff)*.
 | Every element of a set with no dissociated `k`-subset is a signed sum of any dissociated `(k−1)`-subset; the 6 / 26 relation patterns of a sorted 4- / 5-subset | PROVED / CERTIFIED | NOTE §3 |
 | Sets with no dissociated 5-subset of every size `m ≤ 13` (e.g. `{1,2,3,5,6,7,8,9,10,12,13,15}`); `m = 8` with a checked certificate | CERTIFIED | `data/witnesses.txt`, `certs/D_k5_m8.json` |
 | `A₂₄ = {1,…,21,24,25,27}` has no dissociated 6-subset (`g(24) ≤ 5`, `m₆ ≥ 25`; the interval bound was 24) | CERTIFIED (two independent exact programs) | NOTE §6, `code/sa/` |
-| The `k = 5` threshold: `14 ≤ m₅ ≤ 41` (lower bound: BAKKAOUI's 13-set; upper: greedy); the exhaustive decision was **not** reached — engine G's enumeration has 1.07 M phase-1 configurations (census in `data/G_runs/`), the four 2-hour runs covered ≈ 2 % of it (best found: 12), ≈ 30 h per order would be needed in Python | open (NUMERICAL evidence only that `m₅ = 14`) | NOTE §5, `data/G_runs/` |
+| The `k = 5` threshold: `14 ≤ m₅ ≤ 41` (lower bound: BAKKAOUI's 13-set; upper: greedy); the exhaustive decision was **not** reached — engine G's enumeration has 1.07 M phase-1 configurations (census in `data/G_runs/`), the four 2-hour runs covered 5–7 % of it each at their caps (best found: 12 in all four), ≈ 30 h per order would be needed in Python | open (NUMERICAL evidence only that `m₅ = 14`) | NOTE §5, `data/G_runs/` |
 
 See [`NOTE.md`](NOTE.md) for statements and proofs, [`WRITEUP.md`](WRITEUP.md)
 for the session narrative including what failed.
@@ -85,7 +85,7 @@ Requires Python 3.11+, numpy, scipy, sympy (exact simplex fallback), gcc.
   `k = 5` enumeration has 1 103 785 phase-1 nodes (1 069 068 small-triple
   configurations, 644 760 of them numeric points) and about four phase-2 nodes per
   phase-1 node: ≈ 30 h per candidate order in Python. Four runs (two orders, two
-  shuffles; 2 h caps) covered ≈ 2 % each and found nothing beyond 12; engine D's
+  shuffles; 2 h caps) covered 5–7 % each and found nothing beyond 12; engine D's
   certified tree needs 27 minutes for the first 13-set. Neither an `m = 14` family nor
   an exhaustive "none" was obtained. Next step: a C port of engine G (small-integer
   arithmetic only), or four days of the Python engine split over the first small index.
