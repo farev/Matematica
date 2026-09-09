@@ -17,6 +17,17 @@ E* running.
 **Page:** <https://fabianarevalo.com/balanced-colorings>
 **Sessions:** [2026-08-27](../../log/2026-08-27-balanced-colorings.md)
 
+**Status note (2026-09-09, secondary).** erdosproblems.com/617 still lists
+the problem as open for r ≥ 5, but its proof-claims page carries seven
+unreviewed AI-assisted submissions from July 2026 for the fixed-r cases:
+r = 5 (K₂₆) by Sneiderman (18 Jul), Silverstein (21 Jul, 12 DRAT-checked
+UNSAT formulas), Rose (25 Jul, 458 SAT leaves) and Winter (31 Jul, Lean);
+Sneiderman also claims r = 6, 7, 9. A comment there (15 Jul 2026) notes the
+r = 3 case is Chung–Liu, Discrete Math. 21 (1978), Thm 3.6. None of these
+was read here; the K₂₆ decision this directory left open may therefore be
+settled, and a local session should fetch and check those certificates
+before any further work on r = 5.
+
 ## Results
 
 | Claim | Label | Where |
