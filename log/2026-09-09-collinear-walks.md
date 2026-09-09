@@ -30,7 +30,7 @@ membership in {0,1}) force equal endpoint directions on any weak abelian
 square (Lemma 3), and the walk that moves only on right turns supplies the
 displacement from the merged Parikh vector. The lemma checked on 1 123 622
 pairs, the 8-letter word 3-free to 30 000, the 7-letter word to 100 000
-(run finishing as this is written; 30 000 confirmed).
+(≈ 9 min, one core).
 **Priority.** After the proof was in hand, the Cambie–Kalviainen repository
 (github.com/ekalvi/erdos-193) turned out to hold unpublished drafts: Cambie,
 fourteen dimensions (5 Sep), and Kalviainen, **six** dimensions (5 Sep;
