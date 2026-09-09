@@ -60,7 +60,8 @@ letter frequencies. This improves Shallit's published bound 16 (arXiv:2609.05780
   `data/family_1500.txt` — a small table/graphic: alphabet size 16 (Shallit,
   proved), 14 (Cambie, draft), 8 and 7 (this note, proved), 6 (Kalviainen,
   draft, reviewed), 5 (Shallit's candidate, 3-free to 38 416 per the
-  repository, unproved), 4 (open; growth 1.29ⁿ). Sentence: "Everything from 16
+  repository, unproved), 4 (open; count ratio ≈ 1.27–1.30 per letter).
+  Sentence: "Everything from 16
   down to 6 is one family of Gaussian-integer walks; 5 and 4 need a new idea."
 - **Figure 4 (growth).** Data: `data/tf4_46.txt` — log-count of canonical
   3-free words over four letters by length. Sentence: "Four-letter words with

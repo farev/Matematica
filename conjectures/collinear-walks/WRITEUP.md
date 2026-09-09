@@ -26,7 +26,9 @@ primitive Parikh direction) in C, validated on L(1) = 1, L(2) = 3, L(3) = 7
 
 **08:20–08:30. The four-letter case is not a search.** The exhaustive tree
 over four letters has 2.5 million nodes to length 30 and 32 million to
-length 40, growing like 1.29ⁿ. That killed the "certify k_min ≥ 5" plan
+length 40, the counts multiplying by about 1.3 per letter (the full run to
+length 46, done later, gives 28.9 M words and a ratio drifting down from
+1.30 to 1.27). That killed the "certify k_min ≥ 5" plan
 within ten minutes and moved the session to the upper bound.
 
 **08:30–08:50. The dragon.** Shallit's proof needs, for the valuation lemma,

@@ -16,8 +16,9 @@ letter-frequency vector (no *weak abelian square*; we say *3-free*).
 We prove **k_min ≤ 7**. The construction is the Heighway dragon curve: let
 u_n ∈ {1, i, −1, −i} be its n-th step direction and δ_n ∈ {±1} its n-th turn.
 The word b_n = (u_n, δ_n) over eight letters is 3-free (Theorem 1), and it
-stays 3-free after the two letters (1, +1) and (−1, +1) are identified
-(Theorem 2), which gives seven letters. The proofs are short and elementary:
+stays 3-free after the two letters with directions u = 1 and u = −1 and turn
+δ = +1 are identified — in the ℤ₄ notation of §3, the letters (0, +1) and
+(2, +1) — (Theorem 2), which gives seven letters. The proofs are short and elementary:
 the dragon curve satisfies the same 2-adic valuation identity as the Gaussian
 walk of Cambie–Kalviainen and Shallit whenever the two endpoint directions are
 equal, its turns are ±90° only, and two telescoping indicator sums force equal
@@ -34,7 +35,7 @@ is 6, and no cyclic uniform morphism of length ≤ 16 over four letters has a
 3-free words over four letters are unbounded in length, so k_min = 4 is not
 excluded by search.
 
-Labels: Theorems 1–2 and Lemmas 1–4 are **PROVED**. The review in §5 is a
+Labels: Theorems 1–2 and Lemmas 1, 2, 2′, 3 are **PROVED**. The review in §5 is a
 reading of someone else's draft, not a result of ours. Every statement in §6
 is a finite computation (**CERTIFIED** for the range stated, or **NUMERICAL**
 where marked).
@@ -222,9 +223,11 @@ letters be merged), and the displacement functional (the right-turn walk W,
 which only needs the turn-(−1) letters).
 
 **Remarks.** (1) By the rotation symmetry of the argument, each of the four
-identifications (r, δ) ~ (r + 2, δ) works, with H = {r, r + 1} for the
-same-turn pair and W (δ = −1) or its mirror W′ = Z + ((1−i)/2)u (which moves
-only on left turns) for the displacement. (2) The four identifications
+identifications (r, δ) ~ (r + 2, δ) works, with H = {r, r + δ} (the start and
+end directions of the letter (r, δ); the antipodal letter starts and ends
+outside H, so g₂ vanishes on both) and, for the displacement, W when δ = +1
+(it moves only on right turns, which the identified letters are not) or its
+mirror W′ = Z + ((1−i)/2)u, which moves only on left turns, when δ = −1. (2) The four identifications
 (r, −1) ~ (r + 1, +1) also survive to length 30 000 (§6) but the displacement
 functional collapses for them (every affine-in-δ weight i^r(a + bδ) equal on
 the two letters has a − ib = 0), so we have no proof. (3) No identification
@@ -235,10 +238,12 @@ of two pairs works: §6.
 Both Shallit's word and ours are instances of *Gaussian digit walks*: at each
 binary level one chooses a sign s ∈ {±1} (the children of a direction u are
 {u, i^s u}) and an order rule (fixed: (u, i^s u); alternating: the order
-depends on the parity of the parent index). Lemma 2 holds level by level for
-any such choice — the descent (2.3) only needs the correction term to vanish
-or to be 2·(unit) when the parent indices have opposite parity — so every
-member gives a 3-free word on its transition alphabet {(t_n, t_{n+1})}.
+depends on the parity of the parent index). The proof of Lemma 2 goes through
+level by level for any such choice — at a fixed level the correction in (2.3)
+vanishes outright, at an alternating level it vanishes or is 2·(unit) exactly
+as in the proof above, and the multiplier 1 + i^s has norm 2 — so every
+member gives a 3-free word on its transition alphabet {(t_n, t_{n+1})} (we
+checked the two level types by hand; nothing below depends on this remark).
 The number of letters is the number of transitions that occur:
 
 - all levels fixed, constant sign (Shallit): all sixteen;
@@ -307,9 +312,10 @@ All programs are in `code/`, all run on this machine (4 cores, 15 GB, gcc
 13.3, Python 3.11); every check is exact integer arithmetic.
 
 **6.1 Controls.** `tf.c` (exhaustive depth-first search over canonical words,
-incremental collinearity test) gives L(1) = 1, L(2) = 3, L(3) = 7 with the
-unique-up-to-symmetry longest ternary word 0102010, matching Brown 1971 and
-the repository's own ternary certificate. **CERTIFIED.**
+incremental collinearity test) gives L(1) = 1, L(2) = 3, L(3) = 7, with three
+canonical ternary words of length 7 (0102010 among them) and none of length
+8, matching Brown 1971 and the ekalvi repository's own ternary certificate.
+**CERTIFIED.**
 
 **6.2 Growth over four and five letters.** The number of canonical 3-free
 words over four letters (first letter 0, new letters introduced in order) is
@@ -343,7 +349,8 @@ b onto at most six letters has a bad pair among its first 3000 letters, so no
 letter-to-letter coding of the dragon word can give k_min ≤ 6.
 
 **6.5 The sign/order family.** `family.c` enumerates all periodic patterns of
-period ≤ 4 (sign and order rule per level, 128 patterns after symmetry),
+period ≤ 4 (sign and order rule per level, 158 patterns after removing the
+global conjugation and the repetitions of shorter periods),
 builds the transition word to length 1500, and searches all codings onto ≤ 6
 classes when the transition alphabet has ≤ 10 letters. Results
 (`data/family_1500.txt`): eight-letter transition alphabets occur only for the
