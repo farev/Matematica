@@ -104,9 +104,17 @@ def branch_only_dirs():
         for d in glob.glob("conjectures/*")
         if os.path.isdir(d)
     }
-    raw = sh("git", "branch", "-r", "--no-merged", "origin/main")
-    if not raw:
+    # An empty --no-merged result means one of two very different things:
+    # every branch has landed, or this clone has no remote branch refs at
+    # all (a shallow or single-branch sandbox clone). Reporting the second
+    # as "all clear" would be exactly the false reassurance that keeps the
+    # duplication loop running, so check that refs exist first.
+    if not sh("git", "rev-parse", "--verify", "origin/main").strip():
         return None, on_main
+    if len([b for b in sh("git", "branch", "-r").splitlines()
+            if "origin/claude/" in b]) == 0:
+        return None, on_main
+    raw = sh("git", "branch", "-r", "--no-merged", "origin/main")
 
     found = collections.defaultdict(lambda: {"branches": [], "dates": []})
     for line in raw.splitlines():
