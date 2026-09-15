@@ -12,10 +12,17 @@ same Davenport problem in August 2026.
 
 Run from the repository root:
 
-    python3 tools/build_index.py
+    python3 tools/build_index.py             # writes ATTEMPTED.md
+    python3 tools/build_index.py --stdout    # prints it, writes nothing
 
 Reads the working tree, log/ filenames and `git branch -r --no-merged`.
-Writes ATTEMPTED.md. Never edit that file by hand.
+Never edit ATTEMPTED.md by hand.
+
+Use --stdout from a research session. Every session that regenerated the
+file in place would record its own date and commit in the header, so every
+branch would carry a different ATTEMPTED.md and every merge would conflict
+on it. Printing instead keeps the working tree clean and leaves nothing to
+commit.
 """
 
 import collections
@@ -248,8 +255,12 @@ def main():
             last = max(g["dates"]) if g["dates"] else "?"
             out.append(f"| {key} | {names} | {n} | {last} |")
 
+    text = "\n".join(out) + "\n"
+    if "--stdout" in sys.argv[1:]:
+        sys.stdout.write(text)
+        return
     with open("ATTEMPTED.md", "w", encoding="utf-8") as fh:
-        fh.write("\n".join(out) + "\n")
+        fh.write(text)
     print(f"wrote ATTEMPTED.md: {len(rows)} on main, "
           f"{len(found) if found else 0} branch-only directories")
 
