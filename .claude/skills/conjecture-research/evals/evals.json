@@ -1,0 +1,24 @@
+{
+  "skill_name": "conjecture-research",
+  "notes": "Full evals are multi-hour research sessions. Prefer the scoped smoke-test prompts (evals 2-3) for iteration; eval 1 is the full open-ended replication of the original session pattern.",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Find a math conjecture/proof that is unresolved that really interests you and try to solve it.",
+      "expected_output": "A session that picks a tractable target with stated selection reasoning, proves structural lemmas, runs a certified verification, engages primary literature, and delivers WRITEUP/NOTE with honest labeling. Should NOT claim to solve the conjecture.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I want to make genuine progress on the Erdos-Straus conjecture (4/n = 1/x + 1/y + 1/z). Spend about 30 minutes: pick your angle, prove what you can, and tell me what a full session would target. Don't run anything longer than a few minutes of compute.",
+      "expected_output": "Time-boxed session: independent exploration before literature, at least one proved lemma (e.g., covering congruences), a small certified computation, identification of the current record and attack surfaces, honest framing of what is/isn't achievable.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Here's a recent arXiv paper on an open conjecture: arXiv 2607.08712 (Gilbreath). Read it and tell me the three most promising contribution surfaces, ranked, with concrete first steps for each. No heavy compute yet.",
+      "expected_output": "Downloads and reads the actual PDF (not summaries), extracts exact theorem statements, identifies stated open questions / truncated computations / unaudited hypotheses / slack inequalities, ranks them with concrete first steps.",
+      "files": []
+    }
+  ]
+}

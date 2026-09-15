@@ -4,7 +4,11 @@ A research log. Every day, one session against an open conjecture. Most
 sessions fail; the failures get written down too.
 
 Use the `conjecture-research` skill for any session that attempts, extends, or
-audits open mathematics here.
+audits open mathematics here. It ships with the repository, at
+`.claude/skills/conjecture-research/`, so cloud sandboxes and fresh clones pick
+it up with no local setup. That committed copy is canonical: edit it there, not
+in a personal `~/.claude/skills/` copy, or the cloud sessions drift from what
+you think you are running.
 
 ## The claim discipline
 
