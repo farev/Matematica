@@ -59,7 +59,8 @@ Needs `python-sat` (pip) and a C compiler; `drat-trim` is Heule's single C file.
 |---|---|---|
 | `certs/sq_sp41_c5.{cnf,paths,verts,drup.gz}` | `nrsat.py`, `certify.py` | 41-vertex square spiral, 5 colours: UNSAT, proof 62 807 lines, drat-trim and rup_check verified |
 | `certs/sp_king23_c8.{cnf,paths,verts,trim.drup.gz}` | same | 23-vertex king spiral, 8 colours: UNSAT, trimmed proof 666 403 lines (full proof 740 087 lines also verified) |
-| `certs/tri_hex2_c6.*`, `certs/tri_hex3_c7.*` | same | `T₃` hexagons of radius 2 (6 colours) and 3 (7 colours): UNSAT with verified proofs |
+| `certs/tri_hex2_c6.*`, `certs/tri_hex3_c7.*` | same | `T₃` hexagons of radius 2 (6 colours) and 3 (7 colours): UNSAT with verified proofs (the radius-3 proof, 2.6 million lines, is not committed; see defects) |
+| `certs/tri_hex3_c7_core.{cnf,paths,verts}` | drat-trim `-c` + `core_pipeline` step described in WRITEUP §3.7 | the 22 121-clause unsatisfiable core of the radius-3 instance with all structural clauses restored; validated; Glucose refutes it in 77 s (proof 2.5 million lines, drat-trim verified, not committed) |
 | `data/witnesses/*.sat.txt` | `nrsat.py` | colourings (`r c colour` per line); those named in NOTE Thms 1–3 are exhaustively verified nonrepetitive, the rest are NUMERICAL (paths bounded) |
 | `data/brute_verify_witnesses.log` | `brute_verify.py` | path counts and verdicts for the audit witnesses |
 | `data/tables/*.txt` | `replicate_tables.py` | canonical counts `n(i)` in the paper's vertex order |
@@ -67,6 +68,7 @@ Needs `python-sat` (pip) and a C compiler; `drat-trim` is Heule's single C file.
 ## Known defects and open threads
 
 - The proofs are single-solver (Glucose 4.2) but checked by two independent checkers; the CaDiCaL verdicts of the lazy loop are not proof-logged (python-sat does not expose CaDiCaL proofs), so every UNSAT instance is re-solved from the CNF file by Glucose for the certificate.
+- The proof for the 7-colour `T₃` instance (2.6 million lines, 170 MB, 25 MB trimmed and gzipped) is above the repository's size limit and is not committed; `python3 certify.py tri_hex3_c7 ./rup_check ./drat-trim` regenerates and checks it in about four minutes. The CNF, path list and vertex list are committed.
 - The authors' code (github.com/WentaoZhangT-Zero/Nonrepetitive) could not be read from the sandbox, so the cause of the Table 2 and Table 3 discrepancies is not identified; the audit rests on the vertex order the paper describes (Figure 3) and both natural embeddings of it into `T₃`.
 - Sharpest open question: is `π(T₃) ≥ 9`? An UNSAT run for 8 colours on some patch would restore the published bound; the 37-vertex hexagon is not enough. Then `π(P□P) ≥ 7` (repetitions of 20+ vertices needed) and `π(P⊠P) ≥ 10`.
 

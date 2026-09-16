@@ -134,7 +134,8 @@ tables); PAGE.md written because the row is new.
   repetitions to 16 vertices: 653 000 clauses in 230 s, no contradiction;
   eager paths to 12 plus lazy to 18: SAT), 9 colours on `P⊠P` (6×6 and
   30-vertex spiral: SAT up to 10 and 16 vertices; the 8×8 block's first solve
-  did not finish in 6 minutes), 9 colours on `T₃` (9×9 rhombus: 3 million
+  did not finish in 6 minutes; the 7×7 block was stopped without a verdict
+  after 42 CPU-minutes), 9 colours on `T₃` (9×9 rhombus: 3 million
   lazy clauses and climbing) and 8 colours on `T₃` (37-vertex hexagon SAT to
   16 vertices; the 61-vertex hexagon accumulated 5 million lazy clauses in
   6.5 minutes without converging and was stopped). The wall is the growth of
@@ -165,6 +166,12 @@ tables); PAGE.md written because the row is new.
 3. `π(P□P) ≥ 7`: analyse the 20- and 24-vertex repetitions that kill the
    found 6-colourings of the 10×10 grid (shapes, how many are translates of
    each other) and encode only that family eagerly on a 14×14 grid.
-4. The 8×8 king instance with 9 colours and all paths of ≤ 6 vertices is
-   hard for CaDiCaL (unfinished in 6 min): worth a cube-and-conquer run, since
-   a hard base instance often sits near the UNSAT boundary.
+4. `π(P⊠P) ≥ 10`: the 7×7 king block with 9 colours is the most promising
+   unfinished run. Its lazy loop's solve times climbed from 0.1 s to 15 s
+   per iteration by iteration 81 (400 000 lazy clauses, repetitions of 8 to
+   14 vertices) before it was stopped at 42 CPU-minutes, and the 8×8 block's
+   first solve did not finish in 6 minutes; in every instance that ended
+   UNSAT today the solves stayed under a second until the end, so growing
+   solve times suggest an instance near the boundary. Resume it with
+   proof-capable solving from the start (build CaDiCaL or Kissat from a
+   reachable source) and cube on the centre's colours if it stalls.

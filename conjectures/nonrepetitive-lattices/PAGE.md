@@ -28,7 +28,7 @@ Bounds after the session: `6 ≤ π(P□P) ≤ 12`, `9 ≤ π(P⊠P) ≤ 16`, `8
 - Contribution 3 refutes a proof, not a statement: `π(T₃) ≥ 9` may still be true. The page must not say the theorem is false.
 - The audit assumes the vertex order described in the paper (Figure 3) and considers both natural embeddings into `T₃`; the authors' code was not readable from the sandbox, so the source of their error is unidentified. The 5×5-block witnesses cover every placement of that order inside a 5×5 block.
 - Every citation of Kündgen–Pelsmajer (2008), Fertin–Raspaud–Reed (2004), Alon et al. (2002) and Toole's thesis is secondary, taken from arXiv:2510.11263; Tao's journal reference (Discrete Math. 349 (2026) 114828) is as printed in that paper's bibliography.
-- The proofs are produced by one solver (Glucose 4.2) but checked by two independent checkers; the exploratory verdicts (CaDiCaL) carry no proofs and are not relied on.
+- The proofs are produced by one solver (Glucose 4.2) but checked by two independent checkers; the exploratory verdicts (CaDiCaL) carry no proofs and are not relied on. The proof for the headline `π(T₃) ≥ 8` instance (2.6 million lines) is too large for the repository and is regenerated from the committed CNF by `certify.py` (about four minutes); the page should say the certificate is reproducible rather than downloadable.
 - NUMERICAL items are bounded-path colourings only; none of them is a nonrepetitive colouring of its patch.
 
 ## 5. Existing page

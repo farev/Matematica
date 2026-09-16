@@ -96,7 +96,14 @@ theorems).
    proof of 666 403 lines is the committed one, re-checked by rup_check; only
    5 107 of 43 838 clauses are in the core), `T₃` hexagon radius 2 / 6
    colours (4 946 lines), `T₃` hexagon radius 3 / 7 colours (2 605 263 lines,
-   Glucose 198 s).
+   Glucose 198 s, drat-trim 234 s, rup_check 762 s). That proof is 170 MB
+   (25 MB trimmed and gzipped), too large to commit. drat-trim reports only
+   20 069 of the 265 459 clauses in the core, so the core was extracted
+   (`drat-trim -c`), the structural clauses restored, the path list rebuilt
+   by matching clauses back to their paths, and the 22 121-clause instance
+   validated and re-solved: Glucose 77 s, but the proof is still 2.5 million
+   lines. A short instance does not mean a short proof here; only the CNFs
+   are committed and `certify.py` regenerates the proofs.
 8. **Ladder on `T₃`.** 6 colours die on the 19-vertex hexagon in 0.1 s
    (`π(T₃) ≥ 7`); 7 colours die on the 37-vertex hexagon after 193 lazy
    iterations and 210 s (`π(T₃) ≥ 8`). 8 colours on the 37-vertex hexagon:
