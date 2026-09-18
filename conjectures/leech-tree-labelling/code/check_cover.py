@@ -9,8 +9,10 @@ import sys, re
 from fractions import Fraction
 
 def main():
-    n, k = int(sys.argv[1]), int(sys.argv[2])
-    text = ' '.join(sys.argv[3:]) if len(sys.argv) > 3 else sys.stdin.read()
+    args = [a for a in sys.argv[1:] if a != '--distinct']
+    want_distinct = '--distinct' in sys.argv
+    n, k = int(args[0]), int(args[1])
+    text = ' '.join(args[2:]) if len(args) > 2 else sys.stdin.read()
     edges = [(int(a), int(b), int(w)) for a, b, w in re.findall(r'\((\d+),(\d+),(\d+)\)', text)]
     assert len(edges) == n - 1, f"expected {n-1} edges, got {len(edges)}"
     adj = {v: [] for v in range(n)}
@@ -37,7 +39,9 @@ def main():
     excess = N - sum(1 for v in sums if 1 <= v <= k)
     if missing:
         print(f"FAIL n={n} k={k} missing values {missing}"); sys.exit(1)
-    print(f"OK n={n} k={k}: all of 1..{k} realized; {N} pairs, excess pairs = {excess}, max distance = {max(sums)}")
+    if want_distinct and any(m > 1 for m in sums.values()):
+        print(f"FAIL n={n} k={k} repeated path sums {[v for v, m in sums.items() if m > 1]}"); sys.exit(1)
+    print(f"OK{' (distinct)' if want_distinct else ''} n={n} k={k}: all of 1..{k} realized; {N} pairs, excess pairs = {excess}, max distance = {max(sums)}")
 
 if __name__ == '__main__':
     main()

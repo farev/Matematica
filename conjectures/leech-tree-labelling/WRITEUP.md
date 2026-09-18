@@ -80,7 +80,25 @@ not for n = 11.
 
 ## Results
 
-[PENDING — filled in as runs complete]
+**a(11) = 49 (CERTIFIED).** The ladder at n = 11 went k = 55 (no tree, the
+known nonexistence of a Leech tree of order 11), 54, 53, 52, 51, 50 all
+refuted, and k = 49 produced a witness on every one of the four workers
+within 70 s: (0,1,1) (2,3,1) (0,4,2) (5,6,4) (3,6,5) (5,7,7) (6,8,8) (5,9,11)
+(2,10,22) (0,3,24), path sums 1..49 with 1, 11, 23, 25, 26, 39 doubled and
+nothing above 49. All four witnesses pass `check_cover.py`. The k = 50
+refutation: 1 400 728 816 nodes, 4 workers, 259–304 s each. So Leech's (or
+whoever's) 48 was one short. A k = 48 witness was also found in 1 s, which
+reproduces the recorded bound.
+
+**n = 12.** A witness for k = 57 appeared in 95 s (`witnesses/n12_k57.txt`,
+checked), so a(12) ≥ 57 against the recorded 55. [PENDING: hunts at 58, 59;
+refutations at 62 and 61.]
+
+**Growth.** At n = 11 the exhaustive node count grows by about ×4 per unit of
+excess budget (27.9 M, 121 M, 493 M, 1.40 G for B = 2..5) and by about ×9 per
+vertex at fixed budget (n = 10 → 11 at B = 2, 3). That puts a full
+determination of a(12) (refuting k = 58 if a(12) = 57, budget 8) at roughly
+10^11 nodes, a day of four cores, and n = 13 well beyond a session.
 
 ## What failed
 
@@ -96,8 +114,8 @@ not for n = 11.
 
 ## Publication paths
 
-- OEIS A007187: submit a(11) [PENDING], with the witness tree and a link to
-  this directory; propose the lower-bound witnesses for the b-file comments.
+- OEIS A007187: submit a(11) = 49 with the witness tree and a link to this
+  directory (`OEIS_DRAFT.md`), and replace the a(12) comment by the new bound.
 - The exact values would interest the Leech-tree authors (Ghodsi 2026,
   Varghese–Lakshmanan–Arumugam 2020): the covering problem is the natural
   "how close to a Leech tree can order n get" question.

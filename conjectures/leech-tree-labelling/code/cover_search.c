@@ -1,4 +1,4 @@
-/* cover2.c -- exhaustive search for Leech's covering tree problem (OEIS A007187), engine 2.
+/* cover_search.c -- exhaustive search for Leech's covering tree problem (OEIS A007187).
  * Does a tree on n vertices with positive integer edge weights exist whose path sums
  * cover 1..k?  B = C(n,2)-k is the excess budget (pairs whose distance is > k or
  * repeats another pair's distance).  Edges are exposed in nondecreasing weight order.
@@ -16,7 +16,8 @@
  *                      and every uncovered value must lie in some admissible block.
  *  S1 (symmetry)       components with equal canonical weighted-tree form are
  *                      interchangeable: only the first of each class is used.
- * Usage: ./cover_search n k [split_depth worker nworkers] [-nb] [-np] [-ns] [-ss] [-nw] [-nh] [-ne]
+ * Usage: ./cover_search n k [split_depth worker nworkers] [-d] [-nb] [-np] [-ns] [-ss] [-nw] [-nh] [-ne]
+ *   -d : all path sums distinct (maximum Leech index over trees of order n)
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -41,6 +42,23 @@ static int found = 0;
 static int split_depth = -1, worker = 0, nworkers = 1;
 static long long prefix_counter = 0;
 static int use_block = 1, use_parity = 1, use_sym = 1, use_wbound = 1, use_hall = 1;
+static int distinct = 0;  /* -d: all path sums distinct (Leech-index variant); excess counts only values > k */
+static int bigvals[MAXN*MAXN]; static int nbig = 0;   /* distinct mode: realized values > k (at most B) */
+/* distinct mode: check that the cross distances > k of the merge (ci,cj,u,v,q) are pairwise distinct and
+   distinct from bigvals; on success append them and return 1; on failure leave bigvals unchanged, return 0 */
+static int big_check_add(int ci, int cj, int u, int v, int q) {
+    int tmp[MAXN*MAXN], nt = 0;
+    for (int xx = 0; xx < csize[ci]; xx++) for (int yy = 0; yy < csize[cj]; yy++) {
+        int d = dist[cmem[ci][xx]][u] + q + dist[v][cmem[cj][yy]];
+        if (d > k) {
+            for (int i = 0; i < nbig; i++) if (bigvals[i] == d) return 0;
+            for (int i = 0; i < nt; i++) if (tmp[i] == d) return 0;
+            tmp[nt++] = d;
+        }
+    }
+    for (int i = 0; i < nt; i++) bigvals[nbig++] = tmp[i];
+    return 1;
+}
 static int allowed_a[MAXN+1];
 static long long pruned_parity = 0, pruned_block = 0, pruned_hall = 0;
 static int adjw[MAXN][MAXN];  /* adjacency weights within forest, 0 if none */
@@ -96,8 +114,10 @@ static int block_bound(int q_prev, int remaining, u128 *cover) {
                 u128 S = 0;
                 for (int y = 0; y < sj; y++) { int b2 = dist[pp][cmem[cj][y]]; if (b2 < MAXK) S |= Mi << b2; }
                 if (pairs - popc128(S) >= best) continue;
+                if (distinct && popc128(S) != pairs) continue;
                 for (int L = q_prev; L <= k; L++) {
                     u128 blk = (S << L) & uncov;
+                    if (distinct && (((S << L) & maskk) != blk)) continue;  /* hits a covered value */
                     int newd = popc128(blk);
                     int ex = pairs - newd;
                     if (ex < best) best = ex;
@@ -143,6 +163,7 @@ static int exact_dfs(int idx, u128 uni, int exsum, int rem) {
     for (int t = 0; t < ncand[pr]; t++) {
         cand_t *c = &candbuf[pr][t];
         int overlap = popc128(c->mask & uni);
+        if (distinct && overlap) continue;
         if (exsum + c->ex + overlap + sufmin[idx+1] > rem) continue;
         if (exact_dfs(idx + 1, uni | c->mask, exsum + c->ex + overlap, rem)) return 1;
         if (dfs_steps > DFS_CAP) return 1;
@@ -173,8 +194,10 @@ static int few_component_check(int q_prev, int rem) {
                 u128 S = 0;
                 for (int y = 0; y < sj; y++) { int b2 = dist[pp][cmem[cj][y]]; if (b2 < MAXK) S |= Mi << b2; }
                 if (pairs - popc128(S) > rem) continue;
+                if (distinct && popc128(S) != pairs) continue;
                 for (int L = q_prev; L <= k; L++) {
                     u128 blk = (S << L) & uncov;
+                    if (distinct && (((S << L) & maskk) != blk)) continue;
                     int ex = pairs - popc128(blk);
                     if (ex <= rem) {
                         if (ex < best) best = ex;
@@ -325,6 +348,8 @@ static void rec(int x, int q_prev) {
                 int ex = cd->ex;
                 if (x + ex > B) continue;
                 int u = cd->p, v = cd->pp;
+                int save_nbig = nbig;
+                if (distinct && !big_check_add(ci, cj, u, v, q)) continue;
                 u128 addmask = cd->mask;
                 uncov &= ~addmask;
                 int old_si = si;
@@ -344,6 +369,7 @@ static void rec(int x, int q_prev) {
                     dist[cmem[ci][xx]][cmem[cj][yy]] = -1; dist[cmem[cj][yy]][cmem[ci][xx]] = -1;
                 }
                 uncov |= addmask;
+                nbig = save_nbig;
             }
         }
         return;
@@ -373,10 +399,14 @@ static void rec(int x, int q_prev) {
                 int u = cmem[ci][pi], v = cmem[cj][pj];
                 int ex = 0;
                 u128 addmask = 0;
+                int dup = 0;
                 for (int xx = 0; xx < si; xx++) for (int yy = 0; yy < sj; yy++) {
                     int d = dist[cmem[ci][xx]][u] + q + dist[v][cmem[cj][yy]];
-                    if (d > k || !((uncov >> d) & 1)) ex++; else { uncov &= ~(ONE << d); addmask |= ONE << d; }
+                    if (d > k) ex++; else if (!((uncov >> d) & 1)) { ex++; dup = 1; } else { uncov &= ~(ONE << d); addmask |= ONE << d; }
                 }
+                if (distinct && dup) ex = B + 1;
+                int save_nbig2 = nbig;
+                if (x + ex <= B && distinct && !big_check_add(ci, cj, u, v, q)) ex = B + 1;
                 if (x + ex <= B) {
                     int old_si = si;
                     for (int xx = 0; xx < si; xx++) for (int yy = 0; yy < sj; yy++) {
@@ -396,6 +426,7 @@ static void rec(int x, int q_prev) {
                     }
                 }
                 uncov |= addmask;
+                nbig = save_nbig2;
             }
         }
     }
@@ -408,7 +439,7 @@ int main(int argc, char **argv) {
     if (argc >= 6 && argv[3][0] != '-') { split_depth = atoi(argv[3]); worker = atoi(argv[4]); nworkers = atoi(argv[5]); ai = 6; }
     for (; ai < argc; ai++) {
         if (!strcmp(argv[ai], "-nb")) use_block = 0; if (!strcmp(argv[ai], "-np")) use_parity = 0;
-        if (!strcmp(argv[ai], "-ns")) use_sym = 0; if (!strcmp(argv[ai], "-ss")) use_sym = 2; if (!strcmp(argv[ai], "-nw")) use_wbound = 0; if (!strcmp(argv[ai], "-nh")) use_hall = 0; if (!strcmp(argv[ai], "-ne")) use_exact = 0; if (!strncmp(argv[ai], "-rem", 4)) exact_rem_max = atoi(argv[ai]+4); if (!strncmp(argv[ai], "-prod", 5)) prod_cap = atof(argv[ai]+5);
+        if (!strcmp(argv[ai], "-ns")) use_sym = 0; if (!strcmp(argv[ai], "-ss")) use_sym = 2; if (!strcmp(argv[ai], "-d")) distinct = 1; if (!strcmp(argv[ai], "-nw")) use_wbound = 0; if (!strcmp(argv[ai], "-nh")) use_hall = 0; if (!strcmp(argv[ai], "-ne")) use_exact = 0; if (!strncmp(argv[ai], "-rem", 4)) exact_rem_max = atoi(argv[ai]+4); if (!strncmp(argv[ai], "-prod", 5)) prod_cap = atof(argv[ai]+5);
     }
     if (k > MAXK) { fprintf(stderr, "k too large\n"); return 1; }
     N = n * (n - 1) / 2; B = N - k;
@@ -425,7 +456,7 @@ int main(int argc, char **argv) {
     clock_t t0 = clock();
     rec(0, 1);
     double secs = (double)(clock() - t0) / CLOCKS_PER_SEC;
-    printf("RESULT n=%d k=%d B=%d worker=%d/%d split=%d found=%d nodes=%lld pruned_parity=%lld pruned_block=%lld pruned_hall=%lld pruned_exact=%lld exact_capped=%lld secs=%.2f\n",
-           n, k, B, worker, nworkers, split_depth, found, nodes, pruned_parity, pruned_block, pruned_hall, pruned_exact, exact_capped, secs);
+    printf("RESULT %sn=%d k=%d B=%d worker=%d/%d split=%d found=%d nodes=%lld pruned_parity=%lld pruned_block=%lld pruned_hall=%lld pruned_exact=%lld exact_capped=%lld secs=%.2f\n",
+           distinct ? "distinct " : "", n, k, B, worker, nworkers, split_depth, found, nodes, pruned_parity, pruned_block, pruned_hall, pruned_exact, exact_capped, secs);
     return 0;
 }
