@@ -29,20 +29,21 @@ nodes). Positive control: the same program re-derives a(2..10) = 1, 3, 6, 9,
 15, 20, 26, 34, 41 from scratch (witnesses checked, refutations with
 recorded node counts, n = 10 in 15 s). **CERTIFIED — a(12) ≥ 57** (OEIS:
 ≥ 55), witness found in 95 s and checked; hunts at 58 and 59 (30 and 25 min)
-found nothing; **a(12) ≤ [PENDING]** by exhaustive refutation of
-k = [PENDING] ([PENDING] nodes). **CERTIFIED — a new sequence:** with all
+found nothing; **a(12) ≤ 61** by exhaustive refutation of k = 62
+(4 863 094 430 nodes, 78 min on one worker) [PENDING: k = 61]. **CERTIFIED — a new sequence:** with all
 path sums required distinct (the maximum over trees of order n of the Leech
 index of Varghese–Lakshmanan–Arumugam 2022), the values for n = 2..12 are
 1, 3, 6, 9, 15, 20, 25, 30, 37, 45, 47, not in OEIS; witnesses checked with a
 distinctness option, every larger k refuted, and every value through n = 11
-reproduced by a deliberately minimal second engine (n = 12: [PENDING]);
+reproduced by a deliberately minimal second engine (same witness at n = 12);
 n ≤ 7 in both modes confirmed by brute force over all shapes and weight
 vectors. **PROVED:** the six pruning lemmas the searches rely on (weight
 window, monotone excess, budgeted parity after Taylor, edge load, budgeted
 whole-block bounds after Ghodsi 2026 Thm 4.1, isomorphic-component
 symmetry), NOTE §2. Caveats: the n = 11 and n = 12 repeat-allowed
 refutations are single-engine (two variants of the engine agree to the
-node; the SAT engine replicates n = 7, 8 fully and 17/47 shapes of n = 9);
+node; the minimal engine independently refutes k = 42 at n = 10; the SAT
+engine replicates n = 7, 8 fully and 17/47 shapes of n = 9);
 Leech 1975, Guy §C10 and the two Leech-index papers were not readable
 (paywalled) and are cited (secondary). New directory
 `conjectures/leech-tree-labelling/` (README, NOTE, WRITEUP, PAGE.md,

@@ -3,8 +3,7 @@
 **Sequence:** A007187, Leech's tree-labeling problem for n nodes.
 
 **Proposed change.** Extend the data by a(11) = 49 and replace the comment
-"a(11) >= 48, a(12) >= 55" by "a(12) >= [PENDING]" (whatever this session's
-n = 12 witness gives; at least 55).
+"a(11) >= 48, a(12) >= 55" by "a(12) >= 57" (witness below).
 
 **Data.** 1, 3, 6, 9, 15, 20, 26, 34, 41, 49 (offset 2).
 
@@ -13,6 +12,9 @@ edges (0,1,1), (2,3,1), (0,4,2), (5,6,4), (3,6,5), (5,7,7), (6,8,8), (5,9,11),
 (2,10,22), (0,3,24) has path sums covering 1..49 (with 1, 11, 23, 25, 26, 39
 each occurring twice); an exhaustive search shows no tree on 11 vertices
 covers 1..50.
+
+**Second example.** a(12) >= 57: edges (0,1,1), (0,2,1), (1,3,1), (2,4,4),
+(5,6,6), (7,8,8), (2,7,9), (5,9,14), (7,5,15), (6,10,16), (5,11,29).
 
 **Comment (proposed).** a(11) = 49 by exhaustive computer search
 (Sep 2026): edges are exposed in nondecreasing weight order, the next weight

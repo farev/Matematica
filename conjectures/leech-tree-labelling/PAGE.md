@@ -21,8 +21,8 @@ integer 1..49, and no such tree covers 1..50. OEIS A007187 has carried only
    tree" for k = 50; the ladder k = 55, 54, 53, 52, 51 refuted on the way
    (2.4 M, 26.5 M, 27.9 M, 121 M, 493 M nodes).
 2. **a(12) ≥ 57 (CERTIFIED witness; OEIS had ≥ 55)** and
-   a(12) ≤ [PENDING: 60 or 61] (CERTIFIED refutation of k = [PENDING],
-   [PENDING] nodes). [PENDING: adjust if the k = 58/59 hunts succeed.]
+   a(12) ≤ 61 (CERTIFIED refutation of k = 62, 4 863 094 430 nodes, 78 min
+   on one worker) [PENDING: k = 61]. Hunts at 58 and 59 found nothing.
 3. **Method (PROVED lemmas).** Edges exposed in nondecreasing weight; the next
    weight is at most the least uncovered value (Lemma 1); the number of
    "wasted" pairs (repeats or values > k) is monotone and bounded by
@@ -33,7 +33,9 @@ integer 1..49, and no such tree covers 1..50. OEIS A007187 has carried only
 4. **Positive control.** The same program re-derives a(2..10) =
    1, 3, 6, 9, 15, 20, 26, 34, 41 from scratch (witnesses checked, refutations
    with recorded node counts), and an independent SAT engine (one CNF per
-   tree shape) agrees at n = 7, 8 [PENDING: and n = 9].
+   tree shape) agrees at n = 7, 8 and on 17 of the 47 shapes at n = 9; a
+   deliberately minimal second search engine reproduces every value of both
+   variants it was run on (repeats allowed: n ≤ 10; distinct: n ≤ 12).
 5. **A second sequence (CERTIFIED).** Forbidding repeated path sums (the
    maximum "Leech index" of Varghese–Lakshmanan–Arumugam over all trees of
    order n) gives 1, 3, 6, 9, 15, 20, 25, 30, 37, 45, 47 for n = 2..12, not in
@@ -53,7 +55,7 @@ integer 1..49, and no such tree covers 1..50. OEIS A007187 has carried only
   Plot a(n) against C(n,2) for n = 2..12 (a(12) as an interval), with the
   gap C(n,2) − a(n) annotated. Sentence: "The best tree falls further behind
   the perfect count as n grows: 0, 0, 0, 1, 0, 1, 2, 2, 4, 6 pairs wasted,
-  and at least [PENDING] at n = 12."
+  and at least 5 at n = 12."
 - **Figure 3 — cost of the refutations.** Data: NOTE §4 table (k, budget,
   nodes). Log-scale bars of node count against excess budget at n = 11.
   Sentence: "Every extra wasted pair the search must allow multiplies the
@@ -72,8 +74,8 @@ integer 1..49, and no such tree covers 1..50. OEIS A007187 has carried only
   through Ghodsi 2026 (secondary).
 - The witness trees are not claimed unique; four inequivalent-looking
   witnesses at k = 49 were found and not classified.
-- [PENDING: n = 12 status: whether k = 58/59 witnesses exist is open unless
-  the hunts succeed; the upper bound is whatever was refuted.]
+- n = 12 is open: 57 ≤ a(12) ≤ 61 [PENDING]; the hunts at 58 and 59 are
+  not evidence of nonexistence.
 
 ## 5. Existing page
 

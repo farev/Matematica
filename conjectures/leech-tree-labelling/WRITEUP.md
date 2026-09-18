@@ -91,8 +91,9 @@ whoever's) 48 was one short. A k = 48 witness was also found in 1 s, which
 reproduces the recorded bound.
 
 **n = 12.** A witness for k = 57 appeared in 95 s (`witnesses/n12_k57.txt`,
-checked), so a(12) ≥ 57 against the recorded 55. [PENDING: hunts at 58, 59;
-refutations at 62 and 61.]
+checked), so a(12) ≥ 57 against the recorded 55. Hunts at 58 and 59 ran
+30 and 25 minutes without a witness. k = 62 refuted: 4 863 094 430 nodes, 78 min on one worker, so
+a(12) ≤ 61 [PENDING: k = 61].
 
 **Growth.** At n = 11 the exhaustive node count grows by about ×4 per unit of
 excess budget (27.9 M, 121 M, 493 M, 1.40 G for B = 2..5) and by about ×9 per
