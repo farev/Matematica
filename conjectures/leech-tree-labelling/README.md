@@ -22,7 +22,7 @@ Page: not yet built; the handoff is `PAGE.md` (to become fabianarevalo.com/leech
 | a(2..10) = 1, 3, 6, 9, 15, 20, 26, 34, 41 re-derived from scratch: witnesses checked by `code/check_cover.py`, refutations of k = a(n)+1 exhaustive (node counts in NOTE §3) | CERTIFIED (positive control, matches OEIS) | NOTE §3, `witnesses/` |
 | **a(11) = 49** (OEIS had a(11) ≥ 48): witness tree (0,1,1) (2,3,1) (0,4,2) (5,6,4) (3,6,5) (5,7,7) (6,8,8) (5,9,11) (2,10,22) (0,3,24) checked by `check_cover.py`; no tree on 11 vertices covers 1..50, exhaustive search of 1 400 728 816 nodes on four workers (≈ 5 min), plus the ladder k = 55..51 | CERTIFIED (single-engine refutation, see defects) | NOTE §4, `witnesses/n11_k49.txt`, `runs/run7_n11_k50_w*.txt` |
 | Lemmas 1–6 (weight window, monotone excess, budgeted parity, edge load, budgeted block bounds after Ghodsi Thm 4.1, symmetry) | PROVED | NOTE §2 |
-| **a(12) ≥ 57** (OEIS had ≥ 55): witness (0,1,1) (0,2,1) (1,3,1) (2,4,4) (5,6,6) (7,8,8) (2,7,9) (5,9,14) (7,5,15) (6,10,16) (5,11,29), checked; **a(12) ≤ 61** by exhaustive refutation of k = 62 (4.86×10⁹ nodes, 78 min, one worker) [PENDING: k = 61] | CERTIFIED (single-engine refutation) | NOTE §5, `witnesses/n12_k57.txt` |
+| **a(12) ≥ 57** (OEIS had ≥ 55): witness (0,1,1) (0,2,1) (1,3,1) (2,4,4) (5,6,6) (7,8,8) (2,7,9) (5,9,14) (7,5,15) (6,10,16) (5,11,29), checked; **a(12) ≤ 60** by exhaustive refutation of k = 61 (1.61×10¹⁰ nodes, three workers, 71–96 min each; k = 62 refuted separately, 4.86×10⁹ nodes) | CERTIFIED (single-engine refutation) | NOTE §5, `witnesses/n12_k57.txt` |
 | **Distinct-sum variant** (maximum Leech index of Varghese–Lakshmanan–Arumugam over trees of order n): **1, 3, 6, 9, 15, 20, 25, 30, 37, 45, 47** for n = 2..12, witnesses checked with `--distinct`, every larger k refuted; not in OEIS | CERTIFIED (two engines for every n ≤ 12; brute force for n ≤ 7) | NOTE §6, `witnesses/distinct_*`, `runs/run8_*` |
 
 See [`NOTE.md`](NOTE.md) for statements and proofs, [`WRITEUP.md`](WRITEUP.md)
@@ -63,7 +63,7 @@ python3 code/satcover.py 8 27       # all 23 shapes UNSAT
 - The n = 11 refutations are single-engine (one C program; two variants of it
   agree to the node, the SAT engine replicates only n ≤ 9). An independently
   written second engine at n = 11 is the first thing to add.
-- a(12) is open: 57 ≤ a(12) ≤ 61 [PENDING: k = 61]. Refuting k = 58 (excess budget 8) is projected at ~10¹¹ nodes.
+- a(12) is open: 57 ≤ a(12) ≤ 60. Refuting k = 58 (excess budget 8) is projected at ~10¹¹ nodes.
 - Leech 1975 and Guy §C10 unread (paywalled/unavailable): cited (secondary).
 
 ## Prior work

@@ -21,8 +21,9 @@ integer 1..49, and no such tree covers 1..50. OEIS A007187 has carried only
    tree" for k = 50; the ladder k = 55, 54, 53, 52, 51 refuted on the way
    (2.4 M, 26.5 M, 27.9 M, 121 M, 493 M nodes).
 2. **a(12) ≥ 57 (CERTIFIED witness; OEIS had ≥ 55)** and
-   a(12) ≤ 61 (CERTIFIED refutation of k = 62, 4 863 094 430 nodes, 78 min
-   on one worker) [PENDING: k = 61]. Hunts at 58 and 59 found nothing.
+   a(12) ≤ 60 (CERTIFIED refutation of k = 61: 16 081 755 104 nodes over three
+   workers, 71–96 min each; k = 62 refuted separately in 4 863 094 430 nodes).
+   Hunts at 58 and 59 found nothing.
 3. **Method (PROVED lemmas).** Edges exposed in nondecreasing weight; the next
    weight is at most the least uncovered value (Lemma 1); the number of
    "wasted" pairs (repeats or values > k) is monotone and bounded by
@@ -74,8 +75,8 @@ integer 1..49, and no such tree covers 1..50. OEIS A007187 has carried only
   through Ghodsi 2026 (secondary).
 - The witness trees are not claimed unique; four inequivalent-looking
   witnesses at k = 49 were found and not classified.
-- n = 12 is open: 57 ≤ a(12) ≤ 61 [PENDING]; the hunts at 58 and 59 are
-  not evidence of nonexistence.
+- n = 12 is open: 57 ≤ a(12) ≤ 60; the hunts at 58 and 59 are not evidence
+  of nonexistence.
 
 ## 5. Existing page
 

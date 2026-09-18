@@ -1,0 +1,1 @@
+RESULT n=12 k=61 B=5 worker=2/3 split=5 found=0 nodes=6380710439 pruned_parity=15868744 pruned_block=6164122317 pruned_hall=35366260 pruned_exact=55695434 exact_capped=0 secs=5731.20

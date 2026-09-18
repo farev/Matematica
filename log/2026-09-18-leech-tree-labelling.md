@@ -29,8 +29,9 @@ nodes). Positive control: the same program re-derives a(2..10) = 1, 3, 6, 9,
 15, 20, 26, 34, 41 from scratch (witnesses checked, refutations with
 recorded node counts, n = 10 in 15 s). **CERTIFIED — a(12) ≥ 57** (OEIS:
 ≥ 55), witness found in 95 s and checked; hunts at 58 and 59 (30 and 25 min)
-found nothing; **a(12) ≤ 61** by exhaustive refutation of k = 62
-(4 863 094 430 nodes, 78 min on one worker) [PENDING: k = 61]. **CERTIFIED — a new sequence:** with all
+found nothing; **a(12) ≤ 60** by exhaustive refutation of k = 61
+(16 081 755 104 nodes over three workers, 71–96 min each; k = 62 refuted
+separately in 4 863 094 430 nodes). **CERTIFIED — a new sequence:** with all
 path sums required distinct (the maximum over trees of order n of the Leech
 index of Varghese–Lakshmanan–Arumugam 2022), the values for n = 2..12 are
 1, 3, 6, 9, 15, 20, 25, 30, 37, 45, 47, not in OEIS; witnesses checked with a

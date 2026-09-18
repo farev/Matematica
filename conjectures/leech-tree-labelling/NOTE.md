@@ -188,7 +188,7 @@ Hence a(11) = 49. ∎
 **Remark.** The excess sequence N − a(n) for n = 2..11 is
 0, 0, 0, 1, 0, 1, 2, 2, 4, 6.
 
-## 5. n = 12: 57 ≤ a(12) ≤ 61 [PENDING: 60 if the k = 61 run refutes]
+## 5. n = 12: 57 ≤ a(12) ≤ 60
 
 *Lower bound (CERTIFIED).* The tree (0,1,1) (0,2,1) (1,3,1) (2,4,4) (5,6,6)
 (7,8,8) (2,7,9) (5,9,14) (7,5,15) (6,10,16) (5,11,29) covers [1, 57]
@@ -198,9 +198,15 @@ nothing, which is not evidence of nonexistence.
 
 *Upper bound (CERTIFIED, single engine).* `cover_search 12 62` reports
 `found=0` after 4 863 094 430 nodes (4 706 s on one core, sharing the
-machine): no tree on 12 vertices covers [1, 62], so a(12) ≤ 61.
-[PENDING: k = 61 on three workers.] For scale, k = 64 and 63 need no run
-(Lemma 3 refutes k = 66, 65 at the root; 64 and 63 are implied by 62).
+machine): no tree on 12 vertices covers [1, 62]. `cover_search 12 61 5 w 3`
+for w = 0, 1, 2 (split at depth 5) all report `found=0`: 4 762 604 730,
+4 938 439 935 and 6 380 710 439 nodes (16,081,755,104 in all), 4 289 s, 4 454 s and
+5 731 s. Hence **a(12) ≤ 60**. (Lemma 3 refutes k = 66 and 65 at the root;
+k = 64, 63 are implied.) Deciding a(12) needs the refutation of k = 58
+(budget 8) if a(12) = 57, projected at ~10¹¹ nodes from the ×4-per-budget-unit
+growth (4.86 G at B = 4, 16.1 G at B = 5).
+
+**Theorem 3.** 57 ≤ a(12) ≤ 60. ∎
 
 ## 6. The distinct-sum variant (maximum Leech index)
 
