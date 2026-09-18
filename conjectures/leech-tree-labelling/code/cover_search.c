@@ -16,7 +16,7 @@
  *                      and every uncovered value must lie in some admissible block.
  *  S1 (symmetry)       components with equal canonical weighted-tree form are
  *                      interchangeable: only the first of each class is used.
- * Usage: ./cover_search n k [split_depth worker nworkers] [-nb] [-np] [-ns] [-nw] [-nh]
+ * Usage: ./cover_search n k [split_depth worker nworkers] [-nb] [-np] [-ns] [-ss] [-nw] [-nh] [-ne]
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -284,7 +284,7 @@ static void rec(int x, int q_prev) {
     if (use_sym) {
         int ids[MAXN], m2 = 0;
         for (int c = 0; c < n; c++) if (csize[c] > 0) ids[m2++] = c;
-        for (int i = 0; i < m2; i++) canon_component(ids[i], cbuf[ids[i]]);
+        for (int i = 0; i < m2; i++) { if (use_sym == 2 && csize[ids[i]] > 1) snprintf(cbuf[ids[i]], 32, "ID%d", ids[i]); else canon_component(ids[i], cbuf[ids[i]]); }
         /* class representatives: first with each string; but pairs within a class need the first two */
         int used[MAXN] = {0};
         for (int i = 0; i < m2; i++) {
@@ -402,13 +402,13 @@ static void rec(int x, int q_prev) {
 }
 
 int main(int argc, char **argv) {
-    if (argc < 3) { fprintf(stderr, "usage: %s n k [split_depth worker nworkers] [-nb] [-np] [-ns] [-nw] [-nh]\n", argv[0]); return 1; }
+    if (argc < 3) { fprintf(stderr, "usage: %s n k [split_depth worker nworkers] [-nb] [-np] [-ns] [-ss] [-nw] [-nh] [-ne]\n", argv[0]); return 1; }
     n = atoi(argv[1]); k = atoi(argv[2]);
     int ai = 3;
     if (argc >= 6 && argv[3][0] != '-') { split_depth = atoi(argv[3]); worker = atoi(argv[4]); nworkers = atoi(argv[5]); ai = 6; }
     for (; ai < argc; ai++) {
         if (!strcmp(argv[ai], "-nb")) use_block = 0; if (!strcmp(argv[ai], "-np")) use_parity = 0;
-        if (!strcmp(argv[ai], "-ns")) use_sym = 0; if (!strcmp(argv[ai], "-nw")) use_wbound = 0; if (!strcmp(argv[ai], "-nh")) use_hall = 0; if (!strcmp(argv[ai], "-ne")) use_exact = 0; if (!strncmp(argv[ai], "-rem", 4)) exact_rem_max = atoi(argv[ai]+4); if (!strncmp(argv[ai], "-prod", 5)) prod_cap = atof(argv[ai]+5);
+        if (!strcmp(argv[ai], "-ns")) use_sym = 0; if (!strcmp(argv[ai], "-ss")) use_sym = 2; if (!strcmp(argv[ai], "-nw")) use_wbound = 0; if (!strcmp(argv[ai], "-nh")) use_hall = 0; if (!strcmp(argv[ai], "-ne")) use_exact = 0; if (!strncmp(argv[ai], "-rem", 4)) exact_rem_max = atoi(argv[ai]+4); if (!strncmp(argv[ai], "-prod", 5)) prod_cap = atof(argv[ai]+5);
     }
     if (k > MAXK) { fprintf(stderr, "k too large\n"); return 1; }
     N = n * (n - 1) / 2; B = N - k;
