@@ -44,7 +44,7 @@ whole-block bounds after Ghodsi 2026 Thm 4.1, isomorphic-component
 symmetry), NOTE §2. Caveats: the n = 11 and n = 12 repeat-allowed
 refutations are single-engine (two variants of the engine agree to the
 node; the minimal engine independently refutes k = 42 at n = 10; the SAT
-engine replicates n = 7, 8 fully and 17/47 shapes of n = 9);
+engine replicates n = 7, 8, 9 fully, all 47 shapes UNSAT at n = 9, k = 35);
 Leech 1975, Guy §C10 and the two Leech-index papers were not readable
 (paywalled) and are cited (secondary). New directory
 `conjectures/leech-tree-labelling/` (README, NOTE, WRITEUP, PAGE.md,
@@ -158,7 +158,8 @@ refutation for the upper bound; a(12) as a stretch.
   repeat-allowed mode (lost sums are excess anyway), was guarded in
   distinct mode; it never triggered.
 - The SAT engine (one CNF per shape, unary adders) is correct but slow:
-  1–3 minutes per shape at n = 9, so it cannot replicate n = 11.
+  1–4 minutes per shape at n = 9 (84 core-minutes for the 47 shapes), so it
+  cannot replicate n = 11.
 - Witness hunts at n = 12, k = 58, 59: nothing in 30 and 25 minutes; the
   refutation of 58 (budget 8) is projected at ~10¹¹ nodes, a day of four
   cores, so a(12) stays open today.

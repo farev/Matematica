@@ -34,7 +34,7 @@ integer 1..49, and no such tree covers 1..50. OEIS A007187 has carried only
 4. **Positive control.** The same program re-derives a(2..10) =
    1, 3, 6, 9, 15, 20, 26, 34, 41 from scratch (witnesses checked, refutations
    with recorded node counts), and an independent SAT engine (one CNF per
-   tree shape) agrees at n = 7, 8 and on 17 of the 47 shapes at n = 9; a
+   tree shape) agrees at n = 7, 8 and 9 (all 47 shapes at n = 9 UNSAT); a
    deliberately minimal second search engine reproduces every value of both
    variants it was run on (repeats allowed: n ≤ 10; distinct: n ≤ 12).
 5. **A second sequence (CERTIFIED).** Forbidding repeated path sums (the
@@ -65,8 +65,8 @@ integer 1..49, and no such tree covers 1..50. OEIS A007187 has carried only
 ## 4. Caveats the page must carry
 
 - The n = 11 and n = 12 refutations are single-engine exhaustive searches
-  (one C program; two variants of it agree to the node, and a SAT engine
-  replicates it only for n ≤ 9). Say "exhaustive search" with the node
+  (one C program; two variants of it agree to the node; a minimal second
+  engine replicates n ≤ 10 and a SAT engine n ≤ 9). Say "exhaustive search" with the node
   counts, not "proof", and name the single-engine caveat.
 - Leech 1975 and Guy §C10 were not read (paywalled); their content is cited
   through OEIS A007187 and Ghodsi 2026 (secondary). The OEIS bound

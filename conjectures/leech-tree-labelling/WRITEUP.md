@@ -74,9 +74,9 @@ about ×4 per unit of excess budget at n = 11.
 unary edge weights bounded by Lemma 4, unary path sums through shared
 root-ward partial sums with exact unary adders (both clause families), and
 one coverage clause per value. It agrees with the search at n = 7 and 8
-(a(7) = 20, a(8) = 26, witnesses checked) but takes about a minute per shape
-at n = 9 while sharing the machine, so it is a replication tool for n ≤ 9/10,
-not for n = 11.
+(a(7) = 20, a(8) = 26, witnesses checked) and replicates the n = 9 refutation
+(all 47 shapes UNSAT, 84 core-minutes), but at 1–4 minutes per shape it is a
+replication tool for n ≤ 9, not for n = 11.
 
 ## Results
 
@@ -127,7 +127,7 @@ engine on every value they reach.
   variants. The lesson repeats the repository's: run the whole known ladder
   before every claim, and compare two implementations by node count, not
   by verdict.
-- The SAT engine at n = 11: a minute per shape at n = 9 extrapolates to
+- The SAT engine at n = 11: 1–4 minutes per shape at n = 9 extrapolates to
   hours per shape at n = 11; not attempted.
 
 ## Publication paths
