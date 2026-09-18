@@ -20,7 +20,7 @@ Page: [PENDING: fabianarevalo.com/leech-tree-labelling] · Write-up pipeline: `P
 | Claim | Label | Where |
 |---|---|---|
 | a(2..10) = 1, 3, 6, 9, 15, 20, 26, 34, 41 re-derived from scratch: witnesses checked by `code/check_cover.py`, refutations of k = a(n)+1 exhaustive (node counts in NOTE §3) | CERTIFIED (positive control, matches OEIS) | NOTE §3, `witnesses/` |
-| [PENDING: a(11)] | CERTIFIED | NOTE §4, `runs/` |
+| **a(11) = 49** (OEIS had a(11) ≥ 48): witness tree (0,1,1) (2,3,1) (0,4,2) (5,6,4) (3,6,5) (5,7,7) (6,8,8) (5,9,11) (2,10,22) (0,3,24) checked by `check_cover.py`; no tree on 11 vertices covers 1..50, exhaustive search of 1 400 728 816 nodes on four workers (≈ 5 min), plus the ladder k = 55..51 | CERTIFIED (single-engine refutation, see defects) | NOTE §4, `witnesses/n11_k49.txt`, `runs/run7_n11_k50_w*.txt` |
 | Lemmas 1–6 (weight window, monotone excess, budgeted parity, edge load, budgeted block bounds after Ghodsi Thm 4.1, symmetry) | PROVED | NOTE §2 |
 | [PENDING: n = 12 bounds] | CERTIFIED | NOTE §5 |
 
