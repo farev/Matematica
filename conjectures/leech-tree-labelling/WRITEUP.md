@@ -100,6 +100,23 @@ vertex at fixed budget (n = 10 → 11 at B = 2, 3). That puts a full
 determination of a(12) (refuting k = 58 if a(12) = 57, budget 8) at roughly
 10^11 nodes, a day of four cores, and n = 13 well beyond a session.
 
+**The distinct-sum variant.** A novelty check turned up the *Leech index*
+of Varghese–Lakshmanan–Arumugam (2022): the largest k realised by a labelling
+with all path weights distinct. That is a different problem from A007187,
+whose values our repeat-allowed engine reproduces exactly and whose
+witnesses repeat values freely. A `-d` mode (repeats forbidden, values above
+k tracked individually) gave the maximum Leech index over trees of order
+n = 2..12 as 1, 3, 6, 9, 15, 20, 25, 30, 37, 45, 47. Two things went wrong
+before that table was right: the first `-d` implementation only forbade
+repeats among values ≤ k (the n = 10 "witness" repeated 39 and 57 above k,
+caught by the checker's `--distinct` option), and the 128-bit sumset mask
+used by the block filters can lose sums ≥ 128, which in distinct mode would
+have turned a valid port pair into a rejected one (guarded now; in
+repeat-allowed mode the lost sums are excess anyway, so that mode was never
+affected). The minimal second engine `plain_search.c` and the n ≤ 7 brute
+force were written after these two incidents, and they agree with the main
+engine on every value they reach.
+
 ## What failed
 
 - The exact block cover as a general pruning rule: too expensive whenever

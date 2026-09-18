@@ -28,3 +28,24 @@ same program (matches the entry); the witness verified by an independent
 checker; k = 50 refuted on four independent worker prefixes; node counts
 reproduce on rerun. Not done: a second independently written engine at
 n = 11 (the SAT engine here replicates the search only for n ≤ 9).
+
+
+# Second draft: a new sequence, maximum Leech index over trees of order n
+
+**Name.** Largest k such that some tree on n nodes with positive integer edge
+labels has all C(n,2) path sums distinct and realizes every integer 1..k.
+
+**Data (offset 2).** 1, 3, 6, 9, 15, 20, 25, 30, 37, 45, 47
+
+**Comments.** The maximum over trees of order n of the Leech index k(T)
+defined by S. Varghese, A. Lakshmanan S. and S. Arumugam, J. Discrete Math.
+Sci. Cryptogr. 25 (2022) 2237-2247. a(n) <= A007187(n), with equality for
+n <= 7 and strict inequality for 8 <= n <= 11. a(n) = C(n,2) iff a Leech tree
+of order n exists (n = 2, 3, 4, 6 among n <= 24). a(n+1) >= a(n) (attach a
+pendant vertex by a sufficiently large weight).
+
+**Example.** a(11) = 45: edges (0,1,1), (2,3,2), (0,4,3), (2,5,5), (6,7,6),
+(3,6,8), (4,8,9), (8,7,11), (1,9,18), (5,10,28) give the 55 distinct sums
+1..45, 48, 49, 56, 58, 60, 63, 69, 72, 73, 91.
+
+**Crossrefs.** A007187, A004137 (sparse rulers; paths), A000055.

@@ -17,7 +17,36 @@ success: a(11) determined exactly with a checked witness and an exhaustive
 refutation, a(12) if it fell too, and the ladder a(2..10) re-derived from
 scratch as the positive control.
 
-**Result.** [PENDING — filled at the end of the session]
+**Result.** **CERTIFIED — a(11) = 49**, the first new term of OEIS A007187
+since Leech's 1975 table, one more than the bound "a(11) ≥ 48" the entry has
+carried unattributed. Lower bound: the tree (0,1,1) (2,3,1) (0,4,2) (5,6,4)
+(3,6,5) (5,7,7) (6,8,8) (5,9,11) (2,10,22) (0,3,24), whose 55 path sums are
+1..49 with 1, 11, 23, 25, 26, 39 doubled (independent checker; four
+witnesses in all, one per worker). Upper bound: exhaustive budgeted search
+refuting k = 50 in 1 400 728 816 nodes over four worker prefixes (259–304 s
+each), after refuting k = 55..51 (2.4 M, 26.5 M, 27.9 M, 121 M, 493 M
+nodes). Positive control: the same program re-derives a(2..10) = 1, 3, 6, 9,
+15, 20, 26, 34, 41 from scratch (witnesses checked, refutations with
+recorded node counts, n = 10 in 15 s). **CERTIFIED — a(12) ≥ 57** (OEIS:
+≥ 55), witness found in 95 s and checked; hunts at 58 and 59 (30 and 25 min)
+found nothing; **a(12) ≤ [PENDING]** by exhaustive refutation of
+k = [PENDING] ([PENDING] nodes). **CERTIFIED — a new sequence:** with all
+path sums required distinct (the maximum over trees of order n of the Leech
+index of Varghese–Lakshmanan–Arumugam 2022), the values for n = 2..12 are
+1, 3, 6, 9, 15, 20, 25, 30, 37, 45, 47, not in OEIS; witnesses checked with a
+distinctness option, every larger k refuted, and every value through n = 11
+reproduced by a deliberately minimal second engine (n = 12: [PENDING]);
+n ≤ 7 in both modes confirmed by brute force over all shapes and weight
+vectors. **PROVED:** the six pruning lemmas the searches rely on (weight
+window, monotone excess, budgeted parity after Taylor, edge load, budgeted
+whole-block bounds after Ghodsi 2026 Thm 4.1, isomorphic-component
+symmetry), NOTE §2. Caveats: the n = 11 and n = 12 repeat-allowed
+refutations are single-engine (two variants of the engine agree to the
+node; the SAT engine replicates n = 7, 8 fully and 17/47 shapes of n = 9);
+Leech 1975, Guy §C10 and the two Leech-index papers were not readable
+(paywalled) and are cited (secondary). New directory
+`conjectures/leech-tree-labelling/` (README, NOTE, WRITEUP, PAGE.md,
+OEIS_DRAFT.md, code, witnesses, run records); index row added.
 
 **Connectivity (checked 07:40 UTC).** arxiv.org reachable via WebFetch
 (math.NT and math.CO listings dated today, abstracts; PDFs via curl and
@@ -109,6 +138,38 @@ twelfth Schur value. Attempted result: **a(11) exactly**, with a
 checker-verified witness for the lower bound and an exhaustive, reproducible
 refutation for the upper bound; a(12) as a stretch.
 
-**What failed.** [PENDING]
+**What failed.**
+- Two global-buffer bugs in the C engine (a `static` undo buffer; candidate
+  lists and canonical strings shared across recursion depths). Both were
+  invisible to a single verdict and caught only by re-running the whole
+  known ladder and by comparing node counts between two engine variants
+  (which now agree exactly: 3 247 390 nodes at n = 10, k = 43). The stale
+  canonical strings could in principle skip a needed branch; in fact they
+  had only weakened the symmetry rule at n ≤ 10.
+- The exact block cover as a general rule: cut nodes 8× at n = 9 but cost
+  150 µs per node; only worthwhile near the leaves (≤ 4 components,
+  remaining budget ≤ 2, capped and fail-open).
+- The first distinct-sum mode forbade repeats only among values ≤ k; the
+  checker's distinctness option rejected the n = 10 witness (39 and 57
+  repeated above k). Fixed by tracking the at most B large values
+  individually. A related 128-bit overflow of the sumset mask, harmless in
+  repeat-allowed mode (lost sums are excess anyway), was guarded in
+  distinct mode; it never triggered.
+- The SAT engine (one CNF per shape, unary adders) is correct but slow:
+  1–3 minutes per shape at n = 9, so it cannot replicate n = 11.
+- Witness hunts at n = 12, k = 58, 59: nothing in 30 and 25 minutes; the
+  refutation of 58 (budget 8) is projected at ~10¹¹ nodes, a day of four
+  cores, so a(12) stays open today.
+- Primary sources: Leech 1975 (JSTOR), Guy §C10, Varghese et al. 2022 and
+  Lakshmanan–Eldho 2024 are paywalled; abstracts only.
 
-**Next.** [PENDING]
+**Next.** (1) a(12): refute k = 58 with the engine split over many prefixes
+(~10¹¹ nodes; a day of four cores, or an idle-time job), or find a witness
+at 58 with a randomised search order; the distinct-sum value at n = 13
+(78 pairs) should be minutes. (2) A second independently written engine at
+n = 11, k = 50, to lift the single-engine caveat; the minimal engine
+`plain_search.c` is the natural base but needs the block bound to finish.
+(3) Submit a(11) = 49 and the new distinct-sum sequence to OEIS
+(`OEIS_DRAFT.md`), and write to Varghese–Lakshmanan–Arumugam / Ghodsi, whose
+Leech-index and whole-block ideas this extends. (4) Georgiou's k-tile
+incomparable-tiling exceptional sets (candidate 2) remain a good target.

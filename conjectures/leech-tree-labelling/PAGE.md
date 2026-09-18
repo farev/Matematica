@@ -34,7 +34,11 @@ integer 1..49, and no such tree covers 1..50. OEIS A007187 has carried only
    1, 3, 6, 9, 15, 20, 26, 34, 41 from scratch (witnesses checked, refutations
    with recorded node counts), and an independent SAT engine (one CNF per
    tree shape) agrees at n = 7, 8 [PENDING: and n = 9].
-5. **Excess sequence.** C(n,2) − a(n) for n = 2..11 is 0,0,0,1,0,1,2,2,4,6:
+5. **A second sequence (CERTIFIED).** Forbidding repeated path sums (the
+   maximum "Leech index" of Varghese–Lakshmanan–Arumugam over all trees of
+   order n) gives 1, 3, 6, 9, 15, 20, 25, 30, 37, 45, 47 for n = 2..12, not in
+   OEIS; it agrees with a(n) up to n = 7 and falls behind from n = 8 on.
+6. **Excess sequence.** C(n,2) − a(n) for n = 2..11 is 0,0,0,1,0,1,2,2,4,6:
    the 11-vertex optimum wastes six of its 55 pairs, where a Leech tree
    (impossible at order 11 by Taylor's parity theorem) would waste none.
 
