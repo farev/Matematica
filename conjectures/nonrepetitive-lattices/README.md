@@ -13,6 +13,7 @@ published tables and try the next colour.
 
 **Status:** active
 **Sessions:** 2026-09-16
+**Write-up page:** <https://fabianarevalo.com/nonrepetitive-lattices> (published 2026-09-20).
 
 ## Results
 

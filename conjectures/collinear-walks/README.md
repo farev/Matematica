@@ -1,6 +1,6 @@
 # Unit-step walks with no three collinear points (Shallit's k_min, 2026)
 
-Page: <https://fabianarevalo.com/collinear-walks> (pending; see `PAGE.md`).
+**Write-up page:** <https://fabianarevalo.com/collinear-walks> (published 2026-09-20).
 
 Shallit (arXiv:2609.05780, 5 Sep 2026) proved that an infinite walk in ℕ¹⁶
 using only standard unit steps can avoid three collinear points, and asked

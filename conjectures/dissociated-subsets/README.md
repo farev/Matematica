@@ -12,7 +12,7 @@ for each `k` the question has a single first instance, "do `2^{k−1}` distinct 
 reals always contain a dissociated `k`-subset?" — a finite exact case analysis over the
 hyperplane arrangement of ±1 relations.
 
-Page: *(none yet — `PAGE.md` is the handoff)*.
+**Write-up page:** <https://fabianarevalo.com/dissociated-subsets> (published 2026-09-20).
 
 **Status:** active
 **Sessions:** 2026-09-08

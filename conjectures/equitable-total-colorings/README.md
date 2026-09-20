@@ -11,7 +11,7 @@ equivalently, whether `R` has minimum order — remarking that the question "is 
 reach of a systematic computational verification over the catalogue of connected cubic
 graphs of order at most 18". It was: one SAT instance per graph, with checkable proofs.
 
-Page: *(none yet — `PAGE.md` is the handoff)*.
+**Write-up page:** <https://fabianarevalo.com/equitable-total-colorings> (published 2026-09-20).
 
 **Status:** active (hedge computation of the 2026-09-08 session, run by a subagent)
 **Sessions:** 2026-09-08

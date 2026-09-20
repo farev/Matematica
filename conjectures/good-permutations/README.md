@@ -105,6 +105,9 @@ the structural engines at every n ≤ 31.
   resonant-length analysis of §4a. Merging them into one note is editorial
   mathematical work and was deliberately not attempted by the publish
   pass. Until it is done, no page should be built from either.
+  (Publish pass of 2026-09-20 read this and stood down: `PAGE.md` is left in
+  place, so the handoff still reads as pending. The reconciliation is a
+  session-sized job for whoever next picks the conjecture up.)
 - The exhaustive result depends on Lemma 2 (proved in NOTE §2 from the
   thread's argument, with the counting step made explicit). The plain
   engine cannot reach n = 63 (its n = 31 tree is 600× the structural one).

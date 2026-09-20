@@ -10,7 +10,7 @@ the perfect *Leech tree* problem (all C(n,2) sums distinct and equal to
 a covering tree wastes only C(n,2) − k pairs, so the forced-least-missing-weight
 recursion of the Leech-tree literature applies with a budget attached.
 
-Page: not yet built; the handoff is `PAGE.md` (to become fabianarevalo.com/leech-tree-labelling).
+**Write-up page:** <https://fabianarevalo.com/leech-tree-labelling> (published 2026-09-20).
 
 **Status:** active
 **Sessions:** 2026-09-18
