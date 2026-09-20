@@ -13,6 +13,15 @@ certified milestones (`f(10) > m` for every exhausted maximum `m`).
 
 **Status:** active
 **Sessions:** 2026-08-13
+
+**Status note (2026-09-09, secondary, not verified against a primary
+write-up).** erdosproblems.com/1 was moved to "solved" on 2026-09-03: the
+page reports that the `≥ c·2^n` conjecture is **disproved** ("disproved by
+GPT-6 Astra … for any ε > 0 there are arbitrarily large n such that
+N ≤ ε·2^n"; exposition by Bloom edited 03 Sep 2026, non-quantitative). Nothing
+in this directory depends on the conjecture's truth: `f(n)` for small n and
+the `f(10)` frontier are unaffected. A local session should read Bloom's
+exposition before repeating the claim anywhere else.
 **Write-up page:** [fabianarevalo.com/distinct-subset-sums](https://fabianarevalo.com/distinct-subset-sums)
 
 ## Results

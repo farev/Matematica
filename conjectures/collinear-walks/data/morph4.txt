@@ -1,0 +1,13 @@
+k=4 L=4 N=1500 candidates=24 survivors=0
+k=4 L=5 N=1500 candidates=66 survivors=0
+k=4 L=6 N=1500 candidates=162 survivors=0
+k=4 L=7 N=1500 candidates=396 survivors=0
+k=4 L=8 N=1500 candidates=894 survivors=0
+k=4 L=9 N=1500 candidates=1968 survivors=0
+k=4 L=10 N=1500 candidates=3840 survivors=0
+k=4 L=11 N=1500 candidates=7296 survivors=0
+k=4 L=12 N=1500 candidates=11796 survivors=0
+k=4 L=13 N=1500 candidates=18768 survivors=0
+k=4 L=14 N=1500 candidates=28710 survivors=0
+k=4 L=15 N=1500 candidates=43290 survivors=0
+k=4 L=16 N=1500 candidates=62634 survivors=0
