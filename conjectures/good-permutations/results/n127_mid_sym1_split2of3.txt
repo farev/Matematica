@@ -1,0 +1,1 @@
+n=127 sym=1 split=2/3 count=0 nodes=5237606652 time=1975.85s
