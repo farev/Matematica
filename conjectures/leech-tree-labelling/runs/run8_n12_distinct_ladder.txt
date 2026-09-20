@@ -1,0 +1,21 @@
+RESULT distinct n=12 k=66 B=0 worker=0/1 split=-1 found=0 nodes=1 pruned_parity=1 pruned_block=0 pruned_hall=0 pruned_exact=0 exact_capped=0 secs=0.00
+RESULT distinct n=12 k=65 B=1 worker=0/1 split=-1 found=0 nodes=1 pruned_parity=1 pruned_block=0 pruned_hall=0 pruned_exact=0 exact_capped=0 secs=0.00
+RESULT distinct n=12 k=64 B=2 worker=0/1 split=-1 found=0 nodes=3053820 pruned_parity=462936 pruned_block=2199544 pruned_hall=287357 pruned_exact=218010 exact_capped=0 secs=7.95
+RESULT distinct n=12 k=63 B=3 worker=0/1 split=-1 found=0 nodes=4565290 pruned_parity=134346 pruned_block=3729600 pruned_hall=391026 pruned_exact=20 exact_capped=0 secs=10.97
+RESULT distinct n=12 k=62 B=4 worker=0/1 split=-1 found=0 nodes=4717046 pruned_parity=140394 pruned_block=3843882 pruned_hall=435888 pruned_exact=16 exact_capped=0 secs=11.56
+RESULT distinct n=12 k=61 B=5 worker=0/1 split=-1 found=0 nodes=4878012 pruned_parity=820 pruned_block=4112482 pruned_hall=482780 pruned_exact=12 exact_capped=0 secs=11.94
+RESULT distinct n=12 k=60 B=6 worker=0/1 split=-1 found=0 nodes=5015514 pruned_parity=940 pruned_block=4220066 pruned_hall=517396 pruned_exact=0 exact_capped=0 secs=12.24
+RESULT distinct n=12 k=59 B=7 worker=0/1 split=-1 found=0 nodes=5119644 pruned_parity=1072 pruned_block=4304062 pruned_hall=547666 pruned_exact=12 exact_capped=0 secs=12.63
+RESULT distinct n=12 k=58 B=8 worker=0/1 split=-1 found=0 nodes=5217806 pruned_parity=1100 pruned_block=4384374 pruned_hall=572832 pruned_exact=8 exact_capped=0 secs=12.82
+RESULT distinct n=12 k=57 B=9 worker=0/1 split=-1 found=0 nodes=5307212 pruned_parity=1100 pruned_block=4456128 pruned_hall=594784 pruned_exact=8 exact_capped=0 secs=12.59
+RESULT distinct n=12 k=56 B=10 worker=0/1 split=-1 found=0 nodes=5370498 pruned_parity=1140 pruned_block=4507456 pruned_hall=610074 pruned_exact=8 exact_capped=0 secs=12.48
+RESULT distinct n=12 k=55 B=11 worker=0/1 split=-1 found=0 nodes=5433508 pruned_parity=1200 pruned_block=4559754 pruned_hall=626152 pruned_exact=8 exact_capped=0 secs=12.85
+RESULT distinct n=12 k=54 B=12 worker=0/1 split=-1 found=0 nodes=5505750 pruned_parity=0 pruned_block=4620420 pruned_hall=638870 pruned_exact=8 exact_capped=0 secs=13.02
+RESULT distinct n=12 k=53 B=13 worker=0/1 split=-1 found=0 nodes=5548842 pruned_parity=0 pruned_block=4654218 pruned_hall=650568 pruned_exact=8 exact_capped=0 secs=13.02
+RESULT distinct n=12 k=52 B=14 worker=0/1 split=-1 found=0 nodes=5582592 pruned_parity=0 pruned_block=4679252 pruned_hall=658588 pruned_exact=0 exact_capped=0 secs=12.85
+RESULT distinct n=12 k=51 B=15 worker=0/1 split=-1 found=0 nodes=5665802 pruned_parity=0 pruned_block=4748118 pruned_hall=665726 pruned_exact=0 exact_capped=0 secs=12.98
+RESULT distinct n=12 k=50 B=16 worker=0/1 split=-1 found=0 nodes=5739498 pruned_parity=0 pruned_block=4809732 pruned_hall=670464 pruned_exact=0 exact_capped=0 secs=12.84
+RESULT distinct n=12 k=49 B=17 worker=0/1 split=-1 found=0 nodes=5780864 secs=12.85
+RESULT distinct n=12 k=48 B=18 worker=0/1 split=-1 found=0 nodes=5854778 secs=12.80
+WITNESS n=12 k=47 edges: (0,1,1) (2,3,2) (4,5,3) (2,6,4) (7,8,5) (0,9,7) (1,10,9) (4,7,11) (5,11,12) (9,11,13) (8,6,18)
+RESULT distinct n=12 k=47 B=19 worker=0/1 split=-1 found=1 nodes=4816673 secs=10.19

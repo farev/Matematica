@@ -1,0 +1,2 @@
+WITNESS n=11 k=49 edges: (0,1,1) (2,3,1) (0,4,2) (5,6,4) (7,8,4) (2,5,5) (7,9,7) (5,7,8) (3,10,22) (0,2,24)
+RESULT n=11 k=49 B=6 worker=1/4 split=5 found=1 nodes=90432430 pruned_parity=956293 pruned_block=86532917 pruned_hall=184276 pruned_exact=1134833 exact_capped=0 secs=67.82

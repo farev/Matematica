@@ -1,0 +1,56 @@
+RESULT distinct n=8 k=28 B=0 worker=0/1 split=-1 found=0 nodes=1 secs=0.00
+RESULT distinct n=8 k=27 B=1 worker=0/1 split=-1 found=0 nodes=1247 secs=0.00
+RESULT distinct n=8 k=26 B=2 worker=0/1 split=-1 found=0 nodes=1537 secs=0.00
+n=8 distinct a(n)=25 :: nodes=1691
+   OK (distinct) n=8 k=25: all of 1..25 realized; 28 pairs, excess pairs = 3, max distance = 39
+RESULT distinct n=9 k=36 B=0 worker=0/1 split=-1 found=0 nodes=7609 secs=0.02
+RESULT distinct n=9 k=35 B=1 worker=0/1 split=-1 found=0 nodes=9713 secs=0.02
+RESULT distinct n=9 k=34 B=2 worker=0/1 split=-1 found=0 nodes=12449 secs=0.02
+RESULT distinct n=9 k=33 B=3 worker=0/1 split=-1 found=0 nodes=23099 secs=0.03
+RESULT distinct n=9 k=32 B=4 worker=0/1 split=-1 found=0 nodes=24595 secs=0.03
+RESULT distinct n=9 k=31 B=5 worker=0/1 split=-1 found=0 nodes=25511 secs=0.03
+n=9 distinct a(n)=30 :: nodes=1183
+   OK (distinct) n=9 k=30: all of 1..30 realized; 36 pairs, excess pairs = 6, max distance = 45
+RESULT distinct n=10 k=45 B=0 worker=0/1 split=-1 found=0 nodes=1 secs=0.00
+RESULT distinct n=10 k=44 B=1 worker=0/1 split=-1 found=0 nodes=1 secs=0.00
+RESULT distinct n=10 k=43 B=2 worker=0/1 split=-1 found=0 nodes=74536 secs=0.14
+RESULT distinct n=10 k=42 B=3 worker=0/1 split=-1 found=0 nodes=128522 secs=0.21
+RESULT distinct n=10 k=41 B=4 worker=0/1 split=-1 found=0 nodes=132514 secs=0.20
+RESULT distinct n=10 k=40 B=5 worker=0/1 split=-1 found=0 nodes=137100 secs=0.21
+RESULT distinct n=10 k=39 B=6 worker=0/1 split=-1 found=0 nodes=142138 secs=0.22
+RESULT distinct n=10 k=38 B=7 worker=0/1 split=-1 found=0 nodes=144580 secs=0.21
+n=10 distinct a(n)=37 :: nodes=90633
+   OK (distinct) n=10 k=37: all of 1..37 realized; 45 pairs, excess pairs = 8, max distance = 73
+RESULT distinct n=11 k=55 B=0 worker=0/1 split=-1 found=0 nodes=364140 secs=0.85
+RESULT distinct n=11 k=54 B=1 worker=0/1 split=-1 found=0 nodes=424020 secs=0.98
+RESULT distinct n=11 k=53 B=2 worker=0/1 split=-1 found=0 nodes=479564 secs=1.05
+RESULT distinct n=11 k=52 B=3 worker=0/1 split=-1 found=0 nodes=683688 secs=1.32
+RESULT distinct n=11 k=51 B=4 worker=0/1 split=-1 found=0 nodes=786086 secs=1.59
+RESULT distinct n=11 k=50 B=5 worker=0/1 split=-1 found=0 nodes=802930 secs=1.57
+RESULT distinct n=11 k=49 B=6 worker=0/1 split=-1 found=0 nodes=819722 secs=1.59
+RESULT distinct n=11 k=48 B=7 worker=0/1 split=-1 found=0 nodes=829786 secs=1.59
+RESULT distinct n=11 k=47 B=8 worker=0/1 split=-1 found=0 nodes=842046 secs=1.60
+RESULT distinct n=11 k=46 B=9 worker=0/1 split=-1 found=0 nodes=853310 secs=1.67
+n=11 distinct a(n)=45 :: nodes=379582
+   OK (distinct) n=11 k=45: all of 1..45 realized; 55 pairs, excess pairs = 10, max distance = 91
+RESULT distinct n=12 k=66 B=0 worker=0/1 split=-1 found=0 nodes=1 secs=0.00
+RESULT distinct n=12 k=65 B=1 worker=0/1 split=-1 found=0 nodes=1 secs=0.00
+RESULT distinct n=12 k=64 B=2 worker=0/1 split=-1 found=0 nodes=3053820 secs=8.30
+RESULT distinct n=12 k=63 B=3 worker=0/1 split=-1 found=0 nodes=4565290 secs=11.42
+RESULT distinct n=12 k=62 B=4 worker=0/1 split=-1 found=0 nodes=4717046 secs=11.75
+RESULT distinct n=12 k=61 B=5 worker=0/1 split=-1 found=0 nodes=4878012 secs=12.27
+RESULT distinct n=12 k=60 B=6 worker=0/1 split=-1 found=0 nodes=5015514 secs=12.53
+RESULT distinct n=12 k=59 B=7 worker=0/1 split=-1 found=0 nodes=5119644 secs=12.82
+RESULT distinct n=12 k=58 B=8 worker=0/1 split=-1 found=0 nodes=5217806 secs=13.07
+RESULT distinct n=12 k=57 B=9 worker=0/1 split=-1 found=0 nodes=5307212 secs=13.23
+RESULT distinct n=12 k=56 B=10 worker=0/1 split=-1 found=0 nodes=5370498 secs=13.31
+RESULT distinct n=12 k=55 B=11 worker=0/1 split=-1 found=0 nodes=5433508 secs=13.39
+RESULT distinct n=12 k=54 B=12 worker=0/1 split=-1 found=0 nodes=5505750 secs=13.41
+RESULT distinct n=12 k=53 B=13 worker=0/1 split=-1 found=0 nodes=5548842 secs=13.57
+RESULT distinct n=12 k=52 B=14 worker=0/1 split=-1 found=0 nodes=5582592 secs=13.35
+RESULT distinct n=12 k=51 B=15 worker=0/1 split=-1 found=0 nodes=5665802 secs=13.51
+RESULT distinct n=12 k=50 B=16 worker=0/1 split=-1 found=0 nodes=5739498 secs=13.29
+RESULT distinct n=12 k=49 B=17 worker=0/1 split=-1 found=0 nodes=5780864 secs=13.44
+RESULT distinct n=12 k=48 B=18 worker=0/1 split=-1 found=0 nodes=5854778 secs=13.36
+n=12 distinct a(n)=47 :: nodes=4816673
+   OK (distinct) n=12 k=47: all of 1..47 realized; 66 pairs, excess pairs = 19, max distance = 85

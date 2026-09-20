@@ -1,0 +1,21 @@
+PLAIN distinct n=12 k=66 found=0 nodes=8236529
+PLAIN distinct n=12 k=65 found=0 nodes=8921969
+PLAIN distinct n=12 k=64 found=0 nodes=9118581
+PLAIN distinct n=12 k=63 found=0 nodes=9202983
+PLAIN distinct n=12 k=62 found=0 nodes=9272755
+PLAIN distinct n=12 k=61 found=0 nodes=9336141
+PLAIN distinct n=12 k=60 found=0 nodes=9387069
+PLAIN distinct n=12 k=59 found=0 nodes=9424755
+PLAIN distinct n=12 k=58 found=0 nodes=9465503
+PLAIN distinct n=12 k=57 found=0 nodes=9504339
+PLAIN distinct n=12 k=56 found=0 nodes=9542045
+PLAIN distinct n=12 k=55 found=0 nodes=9583503
+PLAIN distinct n=12 k=54 found=0 nodes=9613271
+PLAIN distinct n=12 k=53 found=0 nodes=9627075
+PLAIN distinct n=12 k=52 found=0 nodes=9632571
+PLAIN distinct n=12 k=51 found=0 nodes=9637123
+PLAIN distinct n=12 k=50 found=0 nodes=9641611
+PLAIN distinct n=12 k=49 found=0 nodes=9646373
+PLAIN distinct n=12 k=48 found=0 nodes=9652143
+WITNESS n=12 k=47 edges: (0,1,1) (2,3,2) (4,5,3) (2,6,4) (7,8,5) (0,9,7) (1,10,9) (4,7,11) (5,11,12) (9,11,13) (8,6,18) (rest free)
+PLAIN distinct n=12 k=47 found=1 nodes=7992118
