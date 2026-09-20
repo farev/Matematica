@@ -1,0 +1,4 @@
+sp_trioff23_c8: tri spiraloff:23 V=23 E=51 C=8 :: simple paths (directed, all lengths): 194113939; repetitively coloured: 0 | NONREPETITIVE (exit 0)
+sp_trish23_c8: tri spiral:23 V=23 E=50 C=8 :: simple paths (directed, all lengths): 119984959; repetitively coloured: 0 | NONREPETITIVE (exit 0)
+sp_trirect25_c8: tri rect:5:5 V=25 E=56 C=8 :: simple paths (directed, all lengths): 898699089; repetitively coloured: 0 | NONREPETITIVE (exit 0)
+sp_king20_c8: king spiral:20 V=20 E=55 C=8 :: simple paths (directed, all lengths): 659935616; repetitively coloured: 0 | NONREPETITIVE (exit 0)
