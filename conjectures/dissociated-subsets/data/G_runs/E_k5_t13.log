@@ -1,0 +1,16 @@
+[E] k=5: 80 sign vectors, 121 etas; target=13
+  new best |E| = 4  W=[]  t=None
+  new best |E| = 5  W=[]  t=None
+  new best |E| = 6  W=[]  t=None
+  new best |E| = 7  W=[[2, 3, 0, -1], [1, 0, 2, -1]]  t=None
+  new best |E| = 8  W=[[2, 3, 0, -1], [1, 0, 2, -1]]  t=None
+  new best |E| = 9  W=[[2, 3, 0, -1], [1, 0, 2, -1]]  t=None
+  new best |E| = 10  W=[[2, 3, 0, -1], [1, 0, 2, -1]]  t=None
+  new best |E| = 11  W=[[2, 3, 0, -1], [1, 0, 2, -1], [1, -1, -2, 1]]  t=[2, 4, 7, 16]
+  new best |E| = 12  W=[[0, 1, 2, -1], [0, 2, -1, 0], [3, 0, -1, 0]]  t=[2, 3, 6, 15]
+  new best |E| = 13  W=[[0, 1, 2, -1], [0, 2, -1, 0], [3, 0, -1, 0]]  t=[2, 3, 6, 15]
+[E] best |E| = 13; nodes=250 cuts=2156 numeric_nodes=2933 lp_calls=52687 lp_unverified=0 time=807.0s stop=True
+   point t = [2, 3, 6, 15] set [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 15]
+   point t = [2, 3, 6, 15] set [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 15]
+[E] RESULT: found a set of 13 positive reals with no dissociated 5-subset
+exit 0

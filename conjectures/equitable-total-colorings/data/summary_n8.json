@@ -1,0 +1,20 @@
+{
+ "n": 8,
+ "tag": "n8",
+ "counts": {
+  "total": 5,
+  "E": 4,
+  "X": 0,
+  "T2": 1
+ },
+ "wall_s": 0.01,
+ "t_equitable_solve_s": 0.01,
+ "t_plain_solve_s": 0.0,
+ "counterexamples": [],
+ "type2": [
+  "GCrb`o"
+ ],
+ "equitable_class_size_configs": {
+  "(5, 5, 5, 5)": 4
+ }
+}

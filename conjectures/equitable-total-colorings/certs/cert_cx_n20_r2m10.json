@@ -1,0 +1,117 @@
+[
+ {
+  "tag": "n20_r2m10_X_0000_SQQQQQQUBQMQYQAaQwQLQeQQWOCBQQBUQ_eq_symbreak",
+  "n": 20,
+  "equitable": true,
+  "symbreak": true,
+  "nclauses": 8442,
+  "nvars": 3948,
+  "proof": "proofs/n20_r2m10_X_0000_SQQQQQQUBQMQYQAaQwQLQeQQWOCBQQBUQ_eq_symbreak.drup",
+  "proof_lines": 3184,
+  "seconds": 0.141
+ },
+ {
+  "tag": "n20_r2m10_X_0000_SQQQQQQUBQMQYQAaQwQLQeQQWOCBQQBUQ_eq_nosymbreak",
+  "n": 20,
+  "equitable": true,
+  "symbreak": false,
+  "nclauses": 8438,
+  "nvars": 3948,
+  "proof": "proofs/n20_r2m10_X_0000_SQQQQQQUBQMQYQAaQwQLQeQQWOCBQQBUQ_eq_nosymbreak.drup",
+  "proof_lines": 7875,
+  "seconds": 0.437,
+  "graph6": "S??????_B?M?Y?@a?w?L?e??WOCB??B_?"
+ },
+ {
+  "tag": "n20_r2m10_X_0001_SQQQQQQUBQQAcCFQAoQYQQwQBUBAQBQOQ_eq_symbreak",
+  "n": 20,
+  "equitable": true,
+  "symbreak": true,
+  "nclauses": 8442,
+  "nvars": 3948,
+  "proof": "proofs/n20_r2m10_X_0001_SQQQQQQUBQQAcCFQAoQYQQwQBUBAQBQOQ_eq_symbreak.drup",
+  "proof_lines": 3921,
+  "seconds": 0.081
+ },
+ {
+  "tag": "n20_r2m10_X_0001_SQQQQQQUBQQAcCFQAoQYQQwQBUBAQBQOQ_eq_nosymbreak",
+  "n": 20,
+  "equitable": true,
+  "symbreak": false,
+  "nclauses": 8438,
+  "nvars": 3948,
+  "proof": "proofs/n20_r2m10_X_0001_SQQQQQQUBQQAcCFQAoQYQQwQBUBAQBQOQ_eq_nosymbreak.drup",
+  "proof_lines": 4736,
+  "seconds": 0.173,
+  "graph6": "S??????_B?QAcCF?@o?Y??w?B_B@?B?O?"
+ },
+ {
+  "tag": "n20_r2m10_X_0002_SQQQQAQOAQYQQGkQCaQPOAEQRQQUQQMQQ_eq_symbreak",
+  "n": 20,
+  "equitable": true,
+  "symbreak": true,
+  "nclauses": 8442,
+  "nvars": 3948,
+  "proof": "proofs/n20_r2m10_X_0002_SQQQQAQOAQYQQGkQCaQPOAEQRQQUQQMQQ_eq_symbreak.drup",
+  "proof_lines": 2896,
+  "seconds": 0.118
+ },
+ {
+  "tag": "n20_r2m10_X_0002_SQQQQAQOAQYQQGkQCaQPOAEQRQQUQQMQQ_eq_nosymbreak",
+  "n": 20,
+  "equitable": true,
+  "symbreak": false,
+  "nclauses": 8438,
+  "nvars": 3948,
+  "proof": "proofs/n20_r2m10_X_0002_SQQQQAQOAQYQQGkQCaQPOAEQRQQUQQMQQ_eq_nosymbreak.drup",
+  "proof_lines": 13889,
+  "seconds": 0.714,
+  "graph6": "S????A?O@?Y?QGk?Ca?PO@E?R??U??M??"
+ },
+ {
+  "tag": "n20_r2m10_X_0003_SQQQQAQOAQBUEUeQWGAAUAcQeQAAOQBOQ_eq_symbreak",
+  "n": 20,
+  "equitable": true,
+  "symbreak": true,
+  "nclauses": 8442,
+  "nvars": 3948,
+  "proof": "proofs/n20_r2m10_X_0003_SQQQQAQOAQBUEUeQWGAAUAcQeQAAOQBOQ_eq_symbreak.drup",
+  "proof_lines": 3248,
+  "seconds": 0.105
+ },
+ {
+  "tag": "n20_r2m10_X_0003_SQQQQAQOAQBUEUeQWGAAUAcQeQAAOQBOQ_eq_nosymbreak",
+  "n": 20,
+  "equitable": true,
+  "symbreak": false,
+  "nclauses": 8438,
+  "nvars": 3948,
+  "proof": "proofs/n20_r2m10_X_0003_SQQQQAQOAQBUEUeQWGAAUAcQeQAAOQBOQ_eq_nosymbreak.drup",
+  "proof_lines": 13843,
+  "seconds": 0.851,
+  "graph6": "S????A?O@?B_E_e?WGAA_@c?e?@@O?BO?"
+ },
+ {
+  "tag": "n20_r2m10_X_0004_SQQQQAQOAQWCwQKCAEQwQQqQBGQLQQYQQ_eq_symbreak",
+  "n": 20,
+  "equitable": true,
+  "symbreak": true,
+  "nclauses": 8442,
+  "nvars": 3948,
+  "proof": "proofs/n20_r2m10_X_0004_SQQQQAQOAQWCwQKCAEQwQQqQBGQLQQYQQ_eq_symbreak.drup",
+  "proof_lines": 2169,
+  "seconds": 0.115
+ },
+ {
+  "tag": "n20_r2m10_X_0004_SQQQQAQOAQWCwQKCAEQwQQqQBGQLQQYQQ_eq_nosymbreak",
+  "n": 20,
+  "equitable": true,
+  "symbreak": false,
+  "nclauses": 8438,
+  "nvars": 3948,
+  "proof": "proofs/n20_r2m10_X_0004_SQQQQAQOAQWCwQKCAEQwQQqQBGQLQQYQQ_eq_nosymbreak.drup",
+  "proof_lines": 12086,
+  "seconds": 0.623,
+  "graph6": "S????A?O@?WCw?KCAE?w??q?BG?[??Y??"
+ }
+]

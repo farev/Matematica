@@ -1,0 +1,14 @@
+[
+ {
+  "tag": "n8_T2_0000_GCrbGo",
+  "n": 8,
+  "equitable": false,
+  "symbreak": true,
+  "nclauses": 384,
+  "nvars": 80,
+  "proof": "proofs/n8_T2_0000_GCrbGo.drup",
+  "proof_lines": 207,
+  "seconds": 0.004,
+  "graph6": "GCrb`o"
+ }
+]

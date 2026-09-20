@@ -1,0 +1,29 @@
+{
+ "n": 10,
+ "tag": "n10",
+ "counts": {
+  "total": 19,
+  "E": 9,
+  "X": 0,
+  "T2": 10
+ },
+ "wall_s": 0.08,
+ "t_equitable_solve_s": 0.06,
+ "t_plain_solve_s": 0.01,
+ "counterexamples": [],
+ "type2": [
+  "I?Bcu`gM?",
+  "I?bFB_wF?",
+  "I?bEHow[?",
+  "I?`bfAWF?",
+  "I?`cu`oJ?",
+  "I?`bM_we?",
+  "I?`cm`gM?",
+  "I?`cmPoM?",
+  "I?`amQoM?",
+  "I?`c]`oM?"
+ ],
+ "equitable_class_size_configs": {
+  "(7, 6, 6, 6)": 9
+ }
+}

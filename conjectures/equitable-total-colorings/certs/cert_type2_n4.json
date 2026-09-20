@@ -1,0 +1,14 @@
+[
+ {
+  "tag": "n4_T2_0000_CT",
+  "n": 4,
+  "equitable": false,
+  "symbreak": true,
+  "nclauses": 194,
+  "nvars": 40,
+  "proof": "proofs/n4_T2_0000_CT.drup",
+  "proof_lines": 168,
+  "seconds": 0.003,
+  "graph6": "C~"
+ }
+]

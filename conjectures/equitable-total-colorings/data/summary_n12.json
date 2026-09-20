@@ -1,0 +1,44 @@
+{
+ "n": 12,
+ "tag": "n12",
+ "counts": {
+  "total": 85,
+  "E": 60,
+  "X": 0,
+  "T2": 25
+ },
+ "wall_s": 0.36,
+ "t_equitable_solve_s": 0.31,
+ "t_plain_solve_s": 0.03,
+ "counterexamples": [],
+ "type2": [
+  "K??FEb_F?wD_",
+  "K??FEbGL@WB_",
+  "K??FEaKY@gB_",
+  "K?AEF@oM?w@o",
+  "K?AEEHaM@oB_",
+  "K?AEEDcF@oF?",
+  "K?ABF@ce?sB_",
+  "K?ABEb_J?sB_",
+  "K?ABBb_e?[B_",
+  "K?ABBb_E_wP_",
+  "K?ABB`gEcgP_",
+  "K?ABCqWUBGCo",
+  "K?ABApok?[P_",
+  "K?ABApoMCWOo",
+  "K?ABCiWFBOKO",
+  "K?ABCiKU@oKO",
+  "K?ABEDoM?wP_",
+  "K?ABEESU@WF?",
+  "K?ABBF_e?wB_",
+  "K?ABCfOY?wD_",
+  "K?ABCeWU@WK_",
+  "K?ABCN_U?wF?",
+  "K?BD?pSw@SBG",
+  "K?`@Eb_F?[EO",
+  "K?`@Cr_T?[EO"
+ ],
+ "equitable_class_size_configs": {
+  "(8, 8, 7, 7)": 60
+ }
+}

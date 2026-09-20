@@ -1,0 +1,16 @@
+O???CB?wB@F?@o@oB_?s?	n=16	all	colorings(up to color perm)=64	configs={(11, 10, 10, 9): 64}	2.3s
+O???CB?oR@BGM?D_@o@K?	n=16	all	colorings(up to color perm)=240	configs={(11, 10, 10, 9): 240}	2.5s
+O???CB?gGwB_S_Q_CW@I?	n=16	all	colorings(up to color perm)=80	configs={(11, 10, 10, 9): 80}	2.4s
+O???C@_[F?P_E_E_?w?J?	n=16	all	colorings(up to color perm)=40	configs={(11, 10, 10, 9): 40}	2.9s
+O???C@_FAoF?w?`_?w?F?	n=16	all	colorings(up to color perm)=24	configs={(11, 10, 10, 9): 24}	2.9s
+O???C@_cSoAgB_B_KOB@?	n=16	all	colorings(up to color perm)=96	configs={(11, 10, 10, 9): 96}	1.7s
+O???C@_cSQAoD_R?DOB@?	n=16	all	colorings(up to color perm)=96	configs={(11, 10, 10, 9): 96}	1.3s
+O???C@_cSQBC[?P_@o@K?	n=16	all	colorings(up to color perm)=32	configs={(11, 10, 10, 9): 32}	1.6s
+O???C@_oJABGe?D_Co?[?	n=16	all	colorings(up to color perm)=96	configs={(11, 10, 10, 9): 96}	2.8s
+O???C@_WN?R?EO@oAo?[?	n=16	all	colorings(up to color perm)=64	configs={(11, 10, 10, 9): 64}	2.4s
+O???C@_cN?L?B_B_Ag?e?	n=16	all	colorings(up to color perm)=48	configs={(11, 10, 10, 9): 48}	3.2s
+O???C@_cKaHGY?B_Ao@K?	n=16	all	colorings(up to color perm)=28	configs={(11, 10, 10, 9): 28}	2.3s
+O???C@_SN?PGEOD_Co?[?	n=16	all	colorings(up to color perm)=116	configs={(11, 10, 10, 9): 116}	2.2s
+O??CA?_sF?D_EGBG?w?e?	n=16	all	colorings(up to color perm)=28	configs={(11, 10, 10, 9): 28}	2.1s
+O??CA?_sF?DCEGF??w?M?	n=16	all	colorings(up to color perm)=16	configs={(11, 10, 10, 9): 16}	2.0s
+O??CA?oB@oE_b?OWGWCC_	n=16	all	colorings(up to color perm)=96	configs={(11, 10, 10, 9): 96}	2.0s

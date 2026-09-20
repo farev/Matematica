@@ -1,0 +1,9 @@
+n=4: 1 plain-UNSAT proofs without symmetry breaking verified (0s)
+n=6: 1 plain-UNSAT proofs without symmetry breaking verified (0s)
+n=8: 1 plain-UNSAT proofs without symmetry breaking verified (0s)
+n=10: 10 plain-UNSAT proofs without symmetry breaking verified (0s)
+n=12: 25 plain-UNSAT proofs without symmetry breaking verified (2s)
+n=14: 48 plain-UNSAT proofs without symmetry breaking verified (3s)
+n=16: 227 plain-UNSAT proofs without symmetry breaking verified (10s)
+n=18: 2103 plain-UNSAT proofs without symmetry breaking verified (301s)
+ALL PROOFS VERIFIED (no symmetry breaking): 2416 max proof lines 66042 total 301s
